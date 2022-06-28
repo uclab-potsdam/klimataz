@@ -1,0 +1,175 @@
+,Klimakennwert,Jahreszeit,Landkreis Name,Landkreis Kennziffer (Kreisschlüssel),Median der Änderungen,Minimum,Maximum,Einheit,HYRAS Beobachtungen 1971-2000,Experteneinschätzung zur Belastbarkeit ,RCP,Period,Reference
+21,Niederschlag,ganzes Jahr,Barnim,12060,2.5,-5.5,11.5,%,571.8,Tendenz zur Zunahme ,26,2036-2065,0.0
+422,Niederschlag,MAM,Barnim,12060,4.1,-4.4,20.2,%,131.1,Tendenz zur Zunahme ,26,2036-2065,0.0
+823,Niederschlag,JJA,Barnim,12060,-0.5,-9.3,24.2,%,179.6,keine Änderungen ,26,2036-2065,0.0
+1224,Niederschlag,SON,Barnim,12060,-0.6,-11.5,14.1,%,127.1,keine Änderungen ,26,2036-2065,0.0
+1625,Niederschlag,DJF,Barnim,12060,5.5,-8.5,16.7,%,134.0,Tendenz zur Zunahme ,26,2036-2065,0.0
+2026,Tage mit Niederschlag > 20 mm/Tag,ganzes Jahr,Barnim,12060,0.4,0.0,1.1,Tage/Jahr,1.9,Tendenz zur Zunahme ,26,2036-2065,0.0
+2427,Tage über 5°C,ganzes Jahr,Barnim,12060,21.6,5.3,31.3,Tage/Jahr,244.5,Zunahme ,26,2036-2065,0.0
+2828,Trockentage,ganzes Jahr,Barnim,12060,0.1,-8.6,14.3,Tage,252.6,keine Änderungen ,26,2036-2065,0.0
+3229,Trockentage,MAM,Barnim,12060,-0.8,-2.7,3.0,Tage,65.4,Tendenz zur Abnahme ,26,2036-2065,0.0
+3630,Trockentage,JJA,Barnim,12060,0.8,-2.5,4.0,Tage,63.4,keine Änderungen ,26,2036-2065,0.0
+4031,Trockentage,SON,Barnim,12060,0.8,-3.5,3.0,Tage,64.3,keine Änderungen ,26,2036-2065,0.0
+4432,Trockentage,DJF,Barnim,12060,-0.6,-3.7,4.7,Tage,59.6,keine Änderungen ,26,2036-2065,0.0
+4833,99. Perzentil des Niederschlags,ganzes Jahr,Barnim,12060,1.9,-0.6,4.8,mm/Tag,16.2,Tendenz zur Zunahme ,26,2036-2065,0.0
+5234,Maximale Dauer von Hitzeperioden,ganzes Jahr,Barnim,12060,0.5,-0.2,3.9,Tage,3.1,Tendenz zur Zunahme ,26,2036-2065,0.0
+5635,95. Perzentil des Niederschlags,ganzes Jahr,Barnim,12060,0.5,-0.2,1.8,mm/Tag,7.8,Tendenz zur Zunahme ,26,2036-2065,0.0
+6036,Tropische Nächte,ganzes Jahr,Barnim,12060,0.2,-0.0,12.2,Nächte/Jahr,0.2,Zunahme ,26,2036-2065,0.0
+6437,Sommertage,ganzes Jahr,Barnim,12060,6.8,1.8,25.5,Tage/Jahr,35.6,Zunahme ,26,2036-2065,0.0
+6838,Heiße Tage,ganzes Jahr,Barnim,12060,1.7,-0.1,11.7,Tage/Jahr,6.7,Zunahme ,26,2036-2065,0.0
+7239,Schwüle Tage,ganzes Jahr,Barnim,12060,5.6,1.4,13.8,Tage/Jahr,3.7,Zunahme ,26,2036-2065,0.0
+7640,Frosttage,ganzes Jahr,Barnim,12060,-23.1,-50.0,-1.4,Tage/Jahr,81.5,Abnahme ,26,2036-2065,0.0
+8041,Windgeschwindigkeit,ganzes Jahr,Barnim,12060,-0.0,-0.1,0.1,m/s,49.7,keine Änderungen ,26,2036-2065,0.0
+8442,Temperatur,ganzes Jahr,Barnim,12060,1.3,0.4,2.4,°C,9.0,Zunahme ,26,2036-2065,0.0
+8843,Temperatur,MAM,Barnim,12060,1.3,0.4,2.1,°C,8.6,Zunahme ,26,2036-2065,0.0
+9244,Temperatur,JJA,Barnim,12060,1.1,0.3,2.3,°C,17.6,Zunahme ,26,2036-2065,0.0
+9645,Temperatur,SON,Barnim,12060,1.3,0.5,2.2,°C,9.0,Zunahme ,26,2036-2065,0.0
+10046,Temperatur,DJF,Barnim,12060,1.4,0.5,3.2,°C,0.8,Zunahme ,26,2036-2065,0.0
+10447,Klimatische Wasserbilanz,ganzes Jahr,Barnim,12060,0.0,-0.1,0.1,mm/Tag,3.3,keine Änderungen ,26,2036-2065,0.0
+10848,Eistage,ganzes Jahr,Barnim,12060,-10.9,-34.4,-1.7,Tage/Jahr,21.7,Abnahme ,26,2036-2065,0.0
+11249,Spätfrosttage,ganzes Jahr,Barnim,12060,-3.5,-6.9,-0.9,Tage/Jahr,4.9,Abnahme ,26,2036-2065,0.0
+21,Niederschlag,ganzes Jahr,Barnim,12060,5.3,-1.7,16.7,%,571.8,Tendenz zur Zunahme ,45,2036-2065,0.0
+422,Niederschlag,MAM,Barnim,12060,5.8,-4.5,17.7,%,131.1,Tendenz zur Zunahme ,45,2036-2065,0.0
+823,Niederschlag,JJA,Barnim,12060,1.7,-11.9,37.2,%,179.6,keine Änderungen ,45,2036-2065,0.0
+1224,Niederschlag,SON,Barnim,12060,2.9,-3.4,14.4,%,127.1,Tendenz zur Zunahme ,45,2036-2065,0.0
+1625,Niederschlag,DJF,Barnim,12060,8.2,-0.7,14.9,%,134.0,Tendenz zur Zunahme ,45,2036-2065,0.0
+2026,Tage mit Niederschlag > 20 mm/Tag,ganzes Jahr,Barnim,12060,0.4,-0.6,1.6,Tage/Jahr,1.9,Tendenz zur Zunahme ,45,2036-2065,0.0
+2427,Tage über 5°C,ganzes Jahr,Barnim,12060,26.0,13.9,39.4,Tage/Jahr,244.5,Zunahme ,45,2036-2065,0.0
+2828,Trockentage,ganzes Jahr,Barnim,12060,-0.3,-8.9,4.4,Tage,252.6,keine Änderungen ,45,2036-2065,0.0
+3229,Trockentage,MAM,Barnim,12060,-0.5,-6.0,0.9,Tage,65.4,Tendenz zur Abnahme ,45,2036-2065,0.0
+3630,Trockentage,JJA,Barnim,12060,1.3,-3.7,4.1,Tage,63.4,keine Änderungen ,45,2036-2065,0.0
+4031,Trockentage,SON,Barnim,12060,0.1,-2.3,2.3,Tage,64.3,keine Änderungen ,45,2036-2065,0.0
+4432,Trockentage,DJF,Barnim,12060,-1.0,-4.2,2.3,Tage,59.6,Tendenz zur Abnahme ,45,2036-2065,0.0
+4833,99. Perzentil des Niederschlags,ganzes Jahr,Barnim,12060,1.9,-2.8,7.2,mm/Tag,16.2,Tendenz zur Zunahme ,45,2036-2065,0.0
+5234,Maximale Dauer von Hitzeperioden,ganzes Jahr,Barnim,12060,1.0,0.2,5.1,Tage,3.1,Tendenz zur Zunahme ,45,2036-2065,0.0
+5635,95. Perzentil des Niederschlags,ganzes Jahr,Barnim,12060,1.0,-0.2,2.7,mm/Tag,7.8,Tendenz zur Zunahme ,45,2036-2065,0.0
+6036,Tropische Nächte,ganzes Jahr,Barnim,12060,0.8,0.0,8.9,Nächte/Jahr,0.2,Zunahme ,45,2036-2065,0.0
+6437,Sommertage,ganzes Jahr,Barnim,12060,9.6,4.5,31.0,Tage/Jahr,35.6,Zunahme ,45,2036-2065,0.0
+6838,Heiße Tage,ganzes Jahr,Barnim,12060,2.3,0.3,13.4,Tage/Jahr,6.7,Zunahme ,45,2036-2065,0.0
+7239,Schwüle Tage,ganzes Jahr,Barnim,12060,8.8,1.2,14.0,Tage/Jahr,3.7,Zunahme ,45,2036-2065,0.0
+7640,Frosttage,ganzes Jahr,Barnim,12060,-28.2,-42.9,-16.3,Tage/Jahr,81.5,Abnahme ,45,2036-2065,0.0
+8041,Windgeschwindigkeit,ganzes Jahr,Barnim,12060,-0.0,-0.1,0.1,m/s,49.7,keine Änderungen ,45,2036-2065,0.0
+8442,Temperatur,ganzes Jahr,Barnim,12060,1.7,0.8,2.5,°C,9.0,Zunahme ,45,2036-2065,0.0
+8843,Temperatur,MAM,Barnim,12060,1.7,0.6,2.5,°C,8.6,Zunahme ,45,2036-2065,0.0
+9244,Temperatur,JJA,Barnim,12060,1.5,0.9,2.7,°C,17.6,Zunahme ,45,2036-2065,0.0
+9645,Temperatur,SON,Barnim,12060,1.7,1.0,2.8,°C,9.0,Zunahme ,45,2036-2065,0.0
+10046,Temperatur,DJF,Barnim,12060,1.9,0.5,2.9,°C,0.8,Zunahme ,45,2036-2065,0.0
+10447,Klimatische Wasserbilanz,ganzes Jahr,Barnim,12060,0.0,-0.1,0.2,mm/Tag,3.3,keine Änderungen ,45,2036-2065,0.0
+10848,Eistage,ganzes Jahr,Barnim,12060,-15.3,-29.0,-2.9,Tage/Jahr,21.7,Abnahme ,45,2036-2065,0.0
+11249,Spätfrosttage,ganzes Jahr,Barnim,12060,-3.9,-11.9,-1.6,Tage/Jahr,4.9,Abnahme ,45,2036-2065,0.0
+21,Niederschlag,ganzes Jahr,Barnim,12060,7.3,-3.0,17.7,%,571.8,Tendenz zur Zunahme ,85,2036-2065,0.0
+422,Niederschlag,MAM,Barnim,12060,10.4,-2.1,22.5,%,131.1,Tendenz zur Zunahme ,85,2036-2065,0.0
+823,Niederschlag,JJA,Barnim,12060,3.8,-23.9,29.8,%,179.6,Tendenz zur Zunahme ,85,2036-2065,0.0
+1224,Niederschlag,SON,Barnim,12060,3.6,-14.6,21.6,%,127.1,keine Änderungen ,85,2036-2065,0.0
+1625,Niederschlag,DJF,Barnim,12060,9.6,-7.4,37.8,%,134.0,Tendenz zur Zunahme ,85,2036-2065,0.0
+2026,Tage mit Niederschlag > 20 mm/Tag,ganzes Jahr,Barnim,12060,0.7,-0.2,1.4,Tage/Jahr,1.9,Zunahme ,85,2036-2065,0.0
+2427,Tage über 5°C,ganzes Jahr,Barnim,12060,34.4,23.2,45.9,Tage/Jahr,244.5,Zunahme ,85,2036-2065,0.0
+2828,Trockentage,ganzes Jahr,Barnim,12060,-1.6,-16.1,13.4,Tage,252.6,keine Änderungen ,85,2036-2065,0.0
+3229,Trockentage,MAM,Barnim,12060,-1.1,-5.0,2.3,Tage,65.4,Tendenz zur Abnahme ,85,2036-2065,0.0
+3630,Trockentage,JJA,Barnim,12060,1.3,-6.3,4.7,Tage,63.4,keine Änderungen ,85,2036-2065,0.0
+4031,Trockentage,SON,Barnim,12060,0.7,-4.7,5.1,Tage,64.3,keine Änderungen ,85,2036-2065,0.0
+4432,Trockentage,DJF,Barnim,12060,-0.9,-7.7,4.6,Tage,59.6,Tendenz zur Abnahme ,85,2036-2065,0.0
+4833,99. Perzentil des Niederschlags,ganzes Jahr,Barnim,12060,2.7,-1.9,8.2,mm/Tag,16.2,Tendenz zur Zunahme ,85,2036-2065,0.0
+5234,Maximale Dauer von Hitzeperioden,ganzes Jahr,Barnim,12060,1.1,-0.0,6.9,Tage,3.1,Zunahme ,85,2036-2065,0.0
+5635,95. Perzentil des Niederschlags,ganzes Jahr,Barnim,12060,1.3,0.3,3.2,mm/Tag,7.8,Zunahme ,85,2036-2065,0.0
+6036,Tropische Nächte,ganzes Jahr,Barnim,12060,1.5,0.0,17.3,Nächte/Jahr,0.2,Zunahme ,85,2036-2065,0.0
+6437,Sommertage,ganzes Jahr,Barnim,12060,10.9,6.3,42.2,Tage/Jahr,35.6,Zunahme ,85,2036-2065,0.0
+6838,Heiße Tage,ganzes Jahr,Barnim,12060,3.5,0.5,22.5,Tage/Jahr,6.7,Zunahme ,85,2036-2065,0.0
+7239,Schwüle Tage,ganzes Jahr,Barnim,12060,10.1,3.2,21.7,Tage/Jahr,3.7,Zunahme ,85,2036-2065,0.0
+7640,Frosttage,ganzes Jahr,Barnim,12060,-36.3,-48.0,-23.1,Tage/Jahr,81.5,Abnahme ,85,2036-2065,0.0
+8041,Windgeschwindigkeit,ganzes Jahr,Barnim,12060,-0.0,-0.1,0.1,m/s,49.7,keine Änderungen ,85,2036-2065,0.0
+8442,Temperatur,ganzes Jahr,Barnim,12060,2.0,1.2,3.2,°C,9.0,Zunahme ,85,2036-2065,0.0
+8843,Temperatur,MAM,Barnim,12060,1.7,1.1,3.1,°C,8.6,Zunahme ,85,2036-2065,0.0
+9244,Temperatur,JJA,Barnim,12060,1.6,1.1,4.1,°C,17.6,Zunahme ,85,2036-2065,0.0
+9645,Temperatur,SON,Barnim,12060,2.0,1.5,3.5,°C,9.0,Zunahme ,85,2036-2065,0.0
+10046,Temperatur,DJF,Barnim,12060,2.5,1.2,3.7,°C,0.8,Zunahme ,85,2036-2065,0.0
+10447,Klimatische Wasserbilanz,ganzes Jahr,Barnim,12060,0.0,-0.1,0.2,mm/Tag,3.3,Tendenz zur Zunahme ,85,2036-2065,0.0
+10848,Eistage,ganzes Jahr,Barnim,12060,-15.9,-32.7,-6.7,Tage/Jahr,21.7,Abnahme ,85,2036-2065,0.0
+11249,Spätfrosttage,ganzes Jahr,Barnim,12060,-4.0,-11.9,-0.8,Tage/Jahr,4.9,Abnahme ,85,2036-2065,0.0
+21,Niederschlag,ganzes Jahr,Barnim,12060,4.9,-12.1,11.7,%,571.8,Tendenz zur Zunahme ,26,2069-2098,0.0
+422,Niederschlag,MAM,Barnim,12060,5.4,-12.1,21.4,%,131.1,Tendenz zur Zunahme ,26,2069-2098,0.0
+823,Niederschlag,JJA,Barnim,12060,7.0,-14.7,27.3,%,179.6,Tendenz zur Zunahme ,26,2069-2098,0.0
+1224,Niederschlag,SON,Barnim,12060,-1.2,-11.3,11.8,%,127.1,keine Änderungen ,26,2069-2098,0.0
+1625,Niederschlag,DJF,Barnim,12060,0.2,-20.9,13.4,%,134.0,keine Änderungen ,26,2069-2098,0.0
+2026,Tage mit Niederschlag > 20 mm/Tag,ganzes Jahr,Barnim,12060,0.4,-0.5,1.7,Tage/Jahr,1.9,Tendenz zur Zunahme ,26,2069-2098,0.0
+2427,Tage über 5°C,ganzes Jahr,Barnim,12060,21.0,4.8,26.2,Tage/Jahr,244.5,Zunahme ,26,2069-2098,0.0
+2828,Trockentage,ganzes Jahr,Barnim,12060,0.2,-7.6,22.0,Tage,252.6,keine Änderungen ,26,2069-2098,0.0
+3229,Trockentage,MAM,Barnim,12060,-0.3,-2.7,4.7,Tage,65.4,keine Änderungen ,26,2069-2098,0.0
+3630,Trockentage,JJA,Barnim,12060,0.4,-2.4,5.4,Tage,63.4,keine Änderungen ,26,2069-2098,0.0
+4031,Trockentage,SON,Barnim,12060,0.4,-2.5,3.7,Tage,64.3,Tendenz zur Zunahme ,26,2069-2098,0.0
+4432,Trockentage,DJF,Barnim,12060,0.7,-3.1,8.1,Tage,59.6,keine Änderungen ,26,2069-2098,0.0
+4833,99. Perzentil des Niederschlags,ganzes Jahr,Barnim,12060,1.8,-1.7,6.9,mm/Tag,16.2,Tendenz zur Zunahme ,26,2069-2098,0.0
+5234,Maximale Dauer von Hitzeperioden,ganzes Jahr,Barnim,12060,0.5,-0.1,3.5,Tage,3.1,Tendenz zur Zunahme ,26,2069-2098,0.0
+5635,95. Perzentil des Niederschlags,ganzes Jahr,Barnim,12060,0.7,-1.2,2.0,mm/Tag,7.8,Tendenz zur Zunahme ,26,2069-2098,0.0
+6036,Tropische Nächte,ganzes Jahr,Barnim,12060,0.4,-0.0,9.6,Nächte/Jahr,0.2,Zunahme ,26,2069-2098,0.0
+6437,Sommertage,ganzes Jahr,Barnim,12060,7.7,0.5,23.4,Tage/Jahr,35.6,Zunahme ,26,2069-2098,0.0
+6838,Heiße Tage,ganzes Jahr,Barnim,12060,1.7,-0.1,11.0,Tage/Jahr,6.7,Zunahme ,26,2069-2098,0.0
+7239,Schwüle Tage,ganzes Jahr,Barnim,12060,5.3,1.1,12.8,Tage/Jahr,3.7,Zunahme ,26,2069-2098,0.0
+7640,Frosttage,ganzes Jahr,Barnim,12060,-22.4,-39.2,0.7,Tage/Jahr,81.5,Abnahme ,26,2069-2098,0.0
+8041,Windgeschwindigkeit,ganzes Jahr,Barnim,12060,-0.0,-0.1,0.0,m/s,49.7,Tendenz zur Abnahme ,26,2069-2098,0.0
+8442,Temperatur,ganzes Jahr,Barnim,12060,1.2,0.4,2.0,°C,9.0,Zunahme ,26,2069-2098,0.0
+8843,Temperatur,MAM,Barnim,12060,1.2,0.4,1.9,°C,8.6,Zunahme ,26,2069-2098,0.0
+9244,Temperatur,JJA,Barnim,12060,1.0,-0.0,2.2,°C,17.6,Zunahme ,26,2069-2098,0.0
+9645,Temperatur,SON,Barnim,12060,1.2,0.4,2.1,°C,9.0,Zunahme ,26,2069-2098,0.0
+10046,Temperatur,DJF,Barnim,12060,1.3,0.8,2.8,°C,0.8,Zunahme ,26,2069-2098,0.0
+10447,Klimatische Wasserbilanz,ganzes Jahr,Barnim,12060,0.0,-0.2,0.1,mm/Tag,3.3,Tendenz zur Zunahme ,26,2069-2098,0.0
+10848,Eistage,ganzes Jahr,Barnim,12060,-10.8,-29.0,-0.4,Tage/Jahr,21.7,Abnahme ,26,2069-2098,0.0
+11249,Spätfrosttage,ganzes Jahr,Barnim,12060,-3.6,-7.0,-0.5,Tage/Jahr,4.9,Abnahme ,26,2069-2098,0.0
+21,Niederschlag,ganzes Jahr,Barnim,12060,7.7,-1.9,21.3,%,571.8,Tendenz zur Zunahme ,45,2069-2098,0.0
+422,Niederschlag,MAM,Barnim,12060,13.1,-0.0,37.5,%,131.1,Tendenz zur Zunahme ,45,2069-2098,0.0
+823,Niederschlag,JJA,Barnim,12060,9.4,-12.4,33.3,%,179.6,Tendenz zur Zunahme ,45,2069-2098,0.0
+1224,Niederschlag,SON,Barnim,12060,5.5,-5.4,14.3,%,127.1,Tendenz zur Zunahme ,45,2069-2098,0.0
+1625,Niederschlag,DJF,Barnim,12060,6.8,-0.2,19.1,%,134.0,Tendenz zur Zunahme ,45,2069-2098,0.0
+2026,Tage mit Niederschlag > 20 mm/Tag,ganzes Jahr,Barnim,12060,0.7,-0.3,1.6,Tage/Jahr,1.9,Tendenz zur Zunahme ,45,2069-2098,0.0
+2427,Tage über 5°C,ganzes Jahr,Barnim,12060,36.8,18.9,48.6,Tage/Jahr,244.5,Zunahme ,45,2069-2098,0.0
+2828,Trockentage,ganzes Jahr,Barnim,12060,0.5,-13.4,5.5,Tage,252.6,keine Änderungen ,45,2069-2098,0.0
+3229,Trockentage,MAM,Barnim,12060,-2.1,-3.8,1.1,Tage,65.4,Tendenz zur Abnahme ,45,2069-2098,0.0
+3630,Trockentage,JJA,Barnim,12060,-0.0,-8.4,4.6,Tage,63.4,keine Änderungen ,45,2069-2098,0.0
+4031,Trockentage,SON,Barnim,12060,0.9,-1.9,3.4,Tage,64.3,keine Änderungen ,45,2069-2098,0.0
+4432,Trockentage,DJF,Barnim,12060,-0.1,-3.4,3.1,Tage,59.6,keine Änderungen ,45,2069-2098,0.0
+4833,99. Perzentil des Niederschlags,ganzes Jahr,Barnim,12060,3.1,-0.9,7.4,mm/Tag,16.2,Zunahme ,45,2069-2098,0.0
+5234,Maximale Dauer von Hitzeperioden,ganzes Jahr,Barnim,12060,0.9,-0.3,4.8,Tage,3.1,Zunahme ,45,2069-2098,0.0
+5635,95. Perzentil des Niederschlags,ganzes Jahr,Barnim,12060,1.3,0.1,2.5,mm/Tag,7.8,Zunahme ,45,2069-2098,0.0
+6036,Tropische Nächte,ganzes Jahr,Barnim,12060,1.1,0.2,15.1,Nächte/Jahr,0.2,Zunahme ,45,2069-2098,0.0
+6437,Sommertage,ganzes Jahr,Barnim,12060,12.2,6.8,36.6,Tage/Jahr,35.6,Zunahme ,45,2069-2098,0.0
+6838,Heiße Tage,ganzes Jahr,Barnim,12060,3.4,0.6,17.6,Tage/Jahr,6.7,Zunahme ,45,2069-2098,0.0
+7239,Schwüle Tage,ganzes Jahr,Barnim,12060,11.2,2.3,25.0,Tage/Jahr,3.7,Zunahme ,45,2069-2098,0.0
+7640,Frosttage,ganzes Jahr,Barnim,12060,-40.3,-53.5,-15.1,Tage/Jahr,81.5,Abnahme ,45,2069-2098,0.0
+8041,Windgeschwindigkeit,ganzes Jahr,Barnim,12060,-0.0,-0.1,0.1,m/s,49.7,keine Änderungen ,45,2069-2098,0.0
+8442,Temperatur,ganzes Jahr,Barnim,12060,2.2,1.2,3.1,°C,9.0,Zunahme ,45,2069-2098,0.0
+8843,Temperatur,MAM,Barnim,12060,2.2,0.8,2.8,°C,8.6,Zunahme ,45,2069-2098,0.0
+9244,Temperatur,JJA,Barnim,12060,1.9,1.2,3.4,°C,17.6,Zunahme ,45,2069-2098,0.0
+9645,Temperatur,SON,Barnim,12060,2.3,1.5,3.8,°C,9.0,Zunahme ,45,2069-2098,0.0
+10046,Temperatur,DJF,Barnim,12060,2.6,1.0,3.6,°C,0.8,Zunahme ,45,2069-2098,0.0
+10447,Klimatische Wasserbilanz,ganzes Jahr,Barnim,12060,0.0,-0.1,0.2,mm/Tag,3.3,Tendenz zur Zunahme ,45,2069-2098,0.0
+10848,Eistage,ganzes Jahr,Barnim,12060,-16.7,-33.8,-6.2,Tage/Jahr,21.7,Abnahme ,45,2069-2098,0.0
+11249,Spätfrosttage,ganzes Jahr,Barnim,12060,-5.4,-14.7,-1.5,Tage/Jahr,4.9,Abnahme ,45,2069-2098,0.0
+21,Niederschlag,ganzes Jahr,Barnim,12060,11.2,-2.9,30.3,%,571.8,Zunahme ,85,2069-2098,0.0
+422,Niederschlag,MAM,Barnim,12060,16.2,0.4,37.5,%,131.1,Zunahme ,85,2069-2098,0.0
+823,Niederschlag,JJA,Barnim,12060,4.5,-50.2,50.5,%,179.6,keine Änderungen ,85,2069-2098,0.0
+1224,Niederschlag,SON,Barnim,12060,10.9,-12.8,28.9,%,127.1,Tendenz zur Zunahme ,85,2069-2098,0.0
+1625,Niederschlag,DJF,Barnim,12060,18.5,-7.6,48.5,%,134.0,Zunahme ,85,2069-2098,0.0
+2026,Tage mit Niederschlag > 20 mm/Tag,ganzes Jahr,Barnim,12060,1.2,0.3,2.7,Tage/Jahr,1.9,Zunahme ,85,2069-2098,0.0
+2427,Tage über 5°C,ganzes Jahr,Barnim,12060,61.7,45.3,76.5,Tage/Jahr,244.5,Zunahme ,85,2069-2098,0.0
+2828,Trockentage,ganzes Jahr,Barnim,12060,-0.6,-19.4,16.9,Tage,252.6,keine Änderungen ,85,2069-2098,0.0
+3229,Trockentage,MAM,Barnim,12060,-1.9,-7.2,4.2,Tage,65.4,Tendenz zur Abnahme ,85,2069-2098,0.0
+3630,Trockentage,JJA,Barnim,12060,3.3,-9.8,8.7,Tage,63.4,Tendenz zur Zunahme ,85,2069-2098,0.0
+4031,Trockentage,SON,Barnim,12060,0.3,-5.2,5.5,Tage,64.3,keine Änderungen ,85,2069-2098,0.0
+4432,Trockentage,DJF,Barnim,12060,-1.7,-8.9,5.8,Tage,59.6,keine Änderungen ,85,2069-2098,0.0
+4833,99. Perzentil des Niederschlags,ganzes Jahr,Barnim,12060,4.5,0.4,14.5,mm/Tag,16.2,Zunahme ,85,2069-2098,0.0
+5234,Maximale Dauer von Hitzeperioden,ganzes Jahr,Barnim,12060,2.7,1.0,16.1,Tage,3.1,Zunahme ,85,2069-2098,0.0
+5635,95. Perzentil des Niederschlags,ganzes Jahr,Barnim,12060,2.2,0.6,5.0,mm/Tag,7.8,Zunahme ,85,2069-2098,0.0
+6036,Tropische Nächte,ganzes Jahr,Barnim,12060,5.4,0.4,42.2,Nächte/Jahr,0.2,Zunahme ,85,2069-2098,0.0
+6437,Sommertage,ganzes Jahr,Barnim,12060,24.1,12.8,76.2,Tage/Jahr,35.6,Zunahme ,85,2069-2098,0.0
+6838,Heiße Tage,ganzes Jahr,Barnim,12060,8.1,1.5,47.5,Tage/Jahr,6.7,Zunahme ,85,2069-2098,0.0
+7239,Schwüle Tage,ganzes Jahr,Barnim,12060,23.5,9.1,52.2,Tage/Jahr,3.7,Zunahme ,85,2069-2098,0.0
+7640,Frosttage,ganzes Jahr,Barnim,12060,-59.3,-91.2,-36.5,Tage/Jahr,81.5,Abnahme ,85,2069-2098,0.0
+8041,Windgeschwindigkeit,ganzes Jahr,Barnim,12060,0.0,-0.1,0.2,m/s,49.7,keine Änderungen ,85,2069-2098,0.0
+8442,Temperatur,ganzes Jahr,Barnim,12060,3.5,2.6,5.3,°C,9.0,Zunahme ,85,2069-2098,0.0
+8843,Temperatur,MAM,Barnim,12060,3.2,2.0,4.2,°C,8.6,Zunahme ,85,2069-2098,0.0
+9244,Temperatur,JJA,Barnim,12060,3.3,2.3,6.9,°C,17.6,Zunahme ,85,2069-2098,0.0
+9645,Temperatur,SON,Barnim,12060,3.7,2.8,6.0,°C,9.0,Zunahme ,85,2069-2098,0.0
+10046,Temperatur,DJF,Barnim,12060,4.1,2.7,5.6,°C,0.8,Zunahme ,85,2069-2098,0.0
+10447,Klimatische Wasserbilanz,ganzes Jahr,Barnim,12060,0.1,-0.1,0.3,mm/Tag,3.3,Tendenz zur Zunahme ,85,2069-2098,0.0
+10848,Eistage,ganzes Jahr,Barnim,12060,-22.0,-47.0,-8.9,Tage/Jahr,21.7,Abnahme ,85,2069-2098,0.0
+11249,Spätfrosttage,ganzes Jahr,Barnim,12060,-5.5,-19.5,-1.3,Tage/Jahr,4.9,Abnahme ,85,2069-2098,0.0

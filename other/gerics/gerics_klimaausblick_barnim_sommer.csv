@@ -1,0 +1,8 @@
+,Unnamed: 0,Klimakennwert,Jahreszeit,Landkreis Name,Landkreis Kennziffer (Kreisschlüssel),Median der Änderungen,Minimum,Maximum,Einheit,HYRAS Beobachtungen 1971-2000,Experteneinschätzung zur Belastbarkeit ,RCP,Period,Reference,prozentuale Änderung,beobachtung und änderung
+34,2026,Tage mit Niederschlag > 20 mm/Tag,ganzes Jahr,Barnim,12060,0.4,-0.6,1.6,Tage/Jahr,1.9,Tendenz zur Zunahme ,45,2036-2065,0.0,21.05263157894737,2.3
+42,5234,Maximale Dauer von Hitzeperioden,ganzes Jahr,Barnim,12060,1.0,0.2,5.1,Tage,3.1,Tendenz zur Zunahme ,45,2036-2065,0.0,32.25806451612903,4.1
+44,6036,Tropische Nächte,ganzes Jahr,Barnim,12060,0.8,0.0,8.9,Nächte/Jahr,0.2,Zunahme ,45,2036-2065,0.0,400.0,1.0
+45,6437,Sommertage,ganzes Jahr,Barnim,12060,9.6,4.5,31.0,Tage/Jahr,35.6,Zunahme ,45,2036-2065,0.0,26.96629213483146,45.2
+46,6838,Heiße Tage,ganzes Jahr,Barnim,12060,2.3,0.3,13.4,Tage/Jahr,6.7,Zunahme ,45,2036-2065,0.0,34.32835820895522,9.0
+47,7239,Schwüle Tage,ganzes Jahr,Barnim,12060,8.8,1.2,14.0,Tage/Jahr,3.7,Zunahme ,45,2036-2065,0.0,237.83783783783784,12.5
+55,10447,Klimatische Wasserbilanz,ganzes Jahr,Barnim,12060,0.0,-0.1,0.2,mm/Tag,3.3,keine Änderungen ,45,2036-2065,0.0,0.0,3.3
