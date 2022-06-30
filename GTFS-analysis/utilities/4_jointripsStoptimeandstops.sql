@@ -1,7 +1,7 @@
 CREATE TABLE agencyStops(route_id TEXT, agency_id TEXT, agency_name TEXT, trip_id TEXT, trip_headsign TEXT,stop_id TEXT, stop_name TEXT,stop_desc TEXT,stop_lat REAL,stop_lon REAL)
 
 INSERT INTO agencyStops
-SELECT
+SELECT DISTINCT
 	tripsStoptime.route_id,	
 	tripsStoptime.agency_id,
 	tripsStoptime.agency_name,
