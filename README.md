@@ -7,6 +7,7 @@ If you want to dive deeper into the code in this github repository, please have 
 
 ## Energy
 
+Observable Notebook: https://observablehq.com/d/6f15228c4c31a18f
 
 
 ## Agriculture
@@ -15,6 +16,7 @@ If you want to dive deeper into the code in this github repository, please have 
 
 ## Mobility
 
+Observable Notebook: https://observablehq.com/d/a8a3ff5330593a3f
 
 
 ## Buildings
@@ -22,5 +24,6 @@ If you want to dive deeper into the code in this github repository, please have 
 Observable Notebook: https://observablehq.com/d/9cb9bca27a391035
 
 Datawrapper: https://www.datawrapper.de/_/5lZx7/
+
 
 ## Waste
