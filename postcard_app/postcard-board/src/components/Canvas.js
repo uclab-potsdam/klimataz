@@ -1,7 +1,13 @@
-const Canvas = ({}) => {
+import Card from "./Card";
+
+const Canvas = () => {
   return (
-    <div>
-      <p>canvas</p>
+    <div className="canvas">
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </div>
   );
 };

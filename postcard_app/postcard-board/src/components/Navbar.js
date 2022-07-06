@@ -1,6 +1,6 @@
 import headertaz from "../header_taz.png";
 
-const Navbar = ({}) => {
+const Navbar = () => {
   return (
     <div>
       <img src={headertaz} className="header-taz" alt="header-taz" />
