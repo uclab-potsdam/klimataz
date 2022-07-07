@@ -12,7 +12,7 @@ Observable Notebook: https://observablehq.com/d/6f15228c4c31a18f
 
 ## Agriculture
 
-
+Observable Notebook: https://observablehq.com/@aeschi/landwirtschaft-viehhaltung
 
 ## Mobility
 
@@ -27,3 +27,5 @@ Datawrapper: https://www.datawrapper.de/_/5lZx7/
 
 
 ## Waste
+
+Observable Notebook: https://observablehq.com/d/d008e83f505e061b
