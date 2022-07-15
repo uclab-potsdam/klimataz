@@ -52,7 +52,7 @@ const CardCollection = () => {
   }
 
   return (
-    <div className="CardCollection">
+    <div className="card-collection">
       <h2>Card Collections</h2>
 
       <Select
@@ -74,7 +74,11 @@ const CardCollection = () => {
         <h5>{section.label}</h5>
       </div>
 
-      <Card />
+      <div className="card-container">
+        <Card lk="berlin" section="energy"/>
+        <Card lk="hamburg" section="mobility"/>
+        <Card lk="stuttgart" section="buildings"/>
+      </div>
     </div>
   );
 };

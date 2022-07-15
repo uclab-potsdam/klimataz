@@ -1,4 +1,3 @@
-import "./App.css";
 import Canvas from "./components/Canvas";
 import './styles/main.scss';
 

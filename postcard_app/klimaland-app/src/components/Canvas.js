@@ -2,7 +2,7 @@ import CardCollection from "./CardCollection";
 
 const Canvas = () => {
   return (
-    <div className="Canvas">
+    <div className="canvas">
       <h1>Canvas</h1>
       <CardCollection />
     </div>
