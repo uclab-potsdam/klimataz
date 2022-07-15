@@ -1,6 +1,10 @@
 import Card from "./Card";
 import Select from "react-select";
 import { useState } from "react";
+import flip from "../img/buttons/flip.png";
+import switchCard from "../img/buttons/switch.png";
+import shuffle from "../img/buttons/shuffle.png";
+import close from "../img/buttons/close.png";
 
 const CardCollection = () => {
   const sections = [
@@ -75,9 +79,33 @@ const CardCollection = () => {
       </div>
 
       <div className="card-container">
-        <Card lk="berlin" section="energy"/>
-        <Card lk="hamburg" section="mobility"/>
-        <Card lk="stuttgart" section="buildings"/>
+        <Card lk="berlin" section="energy" />
+        <Card lk="hamburg" section="mobility" />
+        <Card lk="stuttgart" section="buildings" />
+        <button onClick={console.log("close")}>
+          <img
+            src={close}
+            className="close-button-img"
+            alt="close-button-img"
+          />
+        </button>
+        <button onClick={console.log("flip")}>
+          <img src={flip} className="flip-button-img" alt="flip-button-img" />
+        </button>
+        <button onClick={console.log("switch")}>
+          <img
+            src={switchCard}
+            className="switch-button-img"
+            alt="switch-button-img"
+          />
+        </button>
+        <button onClick={console.log("shuffle")}>
+          <img
+            src={shuffle}
+            className="shuffle-button-img"
+            alt="shuffle-button-img"
+          />
+        </button>
       </div>
     </div>
   );
