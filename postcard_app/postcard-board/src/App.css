@@ -29,6 +29,50 @@ h4{
   align-items: baseline;
 }
 
+.cardelement{
+  height: 24vh;
+  width: 18vw;
+}
+[type=radio] {
+  display: none;
+}
+
+.cardelement {
+  margin: auto;
+  background-color: rgb(254, 244, 40);
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+
+#card1:checked ~ #slide1, #card2:checked ~ #slide2,
+#card3:checked ~ #slide3 {
+  /* box-shadow: 0 13px 25px 0 rgba(0,0,0,.3), 0 11px 7px 0 rgba(0,0,0,.19); */
+  /* transform: translate3d(0,0,0); */
+  /* transform: translate(0%,50px); */
+  background-color: #18e51b;
+  transform: scale(1.8);
+  z-index: 1;
+}
+
+#card1:checked ~ #slide2, #card2:checked ~ #slide3,
+#card3:checked ~ #slide1 {
+  /* box-shadow: 0 6px 10px 0 rgba(0,0,0,.3), 0 2px 2px 0 rgba(0,0,0,.2); */
+  transform: translate(0,0);
+  background-color: #1830e5;
+}
+
+#card1:checked ~ #slide3, #card2:checked ~ #slide1,
+#card3:checked ~ #slide2 {
+  /* box-shadow: 0 6px 10px 0 rgba(0,0,0,.3), 0 2px 2px 0 rgba(0,0,0,.2); */
+  transform: translate(0,0);
+  background-color: #E5184C;
+}
+
+
 .card-container{
   transform-style: preserve-3d;
   transform: perspective(1000px) rotateY(var(--rotate-y, 0))
@@ -45,6 +89,7 @@ h4{
 
 .card-container:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  /* transform: scale(1.8); */
 }
 
 .card-container.flip{
