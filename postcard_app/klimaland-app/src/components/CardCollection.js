@@ -1,29 +1,28 @@
 import Card from "./Card";
-// import Dropdown from "./Dropdown";
-// import { useState } from "react";
 import Select from "react-select";
+import { useState } from "react";
 
 const CardCollection = () => {
   const sections = [
     {
       label: "Mobilität",
-      key: "mobility",
+      value: "mobility",
     },
     {
       label: "Gebäude",
-      key: "buildings",
+      value: "buildings",
     },
     {
       label: "Energie",
-      key: "energy",
+      value: "energy",
     },
     {
       label: "Landwirtschaft",
-      key: "agriculture",
+      value: "agriculture",
     },
     {
       label: "Abfallentsorgung",
-      key: "waste",
+      value: "waste",
     },
   ];
 
@@ -42,21 +41,38 @@ const CardCollection = () => {
     },
   ];
 
-  // const [section, setSection] = useState();
-  // const [landkreis, setLandkreis] = useState(0);
+  const [section, setSection] = useState([]);
+  const [landkreis, setLK] = useState([]);
+  let viewComp = false;
+
+  if (landkreis.length > 1) {
+    viewComp = true;
+  } else {
+    viewComp = false;
+  }
 
   return (
     <div className="CardCollection">
       <h2>Card Collections</h2>
 
-      {/* <Dropdown options={landkreise} switchOption={setLandkreis} />
-      <h5>{landkreis}</h5>
+      <Select
+        isMulti
+        defaultValue={landkreis}
+        onChange={setLK}
+        options={landkreise}
+      />
 
-      <Dropdown options={sections} switchOption={setSection} />
-      <h5>{section}</h5> */}
+      <h5>{landkreis.map((elem) => elem.label)}</h5>
 
-      <Select isMulti options={landkreise} />
-      <Select options={sections} />
+      <div style={{ visibility: viewComp ? "visible" : "hidden" }}>
+        <Select
+          defaultValue={section}
+          onChange={setSection}
+          options={sections}
+        />
+
+        <h5>{section.label}</h5>
+      </div>
 
       <Card />
     </div>
