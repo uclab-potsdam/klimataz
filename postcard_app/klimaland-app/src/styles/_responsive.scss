@@ -1,0 +1,15 @@
+//here will be the responsive changes 
+
+@include media-md{
+    .card-container{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: baseline;
+    }
+
+    .card{
+        height: 24vh;
+        width: 18vw;
+    }
+}
