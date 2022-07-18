@@ -65,7 +65,6 @@ const CardCollection = () => {
 
   const mod = (n, m) => {
     let result = n % m;
-
     return result >= 0 ? result : result + m;
   };
 
@@ -84,7 +83,7 @@ const CardCollection = () => {
         options={landkreise}
       />
 
-      <h5>{landkreis.map((elem) => elem.label)}</h5>
+      <h5>Du hast {landkreis.map((elem) => elem.label + " ")} ausgewählt</h5>
 
       <div style={{ visibility: viewComp ? "visible" : "hidden" }}>
         <Select
@@ -93,10 +92,28 @@ const CardCollection = () => {
           options={sections}
         />
 
-        <h5>{section.label}</h5>
+        <h5>& den Sektor {section.label}</h5>
       </div>
 
-      <div className="card-container">
+      <h2>Ordered overview</h2>
+
+      <div className="card-container-ordered">
+        {cards.map((item, i) => {
+          let classProp = "card card-ordered";
+
+          return (
+            <Card
+              key={item.id}
+              classProp={classProp}
+              lk={item.label}
+              section="energy"
+            />
+          );
+        })}
+      </div>
+
+      <h2>Zoomed in Carousel view</h2>
+      <div className="card-container-stacked">
         <div className="carousel">
           {cards.map((item, i) => {
             const indexLeft = mod(index - 1, cards.length);
