@@ -7,6 +7,11 @@ import shuffle from "../img/buttons/shuffle.png";
 import close from "../img/buttons/close.png";
 
 const CardCollection = () => {
+
+    const shuffleSelection = [
+        {lk:{value:"11"},section:"mobility"},{lk:"1011",section:"waste"},{lk:"11",section:"mobility"}
+    ]
+
     const sections = [
         {
             label: "Mobilität",
@@ -30,6 +35,7 @@ const CardCollection = () => {
         },
     ];
 
+    //todo: load all landkreise from selector sheet
     const landkreise = [
         {
             label: "Flensburg",
@@ -45,57 +51,90 @@ const CardCollection = () => {
         },
     ];
 
+    //store selected landkreise and sections
     const [section, setSection] = useState([]);
-    const [landkreis, setLK] = useState([]);
+    const [landkreisSelection, setLK] = useState([]);
+
+    let postcardView = false;
 
     //set mode depending on numbers of selecteed landkreise
     const mode = function(){
         let mode = "shuffle"
-        if (landkreis.length ==3) {
+        if (landkreisSelection.length > 1) {
             mode = "comparison"
         }
-        else if (landkreis.length == 1) {
+        else if (landkreisSelection.length == 1) {
             mode = "lk"
         }
-        else if (landkreis.length == 2) { //later this will be on click on a postcard
-            mode = "postcard"
-        }
+        // else if (landkreisSelection.length == 2) { //later this will be on click on a postcard
+        //     mode = "postcard"
+        // }
         else {
             mode = "shuffle"
         }
-    
+
         //check if for mistakes during setting the mode
-        if (!["comparison", "shuffle", "LK", "postcard"].includes(mode)) {
+        if (!["comparison", "shuffle", "lk", "postcard"].includes(mode)) {
             mode = "shuffle"
         }
 
+        console.log("mode: ",mode)
         return mode;
     }
 
+    //todo: add location label and location id
+    const cardSelection = function(){
+        console.log("card selection...")
+        let list = []
+        if (mode() === "shuffle") {
+            console.log(mode,list)
+            return shuffleSelection
+        }
+
+        else if (mode() === "lk"){
+            list = []
+            let selectedLK;
+            if(landkreisSelection[0] == undefined) selectedLK = {value:"11",label:"Berlin"}; // set default value for landkreisSelection (todo: use germany)
+            else {selectedLK = {value:landkreisSelection[0].value,label:landkreisSelection[0].label}} //set selected value for landkreisSelection
+            
+            //add one card per section
+            sections.forEach((element,i) => {
+                list.push({lk:selectedLK,section:element.value})
+            })
+
+            console.log(mode(),list)
+        }
+
+        else if (mode() === "comparison"){
+            let selectedSection;
+            if(section[0] == undefined) selectedSection = "energy"; // set default value for section
+            else { selectedSection = section[0].value} //set selected value for section
+
+            //add one card per landkreisSelection
+            landkreisSelection.forEach((element,i) => {
+                list.push({lk:{value:element.value,label:element.label},section:selectedSection})
+            })
+            console.log(mode(),list)
+        }
+
+        return list;
+    }
 
     //generate card objects dynamically depending on mode
-    //to do: split function into section-lk pairs and generating the card objects
     const cards = function() {
         let list;
         
         if (mode() == "comparison") {
-            let firstSection;
-            if(section[0] == undefined) firstSection = "energy"; // set default value for section
-            else { firstSection = section[0].value}
-            
-            list = landkreis.map((element,i) =>
-                <Card lk={element.label} section={firstSection} key={i}/>
+            list = cardSelection().map((element,i) =>
+                <Card lk={element.lk} section={element.section} key={i} classProp="card card-ordered"/>
             );
+            
         }
 
         else if (mode() == "postcard"){
-            list = landkreis.map((element,i) => {
-                let firstSection;
-                if(section[0] == undefined) firstSection = "energy"; // set default value for section
-                else { firstSection = section[0].value}
-                
-                const indexLeft = mod(activeCard - 1, landkreis.length);
-                const indexRight = mod(activeCard + 1, landkreis.length);
+            list = cardSelection().map((element,i) => {                
+                const indexLeft = mod(activeCard - 1, landkreisSelection.length);
+                const indexRight = mod(activeCard + 1, landkreisSelection.length);
     
                 let classProp = "";
     
@@ -109,18 +148,21 @@ const CardCollection = () => {
                     classProp = "card card-back";
                 }
 
-                return <Card lk={element.label} section={firstSection} key={i} classProp={classProp}/>
+                return <Card lk={element.lk} section={element.section} key={i} classProp={classProp}/>
             });
         }
 
-        else if (mode() == "LK") {
-            list = sections.map((element,i) =>
-                <Card lk={landkreis[0].label} section={element.value} key={i}/>
+        else if (mode() == "lk") {
+            list = cardSelection().map((element,i) =>
+                <Card lk={element.lk} section={element.section} key={i} classProp="card card-ordered"/>
             );
         }
 
         else if (mode() == "shuffle"){
             //todo: editors pick / shuffle mode
+            list = cardSelection().map((element,i) =>
+                <Card lk={element.lk} section={element.section} key={i} classProp="card card-ordered"/>
+            );
         }
 
         return list;
@@ -139,21 +181,18 @@ const CardCollection = () => {
         setActiveCard((activeCard + 1) % cards().length);
     };
 
-
-
-    
     return (
         <div className="card-collection">
             <h2>Card Collections</h2>
 
             <Select
                 isMulti
-                defaultValue={landkreis}
+                defaultValue={landkreisSelection}
                 onChange={setLK}
                 options={landkreise}
             />
 
-            <h5>{landkreis.map((elem) => elem.label)}</h5>
+            <h5>{landkreisSelection.map((elem) => elem.label)}</h5>
 
             <div style={{ visibility: (mode) == "comparison" ? "visible" : "hidden" }}>
                 <Select
@@ -169,6 +208,8 @@ const CardCollection = () => {
                 {cards()}
             </div> */}
             {mode() == "comparison" && cards()}
+            {mode() == "lk" && cards()}
+            {/* {mode() == "shuffle" && cards()} */}
             {mode() == "postcard" && <div className="card-container">
                 <div className="carousel">
                     {cards()}
@@ -180,7 +221,6 @@ const CardCollection = () => {
                     />
                 </div>
             </div>}
-            {mode() == "lk" && cards()}
 
             <div className="button-container">
                 <button className="close-button">
