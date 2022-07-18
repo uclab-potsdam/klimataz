@@ -51,10 +51,16 @@ const CardCollection = () => {
         },
     ];
 
+    const clickHandler = () => {
+        postcardView = true;
+        console.log('click',postcardView);
+    }
+
     //store selected landkreise and sections
     const [section, setSection] = useState([]);
     const [landkreisSelection, setLK] = useState([]);
 
+    console.log("reset postcard view")
     let postcardView = false;
 
     //TODO: use enum for modes for fewer mistakes
@@ -84,6 +90,7 @@ const CardCollection = () => {
 
     const cardSelection = function(){
         let list = []
+        console.log('postcardview? ',postcardView);
         if (mode() === "shuffle") {
             console.log(mode,list)
             return shuffleSelection
@@ -128,15 +135,9 @@ const CardCollection = () => {
     //generate card objects dynamically depending on mode
     const cards = function() {
         let list;
-        
-        if (mode() == "comparison") {
-            list = cardSelection().map((element,i) =>
-                <Card lk={element.lk} section={element.section} key={i} classProp="card card-ordered"/>
-            );
-            
-        }
+        let classProp;
 
-        else if (mode() == "postcard"){
+        if (postcardView){
             list = cardSelection().map((element,i) => {                
                 const indexLeft = mod(activeCard - 1, landkreisSelection.length);
                 const indexRight = mod(activeCard + 1, landkreisSelection.length);
@@ -155,20 +156,27 @@ const CardCollection = () => {
 
                 return <Card lk={element.lk} section={element.section} key={i} classProp={classProp}/>
             });
+
+            console.log("postcardview cards generated")
+            return list;
+        }
+
+        else if (mode() == "comparison") {
+            classProp = "card card-ordered"
         }
 
         else if (mode() == "lk") {
-            list = cardSelection().map((element,i) =>
-                <Card lk={element.lk} section={element.section} key={i} classProp="card card-ordered"/>
-            );
+            classProp = "card card-ordered"
         }
 
         else if (mode() == "shuffle"){
             //todo: editors pick / shuffle mode
-            list = cardSelection().map((element,i) =>
-                <Card lk={element.lk} section={element.section} key={i} classProp="card card-ordered"/>
-            );
+            classProp = "card card-ordered"
         }
+
+        list = cardSelection().map((element,i) =>
+            <Card lk={element.lk} section={element.section} key={i} classProp="card card-ordered" clickOnCard={clickHandler}/>
+        );
 
         return list;
     }
@@ -212,10 +220,10 @@ const CardCollection = () => {
             {/* <div className="card-container" >
                 {cards()}
             </div> */}
-            {mode() == "comparison" && cards()}
-            {mode() == "lk" && cards()}
-            {/* {mode() == "shuffle" && cards()} */}
-            {mode() == "postcard" && <div className="card-container">
+            {mode() == "comparison" && !postcardView && cards()}
+            {mode() == "lk" && !postcardView && cards()}
+            {/* {mode() == "shuffle" &&!postcardView && cards()} */}
+            {postcardView && <div className="card-container">
                 <div className="carousel">
                     {cards()}
                     <Card
