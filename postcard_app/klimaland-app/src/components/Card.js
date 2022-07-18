@@ -1,9 +1,9 @@
 import React from "react";
 import Side from "./Side";
 
-const Card = ({ lk, section }) => {
+const Card = ({ classProp, lk, section }) => {
   return (
-    <div className="card">
+    <div className={classProp}>
       <Side lk={lk} section={section} />
     </div>
   );

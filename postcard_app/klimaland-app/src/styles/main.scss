@@ -21,14 +21,26 @@ code {
 }
 
 .canvas {
-    background-color: #FFF9F1;
+    background-color: #fff(0, 42, 255);
 }
 
 .card-collection {
-    background-color: $pink;
+    background-color: #fff(78, 107, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
 
 .side {
-    background-color: azure;
+    // background-color: rgba(226, 226, 226, 0.246);
 }
+
+Button{
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    right: 0.5rem;
+    bottom: 0.5rem;
+  }

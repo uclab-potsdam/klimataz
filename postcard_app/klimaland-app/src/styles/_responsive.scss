@@ -2,14 +2,14 @@
 
 @include media-md{
     .card-container{
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        align-items: baseline;
+        // flex-direction: row;
+        // flex-wrap: wrap;
+        // justify-content: center;
+        // align-items: baseline;
     }
 
     .card{
-        height: 24vh;
-        width: 18vw;
+        // height: 24vh;
+        // width: 18vw;
     }
 }

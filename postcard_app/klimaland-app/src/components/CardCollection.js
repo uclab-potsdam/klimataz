@@ -55,6 +55,24 @@ const CardCollection = () => {
     viewComp = false;
   }
 
+  const [index, setIndex] = useState(0);
+  const cards = [
+    { id: "1", label: "Berlin" },
+    { id: "2", label: "Hamburg" },
+    { id: "3", label: "Flennsburg" },
+    { id: "4", label: "München" },
+  ];
+
+  const mod = (n, m) => {
+    let result = n % m;
+
+    return result >= 0 ? result : result + m;
+  };
+
+  const nextCard = () => {
+    setIndex((index + 1) % cards.length);
+  };
+
   return (
     <div className="card-collection">
       <h2>Card Collections</h2>
@@ -79,33 +97,61 @@ const CardCollection = () => {
       </div>
 
       <div className="card-container">
-        <Card lk="berlin" section="energy" />
-        <Card lk="hamburg" section="mobility" />
-        <Card lk="stuttgart" section="buildings" />
-        <button onClick={console.log("close")}>
-          <img
-            src={close}
-            className="close-button-img"
-            alt="close-button-img"
+        <div className="carousel">
+          {cards.map((item, i) => {
+            const indexLeft = mod(index - 1, cards.length);
+            const indexRight = mod(index + 1, cards.length);
+
+            let classProp = "";
+
+            if (i === index) {
+              classProp = "card card-active";
+            } else if (i === indexRight) {
+              classProp = "card card-right";
+            } else if (i === indexLeft) {
+              classProp = "card card-left";
+            } else {
+              classProp = "card card-back";
+            }
+
+            return (
+              <Card
+                key={item.id}
+                classProp={classProp}
+                lk={item.label}
+                section="energy"
+              />
+            );
+          })}
+          <Card
+            key="9999"
+            classProp={"card"}
+            lk={"item.label"}
+            section="energy"
           />
-        </button>
-        <button onClick={console.log("flip")}>
-          <img src={flip} className="flip-button-img" alt="flip-button-img" />
-        </button>
-        <button onClick={console.log("switch")}>
-          <img
-            src={switchCard}
-            className="switch-button-img"
-            alt="switch-button-img"
-          />
-        </button>
-        <button onClick={console.log("shuffle")}>
-          <img
-            src={shuffle}
-            className="shuffle-button-img"
-            alt="shuffle-button-img"
-          />
-        </button>
+        </div>
+
+        <div className="button-container">
+          <button className="close-button">
+            <img
+              src={close}
+              className="close-button-img"
+              alt="close-button-img"
+            />
+          </button>
+
+          <button className="switch-button" onClick={nextCard}>
+            <img
+              src={switchCard}
+              className="switch-button-img"
+              alt="switch-button-img"
+            />
+          </button>
+
+          <button className="flip-button">
+            <img src={flip} className="flip-button-img" alt="flip-button-img" />
+          </button>
+        </div>
       </div>
     </div>
   );
