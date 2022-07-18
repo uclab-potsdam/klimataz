@@ -140,6 +140,8 @@ const CardCollection = () => {
     };
 
 
+
+    
     return (
         <div className="card-collection">
             <h2>Card Collections</h2>
