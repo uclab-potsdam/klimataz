@@ -35,7 +35,7 @@ const CardCollection = () => {
         },
     ];
 
-    //todo: load all landkreise from selector sheet
+    //TODO: load all landkreise from selector sheet
     const landkreise = [
         {
             label: "Flensburg",
@@ -57,6 +57,7 @@ const CardCollection = () => {
 
     let postcardView = false;
 
+    //TODO: use enum for modes for fewer mistakes
     //set mode depending on numbers of selecteed landkreise
     const mode = function(){
         let mode = "shuffle"
@@ -78,13 +79,10 @@ const CardCollection = () => {
             mode = "shuffle"
         }
 
-        console.log("mode: ",mode)
         return mode;
     }
 
-    //todo: add location label and location id
     const cardSelection = function(){
-        console.log("card selection...")
         let list = []
         if (mode() === "shuffle") {
             console.log(mode,list)
@@ -98,7 +96,7 @@ const CardCollection = () => {
             else {selectedLK = {value:landkreisSelection[0].value,label:landkreisSelection[0].label}} //set selected value for landkreisSelection
             
             //add one card per section
-            sections.forEach((element,i) => {
+            sections.forEach((element) => {
                 list.push({lk:selectedLK,section:element.value})
             })
 
@@ -107,11 +105,18 @@ const CardCollection = () => {
 
         else if (mode() === "comparison"){
             let selectedSection;
-            if(section[0] == undefined) selectedSection = "energy"; // set default value for section
-            else { selectedSection = section[0].value} //set selected value for section
+
+            // set default value for section
+            if(section == undefined){
+                selectedSection = "energy";
+            }
+            //set selected value for section
+            else { 
+                selectedSection = section.value
+            } 
 
             //add one card per landkreisSelection
-            landkreisSelection.forEach((element,i) => {
+            landkreisSelection.forEach((element) => {
                 list.push({lk:{value:element.value,label:element.label},section:selectedSection})
             })
             console.log(mode(),list)
@@ -194,7 +199,7 @@ const CardCollection = () => {
 
             <h5>{landkreisSelection.map((elem) => elem.label)}</h5>
 
-            <div style={{ visibility: (mode) == "comparison" ? "visible" : "hidden" }}>
+            <div style={{ visibility: (mode() == "comparison") ? "visible" : "hidden" }}>
                 <Select
                     defaultValue={"energy"}
                     onChange={setSection}
