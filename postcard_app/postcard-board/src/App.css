@@ -29,7 +29,7 @@ h4{
   align-items: baseline;
 }
 
-.cardelement{
+/* .cardelement{
   height: 24vh;
   width: 18vw;
 }
@@ -45,7 +45,7 @@ h4{
   transition: transform 0.4s ease;
   perspective: 1000px;
   transform-style: preserve-3d;
-}
+} */
 
 
 #card1:checked ~ #slide1, #card2:checked ~ #slide2,
@@ -81,7 +81,7 @@ h4{
   transition: transform ease 300ms;
   height: 24vh;
   width: 18vw;
-  background-color: #FFF9F1;
+  background-color: #d88c28;
   border-radius: 2px;
   margin: 0.5rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -100,26 +100,17 @@ h4{
 .card-container .card-back{
   position: absolute; 
   /* so front and back are behind each other */
-  width: 100%;
+  /* width: 100%;
   height: 100%;
-  margin: 0;
+  margin: 0; */
   backface-visibility: hidden;
 }
 
 .card-container .card-back{
   transform: rotateY(180deg);
+  background-color: #1830e5;
 }
   
-.front {
-  /* background-color: #FFF9F1; */
-  backface-visibility: hidden;
-}
-
-.back {
-/* background-color: #FA8AA8; */
-backface-visibility: hidden;
-}
-
 .button-flip{
   border: none;
   background: none;
