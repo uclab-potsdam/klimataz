@@ -6,3 +6,4 @@ data_exploration/.DS_Store
 .DS_Store
 GTFS-analysis/delfi.db
 GTFS-analysis/export/agency_stops.csv
+postcard_app/klimaland-app/node_modules

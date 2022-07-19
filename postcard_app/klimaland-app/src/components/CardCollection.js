@@ -15,11 +15,10 @@ export default class CardCollection extends Component {
   }
 
   //generate card objects dynamically depending on mode
+  //called by componentDidUpdate
   generateCards() {
     let list;
     let classProp;
-
-    // console.log("generate cards");
 
     if (this.props.postcardView) {
       list = this.props.cardSelection.map((element, i) => {
