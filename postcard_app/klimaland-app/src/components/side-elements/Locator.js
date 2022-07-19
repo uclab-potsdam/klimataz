@@ -19,7 +19,7 @@ const Locator = ({lk}) => {
     })
 
     return (
-        <div className="Locator">
+        <div className="locator-container">
             <h4>Locator</h4>
             <div className="locator-background">
                 <svg width="200" height="200">
@@ -34,6 +34,9 @@ const Locator = ({lk}) => {
                     })}
                 </svg>
                 {/* to do: create zoom in for lk details */}
+                <div className="locator-zoom">
+                    <div>hello! content!</div>
+                </div>
             </div>
         </div>
     );

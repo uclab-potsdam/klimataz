@@ -14,7 +14,6 @@ import close from "../img/buttons/close.png";
 export default class Controls extends Component {
     constructor(props) {
         super(props);
-        console.log(DropDownControls.landkreise)
         this.landkreise = DropDownControls.landkreise
         // [
         //     // FM: ids need to be checked for consistency

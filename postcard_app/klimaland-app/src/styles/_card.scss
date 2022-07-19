@@ -74,7 +74,7 @@
     }
 
     &-ordered{
-    height: 20vh;
+    height: 40vh;
     width: 30vw;
     position: relative;
     z-index: 0;
@@ -117,3 +117,10 @@
     }
 }
 
+.side-inner {
+    display: inline-flex;
+
+    .text-container, .locator-container {
+        width: 50%;
+    }
+}
