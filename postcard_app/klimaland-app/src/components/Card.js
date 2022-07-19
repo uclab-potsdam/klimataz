@@ -25,11 +25,13 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail }) => {
         // <div className={classProp} onClick={handleClick}>
         <div>
             {isThumbnail && <div className={classProp} onClick={clickOnCard}>
+                <div className="side-container side-container-ordered">
                 <Side
                     lk={lk}
                     section={section}
                     activeSide={mod(activeSide, sides.length)}
                 />
+                </div>
             </div>}
             {!isThumbnail && <div className={classProp}>
                 <div className={`side-container ${flipped ? "flip" : ""}`}>

@@ -17,6 +17,7 @@ export default class CardCollection extends Component {
     }
 
     //generate card objects dynamically depending on mode
+    //called by componentDidUpdate
     generateCards() {
         let list;
         let classProp;
@@ -79,8 +80,9 @@ export default class CardCollection extends Component {
         return result >= 0 ? result : result + m;
     };
 
-
+    //react hook when props are changing
     componentDidUpdate(prevProps) {
+        //generate new cards
         if (this.props.cardSelection !== prevProps.cardSelection ||
             this.props.postcardView !== prevProps.postcardView ||
             this.props.activeCard !== prevProps.activeCard) {
@@ -89,16 +91,18 @@ export default class CardCollection extends Component {
         }
     }
 
+    componentDidMount(){
+        this.generateCards();
+    }
+
+    //TODO: solve duplicated code for not postcardView (maybe nested conditional rendering??)
     render() {
         return (
             <div className="card-collection">
 
-                {/* <div className="card-container" >
-                {cards()}
-            </div> */}
                 {this.props.mode === "comparison" && !this.props.postcardView && <div className="card-container">  {this.state.cards} </div>}
                 {this.props.mode === "lk" && !this.props.postcardView && <div className="card-container">  {this.state.cards} </div>}
-                {/* {mode() === "shuffle" &&!postcardView && cards()} */}
+                {this.props.mode === "shuffle" && !this.props.postcardView && <div className="card-container">  {this.state.cards} </div>}
                 {this.props.postcardView && <div className="card-container">
                     <div className="carousel">
                         {this.state.cards}

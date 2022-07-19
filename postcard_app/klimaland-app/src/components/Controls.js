@@ -62,14 +62,14 @@ export default class Controls extends Component {
 
         this.state = {
             shuffleSelection: [
-                { lk: { value: "11" }, section: "mobility" },
-                { lk: "1011", section: "waste" },
-                { lk: "11", section: "mobility" },
+                { lk: {value: "11",label:"Berlin" }, section: "mobility" },
+                { lk: {value: "2",label:"Hamburg" }, section: "waste" },
+                { lk: {value: "1011",label:"Flensburg" }, section: "mobility" },
             ],
             section: [],
             landkreisSelection: [],
             postcardView: false,
-            mode: "",
+            mode: "shuffle",
             cardSelection: [],
             activeCard: 0
         };
@@ -196,6 +196,11 @@ export default class Controls extends Component {
             this.setState({ cardSelection: list });
             //return list;
         });
+    }
+
+    componentDidMount(){
+        console.log("Mount")
+        this.updateCardSelection();
     }
 
     render() {

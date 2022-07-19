@@ -74,10 +74,10 @@
     }
 
     &-ordered{
-    height: 20vh;
-    width: 30vw;
-    position: relative;
-    z-index: 0;
+        height: 20vh;
+        width: 30vw;
+        position: relative;
+        z-index: 0;
     }
 }
 
@@ -114,6 +114,10 @@
 
     & .card-back{
         transform: rotateY(180deg);
+    }
+
+    &-ordered{
+        margin:1rem;
     }
 }
 
