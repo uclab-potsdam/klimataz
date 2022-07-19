@@ -43,7 +43,11 @@ Button{
     padding: 0;
     right: 0.5rem;
     bottom: 0.5rem;
-  }
+
+    &:hover{
+        opacity: 70%;
+    }
+}
 
 h2{
     color: $pink;

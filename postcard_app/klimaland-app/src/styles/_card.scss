@@ -88,3 +88,30 @@
     }
 }
 
+.side-container{
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0))
+    translateY(var(--translate-y, 0));
+    transition: -webkit-transform ease 300ms;
+    transition: transform ease 300ms;
+    background-color: #d82828;
+
+    &.flip{
+        --rotate-y: 180deg;
+    }
+
+    & .card-front, .card-back{
+        position: absolute; 
+        backface-visibility: hidden;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background-color: #d88c28;
+    }
+
+    & .card-back{
+        transform: rotateY(180deg);
+        background-color: #1830e5;
+    }
+}
+
