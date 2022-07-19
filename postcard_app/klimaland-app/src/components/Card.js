@@ -22,7 +22,7 @@ const Card = ({ classProp, lk, section, clickOnCard }) => {
     const currentVal = flipped ? false : true;
     setFlipped(currentVal);
     console.log("side index: " + index);
-    console.log("flipped");
+    // console.log(flipped);
   }, [activeSide]);
 
   return (
