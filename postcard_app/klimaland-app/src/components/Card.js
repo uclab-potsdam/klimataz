@@ -1,6 +1,6 @@
 import React from "react";
 import Side from "./Side";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import flip from "../img/buttons/flip.png";
 import { mod } from "./helper";
 
@@ -13,15 +13,16 @@ const Card = ({ classProp, lk, section, clickOnCard }) => {
   const sides = ["side 1", "side 2", "side 3", "side 4"];
 
   const [activeSide, setActiveSide] = useState(0);
+  const [flipped, setFlipped] = useState(0);
 
   let index = 0;
-  const flipped = useRef(0);
 
   useEffect(() => {
     index = mod(activeSide, sides.length);
-    flipped.current = !flipped;
+    const currentVal = flipped ? false : true;
+    setFlipped(currentVal);
     console.log("side index: " + index);
-    console.log("flipped: " + flipped);
+    console.log("flipped");
   }, [activeSide]);
 
   return (
@@ -29,7 +30,11 @@ const Card = ({ classProp, lk, section, clickOnCard }) => {
     <div className={classProp}>
       <div className={`side-container ${flipped ? "flip" : ""}`}>
         <div className="card-front">
-          <Side lk={lk} section={section} />
+          <Side
+            lk={lk}
+            section={section}
+            activeSide={mod(activeSide, sides.length)}
+          />
           <button
             className="flip-button"
             onClick={() => {
@@ -40,7 +45,11 @@ const Card = ({ classProp, lk, section, clickOnCard }) => {
           </button>
         </div>
         <div className="card-back">
-          <Side lk={lk} section={section} />
+          <Side
+            lk={lk}
+            section={section}
+            activeSide={mod(activeSide, sides.length)}
+          />
           <button
             className="flip-button"
             onClick={() => {
