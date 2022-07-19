@@ -1,0 +1,35 @@
+//colors
+$light: #FFF9F1;
+$pink: rgb(255, 192, 192);
+$blue: rgb(170, 210, 238);
+
+//media queries
+@mixin media-s{
+    @media screen and (min-width: 576px){
+        @content;
+    }
+}
+
+@mixin media-md{
+    @media screen and (min-width: 768px){
+        @content;
+    }
+}
+
+@mixin media-lg{
+    @media screen and (min-width: 992px){
+        @content;
+    }
+}
+
+@mixin media-xl{
+    @media screen and (min-width: 1200px){
+        @content;
+    }
+}
+
+@mixin media-xxl{
+    @media screen and (min-width: 1400px){
+        @content;
+    }
+}

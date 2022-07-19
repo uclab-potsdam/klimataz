@@ -1,82 +1,116 @@
+import { Component } from 'react'
+
+//components
 import Card from "./Card";
-import Select from "react-select";
-import { useState } from "react";
 
-const CardCollection = () => {
-  const sections = [
-    {
-      label: "Mobilität",
-      value: "mobility",
-    },
-    {
-      label: "Gebäude",
-      value: "buildings",
-    },
-    {
-      label: "Energie",
-      value: "energy",
-    },
-    {
-      label: "Landwirtschaft",
-      value: "agriculture",
-    },
-    {
-      label: "Abfallentsorgung",
-      value: "waste",
-    },
-  ];
 
-  const landkreise = [
-    {
-      label: "Flennsburg",
-      value: "1011",
-    },
-    {
-      label: "Hamburg",
-      value: "2",
-    },
-    {
-      label: "Berlin",
-      value: "11",
-    },
-  ];
+export default class CardCollection extends Component {
 
-  const [section, setSection] = useState([]);
-  const [landkreis, setLK] = useState([]);
-  let viewComp = false;
+    constructor(props) {
+        super(props);
+        this.state = { cards: [] };
+        this.handleClickOnCard = this.handleClickOnCard.bind(this)
+    }
 
-  if (landkreis.length > 1) {
-    viewComp = true;
-  } else {
-    viewComp = false;
-  }
+    handleClickOnCard() {
+        this.props.switchToPostcardView();
+    }
 
-  return (
-    <div className="CardCollection">
-      <h2>Card Collections</h2>
+    //generate card objects dynamically depending on mode
+    generateCards() {
+        let list;
+        let classProp;
 
-      <Select
-        isMulti
-        defaultValue={landkreis}
-        onChange={setLK}
-        options={landkreise}
-      />
+        console.log("generate cards")
 
-      <h5>{landkreis.map((elem) => elem.label)}</h5>
+        if (this.props.postcardView) {
+            list = this.props.cardSelection.map((element, i) => {
+                const indexLeft = this.mod(this.props.activeCard - 1, this.props.cardSelection.length);
+                const indexRight = this.mod(this.props.activeCard + 1, this.props.cardSelection.length);
 
-      <div style={{ visibility: viewComp ? "visible" : "hidden" }}>
-        <Select
-          defaultValue={section}
-          onChange={setSection}
-          options={sections}
-        />
+                let classProp = "";
 
-        <h5>{section.label}</h5>
-      </div>
+                console.log(this.props.activeCard)
 
-      <Card />
-    </div>
-  );
-};
+                if (i === this.props.activeCard) {
+                    classProp = "card card-active";
+                } else if (i === indexRight) {
+                    classProp = "card card-right";
+                } else if (i === indexLeft) {
+                    classProp = "card card-left";
+                } else {
+                    classProp = "card card-back";
+                }
 
-export default CardCollection;
+                console.log(classProp)
+
+                return <Card lk={element.lk} section={element.section} key={i} classProp={classProp} isThumbnail={false} />
+            });
+
+            console.log("postcardview cards generated", list)
+        }
+        else {
+            if (this.props.mode === "comparison") {
+                classProp = "card card-ordered"
+            }
+
+            else if (this.props.mode === "lk") {
+                classProp = "card card-ordered"
+            }
+
+            else if (this.props.mode === "shuffle") {
+                //todo: editors pick / shuffle mode
+                classProp = "card card-ordered"
+            }
+
+
+            list = this.props.cardSelection.map((element, i) =>
+                <Card lk={element.lk} section={element.section} key={i} classProp={classProp} clickOnCard={this.handleClickOnCard} isThumbnail={true} />
+            );
+        }
+
+        this.setState({ cards: list })
+        console.log(list)
+    }
+
+    //modulo helper function
+    mod(n, m) {
+        let result = n % m;
+        return result >= 0 ? result : result + m;
+    };
+
+
+    componentDidUpdate(prevProps) {
+        if (this.props.cardSelection !== prevProps.cardSelection ||
+            this.props.postcardView !== prevProps.postcardView ||
+            this.props.activeCard !== prevProps.activeCard) {
+            console.log("props did update")
+            this.generateCards();
+        }
+    }
+
+    render() {
+        return (
+            <div className="card-collection">
+
+                {/* <div className="card-container" >
+                {cards()}
+            </div> */}
+                {this.props.mode === "comparison" && !this.props.postcardView && <div className="card-container">  {this.state.cards} </div>}
+                {this.props.mode === "lk" && !this.props.postcardView && <div className="card-container">  {this.state.cards} </div>}
+                {/* {mode() === "shuffle" &&!postcardView && cards()} */}
+                {this.props.postcardView && <div className="card-container">
+                    <div className="carousel">
+                        {this.state.cards}
+                        {/* <Card
+                        key="9999"
+                        classProp={"card"}
+                        lk={"item.label"}
+                        section="energy"
+                    /> */}
+                    </div>
+                </div>}
+            </div>
+        )
+    }
+}

@@ -1,10 +1,11 @@
-import CardCollection from "./CardCollection";
+import Controls from "./Controls";
 
 const Canvas = () => {
+  
   return (
-    <div className="Canvas">
+    <div className="canvas">
       <h1>Canvas</h1>
-      <CardCollection />
+      <Controls />
     </div>
   );
 };

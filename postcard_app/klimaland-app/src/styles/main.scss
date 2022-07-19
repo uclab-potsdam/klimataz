@@ -1,0 +1,54 @@
+@import "_config.scss";
+@import "_card.scss";
+@import "_responsive.scss";
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+.App {
+    text-align: center;
+}
+
+.canvas {
+    background-color: #fff(0, 42, 255);
+}
+
+.card-collection {
+    background-color: #fff(78, 107, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side {
+    // background-color: rgba(226, 226, 226, 0.246);
+}
+
+Button{
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    right: 0.5rem;
+    bottom: 0.5rem;
+
+    &:hover{
+        opacity: 70%;
+    }
+}
+
+h2{
+    color: $pink;
+}
