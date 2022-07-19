@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Select from "react-select";
+import DropDownControls from "../data/selector-controls.json";
 
 //our components
 import CardCollection from "./CardCollection";
@@ -14,47 +15,8 @@ export default class Controls extends Component {
   constructor(props) {
     super(props);
 
-    this.landkreise = [
-      {
-        label: "Flensburg",
-        value: "1011",
-      },
-      {
-        label: "Hamburg",
-        value: "2",
-      },
-      {
-        label: "Berlin",
-        value: "11",
-      },
-      {
-        label: "Deutschland",
-        value: "0",
-      },
-    ];
-
-    this.sections = [
-      {
-        label: "Mobilität",
-        value: "mobility",
-      },
-      {
-        label: "Gebäude",
-        value: "buildings",
-      },
-      {
-        label: "Energie",
-        value: "energy",
-      },
-      {
-        label: "Landwirtschaft",
-        value: "agriculture",
-      },
-      {
-        label: "Abfallentsorgung",
-        value: "waste",
-      },
-    ];
+    this.landkreise = DropDownControls.landkreise
+    this.sections = DropDownControls.indicators
 
     this.switchToPostcardView = this.switchToPostcardView.bind(this);
     this.nextCard = this.nextCard.bind(this);

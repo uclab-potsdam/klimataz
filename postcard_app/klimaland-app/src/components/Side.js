@@ -1,15 +1,13 @@
 import React from "react";
+import Text from './side-elements/Text.js';
 import Locator from "./side-elements/Locator";
 
 const Side = ({ lk, section, activeSide }) => {
+  console.log('select', lk)
   return (
-    <div className="side">
-      <h3>
-        Grüße aus {lk.label}, mit der id {lk.value}!
-      </h3>
-      <h4>Es geht hier um {section}.</h4>
-      <p>Seite {activeSide}</p>
-      <Locator />
+    <div className="side-inner">
+      <Text {...{ lk, section, activeSide }} />
+      <Locator {...{lk}}/>
     </div>
   );
 };

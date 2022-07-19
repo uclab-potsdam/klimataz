@@ -124,3 +124,10 @@
     }
 }
 
+.side-inner {
+    display: inline-flex;
+
+    .text-container, .locator-container {
+        width: 50%;
+    }
+}
