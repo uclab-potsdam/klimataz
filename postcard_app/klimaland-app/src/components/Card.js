@@ -18,8 +18,8 @@ const Card = ({ classProp, lk, section, clickOnCard }) => {
 
   return (
     // <div className={classProp} onClick={handleClick}>
-    <div className={classProp}>
-      {/* <Side lk={lk} section={section} /> */}
+    <div className={classProp} onClick="handleclick">
+      <Side lk={lk} section={section} />
 
       <button
         className="flip-button"

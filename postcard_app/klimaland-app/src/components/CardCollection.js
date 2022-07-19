@@ -1,32 +1,41 @@
+import { Component } from 'react'
+
+//components
 import Card from "./Card";
-import { useState } from "react";
+
+//images
 import flip from "../img/buttons/flip.png";
 import switchCard from "../img/buttons/switch.png";
 //import shuffle from "../img/buttons/shuffle.png";
 import close from "../img/buttons/close.png";
 
-const CardCollection = ({mode,cardSelection,postcardView}) => {
+export default class CardCollection extends Component {
 
-
-    const clickHandler = () => {
-        postcardView = true;
-        console.log('click',postcardView);
+    constructor(props){
+        super(props);
+        this.state = {activeCard: 0,cards:[]};
     }
 
+    handleClickOnCard(){
+        console.log("handle click now")
+        this.props.switchToPostcardView();
+    }
 
     //generate card objects dynamically depending on mode
-    const cards = function() {
+    generateCards(){
         let list;
         let classProp;
 
-        if (postcardView){
-            list = cardSelection.map((element,i) => {                
-                const indexLeft = mod(activeCard - 1, cardSelection.length);
-                const indexRight = mod(activeCard + 1, cardSelection.length);
+        console.log("generate cards")
+
+        if (this.props.postcardView){
+            list = this.props.cardSelection.map((element,i) => {                
+                const indexLeft = this.mod(this.state.activeCard - 1, this.props.cardSelection.length);
+                const indexRight =this.mod(this.state.activeCard + 1, this.props.cardSelection.length);
     
                 let classProp = "";
     
-                if (i === activeCard) {
+                if (i === this.state.activeCard) {
                     classProp = "card card-active";
                 } else if (i === indexRight) {
                     classProp = "card card-right";
@@ -40,54 +49,63 @@ const CardCollection = ({mode,cardSelection,postcardView}) => {
             });
 
             console.log("postcardview cards generated")
-            return list;
         }
 
-        else if (mode === "comparison") {
+        else if (this.props.mode === "comparison") {
             classProp = "card card-ordered"
         }
 
-        else if (mode === "lk") {
+        else if (this.props.mode === "lk") {
             classProp = "card card-ordered"
         }
 
-        else if (mode === "shuffle"){
+        else if (this.props.mode === "shuffle"){
             //todo: editors pick / shuffle mode
             classProp = "card card-ordered"
         }
 
-        list = cardSelection.map((element,i) =>
-            <Card lk={element.lk} section={element.section} key={i} classProp={classProp} clickOnCard={clickHandler}/>
+        list = this.props.cardSelection.map((element,i) =>
+            <Card lk={element.lk} section={element.section} key={i} classProp={classProp} clickOnCard={this.handleClickOnCard}/>
         );
 
-        return list;
+        this.setState({cards:list})
+        console.log(list)
     }
 
-    const [activeCard, setActiveCard] = useState(0);
+    //const [activeCard, setActiveCard] = useState(0);
 
     //modulo helper function
-    const mod = (n, m) => {
+    mod(n,m){
         let result = n % m;
         return result >= 0 ? result : result + m;
     };
 
     //switch to next card in postcard view
-    const nextCard = () => {
-        setActiveCard((activeCard + 1) % cards().length);
+    nextCard() {
+        let newActiveCard = (this.state.activeCard + 1) % this.state.cards.length
+        this.setState({activeCard: newActiveCard});
+        //setActiveCard((activeCard + 1) % cards().length);
     };
 
-    return (
-        <div className="card-collection">
+    componentDidUpdate(prevProps){
+        if (this.props.cardSelection !== prevProps.cardSelection) {
+            this.generateCards();
+        }
+    }
+
+    render() {
+        return (
+            <div className="card-collection">
             
             {/* <div className="card-container" >
                 {cards()}
             </div> */}
-            {mode === "comparison" && !postcardView && <div className="card-container">  {cards()} </div>}
-            {mode === "lk" && !postcardView && <div className="card-container">  {cards()} </div>}
+            {this.props.mode === "comparison" && !this.props.postcardView && <div className="card-container">  {this.state.cards} </div>}
+            {this.props.mode === "lk" && !this.props.postcardView && <div className="card-container">  {this.state.cards} </div>}
             {/* {mode() === "shuffle" &&!postcardView && cards()} */}
-            {postcardView && <div className="card-container">
+            {this.props.postcardView && <div className="card-container">
                 <div className="carousel">
-                    {cards()}
+                    {this.state.cards}
                     <Card
                         key="9999"
                         classProp={"card"}
@@ -106,7 +124,7 @@ const CardCollection = ({mode,cardSelection,postcardView}) => {
                     />
                 </button>
 
-                <button className="switch-button" onClick={nextCard}>
+                <button className="switch-button" onClick={this.nextCard}>
                     <img
                         src={switchCard}
                         className="switch-button-img"
@@ -119,7 +137,6 @@ const CardCollection = ({mode,cardSelection,postcardView}) => {
                 </button>
             </div>
         </div>
-    );
-};
-
-export default CardCollection;
+        )
+    }
+}
