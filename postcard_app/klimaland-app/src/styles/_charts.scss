@@ -1,0 +1,11 @@
+@import "_config.scss";
+
+.landkreis {
+    stroke: rgb(84, 84, 84);
+    stroke-width: 0.5;
+    fill: white;
+
+    &.visible {
+        fill: $blue;
+    }
+}

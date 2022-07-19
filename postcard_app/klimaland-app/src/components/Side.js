@@ -2,6 +2,7 @@ import React from "react";
 import Locator from "./side-elements/Locator";
 
 const Side = ({ lk, section, activeSide }) => {
+  console.log('select', lk)
   return (
     <div className="side">
       <h3>
@@ -9,7 +10,7 @@ const Side = ({ lk, section, activeSide }) => {
       </h3>
       <h4>Es geht hier um {section}.</h4>
       <p>Seite {activeSide}</p>
-      <Locator />
+      <Locator lk={lk}/>
     </div>
   );
 };

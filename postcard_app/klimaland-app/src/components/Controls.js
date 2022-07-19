@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Select from "react-select";
+import DropDownControls from "../data/selector-controls.json";
 
 //our components
 import CardCollection from "./CardCollection";
@@ -13,48 +14,61 @@ import close from "../img/buttons/close.png";
 export default class Controls extends Component {
     constructor(props) {
         super(props);
+        console.log(DropDownControls.landkreise)
+        this.landkreise = DropDownControls.landkreise
+        // [
+        //     // FM: ids need to be checked for consistency
+        //     {
+        //         label: "Flensburg",
+        //         value: "01001",
+        //     },
+        //     {
+        //         label: "St. Wendel",
+        //         value: "10046"
+        //     },
+        //     {
+        //         label: "Hamburg",
+        //         value: "02",
+        //     },
+        //     {
+        //         label: "Berlin",
+        //         value: "11",
+        //     },
+        //     {
+        //         // FM: single digit bundesland needs 0 at the beginning
+        //         label: "Nordrhein-Westfalen",
+        //         value: "05"
+        //     },
+        //     {
+        //         label: "Deutschland",
+        //         value: "0",
+        //     },
+        // ]
 
-        this.landkreise = [
-            {
-                label: "Flensburg",
-                value: "1011",
-            },
-            {
-                label: "Hamburg",
-                value: "2",
-            },
-            {
-                label: "Berlin",
-                value: "11",
-            },
-            {
-                label: "Deutschland",
-                value: "0",
-            },
-        ]
+        this.sections = DropDownControls.indicators
 
-        this.sections = [
-            {
-                label: "Mobilität",
-                value: "mobility",
-            },
-            {
-                label: "Gebäude",
-                value: "buildings",
-            },
-            {
-                label: "Energie",
-                value: "energy",
-            },
-            {
-                label: "Landwirtschaft",
-                value: "agriculture",
-            },
-            {
-                label: "Abfallentsorgung",
-                value: "waste",
-            },
-        ]
+        // this.sections = [
+        //     {
+        //         label: "Mobilität",
+        //         value: "mobility",
+        //     },
+        //     {
+        //         label: "Gebäude",
+        //         value: "buildings",
+        //     },
+        //     {
+        //         label: "Energie",
+        //         value: "energy",
+        //     },
+        //     {
+        //         label: "Landwirtschaft",
+        //         value: "agriculture",
+        //     },
+        //     {
+        //         label: "Abfallentsorgung",
+        //         value: "waste",
+        //     },
+        // ]
 
         this.switchToPostcardView = this.switchToPostcardView.bind(this);
         this.nextCard = this.nextCard.bind(this);
@@ -62,7 +76,7 @@ export default class Controls extends Component {
 
         this.state = {
             shuffleSelection: [
-                { lk: { value: "11" }, section: "mobility" },
+                { lk: { id: "11" }, section: "mobility" },
                 { lk: "1011", section: "waste" },
                 { lk: "11", section: "mobility" },
             ],
