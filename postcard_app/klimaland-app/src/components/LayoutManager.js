@@ -6,10 +6,11 @@ import DropDownControls from "../data/selector-controls.json";
 import CardCollection from "./CardCollection";
 
 //images
-import flip from "../img/buttons/flip.png";
+//import flip from "../img/buttons/flip.png";
 import switchCard from "../img/buttons/switch.png";
 //import shuffle from "../img/buttons/shuffle.png";
 import close from "../img/buttons/close.png";
+
 
 export default class Controls extends Component {
   constructor(props) {
