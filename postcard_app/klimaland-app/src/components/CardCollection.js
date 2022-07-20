@@ -1,4 +1,5 @@
 import { Component } from "react";
+import {mod} from "./helper.js"
 
 //components
 import Card from "./Card";
@@ -22,11 +23,11 @@ export default class CardCollection extends Component {
 
     if (this.props.postcardView) {
       list = this.props.cardSelection.map((element, i) => {
-        const indexLeft = this.mod(
+        const indexLeft = mod(
           this.props.activeCard - 1,
           this.props.cardSelection.length
         );
-        const indexRight = this.mod(
+        const indexRight = mod(
           this.props.activeCard + 1,
           this.props.cardSelection.length
         );
