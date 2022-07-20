@@ -1,11 +1,11 @@
-import Controls from "./Controls";
+import LayoutManager from "./LayoutManager";
 
 const Canvas = () => {
   
   return (
     <div className="canvas">
       <h1>Canvas</h1>
-      <Controls />
+      <LayoutManager />
     </div>
   );
 };

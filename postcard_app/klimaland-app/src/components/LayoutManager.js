@@ -16,8 +16,13 @@ export default class Controls extends Component {
   constructor(props) {
     super(props);
 
+    //TODO: reformat DropDownControls.indicators to object with value/label pairs
+    //this.sections = DropDownControls.indicators
+    this.sections = [ {label: "Mobilität",value: "mobility",},{label: "Gebäude",value: "buildings",},
+        {label: "Energie",value: "energy",},{label: "Landwirtschaft",value: "agriculture",},{label: "Abfallentsorgung",
+        value: "waste",},]
+    
     this.landkreise = DropDownControls.landkreise
-    this.sections = DropDownControls.indicators
 
     this.switchToPostcardView = this.switchToPostcardView.bind(this);
     this.nextCard = this.nextCard.bind(this);
@@ -25,9 +30,9 @@ export default class Controls extends Component {
 
     this.state = {
       shuffleSelection: [
-        { lk: { value: "11" }, section: "mobility" },
-        { lk: "1011", section: "waste" },
-        { lk: "11", section: "mobility" },
+        { lk: {value: "11",label:"Berlin" }, section: "mobility" },
+        { lk: {value: "2",label:"Hamburg" }, section: "waste" },
+        { lk: {value: "1011",label:"Flensburg" }, section: "mobility" },
       ],
       section: [],
       landkreisSelection: [],
@@ -50,9 +55,11 @@ export default class Controls extends Component {
     //return this.setStateAsync({mode:"shuffle"})
     if (this.state.landkreisSelection.length > 1) {
       return this.setState({ mode: "comparison" });
-    } else if (this.state.landkreisSelection.length === 1) {
+    } 
+    else if (this.state.landkreisSelection.length === 1) {
       return this.setStateAsync({ mode: "lk" });
-    } else {
+    } 
+    else {
       return this.setStateAsync({ mode: "shuffle" });
     }
 
@@ -110,13 +117,15 @@ export default class Controls extends Component {
       if (this.state.mode === "shuffle") {
         // console.log(this.state.mode, list);
         list = this.state.shuffleSelection;
-      } else if (this.state.mode === "lk") {
+      } 
+      else if (this.state.mode === "lk") {
         list = [];
         let selectedLK;
         // set default value for landkreisSelection (TODO: use germany)
         if (this.state.landkreisSelection[0] === undefined) {
           selectedLK = { value: "11", label: "Berlin" };
-        } else {
+        } 
+        else {
           selectedLK = {
             value: this.state.landkreisSelection[0].value,
             label: this.state.landkreisSelection[0].label,
@@ -127,7 +136,8 @@ export default class Controls extends Component {
         this.sections.forEach((element) => {
           list.push({ lk: selectedLK, section: element.value });
         });
-      } else if (this.state.mode === "comparison") {
+      } 
+      else if (this.state.mode === "comparison") {
         let selectedSection;
 
         // set default value for section
@@ -153,6 +163,11 @@ export default class Controls extends Component {
       //return list;
     });
   }
+
+  componentDidMount(){
+    console.log("Mount")
+    this.updateCardSelection();
+    }
 
   render() {
     return (
@@ -181,7 +196,7 @@ export default class Controls extends Component {
           >
             <Select
               className="selector"
-              defaultValue={this.state.section[0]}
+              defaultValue={this.sections[0]}
               onChange={this.changeSection.bind(this)}
               options={this.sections}
             />
