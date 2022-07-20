@@ -3,3 +3,7 @@ export function mod(n, m) {
   let result = n % m;
   return result >= 0 ? result : result + m;
 }
+
+export function getRandomElement(array){
+  return array[Math.floor(Math.random() * array.length)];
+}
