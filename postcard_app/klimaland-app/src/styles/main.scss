@@ -47,13 +47,16 @@ code {
 
 .selection-container{
     width: 100vw;
+    margin-bottom: 2rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
-}
 
-.selector{
-    width: 25%;
+    .selector{
+        width: 25%;
+        margin: 1rem;
+    }
+
 }
 
 
@@ -93,5 +96,9 @@ code {
         position: absolute;
         bottom: 3vh;
         right: 2vh;
+    }
+
+    &.shuffle{
+        margin:1rem;
     }
 }

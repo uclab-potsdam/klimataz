@@ -12,7 +12,9 @@ $lighter-orange: #FFE8C9;
 //effects
 $boxshadow: (
     default: (4px 4px 0px $lighter-orange, 0 0px 0px $taz-orange),
-    hover: (2px 2px 4px $taz-orange, 4px 4px 0px $lighter-orange)
+    hover: (2px 2px 4px $taz-orange, 4px 4px 0px $lighter-orange),
+    default_flipped: (-4px 4px 0px $lighter-orange, 0 0px 0px $taz-orange),
+    hover_flipped: (-2px 2px 4px $taz-orange, -4px 4px 0px $lighter-orange)
     //before:
     //default: (4px 4px 0px #f6a11921, 0 1px 2px #f6a11981),
     //hover: (0 14px 28px #f6a1194a, 0 10px 10px rgba(0, 0, 0, 0.13))
