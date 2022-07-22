@@ -1,16 +1,16 @@
 import { Component } from "react";
-import Select from "react-select";
-import DropDownControls from "../data/selector-controls.json";
 
 //our components
 import CardCollection from "./CardCollection";
-
+import SelectionButtons from "./SelectionButtons";
 import { getRandomElement } from "./helper.js"
+
+//data
+import DropDownControls from "../data/selector-controls.json";
 
 //images
 //import flip from "../img/buttons/flip.png";
 import switchCard from "../img/buttons/switch.png";
-import shuffle from "../img/buttons/shuffle.png";
 import close from "../img/buttons/close.png";
 
 
@@ -18,6 +18,13 @@ export default class Controls extends Component {
     constructor(props) {
         super(props);
 
+        this.switchToPostcardView = this.switchToPostcardView.bind(this);
+        this.nextCard = this.nextCard.bind(this);
+        this.closePostcardView = this.closePostcardView.bind(this);
+        this.updateShuffleSelection = this.updateShuffleSelection.bind(this)
+
+        this.landkreise = DropDownControls.landkreise
+        
         //TODO: reformat DropDownControls.indicators to object with value/label pairs
         //this.sections = DropDownControls.indicators
         this.sections = [{ label: "Mobilität", value: "mobility", }, { label: "Gebäude", value: "buildings", },
@@ -25,13 +32,6 @@ export default class Controls extends Component {
             label: "Abfallentsorgung",
             value: "waste",
         },]
-
-        this.landkreise = DropDownControls.landkreise
-
-        this.switchToPostcardView = this.switchToPostcardView.bind(this);
-        this.nextCard = this.nextCard.bind(this);
-        this.closePostcardView = this.closePostcardView.bind(this);
-        this.updateShuffleSelection = this.updateShuffleSelection.bind(this)
 
         this.state = {
             //editors pick might be a prop and set by canvas!
@@ -48,6 +48,8 @@ export default class Controls extends Component {
             cardSelection: [],
             activeCard: 0,
         };
+
+        
     }
 
     setStateAsync(state) {
@@ -192,7 +194,6 @@ export default class Controls extends Component {
     }
 
     componentDidMount() {
-        console.log("Mount")
         this.setState({ shuffleSelection: this.state.editorspick })
         this.updateCardSelection();
     }
@@ -200,45 +201,17 @@ export default class Controls extends Component {
     render() {
         return (
             <div>
-                {!this.state.postcardView && <div className="selection-container">
-                    <Select
-                        className="selector"
-                        isMulti
-                        defaultValue={this.state.landkreisSelection}
-                        onChange={this.changeLandkreis.bind(this)}
-                        options={this.landkreise}
-                        isOptionDisabled={() => this.state.landkreisSelection.length >= 3} //max selection number: 3
-                    />
-
-                    <button className="shuffle-button" onClick={this.updateShuffleSelection}>
-                        <img src={shuffle} className="button-img" alt="shuffle-button-img" />
-                    </button>
-
-                    <h5>
-                        Du hast{" "}
-                        {this.state.landkreisSelection.map((elem) => elem.label + " ")}{" "}
-                        ausgewählt.
-                    </h5>
-
-                    <div
-                        style={{
-                            visibility:
-                                this.state.mode === "comparison" ? "visible" : "hidden",
-                        }}
-                    >
-                        <Select
-                            className="selector"
-                            defaultValue={this.sections[0]}
-                            onChange={this.changeSection.bind(this)}
-                            options={this.sections}
-                        />
-
-                        <h5>in der Sektion {this.state.section.label}.</h5>
-                    </div>
-
-                    <p>View: {this.state.mode}</p>
-                </div>}
-
+                <SelectionButtons
+                    mode = {this.state.mode}
+                    postcardView={this.state.postcardView}
+                    landkreise={this.landkreise}
+                    sections={this.sections}
+                    landkreisSelection = {this.state.landkreisSelection}
+                    changeLandkreis = {this.changeLandkreis}
+                    changeSection = {this.changeSection}
+                    shuffle = {this.updateShuffleSelection}
+                />
+                
                 <CardCollection
                     cardSelection={this.state.cardSelection}
                     mode={this.state.mode}
