@@ -14,15 +14,23 @@ import switchCard from "../img/buttons/switch.png";
 import close from "../img/buttons/close.png";
 
 
-export default class Controls extends Component {
+export default class LayoutManager extends Component {
     constructor(props) {
         super(props);
 
+        //called by cardcollection
         this.switchToPostcardView = this.switchToPostcardView.bind(this);
+
+        //called by selectionbuttons
+        this.updateShuffleSelection = this.updateShuffleSelection.bind(this)
+        this.changeLandkreis = this.changeLandkreis.bind(this)
+        this.changeSection = this.changeSection.bind(this)
+
+        //called by other components
         this.nextCard = this.nextCard.bind(this);
         this.closePostcardView = this.closePostcardView.bind(this);
-        this.updateShuffleSelection = this.updateShuffleSelection.bind(this)
 
+        //load data
         this.landkreise = DropDownControls.landkreise
         
         //TODO: reformat DropDownControls.indicators to object with value/label pairs
@@ -49,7 +57,6 @@ export default class Controls extends Component {
             activeCard: 0,
         };
 
-        
     }
 
     setStateAsync(state) {
@@ -59,23 +66,22 @@ export default class Controls extends Component {
     }
 
     async updateMode() {
-        // console.log("update mode", this.state.landkreisSelection);
+        let mode;
+
         if (this.state.landkreisSelection.length > 1) {
-            return this.setState({ mode: "comparison" });
+            mode = "comparison"
         }
         else if (this.state.landkreisSelection.length === 1) {
-            return this.setStateAsync({ mode: "lk" });
+            mode = "lk"
         }
         else {
-            return this.setStateAsync({ mode: "shuffle" });
+            mode = "shuffle"
         }
 
-        // TODO: check if for mistakes during setting the mode
-        // if (!["comparison", "shuffle", "lk", "postcard"].includes(mode)) {
-        //     mode = "shuffle"
-        // }
-
-        // return mode;
+        //check mode
+        if (["comparison", "shuffle", "lk"].includes(mode)) {
+            return this.setStateAsync({ mode: mode });
+        }
     }
 
     switchToPostcardView() {

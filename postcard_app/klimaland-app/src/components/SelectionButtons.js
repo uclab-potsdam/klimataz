@@ -15,16 +15,16 @@ export class SelectionButtons extends Component {
 
     }
 
-    changeLandkreis(){
-        this.props.changeLandkreis();
+    changeLandkreis(e){
+        this.props.changeLandkreis(e);
     }
 
-    changeSection(){
-        this.props.changeSection();
+    changeSection(e){
+        this.props.changeSection(e);
     }
 
-    shuffle(){
-        this.props.shuffle();
+    shuffle(e){
+        this.props.shuffle(e);
     }
 
 
