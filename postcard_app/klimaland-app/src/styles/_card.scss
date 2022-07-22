@@ -1,5 +1,22 @@
 @import "_config.scss";
 
+//reusable styles
+@mixin postcard{
+    background-color: $light;
+    border-radius: 2px;
+    box-shadow: map-get($map: $boxshadow, $key: default);
+    z-index: -10;
+
+    &:hover{
+        box-shadow: map-get($map: $boxshadow, $key: hover);
+    }
+}
+
+@mixin stacked-postcard{
+    position: absolute;
+    transition: 1000ms;
+}
+
 .card-container{
     width: 100%;
     padding: 0;
@@ -33,37 +50,30 @@
 .card{
     position: relative;
     margin: 0.25em;
-    &:hover{
-        box-shadow: 0 14px 28px #f6a1194a, 0 10px 10px rgba(0, 0, 0, 0.13);
-    }
 
     &-active{
         transform: translateY(0px) ;
         z-index: 1;
-        transition: 1000ms;
         opacity: 1;
-        position: absolute;
+        @include stacked-postcard;
     }
 
     &-left{
         transform: rotate(-5deg) scale(0.99);
         z-index: -2;
-        transition: 1000ms;
-        position: absolute;
+        @include stacked-postcard;
     }
     
     &-right{
         transform: rotate(5deg) scale(0.99);
         z-index: -1;
-        transition: 1000ms;
-        position: absolute;
+        @include stacked-postcard;
     }
 
     &-back{
         transform: rotate(-2deg)  translate(-2px, -5px) scale(0.99);;
         z-index: -3;
-        transition: 1000ms;
-        position: absolute;
+        @include stacked-postcard;
     }
 
     &-ordered{
@@ -75,36 +85,40 @@
 }
 
 .card-preview{
-    background-color: $light;
+
+    @include postcard;
+
     height: 100%;
     width: 100%;
     // margin: 0.5em;
-    border-radius: 2px;
-    box-shadow: 4px 4px 0px #f6a11921, 0 1px 2px #f6a11981;
-    z-index: -10;
+}
+
+.side {
+    // background-color: rgba(226, 226, 226, 0.246);
+    padding-left: 0.5em;
 }
 
 .side-container{
-    background-color: $light;
+
+    @include postcard;
+
     height: 30vh;
     width: 60vw;
-    border-radius: 2px;
-    box-shadow: 4px 4px 0px #f6a11921, 0 1px 2px #f6a11981;
     // margin: 0.5em;
-    z-index: -10;
     
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
-    transition: -webkit-transform ease 500ms;
+    -webkit-transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
     transition: transform ease 500ms;
-
-    &:hover{
-        box-shadow: 0 14px 28px #f6a1194a, 0 10px 10px rgba(0, 0, 0, 0.13);
-    }
-
+    transition: -webkit-transform ease 500ms;
 
     &.flip{
         --rotate-y: 180deg;
+    }
+
+    &.card-front{
+
     }
 
     & .card-front, .card-back{
@@ -113,6 +127,7 @@
         width: 100%;
         height: 100%;
         margin: 0;
+        transform: rotateX(0deg);
     }
 
     & .card-back{

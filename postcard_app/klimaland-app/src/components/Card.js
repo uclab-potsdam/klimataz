@@ -44,12 +44,12 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail }) => {
                 activeSide={mod(activeSide, sides.length)}
               />
               <button
-                className="flip-button"
+                className="button flip"
                 onClick={() => {
                   setActiveSide(activeSide + 1);
                 }}
               >
-                <img src={flip} className="button-img" alt="flip-button-img" />
+                <img src={flip} className="button img" alt="flip-button-img" />
               </button>
             </div>
             <div className="card-back">
@@ -59,12 +59,12 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail }) => {
                 activeSide={mod(activeSide, sides.length)}
               />
               <button
-                className="flip-button"
+                className="button flip"
                 onClick={() => {
                   setActiveSide(activeSide + 1);
                 }}
               >
-                <img src={flip} className="button-img" alt="flip-button-img" />
+                <img src={flip} className="button img" alt="flip-button-img" />
               </button>
             </div>
           </div>

@@ -228,14 +228,14 @@ export default class LayoutManager extends Component {
 
                 {this.state.postcardView && (
                     <div className="button-container">
-                        <button className="close-button" onClick={this.closePostcardView}>
-                            <img src={close} className="button-img" alt="close-button-img" />
+                        <button className="button close" onClick={this.closePostcardView}>
+                            <img src={close} className="button img" alt="close-button-img" />
                         </button>
 
-                        <button className="switch-button" onClick={this.nextCard}>
+                        <button className="button switch" onClick={this.nextCard}>
                             <img
                                 src={switchCard}
-                                className="button-img"
+                                className="button img"
                                 alt="switch-button-img"
                             />
                         </button>

@@ -45,15 +45,6 @@ code {
     width: 25%;
 }
 
-.card-collection {
-    // background-color: aqua;
-    // padding: 10px;
-}
-
-.side {
-    // background-color: rgba(226, 226, 226, 0.246);
-    padding-left: 0.5em;
-}
 
 .button-container{
     // background-color: #83aeff;
@@ -69,7 +60,7 @@ code {
 }
 
 
-Button{
+.button{
     border: none;
     background: none;
     cursor: pointer;
@@ -81,14 +72,15 @@ Button{
     &:hover{
         opacity: 70%;
     }
-}
 
-.button-img{
-    height: 25px;
-}
+    &.img{
+        height: 25px;
+        color:"blue"
+    }
 
-.flip-button{
-    position: absolute;
-    bottom: 3vh;
-    right: 2vh;
+    &.flip{
+        position: absolute;
+        bottom: 3vh;
+        right: 2vh;
+    }
 }

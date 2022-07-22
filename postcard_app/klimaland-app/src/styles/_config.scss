@@ -3,6 +3,13 @@ $light: #FFF9F1;
 $pink: rgb(255, 192, 192);
 $blue: rgb(170, 210, 238);
 
+//effects
+$boxshadow: (
+    default: (4px 4px 0px #f6a11921, 0 1px 2px #f6a11981),
+    hover: (0 14px 28px #f6a1194a, 0 10px 10px rgba(0, 0, 0, 0.13))
+);
+
+
 //media queries
 @mixin media-s{
     @media screen and (min-width: 576px){

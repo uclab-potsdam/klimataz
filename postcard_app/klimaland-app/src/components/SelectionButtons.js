@@ -41,7 +41,7 @@ export class SelectionButtons extends Component {
                         isOptionDisabled={() => this.props.landkreisSelection.length >= 3} //max selection number: 3
                     />
 
-                    <button className="shuffle-button" onClick={this.shuffle}>
+                    <button className="button shuffle" onClick={this.shuffle}>
                         <img src={shuffle} className="button-img" alt="shuffle-button-img" />
                     </button>
 
