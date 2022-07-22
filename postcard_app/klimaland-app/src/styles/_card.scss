@@ -120,14 +120,19 @@ $postcardview-postcardwidth: 60vw;
     
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    transform:rotateY(var(--rotate-y, 0)) ;
-    //transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
-    //webkit-transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
+    -webkit-transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
     transition: transform ease 500ms;
     transition: -webkit-transform ease 500ms;
 
     &.flip{
         --rotate-y: 180deg;
+
+        //flipped boxshader
+        box-shadow: map-get($map: $boxshadow, $key: default_flipped);
+        &:hover{
+            box-shadow: map-get($map: $boxshadow, $key: hover_flipped);
+        }
     }
 
     & .card-front, .card-back{
@@ -155,5 +160,9 @@ $postcardview-postcardwidth: 60vw;
 
     .text-container, .locator-container {
         width: 50%;
+    }
+
+    .locator-container{
+        position: relative;
     }
 }

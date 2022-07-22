@@ -1,15 +1,22 @@
-import React from "react";
+import React, { Component } from 'react'
+
+//side elements
 import Text from './side-elements/Text.js';
-import Locator from "./side-elements/Locator";
+import Locator from "./side-elements/Locator.js";
 
-const Side = ({ lk, section, activeSide }) => {
-  //console.log('select', lk)
-  return (
-    <div className="side-inner">
-      <Text {...{ lk, section, activeSide }} />
-      <Locator {...{lk}}/>
-    </div>
-  );
-};
+export default class Side extends Component {
+  constructor(props){
+    super(props)
 
-export default Side;
+    console.log(this.props)
+  }
+
+  render() {
+    return (
+      <div className="side-inner">
+        <Text lk={this.props.lk} section={this.props.section} activeSide={this.props.activeSide} />
+        <Locator lk={this.props.lk}/>
+      </div>
+    )
+  }
+}
