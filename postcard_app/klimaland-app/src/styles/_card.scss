@@ -1,5 +1,7 @@
 @import "_config.scss";
 
+$postcardview-postcardwidth: 60vw;
+
 //reusable styles
 @mixin postcard{
     background-color: $light;
@@ -15,6 +17,13 @@
 @mixin stacked-postcard{
     position: absolute;
     transition: 1000ms;
+}
+
+.carousel-container{
+    position: absolute;
+    width: calc($postcardview-postcardwidth + 10vw);
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 .card-container{
@@ -41,9 +50,7 @@
     // }
 
     &.carousel{
-        z-index: 1;
-        // background-color: #19f62481;
-        justify-content: start;
+        display: inline;
     }
 }
 
@@ -77,8 +84,9 @@
     }
 
     &-ordered{
-        height: 20vh;
+        //148mm x 105mm (ratio 1.4)
         width: 30vw;
+        height: calc(30vw/1.4);
         position: relative;
         z-index: 0;
     }
@@ -102,14 +110,16 @@
 
     @include postcard;
 
-    height: 30vh;
-    width: 60vw;
+    //148mm x 105mm (ratio 1.4)
+    width: $postcardview-postcardwidth; //60vw
+    height: calc($postcardview-postcardwidth/1.4);
     // margin: 0.5em;
     
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
-    -webkit-transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
+    transform:rotateY(var(--rotate-y, 0)) ;
+    //transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
+    //webkit-transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
     transition: transform ease 500ms;
     transition: -webkit-transform ease 500ms;
 
@@ -117,17 +127,14 @@
         --rotate-y: 180deg;
     }
 
-    &.card-front{
-
-    }
-
     & .card-front, .card-back{
         position: absolute; 
-        backface-visibility: hidden;
         width: 100%;
         height: 100%;
         margin: 0;
-        transform: rotateX(0deg);
+
+        backface-visibility: hidden;
+        transform: rotateX(0deg);  //fix backface visibility firefox
     }
 
     & .card-back{

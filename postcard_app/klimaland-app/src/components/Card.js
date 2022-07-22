@@ -12,30 +12,28 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail }) => {
 
   let index = 0;
 
+  //TODO: flip first, after that switch the content on the side
+  //maybe with gsap??
+
   useEffect(() => {
     index = mod(activeSide, sides.length);
     const currentVal = flipped ? false : true;
     setFlipped(currentVal);
-    // console.log("side index: " + index);
-    // console.log(flipped);
   }, [activeSide]);
 
   return (
     // <div className={classProp} onClick={handleClick}>
-    <div>
+    <div className={classProp}>
       {isThumbnail && (
-        <div className={classProp} onClick={clickOnCard}>
-          <div className="card-preview">
+          <div className="card-preview" onClick={clickOnCard}>
             <Side
               lk={lk}
               section={section}
-              activeSide={mod(activeSide, sides.length)}
+              activeSide={0} //active side for thumbnail always first one
             />
           </div>
-        </div>
       )}
       {!isThumbnail && (
-        <div className={classProp}>
           <div className={`side-container ${flipped ? "flip" : ""}`}>
             <div className="card-front">
               <Side
@@ -68,7 +66,6 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail }) => {
               </button>
             </div>
           </div>
-        </div>
       )}
     </div>
   );

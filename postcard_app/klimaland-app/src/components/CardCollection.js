@@ -120,7 +120,9 @@ export default class CardCollection extends Component {
           </div>
         )}
         {this.props.postcardView && (
-          <div className="card-container carousel">{this.state.cards}</div>
+          <div className="carousel-container">
+            <div className="card-container carousel">{this.state.cards}</div>
+          </div>
         )}
       </div>
     );
