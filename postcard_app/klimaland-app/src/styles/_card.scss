@@ -5,7 +5,10 @@ $postcardview-postcardwidth: 60vw;
 //reusable styles
 @mixin postcard{
     background-color: $light;
-    border-radius: 2px;
+    border-style:solid;
+    border-color: $taz-orange;
+    border-width:1px;
+    border-radius: 10px;
     box-shadow: map-get($map: $boxshadow, $key: default);
     z-index: -10;
 
@@ -148,6 +151,7 @@ $postcardview-postcardwidth: 60vw;
 
 .side-inner {
     display: inline-flex;
+    padding:0.5rem;
 
     .text-container, .locator-container {
         width: 50%;

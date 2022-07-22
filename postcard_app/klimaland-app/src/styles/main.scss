@@ -13,11 +13,22 @@ body {
 }
 
 h1{
+    @include title;
     margin-top:0;
 }
 
 h2{
-    color: $pink;
+    @include title;
+}
+
+h3{
+    @include title;
+    color: $taz-pink;
+}
+
+h4{
+    @include title;
+    color: $taz-pink;
 }
 
 code {

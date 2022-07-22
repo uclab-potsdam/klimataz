@@ -168,6 +168,7 @@ export default class LayoutManager extends Component {
         });
     }
 
+    //TODO: keins zweimal
     async updateShuffleSelection() {
         //if reshuffling
         if (this.state.mode == "shuffle") {
