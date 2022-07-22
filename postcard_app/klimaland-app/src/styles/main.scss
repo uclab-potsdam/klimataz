@@ -13,11 +13,22 @@ body {
 }
 
 h1{
+    @include title;
     margin-top:0;
 }
 
 h2{
-    color: $pink;
+    @include title;
+}
+
+h3{
+    @include title;
+    color: $taz-pink;
+}
+
+h4{
+    @include title;
+    color: $taz-pink;
 }
 
 code {
@@ -36,24 +47,18 @@ code {
 
 .selection-container{
     width: 100vw;
+    margin-bottom: 2rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
+
+    .selector{
+        width: 25%;
+        margin: 1rem;
+    }
+
 }
 
-.selector{
-    width: 25%;
-}
-
-.card-collection {
-    // background-color: aqua;
-    // padding: 10px;
-}
-
-.side {
-    // background-color: rgba(226, 226, 226, 0.246);
-    padding-left: 0.5em;
-}
 
 .button-container{
     // background-color: #83aeff;
@@ -69,7 +74,7 @@ code {
 }
 
 
-Button{
+.button{
     border: none;
     background: none;
     cursor: pointer;
@@ -81,14 +86,19 @@ Button{
     &:hover{
         opacity: 70%;
     }
-}
 
-.button-img{
-    height: 25px;
-}
+    &.img{
+        height: 25px;
+        color:"blue"
+    }
 
-.flip-button{
-    position: absolute;
-    bottom: 3vh;
-    right: 2vh;
+    &.flip{
+        position: absolute;
+        bottom: 3vh;
+        right: 2vh;
+    }
+
+    &.shuffle{
+        margin:1rem;
+    }
 }
