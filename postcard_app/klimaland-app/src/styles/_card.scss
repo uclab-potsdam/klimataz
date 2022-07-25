@@ -101,6 +101,7 @@ $postcardview-postcardwidth: 60vw;
 
     height: 100%;
     width: 100%;
+    display:flex; //for using flex stretch below
     // margin: 0.5em;
 }
 
@@ -140,6 +141,7 @@ $postcardview-postcardwidth: 60vw;
         width: 100%;
         height: 100%;
         margin: 0;
+        display:flex; //for using flex stretch below
 
         backface-visibility: hidden;
         transform: rotateX(0deg);  //fix backface visibility firefox
@@ -156,7 +158,9 @@ $postcardview-postcardwidth: 60vw;
 
 .side-inner {
     display: inline-flex;
+    align-items: stretch;
     padding:0.5rem;
+    flex:1;
 
     .text-container, .locator-container {
         width: 50%;
@@ -164,5 +168,32 @@ $postcardview-postcardwidth: 60vw;
 
     .locator-container{
         position: relative;
+    }
+}
+
+.chart-container{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex:1;
+
+    h3{
+        font-size: 2rem;
+
+    }
+
+    &.thumbnail{
+        justify-content: space-evenly;
+
+        h3{
+            margin:0;
+            font-size:1.2rem;
+        }
+
+        p{
+            margin: 0;
+        }
     }
 }

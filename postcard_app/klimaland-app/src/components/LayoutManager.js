@@ -49,7 +49,7 @@ export default class LayoutManager extends Component {
                 { lk: { value: "1011", label: "Flensburg" }, section: "En" },
             ],
             shuffleSelection: [],
-            section: [],
+            section: "En",
             landkreisSelection: [],
             postcardView: false,
             mode: "shuffle",
@@ -148,11 +148,11 @@ export default class LayoutManager extends Component {
 
                 // set default value for section
                 if (this.state.section === undefined) {
-                    selectedSection = "energy";
+                    selectedSection = "En";
                 }
                 //set selected value for section
                 else {
-                    selectedSection = this.state.section.value;
+                    selectedSection = this.state.section;
                 }
 
                 //add one card per landkreisSelection
@@ -162,6 +162,7 @@ export default class LayoutManager extends Component {
                         section: selectedSection,
                     });
                 });
+                console.log("updated",list)
             }
 
             this.setState({ cardSelection: list });

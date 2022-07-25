@@ -4,7 +4,11 @@ import React, { Component } from 'react'
 //side elements
 import Text from './side-elements/Text.js';
 import Locator from "./side-elements/Locator.js";
+<<<<<<< HEAD
+import Chart from "./side-elements/Chart.js";
+=======
 import Chart from './side-elements/Chart';
+>>>>>>> layoutmanagment
 
 export default class Side extends Component {
    constructor(props) {
@@ -21,28 +25,57 @@ export default class Side extends Component {
          order:layoutCombo[0],
          showViz:layoutCombo[1],
          indicator:layoutCombo[2],
-         showLocator:layoutCombo[3]
+         showLocator:layoutCombo[3],
+         chartStyle:{
+            width: "300",
+            height: "200"
+         },
+      }
+   }
+
+   updateChartStyle(){
+      if(this.props.isThumbnail) {
+         this.setState({chartStyle:{width:"300",height:"200"}})
+      }
+
+      else{
+         this.setState({chartStyle:{width:"600",height:"400"}})
       }
    }
 
    componentDidUpdate(prevProps) {
       if (this.props.isTopCard !== prevProps.isTopCard || this.props.activeSide !== prevProps.activeSide 
-         || this.props.layoutControls !== prevProps.layoutControls) {
+         || this.props.layoutControls !== prevProps.layoutControls || this.props.isThumbnail !== prevProps.isThumbnail){
 
          //update layout for top card
          if (this.props.isTopCard) {
             let layoutCombo = this.props.layoutControls[this.props.activeSide].combo
             this.setState({order:layoutCombo[0],showViz:layoutCombo[1],indicator:layoutCombo[2],showLocator:layoutCombo[3]})
          }
+
+         this.updateChartStyle();
       }
+   }
+
+   componentDidMount(){
+      this.updateChartStyle();
    }
 
    render() {
       return (
          <div className="side-inner">
-            {!this.state.showViz && <Text lk={this.props.lk} section={this.props.section} activeSide={this.props.activeSide} />}
-            {this.state.showViz && <Chart lk={this.props.lk} section={this.props.section} activeSide={this.props.activeSide}/>}
-            {this.state.showLocator && <Locator lk={this.props.lk} />}
+            {!this.state.showViz && <Text 
+               lk={this.props.lk} 
+               section={this.props.section} 
+               activeSide={this.props.activeSide}/>}
+            {this.state.showViz && <Chart 
+               lk={this.props.lk} 
+               section={this.props.section} 
+               activeSide={this.props.activeSide} 
+               chartStyle={this.state.chartStyle} 
+               thumbnailClass={(this.props.isThumbnail) ? "thumbnail" : ""}/>}
+            {this.state.showLocator && <Locator 
+               lk={this.props.lk}/>}
          </div>
       )
    }
