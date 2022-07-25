@@ -17,6 +17,7 @@ export default class CardCollection extends Component {
 
   //generate card objects dynamically depending on mode
   //called by componentDidUpdate
+  //TODO: open card that was clicked, not only the first one
   generateCards() {
     let list;
     let classProp;
@@ -34,10 +35,12 @@ export default class CardCollection extends Component {
 
         let classProp = "";
 
-        // console.log(this.props.activeCard);
+        let isTopCard = false;
 
         if (i === this.props.activeCard) {
+          //store if card is currently on top for rendering viz effectively
           classProp = "card card-active";
+          isTopCard = true;
         } else if (i === indexRight) {
           classProp = "card card-right";
         } else if (i === indexLeft) {
@@ -46,7 +49,6 @@ export default class CardCollection extends Component {
           classProp = "card card-back";
         }
 
-        // console.log(classProp);
 
         return (
           <Card
@@ -55,6 +57,7 @@ export default class CardCollection extends Component {
             key={i}
             classProp={classProp}
             isThumbnail={false}
+            isTopCard={isTopCard}
           />
         );
       });
@@ -105,7 +108,9 @@ export default class CardCollection extends Component {
 
   render() {
     return (
+    
       <div className="card-collection">
+        <h5>View Mode: {this.props.mode}, LK:  {this.props.cardSelection.map((elem) => elem.lk.label + " " + elem.section + " | ")}</h5>
         {this.props.mode === "comparison" && !this.props.postcardView && (
           <div className="card-container stacked"> {this.state.cards} </div>
         )}

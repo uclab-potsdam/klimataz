@@ -52,15 +52,6 @@ export class SelectionButtons extends Component {
                     <button className="button shuffle" onClick={this.shuffle}>
                         <img src={shuffle} className="button-img" alt="shuffle-button-img" />
                     </button>
-
-                    {/* <h5>
-                        Du hast{" "}
-                        {this.props.landkreisSelection.map((elem) => elem.label + " ")}{" "}
-                        ausgewählt.
-                    </h5> */}
-                    {/* <h5>in der Sektion {this.props.sections[0].label}.</h5> */}
-
-                    <h5>View Mode: {this.props.mode}, LK:  {this.props.landkreisSelection.map((elem) => elem.label + " ")}</h5>
                 </div>}
             </div>
         )

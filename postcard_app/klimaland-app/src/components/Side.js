@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 
+
 //side elements
 import Text from './side-elements/Text.js';
 import Locator from "./side-elements/Locator.js";
+<<<<<<< HEAD
 import Chart from "./side-elements/Chart.js";
+=======
+import Chart from './side-elements/Chart';
+>>>>>>> layoutmanagment
 
 export default class Side extends Component {
    constructor(props) {
