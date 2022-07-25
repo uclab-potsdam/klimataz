@@ -2,7 +2,7 @@ import React from "react";
 import {geoPath, geoMercator} from 'd3-geo';
 import LandkreiseOutline from "../../data/kreise.json";
 
-const Locator = ({lk}) => {
+const Locator = ({lk,isThumbnail}) => {
     // to do: responsive w and h for chart
     const projection = geoMercator().fitSize([200, 200], LandkreiseOutline)
     const geoGenerator = geoPath().projection(projection)

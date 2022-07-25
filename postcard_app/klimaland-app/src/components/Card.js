@@ -17,6 +17,8 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard }) =
   const [activeSide, setActiveSide] = useState(0);
   const [flipped, setFlipped] = useState(0);
 
+  const layoutControls = LayoutControls[section].params;
+
   let index = 0;
 
   //TODO: flip first, after that switch the content on the side
@@ -60,6 +62,7 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard }) =
             isThumbnail={isThumbnail}
             layoutControls = {sides}
             activeSide={0} //active side for thumbnail always first one
+            layoutControls = {layoutControls}
           />
         </div>
       )}
