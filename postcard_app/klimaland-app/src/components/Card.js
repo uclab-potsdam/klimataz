@@ -6,7 +6,7 @@ import LayoutControls from "../data/layout-controls.json";
 import flip from "../img/buttons/flip.png";
 import { mod } from "./helper";
 
-const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard }) => {
+const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard, windowSize }) => {
   //const sides = ["side 1", "side 2", "side 3", "side 4"];
   //const sides = ["side 1", "side 2", "side 3"];
 
@@ -16,8 +16,6 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard }) =
 
   const [activeSide, setActiveSide] = useState(0);
   const [flipped, setFlipped] = useState(0);
-
-  const layoutControls = LayoutControls[section].params;
 
   let index = 0;
 
@@ -40,6 +38,7 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard }) =
           isTopCard={isTopCard}
           activeSide={mod(activeSide, sides.length)}
           layoutControls = {sides}
+          windowSize={windowSize}
         />
         <button
           className="button flip"
@@ -62,7 +61,7 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard }) =
             isThumbnail={isThumbnail}
             layoutControls = {sides}
             activeSide={0} //active side for thumbnail always first one
-            layoutControls = {layoutControls}
+            windowSize={windowSize}
           />
         </div>
       )}
