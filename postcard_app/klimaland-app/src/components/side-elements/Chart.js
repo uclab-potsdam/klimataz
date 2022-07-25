@@ -1,10 +1,25 @@
 import React from "react";
 
-const Chart = () => {
-    return (
-        <div class="chart-container">  
-        </div>
-    );
-};
+export default class Chart extends Component {
+    constructor(props){
+        super(props)
 
-export default Chart;
+        this.state = {
+            fill: '#FFE8C9',
+            stroke: '#bbb'
+        }
+    }
+
+    render() {
+        return(
+            <div className={"chart-container " + this.props.thumbnailClass}>
+                <h3>Grüsse aus {this.props.lk.label}, mit der id {this.props.lk.value}!</h3>
+                <svg width={this.props.chartStyle.width} height={this.props.chartStyle.height}>
+                    <rect width={this.props.chartStyle.width} height={this.props.chartStyle.height} style={{fill:this.state.fill,strokeWidth:3,stroke:this.state.stroke}} />
+                </svg>
+                <p>Hier ist ein Chart über die Section {this.props.section}. Seite {this.props.activeSide}. </p>     
+            </div>
+        )
+    }
+}
+
