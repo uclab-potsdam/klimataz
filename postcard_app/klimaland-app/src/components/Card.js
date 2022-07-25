@@ -4,11 +4,16 @@ import { useState, useEffect } from "react";
 import flip from "../img/buttons/flip.png";
 import { mod } from "./helper";
 
+//data 
+import LayoutControls from "../data/layout-controls.json";
+
 const Card = ({ classProp, lk, section, clickOnCard, isThumbnail }) => {
   const sides = ["side 1", "side 2", "side 3", "side 4"];
 
   const [activeSide, setActiveSide] = useState(0);
   const [flipped, setFlipped] = useState(0);
+
+  const layoutControls = LayoutControls[section].params;
 
   let index = 0;
 
@@ -29,6 +34,7 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail }) => {
           section={section}
           isThumbnail={isThumbnail}
           activeSide={mod(activeSide, sides.length)}
+          layoutControls = {layoutControls}
         />
         <button
           className="button flip"
@@ -50,6 +56,7 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail }) => {
             section={section}
             isThumbnail={isThumbnail}
             activeSide={0} //active side for thumbnail always first one
+            layoutControls = {layoutControls}
           />
         </div>
       )}

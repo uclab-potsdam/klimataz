@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 //side elements
 import Text from './side-elements/Text.js';
 import Locator from "./side-elements/Locator.js";
+import Chart from "./side-elements/Chart.js";
 
 export default class Side extends Component {
    constructor(props) {

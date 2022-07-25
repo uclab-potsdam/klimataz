@@ -35,21 +35,21 @@ export default class LayoutManager extends Component {
         
         //TODO: reformat DropDownControls.indicators to object with value/label pairs
         //this.sections = DropDownControls.indicators
-        this.sections = [{ label: "Mobilität", value: "mobility", }, { label: "Gebäude", value: "buildings", },
-        { label: "Energie", value: "energy", }, { label: "Landwirtschaft", value: "agriculture", }, {
+        this.sections = [{ label: "Mobilität", value: "Mo", }, { label: "Gebäude", value: "Ge", },
+        { label: "Energie", value: "En", }, { label: "Landwirtschaft", value: "La", }, {
             label: "Abfallentsorgung",
-            value: "waste",
+            value: "Ab",
         },]
 
         this.state = {
             //editors pick might be a prop and set by canvas!
             editorspick: [
-                { lk: { value: "11", label: "Berlin" }, section: "mobility" },
-                { lk: { value: "2", label: "Hamburg" }, section: "waste" },
-                { lk: { value: "1011", label: "Flensburg" }, section: "mobility" },
+                { lk: { value: "11", label: "Berlin" }, section: "Mo" },
+                { lk: { value: "2", label: "Hamburg" }, section: "Ab" },
+                { lk: { value: "1011", label: "Flensburg" }, section: "En" },
             ],
             shuffleSelection: [],
-            section: [],
+            section: "En",
             landkreisSelection: [],
             postcardView: false,
             mode: "shuffle",
@@ -148,11 +148,11 @@ export default class LayoutManager extends Component {
 
                 // set default value for section
                 if (this.state.section === undefined) {
-                    selectedSection = "energy";
+                    selectedSection = "En";
                 }
                 //set selected value for section
                 else {
-                    selectedSection = this.state.section.value;
+                    selectedSection = this.state.section;
                 }
 
                 //add one card per landkreisSelection
@@ -162,6 +162,7 @@ export default class LayoutManager extends Component {
                         section: selectedSection,
                     });
                 });
+                console.log("updated",list)
             }
 
             this.setState({ cardSelection: list });
