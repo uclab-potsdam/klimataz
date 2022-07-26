@@ -11,8 +11,8 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard }) =
   //const sides = ["side 1", "side 2", "side 3"];
 
   const sides = LayoutControls[section].params;
+  console.log(section)
 
-  console.log(sides)
 
   const [activeSide, setActiveSide] = useState(0);
   const [flipped, setFlipped] = useState(0);
