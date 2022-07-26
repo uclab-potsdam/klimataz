@@ -1,30 +1,23 @@
 import React from "react";
 import Side from "./Side";
 import { useState, useEffect } from "react";
-
 import LayoutControls from "../data/layout-controls.json";
 import flip from "../img/buttons/flip.png";
 import { mod } from "./helper";
 
-const Card = ({
-  classProp,
-  lk,
-  section,
-  clickOnCard,
-  isThumbnail,
-  isTopCard,
-}) => {
+const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard, windowSize }) => {
+
   //const sides = ["side 1", "side 2", "side 3", "side 4"];
   //const sides = ["side 1", "side 2", "side 3"];
 
   const sides = LayoutControls[section].params;
-
-  // console.log(sides);
+  console.log(section)
 
   const [activeSide, setActiveSide] = useState(0);
   const [flipped, setFlipped] = useState(0);
 
   const layoutControls = LayoutControls[section].params;
+
 
   //TODO: flip first, after that switch the content on the side
   //maybe with gsap??
@@ -35,6 +28,7 @@ const Card = ({
   }, [activeSide]);
 
   const renderSide = function (cardSide) {
+
     if (cardSide === "card-front") {
       return (
         <div className={cardSide}>
@@ -45,6 +39,7 @@ const Card = ({
             isTopCard={isTopCard}
             activeSide={mod(activeSide, sides.length)}
             layoutControls={sides}
+            windowSize={windowSize}
             style={{
               transform: "rotateY(" + activeSide * 180 - 180 + "deg)",
             }}
@@ -69,6 +64,7 @@ const Card = ({
             isTopCard={isTopCard}
             activeSide={mod(activeSide, sides.length)}
             layoutControls={sides}
+            windowSize={windowSize}
             style={{
               transform: "rotateY(" + activeSide * 180 + "deg)",
             }}
@@ -94,8 +90,8 @@ const Card = ({
             lk={lk}
             section={section}
             isThumbnail={isThumbnail}
-            // layoutControls={sides}
             activeSide={0} //active side for thumbnail always first one
+            windowSize={windowSize}
             layoutControls={layoutControls}
           />
         </div>
