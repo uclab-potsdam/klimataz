@@ -9,3 +9,26 @@
         fill: $blue;
     }
 }
+
+.lineChart {
+
+    .axis-x{
+        text{
+            font-size: 1rem;
+            text-anchor: middle;
+        }
+    }
+
+    .axis-y{
+        text{
+            font-size: 1rem;
+        }
+    }
+
+    &.thumbnail{
+
+        .axis-x{
+            display: none;
+        }
+    }
+}

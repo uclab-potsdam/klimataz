@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import LineChart from '../vis/LineChart'
+import LineChart from '../vis/LineChart.js'
 
 import Data from '../../data/data-inprogress.json'
 
@@ -10,15 +10,10 @@ export default class Chart extends Component {
         super(props)
 
         //TODO: load data here once, but it needs to work with the async stuff in the child components
+        //TODO: store range or max Val in data as well
 
         this.data = Data;
-
-        console.log(this.props.lk.value)
-        console.log(Data)
-
         this.LKdata = Data[this.props.lk.value]
-
-        console.log(this.LKdata)
 
         this.state = {
             fill: '#FFE8C9',
@@ -33,7 +28,9 @@ export default class Chart extends Component {
                 <h3>Grüsse aus {this.props.lk.label}, mit der id {this.props.lk.value}!</h3>
                 {this.props.section == "Mo" && this.props.activeSide == 0 && 
                     <LineChart data={this.LKdata}
-                    width={this.props.chartStyle.width} height={this.props.chartStyle.height}/>} 
+                    width={this.props.chartStyle.width} 
+                    height={this.props.chartStyle.height}
+                    thumbnailClass={this.props.thumbnailClass}/>} 
                 {this.props.section != "Mo" && 
                     <svg width={this.props.chartStyle.width} height={this.props.chartStyle.height}>
                         <rect width={this.props.chartStyle.width} height={this.props.chartStyle.height} style={{fill:this.state.fill,strokeWidth:3,stroke:this.state.stroke}} />
