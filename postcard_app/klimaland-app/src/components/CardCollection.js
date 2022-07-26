@@ -7,12 +7,22 @@ import Card from "./Card";
 export default class CardCollection extends Component {
   constructor(props) {
     super(props);
-    this.state = { cards: [] };
+    this.state = { cards: [],
+      windowSize: {
+        width:0, 
+        height:0 
+      }};
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   handleClickOnCard() {
     this.props.switchToPostcardView();
+  }
+
+  updateWindowDimensions() {
+    this.setState({windowSize:{width:window.innerWidth,height:window.innerHeight}})
+    this.generateCards();
   }
 
   //generate card objects dynamically depending on mode
@@ -58,6 +68,7 @@ export default class CardCollection extends Component {
             classProp={classProp}
             isThumbnail={false}
             isTopCard={isTopCard}
+            windowSize={this.state.windowSize}
           />
         );
       });
@@ -81,6 +92,7 @@ export default class CardCollection extends Component {
           classProp={classProp}
           clickOnCard={this.handleClickOnCard}
           isThumbnail={true}
+          windowSize={this.state.windowSize}
         />
       ));
     }
@@ -93,6 +105,11 @@ export default class CardCollection extends Component {
   mod(n, m) {
     let result = n % m;
     return result >= 0 ? result : result + m;
+  }
+
+  componentDidMount(){
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
   }
 
   componentDidUpdate(prevProps) {

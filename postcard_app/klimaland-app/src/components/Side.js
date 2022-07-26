@@ -31,17 +31,24 @@ export default class Side extends Component {
 
    updateChartStyle(){
       if(this.props.isThumbnail) {
-         this.setState({chartStyle:{width:"300",height:"200"}})
+         let cardwidth = this.props.windowSize.width / 10 * 3 //30vw
+         let width = cardwidth-(cardwidth/3)
+         let height = width*0.7
+         this.setState({chartStyle:{width:String(width),height:String(height)}})
       }
 
       else{
-         this.setState({chartStyle:{width:"600",height:"400"}})
+         let cardwidth = this.props.windowSize.width / 10 * 7 //30vw
+         let width = cardwidth-(cardwidth/4)
+         let height = width*0.7
+         this.setState({chartStyle:{width:String(width),height:String(height)}})
       }
    }
 
    componentDidUpdate(prevProps) {
       if (this.props.isTopCard !== prevProps.isTopCard || this.props.activeSide !== prevProps.activeSide 
-         || this.props.layoutControls !== prevProps.layoutControls || this.props.isThumbnail !== prevProps.isThumbnail){
+         || this.props.layoutControls !== prevProps.layoutControls || this.props.isThumbnail !== prevProps.isThumbnail
+         || this.props.windowSize !== prevProps.windowSize){
 
          //update layout for top card
          if (this.props.isTopCard) {
