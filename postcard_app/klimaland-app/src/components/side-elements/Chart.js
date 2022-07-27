@@ -13,12 +13,23 @@ export default class Chart extends Component {
         //TODO: store range or max Val in data as well
 
         this.data = Data;
-        this.LKdata = Data[this.props.lk.value]
 
         this.state = {
             fill: '#FFE8C9',
-            stroke: '#bbb'
+            stroke: '#bbb',
+            localData:[]
         }
+    }
+
+    setStateAsync(state) {
+        return new Promise((resolve) => {
+            this.setState(state, resolve);
+        });
+    }
+
+    async componentDidMount(){
+        await this.setStateAsync({localData:Data[this.props.lk.value]})
+        console.log("mount done")
     }
 
     //TODO: smarter way of drawing viz (from layout-controls!)
@@ -27,7 +38,7 @@ export default class Chart extends Component {
             <div className={"chart-container " + this.props.thumbnailClass}>
                 <h3>Grüsse aus {this.props.lk.label}, mit der id {this.props.lk.value}!</h3>
                 {this.props.section == "Mo" && this.props.activeSide == 0 && 
-                    <LineChart data={this.LKdata}
+                    <LineChart data={this.state.localData}
                     width={this.props.chartStyle.width} 
                     height={this.props.chartStyle.height}
                     thumbnailClass={this.props.thumbnailClass}/>} 
