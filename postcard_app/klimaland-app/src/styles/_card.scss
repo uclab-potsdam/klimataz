@@ -5,7 +5,7 @@ $postcardview-postcardwidth: 60vw;
 //reusable styles
 @mixin postcard{
     background-color: $light;
-    border-style:solid;
+    // border-style:solid;
     border-color: $taz-orange;
     border-width:1px;
     border-radius: 10px;
@@ -15,6 +15,7 @@ $postcardview-postcardwidth: 60vw;
     &:hover{
         box-shadow: map-get($map: $boxshadow, $key: hover);
     }
+
 }
 
 @mixin stacked-postcard{
@@ -59,7 +60,7 @@ $postcardview-postcardwidth: 60vw;
 
 .card{
     position: relative;
-    margin: 0.25em;
+    margin: 0.35em;
 
     &-active{
         transform: translateY(0px) ;
@@ -126,14 +127,16 @@ $postcardview-postcardwidth: 60vw;
     transition: transform ease 500ms;
     transition: -webkit-transform ease 500ms;
 
+
     &.flip{
-        --rotate-y: 180deg;
+        // transform: rotateY(180deg);
 
         //flipped boxshader
         box-shadow: map-get($map: $boxshadow, $key: default_flipped);
         &:hover{
             box-shadow: map-get($map: $boxshadow, $key: hover_flipped);
         }
+
     }
 
     & .card-front, .card-back{
@@ -142,7 +145,6 @@ $postcardview-postcardwidth: 60vw;
         height: 100%;
         margin: 0;
         display:flex; //for using flex stretch below
-
         backface-visibility: hidden;
         transform: rotateX(0deg);  //fix backface visibility firefox
     }
