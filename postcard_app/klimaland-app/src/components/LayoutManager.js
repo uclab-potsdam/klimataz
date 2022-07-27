@@ -32,7 +32,7 @@ export default class LayoutManager extends Component {
 
         //load data
         this.landkreise = DropDownControls.landkreise
-        
+
         //TODO: reformat DropDownControls.indicators to object with value/label pairs
         //this.sections = DropDownControls.indicators
         this.sections = [{ label: "Mobilität", value: "Mo", }, { label: "Gebäude", value: "Ge", },
@@ -84,8 +84,14 @@ export default class LayoutManager extends Component {
         }
     }
 
-    switchToPostcardView() {
+    switchToPostcardView(lk, section) {
         this.setState({ postcardView: true });
+
+        //get card id of clicked card
+        let chosenCard = this.state.cardSelection.findIndex(x => x.lk === lk && x.section === section)
+
+        //set active card to this card id
+        this.setState({ activeCard: chosenCard })
     }
 
     closePostcardView() {
@@ -116,6 +122,45 @@ export default class LayoutManager extends Component {
         await this.setStateAsync({ section: e }).then(() => {
             this.updateCardSelection();
         });
+    }
+
+    async updateShuffleSelection() {
+        //if reshuffling
+        if (this.state.mode == "shuffle") {
+            let shuffled = []
+            let randomLK, randomLKElement
+            const randomSection = getRandomElement(this.sections)
+
+            for (let i = 0; i < 5; i++) {
+                randomLK = getRandomElement(this.landkreise)
+
+                //while random lk is already in list
+                let alreadyInList = shuffled.findIndex(elem => elem.lk.value === randomLK.value)
+                while (alreadyInList !== -1) {
+                    randomLK = getRandomElement(this.landkreise)
+                    alreadyInList = shuffled.findIndex(elem => elem.lk.value === randomLK.value)
+                }
+
+                randomLKElement = { lk: { value: randomLK.value, label: randomLK.label }, section: randomSection.value }
+                shuffled.push(randomLKElement)
+            }
+            await this.setStateAsync({ shuffleSelection: shuffled }).then(() => {
+                this.updateCardSelection();
+            });
+        }
+
+        //else: switching to shuffle mode
+        else {
+
+            //use editors pick as first shuffle option
+            //reset selection and mode
+            await this.setStateAsync({ shuffleSelection: this.state.editorspick, landkreisSelection: [], mode: "shuffle" }).then(() => {
+                this.updateCardSelection();
+            });
+
+        }
+
+
     }
 
     async updateCardSelection() {
@@ -162,44 +207,13 @@ export default class LayoutManager extends Component {
                         section: selectedSection,
                     });
                 });
-                console.log("updated",list)
+                console.log("updated", list)
             }
 
             this.setState({ cardSelection: list });
         });
     }
 
-    //TODO: keins zweimal
-    async updateShuffleSelection() {
-        //if reshuffling
-        if (this.state.mode == "shuffle") {
-            let shuffled = []
-            let randomLK, randomLKElement, randomSection;
-            for (let i = 0; i < 5; i++) {
-                randomLK = getRandomElement(this.landkreise)
-                randomSection = getRandomElement(this.sections)
-                randomLKElement = {lk:{value:randomLK.value,label:randomLK.label},section:randomSection.value}
-
-                shuffled.push(randomLKElement)
-            }
-            await this.setStateAsync({ shuffleSelection: shuffled }).then(() => {
-                this.updateCardSelection();
-            });
-        }
-
-        //else: switching to shuffle mode
-        else {
-
-            //use editors pick as first shuffle option
-            //reset selection and mode
-            await this.setStateAsync({ shuffleSelection: this.state.editorspick, landkreisSelection: [], mode: "shuffle" }).then(() => {
-                this.updateCardSelection();
-            });
-
-        }
-
-
-    }
 
     componentDidMount() {
         this.setState({ shuffleSelection: this.state.editorspick })
@@ -210,16 +224,16 @@ export default class LayoutManager extends Component {
         return (
             <div>
                 <SelectionButtons
-                    mode = {this.state.mode}
+                    mode={this.state.mode}
                     postcardView={this.state.postcardView}
                     landkreise={this.landkreise}
                     sections={this.sections}
-                    landkreisSelection = {this.state.landkreisSelection}
-                    changeLandkreis = {this.changeLandkreis}
-                    changeSection = {this.changeSection}
-                    shuffle = {this.updateShuffleSelection}
+                    landkreisSelection={this.state.landkreisSelection}
+                    changeLandkreis={this.changeLandkreis}
+                    changeSection={this.changeSection}
+                    shuffle={this.updateShuffleSelection}
                 />
-                
+
                 <CardCollection
                     cardSelection={this.state.cardSelection}
                     mode={this.state.mode}

@@ -61,37 +61,35 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard, win
             </button>
          </div>
       );
+   }
 
-   };
-
-   return (
-      <div className={classProp}>
-         {isThumbnail && (
-            <div className="card-preview" onClick={clickOnCard}>
-               <Side
-                  lk={lk}
-                  section={section}
-                  isThumbnail={isThumbnail}
-                  activeSide={0} //active side for thumbnail always first one
-                  windowSize={windowSize}
-                  localData={localData}
-                  layoutControls={layoutControls}
-               />
-            </div>
-         )}
-         {!isThumbnail && (
-            <div
-               className={`side-container ${flipped ? "flip" : ""}`}
-               style={{
-                  transform: "rotateY(" + activeSide * 180 + "deg)",
-               }}
-            >
-               {renderSide("card-front")}
-               {renderSide("card-back")}
-            </div>
-         )}
-      </div>
-   );
+  return (
+    <div className={classProp}>
+      {isThumbnail && (
+        <div className="card-preview" onClick={(e)=>clickOnCard(e, lk, section)}>
+          <Side
+            lk={lk}
+            section={section}
+            isThumbnail={isThumbnail}
+            activeSide={0} //active side for thumbnail always first one
+            windowSize={windowSize}
+            layoutControls={layoutControls}
+          />
+        </div>
+      )}
+      {!isThumbnail && (
+        <div
+          className={`side-container ${flipped ? "flip" : ""}`}
+          style={{
+            transform: "rotateY(" + activeSide * 180 + "deg)",
+          }}
+        >
+          {renderSide("card-front")}
+          {renderSide("card-back")}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Card;
