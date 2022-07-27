@@ -180,12 +180,12 @@ export default class LayoutManager extends Component {
         //if reshuffling
         if (this.state.mode == "shuffle") {
             let shuffled = []
-            let randomLK, randomLKElement, randomSection;
+            let randomLK, randomLKElement
+            const randomSection = getRandomElement(this.sections)
+
             for (let i = 0; i < 5; i++) {
                 randomLK = getRandomElement(this.landkreise)
-                randomSection = getRandomElement(this.sections)
                 randomLKElement = {lk:{value:randomLK.value,label:randomLK.label},section:randomSection.value}
-
                 shuffled.push(randomLKElement)
             }
             await this.setStateAsync({ shuffleSelection: shuffled }).then(() => {
