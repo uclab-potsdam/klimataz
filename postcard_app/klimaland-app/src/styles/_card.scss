@@ -172,30 +172,3 @@ $postcardview-postcardwidth: 60vw;
         position: relative;
     }
 }
-
-.chart-container{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex:1;
-
-    h3{
-        font-size: 2rem;
-
-    }
-
-    &.thumbnail{
-        justify-content: space-evenly;
-
-        h3{
-            margin:0;
-            font-size:1.2rem;
-        }
-
-        p{
-            margin: 0;
-        }
-    }
-}

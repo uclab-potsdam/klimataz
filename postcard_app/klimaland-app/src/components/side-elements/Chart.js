@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import LineChart from '../vis/LineChart.js'
+import LineChart from './vis/LineChart.js'
 
 
 
@@ -29,12 +29,7 @@ export default class Chart extends Component {
         return(
             <div className={"chart-container " + this.props.thumbnailClass}>
                 <h3>Grüsse aus {this.props.lk.label}, mit der id {this.props.lk.value}!</h3>
-                {this.props.section == "Mo" && this.props.activeSide == 0 && 
-                    <LineChart localData={this.props.localData}
-                    width={this.props.chartStyle.width} 
-                    height={this.props.chartStyle.height}
-                    thumbnailClass={this.props.thumbnailClass}
-                    section={this.props.section}/>} 
+                {this.props.section == "Mo" && this.props.children}
                 {this.props.section != "Mo" && 
                     <svg width={this.props.chartStyle.width} height={this.props.chartStyle.height}>
                         <rect width={this.props.chartStyle.width} height={this.props.chartStyle.height} style={{fill:this.state.fill,strokeWidth:3,stroke:this.state.stroke}} />

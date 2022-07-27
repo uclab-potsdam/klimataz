@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import * as d3 from "d3";
+import Chart from '../Chart';
 
 export default class LineChart extends Component {
 
@@ -21,8 +22,8 @@ export default class LineChart extends Component {
          linePath: null,
          areaPath: null,
          filteredData: [],
-         width: this.props.width - this.margin.left,
-         height: this.props.height - this.margin.top,
+         width: this.props.chartStyle.width - this.margin.left,
+         height: this.props.chartStyle.height - this.margin.top,
       }
    }
 
@@ -97,15 +98,16 @@ export default class LineChart extends Component {
    }
 
    async componentDidMount() {
+      console.log("line chart helloooooo")
       await this.createChart()
    }
 
    async componentDidUpdate(prevProps) {
-      if (this.props.width !== prevProps.width || this.props.height !== prevProps.height
+      if (this.props.chartStyle.width !== prevProps.chartStyle.width || this.props.chartStyle.height !== prevProps.chartStyle.height
          || this.props.isThumbnail !== prevProps.isThumbnail) {
 
-         let width = this.props.width - this.margin.left
-         let height = this.props.height - this.margin.top
+         let width = this.props.chartStyle.width - this.margin.left
+         let height = this.props.chartStyle.height - this.margin.top
          await this.setStateAsync({ width: width, height: height })
          await this.createChart()
       }
@@ -113,42 +115,51 @@ export default class LineChart extends Component {
 
    render() {
       return (
-         <div width={this.props.width} height={this.props.height} className={"lineChart " + this.props.thumbnailClass}>
-            <svg viewBox={`0 0 ${this.props.width} 
-                          ${this.props.height}`}
-               preserveAspectRatio="xMaxYMax meet"
-               width={this.props.width} height={this.props.height}>
-               <g>
-                  <g className="axis axis-y" ref={this.state.yAxis} 
-                     transform={`translate(${this.margin.left},0)`}/>
-                  <g className="axis axis-x" ref={this.state.xAxis}
-                     transform={`translate(0,${this.state.height - this.margin.bottom})`}
-                  />
-                  <path
-                     fill={this.color}
-                     d={this.state.areaPath}
-                     opacity={0.3} />
-                  <path strokeWidth={2}
-                     fill="none"
-                     stroke={this.color}
-                     d={this.state.linePath} />
+         <div width={this.props.chartStyle.width} height={this.props.chartStyle.height} className={"line-chart " + this.props.thumbnailClass}>
+            <Chart 
+               chartStyle={this.props.chartStyle}
+               section={this.props.section}
+               activeSide={this.props.activeSide}  
+               lk={this.props.lk} 
+               thumbnailClass={this.props.thumbnailClass}
+            >
+               <svg viewBox={`0 0 ${this.props.chartStyle.width} 
+                           ${this.props.chartStyle.height}`}
+                  preserveAspectRatio="xMaxYMax meet"
+                  width={this.props.chartStyle.width} height={this.props.chartStyle.height}>
                   <g>
-                     {this.state.filteredData.map((item) => {
-                        return (
-                           <g key={item.key}>
-                              <circle
-                                 cx={this.state.scaleX(item.year)}
-                                 cy={this.state.scaleY(item.value)}
-                                 r={3}
-                                 fill={this.color}
-                                 stroke="#fff"
-                              />
-                           </g>
-                        )
-                     })}
+                     <g className="axis axis-y" ref={this.state.yAxis} 
+                        transform={`translate(${this.margin.left},0)`}/>
+                     <g className="axis axis-x" ref={this.state.xAxis}
+                        transform={`translate(0,${this.state.height - this.margin.bottom})`}
+                     />
+                     <path
+                        fill={this.color}
+                        d={this.state.areaPath}
+                        opacity={0.3} />
+                     <path 
+                        strokeWidth={2}
+                        fill="none"
+                        stroke={this.color}
+                        d={this.state.linePath} />
+                     <g>
+                        {this.state.filteredData.map((item) => {
+                           return (
+                              <g key={item.key}>
+                                 <circle
+                                    cx={this.state.scaleX(item.year)}
+                                    cy={this.state.scaleY(item.value)}
+                                    r={3}
+                                    fill={this.color}
+                                    stroke="#fff"
+                                 />
+                              </g>
+                           )
+                        })}
+                     </g>
                   </g>
-               </g>
-            </svg>
+               </svg>
+            </Chart>
          </div>
       )
    }

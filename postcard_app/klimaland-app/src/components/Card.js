@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import flip from "../img/buttons/flip.png";
 import { mod } from "./helper";
 
-const Card = ({ classProp, sides, isThumbnail, isTopCard, children }) => {
+const Card = ({ classProp, sides, isThumbnail, children }) => {
 
    const [activeSide, setActiveSide] = useState(0);
    const [flipped, setFlipped] = useState(0);
@@ -20,8 +20,6 @@ const Card = ({ classProp, sides, isThumbnail, isTopCard, children }) => {
 
    const sideWithProps = function (rotation) {
       return React.Children.map(children, child => {
-         // Checking isValidElement is the safe way and avoids a typescript
-         // error too.
          if (React.isValidElement(child)) {
             return React.cloneElement(child, { activeSide: mod(activeSide, sides.length),style:rotation});
          }

@@ -1,5 +1,33 @@
 @import "_config.scss";
 
+.chart-container{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex:1;
+
+    h3{
+        font-size: 1.5rem;
+
+    }
+
+    &.thumbnail{
+        justify-content: space-evenly;
+
+        h3{
+            margin:0;
+            font-size:1rem;
+        }
+
+        p{
+            margin: 0;
+        }
+    }
+}
+
+
 .landkreis {
     stroke: rgb(84, 84, 84);
     stroke-width: 0.25;
@@ -10,8 +38,10 @@
     }
 }
 
-.lineChart {
-
+.line-chart {
+    display: inline-flex;
+    flex:1;
+    
     .axis-x{
         text{
             font-size: 1rem;
