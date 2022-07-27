@@ -74,6 +74,7 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard, win
             activeSide={0} //active side for thumbnail always first one
             windowSize={windowSize}
             layoutControls={layoutControls}
+            localData={localData}
           />
         </div>
       )}

@@ -13,8 +13,7 @@ export default class Chart extends Component {
 
         this.state = {
             fill: '#FFE8C9',
-            stroke: '#bbb',
-            localData:[]
+            stroke: '#bbb'
         }
     }
 
@@ -24,10 +23,6 @@ export default class Chart extends Component {
         });
     }
 
-    async componentDidMount(){
-        await this.setStateAsync({localData:Data[this.props.lk.value]})
-        console.log("mount done")
-    }
 
     //TODO: smarter way of drawing viz (from layout-controls!)
     render() {
