@@ -16,8 +16,8 @@ export default class CardCollection extends Component {
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
-  handleClickOnCard() {
-    this.props.switchToPostcardView();
+  handleClickOnCard(e,lk,section) {
+    this.props.switchToPostcardView(lk,section);
   }
 
   updateWindowDimensions() {

@@ -12,8 +12,6 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard, win
 
   const sides = LayoutControls[section].params;
 
-  console.log(sides)
-
   const [activeSide, setActiveSide] = useState(0);
   const [flipped, setFlipped] = useState(0);
 
@@ -54,7 +52,7 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard, win
   return (
     <div className={classProp}>
       {isThumbnail && (
-        <div className="card-preview" onClick={clickOnCard}>
+        <div className="card-preview" onClick={(e)=>clickOnCard(e, lk, section)}>
           <Side
             lk={lk}
             section={section}

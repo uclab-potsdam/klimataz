@@ -84,8 +84,14 @@ export default class LayoutManager extends Component {
         }
     }
 
-    switchToPostcardView() {
+    switchToPostcardView(lk,section) {
         this.setState({ postcardView: true });
+        
+        //get card id of clicked card
+        let chosenCard = this.state.cardSelection.findIndex(x => x.lk === lk && x.section === section)
+
+        //set active card to this card id
+        this.setState({activeCard:chosenCard})
     }
 
     closePostcardView() {
