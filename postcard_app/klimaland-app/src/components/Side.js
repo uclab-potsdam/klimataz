@@ -66,7 +66,7 @@ export default class Side extends Component {
 
    render() {
       return (
-         <div className="side-inner">
+         <div className="side-inner" onClick={(e)=>this.props.clickOnCard(e, this.props.lk, this.props.section)}>
             {!this.state.showViz && <Text 
                lk={this.props.lk} 
                section={this.props.section} 

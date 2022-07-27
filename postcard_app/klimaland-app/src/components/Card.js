@@ -1,22 +1,13 @@
 import React from "react";
-import Side from "./Side";
 import { useState, useEffect } from "react";
-import LayoutControls from "../data/layout-controls.json";
+
 import flip from "../img/buttons/flip.png";
 import { mod } from "./helper";
 
-const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard, windowSize, localData }) => {
-
-   //const sides = ["side 1", "side 2", "side 3", "side 4"];
-   //const sides = ["side 1", "side 2", "side 3"];
-
-   const sides = LayoutControls[section].params;
+const Card = ({ classProp, sides, isThumbnail, isTopCard, children }) => {
 
    const [activeSide, setActiveSide] = useState(0);
    const [flipped, setFlipped] = useState(0);
-
-   const layoutControls = LayoutControls[section].params;
-
 
    //TODO: flip first, after that switch the content on the side
    //maybe with gsap??
@@ -26,31 +17,35 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard, win
       setFlipped(currentVal);
    }, [activeSide]);
 
-   const renderSide = function (cardSide) {
 
-      let rotation = ""
+   const sideWithProps = function (rotation) {
+      return React.Children.map(children, child => {
+         // Checking isValidElement is the safe way and avoids a typescript
+         // error too.
+         if (React.isValidElement(child)) {
+            return React.cloneElement(child, { activeSide: mod(activeSide, sides.length),style:rotation});
+         }
+         return child;
+      })
+   };
+
+
+   const renderSide = function (cardSide) {
+      let rotation;
       if (cardSide === "card-front") {
-         rotation = "rotateY(" + activeSide * 180 - 180 + "deg)"
+         rotation = { transform: "rotateY(" + activeSide * 180 - 180 + "deg)" }
       }
-      else {
-         rotation = "rotateY(" + activeSide * 180 + "deg)"
+      else if (cardSide === "card-back") {
+         rotation = { transform: "rotateY(" + activeSide * 180 + "deg)" }
+      }
+      else { //card-preview
+         rotation = {}
+         console.log("card class for rotation is not set")
       }
 
       return (
          <div className={cardSide}>
-            <Side
-               lk={lk}
-               section={section}
-               isThumbnail={isThumbnail}
-               isTopCard={isTopCard}
-               activeSide={mod(activeSide, sides.length)}
-               layoutControls={sides}
-               windowSize={windowSize}
-               localData={localData}
-               style={{
-                  transform: rotation,
-               }}
-            />
+            {sideWithProps(rotation)}
             <button
                className="button flip"
                onClick={() => {
@@ -63,34 +58,27 @@ const Card = ({ classProp, lk, section, clickOnCard, isThumbnail, isTopCard, win
       );
    }
 
-  return (
-    <div className={classProp}>
-      {isThumbnail && (
-        <div className="card-preview" onClick={(e)=>clickOnCard(e, lk, section)}>
-          <Side
-            lk={lk}
-            section={section}
-            isThumbnail={isThumbnail}
-            activeSide={0} //active side for thumbnail always first one
-            windowSize={windowSize}
-            layoutControls={layoutControls}
-            localData={localData}
-          />
-        </div>
-      )}
-      {!isThumbnail && (
-        <div
-          className={`side-container ${flipped ? "flip" : ""}`}
-          style={{
-            transform: "rotateY(" + activeSide * 180 + "deg)",
-          }}
-        >
-          {renderSide("card-front")}
-          {renderSide("card-back")}
-        </div>
-      )}
-    </div>
-  );
+   return (
+
+      <div className={classProp}>
+         {isThumbnail && (
+            <div className="card-preview">
+               {sideWithProps({})}
+            </div>
+         )}
+         {!isThumbnail && (
+            <div
+               className={`side-container ${flipped ? "flip" : ""}`}
+               style={{
+                  transform: "rotateY(" + activeSide * 180 + "deg)",
+               }}
+            >
+               {renderSide("card-front")}
+               {renderSide("card-back")}
+            </div>
+         )}
+      </div>
+   );
 };
 
 export default Card;
