@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import * as d3 from "d3";
-import { text } from 'd3';
 
 export default class LineChart extends Component {
 
@@ -35,7 +34,9 @@ export default class LineChart extends Component {
 
    async createChart() {
 
-      let data = this.props.data.mobility_cartype_density_.data.map(d => {
+      console.log(this.props.localData)
+      console.log(this.props.section)
+      let data = this.props.localData[this.props.section]._cartype_density_.data.map(d => {
          return {
             key: +d.key,
             year: +d.year,
@@ -90,7 +91,7 @@ export default class LineChart extends Component {
          .curve(d3.curveMonotoneX)(filteredData);
 
       await this.setStateAsync({
-         benchmark: this.props.data.benchmark, data: data, regional: this.props.data.regional,
+         benchmark: data.benchmark, data: data, regional: data.regional,
          xAxis: xAxis, yAxis: yAxis, scaleX: scaleX, scaleY: scaleY, areaPath: areaPath, linePath: linePath, filteredData: filteredData
       }).catch((error) => { console.log(error) })
    }

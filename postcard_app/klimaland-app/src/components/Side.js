@@ -76,6 +76,7 @@ export default class Side extends Component {
                section={this.props.section} 
                activeSide={this.props.activeSide} 
                chartStyle={this.state.chartStyle} 
+               localData={this.props.localData}
                thumbnailClass={(this.props.isThumbnail) ? "thumbnail" : ""}/>}
             {this.state.showLocator && <Locator 
                lk={this.props.lk}/>}

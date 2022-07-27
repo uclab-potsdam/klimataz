@@ -4,6 +4,9 @@ import {mod} from "./helper.js"
 //components
 import Card from "./Card";
 
+//data (same for all cards, so imported here)
+import Data from '../data/data-inprogress.json'
+
 export default class CardCollection extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +15,7 @@ export default class CardCollection extends Component {
         width:0, 
         height:0 
       }};
+    this.data = Data;
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -69,6 +73,7 @@ export default class CardCollection extends Component {
             isThumbnail={false}
             isTopCard={isTopCard}
             windowSize={this.state.windowSize}
+            localData={this.data[element.lk.value]}
           />
         );
       });
@@ -93,6 +98,7 @@ export default class CardCollection extends Component {
           clickOnCard={this.handleClickOnCard}
           isThumbnail={true}
           windowSize={this.state.windowSize}
+          localData={this.data[element.lk.value]}
         />
       ));
     }
