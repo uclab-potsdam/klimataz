@@ -8,6 +8,11 @@ $blue: rgb(170, 210, 238);
 $taz-pink: #F00048;
 $taz-orange: #F6A219;
 $lighter-orange: #FFE8C9;
+$red:#FF7B7B;
+
+//variables
+$postcardview-postcardwidth: 60vw;
+$thumbnail-postcardwith:30vw;
 
 //effects
 $boxshadow: (
@@ -24,6 +29,25 @@ $boxshadow: (
 
 @mixin title{
     font-family: "IBM Plex Mono", monospace;
+}
+
+@mixin button{
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    right: 0.5rem;
+    bottom: 0.5rem;
+
+    &:hover{
+        opacity: 70%;
+    }
+
+    &.img{
+        height: 25px;
+        color:"blue"
+    }
 }
 
 //media queries

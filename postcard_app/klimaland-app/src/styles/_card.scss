@@ -1,7 +1,5 @@
 @import "_config.scss";
 
-$postcardview-postcardwidth: 60vw;
-
 //reusable styles
 @mixin postcard{
     background-color: $light;
@@ -89,8 +87,8 @@ $postcardview-postcardwidth: 60vw;
 
     &-ordered{
         //148mm x 105mm (ratio 1.4)
-        width: 30vw;
-        height: calc(30vw/1.4);
+        width: $thumbnail-postcardwith;
+        height: calc($thumbnail-postcardwith/1.4);
         position: relative;
         z-index: 0;
     }
