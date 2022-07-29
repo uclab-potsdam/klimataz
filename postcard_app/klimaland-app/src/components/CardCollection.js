@@ -8,6 +8,7 @@ import Side from "./Side";
 //data (same for all cards, so imported here)
 import Data from '../data/data-inprogress.json'
 import LayoutControls from "../data/layout-controls.json";
+import Help from "./Help.js";
 
 export default class CardCollection extends Component {
    constructor(props) {
@@ -154,16 +155,21 @@ export default class CardCollection extends Component {
          <div className="card-collection">
             <h5>View Mode: {this.props.mode}, LK:  {this.props.cardSelection.map((elem) => elem.lk.label + " " + elem.section + " | ")}</h5>
             {this.props.mode === "comparison" && !this.props.postcardView && (
-               <div className="card-container stacked"> {this.state.cards} </div>
+               <div>
+                  <div className="card-container stacked"> {this.state.cards} </div>
+                  <Help/>
+               </div>
             )}
             {this.props.mode === "lk" && !this.props.postcardView && (
                <div>
                   <div className="card-container messy">{this.state.cards}</div>
+                  <Help/>
                </div>
             )}
             {this.props.mode === "shuffle" && !this.props.postcardView && (
                <div>
                   <div className="card-container shuffle">{this.state.cards}</div>
+                  <Help/>
                </div>
             )}
             {this.props.postcardView && (

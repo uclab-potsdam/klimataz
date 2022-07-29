@@ -85,22 +85,7 @@ code {
 
 
 .button{
-    border: none;
-    background: none;
-    cursor: pointer;
-    margin: 0;
-    padding: 0;
-    right: 0.5rem;
-    bottom: 0.5rem;
-
-    &:hover{
-        opacity: 70%;
-    }
-
-    &.img{
-        height: 25px;
-        color:"blue"
-    }
+    @include button;
 
     &.flip{
         position: absolute;
@@ -111,4 +96,40 @@ code {
     &.shuffle{
         margin:1rem;
     }
+}
+
+.help{
+    color:$red;
+    border-color:$red;
+    border-style:solid;
+    border-radius: 10px;
+    border-width:1px;
+    width: 15vw;
+    padding:1rem;
+    margin:1rem;
+    margin-bottom:3rem;
+    margin-left:2rem;
+
+    position: relative;
+    z-index:2;
+    transform:rotate(10deg);
+
+    &.help-postcard{
+        background: #fff;
+        width: $thumbnail-postcardwith;
+        height: calc($thumbnail-postcardwith/1.4);
+        transform: translateY(calc($thumbnail-postcardwith/-1.4)) rotate(10deg);
+        transition:1000ms ease;
+
+        .close{
+            @include button;
+            position: absolute;
+        }
+    }
+
+    h4{
+        margin:1rem 0;
+        color:$red;
+    }
+
 }
