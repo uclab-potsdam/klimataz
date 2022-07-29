@@ -1,15 +1,25 @@
 //here will be the responsive changes 
 
-@include media-md{
-    .card-container{
-        // flex-direction: row;
-        // flex-wrap: wrap;
-        // justify-content: center;
-        // align-items: baseline;
-    }
-
-    .card{
-        // height: 24vh;
-        // width: 18vw;
+@include media-s{ 
+    .header-taz {
+        max-width: 100vw;
     }
 }
+
+@include media-md{
+
+    .canvas {
+        width: 100vw;
+    }
+
+    .header-taz {
+        width: 100vw;
+    }
+}
+
+@include media-lg{ 
+    .header-taz {
+        width: 948px;
+    }
+}
+
