@@ -57,6 +57,10 @@
 
     &.thumbnail{
 
+        text{
+            display: none;
+        }
+
         .axis-x{
             display: none;
         }

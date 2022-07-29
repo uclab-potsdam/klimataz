@@ -44,7 +44,7 @@ export default class LayoutManager extends Component {
         this.state = {
             //editors pick might be a prop and set by canvas!
             editorspick: [
-                { lk: { value: "11", label: "Berlin" }, section: "Mo" },
+                { lk: { value: "15003", label: "Magdeburg" }, section: "Mo" },
                 { lk: { value: "2", label: "Hamburg" }, section: "Ab" },
                 { lk: { value: "1011", label: "Flensburg" }, section: "En" },
             ],

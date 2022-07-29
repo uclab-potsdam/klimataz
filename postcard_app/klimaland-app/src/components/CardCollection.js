@@ -21,7 +21,7 @@ export default class CardCollection extends Component {
       };
       this.data = Data;
       this.layoutControls = LayoutControls;
-      console.log(LayoutControls);
+      console.log(this.data);
       this.handleClickOnCard = this.handleClickOnCard.bind(this);
       this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
    }

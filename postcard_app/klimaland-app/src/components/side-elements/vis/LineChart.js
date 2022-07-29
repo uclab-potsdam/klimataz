@@ -35,6 +35,8 @@ export default class LineChart extends Component {
 
    async createChart() {
 
+      const footnote = this.props.localData.footnote;
+
       console.log(this.props.localData)
       console.log(this.props.section)
       let data = this.props.localData[this.props.section]._cartype_density_.data.map(d => {
@@ -93,7 +95,8 @@ export default class LineChart extends Component {
 
       await this.setStateAsync({
          benchmark: data.benchmark, data: data, regional: data.regional,
-         xAxis: xAxis, yAxis: yAxis, scaleX: scaleX, scaleY: scaleY, areaPath: areaPath, linePath: linePath, filteredData: filteredData
+         xAxis: xAxis, yAxis: yAxis, scaleX: scaleX, scaleY: scaleY, areaPath: areaPath, 
+         linePath: linePath, filteredData: filteredData, footnote:footnote
       }).catch((error) => { console.log(error) })
    }
 
@@ -104,7 +107,7 @@ export default class LineChart extends Component {
 
    async componentDidUpdate(prevProps) {
       if (this.props.chartStyle.width !== prevProps.chartStyle.width || this.props.chartStyle.height !== prevProps.chartStyle.height
-         || this.props.isThumbnail !== prevProps.isThumbnail) {
+         || this.props.isThumbnail !== prevProps.isThumbnail || this.props.localData !== prevProps.localData) {
 
          let width = this.props.chartStyle.width - this.margin.left
          let height = this.props.chartStyle.height - this.margin.top
@@ -157,6 +160,10 @@ export default class LineChart extends Component {
                            )
                         })}
                      </g>
+                     <text
+                        transform={`translate(${this.margin.left + 10},${this.state.height + this.margin.bottom})`}
+                        fill={this.color}
+                     >{this.state.footnote}</text>
                   </g>
                </svg>
             </Chart>
