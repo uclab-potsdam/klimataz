@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 
-import LineChart from './vis/LineChart.js'
-
-
-
 export default class Chart extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
 
         //TODO: load data here once, but it needs to work with the async stuff in the child components
@@ -26,15 +22,22 @@ export default class Chart extends Component {
 
     //TODO: smarter way of drawing viz (from layout-controls!)
     render() {
-        return(
+        return (
             <div className={"chart-container " + this.props.thumbnailClass}>
                 <h3>Grüsse aus {this.props.lk.label}, mit der id {this.props.lk.value}!</h3>
                 {this.props.section == "Mo" && this.props.children}
-                {this.props.section != "Mo" && 
+                {this.props.section == "En" && this.props.children}
+                {this.props.section != "Mo" && this.props.section != "En" &&
                     <svg width={this.props.chartStyle.width} height={this.props.chartStyle.height}>
-                        <rect width={this.props.chartStyle.width} height={this.props.chartStyle.height} style={{fill:this.state.fill,strokeWidth:3,stroke:this.state.stroke}} />
+                        <rect width={this.props.chartStyle.width}
+                            height={this.props.chartStyle.height}
+                            style={{ fill: this.state.fill, strokeWidth: 3, stroke: this.state.stroke }} />
+                        <text
+                            y={this.props.chartStyle.height / 2} >
+                            Placeholder for Chart
+                        </text>
                     </svg>}
-                <p>Hier ist ein Chart über die Section {this.props.section}. Seite {this.props.activeSide}. </p>     
+                <p>Hier ist ein Chart über die Section {this.props.section}. Seite {this.props.activeSide}. </p>
             </div>
         )
     }

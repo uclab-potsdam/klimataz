@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import * as d3 from "d3";
 import Chart from '../Chart';
+import { setStateAsync } from '../../helper';
 
-export default class LineChart extends Component {
+export default class MoCarDensity extends Component {
 
    constructor(props) {
       super(props)
@@ -14,7 +15,7 @@ export default class LineChart extends Component {
       this.state = {
          benchmark: 0,
          data: [],
-         regional: false,
+         regional: true,
          xAxis: null,
          yAxis: null,
          scaleX: null,
@@ -27,18 +28,14 @@ export default class LineChart extends Component {
       }
    }
 
-   setStateAsync(state) {
-      return new Promise((resolve) => {
-         this.setState(state, resolve);
-      });
-   }
+   // setStateAsync(state) {
+   //    return new Promise((resolve) => {
+   //       this.setState(state, resolve);
+   //    });
+   // }
 
    async createChart() {
 
-      const footnote = this.props.localData.footnote;
-
-      console.log(this.props.localData)
-      console.log(this.props.section)
       let data = this.props.localData[this.props.section]._cartype_density_.data.map(d => {
          return {
             key: +d.key,
@@ -93,25 +90,23 @@ export default class LineChart extends Component {
          .y1(() => scaleY(0))
          .curve(d3.curveMonotoneX)(filteredData);
 
-      await this.setStateAsync({
+      await setStateAsync(this,{
          benchmark: data.benchmark, data: data, regional: data.regional,
-         xAxis: xAxis, yAxis: yAxis, scaleX: scaleX, scaleY: scaleY, areaPath: areaPath, 
-         linePath: linePath, filteredData: filteredData, footnote:footnote
+         xAxis: xAxis, yAxis: yAxis, scaleX: scaleX, scaleY: scaleY, areaPath: areaPath, linePath: linePath, filteredData: filteredData
       }).catch((error) => { console.log(error) })
    }
 
    async componentDidMount() {
-      console.log("line chart helloooooo")
       await this.createChart()
    }
 
    async componentDidUpdate(prevProps) {
       if (this.props.chartStyle.width !== prevProps.chartStyle.width || this.props.chartStyle.height !== prevProps.chartStyle.height
-         || this.props.isThumbnail !== prevProps.isThumbnail || this.props.localData !== prevProps.localData) {
+         || this.props.isThumbnail !== prevProps.isThumbnail) {
 
          let width = this.props.chartStyle.width - this.margin.left
          let height = this.props.chartStyle.height - this.margin.top
-         await this.setStateAsync({ width: width, height: height })
+         await setStateAsync(this,{ width: width, height: height })
          await this.createChart()
       }
    }
@@ -160,10 +155,6 @@ export default class LineChart extends Component {
                            )
                         })}
                      </g>
-                     <text
-                        transform={`translate(${this.margin.left + 10},${this.state.height + this.margin.bottom})`}
-                        fill={this.color}
-                     >{this.state.footnote}</text>
                   </g>
                </svg>
             </Chart>

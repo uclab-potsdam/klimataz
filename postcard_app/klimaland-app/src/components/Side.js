@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 
+import { setStateAsync } from './helper.js';
+
 
 //side elements
 import Text from './side-elements/Text.js';
 import Locator from "./side-elements/Locator.js";
 import Chart from "./side-elements/Chart.js";
-import LineChart from './side-elements/vis/LineChart.js';
+import MoCarDensity from './side-elements/vis/MoCarDensity.js';
+import EnPrimaryEnergy from './side-elements/vis/EnPrimaryEnergy';
 
 export default class Side extends Component {
    constructor(props) {
@@ -30,25 +33,20 @@ export default class Side extends Component {
       }
    }
 
-   setStateAsync(state) {
-      return new Promise((resolve) => {
-         this.setState(state, resolve);
-      });
-   }
 
    async updateChartStyle() {
       if (this.props.isThumbnail) {
          let cardwidth = this.props.windowSize.width / 10 * 3 //30vw
          let width = cardwidth - (cardwidth / 3)
          let height = width * 0.7
-         await this.setStateAsync({ chartStyle: { width: String(width), height: String(height) } })
+         await setStateAsync(this,{ chartStyle: { width: String(width), height: String(height) } })
       }
 
       else {
          let cardwidth = this.props.windowSize.width / 10 * 7 //30vw
          let width = cardwidth - (cardwidth / 4)
          let height = width * 0.7
-         await this.setStateAsync({ chartStyle: { width: String(width), height: String(height) } })
+         await setStateAsync(this,{ chartStyle: { width: String(width), height: String(height) } })
       }
    }
 
@@ -60,7 +58,7 @@ export default class Side extends Component {
          //update layout for top card
          if (this.props.isTopCard) {
             let layoutCombo = this.props.layoutControls[this.props.activeSide].combo
-            await this.setState({ order: layoutCombo[0], showViz: layoutCombo[1], indicator: layoutCombo[2], showLocator: layoutCombo[3] })
+            await setStateAsync(this,{ order: layoutCombo[0], showViz: layoutCombo[1], indicator: layoutCombo[2], showLocator: layoutCombo[3] })
          }
 
          await this.updateChartStyle();
@@ -79,7 +77,7 @@ export default class Side extends Component {
                   lk={this.props.lk}
                   section={this.props.section}
                   activeSide={this.props.activeSide} />}
-            {this.state.showViz && this.props.section !== "Mo" &&
+            {this.state.showViz && this.props.section !== "Mo" && this.props.section !== "En" && 
                <Chart
                   lk={this.props.lk}
                   section={this.props.section}
@@ -88,8 +86,15 @@ export default class Side extends Component {
                   localData={this.props.localData}
                   thumbnailClass={(this.props.isThumbnail) ? "thumbnail" : ""} />}
             {/* {this.state.showViz && this.props.section === "Mo" && this.activeSide === 0 && <div>hello there</div> && */}
-             {this.state.showViz && this.props.activeSide === 0 && this.props.section === "Mo" && <div>hello there</div> &&
-               <LineChart
+            {this.state.showViz && this.props.activeSide === 0 && this.props.section === "Mo" &&
+               <MoCarDensity
+                  lk={this.props.lk}
+                  chartStyle={this.state.chartStyle}
+                  localData={this.props.localData}
+                  thumbnailClass={(this.props.isThumbnail) ? "thumbnail" : ""}
+                  section={this.props.section} />}
+            {this.state.showViz && this.props.activeSide === 0 && this.props.section === "En" &&
+               <EnPrimaryEnergy
                   lk={this.props.lk}
                   chartStyle={this.state.chartStyle}
                   localData={this.props.localData}

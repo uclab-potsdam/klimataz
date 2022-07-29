@@ -90,7 +90,8 @@ export default class CardCollection extends Component {
          });
 
          //   console.log("postcardview cards generated", list);
-      } else {
+      } 
+      else {
          if (this.props.mode === "comparison") {
             classProp = "card card-ordered";
          } else if (this.props.mode === "lk") {
@@ -101,7 +102,22 @@ export default class CardCollection extends Component {
          }
 
 
-         list = this.props.cardSelection.map((element, i) => (
+         list = this.props.cardSelection.map((element, i) => {
+
+            let localData = this.data[element.lk.value]
+            //use BL data for not regional data
+            for (const [key, value] of Object.entries(localData[element.section])){
+               //if data not regional
+               if (!value.regional && value.data == undefined){
+                  //get  bundesland data
+                  let BLdata = this.data[localData.bundesland][element.section][key]
+                  //store bundesland data at indicator of landkreis
+                  localData[element.section][key] = BLdata
+               }
+            }
+            //TODO: show somewhere, that this data is not on Landkreis Level as indicated by regional:false
+
+            return(
             <Card
                key={i}
                classProp={classProp}
@@ -113,13 +129,13 @@ export default class CardCollection extends Component {
                   section={element.section}
                   windowSize={this.state.windowSize}
                   isThumbnail={true}
-                  localData={this.data[element.lk.value]}
+                  localData={localData}
                   clickOnCard={this.handleClickOnCard}
                   layoutControls={this.layoutControls[element.section].params}
                />
-            </Card>
+            </Card>)
 
-         ));
+            });
       }
 
       this.setState({ cards: list });
