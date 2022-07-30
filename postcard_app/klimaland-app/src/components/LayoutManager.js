@@ -73,13 +73,15 @@ export default class LayoutManager extends Component {
 
   async updateMode() {
     let mode;
-
     if (this.state.landkreisSelection.length > 1) {
       mode = "comparison";
-    } else if (this.state.landkreisSelection.length === 1) {
+    }
+    else if (this.state.landkreisSelection.length === 1) {
       mode = "lk";
-    } else {
+    }
+    else {
       mode = "shuffle";
+    }
 
     //check mode
     if (["comparison", "shuffle", "lk"].includes(mode)) {
@@ -123,10 +125,11 @@ export default class LayoutManager extends Component {
     });
   }
 
-    async changeSection(e) {
-        await this.setStateAsync({ section: e.value }).then(() => {
-            this.updateCardSelection();
-       }
+  async changeSection(e) {
+    await this.setStateAsync({ section: e.value }).then(() => {
+      this.updateCardSelection();
+    })
+  }
 
   async updateShuffleSelection() {
     //if reshuffling
@@ -179,7 +182,8 @@ export default class LayoutManager extends Component {
       let list = [];
       if (this.state.mode === "shuffle") {
         list = this.state.shuffleSelection;
-      } else if (this.state.mode === "lk") {
+      }
+      else if (this.state.mode === "lk") {
         list = [];
         let selectedLK;
         // set default value for landkreisSelection (TODO: use germany)
