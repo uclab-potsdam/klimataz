@@ -16,6 +16,7 @@ import switchCard from "../img/buttons/switch.png";
 import close from "../img/buttons/close.png";
 
 export default class LayoutManager extends Component {
+
   constructor(props) {
     super(props);
 
@@ -79,7 +80,6 @@ export default class LayoutManager extends Component {
       mode = "lk";
     } else {
       mode = "shuffle";
-    }
 
     //check mode
     if (["comparison", "shuffle", "lk"].includes(mode)) {
@@ -123,11 +123,10 @@ export default class LayoutManager extends Component {
     });
   }
 
-  async changeSection(e) {
-    await this.setStateAsync({ section: e }).then(() => {
-      this.updateCardSelection();
-    });
-  }
+    async changeSection(e) {
+        await this.setStateAsync({ section: e.value }).then(() => {
+            this.updateCardSelection();
+       }
 
   async updateShuffleSelection() {
     //if reshuffling
@@ -196,6 +195,7 @@ export default class LayoutManager extends Component {
         //add one card per section
         this.sections.forEach((element) => {
           list.push({ lk: selectedLK, section: element.value });
+
         });
       } else if (this.state.mode === "comparison") {
         let selectedSection;
