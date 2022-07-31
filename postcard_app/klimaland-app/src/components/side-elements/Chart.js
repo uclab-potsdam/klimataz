@@ -4,13 +4,7 @@ export default class Chart extends Component {
     constructor(props) {
         super(props)
 
-        //TODO: load data here once, but it needs to work with the async stuff in the child components
         //TODO: store range or max Val in data as well
-
-        this.state = {
-            fill: '#FFE8C9',
-            stroke: '#bbb'
-        }
     }
 
     setStateAsync(state) {
@@ -25,7 +19,8 @@ export default class Chart extends Component {
         return (
             <div className={"chart-container " + this.props.thumbnailClass}>
                 <h3>Grüsse aus {this.props.lk.label}, mit der id {this.props.lk.value}!</h3>
-                {this.props.section == "Mo" && this.props.children}
+                {this.props.children}
+                {/* {this.props.section == "Mo" && this.props.children}
                 {this.props.section == "En" && this.props.children}
                 {this.props.section != "Mo" && this.props.section != "En" &&
                     <svg width={this.props.chartStyle.width} height={this.props.chartStyle.height}>
@@ -36,7 +31,7 @@ export default class Chart extends Component {
                             y={this.props.chartStyle.height / 2} >
                             Placeholder for Chart
                         </text>
-                    </svg>}
+                    </svg>} */}
                 <p>Hier ist ein Chart über die Section {this.props.section}. Seite {this.props.activeSide}. </p>
             </div>
         )

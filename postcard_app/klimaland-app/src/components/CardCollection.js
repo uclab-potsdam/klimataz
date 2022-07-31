@@ -7,7 +7,7 @@ import Side from "./Side";
 
 //data (same for all cards, so imported here)
 import Data from '../data/data-inprogress.json'
-import LayoutControls from "../data/layout-controls.json";
+import LayoutControls from "../data/layout-controls-inprogress.json";
 
 export default class CardCollection extends Component {
    constructor(props) {

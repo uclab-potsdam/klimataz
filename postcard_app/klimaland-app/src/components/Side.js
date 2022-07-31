@@ -6,15 +6,15 @@ import { setStateAsync } from './helper.js';
 //side elements
 import Text from './side-elements/Text.js';
 import Locator from "./side-elements/Locator.js";
-import Chart from "./side-elements/Chart.js";
-import MoCarDensity from './side-elements/vis/MoCarDensity.js';
-import EnPrimaryEnergy from './side-elements/vis/EnPrimaryEnergy';
+
+//all vis elements are loaded dynamically from this file depending on indicator in layoutcontrols
+import VisIndex from './side-elements/vis/VisIndex';
 
 export default class Side extends Component {
    constructor(props) {
       super(props)
 
-      let layoutCombo = this.props.layoutControls[this.props.activeSide].combo
+      let layoutCombo = this.props.layoutControls[this.props.activeSide][this.props.activeSide].combo
 
       // name	      value	type
       // order	      describes the order in which the layout should be shown ordering hiccups	Int
@@ -24,17 +24,18 @@ export default class Side extends Component {
       this.state = {
          order: layoutCombo[0],
          showViz: layoutCombo[1],
-         indicator: layoutCombo[2],
+         indicatorInt: layoutCombo[2],
          showLocator: layoutCombo[3],
          chartStyle: {
             width: "300",
             height: "200"
          },
       }
+
+      this.vis = this.vis.bind(this)
    }
 
-
-   async updateChartStyle() {
+   async updateChartSize() {
       if (this.props.isThumbnail) {
          let cardwidth = this.props.windowSize.width / 10 * 3 //30vw
          let width = cardwidth - (cardwidth / 3)
@@ -50,6 +51,33 @@ export default class Side extends Component {
       }
    }
 
+   vis(){
+      if(this.props.layoutControls[this.props.activeSide][0].components !== undefined){
+         let chartComponent = this.props.layoutControls[this.props.activeSide][0].components.component
+         
+         const RenderChart = VisIndex[chartComponent];
+         
+         return <RenderChart
+            lk={this.props.lk}
+            chartStyle={this.state.chartStyle}
+            localData={this.props.localData}
+            thumbnailClass={(this.props.isThumbnail) ? "thumbnail" : ""}
+            section={this.props.section}
+         />
+      }
+      else{
+         const RenderChart = VisIndex["PlaceHolder"];
+         return <RenderChart
+            lk={this.props.lk}
+            section={this.props.section}
+            activeSide={this.props.activeSide}
+            chartStyle={this.state.chartStyle}
+            localData={this.props.localData}
+            thumbnailClass={(this.props.isThumbnail) ? "thumbnail" : ""} 
+            />
+      }
+   }
+
    async componentDidUpdate(prevProps) {
       if (this.props.isTopCard !== prevProps.isTopCard || this.props.activeSide !== prevProps.activeSide
          || this.props.layoutControls !== prevProps.layoutControls || this.props.isThumbnail !== prevProps.isThumbnail
@@ -57,16 +85,16 @@ export default class Side extends Component {
 
          //update layout for top card
          if (this.props.isTopCard) {
-            let layoutCombo = this.props.layoutControls[this.props.activeSide].combo
+            let layoutCombo = this.props.layoutControls[this.props.activeSide][this.props.activeSide].combo
             await setStateAsync(this,{ order: layoutCombo[0], showViz: layoutCombo[1], indicator: layoutCombo[2], showLocator: layoutCombo[3] })
          }
 
-         await this.updateChartStyle();
+         await this.updateChartSize();
       }
    }
 
    async componentDidMount() {
-      await this.updateChartStyle();
+      await this.updateChartSize();
    }
 
    render() {
@@ -77,7 +105,8 @@ export default class Side extends Component {
                   lk={this.props.lk}
                   section={this.props.section}
                   activeSide={this.props.activeSide} />}
-            {this.state.showViz && this.props.section !== "Mo" && this.props.section !== "En" && 
+            {this.state.showViz && this.props.activeSide === 0 && this.vis()}
+            {/* {this.state.showViz && this.props.section !== "Mo" && this.props.section !== "En" && 
                <Chart
                   lk={this.props.lk}
                   section={this.props.section}
@@ -85,7 +114,6 @@ export default class Side extends Component {
                   chartStyle={this.state.chartStyle}
                   localData={this.props.localData}
                   thumbnailClass={(this.props.isThumbnail) ? "thumbnail" : ""} />}
-            {/* {this.state.showViz && this.props.section === "Mo" && this.activeSide === 0 && <div>hello there</div> && */}
             {this.state.showViz && this.props.activeSide === 0 && this.props.section === "Mo" &&
                <MoCarDensity
                   lk={this.props.lk}
@@ -99,7 +127,7 @@ export default class Side extends Component {
                   chartStyle={this.state.chartStyle}
                   localData={this.props.localData}
                   thumbnailClass={(this.props.isThumbnail) ? "thumbnail" : ""}
-                  section={this.props.section} />}
+                  section={this.props.section} />} */}
             {this.state.showLocator &&
                <Locator
                   lk={this.props.lk} />}
