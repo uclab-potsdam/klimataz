@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import * as d3 from "d3";
 import Chart from '../Chart';
 import { setStateAsync } from '../../helper';
+import { getLinearYScale, getXAxis, getYAxis, getYearXScale } from '../../customD3functions';
 
 export default class PrimaryEnergy extends Component {
    constructor(props) {
@@ -67,36 +68,22 @@ export default class PrimaryEnergy extends Component {
       const stack = d3
          .stack()
          .keys(types)
-         .order(d3.stackOrderInsideOut)
+         //.order(d3.stackOrderInsideOut)
 
       const stackedData = stack(dataByYear);
 
+      const scaleX = getYearXScale(this,data);
+      const scaleY = getLinearYScale(this,d3.max(stackedData.flat(2)))
 
-
-      const scaleX = d3
-         .scaleTime()
-         .domain(d3.extent(data, (d) => d.year))
-         .range([this.margin.left, this.state.width - this.margin.right]);
-
-      const scaleY = d3
-         .scaleLinear()
-         .domain([0, d3.max(stackedData.flat(2))])
-         .range([this.state.height - this.margin.top, this.margin.bottom]);
 
       const xAxis = (ref) => {
-         const xAxis = d3
-            .axisBottom(scaleX)
-            .ticks(10)
-            .tickSize(10)
-            .tickFormat(d3.format("d"));
+         const xAxis = getXAxis(scaleX)
          //.tickFormat((d) => {return d3.timeFormat('%Y')(d.year)})
          d3.select(ref).call(xAxis);
       };
 
       const yAxis = (ref) => {
-         const yAxis = d3.axisLeft(scaleY)
-            .ticks(10)
-            .tickSize(10)
+         const yAxis = getYAxis(scaleY)
          d3.select(ref).call(yAxis);
       };
       
@@ -105,7 +92,8 @@ export default class PrimaryEnergy extends Component {
       let width = this.props.chartStyle.width - this.margin.left
       let height = this.props.chartStyle.height - this.margin.top
 
-      await setStateAsync(this, { stackedData:stackedData,xAxis: xAxis, yAxis: yAxis, width: width, height: height,scaleX:scaleX,scaleY:scaleY,color:color})   
+      await setStateAsync(this, { stackedData:stackedData,xAxis: xAxis, yAxis: yAxis, width: width, 
+         height: height,scaleX:scaleX,scaleY:scaleY,color:color}).catch((error) => { console.log(error) }) 
    }
 
    componentDidMount() {

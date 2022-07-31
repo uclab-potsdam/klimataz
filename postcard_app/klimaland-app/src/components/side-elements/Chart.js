@@ -5,12 +5,7 @@ export default class Chart extends Component {
         super(props)
 
         //TODO: store range or max Val in data as well
-    }
-
-    setStateAsync(state) {
-        return new Promise((resolve) => {
-            this.setState(state, resolve);
-        });
+        //TODO: reusable code snippets like scales or axis
     }
 
 

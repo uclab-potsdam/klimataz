@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import * as d3 from "d3";
 import Chart from '../Chart';
 import { setStateAsync } from '../../helper';
+import { getLinearYScale, getXAxis, getYAxis, getYearXScale} from '../../customD3functions';
 
 export default class MoCarDensity extends Component {
 
@@ -51,31 +52,16 @@ export default class MoCarDensity extends Component {
 
       let yMaxValue = d3.max(filteredData, (d) => d.value) + 100
 
-      const scaleX = d3
-         .scaleTime()
-         .domain(d3.extent(filteredData, (d) => d.year))
-         .range([this.margin.left, this.state.width - this.margin.right]);
-
-
-      const scaleY = d3
-         .scaleLinear()
-         .domain([0, yMaxValue])
-         .range([this.state.height - this.margin.top, this.margin.bottom]);
+      const scaleX = getYearXScale(this,filteredData)
+      const scaleY = getLinearYScale(this,yMaxValue)
 
       const xAxis = (ref) => {
-         const xAxis = d3
-            .axisBottom(scaleX)
-            .ticks(10)
-            .tickSize(10)
-            .tickFormat(d3.format("d"));
-         //.tickFormat((d) => {return d3.timeFormat('%Y')(d.year)})
+         const xAxis = getXAxis(scaleX);
          d3.select(ref).call(xAxis);
       };
 
       const yAxis = (ref) => {
-         const yAxis = d3.axisLeft(scaleY)
-            .ticks(10)
-            .tickSize(10)
+         const yAxis = getYAxis(scaleY)
          d3.select(ref).call(yAxis);
       };
 
