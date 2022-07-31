@@ -114,8 +114,8 @@ export default class PrimaryEnergy extends Component {
 
    async componentDidUpdate(prevProps) {
       if (this.props.chartStyle.width !== prevProps.chartStyle.width || this.props.chartStyle.height !== prevProps.chartStyle.height
-         || this.props.isThumbnail !== prevProps.isThumbnail) {
-
+         || this.props.isThumbnail !== prevProps.isThumbnail || this.props.localData !== prevProps.localData) {
+            
          let width = this.props.chartStyle.width - this.margin.left
          let height = this.props.chartStyle.height - this.margin.top
          await setStateAsync(this,{ width: width, height: height })
