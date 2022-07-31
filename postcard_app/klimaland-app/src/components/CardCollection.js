@@ -21,7 +21,6 @@ export default class CardCollection extends Component {
       };
       this.data = Data;
       this.layoutControls = LayoutControls;
-      console.log(this.data);
       this.handleClickOnCard = this.handleClickOnCard.bind(this);
       this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
    }
@@ -37,7 +36,6 @@ export default class CardCollection extends Component {
 
    //generate card objects dynamically depending on mode
    //called by componentDidUpdate
-   //TODO: open card that was clicked, not only the first one
    generateCards() {
       let list;
       let classProp;

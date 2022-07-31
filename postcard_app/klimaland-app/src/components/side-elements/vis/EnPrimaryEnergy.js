@@ -7,7 +7,7 @@ export default class PrimaryEnergy extends Component {
    constructor(props) {
       super(props)
 
-      this.margin = { top: 20, right: 40, bottom: 20, left: 40 }
+      this.margin = { top: 20, right: 0, bottom: 20, left: 60 }
       this.state = {
          benchmark: 0,
          data: [],
@@ -15,14 +15,26 @@ export default class PrimaryEnergy extends Component {
          regional: false,
          xAxis: null,
          yAxis: null,
+         scaleY:null,
+         scaleX:null,
+         color:null,
          width: this.props.chartStyle.width - this.margin.left,
          height: this.props.chartStyle.height - this.margin.top,
+         areaPath:d3.area()
       }
+
+      this.areaPath = this.areaPath.bind(this)
+   }
+
+   areaPath(data){
+      return d3
+      .area()
+      .x(d => this.state.scaleX(d.data.year))
+      .y0(d => this.state.scaleY(d[0]))
+      .y1(d => this.state.scaleY(d[1]))(data)
    }
 
    async createChart() {
-      console.log(this.props.localData)
-      console.log(this.props.section)
       //TODO: solve duplicate code with other vis, e.g. scales or domains
 
       let data = this.props.localData[this.props.section]._primaryconsumption_.data.map(d => {
@@ -32,29 +44,11 @@ export default class PrimaryEnergy extends Component {
          }
       });
 
-      let yMaxValue = d3.max(this.props.localData[this.props.section]._primaryconsumption_.data, (d) => d.value) + 100
-
-      const scaleX = d3
-         .scaleTime()
-         .domain(d3.extent(data, (d) => d.year))
-         .range([this.margin.left, this.state.width - this.margin.right]);
-
-      const scaleY = d3
-         .scaleLinear()
-         .domain([0, yMaxValue])
-         .range([this.state.height - this.margin.top, this.margin.bottom]);
-
       const types = Array.from(
          new d3.InternSet(
             d3.map(this.props.localData[this.props.section]._primaryconsumption_.data, (d) => d.column)
          )
       )
-
-      console.log(types)
-      // Omit any data not present in the z-domain.
-      //const I = d3.range(X.length).filter(i => types.has(Z[i]));
-
-      console.log(data)
 
       const dataByYear = [];
       data.forEach((item) => {
@@ -70,68 +64,24 @@ export default class PrimaryEnergy extends Component {
          year[index] = item[index];
       });
 
-      console.log(dataByYear)
-
-      // dataByYear=[
-      //    {year: 2000, Kohle: 250, Wind: 2, Atom: 117},
-      //    {year: 2001, Kohle: 230, Wind: 20, Atom: 100},
-      //    {year: 2002, Kohle: 10, Wind: 50, Atom: 85},
-      // ]
-
       const stack = d3
          .stack()
          .keys(types)
-         .order(d3.stackOrderNone)
-         .offset(d3.stackOffsetNone)
+         .order(d3.stackOrderInsideOut)
 
-      const stackedValues = stack(dataByYear);
-      console.log(stackedValues)
+      const stackedData = stack(dataByYear);
 
-      //}
 
-      // const groupByType = d3.group(
-      //    data,
-      //    d => d["column"]
-      //  )
-      // console.log(groupByType)
 
-      // const stack = d3.stack().keys(["Braunkohle","Steinkohle"])
-      // const stackedValues = stack(data);
+      const scaleX = d3
+         .scaleTime()
+         .domain(d3.extent(data, (d) => d.year))
+         .range([this.margin.left, this.state.width - this.margin.right]);
 
-      // console.log(stackedValues)
-
-      const stackedData = [];
-      // // Copy the stack offsets back into the data.
-      stackedValues.forEach((layer, index) => {
-         const currentStack = [];
-         layer.forEach((d, i) => {
-            currentStack.push({
-               values: d,
-               year: data[i].year
-            });
-         });
-         stackedData.push(currentStack);
-      });
-
-      console.log(stackedData)
-
-      // const series = grp
-      //    .selectAll(".series")
-      //    .data(stackedData)
-      //    .enter()
-      //    .append("g")
-      //    .attr("class", "series");
-
-      // series
-      //    .append("path")
-      //    .attr("d", dataValue => area(dataValue));
-
-      // const areaPath = d3
-      //    .area()
-      //    .x(dataPoint => scaleX(dataPoint.year))
-      //    .y0(dataPoint => scaleY(dataPoint.values[0]))
-      //    .y1(dataPoint => scaleY(dataPoint.values[1]))
-      //    .curve(d3.curveMonotoneX)(stackedData);
+      const scaleY = d3
+         .scaleLinear()
+         .domain([0, d3.max(stackedData.flat(2))])
+         .range([this.state.height - this.margin.top, this.margin.bottom]);
 
       const xAxis = (ref) => {
          const xAxis = d3
@@ -149,41 +99,28 @@ export default class PrimaryEnergy extends Component {
             .tickSize(10)
          d3.select(ref).call(yAxis);
       };
+      
       const color = d3.scaleOrdinal(types, d3.schemeTableau10,);
-
-      // const areaPath = d3
-      //    .area()
-      //    .x((d) => scaleX(d.year))
-      //    .y0((d) => scaleY(d.value))
-      //    .y1(([, y2]) => scaleY(y2))
-      //    .curve(d3.curveMonotoneX)(data);
 
       let width = this.props.chartStyle.width - this.margin.left
       let height = this.props.chartStyle.height - this.margin.top
 
-      await setStateAsync(this, { stackedData:stackedData,xAxis: xAxis, yAxis: yAxis, width: width, height: height}).then(()=>{
-         
-         const areaPath = d3
-            .area()
-            .x((d) => scaleX(d.year))
-            .y0((d) => scaleY(d.values[0]))
-            .y1((d) => scaleY(d.values[1]))
-            .curve(d3.curveMonotoneX)(this.state.stackedData);
-
-
-         console.log(this.state.stackedData)
-         console.log(areaPath)
-         this.state.stackedData.forEach(d => {
-            console.log(d)
-         });
-
-         setStateAsync(this,{areaPath:areaPath})
-      })
-
+      await setStateAsync(this, { stackedData:stackedData,xAxis: xAxis, yAxis: yAxis, width: width, height: height,scaleX:scaleX,scaleY:scaleY,color:color})   
    }
 
    componentDidMount() {
       this.createChart();
+   }
+
+   async componentDidUpdate(prevProps) {
+      if (this.props.chartStyle.width !== prevProps.chartStyle.width || this.props.chartStyle.height !== prevProps.chartStyle.height
+         || this.props.isThumbnail !== prevProps.isThumbnail) {
+
+         let width = this.props.chartStyle.width - this.margin.left
+         let height = this.props.chartStyle.height - this.margin.top
+         await setStateAsync(this,{ width: width, height: height })
+         await this.createChart()
+      }
    }
 
    render() {
@@ -205,12 +142,17 @@ export default class PrimaryEnergy extends Component {
                         transform={`translate(${this.margin.left},0)`}/>
                      <g className="axis axis-x" ref={this.state.xAxis}
                         transform={`translate(0,${this.state.height - this.margin.bottom})`}/>
-                     <path
-                        fill={this.color}
-                        d={this.state.areaPath}
-                        opacity={0.3} />
+                     {this.state.stackedData.map((el,e) => {   
+                        return(<path
+                           key={e}
+                           fill={this.state.color(e)}
+                           d={this.areaPath(el)}
+                           opacity={0.3} />)
+                        })
+                     }
                   </g>
                </svg>
+               {this.props.useBLDataForLK && <div></div>}
             </Chart> </div>
       )
    }
