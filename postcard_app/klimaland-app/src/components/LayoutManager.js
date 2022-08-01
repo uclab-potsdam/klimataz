@@ -229,7 +229,7 @@ export default class LayoutManager extends Component {
 
   render() {
     return (
-      <div>
+      <div className="main-container">
         <SelectionButtons
           mode={this.state.mode}
           postcardView={this.state.postcardView}

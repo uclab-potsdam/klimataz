@@ -37,7 +37,7 @@ export class SelectionButtons extends Component {
 
     render() {
         return (
-            <div>
+            <div className="selection-buttons">
                 {!this.props.postcardView && <div className="selection-container">
                     <Select
                         className="selector"

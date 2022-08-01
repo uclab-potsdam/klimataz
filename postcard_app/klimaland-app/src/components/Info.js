@@ -22,7 +22,7 @@ export default class Info extends Component {
 
   render() {
     return (
-      <div>
+      <div className="info-container">
         {!this.state.inFocus && (
           <div className="help" onClick={this.handleHelpFocus}>
             <h4>How to use the postcards</h4>

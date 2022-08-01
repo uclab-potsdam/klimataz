@@ -13,7 +13,7 @@ export default class Chart extends Component {
     render() {
         return (
             <div className={"chart-container " + this.props.thumbnailClass}>
-                <h3>Grüsse aus {this.props.lk.label}, mit der id {this.props.lk.value}!</h3>
+                {/* <p>Grüsse aus {this.props.lk.label}, mit der id {this.props.lk.value}!</p> */}
                 {this.props.children}
                 {/* {this.props.section == "Mo" && this.props.children}
                 {this.props.section == "En" && this.props.children}
@@ -27,7 +27,7 @@ export default class Chart extends Component {
                             Placeholder for Chart
                         </text>
                     </svg>} */}
-                <p>Hier ist ein Chart über die Section {this.props.section}. Seite {this.props.activeSide}. </p>
+                {/* <p>Hier ist ein Chart über die Section {this.props.section}. Seite {this.props.activeSide}. </p> */}
             </div>
         )
     }
