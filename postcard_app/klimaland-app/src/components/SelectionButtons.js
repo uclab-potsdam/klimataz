@@ -13,9 +13,14 @@ export class SelectionButtons extends Component {
         this.changeSection = this.changeSection.bind(this);
         this.shuffle = this.shuffle.bind(this)
 
+        this.state = {
+            selected : null
+        }
+
     }
 
     changeLandkreis(e) {
+        this.setState({selected :e});
         this.props.changeLandkreis(e);
     }
 
@@ -24,6 +29,8 @@ export class SelectionButtons extends Component {
     }
 
     shuffle(e) {
+        console.log("reset lkSelection")
+        this.setState({selected : []});
         this.props.shuffle(e);
     }
 
@@ -35,6 +42,9 @@ export class SelectionButtons extends Component {
                     <Select
                         className="selector"
                         isMulti
+                        //https://stackoverflow.com/questions/50412843/how-to-programmatically-clear-reset-react-select
+                        key={`my_unique_select_key__${this.state.selected}`}
+                        value={this.state.selected || ''}
                         defaultValue={this.props.landkreisSelection}
                         onChange={this.changeLandkreis}
                         options={this.props.landkreise}
