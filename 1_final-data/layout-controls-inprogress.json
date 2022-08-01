@@ -1,0 +1,183 @@
+{
+    "Mo": {
+        "params": [
+            {
+                "0": {
+                    "combo": [
+                        1,
+                        true,
+                        1,
+                        false
+                    ],
+                    "components": {
+                        "indicator": "_cartype_density_",
+                        "component": "MoCarDensity",
+                        "annotation": "Hier sieht man die PKWs pro 1000 Einwohner:innen.",
+                        "showDataFootnote": true
+                    }
+                }
+            },
+            {
+                "1": {
+                    "combo": [
+                        2,
+                        false,
+                        1,
+                        true
+                    ]
+                }
+            },
+            {
+                "2": {
+                    "combo": [
+                        3,
+                        true,
+                        2,
+                        false
+                    ]
+                }
+            }
+        ]
+    },
+    "En": {
+        "params": [
+            {
+                "0": {
+                    "combo": [
+                        1,
+                        true,
+                        1,
+                        false
+                    ],
+                    "components": {
+                        "indicator:": "_primaryconsumption_",
+                        "component": "EnPrimaryEnergy",
+                        "showDataFootnote": false
+                    }
+                }
+            },
+            {
+                "1": {
+                    "combo": [
+                        2,
+                        false,
+                        1,
+                        true
+                    ]
+                }
+            },
+            {
+                "2": {
+                    "combo": [
+                        3,
+                        true,
+                        2,
+                        false
+                    ]
+                }
+            }
+        ]
+    },
+    "Ab": {
+        "params": [
+            {
+                "0": {
+                    "combo": [
+                        1,
+                        true,
+                        1,
+                        false
+                    ]
+                }
+            },
+            {
+                "1": {
+                    "combo": [
+                        2,
+                        false,
+                        1,
+                        true
+                    ]
+                }
+            },
+            {
+                "2": {
+                    "combo": [
+                        3,
+                        true,
+                        2,
+                        false
+                    ]
+                }
+            }
+        ]
+    },
+    "La": {
+        "params": [
+            {
+                "0": {
+                    "combo": [
+                        1,
+                        true,
+                        1,
+                        false
+                    ]
+                }
+            },
+            {
+                "1": {
+                    "combo": [
+                        2,
+                        false,
+                        1,
+                        true
+                    ]
+                }
+            },
+            {
+                "2": {
+                    "combo": [
+                        3,
+                        true,
+                        2,
+                        false
+                    ]
+                }
+            }
+        ]
+    },
+    "Ge": {
+        "params": [
+            {
+                "0": {
+                    "combo": [
+                        1,
+                        true,
+                        1,
+                        false
+                    ]
+                }
+            },
+            {
+                "1": {
+                    "combo": [
+                        2,
+                        false,
+                        1,
+                        true
+                    ]
+                }
+            },
+            {
+                "2": {
+                    "combo": [
+                        3,
+                        true,
+                        2,
+                        false
+                    ]
+                }
+            }
+        ]
+    }
+}

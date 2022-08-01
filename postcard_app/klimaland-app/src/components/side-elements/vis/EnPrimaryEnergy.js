@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
-import Chart from "../Chart";
-import { setStateAsync } from "../../helperFunc";
+import Chart from '../Chart';
+import { setStateAsync } from '../../helperFunc.js';
+import { getLinearYScale, getXAxis, getYAxis, getYearXScale } from '../../customD3functions';
 
 export default class PrimaryEnergy extends Component {
   constructor(props) {
@@ -29,95 +30,76 @@ export default class PrimaryEnergy extends Component {
   areaPath(data) {
     return d3
       .area()
-      .x((d) => this.state.scaleX(d.data.year))
-      .y0((d) => this.state.scaleY(d[0]))
-      .y1((d) => this.state.scaleY(d[1]))(data);
-  }
+      .x(d => this.state.scaleX(d.data.year))
+      .y0(d => this.state.scaleY(d[0]))
+      .y1(d => this.state.scaleY(d[1]))(data)
+   }
 
-  async createChart() {
-    //TODO: solve duplicate code with other vis, e.g. scales or domains
+   async createChart() {
+      //TODO: solve duplicate code with other vis, e.g. scales or domains
 
-    let data = this.props.localData[
-      this.props.section
-    ]._primaryconsumption_.data.map((d) => {
-      return {
-        year: +d.year,
-        [d.column]: +d.value,
-      };
-    });
-
-    const types = Array.from(
-      new d3.InternSet(
-        d3.map(
-          this.props.localData[this.props.section]._primaryconsumption_.data,
-          (d) => d.column
-        )
-      )
-    );
-
-    const dataByYear = [];
-    data.forEach((item) => {
-      // create item if it does not exist
-      if (dataByYear.findIndex((elem) => elem.year === item.year) === -1) {
-        dataByYear.push({ year: item.year });
-      }
-      // get year
-      let year = dataByYear.find((obj) => {
-        return obj.year === item.year;
+      let data = this.props.localData[this.props.section]._primaryconsumption_.data.map(d => {
+         return {
+            year: +d.year,
+            [d.column]: +d.value
+         }
       });
-      let index = Object.keys(item)[1];
-      year[index] = item[index];
-    });
 
-    const stack = d3.stack().keys(types).order(d3.stackOrderInsideOut);
+      const types = Array.from(
+         new d3.InternSet(
+            d3.map(this.props.localData[this.props.section]._primaryconsumption_.data, (d) => d.column)
+         )
+      )
 
-    const stackedData = stack(dataByYear);
+      const dataByYear = [];
+      data.forEach((item) => {
+         // create item if it does not exist
+         if (dataByYear.findIndex((elem) => elem.year === item.year) === -1) {
+            dataByYear.push({ year: item.year });
+         }
+         // get year
+         let year = dataByYear.find((obj) => {
+            return obj.year === item.year;
+         });
+         let index = Object.keys(item)[1];
+         year[index] = item[index];
+      });
 
-    const scaleX = d3
-      .scaleTime()
-      .domain(d3.extent(data, (d) => d.year))
-      .range([this.margin.left, this.state.width - this.margin.right]);
+      const stack = d3
+         .stack()
+         .keys(types)
+         //.order(d3.stackOrderInsideOut)
 
-    const scaleY = d3
-      .scaleLinear()
-      .domain([0, d3.max(stackedData.flat(2))])
-      .range([this.state.height - this.margin.top, this.margin.bottom]);
+      const stackedData = stack(dataByYear);
 
-    const xAxis = (ref) => {
-      const xAxis = d3
-        .axisBottom(scaleX)
-        .ticks(10)
-        .tickSize(10)
-        .tickFormat(d3.format("d"));
-      //.tickFormat((d) => {return d3.timeFormat('%Y')(d.year)})
-      d3.select(ref).call(xAxis);
-    };
+      const scaleX = getYearXScale(this,data);
+      const scaleY = getLinearYScale(this,d3.max(stackedData.flat(2)))
 
-    const yAxis = (ref) => {
-      const yAxis = d3.axisLeft(scaleY).ticks(10).tickSize(10);
-      d3.select(ref).call(yAxis);
-    };
 
-    const color = d3.scaleOrdinal(types, d3.schemeTableau10);
+      const xAxis = (ref) => {
+         const xAxis = getXAxis(scaleX)
+         //.tickFormat((d) => {return d3.timeFormat('%Y')(d.year)})
+         d3.select(ref).call(xAxis);
+      };
 
-    let width = this.props.chartStyle.width - this.margin.left;
-    let height = this.props.chartStyle.height - this.margin.top;
+      const yAxis = (ref) => {
+         const yAxis = getYAxis(scaleY)
+         d3.select(ref).call(yAxis);
+      };
+      
+      const color = d3.scaleOrdinal(types, d3.schemeTableau10,);
 
-    await setStateAsync(this, {
-      stackedData: stackedData,
-      xAxis: xAxis,
-      yAxis: yAxis,
-      width: width,
-      height: height,
-      scaleX: scaleX,
-      scaleY: scaleY,
-      color: color,
-    });
-  }
+      let width = this.props.chartStyle.width - this.margin.left
+      let height = this.props.chartStyle.height - this.margin.top
 
-  componentDidMount() {
-    this.createChart();
-  }
+      await setStateAsync(this, { stackedData:stackedData,xAxis: xAxis, yAxis: yAxis, width: width, 
+         height: height,scaleX:scaleX,scaleY:scaleY,color:color}).catch((error) => { console.log(error) }) 
+   }
+
+   componentDidMount() {
+      this.createChart();
+   }
+
 
   async componentDidUpdate(prevProps) {
     if (
