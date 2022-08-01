@@ -23,7 +23,7 @@ export default class PlaceHolder extends Component {
             lk={this.props.lk}
             thumbnailClass={this.props.thumbnailClass}
          >
-            <svg width={this.props.chartStyle.width} height={this.props.chartStyle.height}>
+            <svg width="100%" height="100%" className="previewChart">
                <rect width={this.props.chartStyle.width}
                   height={this.props.chartStyle.height}
                   style={{ fill: this.state.fill, strokeWidth: 3, stroke: this.state.stroke }} />

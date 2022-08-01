@@ -117,7 +117,7 @@ export default class MoCarDensity extends Component {
       return (
          <div
             width={this.props.chartStyle.width}
-            height={this.props.chartStyle.height}
+            height={this.props.chartStyle.height / 2}
             className={"line-chart " + this.props.thumbnailClass}
          >
             <Chart
