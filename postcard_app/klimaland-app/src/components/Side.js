@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import { setStateAsync } from './helper.js';
-
+import { setStateAsync } from "./helperFunc.js";
 
 //side elements
-import Text from './side-elements/Text.js';
+import Text from "./side-elements/Text.js";
 import Locator from "./side-elements/Locator.js";
 
 //all vis elements are loaded dynamically from this file depending on indicator in layoutcontrols
 import VisIndex from './side-elements/vis/VisIndex';
 
 export default class Side extends Component {
-   constructor(props) {
-      super(props)
+  constructor(props) {
+    super(props);
 
       let layoutCombo = this.props.layoutControls[this.props.activeSide][this.props.activeSide].combo
 

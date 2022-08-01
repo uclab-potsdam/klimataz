@@ -1,34 +1,34 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import * as d3 from "d3";
 import Chart from '../Chart';
-import { setStateAsync } from '../../helper';
+import { setStateAsync } from '../../helperFunc.js';
 import { getLinearYScale, getXAxis, getYAxis, getYearXScale } from '../../customD3functions';
 
 export default class PrimaryEnergy extends Component {
-   constructor(props) {
-      super(props)
+  constructor(props) {
+    super(props);
 
-      this.margin = { top: 20, right: 0, bottom: 20, left: 60 }
-      this.state = {
-         benchmark: 0,
-         data: [],
-         stackedData:[],
-         regional: false,
-         xAxis: null,
-         yAxis: null,
-         scaleY:null,
-         scaleX:null,
-         color:null,
-         width: this.props.chartStyle.width - this.margin.left,
-         height: this.props.chartStyle.height - this.margin.top,
-         areaPath:d3.area()
-      }
+    this.margin = { top: 20, right: 0, bottom: 20, left: 60 };
+    this.state = {
+      benchmark: 0,
+      data: [],
+      stackedData: [],
+      regional: false,
+      xAxis: null,
+      yAxis: null,
+      scaleY: null,
+      scaleX: null,
+      color: null,
+      width: this.props.chartStyle.width - this.margin.left,
+      height: this.props.chartStyle.height - this.margin.top,
+      areaPath: d3.area(),
+    };
 
-      this.areaPath = this.areaPath.bind(this)
-   }
+    this.areaPath = this.areaPath.bind(this);
+  }
 
-   areaPath(data){
-      return d3
+  areaPath(data) {
+    return d3
       .area()
       .x(d => this.state.scaleX(d.data.year))
       .y0(d => this.state.scaleY(d[0]))
@@ -100,48 +100,70 @@ export default class PrimaryEnergy extends Component {
       this.createChart();
    }
 
-   async componentDidUpdate(prevProps) {
-      if (this.props.chartStyle.width !== prevProps.chartStyle.width || this.props.chartStyle.height !== prevProps.chartStyle.height
-         || this.props.isThumbnail !== prevProps.isThumbnail || this.props.localData !== prevProps.localData) {
-            
-         let width = this.props.chartStyle.width - this.margin.left
-         let height = this.props.chartStyle.height - this.margin.top
-         await setStateAsync(this,{ width: width, height: height })
-         await this.createChart()
-      }
-   }
 
-   render() {
-      return (
-         <div width={this.props.chartStyle.width} height={this.props.chartStyle.height} className={"area-chart " + this.props.thumbnailClass}>
-            <Chart
-               chartStyle={this.props.chartStyle}
-               section={this.props.section}
-               activeSide={this.props.activeSide}
-               lk={this.props.lk}
-               thumbnailClass={this.props.thumbnailClass}
-            >
-               <svg viewBox={`0 0 ${this.props.chartStyle.width} 
+  async componentDidUpdate(prevProps) {
+    if (
+      this.props.chartStyle.width !== prevProps.chartStyle.width ||
+      this.props.chartStyle.height !== prevProps.chartStyle.height ||
+      this.props.isThumbnail !== prevProps.isThumbnail ||
+      this.props.localData !== prevProps.localData
+    ) {
+      let width = this.props.chartStyle.width - this.margin.left;
+      let height = this.props.chartStyle.height - this.margin.top;
+      await setStateAsync(this, { width: width, height: height });
+      await this.createChart();
+    }
+  }
+
+  render() {
+    return (
+      <div
+        width={this.props.chartStyle.width}
+        height={this.props.chartStyle.height}
+        className={"area-chart " + this.props.thumbnailClass}
+      >
+        <Chart
+          chartStyle={this.props.chartStyle}
+          section={this.props.section}
+          activeSide={this.props.activeSide}
+          lk={this.props.lk}
+          thumbnailClass={this.props.thumbnailClass}
+        >
+          <svg
+            viewBox={`0 0 ${this.props.chartStyle.width} 
                        ${this.props.chartStyle.height}`}
-                  preserveAspectRatio="xMaxYMax meet"
-                  width={this.props.chartStyle.width} height={this.props.chartStyle.height}>
-                  <g>
-                  <g className="axis axis-y" ref={this.state.yAxis} 
-                        transform={`translate(${this.margin.left},0)`}/>
-                     <g className="axis axis-x" ref={this.state.xAxis}
-                        transform={`translate(0,${this.state.height - this.margin.bottom})`}/>
-                     {this.state.stackedData.map((el,e) => {   
-                        return(<path
-                           key={e}
-                           fill={this.state.color(e)}
-                           d={this.areaPath(el)}
-                           opacity={0.3} />)
-                        })
-                     }
-                  </g>
-               </svg>
-               {this.props.useBLDataForLK && <div></div>}
-            </Chart> </div>
-      )
-   }
+            preserveAspectRatio="xMaxYMax meet"
+            width={this.props.chartStyle.width}
+            height={this.props.chartStyle.height}
+          >
+            <g>
+              <g
+                className="axis axis-y"
+                ref={this.state.yAxis}
+                transform={`translate(${this.margin.left},0)`}
+              />
+              <g
+                className="axis axis-x"
+                ref={this.state.xAxis}
+                transform={`translate(0,${
+                  this.state.height - this.margin.bottom
+                })`}
+              />
+              {this.state.stackedData.map((el, e) => {
+                return (
+                  <path
+                    key={e}
+                    fill={this.state.color(e)}
+                    d={this.areaPath(el)}
+                    opacity={0.3}
+                  />
+                );
+              })}
+            </g>
+          </svg>
+          {this.props.useBLDataForLK && <div></div>}
+        </Chart>{" "}
+      </div>
+    );
+  }
 }
