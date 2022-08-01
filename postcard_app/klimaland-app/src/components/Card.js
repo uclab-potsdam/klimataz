@@ -1,10 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useSwipeable } from "react-swipeable";
 
 import flip from "../img/buttons/flip.png";
 import { mod } from "./helperFunc";
 
-const Card = ({ classProp, sides, isThumbnail, children }) => {
+const Card = ({ classProp, sides, isThumbnail, children,nextCard }) => {
   const [activeSide, setActiveSide] = useState(0);
   const [flipped, setFlipped] = useState(0);
 
@@ -15,6 +16,12 @@ const Card = ({ classProp, sides, isThumbnail, children }) => {
     const currentVal = flipped ? false : true;
     setFlipped(currentVal);
   }, [activeSide]);
+
+  const swipeHandler = useSwipeable({
+    onSwiped: () => {
+      nextCard();
+    }
+  });
 
   const sideWithProps = function (rotation) {
     return React.Children.map(children, (child) => {
@@ -64,6 +71,7 @@ const Card = ({ classProp, sides, isThumbnail, children }) => {
           style={{
             transform: "rotateY(" + activeSide * 180 + "deg)",
           }}
+          {...swipeHandler}
         >
           {renderSide("card-front")}
           {renderSide("card-back")}

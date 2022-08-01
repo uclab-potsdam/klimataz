@@ -249,6 +249,7 @@ export default class LayoutManager extends Component {
           mode={this.state.mode}
           postcardView={this.state.postcardView}
           activeCard={this.state.activeCard}
+          nextCard={this.nextCard}
           switchToPostcardView={this.switchToPostcardView.bind(this)}
         />
 

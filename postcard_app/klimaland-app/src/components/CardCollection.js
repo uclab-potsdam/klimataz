@@ -78,6 +78,7 @@ export default class CardCollection extends Component {
             classProp={classProp}
             isThumbnail={false}
             sides={this.layoutControls[element.section].params}
+            nextCard={this.props.nextCard}
           >
             <Side
               lk={element.lk}
