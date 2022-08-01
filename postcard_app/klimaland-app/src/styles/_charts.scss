@@ -38,6 +38,11 @@
     }
 }
 
+.area-chart {
+    display: inline-flex;
+    flex:1;
+}
+
 .line-chart {
     display: inline-flex;
     flex:1;
@@ -56,6 +61,10 @@
     }
 
     &.thumbnail{
+
+        text{
+            display: none;
+        }
 
         .axis-x{
             display: none;

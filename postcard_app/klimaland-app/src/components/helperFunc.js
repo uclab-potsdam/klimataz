@@ -7,3 +7,9 @@ export function mod(n, m) {
 export function getRandomElement(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
+
+export function setStateAsync(scope,state) {
+  return new Promise((resolve) => {
+     scope.setState(state, resolve);
+  });
+}

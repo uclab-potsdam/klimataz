@@ -16,7 +16,6 @@ import switchCard from "../img/buttons/switch.png";
 import close from "../img/buttons/close.png";
 
 export default class LayoutManager extends Component {
-
   constructor(props) {
     super(props);
 
@@ -53,7 +52,7 @@ export default class LayoutManager extends Component {
       editorspick: [
         { lk: { value: "11", label: "Berlin" }, section: "Mo" },
         { lk: { value: "2", label: "Hamburg" }, section: "Ab" },
-        { lk: { value: "1011", label: "Flensburg" }, section: "En" },
+        { lk: { value: "1001", label: "Flensburg" }, section: "En" },
       ],
       shuffleSelection: [],
       section: "En",
@@ -75,11 +74,9 @@ export default class LayoutManager extends Component {
     let mode;
     if (this.state.landkreisSelection.length > 1) {
       mode = "comparison";
-    }
-    else if (this.state.landkreisSelection.length === 1) {
+    } else if (this.state.landkreisSelection.length === 1) {
       mode = "lk";
-    }
-    else {
+    } else {
       mode = "shuffle";
     }
 
@@ -128,7 +125,7 @@ export default class LayoutManager extends Component {
   async changeSection(e) {
     await this.setStateAsync({ section: e.value }).then(() => {
       this.updateCardSelection();
-    })
+    });
   }
 
   async updateShuffleSelection() {
@@ -182,8 +179,7 @@ export default class LayoutManager extends Component {
       let list = [];
       if (this.state.mode === "shuffle") {
         list = this.state.shuffleSelection;
-      }
-      else if (this.state.mode === "lk") {
+      } else if (this.state.mode === "lk") {
         list = [];
         let selectedLK;
         // set default value for landkreisSelection (TODO: use germany)
@@ -199,7 +195,6 @@ export default class LayoutManager extends Component {
         //add one card per section
         this.sections.forEach((element) => {
           list.push({ lk: selectedLK, section: element.value });
-
         });
       } else if (this.state.mode === "comparison") {
         let selectedSection;
