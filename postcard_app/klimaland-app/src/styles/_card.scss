@@ -1,7 +1,7 @@
 @import "_config.scss";
 
 //reusable styles
-@mixin postcard{
+@mixin postcard {
     z-index: -10;
     transition: 0.2s;
     background-color: $light;
@@ -23,13 +23,13 @@
 
 .carousel-container{
     position: absolute;
-    width: calc($postcardview-postcardwidth + 10vw);
-    left: 50%;
-    transform: translate(-50%, 0);
+    width: 100%;
+    height: 100%;
 }
 
 .card-container{
     width: 100%;
+    height: 100%;
     padding: 15px 10px 20px 0px;
     margin: 0;
     display: flex;
@@ -40,24 +40,26 @@
     overflow: hidden;
     
     &.carousel{
-        display: inline;
+        // if carousel removes flex specs
+        flex-direction: unset;
+        flex-wrap: nowrap;
+        padding: 0;
     }
 }
 
 .card{
-    
-    position: relative;
-    // margin: 0.35em;
+    position: absolute;
 
     &-active{
-        transform: translateY(0px) ;
+        // scaling to avoid overflow
+        transform: translateY(0px) scale(0.82);
         z-index: 1;
         opacity: 1;
         @include stacked-postcard;
     }
 
     &-left{
-        transform: rotate(-5deg) scale(0.99);
+        transform: rotate(-5deg) scale(0.82);
         z-index: -2;
         @include stacked-postcard;
 
@@ -68,7 +70,7 @@
     }
     
     &-right{
-        transform: rotate(5deg) scale(0.99);
+        transform: rotate(5deg) scale(0.82);
         z-index: -1;
         @include stacked-postcard;
 
@@ -79,7 +81,7 @@
     }
 
     &-back{
-        transform: rotate(-2deg)  translate(-2px, -5px) scale(0.99);;
+        transform: rotate(-2deg)  translate(-2px, -5px) scale(0.82);;
         z-index: -3;
         @include stacked-postcard;
 
@@ -109,7 +111,6 @@
     height: 100%;
     width: 100%;
     display:flex; //for using flex stretch below
-    // margin: 0.5em;
 
     .side-inner {
         background-color: $lighter-orange;
