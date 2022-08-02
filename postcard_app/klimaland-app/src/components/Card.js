@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-import flip from "../img/buttons/flip.png";
+import flipCard from "../img/buttons/flip.svg";
 import { mod } from "./helperFunc";
 
 const Card = ({ classProp, sides, isThumbnail, children }) => {
@@ -49,7 +49,7 @@ const Card = ({ classProp, sides, isThumbnail, children }) => {
             setActiveSide(activeSide + 1);
           }}
         >
-          <img src={flip} className="button img" alt="flip-button-img" />
+          <img src={flipCard} className="button img" alt="flip-button-img" />
         </button>
       </div>
     );
