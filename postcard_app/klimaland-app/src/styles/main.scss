@@ -23,6 +23,15 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+button {
+    @include button;
+    &.flip {
+            position: absolute;
+            bottom: 3vh;
+            right: 2vh;
+    }
+}
+
 h1{
     @include title;
     margin-top:0;
@@ -88,19 +97,20 @@ code {
         
         .button-container {
             position: absolute;
+            width: 10%;
             height: 100%;
             z-index: 1;
-            background-color: antiquewhite;
             right: 0;
 
-            .button {
+            .inner-button {
                 width: 100%;
                 height: 50%;
 
                 img {
-                    width: 50%;
+                    width: 100%;
                     height: auto;
-                    margin-top: 5px;
+                    margin: 5px 0px 0px 50%;
+                    top: 0;
                 }
             }
         }
@@ -144,20 +154,5 @@ code {
             }
     
         }
-    }
-}
-
-
-.button{
-    @include button;
-
-    &.flip{
-        position: absolute;
-        bottom: 3vh;
-        right: 2vh;
-    }
-
-    &.shuffle{
-        margin:1rem;
     }
 }
