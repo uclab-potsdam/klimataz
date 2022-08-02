@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import close from "../img/buttons/close.png";
+import closeCard from "../img/buttons/close.svg";
 
 export default class Info extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ export default class Info extends Component {
 
   render() {
     return (
-      <div>
+      <div className="info-container">
         {!this.state.inFocus && (
           <div className="help" onClick={this.handleHelpFocus}>
             <h4>How to use the postcards</h4>
@@ -33,7 +33,7 @@ export default class Info extends Component {
             <h4>How to use the postcards</h4>
             Hier ist eine Erklärung über die Postkarten und das gesamte Projekt
             <button className="button close" onClick={this.handleHelpNotFocus}>
-              <img src={close} className="button img" alt="close-button-img" />
+              <img src={closeCard} className="button img" alt="close-button-img" />
             </button>
           </div>
         )}
