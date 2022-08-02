@@ -19,6 +19,23 @@
     }
 }
 
+.locator-map {
+    .locator-container {
+        width: 100%;
+        display:flex;
+
+        .locator-background {
+            width: 50%;
+            background-color: blue;
+        }
+
+        .locator-zoom {
+            width: 50%;
+            background-color: pink;
+        }
+    }
+}
+
 
 .landkreis {
     stroke: rgb(84, 84, 84);

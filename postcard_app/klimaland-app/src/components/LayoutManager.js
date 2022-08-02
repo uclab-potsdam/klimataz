@@ -239,7 +239,7 @@ export default class LayoutManager extends Component {
           changeSection={this.changeSection}
           shuffle={this.updateShuffleSelection}
         />
-{/* 
+        {/* 
         {this.state.landkreisSelection.length > 0 && (
           <TitleCanvas landkreis={this.state.landkreisSelection} />
         )} */}
@@ -263,7 +263,7 @@ export default class LayoutManager extends Component {
             </div>
             <div className="inner-button">
               <button className="button switch" onClick={this.nextCard}>
-                <img src={switchCard}nclassName="button img" alt="switch-button-img" />
+                <img src={switchCard} className="button img" alt="switch-button-img" />
               </button>
             </div>
           </div>
