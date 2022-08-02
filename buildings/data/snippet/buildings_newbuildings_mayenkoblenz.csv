@@ -1,71 +1,61 @@
-,year,energy,value
-0,2016,Biogas/Biomethan,0
-1,2017,Biogas/Biomethan,0
-2,2018,Biogas/Biomethan,0
-3,2019,Biogas/Biomethan,0
-4,2020,Biogas/Biomethan,0
-5,2016,Fernwärme/Fernkälte,0
-6,2017,Fernwärme/Fernkälte,15
-7,2018,Fernwärme/Fernkälte,40
-8,2019,Fernwärme/Fernkälte,2
-9,2020,Fernwärme/Fernkälte,16
-10,2016,Gas,351
-11,2017,Gas,395
-12,2018,Gas,335
-13,2019,Gas,250
-14,2020,Gas,228
-15,2016,Geothermie,31
-16,2017,Geothermie,50
-17,2018,Geothermie,34
-18,2019,Geothermie,84
-19,2020,Geothermie,41
-20,2016,Holz,3
-21,2017,Holz,11
-22,2018,Holz,25
-23,2019,Holz,9
-24,2020,Holz,5
-25,2016,Keine Energie (einschl. Passivhaus),1
-26,2017,Keine Energie (einschl. Passivhaus),0
-27,2018,Keine Energie (einschl. Passivhaus),0
-28,2019,Keine Energie (einschl. Passivhaus),1
-29,2020,Keine Energie (einschl. Passivhaus),0
-30,2016,Solarthermie,2
-31,2017,Solarthermie,0
-32,2018,Solarthermie,7
-33,2019,Solarthermie,6
-34,2020,Solarthermie,3
-35,2016,Sonstige Biomasse,16
-36,2017,Sonstige Biomasse,21
-37,2018,Sonstige Biomasse,7
-38,2019,Sonstige Biomasse,0
-39,2020,Sonstige Biomasse,2
-40,2016,Sonstige Heizenergie,1
-41,2017,Sonstige Heizenergie,0
-42,2018,Sonstige Heizenergie,1
-43,2019,Sonstige Heizenergie,1
-44,2020,Sonstige Heizenergie,0
-45,2016,Strom,19
-46,2017,Strom,29
-47,2018,Strom,25
-48,2019,Strom,14
-49,2020,Strom,39
-50,2016,Umweltthermie (Luft/Wasser),122
-51,2017,Umweltthermie (Luft/Wasser),158
-52,2018,Umweltthermie (Luft/Wasser),206
-53,2019,Umweltthermie (Luft/Wasser),215
-54,2020,Umweltthermie (Luft/Wasser),313
-55,2016,Öl,4
-56,2017,Öl,4
-57,2018,Öl,2
-58,2019,Öl,1
-59,2020,Öl,0
-60,2016,renewables,175
-61,2017,renewables,240
-62,2018,renewables,279
-63,2019,renewables,315
-64,2020,renewables,364
-65,2016,fossils,375
-66,2017,fossils,443
-67,2018,fossils,403
-68,2019,fossils,268
-69,2020,fossils,283
+,year,energy,value,energytype
+59,2020,Öl,0,fossil
+43,2019,Sonstige Heizenergie,1,fossil
+44,2020,Sonstige Heizenergie,0,fossil
+45,2016,Strom,19,fossil
+46,2017,Strom,29,fossil
+47,2018,Strom,25,fossil
+48,2019,Strom,14,fossil
+49,2020,Strom,39,fossil
+40,2016,Sonstige Heizenergie,1,fossil
+58,2019,Öl,1,fossil
+14,2020,Gas,228,fossil
+42,2018,Sonstige Heizenergie,1,fossil
+13,2019,Gas,250,fossil
+11,2017,Gas,395,fossil
+10,2016,Gas,351,fossil
+9,2020,Fernwärme/Fernkälte,16,fossil
+8,2019,Fernwärme/Fernkälte,2,fossil
+7,2018,Fernwärme/Fernkälte,40,fossil
+6,2017,Fernwärme/Fernkälte,15,fossil
+5,2016,Fernwärme/Fernkälte,0,fossil
+55,2016,Öl,4,fossil
+56,2017,Öl,4,fossil
+57,2018,Öl,2,fossil
+12,2018,Gas,335,fossil
+41,2017,Sonstige Heizenergie,0,fossil
+38,2019,Sonstige Biomasse,0,renewable
+39,2020,Sonstige Biomasse,2,renewable
+37,2018,Sonstige Biomasse,7,renewable
+51,2017,Umweltthermie (Luft/Wasser),158,renewable
+36,2017,Sonstige Biomasse,21,renewable
+52,2018,Umweltthermie (Luft/Wasser),206,renewable
+53,2019,Umweltthermie (Luft/Wasser),215,renewable
+54,2020,Umweltthermie (Luft/Wasser),313,renewable
+50,2016,Umweltthermie (Luft/Wasser),122,renewable
+35,2016,Sonstige Biomasse,16,renewable
+0,2016,Biogas/Biomethan,0,renewable
+33,2019,Solarthermie,6,renewable
+1,2017,Biogas/Biomethan,0,renewable
+2,2018,Biogas/Biomethan,0,renewable
+3,2019,Biogas/Biomethan,0,renewable
+4,2020,Biogas/Biomethan,0,renewable
+15,2016,Geothermie,31,renewable
+16,2017,Geothermie,50,renewable
+17,2018,Geothermie,34,renewable
+18,2019,Geothermie,84,renewable
+19,2020,Geothermie,41,renewable
+20,2016,Holz,3,renewable
+21,2017,Holz,11,renewable
+22,2018,Holz,25,renewable
+23,2019,Holz,9,renewable
+24,2020,Holz,5,renewable
+25,2016,Keine Energie (einschl. Passivhaus),1,renewable
+26,2017,Keine Energie (einschl. Passivhaus),0,renewable
+27,2018,Keine Energie (einschl. Passivhaus),0,renewable
+28,2019,Keine Energie (einschl. Passivhaus),1,renewable
+30,2016,Solarthermie,2,renewable
+31,2017,Solarthermie,0,renewable
+32,2018,Solarthermie,7,renewable
+34,2020,Solarthermie,3,renewable
+29,2020,Keine Energie (einschl. Passivhaus),0,renewable
