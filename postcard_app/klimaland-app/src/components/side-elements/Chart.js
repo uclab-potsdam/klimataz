@@ -16,7 +16,7 @@ export default class Chart extends Component {
         let chartComponent = this.props.layoutControls[this.props.activeSide][0].components.component
         const RenderChart = VisIndex[chartComponent];
 
-        console.log(this.props)
+        // console.log(this.props)
 
         return (
             <div className="chart-container">
