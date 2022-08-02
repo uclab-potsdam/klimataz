@@ -1,28 +1,20 @@
 @import "_config.scss";
 
-.chart-container{
+.chart-outer-container {
+    height: 100%;
+}
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex:1;
+.chart-container {
 
-    h3{
-        font-size: 1.5rem;
+    height: 100%;
 
-    }
-
-    &.thumbnail{
-        justify-content: space-evenly;
-
-        h3{
-            margin:0;
-            font-size:1rem;
+    .svg-container {
+        &.Mo-chart {
+            background-color: olive;
         }
 
-        p{
-            margin: 0;
+        &.En-chart {
+            background-color: rgb(224, 178, 111);
         }
     }
 }
