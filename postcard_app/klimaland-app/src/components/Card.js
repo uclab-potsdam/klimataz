@@ -1,12 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-import flip from "../img/buttons/flip.png";
+import flipCard from "../img/buttons/flip.svg";
 import { mod } from "./helperFunc";
 
 const Card = ({ classProp, sides, isThumbnail, children }) => {
   const [activeSide, setActiveSide] = useState(0);
   const [flipped, setFlipped] = useState(0);
+
 
   //TODO: flip first, after that switch the content on the side
   //maybe with gsap??
@@ -36,7 +37,6 @@ const Card = ({ classProp, sides, isThumbnail, children }) => {
       rotation = { transform: "rotateY(" + activeSide * 180 + "deg)" };
     } else {
       //card-preview
-      rotation = {};
       console.log("card class for rotation is not set");
     }
 
@@ -49,15 +49,20 @@ const Card = ({ classProp, sides, isThumbnail, children }) => {
             setActiveSide(activeSide + 1);
           }}
         >
-          <img src={flip} className="button img" alt="flip-button-img" />
+          <img src={flipCard} className="button img" alt="flip-button-img" />
         </button>
       </div>
     );
   };
 
+  //naive calc for initial small rotation
+  const ranNum = Math.random() * (Math.round(Math.random()) ? 1 : -1)
+  const previewRotation = "rotate(" + ranNum * 5 + "deg)"
+
   return (
     <div className={classProp}>
-      {isThumbnail && <div className="card-preview">{sideWithProps({})}</div>}
+      {isThumbnail && <div className="card-preview" 
+      style={{transform:previewRotation}}>{sideWithProps({})}</div>}
       {!isThumbnail && (
         <div
           className={`side-container ${flipped ? "flip" : ""}`}

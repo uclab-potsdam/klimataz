@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-
 import { setStateAsync } from "./helperFunc.js";
-
+//chart container
+import Chart from './side-elements/Chart.js';
 //side elements
 import Text from "./side-elements/Text.js";
 import Locator from "./side-elements/Locator.js";
-
-//all vis elements are loaded dynamically from this file depending on indicator in layoutcontrols
-import VisIndex from './side-elements/vis/VisIndex';
 
 export default class Side extends Component {
   constructor(props) {
@@ -53,33 +50,12 @@ export default class Side extends Component {
 
    //load component dynamically from vis index file
    vis(){
-      if(this.props.layoutControls[this.props.activeSide][0].components !== undefined){
-         //get component name from data
-         let chartComponent = this.props.layoutControls[this.props.activeSide][0].components.component
-         
-         //import component
-         const RenderChart = VisIndex[chartComponent];
-         
-         //return component
-         return <RenderChart
-            lk={this.props.lk}
-            chartStyle={this.state.chartStyle}
-            localData={this.props.localData}
-            thumbnailClass={(this.props.isThumbnail) ? "thumbnail" : ""}
-            section={this.props.section}
-         />
+      if(this.props.layoutControls[this.props.activeSide][0].components !== undefined){         
+         return <Chart {...this.props} />
       }
       else{
-         //if not specified yet: return placeholder
-         const RenderChart = VisIndex["PlaceHolder"];
-         return <RenderChart
-            lk={this.props.lk}
-            section={this.props.section}
-            activeSide={this.props.activeSide}
-            chartStyle={this.state.chartStyle}
-            localData={this.props.localData}
-            thumbnailClass={(this.props.isThumbnail) ? "thumbnail" : ""} 
-            />
+         //if not specified yet: return nothing
+         return
       }
    }
 

@@ -161,8 +161,8 @@ export default class CardCollection extends Component {
   render() {
     return (
       <div className="card-collection">
-        <h5>
-          View Mode: {this.props.mode}, LK:{" "}
+        <h5 className="debug">
+          Debug: {this.props.mode}, LK:{" "}
           {this.props.cardSelection.map(
             (elem) => elem.lk.label + " " + elem.section + " | "
           )}

@@ -5,15 +5,14 @@ import CardCollection from "./CardCollection";
 import SelectionButtons from "./SelectionButtons";
 import { getRandomElement } from "./helperFunc.js";
 import Info from "./Info.js";
-import TitleCanvas from "./TitleCanvas";
+// import TitleCanvas from "./TitleCanvas";
 
 //data
 import DropDownControls from "../data/selector-controls.json";
 
 //images
-//import flip from "../img/buttons/flip.png";
-import switchCard from "../img/buttons/switch.png";
-import close from "../img/buttons/close.png";
+import switchCard from "../img/buttons/switch.svg";
+import closeCard from "../img/buttons/close.svg";
 
 export default class LayoutManager extends Component {
   constructor(props) {
@@ -229,7 +228,7 @@ export default class LayoutManager extends Component {
 
   render() {
     return (
-      <div>
+      <div className="main-container">
         <SelectionButtons
           mode={this.state.mode}
           postcardView={this.state.postcardView}
@@ -240,10 +239,10 @@ export default class LayoutManager extends Component {
           changeSection={this.changeSection}
           shuffle={this.updateShuffleSelection}
         />
-
+{/* 
         {this.state.landkreisSelection.length > 0 && (
           <TitleCanvas landkreis={this.state.landkreisSelection} />
-        )}
+        )} */}
         <CardCollection
           cardSelection={this.state.cardSelection}
           mode={this.state.mode}
@@ -257,17 +256,16 @@ export default class LayoutManager extends Component {
         view buttons */}
         {this.state.postcardView && (
           <div className="button-container">
-            <button className="button close" onClick={this.closePostcardView}>
-              <img src={close} className="button img" alt="close-button-img" />
-            </button>
-
-            <button className="button switch" onClick={this.nextCard}>
-              <img
-                src={switchCard}
-                className="button img"
-                alt="switch-button-img"
-              />
-            </button>
+            <div className="inner-button">
+              <button className="button close" onClick={this.closePostcardView}>
+                <img src={closeCard} className="button img" alt="close-button-img" />
+              </button>
+            </div>
+            <div className="inner-button">
+              <button className="button switch" onClick={this.nextCard}>
+                <img src={switchCard}nclassName="button img" alt="switch-button-img" />
+              </button>
+            </div>
           </div>
         )}
         {!this.state.postcardView && <Info />}
