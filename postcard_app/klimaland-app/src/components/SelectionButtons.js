@@ -48,6 +48,7 @@ export class SelectionButtons extends Component {
                         defaultValue={this.props.landkreisSelection}
                         onChange={this.changeLandkreis}
                         options={this.props.landkreise}
+                        getOptionLabel={(options) => `${options.label} ${options.nameAddition}`}
                         isOptionDisabled={() => this.props.landkreisSelection.length >= 3} //max selection number: 3
                     />
 
