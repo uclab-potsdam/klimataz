@@ -4,6 +4,19 @@
     .header-taz {
         max-width: 100vw;
     }
+
+    .indicators-iframe {
+        .main-container {
+            .button-container{
+                    .inner-button{
+                        .switch{
+                            display:inline;
+                        }
+                    }
+                }
+        }
+    }
+
 }
 
 @include media-md{
