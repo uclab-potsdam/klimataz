@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import VisIndex from './VisIndex.js';
+import VisIndex from './VisIndex';
 
 export default class Chart extends Component {
     // constructor(props) {
@@ -11,20 +11,21 @@ export default class Chart extends Component {
 
     //TODO: smarter way of drawing viz (from layout-controls!)
     render() {
+
         //get component name from data and import component
         let chartComponent = this.props.layoutControls[this.props.activeSide][0].components.component
         const RenderChart = VisIndex[chartComponent];
-        
+
         console.log(this.props)
 
         return (
             <div className="chart-container">
-                <svg 
-                    width="100%" 
-                    height="100%" 
+                <svg
+                    width="100%"
+                    height="100%"
                     className={"svg-container " + this.props.section + "-chart"}
                 >
-                    <RenderChart { ...this.props }/>
+                    <RenderChart {...this.props} />
                 </svg>
             </div>
         )
