@@ -1,0 +1,528 @@
+,Jahr,variable,value
+0,1990,Insgesamt,356207.653228
+1,1991,Insgesamt,374152.52
+2,1992,Insgesamt,339349.6068
+3,1993,Insgesamt,357565.0208
+4,1994,Insgesamt,345819.1556
+5,1995,Insgesamt,339262.001397901
+6,1996,Insgesamt,347934.64594993
+7,1997,Insgesamt,325627.997297629
+8,1998,Insgesamt,317928.488678849
+9,1999,Insgesamt,334726.374023206
+10,2000,Insgesamt,331517.934060633
+11,2001,Insgesamt,347727.666341666
+12,2002,Insgesamt,322289.382687082
+13,2003,Insgesamt,317687.055348934
+14,2004,Insgesamt,306615.369720446
+15,2005,Insgesamt,299067.624091124
+16,2006,Insgesamt,304874.916226977
+17,2007,Insgesamt,271331.901339704
+18,2008,Insgesamt,287334.524482265
+19,2009,Insgesamt,283301.553979452
+20,2010,Insgesamt,309269.75695687
+21,2011,Insgesamt,276789.477959495
+22,2012,Insgesamt,280369.843057519
+23,2013,Insgesamt,288998.868877938
+24,2014,Insgesamt,271832.412281332
+25,2015,Insgesamt,264997.795676438
+26,2016,Insgesamt,272122.960777807
+27,2017,Insgesamt,270556.724739727
+28,2018,Insgesamt,266504.013745793
+29,2019,Insgesamt,264306.664701133
+30,2020,Insgesamt,237633.483830352
+31,1990,Steinkohle,82829.0
+32,1991,Steinkohle,92928.0
+33,1992,Steinkohle,91427.0
+34,1993,Steinkohle,92926.0
+35,1994,Steinkohle,89281.0
+36,1995,Steinkohle,83882.0
+37,1996,Steinkohle,83823.0
+38,1997,Steinkohle,85761.0
+39,1998,Steinkohle,84566.364737
+40,1999,Steinkohle,81805.275587
+41,2000,Steinkohle,83967.54834200001
+42,2001,Steinkohle,71817.48938199999
+43,2002,Steinkohle,49518.340042
+44,2003,Steinkohle,49205.75832
+45,2004,Steinkohle,43825.071276
+46,2005,Steinkohle,47843.87083
+47,2006,Steinkohle,45233.453566
+48,2007,Steinkohle,43902.137861
+49,2008,Steinkohle,42900.50464
+50,2009,Steinkohle,38054.237349
+51,2010,Steinkohle,45085.297808
+52,2011,Steinkohle,38499.004138
+53,2012,Steinkohle,36266.968188
+54,2013,Steinkohle,40535.29703
+55,2014,Steinkohle,43245.313974
+56,2015,Steinkohle,39810.263
+57,2016,Steinkohle,36894.364
+58,2017,Steinkohle,37166.84717
+59,2018,Steinkohle,30493.983
+60,2019,Steinkohle,20744.094
+61,2020,Steinkohle,22229.209
+62,1990,Braunkohle,47961.0
+63,1991,Braunkohle,31076.0
+64,1992,Braunkohle,27226.0
+65,1993,Braunkohle,26160.0
+66,1994,Braunkohle,25482.0
+67,1995,Braunkohle,18226.0
+68,1996,Braunkohle,12107.0
+69,1997,Braunkohle,13847.0
+70,1998,Braunkohle,12535.268289
+71,1999,Braunkohle,12600.702751
+72,2000,Braunkohle,13072.363504
+73,2001,Braunkohle,14052.672252
+74,2002,Braunkohle,13410.153834
+75,2003,Braunkohle,13107.8512
+76,2004,Braunkohle,13827.185762
+77,2005,Braunkohle,13240.381526
+78,2006,Braunkohle,12056.174191
+79,2007,Braunkohle,12545.800027
+80,2008,Braunkohle,12956.410488
+81,2009,Braunkohle,13116.049422
+82,2010,Braunkohle,14363.962242
+83,2011,Braunkohle,12473.208336
+84,2012,Braunkohle,13085.293506999998
+85,2013,Braunkohle,12018.319201
+86,2014,Braunkohle,12274.44067
+87,2015,Braunkohle,12172.618549
+88,2016,Braunkohle,12411.651958000002
+89,2017,Braunkohle,6046.699191780001
+90,2018,Braunkohle,553.217558615
+91,2019,Braunkohle,445.35781876
+92,2020,Braunkohle,551.107648
+93,1990,Mineralöle und Mineralöl produkte,150757.0
+94,1991,Mineralöle und Mineralöl produkte,167072.0
+95,1992,Mineralöle und Mineralöl produkte,137920.0
+96,1993,Mineralöle und Mineralöl produkte,156486.0
+97,1994,Mineralöle und Mineralöl produkte,151460.0
+98,1995,Mineralöle und Mineralöl produkte,152443.0
+99,1996,Mineralöle und Mineralöl produkte,156695.0
+100,1997,Mineralöle und Mineralöl produkte,143811.0
+101,1998,Mineralöle und Mineralöl produkte,137421.321
+102,1999,Mineralöle und Mineralöl produkte,138869.099769
+103,2000,Mineralöle und Mineralöl produkte,132802.231
+104,2001,Mineralöle und Mineralöl produkte,141259.600287
+105,2002,Mineralöle und Mineralöl produkte,130351.431766
+106,2003,Mineralöle und Mineralöl produkte,127101.5350084
+107,2004,Mineralöle und Mineralöl produkte,118023.492115897
+108,2005,Mineralöle und Mineralöl produkte,114814.72333999
+109,2006,Mineralöle und Mineralöl produkte,120295.5882005831
+110,2007,Mineralöle und Mineralöl produkte,95197.20992859417
+111,2008,Mineralöle und Mineralöl produkte,107926.06043454798
+112,2009,Mineralöle und Mineralöl produkte,99170.9728001378
+113,2010,Mineralöle und Mineralöl produkte,101631.7936136644
+114,2011,Mineralöle und Mineralöl produkte,92296.22422044098
+115,2012,Mineralöle und Mineralöl produkte,98112.7713523813
+116,2013,Mineralöle und Mineralöl produkte,101017.5254004575
+117,2014,Mineralöle und Mineralöl produkte,98976.18719709932
+118,2015,Mineralöle und Mineralöl produkte,96020.76701156028
+119,2016,Mineralöle und Mineralöl produkte,97315.1478746905
+120,2017,Mineralöle und Mineralöl produkte,96234.47056484807
+121,2018,Mineralöle und Mineralöl produkte,93864.77500681917
+122,2019,Mineralöle und Mineralöl produkte,94044.28813547868
+123,2020,Mineralöle und Mineralöl produkte,72461.84568930061
+124,1990,Gase,58873.253228
+125,1991,Gase,69842.0
+126,1992,Gase,69001.0
+127,1993,Gase,68693.0
+128,1994,Gase,65461.0
+129,1995,Gase,68477.0013979012
+130,1996,Gase,78990.6459499304
+131,1997,Gase,68551.9972976293
+132,1998,Gase,68108.7058634487
+133,1999,Gase,84946.9711450055
+134,2000,Gase,85638.9310914332
+135,2001,Gase,100350.395545266
+136,2002,Gase,101923.580418482
+137,2003,Gase,106496.146620534
+138,2004,Gase,106879.895902549
+139,2005,Gase,103018.599143134
+140,2006,Gase,101504.650469394
+141,2007,Gase,92485.5937881096
+142,2008,Gase,94798.0118
+143,2009,Gase,103253.764821264
+144,2010,Gase,113941.701588197
+145,2011,Gase,98430.9354029662
+146,2012,Gase,96274.1780821307
+147,2013,Gase,98889.518482951
+148,2014,Gase,80313.0948547368
+149,2015,Gase,79417.7204728783
+150,2016,Gase,88557.4769111738
+151,2017,Gase,94794.0131218502
+152,2018,Gase,100536.003418255
+153,2019,Gase,104747.783450527
+154,2020,Gase,104811.555017771
+155,1990,Gesamt Erneuerbare Energieträger,2251.4
+156,1991,Gesamt Erneuerbare Energieträger,2578.0
+157,1992,Gesamt Erneuerbare Energieträger,2522.8
+158,1993,Gesamt Erneuerbare Energieträger,2117.2
+159,1994,Gesamt Erneuerbare Energieträger,2153.4
+160,1995,Gesamt Erneuerbare Energieträger,1837.8
+161,1996,Gesamt Erneuerbare Energieträger,1678.8
+162,1997,Gesamt Erneuerbare Energieträger,1305.0
+163,1998,Gesamt Erneuerbare Energieträger,1921.1598374
+164,1999,Gesamt Erneuerbare Energieträger,2140.8879712
+165,2000,Gesamt Erneuerbare Energieträger,2454.7493232
+166,2001,Gesamt Erneuerbare Energieträger,2242.332075400003
+167,2002,Gesamt Erneuerbare Energieträger,2242.5070266
+168,2003,Gesamt Erneuerbare Energieträger,2367.1286
+169,2004,Gesamt Erneuerbare Energieträger,3211.3866
+170,2005,Gesamt Erneuerbare Energieträger,3713.416052
+171,2006,Gesamt Erneuerbare Energieträger,5406.7002
+172,2007,Gesamt Erneuerbare Energieträger,6247.365735
+173,2008,Gesamt Erneuerbare Energieträger,6398.7361123
+174,2009,Gesamt Erneuerbare Energieträger,8301.72238830359
+175,2010,Gesamt Erneuerbare Energieträger,9676.81500800807
+176,2011,Gesamt Erneuerbare Energieträger,9437.112724087858
+177,2012,Gesamt Erneuerbare Energieträger,10560.688892006809
+178,2013,Gesamt Erneuerbare Energieträger,11330.955001529124
+179,2014,Gesamt Erneuerbare Energieträger,11237.840525495869
+180,2015,Gesamt Erneuerbare Energieträger,11200.314084999787
+181,2016,Gesamt Erneuerbare Energieträger,11221.474028942535
+182,2017,Gesamt Erneuerbare Energieträger,11569.63793924856
+183,2018,Gesamt Erneuerbare Energieträger,13928.487093703756
+184,2019,Gesamt Erneuerbare Energieträger,14795.581513567968
+185,2020,Gesamt Erneuerbare Energieträger,14517.497827680469
+186,1990,Stromaustauschsaldo,12632.4
+187,1991,Stromaustauschsaldo,9164.52
+188,1992,Stromaustauschsaldo,9763.6068
+189,1993,Stromaustauschsaldo,9944.0208
+190,1994,Stromaustauschsaldo,10720.1556
+191,1995,Stromaustauschsaldo,13311.0
+192,1996,Stromaustauschsaldo,13657.0
+193,1997,Stromaustauschsaldo,11608.0
+194,1998,Stromaustauschsaldo,12241.1304
+195,1999,Stromaustauschsaldo,13059.6768
+196,2000,Stromaustauschsaldo,12060.0468
+197,2001,Stromaustauschsaldo,16613.4888
+198,2002,Stromaustauschsaldo,23451.6816
+199,2003,Stromaustauschsaldo,18166.1328
+200,2004,Stromaustauschsaldo,19577.739564
+201,2005,Stromaustauschsaldo,15544.962
+202,2006,Stromaustauschsaldo,19294.038
+203,2007,Stromaustauschsaldo,19913.8356
+204,2008,Stromaustauschsaldo,19615.5828
+205,2009,Stromaustauschsaldo,18289.451844
+206,2010,Stromaustauschsaldo,22481.034772
+207,2011,Stromaustauschsaldo,23418.651588
+208,2012,Stromaustauschsaldo,24027.490336
+209,2013,Stromaustauschsaldo,22922.005332
+210,2014,Stromaustauschsaldo,23461.84564
+211,2015,Stromaustauschsaldo,24300.198908
+212,2016,Stromaustauschsaldo,23385.53928
+213,2017,Stromaustauschsaldo,22297.601252
+214,2018,Stromaustauschsaldo,24566.8716684
+215,2019,Stromaustauschsaldo,26389.4152828
+216,2020,Stromaustauschsaldo,20580.5116476
+217,1990,Kernenergie,0.0
+218,1991,Kernenergie,0.0
+219,1992,Kernenergie,0.0
+220,1993,Kernenergie,0.0
+221,1994,Kernenergie,0.0
+222,1995,Kernenergie,0.0
+223,1996,Kernenergie,0.0
+224,1997,Kernenergie,0.0
+225,1998,Kernenergie,0.0
+226,1999,Kernenergie,0.0
+227,2000,Kernenergie,0.0
+228,2001,Kernenergie,0.0
+229,2002,Kernenergie,0.0
+230,2003,Kernenergie,0.0
+231,2004,Kernenergie,0.0
+232,2005,Kernenergie,0.0
+233,2006,Kernenergie,0.0
+234,2007,Kernenergie,0.0
+235,2008,Kernenergie,0.0
+236,2009,Kernenergie,0.0
+237,2010,Kernenergie,0.0
+238,2011,Kernenergie,0.0
+239,2012,Kernenergie,0.0
+240,2013,Kernenergie,0.0
+241,2014,Kernenergie,0.0
+242,2015,Kernenergie,0.0
+243,2016,Kernenergie,0.0
+244,2017,Kernenergie,0.0
+245,2018,Kernenergie,0.0
+246,2019,Kernenergie,0.0
+247,2020,Kernenergie,0.0
+248,1990,Andere Energieträger,903.6
+249,1991,Andere Energieträger,1492.0
+250,1992,Andere Energieträger,1489.2
+251,1993,Andere Energieträger,1238.8
+252,1994,Andere Energieträger,1261.6
+253,1995,Andere Energieträger,1085.2
+254,1996,Andere Energieträger,983.2
+255,1997,Andere Energieträger,744.0
+256,1998,Andere Energieträger,1134.538552
+257,1999,Andere Energieträger,1303.76
+258,2000,Andere Energieträger,1522.064
+259,2001,Andere Energieträger,1391.688
+260,2002,Andere Energieträger,1391.688
+261,2003,Andere Energieträger,1242.5028
+262,2004,Andere Energieträger,1270.5985
+263,2005,Andere Energieträger,891.6712
+264,2006,Andere Energieträger,1084.3116
+265,2007,Andere Energieträger,1039.9584
+266,2008,Andere Energieträger,2738.971
+267,2009,Andere Energieträger,3115.02
+268,2010,Andere Energieträger,2089.151925
+269,2011,Andere Energieträger,2234.34155
+270,2012,Andere Energieträger,2042.4527
+271,2013,Andere Energieträger,2285.24843
+272,2014,Andere Energieträger,2323.68942
+273,2015,Andere Energieträger,2075.91365
+274,2016,Andere Energieträger,2337.306725
+275,2017,Andere Energieträger,2447.4555
+276,2018,Andere Energieträger,2560.676
+277,2019,Andere Energieträger,3140.1445
+278,2020,Andere Energieträger,2481.757
+279,1990,"Klärgas, Deponiegas",572.0
+280,1991,"Klärgas, Deponiegas",263.0
+281,1992,"Klärgas, Deponiegas",215.0
+282,1993,"Klärgas, Deponiegas",215.0
+283,1994,"Klärgas, Deponiegas",217.0
+284,1995,"Klärgas, Deponiegas",193.0
+285,1996,"Klärgas, Deponiegas",165.0
+286,1997,"Klärgas, Deponiegas",141.0
+287,1998,"Klärgas, Deponiegas",161.6724
+288,1999,"Klärgas, Deponiegas",141.0984
+289,2000,"Klärgas, Deponiegas",139.4028
+290,2001,"Klärgas, Deponiegas",123.134246800003
+291,2002,"Klärgas, Deponiegas",124.2324
+292,2003,"Klärgas, Deponiegas",1.6884
+293,2004,"Klärgas, Deponiegas",0.0
+294,2005,"Klärgas, Deponiegas",0.0
+295,2006,"Klärgas, Deponiegas",0.0
+296,2007,"Klärgas, Deponiegas",144.308
+297,2008,"Klärgas, Deponiegas",146.548
+298,2009,"Klärgas, Deponiegas",136.172
+299,2010,"Klärgas, Deponiegas",26.065
+300,2011,"Klärgas, Deponiegas",27.327
+301,2012,"Klärgas, Deponiegas",26.101
+302,2013,"Klärgas, Deponiegas",22.735
+303,2014,"Klärgas, Deponiegas",18.31
+304,2015,"Klärgas, Deponiegas",24.298
+305,2016,"Klärgas, Deponiegas",18.669
+306,2017,"Klärgas, Deponiegas",16.516
+307,2018,"Klärgas, Deponiegas",13.437
+308,2019,"Klärgas, Deponiegas",271.253150684931
+309,2020,"Klärgas, Deponiegas",13.4
+310,1990,Wasserkraft,0.0
+311,1991,Wasserkraft,0.0
+312,1992,Wasserkraft,0.0
+313,1993,Wasserkraft,0.0
+314,1994,Wasserkraft,0.0
+315,1995,Wasserkraft,0.0
+316,1996,Wasserkraft,0.0
+317,1997,Wasserkraft,0.0
+318,1998,Wasserkraft,0.0
+319,1999,Wasserkraft,0.0
+320,2000,Wasserkraft,0.0
+321,2001,Wasserkraft,0.0
+322,2002,Wasserkraft,0.0
+323,2003,Wasserkraft,0.0
+324,2004,Wasserkraft,0.0
+325,2005,Wasserkraft,0.0
+326,2006,Wasserkraft,0.0
+327,2007,Wasserkraft,0.0
+328,2008,Wasserkraft,0.0
+329,2009,Wasserkraft,0.0
+330,2010,Wasserkraft,0.0
+331,2011,Wasserkraft,0.0
+332,2012,Wasserkraft,0.0
+333,2013,Wasserkraft,0.0
+334,2014,Wasserkraft,0.0
+335,2015,Wasserkraft,0.0
+336,2016,Wasserkraft,0.0
+337,2017,Wasserkraft,0.0
+338,2018,Wasserkraft,0.0
+339,2019,Wasserkraft,0.0
+340,2020,Wasserkraft,0.0
+341,1990,Windkraft,0.0
+342,1991,Windkraft,0.0
+343,1992,Windkraft,0.0
+344,1993,Windkraft,0.0
+345,1994,Windkraft,0.0
+346,1995,Windkraft,0.0
+347,1996,Windkraft,0.0
+348,1997,Windkraft,0.0
+349,1998,Windkraft,0.0
+350,1999,Windkraft,0.0
+351,2000,Windkraft,0.0
+352,2001,Windkraft,0.0
+353,2002,Windkraft,0.0
+354,2003,Windkraft,0.0
+355,2004,Windkraft,0.0
+356,2005,Windkraft,0.0
+357,2006,Windkraft,0.0
+358,2007,Windkraft,0.0
+359,2008,Windkraft,8.2188
+360,2009,Windkraft,18.8352
+361,2010,Windkraft,17.2279942868802
+362,2011,Windkraft,20.972497468098
+363,2012,Windkraft,19.2527853881279
+364,2013,Windkraft,17.9688197621226
+365,2014,Windkraft,21.4707430309174
+366,2015,Windkraft,43.8103919781222
+367,2016,Windkraft,69.8374298827129
+368,2017,Windkraft,100.3464
+369,2018,Windkraft,102.286754191693
+370,2019,Windkraft,106.822549517522
+371,2020,Windkraft,100.642762823768
+372,1990,Solarenergie,0.0
+373,1991,Solarenergie,0.0
+374,1992,Solarenergie,0.0
+375,1993,Solarenergie,0.0
+376,1994,Solarenergie,0.0
+377,1995,Solarenergie,0.0
+378,1996,Solarenergie,0.0
+379,1997,Solarenergie,0.0
+380,1998,Solarenergie,0.0
+381,1999,Solarenergie,0.0
+382,2000,Solarenergie,0.0
+383,2001,Solarenergie,0.0
+384,2002,Solarenergie,0.0
+385,2003,Solarenergie,7.2
+386,2004,Solarenergie,44.1936
+387,2005,Solarenergie,65.6064
+388,2006,Solarenergie,69.0192
+389,2007,Solarenergie,73.3752
+390,2008,Solarenergie,85.752
+391,2009,Solarenergie,111.276
+392,2010,Solarenergie,159.177492
+393,2011,Solarenergie,240.393528
+394,2012,Solarenergie,280.302696
+395,2013,Solarenergie,279.351216
+396,2014,Solarenergie,315.934992
+397,2015,Solarenergie,329.9112
+398,2016,Solarenergie,328.734
+399,2017,Solarenergie,328.1976
+400,2018,Solarenergie,423.345
+401,2019,Solarenergie,389.9114
+402,2020,Solarenergie,465.9624
+403,1990,Biomasse 1),1679.4
+404,1991,Biomasse 1),2315.0
+405,1992,Biomasse 1),2307.8
+406,1993,Biomasse 1),1902.2
+407,1994,Biomasse 1),1936.4
+408,1995,Biomasse 1),1644.8
+409,1996,Biomasse 1),1513.8
+410,1997,Biomasse 1),1164.0
+411,1998,Biomasse 1),1759.4874374
+412,1999,Biomasse 1),1999.7895712
+413,2000,Biomasse 1),2315.3465232
+414,2001,Biomasse 1),2119.1978286
+415,2002,Biomasse 1),2118.2746266
+416,2003,Biomasse 1),2296.2266
+417,2004,Biomasse 1),3104.0418
+418,2005,Biomasse 1),3419.985128
+419,2006,Biomasse 1),5267.881
+420,2007,Biomasse 1),5927.082535
+421,2008,Biomasse 1),5914.6173123
+422,2009,Biomasse 1),7784.83918830359
+423,2010,Biomasse 1),7093.79259672119
+424,2011,Biomasse 1),6592.08014861976
+425,2012,Biomasse 1),7789.47971061868
+426,2013,Biomasse 1),8287.112545767
+427,2014,Biomasse 1),8081.33537046495
+428,2015,Biomasse 1),10278.8651223611
+429,2016,Biomasse 1),10263.448334528995
+430,2017,Biomasse 1),10522.153944259284
+431,2018,Biomasse 1),12744.499457679458
+432,2019,Biomasse 1),13346.1705876232
+433,2020,Biomasse 1),13207.892664856696
+434,1990,Sonstige erneuerbare Energien 2),0.0
+435,1991,Sonstige erneuerbare Energien 2),0.0
+436,1992,Sonstige erneuerbare Energien 2),0.0
+437,1993,Sonstige erneuerbare Energien 2),0.0
+438,1994,Sonstige erneuerbare Energien 2),0.0
+439,1995,Sonstige erneuerbare Energien 2),0.0
+440,1996,Sonstige erneuerbare Energien 2),0.0
+441,1997,Sonstige erneuerbare Energien 2),0.0
+442,1998,Sonstige erneuerbare Energien 2),0.0
+443,1999,Sonstige erneuerbare Energien 2),0.0
+444,2000,Sonstige erneuerbare Energien 2),0.0
+445,2001,Sonstige erneuerbare Energien 2),0.0
+446,2002,Sonstige erneuerbare Energien 2),0.0
+447,2003,Sonstige erneuerbare Energien 2),62.0136
+448,2004,Sonstige erneuerbare Energien 2),63.1512
+449,2005,Sonstige erneuerbare Energien 2),227.824524
+450,2006,Sonstige erneuerbare Energien 2),69.8
+451,2007,Sonstige erneuerbare Energien 2),102.6
+452,2008,Sonstige erneuerbare Energien 2),243.6
+453,2009,Sonstige erneuerbare Energien 2),250.6
+454,2010,Sonstige erneuerbare Energien 2),2380.551925
+455,2011,Sonstige erneuerbare Energien 2),2556.33955
+456,2012,Sonstige erneuerbare Energien 2),2445.5527
+457,2013,Sonstige erneuerbare Energien 2),2723.78742
+458,2014,Sonstige erneuerbare Energien 2),2800.78942
+459,2015,Sonstige erneuerbare Energien 2),523.429370660568
+460,2016,Sonstige erneuerbare Energien 2),540.785264530825
+461,2017,Sonstige erneuerbare Energien 2),602.423994989276
+462,2018,Sonstige erneuerbare Energien 2),644.918881832606
+463,2019,Sonstige erneuerbare Energien 2),681.423825742315
+464,2020,Sonstige erneuerbare Energien 2),729.6
+465,1990,Gesamt Nichterneuerbar,353956.25322799996
+466,1991,Gesamt Nichterneuerbar,371574.52
+467,1992,Gesamt Nichterneuerbar,336826.8068
+468,1993,Gesamt Nichterneuerbar,355447.8208
+469,1994,Gesamt Nichterneuerbar,343665.7556
+470,1995,Gesamt Nichterneuerbar,337424.201397901
+471,1996,Gesamt Nichterneuerbar,346255.84594993
+472,1997,Gesamt Nichterneuerbar,324322.997297629
+473,1998,Gesamt Nichterneuerbar,316007.328841449
+474,1999,Gesamt Nichterneuerbar,332585.486052006
+475,2000,Gesamt Nichterneuerbar,329063.184737433
+476,2001,Gesamt Nichterneuerbar,345485.334266266
+477,2002,Gesamt Nichterneuerbar,320046.875660482
+478,2003,Gesamt Nichterneuerbar,315319.926748934
+479,2004,Gesamt Nichterneuerbar,303403.983120446
+480,2005,Gesamt Nichterneuerbar,295354.208039124
+481,2006,Gesamt Nichterneuerbar,299468.216026977
+482,2007,Gesamt Nichterneuerbar,265084.535604704
+483,2008,Gesamt Nichterneuerbar,280935.788369965
+484,2009,Gesamt Nichterneuerbar,274999.8315911484
+485,2010,Gesamt Nichterneuerbar,299592.94194886193
+486,2011,Gesamt Nichterneuerbar,267352.36523540714
+487,2012,Gesamt Nichterneuerbar,269809.1541655122
+488,2013,Gesamt Nichterneuerbar,277667.9138764089
+489,2014,Gesamt Nichterneuerbar,260594.57175583614
+490,2015,Gesamt Nichterneuerbar,253797.48159143823
+491,2016,Gesamt Nichterneuerbar,260901.48674886447
+492,2017,Gesamt Nichterneuerbar,258987.08680047843
+493,2018,Gesamt Nichterneuerbar,252575.52665208926
+494,2019,Gesamt Nichterneuerbar,249511.083187565
+495,2020,Gesamt Nichterneuerbar,223115.98600267153
+496,1990,Anteil Erneuerbar,0.6320470600778847
+497,1991,Anteil Erneuerbar,0.6890238237604279
+498,1992,Anteil Erneuerbar,0.7434221078932454
+499,1993,Anteil Erneuerbar,0.5921160843035125
+500,1994,Anteil Erneuerbar,0.6226954074489678
+501,1995,Anteil Erneuerbar,0.5417052285335514
+502,1996,Anteil Erneuerbar,0.48250440694589236
+503,1997,Anteil Erneuerbar,0.4007640653844669
+504,1998,Anteil Erneuerbar,0.6042742018443753
+505,1999,Anteil Erneuerbar,0.6395934522481267
+506,2000,Anteil Erneuerbar,0.7404574748438914
+507,2001,Anteil Erneuerbar,0.6448529387928424
+508,2002,Anteil Erneuerbar,0.6958054304808732
+509,2003,Anteil Erneuerbar,0.7451133309161893
+510,2004,Anteil Erneuerbar,1.0473664783758083
+511,2005,Anteil Erneuerbar,1.2416643437367016
+512,2006,Anteil Erneuerbar,1.7734158870501349
+513,2007,Anteil Erneuerbar,2.302481095718406
+514,2008,Anteil Erneuerbar,2.2269290903449876
+515,2009,Anteil Erneuerbar,2.930348341437519
+516,2010,Anteil Erneuerbar,3.1289237923634334
+517,2011,Anteil Erneuerbar,3.4094911387740225
+518,2012,Anteil Erneuerbar,3.7666992914927167
+519,2013,Anteil Erneuerbar,3.9207610208034698
+520,2014,Anteil Erneuerbar,4.134106169011702
+521,2015,Anteil Erneuerbar,4.226568774434394
+522,2016,Anteil Erneuerbar,4.123677765693965
+523,2017,Anteil Erneuerbar,4.2762337363369705
+524,2018,Anteil Erneuerbar,5.226370476727436
+525,2019,Anteil Erneuerbar,5.5978843856617075
+526,2020,Anteil Erneuerbar,6.109197068391507
