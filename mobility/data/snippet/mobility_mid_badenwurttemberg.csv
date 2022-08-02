@@ -1,0 +1,118 @@
+,variable,value,year,valuetype
+0,Fahrrad,0.3084678221145838,2002,percentage
+1,Fahrrad,0.35515297456466094,2008,percentage
+2,Fahrrad,2.752637278843499,2017,percentage
+3,Fahrrad und ÖV,0.03752102993209904,2002,percentage
+4,Fahrrad und ÖV,0.09100722928231088,2008,percentage
+5,Fahrrad und ÖV,0.7933017757072369,2017,percentage
+6,MIV (Fahrer) und ÖV,0.2545781708296182,2002,percentage
+7,MIV (Fahrer) und ÖV,0.3586111340054074,2008,percentage
+8,MIV (Fahrer) und ÖV,1.319518370607489,2017,percentage
+9,MIV (Mitfahrer) und ÖV,0.09008505343144516,2002,percentage
+10,MIV (Mitfahrer) und ÖV,0.2300252388003184,2008,percentage
+11,MIV (Mitfahrer) und ÖV,1.2352545522346337,2017,percentage
+12,anderes,0.03642594610919599,2002,percentage
+13,anderes,0.031181070957397205,2008,percentage
+14,anderes,0.21163935777368303,2017,percentage
+15,nur MIV (Fahrer),6.031030064661818,2002,percentage
+16,nur MIV (Fahrer),7.456829202081582,2008,percentage
+17,nur MIV (Fahrer),41.19497852194807,2017,percentage
+18,nur MIV (Mitfahrer),2.541286101023212,2002,percentage
+19,nur MIV (Mitfahrer),3.6342373922711286,2008,percentage
+20,nur MIV (Mitfahrer),15.736527443088782,2017,percentage
+21,nur ÖV,1.1565237889669728,2002,percentage
+22,nur ÖV,1.6579569078752088,2008,percentage
+23,nur ÖV,9.71154915744827,2017,percentage
+24,zu Fuß,0.3244329915326966,2002,percentage
+25,zu Fuß,0.411463337458149,2008,percentage
+26,zu Fuß,2.037778086450528,2017,percentage
+27,percentage sum,100.0,2002,percentage
+28,Fahrrad,0.1542339110572919,2002,percentage
+29,Fahrrad,0.17757648728233047,2008,percentage
+30,Fahrrad,1.3763186394217495,2017,percentage
+31,Fahrrad und ÖV,0.01876051496604952,2002,percentage
+32,Fahrrad und ÖV,0.04550361464115544,2008,percentage
+33,Fahrrad und ÖV,0.39665088785361846,2017,percentage
+34,MIV (Fahrer) und ÖV,0.1272890854148091,2002,percentage
+35,MIV (Fahrer) und ÖV,0.1793055670027037,2008,percentage
+36,MIV (Fahrer) und ÖV,0.6597591853037446,2017,percentage
+37,MIV (Mitfahrer) und ÖV,0.04504252671572258,2002,percentage
+38,MIV (Mitfahrer) und ÖV,0.1150126194001592,2008,percentage
+39,MIV (Mitfahrer) und ÖV,0.6176272761173168,2017,percentage
+40,anderes,0.018212973054597997,2002,percentage
+41,anderes,0.015590535478698602,2008,percentage
+42,anderes,0.10581967888684152,2017,percentage
+43,nur MIV (Fahrer),3.015515032330909,2002,percentage
+44,nur MIV (Fahrer),3.728414601040791,2008,percentage
+45,nur MIV (Fahrer),20.597489260974037,2017,percentage
+46,nur MIV (Mitfahrer),1.270643050511606,2002,percentage
+47,nur MIV (Mitfahrer),1.8171186961355643,2008,percentage
+48,nur MIV (Mitfahrer),7.868263721544391,2017,percentage
+49,nur ÖV,0.5782618944834864,2002,percentage
+50,nur ÖV,0.8289784539376044,2008,percentage
+51,nur ÖV,4.855774578724135,2017,percentage
+52,zu Fuß,0.1622164957663483,2002,percentage
+53,zu Fuß,0.2057316687290745,2008,percentage
+54,zu Fuß,1.018889043225264,2017,percentage
+55,percentage sum,50.0,2002,percentage
+56,percentage sum,100.0,2008,percentage
+57,Fahrrad,0.07711695552864595,2002,percentage
+58,Fahrrad,0.08878824364116523,2008,percentage
+59,Fahrrad,0.6881593197108747,2017,percentage
+60,Fahrrad und ÖV,0.00938025748302476,2002,percentage
+61,Fahrrad und ÖV,0.02275180732057772,2008,percentage
+62,Fahrrad und ÖV,0.19832544392680923,2017,percentage
+63,MIV (Fahrer) und ÖV,0.06364454270740455,2002,percentage
+64,MIV (Fahrer) und ÖV,0.08965278350135185,2008,percentage
+65,MIV (Fahrer) und ÖV,0.3298795926518723,2017,percentage
+66,MIV (Mitfahrer) und ÖV,0.02252126335786129,2002,percentage
+67,MIV (Mitfahrer) und ÖV,0.0575063097000796,2008,percentage
+68,MIV (Mitfahrer) und ÖV,0.3088136380586584,2017,percentage
+69,anderes,0.009106486527298998,2002,percentage
+70,anderes,0.007795267739349301,2008,percentage
+71,anderes,0.05290983944342076,2017,percentage
+72,nur MIV (Fahrer),1.5077575161654544,2002,percentage
+73,nur MIV (Fahrer),1.8642073005203954,2008,percentage
+74,nur MIV (Fahrer),10.298744630487018,2017,percentage
+75,nur MIV (Mitfahrer),0.635321525255803,2002,percentage
+76,nur MIV (Mitfahrer),0.9085593480677822,2008,percentage
+77,nur MIV (Mitfahrer),3.9341318607721956,2017,percentage
+78,nur ÖV,0.2891309472417432,2002,percentage
+79,nur ÖV,0.4144892269688022,2008,percentage
+80,nur ÖV,2.4278872893620673,2017,percentage
+81,zu Fuß,0.08110824788317415,2002,percentage
+82,zu Fuß,0.10286583436453725,2008,percentage
+83,zu Fuß,0.509444521612632,2017,percentage
+84,percentage sum,25.0,2002,percentage
+85,percentage sum,50.0,2008,percentage
+86,percentage sum,100.0,2017,percentage
+87,Fahrrad,5352.0,2002,wegkm
+88,Fahrrad,6162.0,2008,wegkm
+89,Fahrrad,47759.0,2017,wegkm
+90,Fahrrad und ÖV,651.0,2002,wegkm
+91,Fahrrad und ÖV,1579.0,2008,wegkm
+92,Fahrrad und ÖV,13764.0,2017,wegkm
+93,MIV (Fahrer) und ÖV,4417.0,2002,wegkm
+94,MIV (Fahrer) und ÖV,6222.0,2008,wegkm
+95,MIV (Fahrer) und ÖV,22894.0,2017,wegkm
+96,MIV (Mitfahrer) und ÖV,1563.0,2002,wegkm
+97,MIV (Mitfahrer) und ÖV,3991.0,2008,wegkm
+98,MIV (Mitfahrer) und ÖV,21432.0,2017,wegkm
+99,anderes,632.0,2002,wegkm
+100,anderes,541.0,2008,wegkm
+101,anderes,3672.0,2017,wegkm
+102,nur MIV (Fahrer),104640.0,2002,wegkm
+103,nur MIV (Fahrer),129378.0,2008,wegkm
+104,nur MIV (Fahrer),714744.0,2017,wegkm
+105,nur MIV (Mitfahrer),44092.0,2002,wegkm
+106,nur MIV (Mitfahrer),63055.0,2008,wegkm
+107,nur MIV (Mitfahrer),273033.0,2017,wegkm
+108,nur ÖV,20066.0,2002,wegkm
+109,nur ÖV,28766.0,2008,wegkm
+110,nur ÖV,168498.0,2017,wegkm
+111,zu Fuß,5629.0,2002,wegkm
+112,zu Fuß,7139.0,2008,wegkm
+113,zu Fuß,35356.0,2017,wegkm
+114,sum,1735027.0,2002,sum
+115,sum,3470054.0,2008,sum
+116,sum,6940108.0,2017,sum
