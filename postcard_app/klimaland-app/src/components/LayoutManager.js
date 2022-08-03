@@ -1,18 +1,18 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 //our components
-import CardCollection from "./CardCollection";
-import SelectionButtons from "./SelectionButtons";
-import { getRandomElement } from "./helperFunc.js";
-import Info from "./Info.js";
+import CardCollection from './CardCollection';
+import SelectionButtons from './SelectionButtons';
+import { getRandomElement } from './helperFunc.js';
+import Info from './Info.js';
 // import TitleCanvas from "./TitleCanvas";
 
 //data
-import DropDownControls from "../data/selector-controls.json";
+import DropDownControls from '../data/selector-controls.json';
 
 //images
-import switchCard from "../img/buttons/switch.svg";
-import closeCard from "../img/buttons/close.svg";
+import switchCard from '../img/buttons/switch.svg';
+import closeCard from '../img/buttons/close.svg';
 
 export default class LayoutManager extends Component {
   constructor(props) {
@@ -32,32 +32,20 @@ export default class LayoutManager extends Component {
 
     //load data
     this.landkreise = DropDownControls.landkreise;
-
-    //TODO: reformat DropDownControls.indicators to object with value/label pairs
-    //this.sections = DropDownControls.indicators
-    this.sections = [
-      { label: "Mobilität", value: "Mo" },
-      { label: "Gebäude", value: "Ge" },
-      { label: "Energie", value: "En" },
-      { label: "Landwirtschaft", value: "La" },
-      {
-        label: "Abfallentsorgung",
-        value: "Ab",
-      },
-    ];
+    this.sections = DropDownControls.indicators;
 
     this.state = {
       //editors pick might be a prop and set by canvas!
       editorspick: [
-        { lk: { value: "11", label: "Berlin" }, section: "Mo" },
-        { lk: { value: "2", label: "Hamburg" }, section: "Ab" },
-        { lk: { value: "1001", label: "Flensburg" }, section: "En" },
+        { lk: { value: '11', label: 'Berlin' }, section: 'Mo' },
+        { lk: { value: '2', label: 'Hamburg' }, section: 'Ab' },
+        { lk: { value: '1001', label: 'Flensburg' }, section: 'En' },
       ],
       shuffleSelection: [],
-      section: "En",
+      section: 'En',
       landkreisSelection: [],
       postcardView: false,
-      mode: "shuffle",
+      mode: 'shuffle',
       cardSelection: [],
       activeCard: 0,
     };
@@ -72,15 +60,15 @@ export default class LayoutManager extends Component {
   async updateMode() {
     let mode;
     if (this.state.landkreisSelection.length > 1) {
-      mode = "comparison";
+      mode = 'comparison';
     } else if (this.state.landkreisSelection.length === 1) {
-      mode = "lk";
+      mode = 'lk';
     } else {
-      mode = "shuffle";
+      mode = 'shuffle';
     }
 
     //check mode
-    if (["comparison", "shuffle", "lk"].includes(mode)) {
+    if (['comparison', 'shuffle', 'lk'].includes(mode)) {
       return this.setStateAsync({ mode: mode });
     }
   }
@@ -129,7 +117,7 @@ export default class LayoutManager extends Component {
 
   async updateShuffleSelection() {
     //if reshuffling
-    if (this.state.mode === "shuffle") {
+    if (this.state.mode === 'shuffle') {
       let shuffled = [];
       let randomLK, randomLKElement;
       const randomSection = getRandomElement(this.sections);
@@ -166,7 +154,7 @@ export default class LayoutManager extends Component {
       await this.setStateAsync({
         shuffleSelection: this.state.editorspick,
         landkreisSelection: [],
-        mode: "shuffle",
+        mode: 'shuffle',
       }).then(() => {
         this.updateCardSelection();
       });
@@ -176,14 +164,14 @@ export default class LayoutManager extends Component {
   async updateCardSelection() {
     await this.updateMode().then(() => {
       let list = [];
-      if (this.state.mode === "shuffle") {
+      if (this.state.mode === 'shuffle') {
         list = this.state.shuffleSelection;
-      } else if (this.state.mode === "lk") {
+      } else if (this.state.mode === 'lk') {
         list = [];
         let selectedLK;
         // set default value for landkreisSelection (TODO: use germany)
         if (this.state.landkreisSelection[0] === undefined) {
-          selectedLK = { value: "11", label: "Berlin" };
+          selectedLK = { value: '11', label: 'Berlin' };
         } else {
           selectedLK = {
             value: this.state.landkreisSelection[0].value,
@@ -195,12 +183,12 @@ export default class LayoutManager extends Component {
         this.sections.forEach((element) => {
           list.push({ lk: selectedLK, section: element.value });
         });
-      } else if (this.state.mode === "comparison") {
+      } else if (this.state.mode === 'comparison') {
         let selectedSection;
 
         // set default value for section
         if (this.state.section === undefined) {
-          selectedSection = "En";
+          selectedSection = 'En';
         }
         //set selected value for section
         else {
@@ -214,7 +202,7 @@ export default class LayoutManager extends Component {
             section: selectedSection,
           });
         });
-        console.log("updated", list);
+        console.log('updated', list);
       }
 
       this.setState({ cardSelection: list });
@@ -239,7 +227,7 @@ export default class LayoutManager extends Component {
           changeSection={this.changeSection}
           shuffle={this.updateShuffleSelection}
         />
-{/* 
+        {/* 
         {this.state.landkreisSelection.length > 0 && (
           <TitleCanvas landkreis={this.state.landkreisSelection} />
         )} */}
@@ -258,12 +246,20 @@ export default class LayoutManager extends Component {
           <div className="button-container">
             <div className="inner-button">
               <button className="button close" onClick={this.closePostcardView}>
-                <img src={closeCard} className="button img" alt="close-button-img" />
+                <img
+                  src={closeCard}
+                  className="button img"
+                  alt="close-button-img"
+                />
               </button>
             </div>
             <div className="inner-button">
               <button className="button switch" onClick={this.nextCard}>
-                <img src={switchCard}nclassName="button img" alt="switch-button-img" />
+                <img
+                  src={switchCard}
+                  nclassName="button img"
+                  alt="switch-button-img"
+                />
               </button>
             </div>
           </div>
