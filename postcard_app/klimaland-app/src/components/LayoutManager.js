@@ -202,7 +202,7 @@ export default class LayoutManager extends Component {
             section: selectedSection,
           });
         });
-        console.log('updated', list);
+        // console.log('updated', list);
       }
 
       this.setState({ cardSelection: list });

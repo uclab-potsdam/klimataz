@@ -23,12 +23,12 @@ export class SelectionButtons extends Component {
   }
 
   changeSection(e) {
-    console.log(e);
+    // console.log(e);
     this.props.changeSection(e);
   }
 
   shuffle(e) {
-    console.log('reset lkSelection');
+    // console.log('reset lkSelection');
     this.setState({ selected: [] });
     this.props.shuffle(e);
   }
