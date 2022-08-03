@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { setStateAsync } from "./helperFunc.js";
+import { CSSTransition } from 'react-transition-group';
+
 //chart container
 import Chart from './side-elements/Chart.js';
 //side elements
@@ -80,16 +82,21 @@ export default class Side extends Component {
 
    render() {
       return (
-         <div
-            className="side-inner"
-            onClick={(e) => this.props.clickOnCard(e, this.props.lk, this.props.section)}
-         >
-            {!this.state.showViz && //TEXT
-               <Details lk={this.props.lk} section={this.props.section} activeSide={this.props.activeSide} />
-            }
-            {this.state.showViz &&  //VIS
-               this.props.activeSide === 0 && this.vis()}
-         </div>
+         <CSSTransition
+            in={this.props.activeSide === this.props.activeSide + 1}
+            timeout={200}
+            classNames="side-transition">
+            <div
+               className="side-inner"
+               onClick={(e) => this.props.clickOnCard(e, this.props.lk, this.props.section)}
+            >
+               {!this.state.showViz && //TEXT
+                  <Details lk={this.props.lk} section={this.props.section} activeSide={this.props.activeSide} />
+               }
+               {this.state.showViz &&  //VIS
+                  this.props.activeSide === 0 && this.vis()}
+            </div>
+         </CSSTransition>
       )
    }
 }

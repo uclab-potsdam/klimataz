@@ -210,6 +210,26 @@
                 }
             }
         }
+
+        &.side-transition-enter {
+            opacity: 0;
+        }
+
+        &.side-transition-enter-active, 
+        &.side-transition-enter-done {
+            opacity: 1;
+            transition: opacity 20ms;
+        }
+
+        &.side-transition-exit {
+            opacity: 1;
+            transition: opacity 20ms;
+        }
+
+        &.side-transition-exit-active {
+            opacity: 0;
+            transition: opacity 20ms;
+        }
     }
 }
 

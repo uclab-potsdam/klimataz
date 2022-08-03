@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Text from "./Text.js";
 import Locator from "./Locator.js";
+import List from "./List.js";
 
 export default class Details extends Component {
     render() {
@@ -14,7 +15,7 @@ export default class Details extends Component {
                         <Locator lk={this.props.lk} />
                     </div>
                     <div className="lk-list">
-                        <p>List with similar/dissimilar</p>
+                        <List />
                     </div>
                 </div>
             </div>
