@@ -81,6 +81,8 @@ export default class Side extends Component {
    }
 
    render() {
+      // TO DO: Solve issue of inconsistent activeSide during carousel switch
+      // console.log("currently on:", this.props.section, this.props.activeSide)
       return (
          <CSSTransition
             in={this.props.activeSide === this.props.activeSide + 1}

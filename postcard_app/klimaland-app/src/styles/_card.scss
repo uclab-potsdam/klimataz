@@ -169,11 +169,11 @@
     }
 }
 
-// back-side with explanation
 .card-active {
     .side-inner {
         width: 100%;
-
+        
+        // back-side with explanation
         .details-container {
             display: flex;
             height: 100%;
@@ -204,13 +204,34 @@
             
             .data-container {
                 width: 40%;
+                height: 100%;
+                overflow-y: scroll;
+                overflow-x: hidden;
 
                 .locator-map {
                     border-bottom: 2px solid $taz-orange;
                 }
+
+                .lk-list {
+                    margin: 0px 0px 0px 0px;
+                    .list-inner-container {
+
+                        .list-similar-container, .list-dissimilar-container {
+                            h4 {
+                                padding-left: 10px;
+                            }
+                        }
+
+                        ol {
+                            padding-bottom: 10px;
+                            border-bottom: 1px solid $taz-orange;
+                        }
+                    }
+                }
             }
         }
 
+        // CSS Transition classes
         &.side-transition-enter {
             opacity: 0;
         }

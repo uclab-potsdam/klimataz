@@ -43,12 +43,20 @@ h2{
 
 h3{
     @include title;
-    color: $taz-pink;
+    color: $red;
 }
 
 h4{
     @include title;
-    color: $taz-pink;
+    color: $red;
+}
+
+ul {
+    padding-left: 0px;
+    ol {
+        padding-top: 1rem;
+        padding-left: 1rem;
+    }
 }
 
 code {
