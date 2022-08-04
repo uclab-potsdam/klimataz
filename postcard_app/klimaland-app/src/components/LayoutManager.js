@@ -255,11 +255,9 @@ export default class LayoutManager extends Component {
             </div>
             <div className="inner-button">
               <button className="button switch" onClick={this.nextCard}>
-                <img
-                  src={switchCard}
-                  className="button img"
-                  alt="switch-button-img"
-                />
+
+                <img src={switchCard} className="button img" alt="switch-button-img" />
+
               </button>
             </div>
           </div>

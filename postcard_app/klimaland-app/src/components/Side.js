@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { setStateAsync } from "./helperFunc.js";
+import { CSSTransition } from 'react-transition-group';
+
 //chart container
 import Chart from './side-elements/Chart.js';
 //side elements
-import Text from "./side-elements/Text.js";
-import Locator from "./side-elements/Locator.js";
-
+import Details from './side-elements/Details.js'
 export default class Side extends Component {
-  constructor(props) {
-    super(props);
+   constructor(props) {
+      super(props);
 
       let layoutCombo = this.props.layoutControls[this.props.activeSide][this.props.activeSide].combo
 
@@ -37,23 +37,23 @@ export default class Side extends Component {
          let cardwidth = this.props.windowSize.width / 10 * 3 //30vw postcard size in thumbnail
          let width = cardwidth - (cardwidth / 3) //conditional margin
          let height = width * 0.7 //fixed ratio for postcard look
-         await setStateAsync(this,{ chartStyle: { width: String(width), height: String(height) } })
+         await setStateAsync(this, { chartStyle: { width: String(width), height: String(height) } })
       }
 
       else {
          let cardwidth = this.props.windowSize.width / 10 * 7 //70vw postcard size in fullscreen
          let width = cardwidth - (cardwidth / 4) //conditional margin
          let height = width * 0.7 //fixed ratio for postcard look
-         await setStateAsync(this,{ chartStyle: { width: String(width), height: String(height) } })
+         await setStateAsync(this, { chartStyle: { width: String(width), height: String(height) } })
       }
    }
 
    //load component dynamically from vis index file
-   vis(){
-      if(this.props.layoutControls[this.props.activeSide][0].components !== undefined){         
+   vis() {
+      if (this.props.layoutControls[this.props.activeSide][0].components !== undefined) {
          return <Chart {...this.props} />
       }
-      else{
+      else {
          //if not specified yet: return nothing
          return
       }
@@ -69,7 +69,7 @@ export default class Side extends Component {
          //only for top card because of performance
          if (this.props.isTopCard) {
             let layoutCombo = this.props.layoutControls[this.props.activeSide][this.props.activeSide].combo
-            await setStateAsync(this,{ order: layoutCombo[0], showViz: layoutCombo[1], indicator: layoutCombo[2], showLocator: layoutCombo[3] })
+            await setStateAsync(this, { order: layoutCombo[0], showViz: layoutCombo[1], indicator: layoutCombo[2], showLocator: layoutCombo[3] })
          }
 
          await this.updateChartSize();
@@ -81,19 +81,24 @@ export default class Side extends Component {
    }
 
    render() {
+      // TO DO: Solve issue of inconsistent activeSide during carousel switch
+      // console.log("currently on:", this.props.section, this.props.activeSide)
       return (
-         <div className="side-inner" onClick={(e) => this.props.clickOnCard(e, this.props.lk, this.props.section)}>
-            {!this.state.showViz && //TEXT
-               <Text
-                  lk={this.props.lk}
-                  section={this.props.section}
-                  activeSide={this.props.activeSide} />}
-            {this.state.showViz &&  //VIS
-               this.props.activeSide === 0 && this.vis()}
-            {this.state.showLocator && //LOCATOR
-               <Locator
-                  lk={this.props.lk} />}
-         </div>
+         <CSSTransition
+            in={this.props.activeSide === this.props.activeSide + 1}
+            timeout={200}
+            classNames="side-transition">
+            <div
+               className="side-inner"
+               onClick={(e) => this.props.clickOnCard(e, this.props.lk, this.props.section)}
+            >
+               {!this.state.showViz && //TEXT
+                  <Details lk={this.props.lk} section={this.props.section} activeSide={this.props.activeSide} />
+               }
+               {this.state.showViz &&  //VIS
+                  this.props.activeSide === 0 && this.vis()}
+            </div>
+         </CSSTransition>
       )
    }
 }
