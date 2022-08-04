@@ -48,6 +48,9 @@ $boxshadow: (
     }
 }
 
+//breakpoints from bootstrap
+//https://getbootstrap.com/docs/5.0/layout/breakpoints/
+
 //media queries
 @mixin media-s{
     @media screen and (min-width: 576px){
@@ -62,7 +65,7 @@ $boxshadow: (
 }
 
 @mixin media-lg{
-    @media screen and (min-width: 948px){
+    @media screen and (min-width: 992px){
         @content;
     }
 }

@@ -11,7 +11,9 @@ import Info from './Info.js';
 import DropDownControls from '../data/selector-controls.json';
 
 //images
-import switchCard from '../img/buttons/switch.svg';
+//import switchCard from '../img/buttons/switch.svg';
+import switchCardLeft from '../img/buttons/caret-left.svg';
+import switchCardRight from '../img/buttons/caret-right.svg';
 import closeCard from '../img/buttons/close.svg';
 
 export default class LayoutManager extends Component {
@@ -27,7 +29,8 @@ export default class LayoutManager extends Component {
     this.changeSection = this.changeSection.bind(this);
 
     //called by other components
-    this.nextCard = this.nextCard.bind(this);
+    this.handleSwitchNext = this.nextCard.bind(this, true);
+    this.handleSwitchBack = this.nextCard.bind(this, false);
     this.closePostcardView = this.closePostcardView.bind(this);
 
     //load data
@@ -91,13 +94,24 @@ export default class LayoutManager extends Component {
     this.setState({ postcardView: false });
   }
 
-  nextCard() {
+  nextCard(goFurther) {
+    //switch to next card in postcard view
     if (!this.state.postcardView) return;
 
-    //switch to next card in postcard view
-    let newActiveCard =
-      (this.state.activeCard + 1) % this.state.cardSelection.length;
+    let newActiveCard = 0;
+
+    if (goFurther) {
+      newActiveCard =
+        (this.state.activeCard + 1) % this.state.cardSelection.length;
+    } else {
+      newActiveCard = this.state.activeCard - 1;
+      //if new card -1: set last card of selection as new card
+      if (newActiveCard < 0)
+        newActiveCard = this.state.cardSelection.length - 1;
+    }
+
     this.setState({ activeCard: newActiveCard });
+
     //setActiveCard((activeCard + 1) % cards().length);
   }
 
@@ -236,12 +250,14 @@ export default class LayoutManager extends Component {
           mode={this.state.mode}
           postcardView={this.state.postcardView}
           activeCard={this.state.activeCard}
-          switchToPostcardView={this.switchToPostcardView.bind(this)}
+          handleSwitchNext={this.handleSwitchNext}
+          handleSwitchBack={this.handleSwitchBack}
+          switchToPostcardView={this.switchToPostcardView}
         />
 
         {/* we could also put the code below into "SelectionButtons.js" or a more general
         buttons component and switch between the selection and shuffle or zoomed
-        view buttons */}
+        view buttonså*/}
         {this.state.postcardView && (
           <div className="button-container">
             <div className="inner-button">
@@ -253,12 +269,31 @@ export default class LayoutManager extends Component {
                 />
               </button>
             </div>
-            <div className="inner-button">
-              <button className="button switch" onClick={this.nextCard}>
-
-                <img src={switchCard} className="button img" alt="switch-button-img" />
-
-              </button>
+            <div className="button-switch-container">
+              <div className="inner-button">
+                <button
+                  className="button switch"
+                  onClick={this.handleSwitchBack}
+                >
+                  <img
+                    src={switchCardLeft}
+                    className="button img"
+                    alt="switch-button-img"
+                  />
+                </button>
+              </div>
+              <div className="inner-button">
+                <button
+                  className="button switch"
+                  onClick={this.handleSwitchNext}
+                >
+                  <img
+                    src={switchCardRight}
+                    className="button img"
+                    alt="switch-button-img"
+                  />
+                </button>
+              </div>
             </div>
           </div>
         )}
