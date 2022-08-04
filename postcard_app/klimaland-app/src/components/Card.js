@@ -5,19 +5,9 @@ import { useSwipeable } from 'react-swipeable';
 import flipCard from '../img/buttons/flip.svg';
 import { mod } from './helperFunc';
 
-const Card = ({
-  classProp,
-  sides,
-  isThumbnail,
-  children,
-  handleSwitchBack,
-  handleSwitchNext,
-}) => {
+const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handleSwitchNext }) => {
   const [activeSide, setActiveSide] = useState(0);
   const [flipped, setFlipped] = useState(0);
-
-  //TODO: flip first, after that switch the content on the side
-  //maybe with gsap??
 
   useEffect(() => {
     const currentVal = flipped ? false : true;
@@ -37,7 +27,7 @@ const Card = ({
     return React.Children.map(children, (child) => {
       if (React.isValidElement(child)) {
         return React.cloneElement(child, {
-          activeSide: mod(activeSide, sides.length),
+          activeSide: mod(activeSide, sides.params.length),
           style: rotation,
         });
       }
