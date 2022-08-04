@@ -3,7 +3,7 @@ import { Component } from 'react';
 //our components
 import CardCollection from './CardCollection';
 import SelectionButtons from './SelectionButtons';
-import { getRandomElement } from './helperFunc.js';
+import { getRandomElement, setStateAsync } from './helperFunc.js';
 import Info from './Info.js';
 // import TitleCanvas from "./TitleCanvas";
 
@@ -51,12 +51,6 @@ export default class LayoutManager extends Component {
     };
   }
 
-  setStateAsync(state) {
-    return new Promise((resolve) => {
-      this.setState(state, resolve);
-    });
-  }
-
   async updateMode() {
     let mode;
     if (this.state.landkreisSelection.length > 1) {
@@ -69,7 +63,7 @@ export default class LayoutManager extends Component {
 
     //check mode
     if (['comparison', 'shuffle', 'lk'].includes(mode)) {
-      return this.setStateAsync({ mode: mode });
+      return setStateAsync(this, { mode: mode });
     }
   }
 
@@ -95,22 +89,19 @@ export default class LayoutManager extends Component {
     if (!this.state.postcardView) return;
 
     //switch to next card in postcard view
-    let newActiveCard =
-      (this.state.activeCard + 1) % this.state.cardSelection.length;
+    let newActiveCard = (this.state.activeCard + 1) % this.state.cardSelection.length;
     this.setState({ activeCard: newActiveCard });
     //setActiveCard((activeCard + 1) % cards().length);
   }
 
   async changeLandkreis(e) {
-    // await this.setStateAsync({landkreisSelection:e})
-    // .then(()=>{this.updateCardSelection()})
     this.setState({ landkreisSelection: e }, () => {
       this.updateCardSelection();
     });
   }
 
   async changeSection(e) {
-    await this.setStateAsync({ section: e.value }).then(() => {
+    await setStateAsync(this, { section: e.value }).then(() => {
       this.updateCardSelection();
     });
   }
@@ -126,14 +117,10 @@ export default class LayoutManager extends Component {
         randomLK = getRandomElement(this.landkreise);
 
         //while random lk is already in list
-        let alreadyInList = shuffled.findIndex(
-          (elem) => elem.lk.value === randomLK.value
-        );
+        let alreadyInList = shuffled.findIndex((elem) => elem.lk.value === randomLK.value);
         while (alreadyInList !== -1) {
           randomLK = getRandomElement(this.landkreise);
-          alreadyInList = shuffled.findIndex(
-            (elem) => elem.lk.value === randomLK.value
-          );
+          alreadyInList = shuffled.findIndex((elem) => elem.lk.value === randomLK.value);
         }
 
         randomLKElement = {
@@ -142,7 +129,7 @@ export default class LayoutManager extends Component {
         };
         shuffled.push(randomLKElement);
       }
-      await this.setStateAsync({ shuffleSelection: shuffled }).then(() => {
+      await setStateAsync(this, { shuffleSelection: shuffled }).then(() => {
         this.updateCardSelection();
       });
     }
@@ -151,7 +138,7 @@ export default class LayoutManager extends Component {
     else {
       //use editors pick as first shuffle option
       //reset selection and mode
-      await this.setStateAsync({
+      await setStateAsync(this, {
         shuffleSelection: this.state.editorspick,
         landkreisSelection: [],
         mode: 'shuffle',
@@ -246,18 +233,12 @@ export default class LayoutManager extends Component {
           <div className="button-container">
             <div className="inner-button">
               <button className="button close" onClick={this.closePostcardView}>
-                <img
-                  src={closeCard}
-                  className="button img"
-                  alt="close-button-img"
-                />
+                <img src={closeCard} className="button img" alt="close-button-img" />
               </button>
             </div>
             <div className="inner-button">
               <button className="button switch" onClick={this.nextCard}>
-
                 <img src={switchCard} className="button img" alt="switch-button-img" />
-
               </button>
             </div>
           </div>
