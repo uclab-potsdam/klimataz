@@ -22,7 +22,6 @@ export default class Side extends Component {
       showViz: layoutdata.combo[1],
       indicatorInt: layoutdata.combo[2],
       showLocator: layoutdata.combo[3],
-      layout: layoutdata,
       chartStyle: {
         width: '300',
         height: '200',
@@ -54,7 +53,8 @@ export default class Side extends Component {
   //load component dynamically from vis index file
   vis() {
     if (
-      this.state.layout.components !== undefined &&
+      this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
+        undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -80,7 +80,6 @@ export default class Side extends Component {
         let layoutdata =
           this.props.layoutControls.params[this.props.activeSide][this.props.activeSide];
         await setStateAsync(this, {
-          layout: layoutdata,
           order: layoutdata.combo[0],
           showViz: layoutdata.combo[1],
           indicator: layoutdata.combo[2],
