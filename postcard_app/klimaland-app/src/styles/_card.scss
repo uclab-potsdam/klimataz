@@ -47,6 +47,7 @@
     }
 }
 
+// flipping
 .card{
     position: absolute;
 
@@ -137,6 +138,11 @@
     -webkit-transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
     transition: transform ease 500ms;
     transition: -webkit-transform ease 500ms;
+    box-shadow: -4px 4px 0px rgba(246, 161, 25, 0.4);
+
+    &:hover {
+        box-shadow: -4px 4px 0px rgba(246, 161, 25, 0.4);    
+    }
 
 
     &.flip{
@@ -162,3 +168,90 @@
         margin:1rem;
     }
 }
+
+.card-active {
+    .side-inner {
+        width: 100%;
+        
+        // back-side with explanation
+        .details-container {
+            display: flex;
+            height: 100%;
+            .text-container {
+                width: 60%;
+                height: 100%;
+                overflow: scroll;
+                border-right: 2px solid $taz-orange;
+                .text-inner-container {
+                    margin: 10px;
+
+                    .section-title {
+                        // width: 80%;
+                        text-align: center;
+                        margin: 40px 10px 40px 10px;
+                        border: 1px solid $taz-orange;
+                        border-radius: 450px / 70px;
+                    }
+
+                    .section-text {
+                        margin: 20px;
+                        p {
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+            
+            .data-container {
+                width: 40%;
+                height: 100%;
+                overflow-y: scroll;
+                overflow-x: hidden;
+
+                .locator-map {
+                    border-bottom: 2px solid $taz-orange;
+                }
+
+                .lk-list {
+                    margin: 0px 0px 0px 0px;
+                    .list-inner-container {
+
+                        .list-similar-container, .list-dissimilar-container {
+                            h4 {
+                                padding-left: 10px;
+                            }
+                        }
+
+                        ol {
+                            padding-bottom: 10px;
+                            border-bottom: 1px solid $taz-orange;
+                        }
+                    }
+                }
+            }
+        }
+
+        // CSS Transition classes
+        &.side-transition-enter {
+            opacity: 0;
+        }
+
+        &.side-transition-enter-active, 
+        &.side-transition-enter-done {
+            opacity: 1;
+            transition: opacity 20ms;
+        }
+
+        &.side-transition-exit {
+            opacity: 1;
+            transition: opacity 20ms;
+        }
+
+        &.side-transition-exit-active {
+            opacity: 0;
+            transition: opacity 20ms;
+        }
+    }
+}
+
+

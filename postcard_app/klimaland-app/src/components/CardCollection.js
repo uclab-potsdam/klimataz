@@ -6,7 +6,7 @@ import Card from './Card';
 import Side from './Side';
 
 //data (same for all cards, so imported here)
-import Data from '../data/data-inprogress.json';
+import Data from '../data/data.json';
 import LayoutControls from '../data/layout-controls-inprogress.json';
 
 export default class CardCollection extends Component {

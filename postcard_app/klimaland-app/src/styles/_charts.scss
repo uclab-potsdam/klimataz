@@ -19,14 +19,39 @@
     }
 }
 
+.locator-map {
+    .locator-container {
+        width: 100%;
+        display:flex;
+        margin-top: 30px;
+        margin-bottom: 30px;
+
+        .locator-background {
+            width: 50%;
+        }
+
+        .locator-zoom {
+            width: 50%;
+            filter: drop-shadow(0px 0px 2px rgba(246, 161, 25, 0.4));
+
+            .locator-zoom-inner {
+                background-color: $light;
+                clip-path: circle(45%);
+                position: absolute;
+                // box-shadow: -4px 4px 0px rgba(246, 161, 25, 0.4);
+            }
+        }
+    }
+}
+
 
 .landkreis {
-    stroke: rgb(84, 84, 84);
-    stroke-width: 0.25;
-    fill: white;
+    stroke: $taz-orange;
+    stroke-width: 0.5;
+    fill: $lighter-orange-full;
 
     &.visible {
-        fill: $blue;
+        fill: $red;
     }
 }
 
