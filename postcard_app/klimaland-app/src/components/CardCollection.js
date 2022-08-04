@@ -1,13 +1,13 @@
-import { Component } from "react";
-import { mod } from "./helperFunc.js";
+import { Component } from 'react';
+import { mod } from './helperFunc.js';
 
 //components
-import Card from "./Card";
-import Side from "./Side";
+import Card from './Card';
+import Side from './Side';
 
 //data (same for all cards, so imported here)
-import Data from "../data/data-inprogress.json";
-import LayoutControls from "../data/layout-controls-inprogress.json";
+import Data from '../data/data.json';
+import LayoutControls from '../data/layout-controls-inprogress.json';
 
 export default class CardCollection extends Component {
   constructor(props) {
@@ -56,20 +56,20 @@ export default class CardCollection extends Component {
           this.props.cardSelection.length
         );
 
-        let classProp = "";
+        let classProp = '';
 
         let isTopCard = false;
 
         if (i === this.props.activeCard) {
           //store if card is currently on top for rendering viz effectively
-          classProp = "card card-active";
+          classProp = 'card card-active';
           isTopCard = true;
         } else if (i === indexRight) {
-          classProp = "card card-right";
+          classProp = 'card card-right';
         } else if (i === indexLeft) {
-          classProp = "card card-left";
+          classProp = 'card card-left';
         } else {
-          classProp = "card card-back";
+          classProp = 'card card-back';
         }
 
         return (
@@ -94,13 +94,13 @@ export default class CardCollection extends Component {
 
       //   console.log("postcardview cards generated", list);
     } else {
-      if (this.props.mode === "comparison") {
-        classProp = "card card-ordered";
-      } else if (this.props.mode === "lk") {
-        classProp = "card card-ordered";
-      } else if (this.props.mode === "shuffle") {
+      if (this.props.mode === 'comparison') {
+        classProp = 'card card-ordered';
+      } else if (this.props.mode === 'lk') {
+        classProp = 'card card-ordered';
+      } else if (this.props.mode === 'shuffle') {
         //todo: editors pick / shuffle mode
-        classProp = "card card-ordered";
+        classProp = 'card card-ordered';
       }
 
       list = this.props.cardSelection.map((element, i) => {
@@ -144,7 +144,7 @@ export default class CardCollection extends Component {
 
   componentDidMount() {
     this.updateWindowDimensions();
-    window.addEventListener("resize", this.updateWindowDimensions);
+    window.addEventListener('resize', this.updateWindowDimensions);
   }
 
   componentDidUpdate(prevProps) {
@@ -162,22 +162,22 @@ export default class CardCollection extends Component {
     return (
       <div className="card-collection">
         <h5 className="debug">
-          Debug: {this.props.mode}, LK:{" "}
+          Debug: {this.props.mode}, LK:{' '}
           {this.props.cardSelection.map(
-            (elem) => elem.lk.label + " " + elem.section + " | "
+            (elem) => elem.lk.label + ' ' + elem.section + ' | '
           )}
         </h5>
-        {this.props.mode === "comparison" && !this.props.postcardView && (
+        {this.props.mode === 'comparison' && !this.props.postcardView && (
           <div>
             <div className="card-container stacked"> {this.state.cards} </div>
           </div>
         )}
-        {this.props.mode === "lk" && !this.props.postcardView && (
+        {this.props.mode === 'lk' && !this.props.postcardView && (
           <div>
             <div className="card-container messy">{this.state.cards}</div>
           </div>
         )}
-        {this.props.mode === "shuffle" && !this.props.postcardView && (
+        {this.props.mode === 'shuffle' && !this.props.postcardView && (
           <div>
             <div className="card-container shuffle">{this.state.cards}</div>
           </div>
