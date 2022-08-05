@@ -8,11 +8,14 @@ import { mod } from './helperFunc';
 const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handleSwitchNext }) => {
   const [activeSide, setActiveSide] = useState(0);
   const [flipped, setFlipped] = useState(0);
+  const [flipping, setFlipping] = useState(0);
+  //TODO: flip first, after that switch the content on the side
+  //maybe with gsap??
 
   useEffect(() => {
     const currentVal = flipped ? false : true;
     setFlipped(currentVal);
-  }, [activeSide]);
+  }, [activeSide, flipping]);
 
   const swipeHandler = useSwipeable({
     onSwipedLeft: () => {
@@ -29,6 +32,7 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
         return React.cloneElement(child, {
           activeSide: mod(activeSide, sides.params.length),
           style: rotation,
+          flipping: flipping
         });
       }
       return child;
@@ -52,7 +56,9 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
         <button
           className="button flip"
           onClick={() => {
+            setFlipping(1);
             setActiveSide(activeSide + 1);
+            setFlipping(0);
           }}
         >
           <img src={flipCard} className="button img" alt="flip-button-img" />
@@ -67,11 +73,8 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
 
   return (
     <div className={classProp}>
-      {isThumbnail && (
-        <div className="card-preview" style={{ transform: previewRotation }}>
-          {sideWithProps({})}
-        </div>
-      )}
+      {isThumbnail && <div className="card-preview"
+        style={{ transform: previewRotation }}>{sideWithProps({})}</div>}
       {!isThumbnail && (
         <div
           className={`side-container ${flipped ? 'flip' : ''}`}

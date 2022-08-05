@@ -9,6 +9,8 @@
     height: 100%;
 
     .svg-container {
+        height: 100%;
+        // Specific styling for sections' charts
         &.Mo-chart {
             background-color: olive;
         }
@@ -16,6 +18,19 @@
         &.En-chart {
             background-color: rgb(224, 178, 111);
         }
+
+        &.Ab-chart {
+            background-color: rgb(154, 111, 224);
+        }
+
+        &.Ge-chart {
+            background-color: rgb(224, 111, 167);
+        }
+
+        &.La-chart {
+            background-color: rgb(111, 224, 194);
+        }
+                                
     }
 }
 
