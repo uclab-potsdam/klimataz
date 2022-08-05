@@ -59,6 +59,7 @@ export default class CardCollection extends Component {
         let classProp = "";
 
         let isTopCard = false;
+        console.log(this.flipping)
 
         if (i === this.props.activeCard) {
           //store if card is currently on top for rendering viz effectively
@@ -78,6 +79,7 @@ export default class CardCollection extends Component {
             classProp={classProp}
             isThumbnail={false}
             sides={this.layoutControls[element.section].params}
+            flipping={this.flipping}
           >
             <Side
               lk={element.lk}
@@ -87,6 +89,7 @@ export default class CardCollection extends Component {
               windowSize={this.state.windowSize}
               localData={this.data[element.lk.value]}
               layoutControls={this.layoutControls[element.section].params}
+              flipping={this.flipping}
             />
           </Card>
         );
