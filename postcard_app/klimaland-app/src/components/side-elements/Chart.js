@@ -31,7 +31,7 @@ export default class Chart extends Component {
   //TODO: smarter way of drawing viz (from layout-controls!)
   render() {
 
-    console.log(this.state.chartComponentName)
+    // console.log(this.state.chartComponentName)
     //import component
     const RenderChart = VisIndex[this.state.chartComponentName];
     //return nothing if chart undefined
