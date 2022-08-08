@@ -25,6 +25,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    margin-top: 5rem;
 }
 
 .card-container{
@@ -53,14 +54,14 @@
 
     &-active{
         // scaling to avoid overflow
-        transform: translateY(0px) scale(0.82);
+        transform: translateY(0px) scale(0.99);
         z-index: 1;
         opacity: 1;
         @include stacked-postcard;
     }
 
     &-left{
-        transform: rotate(-5deg) scale(0.82);
+        transform: rotate(-5deg) scale(1);
         z-index: -2;
         @include stacked-postcard;
 
@@ -71,7 +72,7 @@
     }
     
     &-right{
-        transform: rotate(5deg) scale(0.82);
+        transform: rotate(5deg) scale(1);
         z-index: -1;
         @include stacked-postcard;
 
@@ -82,7 +83,7 @@
     }
 
     &-back{
-        transform: rotate(-2deg)  translate(-2px, -5px) scale(0.82);;
+        transform: rotate(-2deg)  translate(-2px, -5px) scale(1);;
         z-index: -3;
         @include stacked-postcard;
 

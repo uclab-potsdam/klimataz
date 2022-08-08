@@ -30,6 +30,8 @@ export default class Chart extends Component {
 
   //TODO: smarter way of drawing viz (from layout-controls!)
   render() {
+
+    console.log(this.state.chartComponentName)
     //import component
     const RenderChart = VisIndex[this.state.chartComponentName];
     //return nothing if chart undefined
@@ -40,7 +42,7 @@ export default class Chart extends Component {
       <div className="chart-container">
         <svg
           width="100%"
-          height="100%"
+          viewBox="0 0 100% 100%"
           className={'svg-container ' + this.props.section + '-chart'}
         >
           <RenderChart {...this.props} />

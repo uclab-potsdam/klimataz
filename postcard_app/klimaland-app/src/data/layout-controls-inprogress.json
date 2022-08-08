@@ -87,7 +87,12 @@
                         true,
                         1,
                         false
-                    ]
+                    ],
+                    "components": {
+                        "indicator:": "_primaryconsumption_",
+                        "component": "Waste",
+                        "showDataFootnote": false
+                    }
                 }
             },
             {
@@ -121,7 +126,12 @@
                         true,
                         1,
                         false
-                    ]
+                    ],
+                "components": {
+                    "indicator:": "_primaryconsumption_",
+                    "component": "Land",
+                    "showDataFootnote": false
+                }
                 }
             },
             {
@@ -155,7 +165,12 @@
                         true,
                         1,
                         false
-                    ]
+                    ],
+                    "components": {
+                        "indicator:": "_primaryconsumption_",
+                        "component": "Buildings",
+                        "showDataFootnote": false
+                    }
                 }
             },
             {
