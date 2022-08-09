@@ -37,21 +37,39 @@ export default class LayoutManager extends Component {
     this.landkreise = DropDownControls.landkreise;
     this.sections = DropDownControls.indicators;
 
-    this.state = {
-      //editors pick might be a prop and set by canvas!
-      editorspick: [
-        { lk: { value: '11', label: this.props.areaPick1 }, section: 'Mo' },
-        { lk: { value: '2', label: this.props.areaPick2 }, section: 'Ab' },
-        { lk: { value: '1001', label: this.props.areaPick3 }, section: 'En' },
-      ],
-      shuffleSelection: [],
-      section: 'En',
-      landkreisSelection: [],
-      postcardView: false,
-      mode: 'shuffle',
-      cardSelection: [],
-      activeCard: 0,
-    };
+
+    // just for testing - should be solved a bit nicer
+    if (this.props.areaPick1) {
+      this.state = {
+        editorspick: [
+          { lk: { value: '11', label: this.props.areaPick1 }, section: 'Mo' },
+          { lk: { value: '2', label: this.props.areaPick2 }, section: 'Ab' },
+          { lk: { value: '1001', label: this.props.areaPick3 }, section: 'En' },
+        ],
+        shuffleSelection: [],
+        section: 'En',
+        landkreisSelection: [],
+        postcardView: false,
+        mode: 'shuffle',
+        cardSelection: [],
+        activeCard: 0,
+      };
+    } else {
+      this.state = {
+        editorspick: [
+          { lk: { value: '11', label: 'Berlin' }, section: 'Mo' },
+          { lk: { value: '2', label: 'Hamburg' }, section: 'Ab' },
+          { lk: { value: '1002', label: 'Kiel' }, section: 'En' },
+        ],
+        shuffleSelection: [],
+        section: 'En',
+        landkreisSelection: [],
+        postcardView: false,
+        mode: 'shuffle',
+        cardSelection: [],
+        activeCard: 0,
+      };
+    }
   }
   
 
@@ -146,6 +164,7 @@ export default class LayoutManager extends Component {
       await setStateAsync(this, { shuffleSelection: shuffled }).then(() => {
         this.updateCardSelection();
       });
+
     }
 
     //else: switching to shuffle mode
