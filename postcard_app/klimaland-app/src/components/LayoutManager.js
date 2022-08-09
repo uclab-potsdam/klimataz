@@ -61,7 +61,6 @@ export default class LayoutManager extends Component {
       activeCard: 0,
     };
   }
-  
 
   /**
    * detect which mode we are in depending on the length of the landkreis selection
@@ -205,7 +204,9 @@ export default class LayoutManager extends Component {
     }
   }
 
-  //update card selection after shuffling or selecting a landkreis
+  /**
+   * update card selection after shuffling or selecting a landkreis
+   */
   async updateCardSelection() {
     await this.updateMode().then(() => {
       let list = [];
@@ -261,7 +262,9 @@ export default class LayoutManager extends Component {
     });
   }
 
-  //on mount: use editors pick first
+  /**
+   * on mount: use editors pick
+   */
   componentDidMount() {
     this.setState({ shuffleSelection: this.state.editorspick });
     this.updateCardSelection();
