@@ -40,9 +40,14 @@ export default class LayoutManager extends Component {
     this.state = {
       //editors pick might be a prop and set by canvas!
       editorspick: [
-        { lk: { value: '11', label: this.props.areaPick1 }, section: 'Mo' },
-        { lk: { value: '2', label: this.props.areaPick2 }, section: 'Ab' },
-        { lk: { value: '1001', label: this.props.areaPick3 }, section: 'En' },
+        // { lk: { value: '11', label: this.props.areaPick1 }, section: 'Mo' },
+        // { lk: { value: '2', label: this.props.areaPick2 }, section: 'Ab' },
+        // { lk: { value: '1001', label: this.props.areaPick3 }, section: 'En' },
+        { lk: { value: '0', label: 'Deutschland' }, section: 'Mo' },
+        { lk: { value: '0', label: 'Deutschland' }, section: 'En' },
+        { lk: { value: '0', label: 'Deutschland' }, section: 'Ab' },
+        { lk: { value: '0', label: 'Deutschland' }, section: 'La' },
+        { lk: { value: '0', label: 'Deutschland' }, section: 'Ge' },
       ],
       shuffleSelection: [],
       section: 'En',
@@ -53,7 +58,6 @@ export default class LayoutManager extends Component {
       activeCard: 0,
     };
   }
-  
 
   async updateMode() {
     let mode;
