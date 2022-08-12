@@ -7,9 +7,6 @@ import { getRandomElement, setStateAsync } from './helperFunc.js';
 import Info from './Info.js';
 // import TitleCanvas from "./TitleCanvas";
 
-//data
-import DropDownControls from '../data/selector-controls.json';
-
 //images
 //import switchCard from '../img/buttons/switch.svg';
 import switchCardLeft from '../img/buttons/caret-left.svg';
@@ -33,31 +30,7 @@ export default class LayoutManager extends Component {
     this.handleSwitchBack = this.nextCard.bind(this, false);
     this.closePostcardView = this.closePostcardView.bind(this);
 
-    //load data from selector json
-    this.landkreise = DropDownControls.landkreise;
-    this.sections = DropDownControls.indicators;
-
-    let editorspick = [];
-    if (this.props.areaPick1) {
-      editorspick = [
-        { lk: { value: '11', label: this.props.areaPick1 }, section: 'Mo' },
-        { lk: { value: '2', label: this.props.areaPick2 }, section: 'Ab' },
-        { lk: { value: '1001', label: this.props.areaPick3 }, section: 'En' },
-      ];
-    } else {
-      editorspick = [
-        { lk: { value: '0', label: 'Deutschland' }, section: 'Mo' },
-        { lk: { value: '0', label: 'Deutschland' }, section: 'En' },
-        { lk: { value: '0', label: 'Deutschland' }, section: 'La' },
-        { lk: { value: '0', label: 'Deutschland' }, section: 'Ab' },
-        { lk: { value: '0', label: 'Deutschland' }, section: 'Ge' },
-      ];
-    }
-
     this.state = {
-      //editors pick might be a prop and set by the iframe / the canvas
-      //but the format should stay like this anyway
-      editorspick: editorspick,
       //card selection if we are in shuffle mode
       shuffleSelection: [],
       //selected section for comparison mode
@@ -176,16 +149,16 @@ export default class LayoutManager extends Component {
       let shuffled = [];
       let randomLK, randomLKElement;
       //pick one random section
-      const randomSection = getRandomElement(this.sections);
+      const randomSection = getRandomElement(this.props.sectionsData);
 
       //get five random unique landkreise
       for (let i = 0; i < 5; i++) {
-        randomLK = getRandomElement(this.landkreise);
+        randomLK = getRandomElement(this.props.landkreiseData);
         let alreadyInList = shuffled.findIndex((elem) => elem.lk.value === randomLK.value);
 
         //if random lk is already in list find new landkreis
         while (alreadyInList !== -1) {
-          randomLK = getRandomElement(this.landkreise);
+          randomLK = getRandomElement(this.props.landkreiseData);
           alreadyInList = shuffled.findIndex((elem) => elem.lk.value === randomLK.value);
         }
 
@@ -208,7 +181,7 @@ export default class LayoutManager extends Component {
     else {
       //reset selection and mode
       await setStateAsync(this, {
-        shuffleSelection: this.state.editorspick,
+        shuffleSelection: this.props.editorspick,
         landkreisSelection: [],
         mode: 'shuffle',
       }).then(() => {
@@ -244,7 +217,7 @@ export default class LayoutManager extends Component {
         } //set selected value for landkreisSelection
 
         //add one card per section
-        this.sections.forEach((element) => {
+        this.props.sectionsData.forEach((element) => {
           list.push({ lk: selectedLK, section: element.value });
         });
       }
@@ -277,10 +250,10 @@ export default class LayoutManager extends Component {
 
   /**
    * React Lifecycle Hook
-   * on mount: use editors pick
+   * on mount: use editors pick (passed from Canvas as prop)
    */
   componentDidMount() {
-    this.setState({ shuffleSelection: this.state.editorspick });
+    this.setState({ shuffleSelection: this.props.editorspick });
     this.updateCardSelection();
   }
 
@@ -290,8 +263,8 @@ export default class LayoutManager extends Component {
         <SelectionButtons
           mode={this.state.mode}
           postcardView={this.state.postcardView}
-          landkreise={this.landkreise}
-          sections={this.sections}
+          landkreise={this.props.landkreiseData}
+          sections={this.props.sectionsData}
           landkreisSelection={this.state.landkreisSelection}
           changeLandkreis={this.changeLandkreis}
           changeSection={this.changeSection}
