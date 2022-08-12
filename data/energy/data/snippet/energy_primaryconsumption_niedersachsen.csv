@@ -1,0 +1,49 @@
+,Jahr,variable,value,Energiekategorie
+0,2008,Steinkohle,168509.713136565,fossil
+1,2012,Steinkohle,169490.21522349,fossil
+2,2016,Steinkohle,167132.841647,fossil
+3,2020,Steinkohle,108414.96968,fossil
+4,2008,Braunkohle,27133.8790456,fossil
+5,2012,Braunkohle,27539.13393332353,fossil
+6,2016,Braunkohle,22490.693623102103,fossil
+7,2020,Braunkohle,22490.693623102103,fossil
+8,2008,Mineralöle und Mineralöl produkte,389202.44858048495,fossil
+9,2012,Mineralöle und Mineralöl produkte,353754.4184372791,fossil
+10,2016,Mineralöle und Mineralöl produkte,334931.0015040068,fossil
+11,2020,Mineralöle und Mineralöl produkte,333818.21374299994,fossil
+12,2008,Gase,407770.93245309097,fossil
+13,2012,Gase,359418.121841115,fossil
+14,2016,Gase,411978.4353559,fossil
+15,2020,Gase,406303.1166,fossil
+16,2008,Kernenergie,351698.36061045,fossil
+17,2012,Kernenergie,252249.0295436,fossil
+18,2016,Kernenergie,218372.3485789,fossil
+19,2020,Kernenergie,218372.3485789,fossil
+20,2008,Andere Energieträger,17096.42789301559,fossil
+21,2012,Andere Energieträger,13055.83537,fossil
+22,2016,Andere Energieträger,15394.85611,fossil
+23,2020,Andere Energieträger,15394.85611,fossil
+24,2008,"Klärgas, Deponiegas",2352.162780135831,renewable
+25,2012,"Klärgas, Deponiegas",2003.848566849315,renewable
+26,2016,"Klärgas, Deponiegas",1865.009,renewable
+27,2020,"Klärgas, Deponiegas",1845.5974286,renewable
+28,2008,Wasserkraft,1044.0409104,renewable
+29,2012,Wasserkraft,966.412206,renewable
+30,2016,Wasserkraft,962.0784,renewable
+31,2020,Wasserkraft,962.0784,renewable
+32,2008,Windkraft,38813.7078473781,renewable
+33,2012,Windkraft,46369.3978189846,renewable
+34,2016,Windkraft,70940.8899059689,renewable
+35,2020,Windkraft,134589.0816,renewable
+36,2008,Solarenergie,1596.000608,renewable
+37,2012,Solarenergie,11099.622888,renewable
+38,2016,Solarenergie,12879.792,renewable
+39,2020,Solarenergie,15731.9492,renewable
+40,2008,Biomasse 1),113141.82263914816,renewable
+41,2012,Biomasse 1),144091.90662420547,renewable
+42,2016,Biomasse 1),146258.43645997957,renewable
+43,2020,Biomasse 1),141200.26426,renewable
+44,2008,Sonstige erneuerbare Energien 2),1215.2,renewable
+45,2012,Sonstige erneuerbare Energien 2),1866.89094520737,renewable
+46,2016,Sonstige erneuerbare Energien 2),2606.66838964395,renewable
+47,2020,Sonstige erneuerbare Energien 2),3718.285685,renewable

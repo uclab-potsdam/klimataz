@@ -1,145 +1,127 @@
-,Jahr,Energietyp,value
-0,2003,Erdgas,426279.0
-1,2004,Erdgas,439554.0
-2,2005,Erdgas,402347.0
-3,2006,Erdgas,378409.0
-4,2007,Erdgas,392469.0
-5,2008,Erdgas,409021.0
-6,2009,Erdgas,396942.0
-7,2010,Erdgas,430278.0
-8,2011,Erdgas,344599.0
-9,2012,Erdgas,448603.0
-10,2013,Erdgas,441393.0
-11,2014,Erdgas,373247.0
-12,2015,Erdgas,421033.0
-13,2016,Erdgas,400690.0
-14,2017,Erdgas,374159.0
-15,2018,Erdgas,393705.0
-16,2019,Erdgas,371326.0
-17,2020,Erdgas,369210.0
-18,2003,Erneuerbare Energien,
-19,2004,Erneuerbare Energien,6668.0
-20,2005,Erneuerbare Energien,
-21,2006,Erneuerbare Energien,
-22,2007,Erneuerbare Energien,
-23,2008,Erneuerbare Energien,
-24,2009,Erneuerbare Energien,
-25,2010,Erneuerbare Energien,
-26,2011,Erneuerbare Energien,
-27,2012,Erneuerbare Energien,
-28,2013,Erneuerbare Energien,
-29,2014,Erneuerbare Energien,
-30,2015,Erneuerbare Energien,
-31,2016,Erneuerbare Energien,
-32,2017,Erneuerbare Energien,
-33,2018,Erneuerbare Energien,
-34,2019,Erneuerbare Energien,
-35,2020,Erneuerbare Energien,
-36,2003,Heizöl,78076.0
-37,2004,Heizöl,78720.0
-38,2005,Heizöl,110404.0
-39,2006,Heizöl,57737.0
-40,2007,Heizöl,50132.0
-41,2008,Heizöl,18015.0
-42,2009,Heizöl,19623.0
-43,2010,Heizöl,20937.0
-44,2011,Heizöl,25720.0
-45,2012,Heizöl,26667.0
-46,2013,Heizöl,18136.0
-47,2014,Heizöl,18756.0
-48,2015,Heizöl,14155.0
-49,2016,Heizöl,
-50,2017,Heizöl,
-51,2018,Heizöl,15711.0
-52,2019,Heizöl,
-53,2020,Heizöl,
-54,2003,Kohle,
-55,2004,Kohle,
-56,2005,Kohle,
-57,2006,Kohle,
-58,2007,Kohle,
-59,2008,Kohle,0.0
-60,2009,Kohle,0.0
-61,2010,Kohle,0.0
-62,2011,Kohle,0.0
-63,2012,Kohle,0.0
-64,2013,Kohle,0.0
-65,2014,Kohle,0.0
-66,2015,Kohle,0.0
-67,2016,Kohle,0.0
-68,2017,Kohle,0.0
-69,2018,Kohle,
-70,2019,Kohle,0.0
-71,2020,Kohle,0.0
-72,2003,Sonstige Energieträger,15201.0
-73,2004,Sonstige Energieträger,20178.0
-74,2005,Sonstige Energieträger,15311.0
-75,2006,Sonstige Energieträger,14202.0
-76,2007,Sonstige Energieträger,19407.0
-77,2008,Sonstige Energieträger,
-78,2009,Sonstige Energieträger,
-79,2010,Sonstige Energieträger,
-80,2011,Sonstige Energieträger,
-81,2012,Sonstige Energieträger,
-82,2013,Sonstige Energieträger,
-83,2014,Sonstige Energieträger,
-84,2015,Sonstige Energieträger,
-85,2016,Sonstige Energieträger,
-86,2017,Sonstige Energieträger,
-87,2018,Sonstige Energieträger,
-88,2019,Sonstige Energieträger,
-89,2020,Sonstige Energieträger,
-90,2003,Strom,249548.0
-91,2004,Strom,262108.0
-92,2005,Strom,258285.0
-93,2006,Strom,274593.0
-94,2007,Strom,285126.0
-95,2008,Strom,239160.0
-96,2009,Strom,216488.0
-97,2010,Strom,233840.0
-98,2011,Strom,237913.0
-99,2012,Strom,284393.0
-100,2013,Strom,248214.0
-101,2014,Strom,250804.0
-102,2015,Strom,253399.0
-103,2016,Strom,255973.0
-104,2017,Strom,271651.0
-105,2018,Strom,289075.0
-106,2019,Strom,296232.0
-107,2020,Strom,280287.0
-108,2003,Wärme,
-109,2004,Wärme,
-110,2005,Wärme,
-111,2006,Wärme,
-112,2007,Wärme,
-113,2008,Wärme,
-114,2009,Wärme,
-115,2010,Wärme,
-116,2011,Wärme,
-117,2012,Wärme,
-118,2013,Wärme,
-119,2014,Wärme,
-120,2015,Wärme,
-121,2016,Wärme,
-122,2017,Wärme,
-123,2018,Wärme,
-124,2019,Wärme,
-125,2020,Wärme,12261.0
-126,2003,Anteil_Erneuerbar,
-127,2004,Anteil_Erneuerbar,0.8020303347406152
-128,2005,Anteil_Erneuerbar,
-129,2006,Anteil_Erneuerbar,
-130,2007,Anteil_Erneuerbar,
-131,2008,Anteil_Erneuerbar,
-132,2009,Anteil_Erneuerbar,
-133,2010,Anteil_Erneuerbar,
-134,2011,Anteil_Erneuerbar,
-135,2012,Anteil_Erneuerbar,
-136,2013,Anteil_Erneuerbar,
-137,2014,Anteil_Erneuerbar,
-138,2015,Anteil_Erneuerbar,
-139,2016,Anteil_Erneuerbar,
-140,2017,Anteil_Erneuerbar,
-141,2018,Anteil_Erneuerbar,
-142,2019,Anteil_Erneuerbar,
-143,2020,Anteil_Erneuerbar,
+,Jahr,Energietyp,value,Energiekategorie
+0,2003,Erdgas,426279.0,fossil
+1,2004,Erdgas,439554.0,fossil
+2,2005,Erdgas,402347.0,fossil
+3,2006,Erdgas,378409.0,fossil
+4,2007,Erdgas,392469.0,fossil
+5,2008,Erdgas,409021.0,fossil
+6,2009,Erdgas,396942.0,fossil
+7,2010,Erdgas,430278.0,fossil
+8,2011,Erdgas,344599.0,fossil
+9,2012,Erdgas,448603.0,fossil
+10,2013,Erdgas,441393.0,fossil
+11,2014,Erdgas,373247.0,fossil
+12,2015,Erdgas,421033.0,fossil
+13,2016,Erdgas,400690.0,fossil
+14,2017,Erdgas,374159.0,fossil
+15,2018,Erdgas,393705.0,fossil
+16,2019,Erdgas,371326.0,fossil
+17,2020,Erdgas,369210.0,fossil
+18,2003,Erneuerbare Energien,0.0,renewable
+19,2004,Erneuerbare Energien,6668.0,renewable
+20,2005,Erneuerbare Energien,0.0,renewable
+21,2006,Erneuerbare Energien,0.0,renewable
+22,2007,Erneuerbare Energien,0.0,renewable
+23,2008,Erneuerbare Energien,0.0,renewable
+24,2009,Erneuerbare Energien,0.0,renewable
+25,2010,Erneuerbare Energien,0.0,renewable
+26,2011,Erneuerbare Energien,0.0,renewable
+27,2012,Erneuerbare Energien,0.0,renewable
+28,2013,Erneuerbare Energien,0.0,renewable
+29,2014,Erneuerbare Energien,0.0,renewable
+30,2015,Erneuerbare Energien,0.0,renewable
+31,2016,Erneuerbare Energien,0.0,renewable
+32,2017,Erneuerbare Energien,0.0,renewable
+33,2018,Erneuerbare Energien,0.0,renewable
+34,2019,Erneuerbare Energien,0.0,renewable
+35,2020,Erneuerbare Energien,0.0,renewable
+36,2003,Heizöl,78076.0,fossil
+37,2004,Heizöl,78720.0,fossil
+38,2005,Heizöl,110404.0,fossil
+39,2006,Heizöl,57737.0,fossil
+40,2007,Heizöl,50132.0,fossil
+41,2008,Heizöl,18015.0,fossil
+42,2009,Heizöl,19623.0,fossil
+43,2010,Heizöl,20937.0,fossil
+44,2011,Heizöl,25720.0,fossil
+45,2012,Heizöl,26667.0,fossil
+46,2013,Heizöl,18136.0,fossil
+47,2014,Heizöl,18756.0,fossil
+48,2015,Heizöl,14155.0,fossil
+49,2016,Heizöl,0.0,fossil
+50,2017,Heizöl,0.0,fossil
+51,2018,Heizöl,15711.0,fossil
+52,2019,Heizöl,0.0,fossil
+53,2020,Heizöl,0.0,fossil
+54,2003,Kohle,0.0,fossil
+55,2004,Kohle,0.0,fossil
+56,2005,Kohle,0.0,fossil
+57,2006,Kohle,0.0,fossil
+58,2007,Kohle,0.0,fossil
+59,2008,Kohle,0.0,fossil
+60,2009,Kohle,0.0,fossil
+61,2010,Kohle,0.0,fossil
+62,2011,Kohle,0.0,fossil
+63,2012,Kohle,0.0,fossil
+64,2013,Kohle,0.0,fossil
+65,2014,Kohle,0.0,fossil
+66,2015,Kohle,0.0,fossil
+67,2016,Kohle,0.0,fossil
+68,2017,Kohle,0.0,fossil
+69,2018,Kohle,0.0,fossil
+70,2019,Kohle,0.0,fossil
+71,2020,Kohle,0.0,fossil
+72,2003,Sonstige Energieträger,15201.0,fossil
+73,2004,Sonstige Energieträger,20178.0,fossil
+74,2005,Sonstige Energieträger,15311.0,fossil
+75,2006,Sonstige Energieträger,14202.0,fossil
+76,2007,Sonstige Energieträger,19407.0,fossil
+77,2008,Sonstige Energieträger,0.0,fossil
+78,2009,Sonstige Energieträger,0.0,fossil
+79,2010,Sonstige Energieträger,0.0,fossil
+80,2011,Sonstige Energieträger,0.0,fossil
+81,2012,Sonstige Energieträger,0.0,fossil
+82,2013,Sonstige Energieträger,0.0,fossil
+83,2014,Sonstige Energieträger,0.0,fossil
+84,2015,Sonstige Energieträger,0.0,fossil
+85,2016,Sonstige Energieträger,0.0,fossil
+86,2017,Sonstige Energieträger,0.0,fossil
+87,2018,Sonstige Energieträger,0.0,fossil
+88,2019,Sonstige Energieträger,0.0,fossil
+89,2020,Sonstige Energieträger,0.0,fossil
+90,2003,Strom,249548.0,renewable
+91,2004,Strom,262108.0,renewable
+92,2005,Strom,258285.0,renewable
+93,2006,Strom,274593.0,renewable
+94,2007,Strom,285126.0,renewable
+95,2008,Strom,239160.0,renewable
+96,2009,Strom,216488.0,renewable
+97,2010,Strom,233840.0,renewable
+98,2011,Strom,237913.0,renewable
+99,2012,Strom,284393.0,renewable
+100,2013,Strom,248214.0,renewable
+101,2014,Strom,250804.0,renewable
+102,2015,Strom,253399.0,renewable
+103,2016,Strom,255973.0,renewable
+104,2017,Strom,271651.0,renewable
+105,2018,Strom,289075.0,renewable
+106,2019,Strom,296232.0,renewable
+107,2020,Strom,280287.0,renewable
+108,2003,Wärme,0.0,renewable
+109,2004,Wärme,0.0,renewable
+110,2005,Wärme,0.0,renewable
+111,2006,Wärme,0.0,renewable
+112,2007,Wärme,0.0,renewable
+113,2008,Wärme,0.0,renewable
+114,2009,Wärme,0.0,renewable
+115,2010,Wärme,0.0,renewable
+116,2011,Wärme,0.0,renewable
+117,2012,Wärme,0.0,renewable
+118,2013,Wärme,0.0,renewable
+119,2014,Wärme,0.0,renewable
+120,2015,Wärme,0.0,renewable
+121,2016,Wärme,0.0,renewable
+122,2017,Wärme,0.0,renewable
+123,2018,Wärme,0.0,renewable
+124,2019,Wärme,0.0,renewable
+125,2020,Wärme,12261.0,renewable
