@@ -2,6 +2,8 @@ import LayoutManager from "./LayoutManager";
 
 const Canvas = () => {
   
+
+  // get parameters from iframe
   let getParamValue = function(paramName)
   {
       var url = window.location.search.substring(1); //get rid of "?" in querystring

@@ -101,7 +101,7 @@ export default class Side extends Component {
       // console.log(this.props.activeSide, this.props.activeSide + 1)
       return (
          <CSSTransition
-            in={this.props.flipping}
+            in={Boolean(this.props.flipping)}
             timeout={200}
             classNames="side-transition">
             <div

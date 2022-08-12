@@ -1,9 +1,7 @@
 .gitignore
-powerProductionGermany.csv
-GTFS-analysis/gtfs_delfi
-GTFS-analysis/gtfs_delfi.db
-data_exploration/.DS_Store
+data_analysis/GTFS-analysis/gtfs_delfi
+data_analysis/GTFS-analysis/gtfs_delfi.db
+data_analysis/GTFS-analysis/delfi.db
+data_analysis/GTFS-analysis/export/agency_stops.csv
 .DS_Store
-GTFS-analysis/delfi.db
-GTFS-analysis/export/agency_stops.csv
-postcard_app/klimaland-app/node_modules
+klimaland-app/node_modules
