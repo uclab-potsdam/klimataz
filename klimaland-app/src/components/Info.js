@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import closeCard from "../img/buttons/close.svg";
+import React, { Component } from 'react';
+import closeCard from '../img/buttons/close.svg';
 
 export default class Info extends Component {
   constructor(props) {
@@ -8,14 +8,24 @@ export default class Info extends Component {
       inFocus: false,
     };
 
+    //this binds the updateFocus function, because react does not like it if setState is called in a
+    //render function. Without this bind, the App would just crash in an endless loop
     this.handleHelpFocus = this.updateFocus.bind(this, true);
     this.handleHelpNotFocus = this.updateFocus.bind(this, false);
   }
 
+  /**
+   * React Lifecycle Hook
+   * in the beginning, the InfoCard is not Focus
+   */
   componentDidMount() {
     this.setState({ inFocus: false });
   }
 
+  /**
+   * called by "onClick" on the infocard (true) or by onClick on the close button (false)
+   * @param {} focus updates focus state with the value
+   */
   updateFocus(focus) {
     this.setState({ inFocus: focus });
   }

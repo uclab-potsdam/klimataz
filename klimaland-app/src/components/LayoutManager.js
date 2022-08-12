@@ -168,7 +168,7 @@ export default class LayoutManager extends Component {
   }
 
   /**
-   * called by shuffling
+   * called by shuffling. Updates Random Card Seleciton to Shuffle Options.
    */
   async updateShuffleSelection() {
     //if reshuffling (means we are already in shuffle mode)
@@ -276,6 +276,7 @@ export default class LayoutManager extends Component {
   }
 
   /**
+   * React Lifecycle Hook
    * on mount: use editors pick
    */
   componentDidMount() {

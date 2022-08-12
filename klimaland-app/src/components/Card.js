@@ -26,19 +26,31 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
     },
   });
 
+  /**
+   * iterate over all child elements (sides) and add props activeSide, flipping and rotation to them.
+   * These props are set by differrent mechanism in this Component, which is why CardCollection does not have them.
+   * @param {*} rotation style element of rotation in the format "{transform: rotateY(someDegree)}""
+   * @returns all child elements with custom props
+   */
   const sideWithProps = function (rotation) {
     return React.Children.map(children, (child) => {
       if (React.isValidElement(child)) {
         return React.cloneElement(child, {
           activeSide: mod(activeSide, sides.params.length),
           style: rotation,
-          flipping: flipping
+          flipping: flipping,
         });
       }
       return child;
     });
   };
 
+  /**
+   * sets css class and rotation for this side.
+   * @param {*} cardSide card-front or card-back for carousel view (carousel view)
+   *                      if not set, no rotation is applied to class (thumbnail view)
+   * @returns Side Component of this Card with custom props
+   */
   const renderSide = function (cardSide) {
     let rotation;
     if (cardSide === 'card-front') {
@@ -73,8 +85,11 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
 
   return (
     <div className={classProp}>
-      {isThumbnail && <div className="card-preview"
-        style={{ transform: previewRotation }}>{sideWithProps({})}</div>}
+      {isThumbnail && (
+        <div className="card-preview" style={{ transform: previewRotation }}>
+          {sideWithProps({})}
+        </div>
+      )}
       {!isThumbnail && (
         <div
           className={`side-container ${flipped ? 'flip' : ''}`}

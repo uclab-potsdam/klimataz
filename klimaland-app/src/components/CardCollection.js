@@ -30,12 +30,19 @@ export default class CardCollection extends Component {
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
-  //call switchToPostcardView in LayoutControls
+  /**
+   * calls switchToPostcardView in LayoutControls
+   * @param {*} e event passed by Side
+   * @param {*} lk landkreis of card that was clicked on
+   * @param {*} section section of card that was clicked on
+   */
   handleClickOnCard(e, lk, section) {
     this.props.switchToPostcardView(lk, section);
   }
 
-  //resizing
+  /**
+   * resizing (for the chart mostly)
+   */
   updateWindowDimensions() {
     this.setState({
       windowSize: { width: window.innerWidth, height: window.innerHeight },
@@ -43,7 +50,10 @@ export default class CardCollection extends Component {
     this.generateCards();
   }
 
-  //error handling: check the data before generating the cards
+  /**
+   * error handling: check the data before generating the cards
+   * @param {*} element element in cardSelection (lk:{label:"",value:""},section:"")
+   */
   checkData(element) {
     //check element types
     if (
@@ -87,8 +97,11 @@ export default class CardCollection extends Component {
     }
   }
 
-  //generate card components dynamically depending on mode
-  //called by componentDidUpdate
+  /**
+   * generates list of card components dynamically depending on mode and cardSelection
+   * pulls Local Data for the Landkreis of each card and passes it as prop to Side.js
+   * called by componentDidUpdate
+   */
   generateCards() {
     let list;
     let classProp;
@@ -208,12 +221,19 @@ export default class CardCollection extends Component {
     this.setState({ cards: list });
   }
 
-  //update window size on mount
+  /**
+   * React LifeCyle Hook
+   * update window size on mount
+   */
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
   }
 
+  /**
+   * React Lifecylce Hook
+   * @param {} prevProps
+   */
   componentDidUpdate(prevProps) {
     if (
       this.props.cardSelection !== prevProps.cardSelection ||
