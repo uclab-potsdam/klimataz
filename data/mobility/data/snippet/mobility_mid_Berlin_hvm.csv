@@ -1,0 +1,6 @@
+,variable,value_x,year_x,valuetype_x,value_y,year_y,valuetype_y
+0,MIV (Fahrer),26.213024669706535,2017,percentage_tripcount,18.181138346489405,2017,average_wegkm
+1,ÖPV,21.72337191628668,2017,percentage_tripcount,15.50477773161612,2017,average_wegkm
+2,Fuß,26.92622471647375,2017,percentage_tripcount,1.3036975488159535,2017,average_wegkm
+3,MIV (Mitfahrer),10.335554776101953,2017,percentage_tripcount,9.379725799750727,2017,average_wegkm
+4,Fahrrad,14.801823921431076,2017,percentage_tripcount,2.181138346489406,2017,average_wegkm
