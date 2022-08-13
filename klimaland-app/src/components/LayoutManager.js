@@ -250,7 +250,7 @@ export default class LayoutManager extends Component {
 
         //add one card per section
         this.props.sectionsData.forEach((element) => {
-          list.push({ lk: selectedLK, section: element });
+          list.push({ lk: selectedLK, section: { value: element.value, label: element.label } });
         });
       }
 
@@ -286,6 +286,12 @@ export default class LayoutManager extends Component {
    */
   componentDidMount() {
     this.setEditorsPick();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.editorspick !== prevProps.editorspick) {
+      this.setEditorsPick();
+    }
   }
 
   render() {
