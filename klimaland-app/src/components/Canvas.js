@@ -55,23 +55,23 @@ const Canvas = () => {
 
     let checkedPick = [];
 
-    if (ui == undefined || typeof variable != 'boolean') {
+    if (ui === undefined || typeof variable !== 'boolean') {
       ui = true;
     }
 
     //if landkreise are undefined (== no parameter), return default
-    if (ags == undefined || ags.length == 0) {
+    if (ags === undefined || ags.length === 0) {
       //TODO: still keep UI param
       return defaultPick;
     }
 
-    if (sections == undefined) {
+    if (sections === undefined) {
       sections = defaultSections;
     }
 
     //SINGLE POSTCARD VIEW
     //if landkreise is one and section is one, set UI to false
-    if (ags.length == 1 && sections.length == 1) {
+    if (ags.length === 1 && sections.length === 1) {
       //console.log('SINGLE POSTCARD VIEW');
       //TODO: keep UI param
       ui = false;
@@ -83,7 +83,7 @@ const Canvas = () => {
           lk: { value: ags[0], label: name },
           section: section,
         });
-        if (checkedPick.length != 0) {
+        if (checkedPick.length !== 0) {
           return checkedPick;
         }
       } catch (error) {
@@ -93,7 +93,7 @@ const Canvas = () => {
     }
 
     //LK VIEW
-    if (ags.length == 1 && sections.length != 1) {
+    if (ags.length === 1 && sections.length !== 1) {
       //console.log('LK VIEW');
       //TODO: keep UI param
       sections = defaultSections;
@@ -106,7 +106,7 @@ const Canvas = () => {
             section: sec,
           });
         });
-        if (checkedPick.length != 0) {
+        if (checkedPick.length !== 0) {
           return checkedPick;
         }
       } catch (error) {
@@ -126,7 +126,7 @@ const Canvas = () => {
       }
 
       //if no section specified, use default sections
-      if (sections == undefined) {
+      if (sections === undefined) {
         sections = defaultSections;
       }
 
@@ -144,7 +144,7 @@ const Canvas = () => {
       }
 
       //if section list empty (or empty now after checking), use default sections
-      if (sections.length == 0) {
+      if (sections.length === 0) {
         sections = defaultSections;
       }
 
@@ -162,7 +162,7 @@ const Canvas = () => {
         }
       });
 
-      if (checkedPick.length == 0) {
+      if (checkedPick.length === 0) {
         return defaultPick;
       }
       return checkedPick;
@@ -182,11 +182,11 @@ const Canvas = () => {
    *@throws error if ags not in our landkries data
    */
   const getLandkreisLabel = function (ags) {
-    if (ags == undefined || !isInt(ags)) {
+    if (ags === undefined || !isInt(ags)) {
       throw new Error('IframeError: Selected Landkreis is not Valid');
     }
     let lk = landkreiseData.find((x) => x.value === ags);
-    if (lk == undefined || lk.label == undefined) {
+    if (lk === undefined || lk.label === undefined) {
       throw new Error('IframeError: Selected Landkreis is not Valid');
     }
     return landkreiseData.find((x) => x.value === ags).label;
@@ -199,7 +199,7 @@ const Canvas = () => {
    * @throws
    */
   let checkSection = function (section) {
-    if (section == undefined || !defaultSections.includes(section)) {
+    if (section === undefined || !defaultSections.includes(section)) {
       throw new Error('Selected Section is not valid');
     }
     return section;

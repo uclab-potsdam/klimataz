@@ -34,7 +34,7 @@ export default class LayoutManager extends Component {
       //card selection if we are in shuffle mode
       shuffleSelection: [],
       //selected section for comparison mode
-      section: 'En',
+      sectionSelection: 'En',
       //selected landkreis
       landkreisSelection: [],
       //postcardview: postcard is full screen
@@ -45,27 +45,9 @@ export default class LayoutManager extends Component {
       cardSelection: [],
       //card that is on top in postcardview, index of this card in cardSelection
       activeCard: 0,
+      //true when currently editors pick is displayed
+      showEditorsPick: true,
     };
-  }
-
-  /**
-   * detect which mode we are in depending on the length of the landkreis selection
-   * and sets mode
-   */
-  async updateMode() {
-    let mode;
-    if (this.state.landkreisSelection.length > 1) {
-      mode = 'comparison';
-    } else if (this.state.landkreisSelection.length === 1) {
-      mode = 'lk';
-    } else {
-      mode = 'shuffle';
-    }
-
-    //check if mode is valid
-    if (['comparison', 'shuffle', 'lk'].includes(mode)) {
-      return setStateAsync(this, { mode: mode });
-    }
   }
 
   /**
@@ -125,9 +107,16 @@ export default class LayoutManager extends Component {
    * @param e selected landkreis
    */
   async changeLandkreis(e) {
-    this.setState({ landkreisSelection: e }, () => {
-      this.updateCardSelection();
-    });
+    //if everything is deselected, show editors pick
+    if (e.length == 0) {
+      this.setEditorsPick();
+    }
+    //otherwise, update cards to match selection
+    else {
+      setStateAsync(this, { landkreisSelection: e, showEditorsPick: false }).then(() => {
+        this.updateCardSelection();
+      });
+    }
   }
 
   /**
@@ -141,11 +130,55 @@ export default class LayoutManager extends Component {
   }
 
   /**
-   * called by shuffling. Updates Random Card Seleciton to Shuffle Options.
+   * sets buttons to editors pick (passed as props by canvas from iframe) and updates cards to editors picks
+   */
+  async setEditorsPick() {
+    const editorLK = this.props.editorspick.map(function (el) {
+      return el.lk;
+    });
+    await setStateAsync(this, {
+      shuffleSelection: this.props.editorspick,
+      landkreisSelection: editorLK,
+      showEditorsPick: true,
+    }).then(() => {
+      this.updateCardSelection();
+    });
+  }
+
+  /**
+   * detect which mode we are in depending on the length of the landkreis selection
+   * and sets mode
+   * always called by updateCardSelection
+   */
+  async updateMode() {
+    let mode;
+    if (this.state.landkreisSelection.length > 1) {
+      mode = 'comparison';
+    } else if (this.state.landkreisSelection.length === 1) {
+      mode = 'lk';
+    } else {
+      mode = 'shuffle';
+    }
+
+    //check if mode is valid
+    if (['comparison', 'shuffle', 'lk'].includes(mode)) {
+      return setStateAsync(this, { mode: mode });
+    }
+  }
+
+  /**
+   * called by shuffling. Gets Random List of Landkreise and Sections.
+   * If it was clicked for the first time from another mode, the cards are set to the editors pick
    */
   async updateShuffleSelection() {
-    //if reshuffling (means we are already in shuffle mode)
-    if (this.state.mode === 'shuffle') {
+    //if we shuffle for the first time:
+    //switch to shuffle mode and use editors pick as first shuffle option
+    if (!this.state.showEditorsPick & (this.state.mode != 'shuffle')) {
+      await this.setEditorsPick();
+    }
+    //if reshuffling (means we are already in shuffle mode or in editors pick)
+    //create list of random cards
+    else {
       let shuffled = [];
       let randomLK, randomLKElement;
       //pick one random section
@@ -171,19 +204,11 @@ export default class LayoutManager extends Component {
       }
 
       //update card selection
-      await setStateAsync(this, { shuffleSelection: shuffled }).then(() => {
-        this.updateCardSelection();
-      });
-    }
-
-    //if we shuffle for the first time:
-    //switch to shuffle mode and use editors pick as first shuffle option
-    else {
-      //reset selection and mode
       await setStateAsync(this, {
-        shuffleSelection: this.props.editorspick,
-        landkreisSelection: [],
+        shuffleSelection: shuffled,
         mode: 'shuffle',
+        showEditorsPick: false,
+        landkreisSelection: [],
       }).then(() => {
         this.updateCardSelection();
       });
@@ -192,6 +217,7 @@ export default class LayoutManager extends Component {
 
   /**
    * update card selection after shuffling or selecting a landkreis
+   * always calles "updateMode" first and adds cards to the cardSelection List depending on the mode
    */
   async updateCardSelection() {
     await this.updateMode().then(() => {
@@ -227,12 +253,12 @@ export default class LayoutManager extends Component {
         let selectedSection;
 
         // set default value for section if undefined
-        if (this.state.section === undefined) {
+        if (this.state.sectionSelection === undefined) {
           selectedSection = 'En';
         }
         //set selected value for section
         else {
-          selectedSection = this.state.section;
+          selectedSection = this.state.sectionSelection;
         }
 
         //add one card per landkreisSelection
@@ -253,8 +279,7 @@ export default class LayoutManager extends Component {
    * on mount: use editors pick (passed from Canvas as prop)
    */
   componentDidMount() {
-    this.setState({ shuffleSelection: this.props.editorspick });
-    this.updateCardSelection();
+    this.setEditorsPick();
   }
 
   render() {
@@ -266,6 +291,10 @@ export default class LayoutManager extends Component {
           landkreise={this.props.landkreiseData}
           sections={this.props.sectionsData}
           landkreisSelection={this.state.landkreisSelection}
+          sectionSelection={this.state.sectionSelection}
+          defaultLK={this.props.editorspick.map(function (el) {
+            return el.lk;
+          })}
           changeLandkreis={this.changeLandkreis}
           changeSection={this.changeSection}
           shuffle={this.updateShuffleSelection}
