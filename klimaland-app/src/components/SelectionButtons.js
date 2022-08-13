@@ -51,7 +51,7 @@ export class SelectionButtons extends Component {
                 defaultValue={this.props.sections[0]}
                 onChange={this.changeSection}
                 options={this.props.sections}
-                value={this.props.sectionSelection}
+                value={this.props.sectionSelection || ''}
               />
             )}
 

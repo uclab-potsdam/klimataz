@@ -34,7 +34,7 @@ export default class LayoutManager extends Component {
       //card selection if we are in shuffle mode
       shuffleSelection: [],
       //selected section for comparison mode
-      sectionSelection: 'En',
+      sectionSelection: this.props.sectionsData[0],
       //selected landkreis
       landkreisSelection: [],
       //postcardview: postcard is full screen
@@ -60,7 +60,7 @@ export default class LayoutManager extends Component {
 
     //get card id of clicked card
     let chosenCard = this.state.cardSelection.findIndex(
-      (x) => x.lk === lk && x.section === section
+      (x) => x.lk === lk && x.section.value === section
     );
 
     //set active card to this card id
@@ -103,7 +103,8 @@ export default class LayoutManager extends Component {
   }
 
   /**
-   * called by selection buttons for landkreise
+   * called by selection buttons for landkreise. Changes landkreise selection in the buttons to the
+   * event parameters and updates card selection.
    * @param e selected landkreis
    */
   async changeLandkreis(e) {
@@ -120,11 +121,12 @@ export default class LayoutManager extends Component {
   }
 
   /**
-   * called by selection buttons for section
+   * called by selection buttons for section. Changes section selection in the buttons to the
+   * event parameters and updates card selection.
    * @param e selected section
    */
   async changeSection(e) {
-    await setStateAsync(this, { section: e.value }).then(() => {
+    await setStateAsync(this, { sectionSelection: e }).then(() => {
       this.updateCardSelection();
     });
   }
@@ -133,12 +135,16 @@ export default class LayoutManager extends Component {
    * sets buttons to editors pick (passed as props by canvas from iframe) and updates cards to editors picks
    */
   async setEditorsPick() {
-    const editorLK = this.props.editorspick.map(function (el) {
-      return el.lk;
-    });
+    //set to all landkreise of editors pick,
+    let editorsLK = this.props.editorspick.map((item) => item.lk);
+    //only keep unique values
+    editorsLK = Array.from(new Set(editorsLK.map(JSON.stringify))).map(JSON.parse);
     await setStateAsync(this, {
       shuffleSelection: this.props.editorspick,
-      landkreisSelection: editorLK,
+      landkreisSelection: editorsLK,
+      //set to first section of editors pick (that is also what
+      //makes sense for comparison mdoe, for the other modes this param is not important)
+      sectionSelection: this.props.editorspick[0].section,
       showEditorsPick: true,
     }).then(() => {
       this.updateCardSelection();
@@ -198,7 +204,7 @@ export default class LayoutManager extends Component {
         //push random lk to list
         randomLKElement = {
           lk: { value: randomLK.value, label: randomLK.label },
-          section: randomSection.value,
+          section: { value: randomSection.value, label: randomSection.label },
         };
         shuffled.push(randomLKElement);
       }
@@ -244,7 +250,7 @@ export default class LayoutManager extends Component {
 
         //add one card per section
         this.props.sectionsData.forEach((element) => {
-          list.push({ lk: selectedLK, section: element.value });
+          list.push({ lk: selectedLK, section: element });
         });
       }
 
