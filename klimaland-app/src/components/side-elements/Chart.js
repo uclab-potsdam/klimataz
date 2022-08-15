@@ -15,6 +15,10 @@ export default class Chart extends Component {
     //TODO: reusable code snippets like scales or axis
   }
 
+  /**
+   * React Lifecycle Hook
+   * @param {*} prevProps
+   */
   async componentDidUpdate(prevProps) {
     if (
       this.props.layoutControls !== prevProps.layoutControls ||
@@ -30,7 +34,6 @@ export default class Chart extends Component {
 
   //TODO: smarter way of drawing viz (from layout-controls!)
   render() {
-
     // console.log(this.state.chartComponentName)
     //import component
     const RenderChart = VisIndex[this.state.chartComponentName];

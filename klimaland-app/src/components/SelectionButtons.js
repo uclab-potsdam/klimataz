@@ -23,13 +23,11 @@ export class SelectionButtons extends Component {
   }
 
   changeSection(e) {
-    // console.log(e);
     this.props.changeSection(e);
   }
 
   shuffle(e) {
-    // console.log('reset lkSelection');
-    this.setState({ selected: [] });
+    this.setState({ selected: [] }); //clear selection
     this.props.shuffle(e);
   }
 
@@ -41,15 +39,16 @@ export class SelectionButtons extends Component {
             <Select
               className="selector"
               isMulti
+              //handle clearing when in shuffle mode
               //https://stackoverflow.com/questions/50412843/how-to-programmatically-clear-reset-react-select
               key={`my_unique_select_key__${this.state.selected}`}
               value={this.state.selected || ''}
               defaultValue={this.props.landkreisSelection}
               onChange={this.changeLandkreis}
               options={this.props.landkreise}
-              getOptionLabel={(options) =>
-                `${options.label} ${options.nameAddition}`
-              }
+              //add nameAddition to label.
+              //this is the (Landkreis) (kreisfreie Stadt) for Schweinfurt cases
+              getOptionLabel={(options) => `${options.label} ${options.nameAddition}`}
               isOptionDisabled={() => this.props.landkreisSelection.length >= 3} //max selection number: 3
             />
 
@@ -63,11 +62,7 @@ export class SelectionButtons extends Component {
             )}
 
             <button className="button shuffle" onClick={this.shuffle}>
-              <img
-                src={shuffle}
-                className="button-img"
-                alt="shuffle-button-img"
-              />
+              <img src={shuffle} className="button-img" alt="shuffle-button-img" />
             </button>
           </div>
         )}

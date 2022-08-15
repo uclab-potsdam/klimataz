@@ -13,24 +13,36 @@ export default class CardCollection extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      //cards includes all rendered cards
       cards: [],
       windowSize: {
         width: 0,
         height: 0,
       },
     };
+
+    //load all the data
     this.data = Data;
     this.layoutControls = LayoutControls;
 
-    //  console.log(LayoutControls);
+    //bind functions called by components
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
+  /**
+   * calls switchToPostcardView in LayoutControls
+   * @param {*} e event passed by Side
+   * @param {*} lk landkreis of card that was clicked on
+   * @param {*} section section of card that was clicked on
+   */
   handleClickOnCard(e, lk, section) {
     this.props.switchToPostcardView(lk, section);
   }
 
+  /**
+   * resizing (for the chart mostly)
+   */
   updateWindowDimensions() {
     this.setState({
       windowSize: { width: window.innerWidth, height: window.innerHeight },
@@ -38,6 +50,10 @@ export default class CardCollection extends Component {
     this.generateCards();
   }
 
+  /**
+   * error handling: check the data before generating the cards
+   * @param {*} element element in cardSelection (lk:{label:"",value:""},section:"")
+   */
   checkData(element) {
     //check element types
     if (
@@ -81,14 +97,18 @@ export default class CardCollection extends Component {
     }
   }
 
-  //generate card objects dynamically depending on mode
-  //called by componentDidUpdate
-  //TODO: open card that was clicked, not only the first one
+  /**
+   * generates list of card components dynamically depending on mode and cardSelection
+   * pulls Local Data for the Landkreis of each card and passes it as prop to Side.js
+   * called by componentDidUpdate
+   */
   generateCards() {
     let list;
     let classProp;
 
+    //if in postcardview: use css class for carousel
     if (this.props.postcardView) {
+      //for each item in cardSelection
       list = this.props.cardSelection.map((element, i) => {
         //check data
         try {
@@ -103,9 +123,8 @@ export default class CardCollection extends Component {
           let isTopCard = false;
 
           if (i === this.props.activeCard) {
-            //store if card is currently on top for rendering viz effectively
             classProp = 'card card-active';
-            isTopCard = true;
+            isTopCard = true; //store if card is currently on top for rendering viz effectively
           } else if (i === indexRight) {
             classProp = 'card card-right';
           } else if (i === indexLeft) {
@@ -118,7 +137,7 @@ export default class CardCollection extends Component {
             <Card
               key={i}
               classProp={classProp}
-              isThumbnail={false}
+              isThumbnail={false} //this is always false in postcardView
               sides={this.layoutControls[element.section]}
               handleSwitchNext={this.props.handleSwitchNext}
               handleSwitchBack={this.props.handleSwitchBack}
@@ -126,7 +145,7 @@ export default class CardCollection extends Component {
               <Side
                 lk={element.lk}
                 isThumbnail={false}
-                isTopCard={isTopCard}
+                isTopCard={isTopCard} //this is true for the postcard on top
                 section={element.section}
                 windowSize={this.state.windowSize}
                 localData={this.data[element.lk.value]}
@@ -140,7 +159,10 @@ export default class CardCollection extends Component {
       });
 
       //   console.log("postcardview cards generated", list);
-    } else {
+    }
+
+    //if not in postcardview: use css class for overview / other modes
+    else {
       if (this.props.mode === 'comparison') {
         classProp = 'card card-ordered';
       } else if (this.props.mode === 'lk') {
@@ -150,13 +172,17 @@ export default class CardCollection extends Component {
         classProp = 'card card-ordered';
       }
 
+      //for each item in cardSelection
       list = this.props.cardSelection.map((element, i) => {
-        //check data
         try {
+          //check data
           this.checkData(element);
 
+          //get local data
           let localData = this.data[element.lk.value];
-          //use BL data for not regional data
+
+          //use BL data for not regional data for each indicator
+          //TODO: show somewhere, that this data is not on Landkreis Level as indicated by regional:false
           for (const [key, value] of Object.entries(localData[element.section])) {
             //if data not regional
             if (!value.regional && value.data == undefined) {
@@ -166,13 +192,13 @@ export default class CardCollection extends Component {
               localData[element.section][key] = BLdata;
             }
           }
-          //TODO: show somewhere, that this data is not on Landkreis Level as indicated by regional:false
+
           return (
             <Card
               key={i}
               classProp={classProp}
-              isThumbnail={true}
-              sides={this.layoutControls[element.section]}
+              isThumbnail={true} //this is always true when not in postcardView
+              sides={this.layoutControls[element.section]} //TODO: this could also just be the number of cards
             >
               <Side
                 lk={element.lk}
@@ -180,27 +206,34 @@ export default class CardCollection extends Component {
                 windowSize={this.state.windowSize}
                 isThumbnail={true}
                 localData={localData}
-                clickOnCard={this.handleClickOnCard}
+                clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview
                 layoutControls={this.layoutControls[element.section]}
-                withoutData={false}
               />
             </Card>
           );
         } catch (e) {
-          console.log(e);
+          console.log(e); //catch errors appearing in checkData()
         }
       });
     }
 
+    //set list of cards
     this.setState({ cards: list });
-    // console.log(list);
   }
 
+  /**
+   * React LifeCyle Hook
+   * update window size on mount
+   */
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
   }
 
+  /**
+   * React Lifecylce Hook
+   * @param {} prevProps
+   */
   componentDidUpdate(prevProps) {
     if (
       this.props.cardSelection !== prevProps.cardSelection ||
