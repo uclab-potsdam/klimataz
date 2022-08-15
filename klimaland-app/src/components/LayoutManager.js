@@ -7,9 +7,6 @@ import { getRandomElement, setStateAsync } from './helperFunc.js';
 import Info from './Info.js';
 // import TitleCanvas from "./TitleCanvas";
 
-//data
-import DropDownControls from '../data/selector-controls.json';
-
 //images
 //import switchCard from '../img/buttons/switch.svg';
 import switchCardLeft from '../img/buttons/caret-left.svg';
@@ -33,35 +30,11 @@ export default class LayoutManager extends Component {
     this.handleSwitchBack = this.nextCard.bind(this, false);
     this.closePostcardView = this.closePostcardView.bind(this);
 
-    //load data from selector json
-    this.landkreise = DropDownControls.landkreise;
-    this.sections = DropDownControls.indicators;
-
-    let editorspick = [];
-    if (this.props.areaPick1) {
-      editorspick = [
-        { lk: { value: '11', label: this.props.areaPick1 }, section: 'Mo' },
-        { lk: { value: '2', label: this.props.areaPick2 }, section: 'Ab' },
-        { lk: { value: '1001', label: this.props.areaPick3 }, section: 'En' },
-      ];
-    } else {
-      editorspick = [
-        { lk: { value: '0', label: 'Deutschland' }, section: 'Mo' },
-        { lk: { value: '0', label: 'Deutschland' }, section: 'En' },
-        { lk: { value: '0', label: 'Deutschland' }, section: 'La' },
-        { lk: { value: '0', label: 'Deutschland' }, section: 'Ab' },
-        { lk: { value: '0', label: 'Deutschland' }, section: 'Ge' },
-      ];
-    }
-
     this.state = {
-      //editors pick might be a prop and set by the iframe / the canvas
-      //but the format should stay like this anyway
-      editorspick: editorspick,
       //card selection if we are in shuffle mode
       shuffleSelection: [],
       //selected section for comparison mode
-      section: 'En',
+      sectionSelection: this.props.sectionsData[0],
       //selected landkreis
       landkreisSelection: [],
       //postcardview: postcard is full screen
@@ -72,27 +45,9 @@ export default class LayoutManager extends Component {
       cardSelection: [],
       //card that is on top in postcardview, index of this card in cardSelection
       activeCard: 0,
+      //true when currently editors pick is displayed
+      showEditorsPick: true,
     };
-  }
-
-  /**
-   * detect which mode we are in depending on the length of the landkreis selection
-   * and sets mode
-   */
-  async updateMode() {
-    let mode;
-    if (this.state.landkreisSelection.length > 1) {
-      mode = 'comparison';
-    } else if (this.state.landkreisSelection.length === 1) {
-      mode = 'lk';
-    } else {
-      mode = 'shuffle';
-    }
-
-    //check if mode is valid
-    if (['comparison', 'shuffle', 'lk'].includes(mode)) {
-      return setStateAsync(this, { mode: mode });
-    }
   }
 
   /**
@@ -105,7 +60,7 @@ export default class LayoutManager extends Component {
 
     //get card id of clicked card
     let chosenCard = this.state.cardSelection.findIndex(
-      (x) => x.lk === lk && x.section === section
+      (x) => x.lk === lk && x.section.value === section
     );
 
     //set active card to this card id
@@ -148,69 +103,118 @@ export default class LayoutManager extends Component {
   }
 
   /**
-   * called by selection buttons for landkreise
+   * called by selection buttons for landkreise. Changes landkreise selection in the buttons to the
+   * event parameters and updates card selection.
    * @param e selected landkreis
    */
   async changeLandkreis(e) {
-    this.setState({ landkreisSelection: e }, () => {
-      this.updateCardSelection();
-    });
+    //if everything is deselected, show editors pick
+    if (e.length == 0) {
+      this.setEditorsPick();
+    }
+    //otherwise, update cards to match selection
+    else {
+      setStateAsync(this, { landkreisSelection: e, showEditorsPick: false }).then(() => {
+        this.updateCardSelection();
+      });
+    }
   }
 
   /**
-   * called by selection buttons for section
+   * called by selection buttons for section. Changes section selection in the buttons to the
+   * event parameters and updates card selection.
    * @param e selected section
    */
   async changeSection(e) {
-    await setStateAsync(this, { section: e.value }).then(() => {
+    await setStateAsync(this, { sectionSelection: e }).then(() => {
       this.updateCardSelection();
     });
   }
 
   /**
-   * called by shuffling. Updates Random Card Seleciton to Shuffle Options.
+   * sets buttons to editors pick (passed as props by canvas from iframe) and updates cards to editors picks
+   */
+  async setEditorsPick() {
+    //set to all landkreise of editors pick,
+    let editorsLK = this.props.editorspick.map((item) => item.lk);
+    //only keep unique values
+    editorsLK = Array.from(new Set(editorsLK.map(JSON.stringify))).map(JSON.parse);
+    await setStateAsync(this, {
+      shuffleSelection: this.props.editorspick,
+      landkreisSelection: editorsLK,
+      //set to first section of editors pick (that is also what
+      //makes sense for comparison mdoe, for the other modes this param is not important)
+      sectionSelection: this.props.editorspick[0].section,
+      showEditorsPick: true,
+    }).then(() => {
+      this.updateCardSelection();
+    });
+  }
+
+  /**
+   * detect which mode we are in depending on the length of the landkreis selection
+   * and sets mode
+   * always called by updateCardSelection
+   */
+  async updateMode() {
+    let mode;
+    if (this.state.landkreisSelection.length > 1) {
+      mode = 'comparison';
+    } else if (this.state.landkreisSelection.length === 1) {
+      mode = 'lk';
+    } else {
+      mode = 'shuffle';
+    }
+
+    //check if mode is valid
+    if (['comparison', 'shuffle', 'lk'].includes(mode)) {
+      return setStateAsync(this, { mode: mode });
+    }
+  }
+
+  /**
+   * called by shuffling. Gets Random List of Landkreise and Sections.
+   * If it was clicked for the first time from another mode, the cards are set to the editors pick
    */
   async updateShuffleSelection() {
-    //if reshuffling (means we are already in shuffle mode)
-    if (this.state.mode === 'shuffle') {
+    //if we shuffle for the first time:
+    //switch to shuffle mode and use editors pick as first shuffle option
+    if (!this.state.showEditorsPick & (this.state.mode != 'shuffle')) {
+      await this.setEditorsPick();
+    }
+    //if reshuffling (means we are already in shuffle mode or in editors pick)
+    //create list of random cards
+    else {
       let shuffled = [];
       let randomLK, randomLKElement;
       //pick one random section
-      const randomSection = getRandomElement(this.sections);
+      const randomSection = getRandomElement(this.props.sectionsData);
 
       //get five random unique landkreise
       for (let i = 0; i < 5; i++) {
-        randomLK = getRandomElement(this.landkreise);
+        randomLK = getRandomElement(this.props.landkreiseData);
         let alreadyInList = shuffled.findIndex((elem) => elem.lk.value === randomLK.value);
 
         //if random lk is already in list find new landkreis
         while (alreadyInList !== -1) {
-          randomLK = getRandomElement(this.landkreise);
+          randomLK = getRandomElement(this.props.landkreiseData);
           alreadyInList = shuffled.findIndex((elem) => elem.lk.value === randomLK.value);
         }
 
         //push random lk to list
         randomLKElement = {
           lk: { value: randomLK.value, label: randomLK.label },
-          section: randomSection.value,
+          section: { value: randomSection.value, label: randomSection.label },
         };
         shuffled.push(randomLKElement);
       }
 
       //update card selection
-      await setStateAsync(this, { shuffleSelection: shuffled }).then(() => {
-        this.updateCardSelection();
-      });
-    }
-
-    //if we shuffle for the first time:
-    //switch to shuffle mode and use editors pick as first shuffle option
-    else {
-      //reset selection and mode
       await setStateAsync(this, {
-        shuffleSelection: this.state.editorspick,
-        landkreisSelection: [],
+        shuffleSelection: shuffled,
         mode: 'shuffle',
+        showEditorsPick: false,
+        landkreisSelection: [],
       }).then(() => {
         this.updateCardSelection();
       });
@@ -219,6 +223,7 @@ export default class LayoutManager extends Component {
 
   /**
    * update card selection after shuffling or selecting a landkreis
+   * always calles "updateMode" first and adds cards to the cardSelection List depending on the mode
    */
   async updateCardSelection() {
     await this.updateMode().then(() => {
@@ -244,8 +249,8 @@ export default class LayoutManager extends Component {
         } //set selected value for landkreisSelection
 
         //add one card per section
-        this.sections.forEach((element) => {
-          list.push({ lk: selectedLK, section: element.value });
+        this.props.sectionsData.forEach((element) => {
+          list.push({ lk: selectedLK, section: { value: element.value, label: element.label } });
         });
       }
 
@@ -254,12 +259,12 @@ export default class LayoutManager extends Component {
         let selectedSection;
 
         // set default value for section if undefined
-        if (this.state.section === undefined) {
+        if (this.state.sectionSelection === undefined) {
           selectedSection = 'En';
         }
         //set selected value for section
         else {
-          selectedSection = this.state.section;
+          selectedSection = this.state.sectionSelection;
         }
 
         //add one card per landkreisSelection
@@ -277,11 +282,16 @@ export default class LayoutManager extends Component {
 
   /**
    * React Lifecycle Hook
-   * on mount: use editors pick
+   * on mount: use editors pick (passed from Canvas as prop)
    */
   componentDidMount() {
-    this.setState({ shuffleSelection: this.state.editorspick });
-    this.updateCardSelection();
+    this.setEditorsPick();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.editorspick !== prevProps.editorspick) {
+      this.setEditorsPick();
+    }
   }
 
   render() {
@@ -290,9 +300,13 @@ export default class LayoutManager extends Component {
         <SelectionButtons
           mode={this.state.mode}
           postcardView={this.state.postcardView}
-          landkreise={this.landkreise}
-          sections={this.sections}
+          landkreise={this.props.landkreiseData}
+          sections={this.props.sectionsData}
           landkreisSelection={this.state.landkreisSelection}
+          sectionSelection={this.state.sectionSelection}
+          defaultLK={this.props.editorspick.map(function (el) {
+            return el.lk;
+          })}
           changeLandkreis={this.changeLandkreis}
           changeSection={this.changeSection}
           shuffle={this.updateShuffleSelection}

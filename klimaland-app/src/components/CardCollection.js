@@ -37,6 +37,7 @@ export default class CardCollection extends Component {
    * @param {*} section section of card that was clicked on
    */
   handleClickOnCard(e, lk, section) {
+    console.log(lk, section);
     this.props.switchToPostcardView(lk, section);
   }
 
@@ -65,34 +66,38 @@ export default class CardCollection extends Component {
       throw new Error('Selected Element is not an Object');
     }
     //check lk type
-    if (element.lk.value == undefined || !isInt(element.lk.value)) {
+    if (element.lk == undefined || element.lk.value == undefined || !isInt(element.lk.value)) {
       throw new Error('Selected Landkreis is not valid');
     }
     if (typeof element.lk.label !== 'string' || !element.lk.label instanceof String) {
       throw new Error('Selected Landkreis is not valid');
     }
     //check section type
-    if (element.section == undefined || !['Ge', 'En', 'Ab', 'La', 'Mo'].includes(element.section)) {
+    if (
+      element.section == undefined ||
+      element.section.value == undefined ||
+      !['Ge', 'En', 'Ab', 'La', 'Mo'].includes(element.section.value)
+    ) {
       throw new Error('Selected Section is not valid');
     }
     //check if data exists
     if (
       this.data[element.lk.value] == undefined ||
-      this.layoutControls[element.section] == undefined
+      this.layoutControls[element.section.value] == undefined
     ) {
       throw new Error('No Data for Selected Element');
     }
     //check if lower level data exists
     if (
-      this.layoutControls[element.section].params == undefined ||
-      this.layoutControls[element.section].params[0] == undefined ||
-      this.layoutControls[element.section].params[0][0] == undefined ||
-      this.layoutControls[element.section].params[0][0].combo == undefined ||
-      this.props.activeCard > this.layoutControls[element.section].params
+      this.layoutControls[element.section.value].params == undefined ||
+      this.layoutControls[element.section.value].params[0] == undefined ||
+      this.layoutControls[element.section.value].params[0][0] == undefined ||
+      this.layoutControls[element.section.value].params[0][0].combo == undefined ||
+      this.props.activeCard > this.layoutControls[element.section.value].params
     ) {
       throw new Error('No Layout Data for Selected Element');
     }
-    if (this.data[element.lk.value][element.section] == undefined) {
+    if (this.data[element.lk.value][element.section.value] == undefined) {
       throw new Error('No Climate Protection Data for Selected Element');
     }
   }
@@ -113,6 +118,8 @@ export default class CardCollection extends Component {
         //check data
         try {
           this.checkData(element);
+
+          const section = element.section.value;
 
           //css class for carousel
           const indexLeft = mod(this.props.activeCard - 1, this.props.cardSelection.length);
@@ -138,7 +145,7 @@ export default class CardCollection extends Component {
               key={i}
               classProp={classProp}
               isThumbnail={false} //this is always false in postcardView
-              sides={this.layoutControls[element.section]}
+              sides={this.layoutControls[section]}
               handleSwitchNext={this.props.handleSwitchNext}
               handleSwitchBack={this.props.handleSwitchBack}
             >
@@ -146,10 +153,10 @@ export default class CardCollection extends Component {
                 lk={element.lk}
                 isThumbnail={false}
                 isTopCard={isTopCard} //this is true for the postcard on top
-                section={element.section}
+                section={section}
                 windowSize={this.state.windowSize}
                 localData={this.data[element.lk.value]}
-                layoutControls={this.layoutControls[element.section]}
+                layoutControls={this.layoutControls[section]}
               />
             </Card>
           );
@@ -177,19 +184,20 @@ export default class CardCollection extends Component {
         try {
           //check data
           this.checkData(element);
+          const section = element.section.value;
 
           //get local data
           let localData = this.data[element.lk.value];
 
           //use BL data for not regional data for each indicator
           //TODO: show somewhere, that this data is not on Landkreis Level as indicated by regional:false
-          for (const [key, value] of Object.entries(localData[element.section])) {
+          for (const [key, value] of Object.entries(localData[section])) {
             //if data not regional
             if (!value.regional && value.data == undefined) {
               //get  bundesland data
-              let BLdata = this.data[localData.bundesland][element.section][key];
+              let BLdata = this.data[localData.bundesland][section][key];
               //store bundesland data at indicator of landkreis
-              localData[element.section][key] = BLdata;
+              localData[section][key] = BLdata;
             }
           }
 
@@ -198,16 +206,16 @@ export default class CardCollection extends Component {
               key={i}
               classProp={classProp}
               isThumbnail={true} //this is always true when not in postcardView
-              sides={this.layoutControls[element.section]} //TODO: this could also just be the number of cards
+              sides={this.layoutControls[section]} //TODO: this could also just be the number of cards
             >
               <Side
                 lk={element.lk}
-                section={element.section}
+                section={section}
                 windowSize={this.state.windowSize}
                 isThumbnail={true}
                 localData={localData}
                 clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview
-                layoutControls={this.layoutControls[element.section]}
+                layoutControls={this.layoutControls[section]}
               />
             </Card>
           );
@@ -250,7 +258,7 @@ export default class CardCollection extends Component {
       <div className="card-collection">
         <h5 className="debug">
           Debug: {this.props.mode}, LK:{' '}
-          {this.props.cardSelection.map((elem) => elem.lk.label + ' ' + elem.section + ' | ')}
+          {this.props.cardSelection.map((elem) => elem.lk.label + ' ' + elem.section.label + ' | ')}
         </h5>
         {this.props.mode === 'comparison' && !this.props.postcardView && (
           <div>

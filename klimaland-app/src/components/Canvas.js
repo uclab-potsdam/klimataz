@@ -1,30 +1,253 @@
-import LayoutManager from "./LayoutManager";
+import { useState, useEffect } from 'react';
+
+import LayoutManager from './LayoutManager';
+
+//data
+import DropDownControls from '../data/selector-controls.json';
+import { isInt } from './helperFunc';
 
 const Canvas = () => {
-  
+  //load data from selector json
+  let landkreiseData = DropDownControls.landkreise;
+  let sectionsData = DropDownControls.indicators;
+
+  const [sectionOptions, setSectionOptions] = useState(sectionsData);
+
+  let defaultSections = sectionsData.map((el) => {
+    return el.value;
+  });
+
+  let defaultPick = sectionsData.map((el) => ({
+    lk: { value: '0', label: 'Deutschland' },
+    section: { value: el.value, label: el.label },
+  }));
+
+  const [editorsPick, setEditorsPick] = useState(defaultPick);
+
+  useEffect(() => {
+    getCheckedEditorsPick();
+  }, []);
 
   // get parameters from iframe
-  let getParamValue = function(paramName)
-  {
-      var url = window.location.search.substring(1); //get rid of "?" in querystring
-      var qArray = url.split('&'); //get key-value pairs
-      for (var i = 0; i < qArray.length; i++) 
-      {
-          var pArr = qArray[i].split('='); //split key and value
-          if (pArr[0] === paramName) 
-            //  console.log(pArr[1]);
-              return pArr[1]; //return value
+  let getParamValue = function (paramName) {
+    var url = window.location.search.substring(1); //get rid of "?" in querystring
+    var qArray = url.split('&'); //get key-value pairs
+    for (var i = 0; i < qArray.length; i++) {
+      var pArr = qArray[i].split('='); //split key and value
+      if (pArr[0] === paramName)
+        //  console.log(pArr[1]);
+        return pArr[1]; //return value
+    }
+  };
+
+  /**
+   * checks validity of iframe values
+   * generates editors pick depending on iframe values
+   * return default pick if values are not valid
+   * @returns editors pick in the format {lk:{value:"",label:""},section:{value:"",label:""}} depending on iframe
+   */
+  const getCheckedEditorsPick = function () {
+    //TODO:
+    //here you can later pipe in the iframe params, I don't know how to do that
+    //for example, you could call getParamValue inside of this function
+    //something like this:
+    //let ags = getParamValue('param1');
+    //let sections = getParamValue('param2');
+    //let ui = getParamValue('param3');
+
+    //I add the values we need to check here manually here for testing purposes.
+    let ags = [1001];
+    let sections = ['En'];
+    let ui = true;
+
+    let checkedPick = [];
+
+    //first set to default to be safe, overwrite later if we have other valid options
+    setEditorsPick(defaultPick);
+
+    //check if getParamValue returns something undefined
+    //set default values if one of the paramters is undefined
+    if (ui === undefined || typeof variable !== 'boolean') {
+      ui = true;
+    }
+
+    //if landkreise are undefined (== no parameter), use default and stop function
+    if (ags === undefined || ags.length === 0) {
+      //TODO: still keep UI param
+      return;
+    }
+
+    if (sections === undefined) {
+      sections = defaultSections;
+    }
+
+    //SINGLE POSTCARD VIEW
+    //if landkreise is one and section is one, set UI to false
+    if (ags.length === 1 && sections.length === 1) {
+      //console.log('SINGLE POSTCARD VIEW');
+      //TODO: keep UI param
+      ui = false;
+
+      try {
+        let name = getCheckedLandkreisLabel(ags[0]);
+        let sectionLabel = getCheckedSectionLabel(sections[0]);
+        checkedPick.push({
+          lk: { value: ags[0], label: name },
+          section: { value: sections[0], label: sectionLabel },
+        });
+        if (checkedPick.length !== 0) {
+          setEditorsPick(checkedPick);
+        }
+      } catch (error) {
+        console.log(error);
+        setEditorsPick(defaultPick);
+        return; //if selected landkreis or section not valid in thumbnail view, set default Pick and stop function
       }
-  }
-  
-  let areaPick1 = getParamValue('param1');
-  let areaPick2 = getParamValue('param2');
-  let areaPick3 = getParamValue('param3');
+    }
+
+    //LK VIEW
+    if (ags.length === 1 && sections.length !== 1) {
+      //console.log('LK VIEW');
+      //TODO: keep UI param
+      sections = defaultSections;
+      let ort = ags[0];
+      try {
+        let name = getCheckedLandkreisLabel(ort);
+        sections.forEach((sec) => {
+          let sectionLabel = getCheckedSectionLabel(sec);
+          checkedPick.push({
+            lk: { value: ort, label: name },
+            section: { value: sec, label: sectionLabel },
+          });
+        });
+        if (checkedPick.length !== 0) {
+          setEditorsPick(checkedPick);
+        }
+      } catch (error) {
+        console.log(error);
+        setEditorsPick(defaultPick);
+        return; //if selected landkreis not valid in LK view, set default Pick and stop function
+      }
+    }
+
+    //COMPARISON VIEW
+    if (ags.length > 1) {
+      //console.log('COMPARISON VIEW');
+      //TODO: keep UI param
+
+      //if more than 3 landkreise, only keep the first three
+      if (ags.length > 3) {
+        ags = ags.slice(0, 3);
+      }
+
+      //if no section specified, use default sections
+      if (sections === undefined) {
+        sections = defaultSections;
+      }
+
+      //if one of the sections is not valid, use dault secitons
+
+      if (sections.length >= 1) {
+        sections.forEach((sec) => {
+          try {
+            getCheckedSectionLabel(sec);
+          } catch (error) {
+            sections = defaultSections;
+            //TODO (NICE TO HAVE): keep valid sections, remove sections that throw an error
+          }
+        });
+      }
+
+      //if section list empty (or empty now after checking), use default sections
+      if (sections.length === 0) {
+        sections = defaultSections;
+      }
+
+      //limit options for sections dropdown to sections decided by editor in comparison view
+      let comparisonOptions = sections.map((item) => ({
+        value: item,
+        label: getCheckedSectionLabel(item),
+      }));
+
+      //add one postcard for each ags
+      ags.forEach((ort) => {
+        try {
+          let name = getCheckedLandkreisLabel(ort);
+          let sectionLabel = getCheckedSectionLabel(sections[0]);
+          checkedPick.push({
+            lk: { value: ort, label: name },
+            section: { value: sections[0], label: sectionLabel },
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      });
+
+      if (checkedPick.length !== 0) {
+        console.log(checkedPick);
+        setEditorsPick(checkedPick);
+        setSectionOptions(comparisonOptions);
+      }
+    }
+    //TODO: set UI as context
+    //https://reactjs.org/docs/context.html
+  };
+
+  /**
+   * Function to get "Label" from a "Value" in Data with the format [{value:"",label:""},...]
+   * would return "Energie" for "En" or "Flensburg" for AGS 1001.
+   * @param {} value id we want the label from (AGS or "En"/"Mo"/...)
+   * @param {*} data data to search label in (dropdowncontrols)
+   * @throws error if value not in data
+   * @returns label of this value
+   */
+  const getLabelFromData = function (value, data) {
+    let item = data.find((x) => x.value === value);
+    if (item === undefined || item.label === undefined) {
+      throw new Error('IframeError: Selected Landkreis or Section is not Valid');
+    }
+    return data.find((x) => x.value === value).label;
+  };
+
+  /**
+   * return Name of Landkreis from AGS using the data from dropdowncontrols and checks validity of section
+   * @param {*} ags to check and to get name from
+   * @returns name of the landkreis if landkreis exists
+   * @throws error if ags not valid
+   */
+  const getCheckedLandkreisLabel = function (ags) {
+    if (ags === undefined || !isInt(ags)) {
+      throw new Error('IframeError: Selected Landkreis is not Valid');
+    }
+    return getLabelFromData(ags, landkreiseData);
+  };
+
+  /**
+   * return SectionLabel  using the data from dropdowncontrols and
+   * checks if section is not undefined and if our list of all section includes this section
+   * @param {*} section to check
+   * @returns section if everything is fine with section
+   * @throws error if section not valid
+   */
+  let getCheckedSectionLabel = function (section) {
+    if (section === undefined || !defaultSections.includes(section)) {
+      throw new Error('Selected Section is not valid');
+    }
+    return getLabelFromData(section, sectionsData);
+  };
+
+  // let areaPick1 = getParamValue('param1');
+  // let areaPick2 = getParamValue('param2');
+  // let areaPick3 = getParamValue('param3');
 
   return (
     <div className="indicators-iframe">
       {/* <h1>Climate Protection Indicators</h1> */}
-      <LayoutManager areaPick1={areaPick1} areaPick2={areaPick2} areaPick3={areaPick3} />
+      <LayoutManager
+        editorspick={editorsPick}
+        landkreiseData={landkreiseData}
+        sectionsData={sectionOptions}
+      />
     </div>
   );
 };
