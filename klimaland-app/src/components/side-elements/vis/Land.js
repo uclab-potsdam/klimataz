@@ -1,7 +1,8 @@
 import React from "react";
 
-const Land = ({ ...props }) => {
+const Land = ({ currentData, currentIndicator, currentSection }) => {
 
+    // console.log('inside la component', currentSection, currentIndicator, currentData)
     // console.log(props)
     return (
         <g className="Land-chart">

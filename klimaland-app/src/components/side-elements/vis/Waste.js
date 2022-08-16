@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Waste extends Component {
-   render() {
-      return (
-         <g className="waste-chart">
-            <text x="50%" y="50%" textAnchor="middle">
-               Waste
-            </text>
-         </g>
-      )
-   }
-}
+const Waste = ({ currentData, currentIndicator, currentSection }) => {
+
+   // console.log('inside was component', currentSection, currentIndicator, currentData)
+   return (
+      <g className="waste-chart">
+         <text x="50%" y="50%" textAnchor="middle">
+            Waste
+         </text>
+      </g>
+   );
+};
+
+export default Waste;
