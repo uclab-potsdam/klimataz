@@ -130,7 +130,7 @@
 
     //148mm x 105mm (ratio 1.4)
     width: $postcardview-postcardwidth; //60vw
-    height: calc($postcardview-postcardwidth/1.4);
+    height: calc($postcardview-postcardwidth/1.6);
     // margin: 0.5em;
     
     transform-style: preserve-3d;
@@ -182,22 +182,22 @@
                 width: 60%;
                 height: 100%;
                 overflow: scroll;
-                border-right: 2px solid $taz-orange;
+                border-right: 1px solid $default-text;
                 .text-inner-container {
                     margin: 10px;
 
                     .section-title {
                         // width: 80%;
                         text-align: center;
-                        margin: 40px 10px 40px 10px;
-                        border: 1px solid $taz-orange;
-                        border-radius: 450px / 70px;
+                        margin: 2rem 10px 10px 10px;
+                        border: 1px solid $mint-green;
+                        border-radius: 40rem / 8rem;
                     }
 
                     .section-text {
                         margin: 20px;
                         p {
-                            font-size: 20px;
+                            font-size: 1rem;
                         }
                     }
                 }
@@ -210,7 +210,7 @@
                 overflow-x: hidden;
 
                 .locator-map {
-                    border-bottom: 2px solid $taz-orange;
+                    border-bottom: 1px solid $default-text;
                 }
 
                 .lk-list {

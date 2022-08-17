@@ -1,5 +1,13 @@
 //fonts
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+@font-face {
+    font-family: AktivGrotesk_bold;
+    src: url('../fonts/AktivGrotesk_Md.ttf');
+}
+
+@font-face {
+    font-family: AktivGrotesk;
+    src: url('../fonts/AktivGrotesk_Rg.ttf');
+}
 
 //colors
 $light: #FFF9F1;
@@ -12,9 +20,11 @@ $lighter-orange: rgba(255, 232, 201, 0.7);
 $taz-pink: #F00048;
 $dark-pink: #E5144B;
 $red: #FF7B7B;
+$default-text: #484848;
+$mint-green: #1A8579;
 
 //variables
-$postcardview-postcardwidth: 65vw;
+$postcardview-postcardwidth: 80vw;
 $thumbnail-postcardwith:30vw;
 
 //effects
@@ -23,10 +33,15 @@ $boxshadow: (
     hover: (6px 6px 0px $orange-shade)
 );
 
+h1, h2, h3, h4, h5, h6, p, text {
+    font-family: "AktivGrotesk";
+    color: $default-text;
+}
+
 //reusable code
 
 @mixin title{
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "AktivGrotesk";
 }
 
 @mixin button{
@@ -45,6 +60,29 @@ $boxshadow: (
     &.img{
         height: 25px;
         color:"blue"
+    }
+}
+
+@mixin vertical-layout{
+
+    .description {
+        width: 35%;
+        height: 100%;
+        // background-color: pink;
+    
+    
+        .title {
+            border-bottom: 1px solid $default-text;
+    
+            h3 {
+                padding: 0rem 0.5rem 0rem 1rem;
+            }
+        }    
+    }
+
+
+    .chart {
+        width: 65%;
     }
 }
 

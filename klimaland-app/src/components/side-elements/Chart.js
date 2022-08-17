@@ -44,12 +44,11 @@ export default class Chart extends Component {
 
     const localData = this.props.localData[this.props.section]
     const currentSnippet = localData[this.state.currentIndicator]
-
+    console.log(currentSnippet)
     return (
       <div className="chart-container">
-        <svg
+        <div
           width="100%"
-          viewBox="0 0 100% 100%"
           className={'svg-container ' + this.props.section + '-chart'}
         >
           <RenderChart
@@ -57,7 +56,7 @@ export default class Chart extends Component {
             currentData={currentSnippet}
             currentIndicator={this.state.currentIndicator}
           />
-        </svg>
+        </div>
       </div>
     );
   }

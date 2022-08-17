@@ -4,11 +4,18 @@ const Waste = ({ currentData, currentIndicator, currentSection }) => {
 
    // console.log('inside was component', currentSection, currentIndicator, currentData)
    return (
-      <g className="waste-chart">
-         <text x="50%" y="50%" textAnchor="middle">
-            Waste
-         </text>
-      </g>
+      <div className="waste-chart">
+         <div>
+            <div>
+               Layout
+            </div>
+         </div>
+         <svg className="chart">
+            <text x="50%" y="50%" textAnchor="middle">
+               Waste
+            </text>
+         </svg>
+      </div>
    );
 };
 

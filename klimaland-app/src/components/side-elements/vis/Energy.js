@@ -1,13 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Energy extends Component {
-    render() {
-        return (
-            <g className="energy-chart">
+const Energy = ({ currentData, currentIndicator, currentSection }) => {
+
+    // console.log('inside la component', currentSection, currentIndicator, currentData)
+    // console.log(props)
+    return (
+        <div className="energy-chart">
+            <div>
+                <div>
+                    Layout
+                </div>
+            </div>
+            <svg className="chart">
                 <text x="50%" y="50%" textAnchor="middle">
                     Energy
                 </text>
-            </g>
-        )
-    }
-}
+            </svg>
+        </div>
+    );
+};
+
+export default Energy;

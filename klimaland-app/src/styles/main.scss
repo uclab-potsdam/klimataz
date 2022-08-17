@@ -26,9 +26,14 @@ body {
 button {
     @include button;
     &.flip {
-            position: absolute;
-            bottom: 3vh;
-            right: 2vh;
+        position: absolute;
+        bottom: 2vh;
+        right: 2vh;
+
+        img {
+            width: 80%;
+            max-width: 50px;
+        }
     }
 }
 
@@ -43,12 +48,10 @@ h2{
 
 h3{
     @include title;
-    color: $red;
 }
 
 h4{
     @include title;
-    color: $red;
 }
 
 ul {
