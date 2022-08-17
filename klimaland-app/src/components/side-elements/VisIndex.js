@@ -5,7 +5,7 @@ let Vis = {};
 Vis['EnPrimaryEnergy'] = require('./vis/Energy.js').default;
 Vis['MoCarDensity'] = require('./vis/MoCarDensity.js').default;
 Vis['Waste'] = require('./vis/Waste.js').default;
-Vis['Land'] = require('./vis/Land.js').default;
+Vis['LaAnimalCount'] = require('./vis/LaAnimalCount.js').default;
 Vis['Buildings'] = require('./vis/Buildings.js').default;
 
 export default Vis

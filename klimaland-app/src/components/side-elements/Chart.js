@@ -28,7 +28,8 @@ export default class Chart extends Component {
       await setStateAsync(this, {
         chartComponentName:
           this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components
-            .component
+            .component,
+        currentIndicator: this.props.layoutControls.params[this.props.activeSide][0].components.indicator
       });
     }
   }
@@ -44,7 +45,7 @@ export default class Chart extends Component {
 
     const localData = this.props.localData[this.props.section]
     const currentSnippet = localData[this.state.currentIndicator]
-    console.log(currentSnippet)
+
     return (
       <div className="chart-container">
         <div

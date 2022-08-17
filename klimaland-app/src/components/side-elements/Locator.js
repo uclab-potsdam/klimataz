@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import { geoPath, geoMercator } from 'd3-geo';
-import LandkreiseOutline from '../../data/kreise.json';
+import LandkreiseOutline from '../../data/kreise-simpler.json';
 
 const Locator = ({ lk }) => {
   let width = 100
@@ -50,18 +50,22 @@ const Locator = ({ lk }) => {
 
   // create arrow for pointer
   const currentZoomCentroid = geoGenerator.centroid(currentFeature)
-  const zoomPointerPath = `M ${currentZoomCentroid} 
-    C ${currentZoomCentroid[0] + 10},${currentZoomCentroid[1] + 10} ${currentZoomCentroid[0] + 10}, ${width / 2} 0,${width / 2}  
+  const zoomPointerPath = `M ${currentZoomCentroid[0]},${currentZoomCentroid[1] + 1}
+    C ${currentZoomCentroid[0] + 10},${currentZoomCentroid[1] + 10} 
+    ${currentZoomCentroid[0] + 10}, ${width / 2} 0,${width / 2}  
     L 0, ${width / 2}`
 
   // prepare single shapes for background map
   const singleShapes = LandkreiseOutline.features.map((d) => {
+    // every transformation is made in here, an array of prepared data is returned
     return {
       path: geoGenerator(d),
       translatedPath: geoTranslated(d),
       lk: d.properties.ARS,
       bl: d.properties.SN_L,
-      visible: +lk.value === +d.properties.ARS || +lk.value === +d.properties.SN_L ? true : false,
+      visible: +lk.value === +d.properties.ARS || +lk.value === +d.properties.SN_L
+        ? true
+        : false,
     };
   });
 
@@ -88,10 +92,11 @@ const Locator = ({ lk }) => {
           <defs>
             <marker id="arrowhead" markerWidth="10" markerHeight="7"
               refX="0" refY="3.5" orient="auto">
-              <polygon points="10 0, 10 7, 0 3.5" />
+              <path d="M 6,0 L 1,3.5 L 6,6" fill="none" stroke="black" />
             </marker>
           </defs>
           <g class="map-paths">
+            {/* Shapes are rendered starting from the data using .map method, no d3 logic */}
             {singleShapes.map(function (el, e) {
               return (
                 <path

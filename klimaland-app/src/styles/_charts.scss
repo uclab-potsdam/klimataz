@@ -28,7 +28,7 @@
         }
 
         &.La-chart {
-            background-color: rgb(111, 224, 194);
+            // background-color: rgb(111, 224, 194);
         }
                                 
     }
@@ -57,7 +57,6 @@
         .locator-zoom {
             width: 50%;
             margin-left: 0.5rem;
-            // filter: drop-shadow(0px 0px 0.1px rgba(246, 161, 25, 0.4));
 
             .locator-zoom-inner {
                 background-color: $light;
@@ -73,48 +72,19 @@
     stroke: $default-text;
     stroke-width: 0.5;
     fill: white;
+    -webkit-backface-visibility: hidden;
 
     &.visible {
         fill: $lighter-orange;
     }
 }
 
-// .area-chart {
-//     display: inline-flex;
-//     flex:1;
-// }
-
-// .line-chart {
-//     display: inline-flex;
-//     flex:1;
-    
-//     .axis-x{
-//         text{
-//             font-size: 1rem;
-//             text-anchor: middle;
-//         }
-//     }
-
-//     .axis-y{
-//         text{
-//             font-size: 1rem;
-//         }
-//     }
-
-//     &.thumbnail{
-
-//         text{
-//             display: none;
-//         }
-
-//         .axis-x{
-//             display: none;
-//         }
-//     }
-// }
-
 .car-density {
-    display: inline-flex;
     height: 100%;
     @include vertical-layout;
+}
+
+.animal-count {
+    height: 100%;
+    @include horizontal-top-layout;
 }

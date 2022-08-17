@@ -1,12 +1,17 @@
 //fonts
 @font-face {
     font-family: AktivGrotesk_bold;
-    src: url('../fonts/AktivGrotesk_Md.ttf');
+    src: url('../fonts/aktiv/AktivGrotesk_Md.ttf');
 }
 
 @font-face {
     font-family: AktivGrotesk;
-    src: url('../fonts/AktivGrotesk_Rg.ttf');
+    src: url('../fonts/aktiv/AktivGrotesk_Rg.ttf');
+}
+
+@font-face {
+    font-family: Chivo;
+    src: url('../fonts/chivo/chivo_regular.ttf');
 }
 
 //colors
@@ -34,6 +39,11 @@ $boxshadow: (
 );
 
 h1, h2, h3, h4, h5, h6, p, text {
+    font-family: "Chivo";
+    color: $default-text;
+}
+
+p, text {
     font-family: "AktivGrotesk";
     color: $default-text;
 }
@@ -41,7 +51,7 @@ h1, h2, h3, h4, h5, h6, p, text {
 //reusable code
 
 @mixin title{
-    font-family: "AktivGrotesk";
+    font-family: "Chivo";
 }
 
 @mixin button{
@@ -63,8 +73,9 @@ h1, h2, h3, h4, h5, h6, p, text {
     }
 }
 
+// reusable layouts for vis
 @mixin vertical-layout{
-
+    display: inline-flex;
     .description {
         width: 35%;
         height: 100%;
@@ -84,6 +95,30 @@ h1, h2, h3, h4, h5, h6, p, text {
     .chart {
         width: 65%;
     }
+}
+
+@mixin horizontal-top-layout{
+
+    .description {
+        width: 100%;
+        height: 20%;
+
+        .title {
+            border-bottom: 1px solid $default-text;
+            margin: 0rem 1rem 0.5rem 1rem;
+            h3 {
+                margin: 0;
+                padding-top: 1rem;
+                padding-bottom: 1rem; 
+            }
+        }
+    }
+
+    .chart {
+        width: 100%;
+        height: 80%;
+    }
+
 }
 
 //breakpoints from bootstrap

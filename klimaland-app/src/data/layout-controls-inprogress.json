@@ -34,7 +34,13 @@
                         true,
                         2,
                         false
-                    ]
+                    ],
+                    "components": {
+                        "indicator": "_mid_",
+                        "component": "MoMid",
+                        "annotation": "Hier sieht man die PKWs pro 1000 Einwohner:innen.",
+                        "showDataFootnote": true
+                    }
                 }
             }
         ]
@@ -50,7 +56,7 @@
                         false
                     ],
                     "components": {
-                        "indicator:": "_primaryconsumption_",
+                        "indicator": "_industry_consumption_",
                         "component": "EnPrimaryEnergy",
                         "showDataFootnote": false
                     }
@@ -89,7 +95,7 @@
                         false
                     ],
                     "components": {
-                        "indicator:": "_primaryconsumption_",
+                        "indicator": "_organicwaste_weight_",
                         "component": "Waste",
                         "showDataFootnote": false
                     }
@@ -128,8 +134,8 @@
                         false
                     ],
                 "components": {
-                    "indicator:": "_primaryconsumption_",
-                    "component": "Land",
+                    "indicator": "_animalcount_Anzahl_",
+                    "component": "LaAnimalCount",
                     "showDataFootnote": false
                 }
                 }
@@ -167,7 +173,7 @@
                         false
                     ],
                     "components": {
-                        "indicator:": "_primaryconsumption_",
+                        "indicator": "_newbuilding_energy_",
                         "component": "Buildings",
                         "showDataFootnote": false
                     }
