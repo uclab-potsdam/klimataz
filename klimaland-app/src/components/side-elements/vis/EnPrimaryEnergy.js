@@ -2,8 +2,9 @@ import React from "react";
 
 const Energy = ({ currentData, currentIndicator, currentSection, lkData }) => {
 
-    let lastYear;
-    let lastValue
+    //set default value to avoid errors
+    let lastYear = "?";
+    let lastValue = "?";
 
     if (currentData !== undefined) {
         const lastDataPoint = currentData.data.slice(-1)

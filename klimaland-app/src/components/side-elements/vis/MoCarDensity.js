@@ -2,9 +2,10 @@ import React from "react";
 
 const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData }) => {
 
+    //set default value to avoid errors
     let totalCars = "?";
     let hybridCars = "?";
-    console.log(currentData)
+
     if (currentData !== undefined) {
         const lastDataPoint = currentData.data.find(d => d.column === "Insgesamt" && +d.year === 2020)
         const rawValue = lastDataPoint.value / 10
