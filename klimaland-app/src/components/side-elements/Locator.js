@@ -95,7 +95,7 @@ const Locator = ({ lk }) => {
               <path d="M 6,0 L 1,3.5 L 6,6" fill="none" stroke="black" />
             </marker>
           </defs>
-          <g class="map-paths">
+          <g className="map-paths">
             {/* Shapes are rendered starting from the data using .map method, no d3 logic */}
             {singleShapes.map(function (el, e) {
               return (
