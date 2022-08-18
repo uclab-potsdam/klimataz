@@ -1,14 +1,22 @@
 import React from "react";
 
-const MoCarDensity = ({ currentData, currentIndicator, currentSection }) => {
+const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData }) => {
+
+    let totalCars = "?";
+    let hybridCars = "?";
     console.log(currentData)
+    if (currentData !== undefined) {
+        const lastDataPoint = currentData.data.find(d => d.column === "Insgesamt" && +d.year === 2020)
+        const rawValue = lastDataPoint.value / 10
+        totalCars = Math.round(rawValue)
+    }
+
     return (
         <div className="car-density vertical-layout">
             <div className="description">
                 <div className="title">
                     <h3>
-                        Auf 100 Einwohner besitzen 42 ein Auto.
-                        2 davon sind Hybrid oder Elektro
+                        <span>{lkData}</span>: Auf 100 Einwohner besitzen <span className="first-value">{totalCars}</span> ein Auto. <span className="second-value">{hybridCars}</span> davon sind Hybrid oder Elektro.
                     </h3>
                 </div>
                 <div className="legend">

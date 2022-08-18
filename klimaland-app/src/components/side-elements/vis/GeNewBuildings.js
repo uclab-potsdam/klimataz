@@ -1,9 +1,7 @@
 import React from "react";
 
-const Buildings = ({ currentData, currentIndicator, currentSection }) => {
+const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) => {
 
-    // console.log('inside la component', currentSection, currentIndicator, currentData)
-    // console.log(props)
     return (
         <div className="newbuildings-energy">
             <div className="description">

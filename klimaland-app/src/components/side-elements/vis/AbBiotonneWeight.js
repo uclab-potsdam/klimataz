@@ -1,8 +1,16 @@
 import React from "react";
 
-const Waste = ({ currentData, currentIndicator, currentSection }) => {
+const Waste = ({ currentData, currentIndicator, currentSection, lkData }) => {
 
-   // console.log('inside was component', currentSection, currentIndicator, currentData)
+   let lastYear;
+   let lastValue
+
+   if (currentData !== undefined) {
+      const lastDataPoint = currentData.data.slice(-1)
+      lastYear = lastDataPoint[0]["year"]
+      lastValue = lastDataPoint[0]["value"]
+   }
+
    return (
       <div className="biotonne-weight horizontal-bottom-layout">
          <svg className="chart">
@@ -13,8 +21,8 @@ const Waste = ({ currentData, currentIndicator, currentSection }) => {
          <div className="description">
             <div className="title">
                <h3>
-                  2020 wurden in Schweinfurt 22.327 tonnen organische Abfälle
-                  aus der Biotonne und Garten- und Parkabfällen entsorgt
+                  <span>{lastYear}</span> wurden in <span>{lkData}</span> <span>{lastValue}</span> Thousand tonnen organische Abfälle
+                  aus der <span className="first-value">Biotonne</span> und <span className="second-value">Garten- und Parkabfällen</span> entsorgt
                </h3>
             </div>
          </div>

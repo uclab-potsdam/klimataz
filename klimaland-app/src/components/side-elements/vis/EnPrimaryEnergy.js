@@ -1,9 +1,16 @@
 import React from "react";
 
-const Energy = ({ currentData, currentIndicator, currentSection }) => {
+const Energy = ({ currentData, currentIndicator, currentSection, lkData }) => {
 
-    // console.log('inside la component', currentSection, currentIndicator, currentData)
-    // console.log(props)
+    let lastYear;
+    let lastValue
+
+    if (currentData !== undefined) {
+        const lastDataPoint = currentData.data.slice(-1)
+        lastYear = lastDataPoint[0]["year"]
+        lastValue = lastDataPoint[0]["value"]
+    }
+
     return (
         <div className="primary-energy horizontal-bottom-layout">
             <svg className="chart">
@@ -13,7 +20,7 @@ const Energy = ({ currentData, currentIndicator, currentSection }) => {
             </svg>
             <div className="description">
                 <div className="title">
-                    <h3>Der Primärenergieverbrauch in Berlin besteht 2020 zu 6,11 % aus erneuerbaren Energieträgern</h3>
+                    <h3>Der Primärenergieverbrauch in <span>{lkData}</span> besteht <span>{lastYear}</span> zu <span>{lastValue}%</span> aus erneuerbaren Energieträgern</h3>
                 </div>
             </div>
         </div>

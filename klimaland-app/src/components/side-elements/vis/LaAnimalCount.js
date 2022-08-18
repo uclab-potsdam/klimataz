@@ -1,9 +1,7 @@
 import React from "react";
 
-const Land = ({ currentData, currentIndicator, currentSection }) => {
+const Land = ({ currentData, currentIndicator, currentSection, lkData }) => {
 
-    // console.log('inside la component', currentSection, currentIndicator, currentData)
-    console.log('land', currentIndicator)
     return (
         <div className="animal-count horizontal-top-layout">
             <div className="description">

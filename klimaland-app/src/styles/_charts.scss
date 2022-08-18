@@ -15,6 +15,18 @@
             .car-density {
                 height: 100%;
                 @include vertical-layout;
+
+                .title {
+                    span {
+                        &.first-value {
+                            color: $red;
+                        }
+                        
+                        &.second-value {
+                            color: $taz-orange;
+                        }
+                    }
+                }
             }
         }
 
@@ -29,6 +41,18 @@
             .biotonne-weight {
                 height: 100%;
                 @include horizontal-bottom-layout;
+
+                .title {
+                    span {
+                        &.first-value {
+                            color: $mint-green;
+                        }
+                
+                        &.second-value {
+                            color: $taz-orange;
+                        }
+                    }                
+                }
             }
         }
 

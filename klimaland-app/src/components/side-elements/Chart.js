@@ -56,6 +56,7 @@ export default class Chart extends Component {
             currentSection={this.props.section}
             currentData={currentSnippet}
             currentIndicator={this.state.currentIndicator}
+            lkData={this.props.lk.label}
           />
         </div>
       </div>
