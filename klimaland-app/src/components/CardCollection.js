@@ -256,10 +256,10 @@ export default class CardCollection extends Component {
   render() {
     return (
       <div className="card-collection">
-        <h5 className="debug">
+        {/* <h5 className="debug">
           Debug: {this.props.mode}, LK:{' '}
           {this.props.cardSelection.map((elem) => elem.lk.label + ' ' + elem.section.label + ' | ')}
-        </h5>
+        </h5> */}
         {this.props.mode === 'comparison' && !this.props.postcardView && (
           <div>
             <div className="card-container stacked"> {this.state.cards} </div>

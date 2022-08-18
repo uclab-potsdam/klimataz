@@ -96,7 +96,7 @@
                     ],
                     "components": {
                         "indicator": "_organicwaste_weight_",
-                        "component": "Waste",
+                        "component": "AbBiotonneWeight",
                         "showDataFootnote": false
                     }
                 }
@@ -174,7 +174,7 @@
                     ],
                     "components": {
                         "indicator": "_newbuilding_energy_",
-                        "component": "Buildings",
+                        "component": "GeNewBuildings",
                         "showDataFootnote": false
                     }
                 }

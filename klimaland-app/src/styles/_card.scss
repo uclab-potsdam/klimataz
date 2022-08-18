@@ -54,7 +54,7 @@
 
     &-active{
         // scaling to avoid overflow
-        transform: translateY(0px) scale(0.99);
+        transform: translateY(0px);
         z-index: 1;
         opacity: 1;
         @include stacked-postcard;
@@ -186,12 +186,12 @@
                 width: 60%;
                 height: 100%;
                 overflow: scroll;
+
                 border-right: 1px solid $default-text;
                 .text-inner-container {
                     margin: 10px;
 
                     .section-title {
-                        // width: 80%;
                         text-align: center;
                         margin: 2rem 10px 10px 10px;
                         border: 1px solid $mint-green;
@@ -205,6 +205,18 @@
                         }
                     }
                 }
+            }
+
+            .text-container::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            .text-container {
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
             }
             
             .data-container {
@@ -225,7 +237,14 @@
                             border-bottom: 1px solid $default-text;
                             overflow-y: scroll;
                             overflow-x: hidden;
+                            -ms-overflow-style: none;
+                            scrollbar-width: none;
                             max-height: 120px;
+
+
+                            &::-webkit-scrollbar {
+                                display: none;
+                            }
                             
                             h5 {
                                 // padding-left: 0.5rem;

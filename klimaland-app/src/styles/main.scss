@@ -107,19 +107,49 @@ code {
         
         .button-container {
             position: absolute;
-            width: 10%;
+            width: 100%;
             height: 100%;
-            z-index: 1;
+            // z-index: -1;
             right: 0;
 
+            .button-switch-container {
+                display: flex;
+
+                .button-left, .button-right {
+                    width: 50%;
+                    position: relative;
+                }
+
+                .button-left {
+                    .button {
+                        float: left;
+                        margin-left: 0.5rem;
+                    }
+                }
+
+                .button-right {
+                    .button {
+                        float: right;
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+
             .inner-button {
-                width: 100%;
+                // width: 100%;
                 height: 50%;
 
+                .close {
+                    position:relative;
+                    float: right;
+                    margin-right: 0.5rem;
+                    margin-top: 3rem;
+                }
+
                 img {
-                    width: 100%;
+                    width: 80%;
                     height: auto;
-                    margin: 5px 0px 0px 50%;
+                    // margin: 5px 0px 0px 50%;
                     top: 0;
                 }
             }

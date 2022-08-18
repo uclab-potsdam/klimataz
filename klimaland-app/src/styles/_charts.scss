@@ -12,23 +12,38 @@
         height: 100%;
         // Specific styling for sections' charts
         &.Mo-chart {
-            // background-color: olive;
+            .car-density {
+                height: 100%;
+                @include vertical-layout;
+            }
         }
 
         &.En-chart {
-            background-color: rgb(224, 178, 111);
+            .primary-energy {
+                height: 100%;
+                @include horizontal-bottom-layout;            
+            }
         }
 
         &.Ab-chart {
-            background-color: rgb(154, 111, 224);
+            .biotonne-weight {
+                height: 100%;
+                @include horizontal-bottom-layout;
+            }
         }
 
         &.Ge-chart {
-            background-color: rgb(224, 111, 167);
+            .newbuildings-energy {
+                height: 100%;
+                @include vertical-layout;
+            }
         }
 
         &.La-chart {
-            // background-color: rgb(111, 224, 194);
+            .animal-count {
+                height: 100%;
+                @include horizontal-top-layout;
+            }
         }
                                 
     }
@@ -79,12 +94,3 @@
     }
 }
 
-.car-density {
-    height: 100%;
-    @include vertical-layout;
-}
-
-.animal-count {
-    height: 100%;
-    @include horizontal-top-layout;
-}

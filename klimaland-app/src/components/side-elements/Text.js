@@ -1,10 +1,18 @@
 import React from "react";
 
 const Text = ({ lk, section, activeSide }) => {
+
+    const sectionFullName = {
+        La: "Landwirtschaft",
+        Mo: "Mobilität",
+        Ge: "Gebäude",
+        En: "Energie",
+        Ab: "Abfall"
+    }
     return (
         <div className="text-inner-container">
             <div className="section-title">
-                <h2>Es geht hier um {section}.</h2>
+                <h2>{sectionFullName[section]}</h2>
             </div>
             <div className="section-text">
                 {/* <h4>Grüsse aus {lk.label}, mit der id {lk.value}!</h4> */}

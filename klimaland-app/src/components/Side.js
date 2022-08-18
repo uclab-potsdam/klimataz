@@ -60,7 +60,7 @@ export default class Side extends Component {
   vis() {
     if (
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-        undefined &&
+      undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -114,6 +114,7 @@ export default class Side extends Component {
     // TO DO: Solve issue of inconsistent activeSide during carousel switch
     // console.log("currently on:", this.props.section, this.props.activeSide)
     // console.log(this.props.activeSide, this.props.activeSide + 1)
+    console.log(this.props)
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div
