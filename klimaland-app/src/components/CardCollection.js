@@ -37,7 +37,7 @@ export default class CardCollection extends Component {
    * @param {*} section section of card that was clicked on
    */
   handleClickOnCard(e, lk, section) {
-    console.log(lk, section);
+    // console.log(lk, section);
     this.props.switchToPostcardView(lk, section);
   }
 
@@ -161,7 +161,7 @@ export default class CardCollection extends Component {
             </Card>
           );
         } catch (e) {
-          console.log(e);
+          // console.log(e);
         }
       });
 
