@@ -26,9 +26,14 @@ body {
 button {
     @include button;
     &.flip {
-            position: absolute;
-            bottom: 3vh;
-            right: 2vh;
+        position: absolute;
+        bottom: 2vh;
+        right: 2vh;
+
+        img {
+            width: 80%;
+            max-width: 50px;
+        }
     }
 }
 
@@ -43,19 +48,16 @@ h2{
 
 h3{
     @include title;
-    color: $red;
 }
 
 h4{
     @include title;
-    color: $red;
 }
 
 ul {
     padding-left: 0px;
     ol {
-        padding-top: 1rem;
-        padding-left: 1rem;
+        padding-left: 0.5rem;
     }
 }
 
@@ -79,8 +81,8 @@ code {
 // In here all elements contained in main-container
 .indicators-iframe {
     max-width: 948px;
-    width: 90%;
-    height: 600px;
+    width: 100%;
+    height: 624px;
     border: 1px solid rgb(174, 174, 142);
 
     .main-container {
@@ -105,19 +107,49 @@ code {
         
         .button-container {
             position: absolute;
-            width: 10%;
+            width: 100%;
             height: 100%;
-            z-index: 1;
+            // z-index: -1;
             right: 0;
 
+            .button-switch-container {
+                display: flex;
+
+                .button-left, .button-right {
+                    width: 50%;
+                    position: relative;
+                }
+
+                .button-left {
+                    .button {
+                        float: left;
+                        margin-left: 0.5rem;
+                    }
+                }
+
+                .button-right {
+                    .button {
+                        float: right;
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+
             .inner-button {
-                width: 100%;
+                // width: 100%;
                 height: 50%;
 
+                .close {
+                    position:relative;
+                    float: right;
+                    margin-right: 0.5rem;
+                    margin-top: 3rem;
+                }
+
                 img {
-                    width: 100%;
+                    width: 80%;
                     height: auto;
-                    margin: 5px 0px 0px 50%;
+                    // margin: 5px 0px 0px 50%;
                     top: 0;
                 }
             }

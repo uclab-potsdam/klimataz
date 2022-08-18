@@ -1,29 +1,33 @@
 import React from "react";
 
 const Text = ({ lk, section, activeSide }) => {
+
+    const sectionFullName = {
+        La: "Landwirtschaft",
+        Mo: "Mobilität",
+        Ge: "Gebäude",
+        En: "Energie",
+        Ab: "Abfall"
+    }
     return (
         <div className="text-inner-container">
             <div className="section-title">
-                <h3>Es geht hier um {section}.</h3>
+                <h2>{sectionFullName[section]}</h2>
             </div>
             <div className="section-text">
-                <h4>Grüsse aus {lk.label}, mit der id {lk.value}!</h4>
+                {/* <h4>Grüsse aus {lk.label}, mit der id {lk.value}!</h4> */}
                 <p>
-                    Seite {activeSide}. Sed ut perspiciatis unde omnis
-                    iste natus error sit voluptatem accusantium doloremque
-                    laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                    inventore veritatis et quasi architecto beatae vitae dicta
-                    sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                    sit aspernatur aut odit aut fugit, sed quia consequuntur
-                    magni dolores eos qui ratione voluptatem sequi nesciunt.
-                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                    consectetur, adipisci velit, sed quia non numquam eius modi
-                    tempora incidunt ut labore et dolore magnam aliquam quaerat
-                    voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem
-                    ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-                    consequatur? Quis autem vel eum iure reprehenderit qui in ea
-                    voluptate velit esse quam nihil molestiae consequatur, vel illum
-                    qui dolorem eum fugiat quo voluptas nulla pariatur?
+                    Seite {activeSide}. Hallo!
+                    Ich schicke dir Grüße aus dem schönen Landkreis {lk.label} in Brandenburg!
+                    Momentan wird es hier an 7,7 Tagen im Jahr über 30 Grad, aber wenn wir so
+                    weitermachen, werden es Mitte des Jahrhunderts schon 9 sein. 30 Prozent
+                    mehr! Wir könnten etwas dagegen tun, zum Beispiel im Bereich Verkehr.
+                    Im Barnim gibt XY Autos pro 100 Einwohner, damit liegt der Landkreis
+                    was den Autobesitz angeht im Vergleich im adjektiv Drittel. In Brandenburg
+                    werden nur XY Prozent der Arbeitswege mit Fahrrad, öffentlichem Verkehr
+                    oder zu Fuß erledigt. Um die Erderhitzung zu stoppen, müssen die Emissionen
+                    im Verkehr bei null sein. Schaffen wir das?
+                    Viele Grüße!
                 </p>
             </div>
         </div>

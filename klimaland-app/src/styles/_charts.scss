@@ -12,23 +12,62 @@
         height: 100%;
         // Specific styling for sections' charts
         &.Mo-chart {
-            background-color: olive;
+            .car-density {
+                height: 100%;
+                @include vertical-layout;
+
+                .title {
+                    span {
+                        &.first-value {
+                            color: $red;
+                        }
+                        
+                        &.second-value {
+                            color: $taz-orange;
+                        }
+                    }
+                }
+            }
         }
 
         &.En-chart {
-            background-color: rgb(224, 178, 111);
+            .primary-energy {
+                height: 100%;
+                @include horizontal-bottom-layout;            
+            }
         }
 
         &.Ab-chart {
-            background-color: rgb(154, 111, 224);
+            .biotonne-weight {
+                height: 100%;
+                @include horizontal-bottom-layout;
+
+                .title {
+                    span {
+                        &.first-value {
+                            color: $mint-green;
+                        }
+                
+                        &.second-value {
+                            color: $taz-orange;
+                        }
+                    }                
+                }
+            }
         }
 
         &.Ge-chart {
-            background-color: rgb(224, 111, 167);
+            .newbuildings-energy {
+                height: 100%;
+                @include vertical-layout;
+            }
         }
 
         &.La-chart {
-            background-color: rgb(111, 224, 194);
+            .animal-count {
+                height: 100%;
+                @include horizontal-top-layout;
+            }
         }
                                 
     }
@@ -36,24 +75,32 @@
 
 .locator-map {
     .locator-container {
-        width: 100%;
+        height: 150px;
         display:flex;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
 
         .locator-background {
             width: 50%;
+
+            svg {
+                .zoom-pointer {
+                    path {
+                        fill: none;
+                        stroke: black;
+                    }
+                }
+            }
         }
 
         .locator-zoom {
             width: 50%;
-            filter: drop-shadow(0px 0px 2px rgba(246, 161, 25, 0.4));
+            margin-left: 0.5rem;
 
             .locator-zoom-inner {
                 background-color: $light;
                 clip-path: circle(45%);
                 position: absolute;
-                // box-shadow: -4px 4px 0px rgba(246, 161, 25, 0.4);
             }
         }
     }
@@ -61,45 +108,13 @@
 
 
 .landkreis {
-    stroke: $taz-orange;
+    stroke: $default-text;
     stroke-width: 0.5;
-    fill: $lighter-orange-full;
+    fill: white;
+    -webkit-backface-visibility: hidden;
 
     &.visible {
-        fill: $red;
+        fill: $lighter-orange;
     }
 }
 
-.area-chart {
-    display: inline-flex;
-    flex:1;
-}
-
-.line-chart {
-    display: inline-flex;
-    flex:1;
-    
-    .axis-x{
-        text{
-            font-size: 1rem;
-            text-anchor: middle;
-        }
-    }
-
-    .axis-y{
-        text{
-            font-size: 1rem;
-        }
-    }
-
-    &.thumbnail{
-
-        text{
-            display: none;
-        }
-
-        .axis-x{
-            display: none;
-        }
-    }
-}

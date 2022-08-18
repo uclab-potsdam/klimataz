@@ -4,19 +4,22 @@ const List = () => {
     return (
         <div className="list-inner-container">
             <div className="list-similar-container">
-                <h4>Similar</h4>
+                <h5>Similar</h5>
                 <ul>
-                    <ol>AAA</ol>
-                    <ol>BBB</ol>
-                    <ol>CCC</ol>
+                    <ol>München</ol>
+                    <ol>Barnim</ol>
+                    <ol>Hamburg</ol>
+                    <ol>Freiburg</ol>
+                    <ol>Köln (Landkreis)</ol>
                 </ul>
             </div>
             <div className="list-dissimilar-container">
-                <h4>Different</h4>
+                <h5>Different</h5>
                 <ul>
-                    <ol>AAA</ol>
-                    <ol>BBB</ol>
-                    <ol>CCC</ol>
+                    <ol>Thüringen (Bundesland)</ol>
+                    <ol>Schweinfurt</ol>
+                    <ol>this name is really long</ol>
+                    <ol>Berlin (Stadt)</ol>
                 </ul>
             </div>
         </div>
