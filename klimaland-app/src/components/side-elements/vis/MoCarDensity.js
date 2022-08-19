@@ -1,4 +1,5 @@
 import React from "react";
+import { max } from "d3-array";
 
 const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData }) => {
 
@@ -6,10 +7,17 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData })
     let totalCars = "?";
     let hybridCars = "?";
 
+
+
     if (currentData !== undefined) {
-        const lastDataPoint = currentData.data.find(d => d.column === "Insgesamt" && +d.year === 2020)
+        const lastYear = max(currentData.data.map(d => +d.year))
+        const lastDataPoint = currentData.data.find(d => d.column === "Gesamt" && +d.year === lastYear)
+        const lastDataPointHy = currentData.data.find(d => d.column === "Hybrid" && +d.year === lastYear)
+        const lastDataPointEl = currentData.data.find(d => d.column === "Elektro" && +d.year === lastYear)
         const rawValue = lastDataPoint.value / 10
+        const sumGreenCars = (lastDataPointHy.value + lastDataPointEl.value) / 10
         totalCars = Math.round(rawValue)
+        hybridCars = Math.round(sumGreenCars)
     }
 
     return (
