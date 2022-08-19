@@ -19,13 +19,14 @@ const Canvas = () => {
   let defaultPick = sectionsData.map((el) => ({
     lk: { value: '0', label: 'Deutschland' },
     section: { value: el.value, label: el.label },
+    ui: { value: true },
   }));
 
   const [editorsPick, setEditorsPick] = useState(defaultPick);
 
   useEffect(() => {
     getCheckedEditorsPick();
-  }, []);
+  }, []); // only runs once at the beginning
 
   // get parameters from iframe <iframe src="http://postcardapp.de/?ags-1001-2-11&indicator-Mo&ui-true">
   const getParamValue = function (parameter) {
@@ -49,19 +50,7 @@ const Canvas = () => {
    * @returns editors pick in the format {ags:{value:"",label:""},section:{value:"",label:""}} depending on iframe
    */
   const getCheckedEditorsPick = function () {
-    // UI
-    let ui = true;
-    let definedUI = getParamValue('ui');
-
-    // if ui getParamValue returns something undefined
-    // set ui to true otherwise hand over iframe value
-    if (definedUI === undefined) {
-      ui = true;
-    } else {
-      if (definedUI[0] == 'true') ui = true;
-      if (definedUI[0] == 'false') ui = false;
-    }
-
+    // -------- PULL DATA (AGS,SELECTION,UI) FROM IFRAME with getParamValue() -------
     // AGS
     let lk = getParamValue('ags');
     let ags = [];
@@ -84,16 +73,30 @@ const Canvas = () => {
       sections = sectionPick;
     }
 
+    // UI
+    let definedUI = getParamValue('ui');
+    let uiVis = true;
+    // if ui getParamValue returns something undefined
+    // set ui to true otherwise hand over iframe value
+    if (definedUI === undefined) {
+      uiVis = true;
+    } else {
+      if (definedUI[0] === 'true') uiVis = true;
+      if (definedUI[0] === 'false') uiVis = false;
+    }
+
+    // -------- SET EDITORS PICK FOR EACH VIEW -------
     let checkedPick = [];
+
     //first set to default to be safe, overwrite later if we have other valid options
     setEditorsPick(defaultPick);
 
-    //SINGLE POSTCARD VIEW
-    //if landkreise is one and section is one, set UI to false
+    // -------- SINGLE POSTCARD VIEW -------
+    //if landkreise == 1 && section === 1, set UI to false
     if (ags.length === 1 && sections.length === 1) {
-      //console.log('SINGLE POSTCARD VIEW');
+      console.log('SINGLE POSTCARD VIEW');
       //TODO: keep UI param
-      ui = false;
+      uiVis = false;
 
       try {
         let name = getCheckedLandkreisLabel(ags[0]);
@@ -101,6 +104,7 @@ const Canvas = () => {
         checkedPick.push({
           lk: { value: ags[0], label: name },
           section: { value: sections[0], label: sectionLabel },
+          ui: { value: uiVis },
         });
         if (checkedPick.length !== 0) {
           setEditorsPick(checkedPick);
@@ -114,7 +118,7 @@ const Canvas = () => {
 
     //LK VIEW
     if (ags.length === 1 && sections.length !== 1) {
-      //console.log('LK VIEW');
+      console.log('LK VIEW');
       //TODO: keep UI param
       sections = defaultSections;
       let ort = ags[0];
@@ -125,6 +129,7 @@ const Canvas = () => {
           checkedPick.push({
             lk: { value: ort, label: name },
             section: { value: sec, label: sectionLabel },
+            ui: { value: uiVis },
           });
         });
         if (checkedPick.length !== 0) {
@@ -139,7 +144,7 @@ const Canvas = () => {
 
     //COMPARISON VIEW
     if (ags.length > 1) {
-      //console.log('COMPARISON VIEW');
+      console.log('COMPARISON VIEW');
       //TODO: keep UI param
 
       //if more than 3 landkreise, only keep the first three
@@ -184,6 +189,7 @@ const Canvas = () => {
           checkedPick.push({
             lk: { value: ort, label: name },
             section: { value: sections[0], label: sectionLabel },
+            ui: { value: uiVis },
           });
         } catch (error) {
           console.log(error);
@@ -196,8 +202,6 @@ const Canvas = () => {
         setSectionOptions(comparisonOptions);
       }
     }
-    //TODO: set UI as context
-    //https://reactjs.org/docs/context.html
   };
 
   /**
@@ -249,7 +253,6 @@ const Canvas = () => {
 
   return (
     <div className="indicators-iframe">
-      {/* <h1>Climate Protection Indicators</h1> */}
       <LayoutManager
         editorspick={editorsPick}
         landkreiseData={landkreiseData}

@@ -301,20 +301,22 @@ export default class LayoutManager extends Component {
   render() {
     return (
       <div className="main-container">
-        <SelectionButtons
-          mode={this.state.mode}
-          postcardView={this.state.postcardView}
-          landkreise={this.props.landkreiseData}
-          sections={this.props.sectionsData}
-          landkreisSelection={this.state.landkreisSelection}
-          sectionSelection={this.state.sectionSelection}
-          defaultLK={this.props.editorspick.map(function (el) {
-            return el.lk;
-          })}
-          changeLandkreis={this.changeLandkreis}
-          changeSection={this.changeSection}
-          shuffle={this.updateShuffleSelection}
-        />
+        {this.props.editorspick[0].ui.value && (
+          <SelectionButtons
+            mode={this.state.mode}
+            postcardView={this.state.postcardView}
+            landkreise={this.props.landkreiseData}
+            sections={this.props.sectionsData}
+            landkreisSelection={this.state.landkreisSelection}
+            sectionSelection={this.state.sectionSelection}
+            defaultLK={this.props.editorspick.map(function (el) {
+              return el.lk;
+            })}
+            changeLandkreis={this.changeLandkreis}
+            changeSection={this.changeSection}
+            shuffle={this.updateShuffleSelection}
+          />
+        )}
         {/* 
         {this.state.landkreisSelection.length > 0 && (
           <TitleCanvas landkreis={this.state.landkreisSelection} />
@@ -328,10 +330,9 @@ export default class LayoutManager extends Component {
           handleSwitchBack={this.handleSwitchBack}
           switchToPostcardView={this.switchToPostcardView}
         />
-
         {/* we could also put the code below into "SelectionButtons.js" or a more general
         buttons component and switch between the selection and shuffle or zoomed
-        view buttonså*/}
+        view buttons*/}
         {this.state.postcardView && (
           <div className="button-container">
             <div className="inner-button">
@@ -353,6 +354,7 @@ export default class LayoutManager extends Component {
             </div>
           </div>
         )}
+
         {!this.state.postcardView && <Info />}
       </div>
     );
