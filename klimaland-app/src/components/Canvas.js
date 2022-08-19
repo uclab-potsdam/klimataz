@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-
 import LayoutManager from './LayoutManager';
 
 //data
@@ -28,15 +27,18 @@ const Canvas = () => {
     getCheckedEditorsPick();
   }, []);
 
-  // get parameters from iframe
-  let getParamValue = function (paramName) {
-    var url = window.location.search.substring(1); //get rid of "?" in querystring
-    var qArray = url.split('&'); //get key-value pairs
-    for (var i = 0; i < qArray.length; i++) {
-      var pArr = qArray[i].split('='); //split key and value
-      if (pArr[0] === paramName)
-        //  console.log(pArr[1]);
-        return pArr[1]; //return value
+  // get parameters from iframe <iframe src="http://postcardapp.de/?ags-1001-2-11&indicator-Mo&ui-true">
+  const getParamValue = function (parameter) {
+    const url = window.location.search.substring(1); //get rid of "?" in querystring ags-1001-2-11&indicator-Mo&ui-true
+    const splitParams = url.split('&'); //get key-value pairs
+
+    for (let i = 0; i < splitParams.length; i++) {
+      const splitKeyVal = splitParams[i].split('-'); //split key and value ['ags', '1001', '2', '11']
+
+      if (splitKeyVal[0] === parameter) {
+        splitKeyVal.shift(); // through out the parameter as first value in array
+        return splitKeyVal; //return array of values
+      }
     }
   };
 
@@ -44,42 +46,47 @@ const Canvas = () => {
    * checks validity of iframe values
    * generates editors pick depending on iframe values
    * return default pick if values are not valid
-   * @returns editors pick in the format {lk:{value:"",label:""},section:{value:"",label:""}} depending on iframe
+   * @returns editors pick in the format {ags:{value:"",label:""},section:{value:"",label:""}} depending on iframe
    */
   const getCheckedEditorsPick = function () {
-    //TODO:
-    //here you can later pipe in the iframe params, I don't know how to do that
-    //for example, you could call getParamValue inside of this function
-    //something like this:
-    //let ags = getParamValue('param1');
-    //let sections = getParamValue('param2');
-    //let ui = getParamValue('param3');
-
-    //I add the values we need to check here manually here for testing purposes.
-    let ags = [1001];
-    let sections = ['En'];
+    // UI
     let ui = true;
+    let definedUI = getParamValue('ui');
+
+    // if ui getParamValue returns something undefined
+    // set ui to true otherwise hand over iframe value
+    if (definedUI === undefined) {
+      ui = true;
+    } else {
+      if (definedUI[0] == 'true') ui = true;
+      if (definedUI[0] == 'false') ui = false;
+    }
+
+    // AGS
+    let lk = getParamValue('ags');
+    let ags = [];
+
+    //if landkreise are undefined (== no parameter), use default
+    if (lk === undefined || lk.length === 0) {
+      ags = 1001;
+      // return;
+    } else {
+      ags = lk.map(Number); // convert to number from string
+    }
+
+    // SECTIONS
+    let sectionPick = getParamValue('indicator');
+    let sections = [];
+
+    if (sectionPick === undefined) {
+      sections = defaultSections;
+    } else {
+      sections = sectionPick;
+    }
 
     let checkedPick = [];
-
     //first set to default to be safe, overwrite later if we have other valid options
     setEditorsPick(defaultPick);
-
-    //check if getParamValue returns something undefined
-    //set default values if one of the paramters is undefined
-    if (ui === undefined || typeof variable !== 'boolean') {
-      ui = true;
-    }
-
-    //if landkreise are undefined (== no parameter), use default and stop function
-    if (ags === undefined || ags.length === 0) {
-      //TODO: still keep UI param
-      return;
-    }
-
-    if (sections === undefined) {
-      sections = defaultSections;
-    }
 
     //SINGLE POSTCARD VIEW
     //if landkreise is one and section is one, set UI to false

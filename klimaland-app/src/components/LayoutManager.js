@@ -137,13 +137,17 @@ export default class LayoutManager extends Component {
   async setEditorsPick() {
     //set to all landkreise of editors pick,
     let editorsLK = this.props.editorspick.map((item) => item.lk);
+
+    // TO DO: add option for several sections
+    // let editorsLK = this.props.editorspick.map((item) => item.sections);
+
     //only keep unique values
     editorsLK = Array.from(new Set(editorsLK.map(JSON.stringify))).map(JSON.parse);
     await setStateAsync(this, {
       shuffleSelection: this.props.editorspick,
       landkreisSelection: editorsLK,
       //set to first section of editors pick (that is also what
-      //makes sense for comparison mdoe, for the other modes this param is not important)
+      //makes sense for comparison mode, for the other modes this param is not important)
       sectionSelection: this.props.editorspick[0].section,
       showEditorsPick: true,
     }).then(() => {

@@ -48,6 +48,7 @@ export class SelectionButtons extends Component {
             {this.props.mode === 'comparison' && (
               <Select
                 className="selector"
+                isMulti
                 defaultValue={this.props.sections[0]}
                 onChange={this.changeSection}
                 options={this.props.sections}
