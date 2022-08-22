@@ -118,11 +118,11 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                 carSquares.map(function (sq, s) {
                                     return (
                                         <g
+                                            key={`${s}-grid`}
                                             className="without-car"
                                             transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
                                         >
                                             <rect
-                                                key={s}
                                                 width={rectWidth}
                                                 height={rectWidth}
                                                 x={!sq.ownsCar ? "10" : "0"}
@@ -133,17 +133,17 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                 })
                             }
                         </g>
-                        <g class="gridded-data">
+                        <g className="gridded-data">
                             {
                                 carSquares.map(function (sq, s) {
                                     if (sq.isHybrid) {
                                         return (
                                             <g
+                                                key={`${s}-hybrid`}
                                                 className="hybrid-cars"
                                                 transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
                                             >
                                                 <rect
-                                                    key={s + 'hascars'}
                                                     width={rectWidth}
                                                     height={rectWidth}
                                                     fill="#F6A219"
@@ -156,11 +156,11 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                     if (sq.ownsCar) {
                                         return (
                                             <g
+                                                key={`${s}-car`}
                                                 className="owns-car"
                                                 transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
                                             >
                                                 <rect
-                                                    key={s + 'hybrid'}
                                                     width={rectWidth}
                                                     height={rectWidth}
                                                     fill="#E87780"
@@ -173,17 +173,17 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                 })
                             }
                         </g>
-                        <g class="gridded-data is-excess">
+                        <g className="gridded-data is-excess">
                             {
                                 carSquares.map(function (sq, s) {
                                     if (sq.isExcess) {
                                         return (
                                             <g
+                                                key={`${s}-excess`}
                                                 className="is-excess owns-car"
                                                 transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
                                             >
                                                 <rect
-                                                    key={s + 'excess'}
                                                     width={rectWidth}
                                                     height={rectWidth}
                                                     fill="#E87780"
