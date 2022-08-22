@@ -28,8 +28,9 @@ export class SelectionButtons extends Component {
   render() {
     return (
       <div className="selection-buttons">
-        {!this.props.postcardView && (
+        {!this.props.postcardView && this.props.uiVis && (
           <div className="selection-container">
+            {/* {this.props.viewVis !== 2 && ( */}
             <Select
               className="selector"
               isMulti
@@ -41,11 +42,13 @@ export class SelectionButtons extends Component {
               options={this.props.landkreise}
               //add nameAddition to label.
               //this is the (Landkreis) (kreisfreie Stadt) for Schweinfurt cases
-              getOptionLabel={(options) => `${options.label} ${options.nameAddition}`}
+              getOptionLabel={(options) =>
+                `${options.label} ${options.nameAddition ? options.nameAddition : ''}`
+              }
               isOptionDisabled={() => this.props.landkreisSelection.length >= 3} //max selection number: 3
             />
-
-            {this.props.mode === 'comparison' && (
+            {/* )} */}
+            {this.props.mode === 'comparison' && this.props.sections.length > 1 && (
               <Select
                 className="selector"
                 defaultValue={this.props.sections[0]}
@@ -54,10 +57,9 @@ export class SelectionButtons extends Component {
                 value={this.props.sectionSelection || ''}
               />
             )}
-
-            <button className="button shuffle" onClick={this.shuffle}>
+            {/* <button className="button shuffle" onClick={this.shuffle}>
               <img src={shuffle} className="button-img" alt="shuffle-button-img" />
-            </button>
+            </button> */}
           </div>
         )}
       </div>

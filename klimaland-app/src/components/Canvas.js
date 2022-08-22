@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-
 import LayoutManager from './LayoutManager';
 
 //data
@@ -20,23 +19,28 @@ const Canvas = () => {
   let defaultPick = sectionsData.map((el) => ({
     lk: { value: '0', label: 'Deutschland' },
     section: { value: el.value, label: el.label },
+    ui: { value: true },
+    view: { value: 0, label: 'default' },
   }));
 
   const [editorsPick, setEditorsPick] = useState(defaultPick);
 
   useEffect(() => {
     getCheckedEditorsPick();
-  }, []);
+  }, []); // only runs once at the beginning
 
-  // get parameters from iframe
-  let getParamValue = function (paramName) {
-    var url = window.location.search.substring(1); //get rid of "?" in querystring
-    var qArray = url.split('&'); //get key-value pairs
-    for (var i = 0; i < qArray.length; i++) {
-      var pArr = qArray[i].split('='); //split key and value
-      if (pArr[0] === paramName)
-        //  console.log(pArr[1]);
-        return pArr[1]; //return value
+  // get parameters from iframe <iframe src="http://postcardapp.de/?ags-1001-2-11&indicator-Mo&ui-true">
+  const getParamValue = function (parameter) {
+    const url = window.location.search.substring(1); //get rid of "?" in querystring ags-1001-2-11&indicator-Mo&ui-true
+    const splitParams = url.split('&'); //get key-value pairs
+
+    for (let i = 0; i < splitParams.length; i++) {
+      const splitKeyVal = splitParams[i].split('-'); //split key and value ['ags', '1001', '2', '11']
+
+      if (splitKeyVal[0] === parameter) {
+        splitKeyVal.shift(); // through out the parameter as first value in array
+        return splitKeyVal; //return array of values
+      }
     }
   };
 
@@ -44,49 +48,77 @@ const Canvas = () => {
    * checks validity of iframe values
    * generates editors pick depending on iframe values
    * return default pick if values are not valid
-   * @returns editors pick in the format {lk:{value:"",label:""},section:{value:"",label:""}} depending on iframe
+   * @returns editors pick in the format {ags:{value:"",label:""},section:{value:"",label:""}} depending on iframe
    */
   const getCheckedEditorsPick = function () {
-    //TODO:
-    //here you can later pipe in the iframe params, I don't know how to do that
-    //for example, you could call getParamValue inside of this function
-    //something like this:
-    //let ags = getParamValue('param1');
-    //let sections = getParamValue('param2');
-    //let ui = getParamValue('param3');
+    // -------- PULL DATA (AGS,SELECTION,UI) FROM IFRAME with getParamValue() -------
+    // -------- AGS --------
+    let lk = getParamValue('ags');
+    let ags = [];
 
-    //I add the values we need to check here manually here for testing purposes.
-    let ags = [1001];
-    let sections = ['En'];
-    let ui = true;
+    //if landkreise are undefined (== no parameter), use default
+    if (lk === undefined || lk.length === 0) {
+      ags = 0;
+      // return;
+    } else {
+      ags = lk.map(Number); // convert to number from string
+    }
 
+    // -------- SECTIONS --------
+    let sectionPick = getParamValue('indicator');
+    let sections = [];
+
+    if (sectionPick === undefined) {
+      sections = defaultSections;
+    } else {
+      sections = sectionPick;
+    }
+
+    //  -------- UI --------
+    let definedUI = getParamValue('ui');
+    let uiVis = true;
+    // if ui getParamValue returns something undefined
+    // set ui to true otherwise hand over iframe value
+    if (definedUI === undefined) {
+      uiVis = true;
+    } else {
+      if (definedUI[0] === 'true') uiVis = true;
+      if (definedUI[0] === 'false') uiVis = false;
+    }
+
+    // -------- SET EDITORS PICK FOR EACH VIEW -------
     let checkedPick = [];
 
     //first set to default to be safe, overwrite later if we have other valid options
+    // -------- MAIN/DEFAULT VIEW -------
     setEditorsPick(defaultPick);
 
-    //check if getParamValue returns something undefined
-    //set default values if one of the paramters is undefined
-    if (ui === undefined || typeof variable !== 'boolean') {
-      ui = true;
+    if (ags === 0 && sections.length === 0) {
+      console.log('MAIN/DEFAULT VIEW');
+
+      let mainPick = [];
+      try {
+        mainPick = sectionsData.map((el) => ({
+          lk: { value: '0', label: 'Deutschland' },
+          section: { value: el.value, label: el.label },
+          ui: { value: uiVis },
+          view: { value: 0, label: 'mainView' },
+        }));
+        if (mainPick.length !== 0) {
+          setEditorsPick(mainPick);
+        }
+      } catch (error) {
+        console.log(error);
+        setEditorsPick(mainPick);
+        return; //if selected landkreis or section not valid in thumbnail view, set default Pick and stop function
+      }
     }
 
-    //if landkreise are undefined (== no parameter), use default and stop function
-    if (ags === undefined || ags.length === 0) {
-      //TODO: still keep UI param
-      return;
-    }
-
-    if (sections === undefined) {
-      sections = defaultSections;
-    }
-
-    //SINGLE POSTCARD VIEW
-    //if landkreise is one and section is one, set UI to false
+    // -------- SINGLE POSTCARD VIEW -------
     if (ags.length === 1 && sections.length === 1) {
-      //console.log('SINGLE POSTCARD VIEW');
+      console.log('SINGLE POSTCARD VIEW');
       //TODO: keep UI param
-      ui = false;
+      uiVis = false;
 
       try {
         let name = getCheckedLandkreisLabel(ags[0]);
@@ -94,6 +126,8 @@ const Canvas = () => {
         checkedPick.push({
           lk: { value: ags[0], label: name },
           section: { value: sections[0], label: sectionLabel },
+          ui: { value: uiVis },
+          view: { value: 3, label: 'singlePCview' },
         });
         if (checkedPick.length !== 0) {
           setEditorsPick(checkedPick);
@@ -105,9 +139,9 @@ const Canvas = () => {
       }
     }
 
-    //LK VIEW
+    // -------- LK VIEW --------
     if (ags.length === 1 && sections.length !== 1) {
-      //console.log('LK VIEW');
+      console.log('LK VIEW');
       //TODO: keep UI param
       sections = defaultSections;
       let ort = ags[0];
@@ -118,6 +152,8 @@ const Canvas = () => {
           checkedPick.push({
             lk: { value: ort, label: name },
             section: { value: sec, label: sectionLabel },
+            ui: { value: uiVis },
+            view: { value: 1, label: 'lkview' },
           });
         });
         if (checkedPick.length !== 0) {
@@ -130,9 +166,9 @@ const Canvas = () => {
       }
     }
 
-    //COMPARISON VIEW
+    // -------- COMPARISON VIEW --------
     if (ags.length > 1) {
-      //console.log('COMPARISON VIEW');
+      console.log('COMPARISON VIEW');
       //TODO: keep UI param
 
       //if more than 3 landkreise, only keep the first three
@@ -145,7 +181,7 @@ const Canvas = () => {
         sections = defaultSections;
       }
 
-      //if one of the sections is not valid, use dault secitons
+      //if one of the sections is not valid, use default sections
 
       if (sections.length >= 1) {
         sections.forEach((sec) => {
@@ -177,6 +213,8 @@ const Canvas = () => {
           checkedPick.push({
             lk: { value: ort, label: name },
             section: { value: sections[0], label: sectionLabel },
+            ui: { value: uiVis },
+            view: { value: 2, label: 'compview' },
           });
         } catch (error) {
           console.log(error);
@@ -184,13 +222,10 @@ const Canvas = () => {
       });
 
       if (checkedPick.length !== 0) {
-        console.log(checkedPick);
         setEditorsPick(checkedPick);
         setSectionOptions(comparisonOptions);
       }
     }
-    //TODO: set UI as context
-    //https://reactjs.org/docs/context.html
   };
 
   /**
@@ -236,13 +271,8 @@ const Canvas = () => {
     return getLabelFromData(section, sectionsData);
   };
 
-  // let areaPick1 = getParamValue('param1');
-  // let areaPick2 = getParamValue('param2');
-  // let areaPick3 = getParamValue('param3');
-
   return (
     <div className="indicators-iframe">
-      {/* <h1>Climate Protection Indicators</h1> */}
       <LayoutManager
         editorspick={editorsPick}
         landkreiseData={landkreiseData}
