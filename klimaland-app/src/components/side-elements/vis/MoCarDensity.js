@@ -37,6 +37,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
         totalCars = Math.round(rawValue)
         hybridCars = Math.round(sumGreenCars)
 
+        // variables for calc matrix
         const inhabitantsBenchmark = 100
         const biggestTotalCars = Math.max(totalCars, inhabitantsBenchmark)
         const carsInExcess = biggestTotalCars - inhabitantsBenchmark
