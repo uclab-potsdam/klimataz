@@ -31,7 +31,8 @@
                 .legend {
                     background-image: url('../img/legends/MoCarDensity.svg');
                     background-repeat: no-repeat;
-                    height: 200px;
+                    position: relative;
+                    height: 100%;
                     margin: 1rem;
                 }
 
@@ -44,7 +45,7 @@
                     }
 
                     .grid {
-                        stroke: $dark-blue;
+                        stroke: $default-text;
                         fill: $light;
                     }
 
@@ -56,11 +57,14 @@
                 &.is-thumbnail {
                     .chart {
                         .grid {
-                            stroke: $blue;
+                            stroke: $default-text;
+                            stroke-width: 0.5;
                         }
 
                         .gridded-data {
-                            mix-blend-mode: normal;
+                            mix-blend-mode: multiply;
+                            stroke: $default-text;
+                            stroke-width: 0.5;
                         }
                     }
                 }

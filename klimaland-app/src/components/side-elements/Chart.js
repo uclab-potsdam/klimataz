@@ -46,7 +46,6 @@ export default class Chart extends Component {
     const localData = this.props.localData[this.props.section]
     const currentSnippet = localData[this.state.currentIndicator]
 
-    console.log(this.props)
     return (
       <div className="chart-container">
         <div
