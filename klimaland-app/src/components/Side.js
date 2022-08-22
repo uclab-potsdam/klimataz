@@ -29,6 +29,7 @@ export default class Side extends Component {
     };
 
     this.vis = this.vis.bind(this);
+    this.openUpCard = this.openUpCard.bind(this);
   }
 
   /**
@@ -60,7 +61,7 @@ export default class Side extends Component {
   vis() {
     if (
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-      undefined &&
+        undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -68,6 +69,12 @@ export default class Side extends Component {
     } else {
       //if not specified yet: return nothing
       return;
+    }
+  }
+
+  async openUpCard(e) {
+    if (this.props.isThumbnail) {
+      this.props.clickOnCard(this.props.lk, this.props.section);
     }
   }
 
@@ -116,10 +123,7 @@ export default class Side extends Component {
     // console.log(this.props.activeSide, this.props.activeSide + 1)
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
-        <div
-          className="side-inner"
-          onClick={(e) => this.props.clickOnCard(e, this.props.lk, this.props.section)}
-        >
+        <div className="side-inner" onClick={(e) => this.openUpCard(e)}>
           {!this.state.showViz && ( //TEXT
             <Details
               lk={this.props.lk}
