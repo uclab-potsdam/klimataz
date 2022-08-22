@@ -10,7 +10,8 @@ export default class Chart extends Component {
       chartComponentName:
         this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components
           .component,
-      currentIndicator: this.props.layoutControls.params[this.props.activeSide][0].components.indicator
+      currentIndicator:
+        this.props.layoutControls.params[this.props.activeSide][0].components.indicator,
     };
     //TODO: store range or max Val in data as well
     //TODO: reusable code snippets like scales or axis
@@ -29,7 +30,8 @@ export default class Chart extends Component {
         chartComponentName:
           this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components
             .component,
-        currentIndicator: this.props.layoutControls.params[this.props.activeSide][0].components.indicator
+        currentIndicator:
+          this.props.layoutControls.params[this.props.activeSide][0].components.indicator,
       });
     }
   }
@@ -43,16 +45,12 @@ export default class Chart extends Component {
       return null;
     }
 
-    const localData = this.props.localData[this.props.section]
-    const currentSnippet = localData[this.state.currentIndicator]
+    const localData = this.props.localData[this.props.section];
+    const currentSnippet = localData[this.state.currentIndicator];
 
-    console.log(this.props)
     return (
       <div className="chart-container">
-        <div
-          width="100%"
-          className={'svg-container ' + this.props.section + '-chart'}
-        >
+        <div width="100%" className={'svg-container ' + this.props.section + '-chart'}>
           <RenderChart
             currentSection={this.props.section}
             currentData={currentSnippet}
