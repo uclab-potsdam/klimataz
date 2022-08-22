@@ -94,12 +94,43 @@ p, text {
                 color: $dark-blue;
                 text-decoration: underline;
             }
-        }    
+        }
+        
+        .legend {
+            img {
+                width: 100%;   
+                height: auto;         
+            }
+        }
+    }
+
+    .visualization-container {
+        width: 65%;
     }
 
 
     .chart {
-        width: 65%;
+        width: 100%;
+        height: 100%;
+    }
+
+    &.is-thumbnail {
+        display:block;
+        .description {
+            display: none;
+        }
+
+        .visualization-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .chart {
+            width: 65%;
+            height: 100%;
+            position: relative;
+            left: 25%;
+        }
     }
 }
 

@@ -10,7 +10,7 @@
                         false
                     ],
                     "components": {
-                        "indicator": "_cartype_density_",
+                        "indicator": "_fueltype_cardensity_",
                         "component": "MoCarDensity",
                         "annotation": "Hier sieht man die PKWs pro 1000 Einwohner:innen.",
                         "showDataFootnote": true
