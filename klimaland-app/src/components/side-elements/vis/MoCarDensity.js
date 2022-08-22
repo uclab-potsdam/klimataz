@@ -1,9 +1,8 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { max } from "d3-array";
-import { scaleLinear } from "d3-scale";
+import { max } from 'd3-array';
+import { scaleLinear } from 'd3-scale';
 
 const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
-
     // getting sizes of container for maps
     const targetRef = useRef();
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -12,7 +11,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
         if (targetRef.current) {
             setDimensions({
                 width: targetRef.current.offsetWidth,
-                height: targetRef.current.offsetHeight
+                height: targetRef.current.offsetHeight,
             });
         }
     }, []);
@@ -37,51 +36,46 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
         totalCars = Math.round(rawValue)
         hybridCars = Math.round(sumGreenCars)
 
-        const inhabitantsBenchmark = 100
-        const biggestTotalCars = Math.max(totalCars, inhabitantsBenchmark)
-        const carsInExcess = biggestTotalCars - inhabitantsBenchmark
+        const biggestTotalCars = Math.max(totalCars, 100)
 
         // creating matrix of squares based on number of cars
         let rowThreshold = 10
         let rowNum = 0
         let columnNum = 0
-        for (let index = 0; index < inhabitantsBenchmark; index++) {
+        for (let index = 0; index < biggestTotalCars; index++) {
+
             const currentSquare = {}
             currentSquare.ownsCar = false
             currentSquare.isHybrid = false
-            if (index >= rowThreshold) {
-                rowThreshold = rowThreshold + 10
-                rowNum = rowNum + 1
-                columnNum = 0
-            }
+            if (index <= 100) {
+                if (index >= rowThreshold) {
+                    rowThreshold = rowThreshold + 10
+                    rowNum = rowNum + 1
+                    columnNum = 0
+                }
 
-            if (index <= totalCars) {
+                if (index <= totalCars) {
+                    currentSquare.ownsCar = true
+                }
+
+                if (index < hybridCars) {
+                    currentSquare.isHybrid = true
+                }
+
+                currentSquare.row = rowNum
+                currentSquare.column = columnNum
+                columnNum = columnNum + 1
+
+            } else {
+                currentSquare.row = rowNum
+                currentSquare.column = columnNum
+                columnNum = columnNum + 1
                 currentSquare.ownsCar = true
+                currentSquare.isExcess = true
             }
 
-            currentSquare.row = rowNum
-            currentSquare.column = columnNum
-            columnNum = columnNum + 1
             carSquares.push(currentSquare)
         }
-
-        // second loop over matrix to determine excess for edge cases (see Wolfsburg)
-        // and to consider hybrid cars as part of the total
-        carSquares.forEach((d, i) => {
-            if (i < carsInExcess) {
-                d.isExcess = true
-            }
-
-            if (i > totalCars - hybridCars && i <= totalCars) {
-                d.isHybrid = true
-            } else if (
-                carsInExcess !== 0
-                && i >= inhabitantsBenchmark - hybridCars
-                && i < inhabitantsBenchmark
-            ) {
-                d.isHybrid = true
-            }
-        })
 
         //scales and margins, using d3 as utility
         const marginWidth = Math.ceil(dimensions.width / 5)
@@ -112,7 +106,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
             </div>
             <div className="visualization-container" ref={targetRef}>
                 <svg className="chart">
-                    <g transform={isThumbnail ? 'translate(-10, 0)' : "translate(-35, 0)"}>
+                    <g transform={isThumbnail ? 'translate(-10, 0)' : "translate(-25, 0)"}>
                         <g className="grid">
                             {
                                 carSquares.map(function (sq, s) {
@@ -125,8 +119,8 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                                 key={s}
                                                 width={rectWidth}
                                                 height={rectWidth}
-                                                x={!sq.ownsCar ? "10" : "0"}
-                                                y={!sq.ownsCar ? "10" : "0"}
+                                                x="0"
+                                                y="0"
                                             />
                                         </g>
                                     )
@@ -134,6 +128,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                             }
                         </g>
                         <g class="gridded-data">
+
                             {
                                 carSquares.map(function (sq, s) {
                                     if (sq.isHybrid) {
@@ -153,6 +148,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                             </g>
                                         )
                                     };
+
                                     if (sq.ownsCar) {
                                         return (
                                             <g
@@ -166,29 +162,6 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                                     fill="#E87780"
                                                     x="-5"
                                                     y="-5"
-                                                />
-                                            </g>
-                                        )
-                                    }
-                                })
-                            }
-                        </g>
-                        <g class="gridded-data is-excess">
-                            {
-                                carSquares.map(function (sq, s) {
-                                    if (sq.isExcess) {
-                                        return (
-                                            <g
-                                                className="is-excess owns-car"
-                                                transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
-                                            >
-                                                <rect
-                                                    key={s + 'excess'}
-                                                    width={rectWidth}
-                                                    height={rectWidth}
-                                                    fill="#E87780"
-                                                    x="-10"
-                                                    y="-10"
                                                 />
                                             </g>
                                         )
