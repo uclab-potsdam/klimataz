@@ -36,8 +36,7 @@ export default class CardCollection extends Component {
    * @param {*} lk landkreis of card that was clicked on
    * @param {*} section section of card that was clicked on
    */
-  handleClickOnCard(e, lk, section) {
-    // console.log(lk, section);
+  handleClickOnCard(lk, section) {
     this.props.switchToPostcardView(lk, section);
   }
 
@@ -156,6 +155,7 @@ export default class CardCollection extends Component {
                 windowSize={this.state.windowSize}
                 localData={this.data[element.lk.value]}
                 layoutControls={this.layoutControls[section]}
+                clickOnCard={this.handleClickOnCard}
               />
             </Card>
           );
