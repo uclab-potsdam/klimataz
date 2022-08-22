@@ -1,9 +1,8 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { max } from "d3-array";
-import { scaleLinear } from "d3-scale";
+import { max } from 'd3-array';
+import { scaleLinear } from 'd3-scale';
 
 const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
-
     // getting sizes of container for maps
     const targetRef = useRef();
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -12,7 +11,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
         if (targetRef.current) {
             setDimensions({
                 width: targetRef.current.offsetWidth,
-                height: targetRef.current.offsetHeight
+                height: targetRef.current.offsetHeight,
             });
         }
     }, []);
