@@ -42,7 +42,9 @@ export class SelectionButtons extends Component {
               options={this.props.landkreise}
               //add nameAddition to label.
               //this is the (Landkreis) (kreisfreie Stadt) for Schweinfurt cases
-              getOptionLabel={(options) => `${options.label} ${options.nameAddition}`}
+              getOptionLabel={(options) =>
+                `${options.label} ${options.nameAddition ? options.nameAddition : ''}`
+              }
               isOptionDisabled={() => this.props.landkreisSelection.length >= 3} //max selection number: 3
             />
             {/* )} */}
