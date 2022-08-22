@@ -20,6 +20,7 @@ const Canvas = () => {
     lk: { value: '0', label: 'Deutschland' },
     section: { value: el.value, label: el.label },
     ui: { value: true },
+    view: { value: 0, label: 'default' },
   }));
 
   const [editorsPick, setEditorsPick] = useState(defaultPick);
@@ -51,19 +52,19 @@ const Canvas = () => {
    */
   const getCheckedEditorsPick = function () {
     // -------- PULL DATA (AGS,SELECTION,UI) FROM IFRAME with getParamValue() -------
-    // AGS
+    // -------- AGS --------
     let lk = getParamValue('ags');
     let ags = [];
 
     //if landkreise are undefined (== no parameter), use default
     if (lk === undefined || lk.length === 0) {
-      ags = 1001;
+      ags = 0;
       // return;
     } else {
       ags = lk.map(Number); // convert to number from string
     }
 
-    // SECTIONS
+    // -------- SECTIONS --------
     let sectionPick = getParamValue('indicator');
     let sections = [];
 
@@ -73,7 +74,7 @@ const Canvas = () => {
       sections = sectionPick;
     }
 
-    // UI
+    //  -------- UI --------
     let definedUI = getParamValue('ui');
     let uiVis = true;
     // if ui getParamValue returns something undefined
@@ -89,10 +90,31 @@ const Canvas = () => {
     let checkedPick = [];
 
     //first set to default to be safe, overwrite later if we have other valid options
+    // -------- MAIN/DEFAULT VIEW -------
     setEditorsPick(defaultPick);
 
+    if (ags === 0 && sections.length === 0) {
+      console.log('MAIN/DEFAULT VIEW');
+
+      let mainPick = [];
+      try {
+        mainPick = sectionsData.map((el) => ({
+          lk: { value: '0', label: 'Deutschland' },
+          section: { value: el.value, label: el.label },
+          ui: { value: uiVis },
+          view: { value: 0, label: 'mainView' },
+        }));
+        if (mainPick.length !== 0) {
+          setEditorsPick(mainPick);
+        }
+      } catch (error) {
+        console.log(error);
+        setEditorsPick(mainPick);
+        return; //if selected landkreis or section not valid in thumbnail view, set default Pick and stop function
+      }
+    }
+
     // -------- SINGLE POSTCARD VIEW -------
-    //if landkreise == 1 && section === 1, set UI to false
     if (ags.length === 1 && sections.length === 1) {
       console.log('SINGLE POSTCARD VIEW');
       //TODO: keep UI param
@@ -105,6 +127,7 @@ const Canvas = () => {
           lk: { value: ags[0], label: name },
           section: { value: sections[0], label: sectionLabel },
           ui: { value: uiVis },
+          view: { value: 3, label: 'singlePCview' },
         });
         if (checkedPick.length !== 0) {
           setEditorsPick(checkedPick);
@@ -116,7 +139,7 @@ const Canvas = () => {
       }
     }
 
-    //LK VIEW
+    // -------- LK VIEW --------
     if (ags.length === 1 && sections.length !== 1) {
       console.log('LK VIEW');
       //TODO: keep UI param
@@ -130,6 +153,7 @@ const Canvas = () => {
             lk: { value: ort, label: name },
             section: { value: sec, label: sectionLabel },
             ui: { value: uiVis },
+            view: { value: 1, label: 'lkview' },
           });
         });
         if (checkedPick.length !== 0) {
@@ -142,7 +166,7 @@ const Canvas = () => {
       }
     }
 
-    //COMPARISON VIEW
+    // -------- COMPARISON VIEW --------
     if (ags.length > 1) {
       console.log('COMPARISON VIEW');
       //TODO: keep UI param
@@ -157,7 +181,7 @@ const Canvas = () => {
         sections = defaultSections;
       }
 
-      //if one of the sections is not valid, use dault secitons
+      //if one of the sections is not valid, use default sections
 
       if (sections.length >= 1) {
         sections.forEach((sec) => {
@@ -190,6 +214,7 @@ const Canvas = () => {
             lk: { value: ort, label: name },
             section: { value: sections[0], label: sectionLabel },
             ui: { value: uiVis },
+            view: { value: 2, label: 'compview' },
           });
         } catch (error) {
           console.log(error);
@@ -197,7 +222,6 @@ const Canvas = () => {
       });
 
       if (checkedPick.length !== 0) {
-        console.log(checkedPick);
         setEditorsPick(checkedPick);
         setSectionOptions(comparisonOptions);
       }
@@ -246,10 +270,6 @@ const Canvas = () => {
     }
     return getLabelFromData(section, sectionsData);
   };
-
-  // let areaPick1 = getParamValue('param1');
-  // let areaPick2 = getParamValue('param2');
-  // let areaPick3 = getParamValue('param3');
 
   return (
     <div className="indicators-iframe">

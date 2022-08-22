@@ -128,7 +128,6 @@ export default class CardCollection extends Component {
           let classProp = '';
 
           let isTopCard = false;
-
           if (i === this.props.activeCard) {
             classProp = 'card card-active';
             isTopCard = true; //store if card is currently on top for rendering viz effectively
@@ -275,7 +274,12 @@ export default class CardCollection extends Component {
             <div className="card-container shuffle">{this.state.cards}</div>
           </div>
         )}
-        {this.props.postcardView && (
+        {this.props.mode === 'singlePCview' && this.props.postcardView && (
+          <div className="carousel-container">
+            <div className="card-container carousel">{this.state.cards}</div>
+          </div>
+        )}
+        {this.props.postcardView && this.props.mode !== 'singlePCview' && (
           <div className="carousel-container">
             <div className="card-container carousel">{this.state.cards}</div>
           </div>

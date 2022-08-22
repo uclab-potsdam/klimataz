@@ -39,7 +39,7 @@ export default class LayoutManager extends Component {
       landkreisSelection: [],
       //postcardview: postcard is full screen
       postcardView: false,
-      //current mode (shuffle, comparison, lk)
+      //current mode (shuffle, comparison, lk, singlePCview)
       mode: 'shuffle',
       //selection of postcards, passed down to card Selection
       cardSelection: [],
@@ -164,14 +164,22 @@ export default class LayoutManager extends Component {
     let mode;
     if (this.state.landkreisSelection.length > 1) {
       mode = 'comparison';
-    } else if (this.state.landkreisSelection.length === 1) {
+    } else if (
+      this.state.landkreisSelection.length === 1 &&
+      this.props.editorspick[0].view.value === 3
+    ) {
+      this.switchToPostcardView(this.state.landkreisSelection, this.state.sectionSelection);
+      mode = 'singlePCview';
+    } else if (
+      this.state.landkreisSelection.length === 1 ||
+      this.state.landkreisSelection.length === undefined
+    ) {
       mode = 'lk';
     } else {
       mode = 'shuffle';
     }
-
     //check if mode is valid
-    if (['comparison', 'shuffle', 'lk'].includes(mode)) {
+    if (['comparison', 'shuffle', 'lk', 'singlePCview'].includes(mode)) {
       return setStateAsync(this, { mode: mode });
     }
   }
@@ -278,6 +286,24 @@ export default class LayoutManager extends Component {
             section: selectedSection,
           });
         });
+      } else if (this.state.mode === 'singlePCview') {
+        let selectedLK;
+        selectedLK = {
+          value: this.state.landkreisSelection[0].value,
+          label: this.state.landkreisSelection[0].label,
+        };
+
+        let selectedSection;
+        selectedSection = this.state.sectionSelection;
+
+        //add one card per landkreisSelection
+        this.state.landkreisSelection.forEach((element) => {
+          list.push({
+            lk: { value: element.value, label: element.label },
+            section: selectedSection,
+          });
+        });
+        this.handleSwitchNext();
       }
 
       this.setState({ cardSelection: list });
@@ -301,22 +327,23 @@ export default class LayoutManager extends Component {
   render() {
     return (
       <div className="main-container">
-        {this.props.editorspick[0].ui.value && (
-          <SelectionButtons
-            mode={this.state.mode}
-            postcardView={this.state.postcardView}
-            landkreise={this.props.landkreiseData}
-            sections={this.props.sectionsData}
-            landkreisSelection={this.state.landkreisSelection}
-            sectionSelection={this.state.sectionSelection}
-            defaultLK={this.props.editorspick.map(function (el) {
-              return el.lk;
-            })}
-            changeLandkreis={this.changeLandkreis}
-            changeSection={this.changeSection}
-            shuffle={this.updateShuffleSelection}
-          />
-        )}
+        <SelectionButtons
+          mode={this.state.mode}
+          postcardView={this.state.postcardView}
+          landkreise={this.props.landkreiseData}
+          sections={this.props.sectionsData}
+          landkreisSelection={this.state.landkreisSelection}
+          sectionSelection={this.state.sectionSelection}
+          defaultLK={this.props.editorspick.map(function (el) {
+            return el.lk;
+          })}
+          changeLandkreis={this.changeLandkreis}
+          changeSection={this.changeSection}
+          shuffle={this.updateShuffleSelection}
+          uiVis={this.props.editorspick[0].ui.value}
+          viewVis={this.props.editorspick[0].view.value}
+        />
+
         {/* 
         {this.state.landkreisSelection.length > 0 && (
           <TitleCanvas landkreis={this.state.landkreisSelection} />
@@ -335,23 +362,27 @@ export default class LayoutManager extends Component {
         view buttons*/}
         {this.state.postcardView && (
           <div className="button-container">
-            <div className="inner-button">
-              <button className="button close" onClick={this.closePostcardView}>
-                <img src={closeCard} className="button img" alt="close-button-img" />
-              </button>
-            </div>
-            <div className="button-switch-container">
-              <div className="inner-button button-left">
-                <button className="button switch" onClick={this.handleSwitchBack}>
-                  <img src={switchCardLeft} className="button img" alt="switch-button-img" />
-                </button>
-              </div>
-              <div className="inner-button button-right">
-                <button className="button switch" onClick={this.handleSwitchNext}>
-                  <img src={switchCardRight} className="button img" alt="switch-button-img" />
-                </button>
-              </div>
-            </div>
+            {this.props.editorspick[0].view.value !== 3 && (
+              <>
+                <div className="inner-button">
+                  <button className="button close" onClick={this.closePostcardView}>
+                    <img src={closeCard} className="button img" alt="close-button-img" />
+                  </button>
+                </div>
+                <div className="button-switch-container">
+                  <div className="inner-button button-left">
+                    <button className="button switch" onClick={this.handleSwitchBack}>
+                      <img src={switchCardLeft} className="button img" alt="switch-button-img" />
+                    </button>
+                  </div>
+                  <div className="inner-button button-right">
+                    <button className="button switch" onClick={this.handleSwitchNext}>
+                      <img src={switchCardRight} className="button img" alt="switch-button-img" />
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         )}
 
