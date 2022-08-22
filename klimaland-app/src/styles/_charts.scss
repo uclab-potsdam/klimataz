@@ -27,6 +27,43 @@
                         }
                     }
                 }
+
+                .legend {
+                    background-image: url('../img/legends/MoCarDensity.svg');
+                    background-repeat: no-repeat;
+                    height: 200px;
+                    margin: 1rem;
+                }
+
+                .chart {
+                    transform: skew(-17deg, 0deg);
+
+                    rect {
+                        rx: 1px;
+                        ry: 1px;
+                    }
+
+                    .grid {
+                        stroke: $dark-blue;
+                        fill: $light;
+                    }
+
+                    .gridded-data {
+                        mix-blend-mode: multiply;
+                    }
+                }
+
+                &.is-thumbnail {
+                    .chart {
+                        .grid {
+                            stroke: $blue;
+                        }
+
+                        .gridded-data {
+                            mix-blend-mode: normal;
+                        }
+                    }
+                }
             }
         }
 
