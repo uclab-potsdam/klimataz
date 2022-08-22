@@ -17,12 +17,9 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData }) => {
       const domainY = [0, max(currentData.data.map(d => d.value))]
       const domainX = extent(currentData.data.map(d => +d.year))
       currentData.data.forEach(d => {
-         // console.log(d)
       })
-      // console.log()
    }
 
-   // console.log(currentData)
 
    return (
       <div className="biotonne-weight horizontal-bottom-layout">
