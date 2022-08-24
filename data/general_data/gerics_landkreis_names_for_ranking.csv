@@ -1,0 +1,402 @@
+,AGS,Gerics_Name,Gerics_Bundesland
+0,5124,Wuppertal,Nordrhein-Westfalen
+1,16073,Saalfeld-Rudolstadt,Thüringen
+2,16072,Sonneberg,Thüringen
+3,16071,Weimarer Land,Thüringen
+4,16070,Ilm-Kreis,Thüringen
+5,16077,Altenburger Land,Thüringen
+6,16076,Greiz,Thüringen
+7,16075,Saale-Orla-Kreis,Thüringen
+8,16074,Saale-Holzland-Kreis,Thüringen
+9,5512,Bottrop,Nordrhein-Westfalen
+10,15001,Dessau-Rolau,Sachsen-Anhalt
+11,9761,Augsburg,Bayern
+12,16053,Jena,Thüringen
+13,9161,Ingolstadt,Bayern
+14,12068,Ostprignitz-Ruppin,Brandenburg
+15,6437,Odenwaldkreis,Hessen
+16,6434,Hochtaunuskreis,Hessen
+17,6435,Main-Kinzig-Kreis,Hessen
+18,6432,Darmstadt-Dieburg,Hessen
+19,6433,Groß-Gerau,Hessen
+20,6431,Bergstraße,Hessen
+21,12060,Barnim,Brandenburg
+22,12061,Dahme-Spreewald,Brandenburg
+23,12062,Elbe-Elster,Brandenburg
+24,12063,Havelland,Brandenburg
+25,12064,Märkisch-Oderland,Brandenburg
+26,12065,Oberhavel,Brandenburg
+27,12066,Oberspreewald-Lausitz,Brandenburg
+28,6439,Rheingau-Taunus-Kreis,Hessen
+29,9564,Nürnberg,Bayern
+30,8337,Waldshut,Baden-Württemberg
+31,8336,Lörrach,Baden-Württemberg
+32,8335,Konstanz,Baden-Württemberg
+33,13004,Schwerin,Mecklenburg-Vorpommern
+34,3405,Wilhelmshaven,Niedersachsen
+35,9561,Ansbach,Bayern
+36,7111,Koblenz,Rheinland-Pfalz
+37,8426,Biberach,Baden-Württemberg
+38,8425,Alb-Donau-Kreis,Baden-Württemberg
+39,8325,Rottweil,Baden-Württemberg
+40,8326,Schwarzwald-Baar-Kreis,Baden-Württemberg
+41,8327,Tuttlingen,Baden-Württemberg
+42,9462,Bayreuth,Bayern
+43,3251,Diepholz,Niedersachsen
+44,7137,Mayen-Koblenz,Rheinland-Pfalz
+45,3255,Holzminden,Niedersachsen
+46,3254,Hildesheim,Niedersachsen
+47,3257,Schaumburg,Niedersachsen
+48,3256,Nienburg (Weser),Niedersachsen
+49,14523,Vogtlandkreis,Sachsen
+50,14522,Mittelsachsen,Sachsen
+51,14521,Erzgebirgskreis,Sachsen
+52,11000,Berlin,Berlin
+53,14524,Zwickau,Sachsen
+54,9565,Schwabach,Bayern
+55,3101,Braunschweig,Niedersachsen
+56,9464,Hof,Bayern
+57,7312,Kaiserslautern,Rheinland-Pfalz
+58,9162,München,Bayern
+59,12052,Cottbus,Brandenburg
+60,5911,Bochum,Nordrhein-Westfalen
+61,14625,Bautzen,Sachsen
+62,14626,Görlitz,Sachsen
+63,14627,Meißen,Sachsen
+64,9361,Amberg,Bayern
+65,14628,Sächsische Schweiz-Osterzgebirge,Sachsen
+66,8116,Esslingen,Baden-Württemberg
+67,8115,Böblingen,Baden-Württemberg
+68,16056,Eisenach,Thüringen
+69,5358,Düren,Nordrhein-Westfalen
+70,7314,Ludwigshafen am Rhein,Rheinland-Pfalz
+71,9262,Passau,Bayern
+72,15003,Magdeburg,Sachsen-Anhalt
+73,9263,Straubing,Bayern
+74,9463,Coburg,Bayern
+75,5112,Duisburg,Nordrhein-Westfalen
+76,4011,Bremen,Bremen
+77,3401,Delmenhorst,Niedersachsen
+78,12054,Potsdam,Brandenburg
+79,3453,Cloppenburg,Niedersachsen
+80,3452,Aurich,Niedersachsen
+81,3451,Ammerland,Niedersachsen
+82,3457,Leer,Niedersachsen
+83,3456,Grafschaft Bentheim,Niedersachsen
+84,3455,Friesland,Niedersachsen
+85,3454,Emsland,Niedersachsen
+86,3459,Osnabrück,Niedersachsen
+87,3458,Oldenburg,Niedersachsen
+88,5558,Coesfeld,Nordrhein-Westfalen
+89,12069,Potsdam-Mittelmark,Brandenburg
+90,9178,Freising,Bayern
+91,9179,Fürstenfeldbruck,Bayern
+92,5770,Minden-Lübbecke,Nordrhein-Westfalen
+93,9177,Erding,Bayern
+94,9174,Dachau,Bayern
+95,9175,Ebersberg,Bayern
+96,5774,Paderborn,Nordrhein-Westfalen
+97,9173,Bad Tölz-Wolfratshausen,Bayern
+98,9171,Altötting,Bayern
+99,1060,Segeberg,Schleswig-Holstein
+100,1061,Steinburg,Schleswig-Holstein
+101,1062,Stormarn,Schleswig-Holstein
+102,5570,Warendorf,Nordrhein-Westfalen
+103,9572,Erlangen-Höchstadt,Bayern
+104,9571,Ansbach,Bayern
+105,9576,Roth,Bayern
+106,9577,Weißenburg-Gunzenhausen,Bayern
+107,9574,Nürnberger Land,Bayern
+108,9575,Neustadt an der Aisch-Bad Windsheim,Bayern
+109,5170,Wesel,Nordrhein-Westfalen
+110,9478,Lichtenfels,Bayern
+111,9473,Coburg,Bayern
+112,9472,Bayreuth,Bayern
+113,9471,Bamberg,Bayern
+114,12067,Oder-Spree,Brandenburg
+115,9477,Kulmbach,Bayern
+116,9476,Kronach,Bayern
+117,9475,Hof,Bayern
+118,9474,Forchheim,Bayern
+119,6535,Vogelsbergkreis,Hessen
+120,6534,Marburg-Biedenkopf,Hessen
+121,6533,Limburg-Weilburg,Hessen
+122,6532,Lahn-Dill-Kreis,Hessen
+123,6531,Gießen,Hessen
+124,8221,Heidelberg,Baden-Württemberg
+125,5122,Solingen,Nordrhein-Westfalen
+126,5315,Köln,Nordrhein-Westfalen
+127,9780,Oberallgäu,Bayern
+128,9271,Deggendorf,Bayern
+129,9273,Kelheim,Bayern
+130,5382,Rhein-Sieg-Kreis,Nordrhein-Westfalen
+131,9275,Passau,Bayern
+132,9274,Landshut,Bayern
+133,9277,Rottal-Inn,Bayern
+134,9276,Regen,Bayern
+135,9279,Dingolfing-Landau,Bayern
+136,9278,Straubing-Bogen,Bayern
+137,9372,Cham,Bayern
+138,9373,Neumarkt in der Oberpfalz,Bayern
+139,9374,Neustadt an der Waldnaab,Bayern
+140,9375,Regensburg,Bayern
+141,9376,Schwandorf,Bayern
+142,9377,Tirschenreuth,Bayern
+143,5954,Ennepe-Ruhr-Kreis,Nordrhein-Westfalen
+144,5958,Hochsauerlandkreis,Nordrhein-Westfalen
+145,9778,Unterallgäu,Bayern
+146,14511,Chemnitz,Sachsen
+147,7317,Pirmasens,Rheinland-Pfalz
+148,2000,Hamburg,Hamburg
+149,16064,Unstrut-Hainich-Kreis,Thüringen
+150,16065,Kyffhäuserkreis,Thüringen
+151,16066,Schmalkalden-Meiningen,Thüringen
+152,16067,Gotha,Thüringen
+153,16061,Eichsfeld,Thüringen
+154,16062,Nordhausen,Thüringen
+155,16063,Wartburgkreis,Thüringen
+156,16068,Sömmerda,Thüringen
+157,16069,Hildburghausen,Thüringen
+158,7138,Neuwied,Rheinland-Pfalz
+159,9663,Würzburg,Bayern
+160,7131,Ahrweiler,Rheinland-Pfalz
+161,7132,Altenkirchen (Westerwald),Rheinland-Pfalz
+162,7133,Bad Kreuznach,Rheinland-Pfalz
+163,7134,Birkenfeld,Rheinland-Pfalz
+164,7135,Cochem-Zell,Rheinland-Pfalz
+165,9678,Schweinfurt,Bayern
+166,14729,Leipzig,Sachsen
+167,8111,Stuttgart,Baden-Württemberg
+168,8435,Bodenseekreis,Baden-Württemberg
+169,8436,Ravensburg,Baden-Württemberg
+170,8437,Sigmaringen,Baden-Württemberg
+171,6412,Frankfurt am Main,Hessen
+172,5914,Hagen,Nordrhein-Westfalen
+173,6436,Main-Taunus-Kreis,Hessen
+174,3241,Region Hannover,Niedersachsen
+175,7141,Rhein-Lahn-Kreis,Rheinland-Pfalz
+176,7140,Rhein-Hunsrück-Kreis,Rheinland-Pfalz
+177,7143,Westerwaldkreis,Rheinland-Pfalz
+178,5316,Leverkusen,Nordrhein-Westfalen
+179,9661,Aschaffenburg,Bayern
+180,9187,Rosenheim,Bayern
+181,9186,Pfaffenhofen an der Ilm,Bayern
+182,9185,Neuburg-Schrobenhausen,Bayern
+183,9184,München,Bayern
+184,9183,Mühldorf am Inn,Bayern
+185,9182,Miesbach,Bayern
+186,9181,Landsberg am Lech,Bayern
+187,9180,Garmisch-Partenkirchen,Bayern
+188,9189,Traunstein,Bayern
+189,9188,Starnberg,Bayern
+190,1051,Dithmarschen,Schleswig-Holstein
+191,1053,Herzogtum Lauenburg,Schleswig-Holstein
+192,1055,Ostholstein,Schleswig-Holstein
+193,1054,Nordfriesland,Schleswig-Holstein
+194,1057,Plön,Schleswig-Holstein
+195,1056,Pinneberg,Schleswig-Holstein
+196,1059,Schleswig-Flensburg,Schleswig-Holstein
+197,1058,Rendsburg-Eckernförde,Schleswig-Holstein
+198,1003,Lübeck,Schleswig-Holstein
+199,5119,Oberhausen,Nordrhein-Westfalen
+200,9764,Memmingen,Bayern
+201,6440,Wetteraukreis,Hessen
+202,5362,Rhein-Erft-Kreis,Nordrhein-Westfalen
+203,5366,Euskirchen,Nordrhein-Westfalen
+204,13003,Rostock,Mecklenburg-Vorpommern
+205,15091,Wittenberg,Sachsen-Anhalt
+206,8215,Karlsruhe,Baden-Württemberg
+207,8216,Rastatt,Baden-Württemberg
+208,6438,Offenbach,Hessen
+209,9776,Lindau (Bodensee),Bayern
+210,5113,Essen,Nordrhein-Westfalen
+211,16052,Gera,Thüringen
+212,5962,Märkischer Kreis,Nordrhein-Westfalen
+213,8222,Mannheim,Baden-Württemberg
+214,5966,Olpe,Nordrhein-Westfalen
+215,7211,Trier,Rheinland-Pfalz
+216,14713,Leipzig,Sachsen
+217,8315,Breisgau-Hochschwarzwald,Baden-Württemberg
+218,8317,Ortenaukreis,Baden-Württemberg
+219,8316,Emmendingen,Baden-Württemberg
+220,7313,Landau in der Pfalz,Rheinland-Pfalz
+221,5913,Dortmund,Nordrhein-Westfalen
+222,12051,Brandenburg an der Havel,Brandenburg
+223,9176,Eichstätt,Bayern
+224,9172,Berchtesgadener Land,Bayern
+225,8231,Pforzheim,Baden-Württemberg
+226,8417,Zollernalbkreis,Baden-Württemberg
+227,7318,Speyer,Rheinland-Pfalz
+228,8212,Karlsruhe,Baden-Württemberg
+229,16054,Suhl,Thüringen
+230,9563,Fürth,Bayern
+231,14612,Dresden,Sachsen
+232,7336,Kusel,Rheinland-Pfalz
+233,7337,Südliche Weinstraße,Rheinland-Pfalz
+234,7334,Germersheim,Rheinland-Pfalz
+235,7335,Kaiserslautern,Rheinland-Pfalz
+236,7332,Bad Dürkheim,Rheinland-Pfalz
+237,7333,Donnersbergkreis,Rheinland-Pfalz
+238,7331,Alzey-Worms,Rheinland-Pfalz
+239,7339,Mainz-Bingen,Rheinland-Pfalz
+240,9662,Schweinfurt,Bayern
+241,10043,Neunkirchen,Saarland
+242,9763,Kempten (Allgäu),Bayern
+243,7319,Worms,Rheinland-Pfalz
+244,8135,Heidenheim,Baden-Württemberg
+245,8136,Ostalbkreis,Baden-Württemberg
+246,7316,Neustadt an der Weinstraße,Rheinland-Pfalz
+247,6611,Kassel,Hessen
+248,3102,Salzgitter,Niedersachsen
+249,3402,Emden,Niedersachsen
+250,8225,Neckar-Odenwald-Kreis,Baden-Württemberg
+251,8226,Rhein-Neckar-Kreis,Baden-Württemberg
+252,3153,Goslar,Niedersachsen
+253,3151,Gifhorn,Niedersachsen
+254,3157,Peine,Niedersachsen
+255,15089,Salzlandkreis,Sachsen-Anhalt
+256,3155,Northeim,Niedersachsen
+257,15087,Mansfeld-Südharz,Sachsen-Anhalt
+258,15086,Jerichower Land,Sachsen-Anhalt
+259,3158,Wolfenbüttel,Niedersachsen
+260,3159,Göttingen,Niedersachsen
+261,15083,Börde,Sachsen-Anhalt
+262,15082,Anhalt-Bitterfeld,Sachsen-Anhalt
+263,15081,Altmarkkreis Salzwedel,Sachsen-Anhalt
+264,15002,Halle (Saale),Sachsen-Anhalt
+265,3252,Hameln-Pyrmont,Niedersachsen
+266,14730,Nordsachsen,Sachsen
+267,9479,Wunsiedel im Fichtelgebirge,Bayern
+268,8311,Freiburg im Breisgau,Baden-Württemberg
+269,9163,Rosenheim,Bayern
+270,5117,Mülheim an der Ruhr,Nordrhein-Westfalen
+271,5915,Hamm,Nordrhein-Westfalen
+272,5916,Herne,Nordrhein-Westfalen
+273,7311,Frankenthal (Pfalz),Rheinland-Pfalz
+274,5111,Düsseldorf,Nordrhein-Westfalen
+275,1004,Neumünster,Schleswig-Holstein
+276,9190,Weilheim-Schongau,Bayern
+277,8211,Baden-Baden,Baden-Württemberg
+278,5754,Gütersloh,Nordrhein-Westfalen
+279,5758,Herford,Nordrhein-Westfalen
+280,9362,Regensburg,Bayern
+281,9363,Weiden in der Oberpfalz,Bayern
+282,8421,Ulm,Baden-Württemberg
+283,4012,Bremerhaven,Bremen
+284,9675,Kitzingen,Bayern
+285,9674,Haßberge,Bayern
+286,9677,Main-Spessart,Bayern
+287,9676,Miltenberg,Bayern
+288,9671,Aschaffenburg,Bayern
+289,9779,Donau-Ries,Bayern
+290,9673,Röhn-Grabfeld,Bayern
+291,9672,Bad Kissingen,Bayern
+292,9774,Günzburg,Bayern
+293,9775,Neu-Ulm,Bayern
+294,9777,Ostallgäu,Bayern
+295,9679,Würzburg,Bayern
+296,9771,Aichach-Friedberg,Bayern
+297,9772,Augsburg,Bayern
+298,9773,Dillingen an der Donau,Bayern
+299,5378,Rheinisch-Bergischer Kreis,Nordrhein-Westfalen
+300,5374,Oberbergischer Kreis,Nordrhein-Westfalen
+301,5370,Heinsberg,Nordrhein-Westfalen
+302,13071,Mecklenburgische Seenplatte,Mecklenburg-Vorpommern
+303,13072,Rostock,Mecklenburg-Vorpommern
+304,13073,Vorpommern-Rügen,Mecklenburg-Vorpommern
+305,13074,Nordwestmecklenburg,Mecklenburg-Vorpommern
+306,13075,Vorpommern-Greifswald,Mecklenburg-Vorpommern
+307,13076,Ludwigslust-Parchim,Mecklenburg-Vorpommern
+308,5515,Münster,Nordrhein-Westfalen
+309,3354,Lüchow-Dannenberg,Niedersachsen
+310,3355,Lüneburg,Niedersachsen
+311,3356,Osterholz,Niedersachsen
+312,3357,Rotenburg (Wümme),Niedersachsen
+313,3351,Celle,Niedersachsen
+314,3352,Cuxhaven,Niedersachsen
+315,3353,Harburg,Niedersachsen
+316,10041,Regionalverband Saarbrücken,Saarland
+317,8416,Tübingen,Baden-Württemberg
+318,3359,Stade,Niedersachsen
+319,8415,Reutlingen,Baden-Württemberg
+320,5314,Bonn,Nordrhein-Westfalen
+321,12073,Uckermark,Brandenburg
+322,12072,Teltow-Fläming,Brandenburg
+323,12071,Spree-Neiße,Brandenburg
+324,12070,Prignitz,Brandenburg
+325,5978,Unna,Nordrhein-Westfalen
+326,3154,Helmstedt,Niedersachsen
+327,5970,Siegen-Wittgenstein,Nordrhein-Westfalen
+328,15088,Saalekreis,Sachsen-Anhalt
+329,5974,Soest,Nordrhein-Westfalen
+330,15085,Harz,Sachsen-Anhalt
+331,15084,Burgenlandkreis,Sachsen-Anhalt
+332,5114,Krefeld,Nordrhein-Westfalen
+333,16055,Weimar,Thüringen
+334,8121,Heilbronn,Baden-Württemberg
+335,5711,Bielefeld,Nordrhein-Westfalen
+336,5554,Borken,Nordrhein-Westfalen
+337,7235,Trier-Saarburg,Rheinland-Pfalz
+338,7233,Vulkaneifel,Rheinland-Pfalz
+339,7232,Eifelkreis Bitburg-Prüm,Rheinland-Pfalz
+340,7231,Bernkastel-Wittlich,Rheinland-Pfalz
+341,5513,Gelsenkirchen,Nordrhein-Westfalen
+342,6631,Fulda,Hessen
+343,6632,Hersfeld-Rotenburg,Hessen
+344,6633,Kassel,Hessen
+345,10044,Saarlouis,Saarland
+346,10045,Saarpfalz-Kreis,Saarland
+347,6636,Werra-Meißner-Kreis,Hessen
+348,6413,Offenbach am Main,Hessen
+349,5158,Mettmann,Nordrhein-Westfalen
+350,3404,Osnabrück,Niedersachsen
+351,9272,Freyung-Grafenau,Bayern
+352,5766,Lippe,Nordrhein-Westfalen
+353,7320,Zweibrücken,Rheinland-Pfalz
+354,5154,Kleve,Nordrhein-Westfalen
+355,5334,Städteregion Aachen,Nordrhein-Westfalen
+356,1001,Flensburg,Schleswig-Holstein
+357,9371,Amberg-Sulzbach,Bayern
+358,5120,Remscheid,Nordrhein-Westfalen
+359,3403,Oldenburg (Oldenburg),Niedersachsen
+360,9261,Landshut,Bayern
+361,8128,Main-Tauber-Kreis,Baden-Württemberg
+362,8126,Hohenlohekreis,Baden-Württemberg
+363,8127,Schwäbisch Hall,Baden-Württemberg
+364,8125,Heilbronn,Baden-Württemberg
+365,16051,Erfurt,Thüringen
+366,3103,Wolfsburg,Niedersachsen
+367,9562,Erlangen,Bayern
+368,1002,Kiel,Schleswig-Holstein
+369,8236,Enzkreis,Baden-Württemberg
+370,8237,Freudenstadt,Baden-Württemberg
+371,8235,Calw,Baden-Württemberg
+372,10042,Merzig-Wadern,Saarland
+373,15090,Stendal,Sachsen-Anhalt
+374,6634,Schwalm-Eder-Kreis,Hessen
+375,9461,Bamberg,Bayern
+376,6635,Waldeck-Frankenberg,Hessen
+377,10046,Sankt Wendel,Saarland
+378,3361,Verden,Niedersachsen
+379,3360,Uelzen,Niedersachsen
+380,7315,Mainz,Rheinland-Pfalz
+381,9762,Kaufbeuren,Bayern
+382,6414,Wiesbaden,Hessen
+383,8119,Rems-Murr-Kreis,Baden-Württemberg
+384,8118,Ludwigsburg,Baden-Württemberg
+385,3462,Wittmund,Niedersachsen
+386,3460,Vechta,Niedersachsen
+387,3461,Wesermarsch,Niedersachsen
+388,9573,Fürth,Bayern
+389,3358,Heidekreis,Niedersachsen
+390,6411,Darmstadt,Hessen
+391,7340,Südwestpfalz,Rheinland-Pfalz
+392,8117,Göppingen,Baden-Württemberg
+393,5762,Höxter,Nordrhein-Westfalen
+394,12053,Frankfurt (Oder),Brandenburg
+395,5566,Steinfurt,Nordrhein-Westfalen
+396,5116,Mönchengladbach,Nordrhein-Westfalen
+397,5562,Recklinghausen,Nordrhein-Westfalen
+398,7338,Rhein-Pfalz-Kreis,Rheinland-Pfalz
+399,5162,Rhein-Kreis Neuss,Nordrhein-Westfalen
+400,5166,Viersen,Nordrhein-Westfalen
