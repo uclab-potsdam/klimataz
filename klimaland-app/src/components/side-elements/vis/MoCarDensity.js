@@ -23,7 +23,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
     let xScale;
     let yScale;
     let rectWidth;
-
+    let rectHeight;
 
     if (currentData !== undefined) {
         // Data for rendered text
@@ -88,12 +88,13 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
         const marginHeight = Math.ceil(dimensions.height / 5)
 
         rectWidth = Math.ceil((dimensions.width - (marginWidth * 2)) / 10)
+        rectHeight = Math.ceil((dimensions.width - (marginWidth * 2)) / 8.5)
         xScale = scaleLinear()
             .domain([0, max(carSquares.map(d => d.row))])
             .range([marginWidth - 50, dimensions.width - marginWidth - 10])
         yScale = scaleLinear()
             .domain([0, max(carSquares.map(d => d.column))])
-            .range([marginHeight - 50, dimensions.height - marginHeight + 10])
+            .range([marginHeight - 50, dimensions.height - marginHeight + 25])
 
     }
 
@@ -112,7 +113,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
             </div>
             <div className="visualization-container" ref={targetRef}>
                 <svg className="chart">
-                    <g transform={isThumbnail ? 'translate(-10, 0)' : "translate(-35, 0)"}>
+                    <g transform={isThumbnail ? 'translate(-10, 0)' : "translate(-35, -10)"}>
                         <g className="grid">
                             {
                                 carSquares.map(function (sq, s) {
@@ -124,7 +125,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                         >
                                             <rect
                                                 width={rectWidth}
-                                                height={rectWidth}
+                                                height={rectHeight}
                                                 x={!sq.ownsCar ? "10" : "0"}
                                                 y={!sq.ownsCar ? "10" : "0"}
                                             />
@@ -145,10 +146,10 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                             >
                                                 <rect
                                                     width={rectWidth}
-                                                    height={rectWidth}
+                                                    height={rectHeight}
                                                     fill="#F6A219"
-                                                    x="-5"
-                                                    y="-5"
+                                                    x="-3"
+                                                    y="-3"
                                                 />
                                             </g>
                                         )
@@ -162,10 +163,10 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                             >
                                                 <rect
                                                     width={rectWidth}
-                                                    height={rectWidth}
-                                                    fill="#E87780"
-                                                    x="-5"
-                                                    y="-5"
+                                                    height={rectHeight}
+                                                    fill="#979797"
+                                                    x="-3"
+                                                    y="-3"
                                                 />
                                             </g>
                                         )
@@ -185,10 +186,10 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                             >
                                                 <rect
                                                     width={rectWidth}
-                                                    height={rectWidth}
-                                                    fill="#E87780"
-                                                    x="-10"
-                                                    y="-10"
+                                                    height={rectHeight}
+                                                    fill="#979797"
+                                                    x="-6"
+                                                    y="-6"
                                                 />
                                             </g>
                                         )
