@@ -6,7 +6,7 @@
     transition: 0.2s;
     background-color: $light;
     border: 1px solid $taz-orange;
-    border-radius: 6px;
+    border-radius: 3px;
     box-shadow: map-get($map: $boxshadow, $key: default);
     
     &:hover{
@@ -248,9 +248,9 @@
                             
                             h5 {
                                 // padding-left: 0.5rem;
-                                width: 100%;
+                                width: calc(100% - 0.5rem);
                                 margin: 0px;
-                                padding: 0.5rem 0rem 0.2rem 0.5rem;
+                                padding: 0.2rem 0rem 0.2rem 0.5rem;
                                 border-bottom: 1px solid $default-text;
                             }
 

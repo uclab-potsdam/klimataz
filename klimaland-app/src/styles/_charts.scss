@@ -94,6 +94,56 @@
                         }
                     }                
                 }
+
+                .chart {
+                    circle {
+                        fill: $default-text;
+
+                    }
+
+                    line {
+                        stroke-dasharray: 2px 2px;
+                        stroke: $default-text;
+                    }
+
+                    path {
+                        fill: white;
+                        stroke: black;
+                    }
+
+                    text {
+                        font-size: 12px;
+                    }
+
+                    .max {
+                        circle, text {
+                            fill: $red;
+                        }
+
+                        line {
+                            stroke: $red;
+                        }
+                    }
+
+                    .minimum {
+
+                        circle,
+                        text {
+                            fill: $mint-green;
+                        }
+
+                        line {
+                            stroke: $mint-green;
+                        }
+                    }
+
+                    .y-axis {
+                        line {
+                            stroke-dasharray: none;
+                            stroke-width: 0.5;
+                        }
+                    }
+                }
             }
         }
 
