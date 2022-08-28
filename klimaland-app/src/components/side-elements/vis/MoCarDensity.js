@@ -164,7 +164,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                                 <rect
                                                     width={rectWidth}
                                                     height={rectHeight}
-                                                    fill="#979797"
+                                                    fill="#6E82AE"
                                                     x="-3"
                                                     y="-3"
                                                 />
@@ -187,7 +187,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                                 <rect
                                                     width={rectWidth}
                                                     height={rectHeight}
-                                                    fill="#979797"
+                                                    fill="#6E82AE"
                                                     x="-6"
                                                     y="-6"
                                                 />

@@ -36,7 +36,7 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData, isThumbn
    const chartData = [];
    let xScale;
    let yScale;
-   let yAxis;
+   let yAxis = [];
    let yAxisValues;
    let yAxisLabels;
    const width = dimensions.width;

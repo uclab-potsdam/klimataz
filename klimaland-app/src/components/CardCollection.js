@@ -146,6 +146,7 @@ export default class CardCollection extends Component {
               sides={this.layoutControls[section]}
               handleSwitchNext={this.props.handleSwitchNext}
               handleSwitchBack={this.props.handleSwitchBack}
+              clickOnCard={this.handleClickOnCard}
             >
               <Side
                 lk={element.lk}
@@ -155,7 +156,6 @@ export default class CardCollection extends Component {
                 windowSize={this.state.windowSize}
                 localData={this.data[element.lk.value]}
                 layoutControls={this.layoutControls[section]}
-                clickOnCard={this.handleClickOnCard}
               />
             </Card>
           );

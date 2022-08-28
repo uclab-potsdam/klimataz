@@ -19,11 +19,11 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
         }
     }, []);
 
-    let lineElements;
-    let axisElements;
-    let yAxisValues;
-    let yAxis;
-    let scaleCategory;
+    let lineElements = [];
+    let axisElements = [];
+    let yAxisValues = [];
+    let yAxis = [];
+    let scaleCategory = function () { return undefined }
     const marginHeight = Math.ceil(dimensions.width / 10)
     const marginWidth = Math.ceil(dimensions.height / 10)
 
