@@ -119,12 +119,17 @@
                         }
                     }
 
+                    .controller-bg {
+                        fill: url(#MyGradient);
+                        stroke: #484848;
+                    }
+
                     line {
                         stroke-dasharray: 2px 2px;
                         stroke: $default-text;
                     }
 
-                    path {
+                    path, circle {
                         // fill: white;
                         stroke: $default-text;
 
