@@ -4,10 +4,11 @@ import { extent, max, min } from "d3-array"
 import { pie, arc } from 'd3';
 
 
-const Waste = ({ currentData, currentIndicator, currentSection, lkData }) => {
+const Waste = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
 
    const targetRef = useRef();
    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+   const [piesAreActive, setPies] = useState(false);
 
    useLayoutEffect(() => {
       if (targetRef.current) {
@@ -18,11 +19,21 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData }) => {
       }
    }, []);
 
+   //handle click events on controller to show pie
+   let activatePies = function (e) {
+      if (currentData !== undefined) {
+         if (!piesAreActive) {
+            setPies(true)
+         } else {
+            setPies(false)
+         }
+      }
+   }
+
    //set default value to avoid errors
    let lastYear = "?";
    let lastValue = "?";
    const chartData = [];
-   let pieShapes;
    let xScale;
    let yScale;
    let yAxis;
@@ -32,6 +43,7 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData }) => {
    const height = dimensions.height;
    const marginWidth = Math.round(dimensions.width / 10);
    const marginHeight = Math.round(dimensions.height / 10);
+   const radius = isThumbnail ? Math.ceil(width / 80) : Math.ceil(width / 100);
 
    if (currentData !== undefined) {
       const lastDataPoint = currentData.data.slice(-1)
@@ -73,15 +85,20 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData }) => {
             const gartenSameYear = elWithSameYear.find(el => el.column === "gartenPark")
             const garten = gartenSameYear.value
 
+            const pieIds = [biotonneSameYear.column, gartenSameYear.column]
             const pieEls = pieConst([biotonne, garten])
-            console.log(biotonne)
-            const pieShape = pieEls.map(d => {
+
+            const pieShape = pieEls.map((d, i) => {
                const pie = arc()
-                  .innerRadius(9)
-                  .outerRadius(15)
+                  .innerRadius(radius + 5)
+                  .outerRadius(radius + 12)
                   .startAngle(d.startAngle)
                   .endAngle(d.endAngle)
-               return pie(d)
+
+               return {
+                  id: pieIds[i],
+                  path: pie(d)
+               }
             })
 
             currentDataPoint.x = xScale(+d.year)
@@ -99,13 +116,11 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData }) => {
          }
       })
 
-      // const pieData = currentData.data.filter(el => el.column !== "sum")
 
-      // console.log('pie data', pieShapes)
    }
 
    return (
-      <div className="biotonne-weight horizontal-bottom-layout">
+      <div className={`biotonne-weight horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}>
          <div className="visualization-container" ref={targetRef}>
             <svg className="chart" width="100%" height="100%">
                <g className="y-axis">
@@ -123,20 +138,20 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData }) => {
                {
                   chartData.map(function (d, i) {
                      return (
-                        <g transform={`translate(${d.x}, ${d.y})`} key={i} className={d.class}>
-                           <circle cx="0" cy="0" r="5" />
+                        <g transform={`translate(${d.x}, ${d.y})`} key={i} className={`year-el ${d.class}`}>
+                           <line x1="0" x2="0" y1="0" y2={height - d.y} />
+                           <circle cx="0" cy="0" r={radius} />
                            <text
                               x="5"
                               y={height - d.y - 5}
                               transform={`rotate(-90, 10, ${height - d.y - 10})`}>
                               {d.year}
                            </text>
-                           <line x1="0" x2="0" y1="0" y2={height - d.y} />
-                           <g>
+                           <g className={`pie ${piesAreActive ? 'show-pies' : ''}`}>
                               {
                                  d.pie.map(function (pie, p) {
                                     return (
-                                       <path d={pie} />
+                                       <path d={pie.path} className={pie.id} key={p} />
                                     )
                                  })
                               }
@@ -145,6 +160,20 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData }) => {
                      )
                   })
                }
+               <g className="controls-container">
+                  <g transform={`translate(${width / 2 + marginWidth * 1.5}, ${marginHeight / 2})`}>
+                     <g className={`legend ${piesAreActive ? 'show-legend' : ''}`}>
+                        <circle cx="0" cy="0" r={radius} fill="#1A8579" />
+                        <text x={radius + 5} y={radius / 2}>Biotonne</text>
+                        <circle cx="100" cy="0" r={radius} fill="#f6a119" />
+                        <text x={radius + 105} y={radius / 2}>Gartenabfall</text>
+                     </g>
+                     <g className="pie-controller" onClick={activatePies}>
+                        <rect x="205" y={-(20 / 2)} width="40" height="20" rx="10" fill="#ffe8c9" stroke="#484848" />
+                        <rect x={piesAreActive ? 225 : 205} y={-(20 / 2)} width="20" height="20" rx="10" fill="#484848" />
+                     </g>
+                  </g>
+               </g>
             </svg>
          </div>
          <div className="description">

@@ -97,8 +97,26 @@
 
                 .chart {
                     circle {
-                        fill: $default-text;
+                        stroke: $default-text;
+                    }
 
+                    .year-el circle {
+                        fill: $lighter-orange-full;
+                    }
+
+                    rect {
+                        transition: 0.5s;
+                        transition-timing-function: ease;
+                    }
+
+                    .pie, .legend {
+                        transition: 0.5s;
+                        transition-timing-function: ease;
+                        opacity: 0;
+
+                        &.show-pies, &.show-legend {
+                            opacity: 1;
+                        }
                     }
 
                     line {
@@ -107,8 +125,16 @@
                     }
 
                     path {
-                        fill: white;
-                        stroke: black;
+                        // fill: white;
+                        stroke: $default-text;
+
+                        &.biotonne {
+                            fill: $mint-green;
+                        }
+
+                        &.gartenPark {
+                            fill: $taz-orange;
+                        }
                     }
 
                     text {
@@ -142,6 +168,26 @@
                             stroke-dasharray: none;
                             stroke-width: 0.5;
                         }
+                    }
+                }
+
+                &.is-thumbnail {
+                    .visualization-container {
+                        height: 100%;
+
+                        .y-axis {
+                            display: none;
+                        }
+
+                        .year-el {
+                            text {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .description {
+                        display: none;
                     }
                 }
             }
