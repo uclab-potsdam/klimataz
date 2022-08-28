@@ -156,18 +156,6 @@
                         }
                     }
 
-                    .minimum {
-
-                        circle,
-                        text {
-                            fill: $mint-green;
-                        }
-
-                        line {
-                            stroke: $mint-green;
-                        }
-                    }
-
                     .y-axis {
                         line {
                             stroke-dasharray: none;
@@ -202,6 +190,29 @@
             .newbuildings-energy {
                 height: 100%;
                 @include vertical-layout;
+
+                .chart {
+                    
+                    text {
+                        font-size: 12px;
+                        fill: $default-text;    
+                    }
+
+                    path {
+                        stroke-width: 3px;
+                    }
+
+                    .axis {
+                        line {
+                            stroke: $default-text;
+                            stroke-dasharray: 2px 2px;
+                        }
+
+                        .x-axis line {
+                            stroke-dasharray: none;
+                        }
+                    }
+                }
             }
         }
 

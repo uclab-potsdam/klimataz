@@ -123,8 +123,8 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData, isThumbn
             <svg className="chart" width="100%" height="100%">
                <defs>
                   <linearGradient id="MyGradient">
-                     <stop offset="50%" stop-color="#e6c9a2" />
-                     <stop offset="100%" stop-color="#ffe8c9" />
+                     <stop offset="50%" stopColor="#e6c9a2" />
+                     <stop offset="100%" stopColor="#ffe8c9" />
                   </linearGradient>
                </defs>
                <g className="y-axis">
