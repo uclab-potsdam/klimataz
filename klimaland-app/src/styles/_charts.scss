@@ -191,6 +191,12 @@
                 height: 100%;
                 @include vertical-layout;
 
+                .legend {
+                        svg {
+                            font-size: 12px;
+                        }
+                    }
+
                 .chart {
                     
                     text {
@@ -210,6 +216,10 @@
 
                         .x-axis line {
                             stroke-dasharray: none;
+                        }
+
+                        .year-marker {
+                            filter: brightness(0.75);
                         }
                     }
                 }
@@ -249,11 +259,13 @@
         .locator-zoom {
             width: 50%;
             margin-left: 0.5rem;
+            filter: drop-shadow(0px 0px 3px rgba(233, 190, 134, 0.5));
 
             .locator-zoom-inner {
                 background-color: $light;
                 clip-path: circle(45%);
                 position: absolute;
+                
             }
         }
     }

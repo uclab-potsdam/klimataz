@@ -19,6 +19,8 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
         }
     }, []);
 
+
+    let uniqueEnergyTypes = [];
     let lineElements = [];
     let axisElements = [];
     let yAxisValues = [];
@@ -29,7 +31,7 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
 
     if (currentData !== undefined) {
         // arrays
-        const uniqueEnergyTypes = uniq(currentData.data.map(d => d.column))
+        uniqueEnergyTypes = uniq(currentData.data.map(d => d.column))
         const uniqueYears = uniq(currentData.data.map(d => +d.year))
         const colorArray = ['#FF7B7B', '#A80D35', '#3762FB', '#2A4D9C', '#5F88C6', '#5DCCD3', '#F6A219']
 
@@ -41,8 +43,10 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
             }
         })
 
-        // console.log(totalValue)
-        const domainY = [0, percentage(totalValue, totalValue)]
+        // calc variation on domain based on highest value in dataset
+        const maxValue = max(currentData.data.map(d => percentage(d.value, totalValue)))
+        const maxDomainVal = maxValue >= 50 ? percentage(totalValue, totalValue) : percentage(totalValue, totalValue) / 2
+        const domainY = [0, maxDomainVal]
         const domainX = extent(currentData.data.map(d => +d.year))
         const xScale = scaleLinear().domain(domainX).range([marginWidth, dimensions.width - marginWidth])
         const yScale = scaleLinear().domain(domainY).range([dimensions.height - marginHeight, marginHeight])
@@ -65,20 +69,27 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
 
         axisElements = uniqueYears.map((axis, a) => {
             const energyMarkers = []
+            let taPosition = 'start'
             const currentYearData = currentData.data.filter(d => +d.year === axis)
 
             currentYearData.forEach(d => {
                 energyMarkers.push(
                     {
                         y: yScale(percentage(d.value, totalValue)),
-                        label: `${percentage(d.value, totalValue)} %`,
+                        label: `${percentage(d.value, totalValue).toFixed(1)} %`,
                         id: d.column
                     })
             })
 
+            if (a === uniqueYears.length - 1) {
+                taPosition = 'end'
+            } else if (a !== 0) {
+                taPosition = 'middle'
+            }
+
             return {
                 label: axis,
-                taPosition: a === uniqueYears.length - 1 ? 'end' : 'start',
+                taPosition,
                 x: xScale(axis),
                 energyMarkers
             }
@@ -91,34 +102,26 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
                 <div className="title">
                     <h3>Welche primären Heiz-energien werden in neuen Wohneinheiten installiert?</h3>
                 </div>
+                <div className="legend">
+                    <svg height="300px">
+                        <g>
+                            {
+                                uniqueEnergyTypes.map((type, t) => {
+                                    return (
+                                        <g transform={`translate(10, ${(t + 1) * 20})`}>
+                                            <circle cx="0" cy="5" r="3" fill={scaleCategory(type)} />
+                                            <text x="10" y="10">{type}</text>
+                                        </g>
+                                    )
+                                })
+                            }
+                        </g>
+                    </svg>
+                </div>
             </div>
             <div className="visualization-container" ref={targetRef}>
                 <svg className="chart">
                     <g className="axis">
-                        {
-                            axisElements.map((axis, a) => {
-                                return (
-                                    <g key={a} transform={`translate(${axis.x}, 0)`}>
-                                        <line x1="0" x2="0" y1={marginHeight} y2={dimensions.height - marginHeight} stroke="black" />
-                                        <text x="-2" y={marginHeight - 10} textAnchor={axis.taPosition}>{axis.label}</text>
-                                        {
-                                            axis.energyMarkers.map((en, e) => {
-                                                return (
-                                                    <circle
-                                                        className="year-marker"
-                                                        key={e}
-                                                        cx="0"
-                                                        cy={en.y}
-                                                        r="3"
-                                                        fill={scaleCategory(en.id)}
-                                                    />
-                                                )
-                                            })
-                                        }
-                                    </g>
-                                )
-                            })
-                        }
                         <g className="x-axis">
                             {
                                 yAxis.map((yaxis, ya) => {
@@ -139,6 +142,36 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
                                 return (
                                     <g key={l} className={`${line.id} line`}>
                                         <path d={line.path} stroke={line.stroke} fill="none" />
+                                    </g>
+                                )
+                            })
+                        }
+                    </g>
+                    <g className="axis">
+                        {
+                            axisElements.map((axis, a) => {
+                                return (
+                                    <g key={a} transform={`translate(${axis.x}, 0)`}>
+                                        <line x1="0" x2="0" y1={marginHeight} y2={dimensions.height - marginHeight} stroke="black" />
+                                        <text x="-2" y={marginHeight - 10} textAnchor={axis.taPosition}>{axis.label}</text>
+                                        {
+                                            axis.energyMarkers.map((en, e) => {
+                                                return (
+                                                    <g key={e}>
+                                                        <circle
+                                                            className="year-marker"
+                                                            cx="0"
+                                                            cy={en.y}
+                                                            r="3"
+                                                            fill={scaleCategory(en.id)}
+                                                        />
+                                                        <text x="2" y={en.y - 5}>
+                                                            {en.label}
+                                                        </text>
+                                                    </g>
+                                                )
+                                            })
+                                        }
                                     </g>
                                 )
                             })
