@@ -37,7 +37,7 @@
                     ],
                     "components": {
                         "indicator": "_mid_",
-                        "component": "MoMid",
+                        "component": "MoModalSplit",
                         "annotation": "Hier sieht man die PKWs pro 1000 Einwohner:innen.",
                         "showDataFootnote": true
                     }

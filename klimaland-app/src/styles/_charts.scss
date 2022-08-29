@@ -300,11 +300,10 @@
         .locator-zoom {
             width: 50%;
             margin-left: 0.5rem;
-            filter: drop-shadow(0px 0px 3px rgba(233, 190, 134, 0.5));
 
             .locator-zoom-inner {
                 background-color: $light;
-                clip-path: circle(45%);
+                // clip-path: circle(45%);
                 position: absolute;
                 
             }

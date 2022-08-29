@@ -148,7 +148,7 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData, isTh
                             {
                                 uniqueEnergyTypes.map((type, t) => {
                                     return (
-                                        <g transform={`translate(20, ${(t + 1) * 20})`} onClick={() => changeId(type)}>
+                                        <g transform={`translate(20, ${(t + 1) * 20})`} key={t} onClick={() => changeId(type)}>
                                             <circle cx="0" cy="5" r="4" fill={scaleCategory(type)} />
                                             <text x="15" y="10">{firstToUppercase(type)}</text>
                                         </g>
