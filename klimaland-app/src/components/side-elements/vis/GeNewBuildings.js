@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import { percentage } from '../../helperFunc';
 import { uniq } from 'lodash';
-import { max, extent, range } from 'd3-array';
+import { max, extent, mean } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from "d3-scale";
 import { line } from 'd3-shape';
 
@@ -25,15 +25,22 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
     let axisElements = [];
     let yAxisValues = [];
     let yAxis = [];
+    let numberOfBuildings = 0;
+    let currentId = 'fossils';
     let scaleCategory = function () { return undefined }
     const marginHeight = Math.ceil(dimensions.width / 10)
     const marginWidth = Math.ceil(dimensions.height / 10)
 
+
     if (currentData !== undefined) {
         // arrays
-        uniqueEnergyTypes = uniq(currentData.data.map(d => d.column))
+        const sortedData = [...currentData.data].sort((a, b) => b.value - a.value)
+        uniqueEnergyTypes = uniq(sortedData.map(d => d.column))
+        const allBuildings = currentData.data.map(d => d.value)
+        numberOfBuildings = Math.round(mean(allBuildings))
+
         const uniqueYears = uniq(currentData.data.map(d => +d.year))
-        const colorArray = ['#FF7B7B', '#A80D35', '#3762FB', '#2A4D9C', '#5F88C6', '#5DCCD3', '#F6A219']
+        const colorArray = ['#A80D35', '#FF7B7B', '#F6A219', '#3762FB', '#2A4D9C', '#5F88C6', '#5DCCD3']
 
         // constructors and scales
         let totalValue = 0
@@ -91,7 +98,8 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
                 label: axis,
                 taPosition,
                 x: xScale(axis),
-                energyMarkers
+                energyMarkers,
+                length: uniqueYears.length
             }
         })
     }
@@ -102,15 +110,22 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
                 <div className="title">
                     <h3>Welche primären Heiz-energien werden in neuen Wohneinheiten installiert?</h3>
                 </div>
+                <div className="caption">
+                    <p>
+                        Jedes Jahr
+                        wurden in {lkData} <span>{numberOfBuildings}</span> neue Wohneinheiten
+                        (Wohnungen oder Häuser) fertiggestellt
+                    </p>
+                </div>
                 <div className="legend">
-                    <svg height="300px">
+                    <svg height="180px">
                         <g>
                             {
                                 uniqueEnergyTypes.map((type, t) => {
                                     return (
-                                        <g transform={`translate(10, ${(t + 1) * 20})`}>
-                                            <circle cx="0" cy="5" r="3" fill={scaleCategory(type)} />
-                                            <text x="10" y="10">{type}</text>
+                                        <g transform={`translate(20, ${(t + 1) * 20})`}>
+                                            <circle cx="0" cy="5" r="4" fill={scaleCategory(type)} />
+                                            <text x="15" y="10">{type}</text>
                                         </g>
                                     )
                                 })
@@ -157,17 +172,40 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
                                         {
                                             axis.energyMarkers.map((en, e) => {
                                                 return (
-                                                    <g key={e}>
+                                                    <g
+                                                        key={e}
+                                                        transform={`translate(0, ${en.y})`}
+                                                        className={`year-marker ${en.id === currentId ?
+                                                            'default'
+                                                            : 'optional'}
+                                                            `}
+                                                    >
                                                         <circle
-                                                            className="year-marker"
                                                             cx="0"
-                                                            cy={en.y}
+                                                            cy="0"
                                                             r="3"
                                                             fill={scaleCategory(en.id)}
                                                         />
-                                                        <text x="2" y={en.y - 5}>
-                                                            {en.label}
-                                                        </text>
+                                                        <g transform="translate(5, 0)">
+                                                            <rect
+                                                                className="marker-label"
+                                                                x={a === axis.length - 1 ? -40 : -2}
+                                                                y="-25"
+                                                                width="45"
+                                                                height="20"
+                                                                fill="white"
+                                                                stroke={scaleCategory(en.id)}
+                                                                rx="2"
+                                                            />
+                                                            <text
+                                                                className="marker-label"
+                                                                x="2" y="-10"
+                                                                fill={scaleCategory(en.id)}
+                                                                textAnchor={`${a === axis.length - 1 ? 'end' : 'start'}`}
+                                                            >
+                                                                {en.label}
+                                                            </text>
+                                                        </g>
                                                     </g>
                                                 )
                                             })

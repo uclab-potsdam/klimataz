@@ -197,11 +197,18 @@
                         }
                     }
 
+                .caption {
+                    margin-left: 1rem;
+
+                    span {
+                        color: $dark-blue;
+                    }
+                }
+
                 .chart {
                     
                     text {
-                        font-size: 12px;
-                        fill: $default-text;    
+                        font-size: 12px;  
                     }
 
                     path {
@@ -219,7 +226,21 @@
                         }
 
                         .year-marker {
-                            filter: brightness(0.75);
+                            circle {
+                                filter: brightness(0.75);
+                            }
+
+                            .marker-label {
+                                opacity: 0;
+                                cursor: pointer;
+                            }
+
+                            &.default, &.optional:hover {
+                                .marker-label {
+                                    opacity: 1;
+                                }
+                            }
+                            
                         }
                     }
                 }
