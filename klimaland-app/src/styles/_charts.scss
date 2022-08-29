@@ -194,6 +194,9 @@
                 .legend {
                         svg {
                             font-size: 12px;
+                            g {
+                                cursor: pointer;
+                            }
                         }
                     }
 
@@ -241,6 +244,23 @@
                                 }
                             }
                             
+                        }
+                    }
+                }
+
+                &.is-thumbnail {
+
+                    .visualization-container {
+                        .chart {
+                            width: 100%;
+                            left: 0;
+                    
+                            .axis {
+                                .x-axis, text, rect {
+                                    display: none;
+                                }
+                            }
+                        
                         }
                     }
                 }

@@ -1,14 +1,16 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { percentage } from '../../helperFunc';
+import { percentage, firstToUppercase } from '../../helperFunc';
 import { uniq } from 'lodash';
 import { max, extent, mean } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from "d3-scale";
 import { line } from 'd3-shape';
 
-const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) => {
+const Buildings = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
+
     // getting sizes of container for maps
     const targetRef = useRef();
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+    const [currentId, setCurrentId] = useState('');
 
     useLayoutEffect(() => {
         if (targetRef.current) {
@@ -19,28 +21,50 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
         }
     }, []);
 
-
+    // inital variables
     let uniqueEnergyTypes = [];
     let lineElements = [];
     let axisElements = [];
     let yAxisValues = [];
     let yAxis = [];
     let numberOfBuildings = 0;
-    let currentId = 'fossils';
-    let scaleCategory = function () { return undefined }
-    const marginHeight = Math.ceil(dimensions.width / 10)
-    const marginWidth = Math.ceil(dimensions.height / 10)
+    let scaleCategory = function () { return undefined };
+    const marginHeight = Math.ceil(dimensions.width / 10);
+    const marginWidth = Math.ceil(dimensions.height / 10);
+    const energyTypesOrder = [
+        'Fossils',
+        'Andere fossile Energie',
+        'Gas',
+        'Renewables',
+        'Umweltthermie',
+        'Andere erneuerbare Energien',
+        'Strom'
+    ]
+    const colorArray = ['#A80D35', '#FF7B7B', '#F6A219', '#3762FB', '#2A4D9C', '#5F88C6', '#5DCCD3']
+
+
+    //handle click on legend to change label
+    let changeId = function (id) {
+        if (currentData !== undefined) {
+            setCurrentId(id)
+        }
+    }
 
 
     if (currentData !== undefined) {
         // arrays
-        const sortedData = [...currentData.data].sort((a, b) => b.value - a.value)
-        uniqueEnergyTypes = uniq(sortedData.map(d => d.column))
+        currentData.data.forEach(d => d.column = firstToUppercase(d.column))
+        const sortedData = [...currentData.data].sort((a, b) => energyTypesOrder.indexOf(a.column) - energyTypesOrder.indexOf(b.column))
+        const uniqueYears = uniq(currentData.data.map(d => +d.year))
         const allBuildings = currentData.data.map(d => d.value)
+
+        uniqueEnergyTypes = uniq(sortedData.map(d => d.column))
         numberOfBuildings = Math.round(mean(allBuildings))
 
-        const uniqueYears = uniq(currentData.data.map(d => +d.year))
-        const colorArray = ['#A80D35', '#FF7B7B', '#F6A219', '#3762FB', '#2A4D9C', '#5F88C6', '#5DCCD3']
+        // Selects higher element in dataset
+        if (currentId === '') {
+            setCurrentId(uniqueEnergyTypes[0])
+        }
 
         // constructors and scales
         let totalValue = 0
@@ -74,6 +98,7 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
             }
         })
 
+        // create elements for vertical and horizontal axis, plus labels
         axisElements = uniqueYears.map((axis, a) => {
             const energyMarkers = []
             let taPosition = 'start'
@@ -105,7 +130,7 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
     }
 
     return (
-        <div className="newbuildings-energy">
+        <div className={`newbuildings-energy ${isThumbnail ? 'is-thumbnail' : ''}`}>
             <div className="description">
                 <div className="title">
                     <h3>Welche primären Heiz-energien werden in neuen Wohneinheiten installiert?</h3>
@@ -114,7 +139,7 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
                     <p>
                         Jedes Jahr
                         wurden in {lkData} <span>{numberOfBuildings}</span> neue Wohneinheiten
-                        (Wohnungen oder Häuser) fertiggestellt
+                        (Wohnungen oder Häuser) fertiggestellt. <span>{firstToUppercase(currentId)}</span> are xxx%.
                     </p>
                 </div>
                 <div className="legend">
@@ -123,9 +148,9 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData }) =>
                             {
                                 uniqueEnergyTypes.map((type, t) => {
                                     return (
-                                        <g transform={`translate(20, ${(t + 1) * 20})`}>
+                                        <g transform={`translate(20, ${(t + 1) * 20})`} onClick={() => changeId(type)}>
                                             <circle cx="0" cy="5" r="4" fill={scaleCategory(type)} />
-                                            <text x="15" y="10">{type}</text>
+                                            <text x="15" y="10">{firstToUppercase(type)}</text>
                                         </g>
                                     )
                                 })

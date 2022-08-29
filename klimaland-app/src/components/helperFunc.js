@@ -48,4 +48,8 @@ export function isInt(value) {
 
 export function percentage(partialValue, totalValue) {
   return (100 * partialValue) / totalValue;
-} 
+}
+
+export function firstToUppercase(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
