@@ -20,15 +20,14 @@ $pink: rgb(255, 192, 192);
 $blue: rgb(170, 210, 238);
 $dark-blue: #2A4D9C;
 $taz-orange: #f6a119;
-$orange-shade: rgba(246, 161, 25, 0.4);
-$lighter-orange-full: #ffe8c9;
+$orange-shade: rgba($taz-orange, 0.4);
+$lighter-orange-full: #fff4e5;
 $lighter-orange: rgba(255, 232, 201, 0.7);
 $taz-pink: #F00048;
 $dark-pink: #E5144B;
 $red: #FF7B7B;
 $default-text: #484848;
 $mint-green: #1A8579;
-
 //variables
 $postcardview-postcardwidth: 80vw;
 $thumbnail-postcardwith:30vw;

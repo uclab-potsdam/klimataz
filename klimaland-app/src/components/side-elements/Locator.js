@@ -66,7 +66,9 @@ const Locator = ({ lk }) => {
       translatedPath: geoTranslated(d),
       lk: d.properties.ARS,
       bl: d.properties.SN_L,
-      visible: +lk.value === +d.properties.ARS || +lk.value === +d.properties.SN_L
+      visible: +lk.value === +d.properties.ARS
+        || +lk.value === +d.properties.SN_L
+        || +lk.value === 0
         ? true
         : false,
     };
@@ -92,7 +94,7 @@ const Locator = ({ lk }) => {
                     />
                   );
                 })}
-                <circle cx="50%" cy="50%" r="49%" stroke="#484848" fill="none"></circle>
+                <circle cx="50%" cy="50%" r="49.5%" stroke="#484848" fill="none"></circle>
               </g>
             </svg>
           }
