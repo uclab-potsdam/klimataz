@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import { percentage, firstToUppercase } from '../../helperFunc';
 import { uniq } from 'lodash';
-import { max, extent, mean } from 'd3-array';
+import { max, extent, mean, sum } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from "d3-scale";
 import { line } from 'd3-shape';
 
@@ -68,21 +68,32 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData, isTh
 
         // constructors and scales
         let totalValue = 0
-        currentData.data.forEach(d => {
-            if (+d.year === 2020) {
-                totalValue = totalValue + d.value
-            }
+        const yearlyTotal = uniqueYears.map((year) => {
+            let yearValue = 0;
+            currentData.data.forEach(d => {
+                if (+d.year === year) {
+                    totalValue = totalValue + d.value
+                    yearValue = yearValue + d.value
+                }
+            })
+
+            currentData.data.forEach(d => {
+                if (+d.year === year) {
+                    d.perc = percentage(d.value, yearValue)
+                }
+            })
+            return yearValue
         })
 
         // calc variation on domain based on highest value in dataset
-        const maxValue = max(currentData.data.map(d => percentage(d.value, totalValue)))
-        const maxDomainVal = maxValue >= 50 ? percentage(totalValue, totalValue) : percentage(totalValue, totalValue) / 2
+        const maxValue = max(currentData.data.map(d => d.perc))
+        const maxDomainVal = maxValue >= 50 ? 100 : 50
         const domainY = [0, maxDomainVal]
         const domainX = extent(currentData.data.map(d => +d.year))
         const xScale = scaleLinear().domain(domainX).range([marginWidth, dimensions.width - marginWidth])
         const yScale = scaleLinear().domain(domainY).range([dimensions.height - marginHeight, marginHeight])
         scaleCategory = scaleOrdinal().domain(uniqueEnergyTypes).range(colorArray)
-        const createLine = line().x(d => xScale(+d.year)).y(d => yScale(percentage(d.value, totalValue)))
+        const createLine = line().x(d => xScale(+d.year)).y(d => yScale(d.perc))
 
         yAxisValues = yScale.ticks(2);
         yAxis = yAxisValues.map(d => yScale(d));
@@ -107,8 +118,8 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData, isTh
             currentYearData.forEach(d => {
                 energyMarkers.push(
                     {
-                        y: yScale(percentage(d.value, totalValue)),
-                        label: `${percentage(d.value, totalValue).toFixed(1)} %`,
+                        y: yScale(d.perc),
+                        label: `${d.perc.toFixed(1)} %`,
                         id: d.column
                     })
             })
