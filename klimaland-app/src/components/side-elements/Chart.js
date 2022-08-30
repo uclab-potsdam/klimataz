@@ -11,7 +11,7 @@ export default class Chart extends Component {
         this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components
           .component,
       currentIndicator:
-        this.props.layoutControls.params[this.props.activeSide][0].components.indicator,
+        this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components.indicator,
     };
     //TODO: store range or max Val in data as well
     //TODO: reusable code snippets like scales or axis

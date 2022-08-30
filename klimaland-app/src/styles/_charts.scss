@@ -69,6 +69,11 @@
                     }
                 }
             }
+
+            .modal-split {
+                height: 100%;
+                @include horizontal-top-layout;
+            }
         }
 
         &.En-chart {
