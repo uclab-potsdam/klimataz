@@ -119,9 +119,6 @@ export default class Side extends Component {
 
   render() {
     // TO DO: Solve issue of inconsistent activeSide during carousel switch
-    const isVis =
-      console.log("currently on:", this.props.section, this.props.activeSide)
-    console.log(this.state.showViz)
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
