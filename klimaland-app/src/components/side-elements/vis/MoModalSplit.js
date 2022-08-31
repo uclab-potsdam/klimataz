@@ -19,7 +19,9 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
 
     let averageKmDistance;
     let plotAvgData = [];
+    const xTicks = [];
     let defaultYear = 2017;
+    const referenceXTicks = [...Array.from(Array(11)).keys()];
     const marginWidth = Math.round(dimensions.width / 20)
     const rightMarginWidth = Math.round(dimensions.width - dimensions.width / 3)
     const orderOfModes = ['Fuß', 'Fahrrad', 'ÖPV', 'Mitfahrer', 'Fahrer']
@@ -34,10 +36,9 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
         const maxYValue = Math.floor(longestAvgRoute / 10)
         xScale = scaleLinear().domain([0, 10]).range([marginWidth, rightMarginWidth])
         xScaleReverse = scaleLinear().domain([10, 0]).range([marginWidth, rightMarginWidth])
-        yScale = scaleLinear().domain([0, maxYValue]).range([0, dimensions.height / 10])
+        yScale = scaleLinear().domain([0, 5]).range([0, dimensions.height / 5])
 
         averageKmDistance.forEach((mode, m) => {
-
             const element = {}
             const nameOfMode = mode.column.split("_").pop()
             element.mode = nameOfMode.replace(/[{()}]/g, '')
@@ -77,7 +78,7 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
 
             // constructor is created on the fly to reverse scale
             const lineConstructor = line()
-                .x(d => (d[0] !== startValue && d[0] !== 0) && d[0] < 5 && rowIndex > 0
+                .x(d => (d[0] !== startValue && d[0] !== 0) && d[0] < 10 && rowIndex > 0
                     ? xScaleReverse(d[0])
                     : xScale(d[0]))
                 .y(d => yScale(d[1]))
@@ -90,11 +91,23 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
             element.path = lineConstructor(values)
 
             // accessory elements
-            element.labelX = lastCoor[0] !== 0 && lastCoor[0] < 5 && rowIndex > 0
+            const isReverse = lastCoor[0] !== 0 && lastCoor[0] < 10 && rowIndex > 0
+            element.labelX = isReverse
                 ? xScaleReverse(lastCoor[0])
                 : xScale(lastCoor[0])
             element.labelY = yScale(lastCoor[1])
 
+            const ticks = [...Array.from(Array(Math.round(mode.value))).keys()]
+            let iTick = 0
+            element.ticks = ticks.map(tick => {
+                iTick = iTick + 10
+                return {
+                    x: tick !== 0 && lastCoor[0] < 10 && tick > rowIndex * 10 ?
+                        xScaleReverse(tick - rowIndex * 10)
+                        : xScale(tick),
+                    y: tick > 10 ? yScale(String(iTick)[0]) : yScale(0)
+                }
+            })
             plotAvgData.push(element)
         })
 
@@ -113,38 +126,68 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
             </div>
             <div className="visualization-container" ref={targetRef}>
                 <svg className="chart">
-                    {
-                        plotAvgData.map((trip, t) => {
-                            return (
-                                <g
-                                    transform={`translate(0, ${(t + 0.5) * 60})`}
-                                    key={t}
-                                    className={trip.mode}
-                                >
-                                    <text x={marginWidth} y="-8">{trip.mode}</text>
-                                    <path
-                                        d={trip.path}
-                                        stroke={colors[t]}
-                                        fill="none"
-                                        stroke-width="10"
-                                    />
-                                    <g
-                                        className="avgkm-marker"
-                                        transform={`translate(${trip.labelX}, ${trip.labelY + 5})`}
-                                    >
-                                        <text x="5" y="-20">{trip.label}</text>
-                                        <line
-                                            x1="0"
-                                            x2="0"
-                                            y1="0"
-                                            y2="-30"
-                                            stroke="black"
-                                        />
-                                    </g>
-                                </g>
-                            )
-                        })
-                    }
+                    <g className="paths-avg-trip">
+                        <g className="paths">
+                            {
+                                plotAvgData.map((trip, t) => {
+                                    return (
+                                        <g
+                                            transform={`translate(0, ${(t + 0.5) * 60})`}
+                                            key={t}
+                                            className={trip.mode}
+                                        >
+                                            <g className="axis">
+                                                <text x={marginWidth} y="-8">{trip.mode}</text>
+                                                {
+                                                    referenceXTicks.map((tick, t) => {
+                                                        return (
+                                                            <g transform={`translate(${xScale(tick)}, 0)`}>
+                                                                <line x1="0" x2="0" y1="0" y2="5" stroke="black" />
+                                                            </g>
+                                                        )
+                                                    })
+                                                }
+                                            </g>
+                                            <g className="paths">
+                                                <path
+                                                    d={trip.path}
+                                                    stroke={colors[t]}
+                                                    fill="none"
+                                                    stroke-width="10"
+                                                />
+                                                <g
+                                                    className="avgkm-marker"
+                                                    transform={`translate(${trip.labelX}, ${trip.labelY + 5})`}
+                                                >
+                                                    <text x="5" y="-20">{trip.label}</text>
+                                                    <line
+                                                        x1="0"
+                                                        x2="0"
+                                                        y1="0"
+                                                        y2="-30"
+                                                        stroke="black"
+                                                    />
+                                                </g>
+                                                <g className="mappedAxis">
+                                                    {
+                                                        trip.ticks.map((tick, t) => {
+                                                            return (
+                                                                <g>
+                                                                    <g transform={`translate(${tick.x}, ${tick.y})`} key="t">
+                                                                        <line x1="0" x2="0" y1="-5" y2="5" stroke="black" />
+                                                                    </g>
+                                                                </g>
+                                                            )
+                                                        })
+                                                    }
+                                                </g>
+                                            </g>
+                                        </g>
+                                    )
+                                })
+                            }
+                        </g>
+                    </g>
                 </svg>
             </div>
         </div >
