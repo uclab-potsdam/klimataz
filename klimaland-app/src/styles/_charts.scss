@@ -81,6 +81,20 @@
                 height: 100%;
                 @include horizontal-bottom-layout;            
             }
+            .energy-industry{
+                height: 100%;
+                @include horizontal-bottom-layout;   
+
+                .axis {
+                    line {
+                        stroke: $default-text;
+                    }
+
+                    text {
+                        font-size: 12px;
+                    }
+                }
+            }
         }
 
         &.Ab-chart {
