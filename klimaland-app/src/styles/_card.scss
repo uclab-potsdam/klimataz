@@ -6,7 +6,7 @@
     transition: 0.2s;
     background-color: $light;
     border: 1px solid $taz-orange;
-    border-radius: 6px;
+    border-radius: 3px;
     box-shadow: map-get($map: $boxshadow, $key: default);
     
     &:hover{
@@ -118,7 +118,14 @@
     width: 100%;
     display:flex; //for using flex stretch below
 
+    .side-outer {
+        width: 100%;
+        height: 100%;
+    }
+
     .side-inner {
+        width: 100%;
+        height: 100%;
         background-color: $lighter-orange;
         clip-path: circle(30%);    
     }
@@ -143,10 +150,10 @@
     -webkit-transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
     transition: transform ease 500ms;
     transition: -webkit-transform ease 500ms;
-    box-shadow: -4px 4px 0px rgba(246, 161, 25, 0.4);
+    box-shadow: -4px 4px 0px rgba($taz-orange, 0.4);
 
     &:hover {
-        box-shadow: -4px 4px 0px rgba(246, 161, 25, 0.4);    
+        box-shadow: -4px 4px 0px rgba($taz-orange, 0.4);
     }
 
 
@@ -175,9 +182,13 @@
 }
 
 .card-active {
+    .side-outer {
+            width: 100%;
+            height: 100%;
+        }
     .side-inner {
         width: 100%;
-        
+        height: 100%;
         // back-side with explanation
         .details-container {
             display: flex;
@@ -190,19 +201,31 @@
                 border-right: 1px solid $default-text;
                 .text-inner-container {
                     margin: 10px;
-
+                    height: 90%;
+                    
                     .section-title {
-                        text-align: center;
-                        margin: 2rem 10px 10px 10px;
-                        border: 1px solid $mint-green;
-                        border-radius: 40rem / 8rem;
-                    }
+                            text-align: center;
+                            margin: 2rem 10px 10px 10px;
+                            border: 1px solid $mint-green;
+                            border-radius: 40rem / 8rem;
+                        }
 
                     .section-text {
                         margin: 20px;
                         p {
                             font-size: 1rem;
                         }
+                    }
+
+                    .logo-container {
+                        background-image: url(../img/taz/taz-logo.svg);
+                        background-repeat: no-repeat;
+                        width: 250px;
+                        height: 50px;
+                        position: absolute;
+                        left: 1rem;
+                        bottom: 0.5rem;
+                        margin-left: 10px;
                     }
                 }
             }
@@ -248,9 +271,9 @@
                             
                             h5 {
                                 // padding-left: 0.5rem;
-                                width: 100%;
+                                width: calc(100% - 0.5rem);
                                 margin: 0px;
-                                padding: 0.5rem 0rem 0.2rem 0.5rem;
+                                padding: 0.2rem 0rem 0.2rem 0.5rem;
                                 border-bottom: 1px solid $default-text;
                             }
 
@@ -266,7 +289,7 @@
 
                         .list-dissimilar-container {
                             h5 {
-                                background-color: $mint-green;
+                                background-color: $red;
                                 color: white;
                             }
                         }

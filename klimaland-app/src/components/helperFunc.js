@@ -38,3 +38,18 @@ export function setStateAsync(scope, state) {
 export function isInt(value) {
   return !isNaN(value) && parseInt(Number(value)) == value && !isNaN(parseInt(value, 10));
 }
+
+/**
+ * conversion to %
+ * @param {*} partialValue value to calculate
+ * @ param {*} totalValue total
+ * @returns Will return x that is x%
+ */
+
+export function percentage(partialValue, totalValue) {
+  return (100 * partialValue) / totalValue;
+}
+
+export function firstToUppercase(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}

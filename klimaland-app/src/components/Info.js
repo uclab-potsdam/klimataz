@@ -33,10 +33,19 @@ export default class Info extends Component {
   render() {
     return (
       <div className="info-container">
-        {!this.state.inFocus && (
-          <div className="help" onClick={this.handleHelpFocus}>
-            <h4>How to use the postcards</h4>
-          </div>
+        <div
+          className={`help ${this.state.inFocus ? 'help-postcard' : ''}`}
+          onClick={this.state.inFocus ? this.handleHelpNotFocus : this.handleHelpFocus}
+        >
+          <h4>How to use the postcards</h4>
+          <p className="text">
+            Single iFrames are sized based on the use case.
+            The size of the container determines in which way
+            the visualization is shown to the user and prevent weird things
+          </p>
+        </div>
+        {/* {!this.state.inFocus && (
+
         )}
         {this.state.inFocus && (
           <div className="help help-postcard">
@@ -46,7 +55,7 @@ export default class Info extends Component {
               <img src={closeCard} className="button img" alt="close-button-img" />
             </button>
           </div>
-        )}
+        )} */}
       </div>
     );
   }

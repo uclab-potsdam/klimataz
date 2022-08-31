@@ -1,10 +1,13 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import { geoPath, geoMercator } from 'd3-geo';
 import LandkreiseOutline from '../../data/kreise-simpler.json';
+import bundeslaenderOutline from '../../data/bundeslaender.json';
 
 const Locator = ({ lk }) => {
   let width = 100
   let height = 100
+
+  const currentMap = +lk.value < 20 ? bundeslaenderOutline : LandkreiseOutline
 
   // getting sizes of container for maps
   const targetRef = useRef();
@@ -25,12 +28,12 @@ const Locator = ({ lk }) => {
   const zoomHeight = height / 2
 
   // projection for main map
-  const projection = geoMercator().fitSize([width, height], LandkreiseOutline);
+  const projection = geoMercator().fitSize([width, height], currentMap);
   const geoGenerator = geoPath().projection(projection);
   let currentFeature;
   let currentPath;
 
-  LandkreiseOutline.features.forEach((f) => {
+  currentMap.features.forEach((f) => {
     if (+lk.value === +f.properties.ARS || lk.value === +f.properties.SN_L) {
       currentFeature = f;
       currentPath = geoGenerator(f);
@@ -39,7 +42,7 @@ const Locator = ({ lk }) => {
 
   // translate and rescale for zoom map
   const translatedProj = geoMercator()
-    .fitSize([zoomWidth, zoomHeight], LandkreiseOutline)
+    .fitSize([zoomWidth, zoomHeight], currentMap)
     .scale(1)
     .translate([0, 0]);
   const geoTranslated = geoPath().projection(translatedProj);
@@ -56,14 +59,16 @@ const Locator = ({ lk }) => {
     L 0, ${width / 2}`
 
   // prepare single shapes for background map
-  const singleShapes = LandkreiseOutline.features.map((d) => {
+  const singleShapes = currentMap.features.map((d) => {
     // every transformation is made in here, an array of prepared data is returned
     return {
       path: geoGenerator(d),
       translatedPath: geoTranslated(d),
       lk: d.properties.ARS,
       bl: d.properties.SN_L,
-      visible: +lk.value === +d.properties.ARS || +lk.value === +d.properties.SN_L
+      visible: +lk.value === +d.properties.ARS
+        || +lk.value === +d.properties.SN_L
+        || +lk.value === 0
         ? true
         : false,
     };
@@ -73,18 +78,26 @@ const Locator = ({ lk }) => {
     <div className="locator-container">
       <div className="locator-zoom" ref={targetRef}>
         <div className="locator-zoom-inner">
-          <svg width={width} height={height}>
-            {singleShapes.map(function (el, e) {
-              return (
-                <path
-                  d={el.translatedPath}
-                  key={e}
-                  id={el.lk}
-                  className={`landkreis ${el.bl} ${el.visible ? 'visible' : 'hidden'}`}
-                />
-              );
-            })}
-          </svg>
+          {
+            +lk.value !== 0 && <svg width={width} height={height}>
+              <clipPath id="myClip">
+                <circle cx="50%" cy="50%" r="50%" stroke="black" />
+              </clipPath>
+              <g clipPath="url(#myClip)" href="#map">
+                {singleShapes.map(function (el, e) {
+                  return (
+                    <path
+                      d={el.translatedPath}
+                      key={e}
+                      id="map"
+                      className={`landkreis ${el.lk} ${el.bl} ${el.visible ? 'visible' : 'hidden'}`}
+                    />
+                  );
+                })}
+                <circle cx="50%" cy="50%" r="49.5%" stroke="#484848" fill="none"></circle>
+              </g>
+            </svg>
+          }
         </div>
       </div>
       <div className="locator-background">

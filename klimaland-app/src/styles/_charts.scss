@@ -19,7 +19,7 @@
                 .title {
                     span {
                         &.first-value {
-                            color: $red;
+                            color: $dark-blue;
                         }
                         
                         &.second-value {
@@ -69,6 +69,11 @@
                     }
                 }
             }
+
+            .modal-split {
+                height: 100%;
+                @include horizontal-top-layout;
+            }
         }
 
         &.En-chart {
@@ -94,6 +99,95 @@
                         }
                     }                
                 }
+
+                .chart {
+                    circle {
+                        stroke: $default-text;
+                    }
+
+                    .year-el circle {
+                        fill: $lighter-orange-full;
+                    }
+
+                    rect {
+                        transition: 0.5s;
+                        transition-timing-function: ease;
+                    }
+
+                    .pie, .legend {
+                        transition: 0.5s;
+                        transition-timing-function: ease;
+                        opacity: 0;
+
+                        &.show-pies, &.show-legend {
+                            opacity: 1;
+                        }
+                    }
+
+                    .controller-bg {
+                        fill: url(#MyGradient);
+                        stroke: #484848;
+                    }
+
+                    line {
+                        stroke-dasharray: 2px 2px;
+                        stroke: $default-text;
+                    }
+
+                    path, circle {
+                        // fill: white;
+                        stroke: $default-text;
+
+                        &.biotonne {
+                            fill: $mint-green;
+                        }
+
+                        &.gartenPark {
+                            fill: $taz-orange;
+                        }
+                    }
+
+                    text {
+                        font-size: 12px;
+                    }
+
+                    .max {
+                        circle, text {
+                            fill: $red;
+                        }
+
+                        line {
+                            stroke: $red;
+                        }
+                    }
+
+                    .y-axis {
+                        line {
+                            stroke-dasharray: none;
+                            stroke-width: 0.5;
+                        }
+                    }
+                }
+
+                &.is-thumbnail {
+                    .visualization-container {
+                        height: 100%;
+
+                        .y-axis {
+                            display: none;
+                        }
+
+                        .year-el {
+                            text {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .description {
+                        display: none;
+                    }
+                }
             }
         }
 
@@ -101,6 +195,80 @@
             .newbuildings-energy {
                 height: 100%;
                 @include vertical-layout;
+
+                .legend {
+                        svg {
+                            font-size: 12px;
+                            g {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                .caption {
+                    margin-left: 1rem;
+
+                    span {
+                        color: $dark-blue;
+                    }
+                }
+
+                .chart {
+                    
+                    text {
+                        font-size: 12px;  
+                    }
+
+                    path {
+                        stroke-width: 3px;
+                    }
+
+                    .axis {
+                        line {
+                            stroke: $default-text;
+                            stroke-dasharray: 2px 2px;
+                        }
+
+                        .x-axis line {
+                            stroke-dasharray: none;
+                        }
+
+                        .year-marker {
+                            circle {
+                                filter: brightness(0.75);
+                            }
+
+                            .marker-label {
+                                opacity: 0;
+                                cursor: pointer;
+                            }
+
+                            &.default, &.optional:hover {
+                                .marker-label {
+                                    opacity: 1;
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+
+                &.is-thumbnail {
+
+                    .visualization-container {
+                        .chart {
+                            width: 100%;
+                            left: 0;
+                    
+                            .axis {
+                                .x-axis, text, rect {
+                                    display: none;
+                                }
+                            }
+                        
+                        }
+                    }
+                }
             }
         }
 
@@ -140,8 +308,9 @@
 
             .locator-zoom-inner {
                 background-color: $light;
-                clip-path: circle(45%);
+                // clip-path: circle(45%);
                 position: absolute;
+                
             }
         }
     }

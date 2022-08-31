@@ -11,6 +11,7 @@ const Text = ({ lk, section, activeSide }) => {
     }
     return (
         <div className="text-inner-container">
+            <div className="logo-container"></div>
             <div className="section-title">
                 <h2>{sectionFullName[section]}</h2>
             </div>

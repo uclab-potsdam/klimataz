@@ -37,7 +37,7 @@
                     ],
                     "components": {
                         "indicator": "_mid_",
-                        "component": "MoMid",
+                        "component": "MoModalSplit",
                         "annotation": "Hier sieht man die PKWs pro 1000 Einwohner:innen.",
                         "showDataFootnote": true
                     }
@@ -57,7 +57,7 @@
                     ],
                     "components": {
                         "indicator": "_industry_consumption_",
-                        "component": "EnPrimaryEnergy",
+                        "component": "EnIndustry",
                         "showDataFootnote": false
                     }
                 }
@@ -76,10 +76,15 @@
                 "2": {
                     "combo": [
                         3,
-                        true,
+                        false,
                         2,
                         false
-                    ]
+                    ],
+                    "components": {
+                        "indicator": "_primaryconsumption_",
+                        "component": "EnPrimaryEnergy",
+                        "showDataFootnote": false
+                    }
                 }
             }
         ]
@@ -108,16 +113,6 @@
                         false,
                         1,
                         true
-                    ]
-                }
-            },
-            {
-                "2": {
-                    "combo": [
-                        3,
-                        true,
-                        2,
-                        false
                     ]
                 }
             }
@@ -149,16 +144,6 @@
                         true
                     ]
                 }
-            },
-            {
-                "2": {
-                    "combo": [
-                        3,
-                        true,
-                        2,
-                        false
-                    ]
-                }
             }
         ]
     },
@@ -186,16 +171,6 @@
                         false,
                         1,
                         true
-                    ]
-                }
-            },
-            {
-                "2": {
-                    "combo": [
-                        3,
-                        true,
-                        2,
-                        false
                     ]
                 }
             }
