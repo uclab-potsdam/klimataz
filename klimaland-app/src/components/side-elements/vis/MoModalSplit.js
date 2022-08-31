@@ -20,44 +20,53 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
     let averageKmDistance;
     let plotAvgData = [];
     let defaultYear = 2017;
+    const marginWidth = Math.round(dimensions.width / 20)
+    const rightMarginWidth = Math.round(dimensions.width - dimensions.width / 3)
+    const orderOfModes = ['Fuß', 'Fahrrad', 'ÖPV', 'Mitfahrer', 'Fahrer']
+    let yScale;
 
-    console.log(lkData)
+    // console.log(lkData, currentData)
 
     if (currentData.data !== undefined) {
         averageKmDistance = currentData.data.filter(d => d.column.includes('average') && +d.year === defaultYear)
+        console.log(averageKmDistance)
         const longestAvgRoute = max(averageKmDistance.map(d => d.value))
         const maxYValue = Math.floor(longestAvgRoute / 10)
-        console.log(maxYValue)
-        const xScale = scaleLinear().domain([0, 10]).range([0, dimensions.width])
-        const yScale = scaleLinear().domain([0, maxYValue]).range([0, dimensions.height / 5])
-        const xScaleReverse = scaleLinear().domain([10, 0]).range([dimensions.width, 0])
+        const xScale = scaleLinear().domain([0, 10]).range([marginWidth, rightMarginWidth])
+        yScale = scaleLinear().domain([0, maxYValue]).range([0, dimensions.height / 15])
+        const lineConstructor = line().x(d => xScale(d[0])).y(d => yScale(d[1]))
 
         averageKmDistance.forEach((mode, m) => {
             const element = {}
             const nameOfMode = mode.column.split("_").pop()
-            element.mode = nameOfMode
+            element.mode = nameOfMode.replace(/[{()}]/g, '')
+            element.label = mode.value.toFixed(2)
             element.values = [[0, 0]]
             const valueMagnitude = Math.floor(mode.value / 10)
             const difference = mode.value - valueMagnitude * 10
 
             if (valueMagnitude > 1) {
+                let columnIndex = 0
                 for (let index = 1; index <= valueMagnitude; index++) {
-                    element.values[index] = [10, index]
+                    element.values[index] = [10, columnIndex]
+                    if (index % 2 !== 0) {
+                        columnIndex = columnIndex + 1
+                    }
                 }
 
                 if (difference > 0) {
-                    element.values.push([difference, valueMagnitude])
+                    element.values.push([difference, columnIndex])
                 }
+
             } else {
                 element.values.push([mode.value, 0])
             }
+
+            element.path = lineConstructor(element.values)
             plotAvgData.push(element)
         })
 
-        // const lineConstructor = line().x(d => d[0]).y(d => d[1])
-        // const tryOut = [[100, 10], [200, 10], [200, 20], [100, 20], [100, 30], [200, 30]]
-
-        // example = lineConstructor(tryOut)
+        plotAvgData.sort((a, b) => orderOfModes.indexOf(a.mode) - orderOfModes.indexOf(b.mode));
     }
 
     return (
@@ -71,7 +80,16 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
             </div>
             <div className="visualization-container" ref={targetRef}>
                 <svg className="chart">
-                    <text x="50%" y="50%">Modal Split</text>
+                    {
+                        plotAvgData.map((trip, t) => {
+                            return (
+                                <g transform={`translate(0, ${(t + 0.5) * 60})`} key={t} className={trip.mode}>
+                                    <text x={marginWidth} y="-8">{trip.mode}</text>
+                                    <path d={trip.path} stroke="black" fill="none" stroke-width="5" />
+                                </g>
+                            )
+                        })
+                    }
                 </svg>
             </div>
         </div >
