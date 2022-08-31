@@ -7,6 +7,7 @@ import { isInt } from './helperFunc';
 
 const Canvas = () => {
   //load data from selector json
+
   let landkreiseData = DropDownControls.landkreise;
   let sectionsData = DropDownControls.indicators;
 
@@ -17,7 +18,7 @@ const Canvas = () => {
   });
 
   let defaultPick = sectionsData.map((el) => ({
-    lk: { value: '0', label: 'Deutschland' },
+    lk: { value: landkreiseData[413].value, label: landkreiseData[413].label },
     section: { value: el.value, label: el.label },
     ui: { value: true },
     view: { value: 0, label: 'default' },
