@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import { max } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
-import { line } from 'd3-shape';
+import { line, stack } from 'd3-shape';
 
 const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
 
@@ -19,24 +19,29 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
 
     let averageKmDistance;
     let plotAvgData = [];
-    const xTicks = [];
+    let plotPercData = [];
     let defaultYear = 2017;
+    let maxYValue = null;
     const referenceXTicks = [...Array.from(Array(11)).keys()];
     const marginWidth = Math.round(dimensions.width / 20)
-    const rightMarginWidth = Math.round(dimensions.width - dimensions.width / 3)
+    const maxRangeHeight = Math.round(dimensions.height / 10)
+    const marginHeight = dimensions.height - dimensions.height / 8
+    const rightMarginWidth = Math.round(dimensions.width - dimensions.width / 4)
     const orderOfModes = ['Fuß', 'Fahrrad', 'ÖPV', 'Mitfahrer', 'Fahrer']
     const colors = ['#3762FB', '#2A4D9C', '#5F88C6', '#FFD0D0', '#FF7B7B']
     let yScale;
     let xScale;
     let xScaleReverse;
+    let yBarScale;
 
     if (currentData.data !== undefined) {
         averageKmDistance = currentData.data.filter(d => d.column.includes('average') && +d.year === defaultYear)
-        const longestAvgRoute = max(averageKmDistance.map(d => d.value))
-        const maxYValue = Math.floor(longestAvgRoute / 10)
+        const longestAvgRoute = max(averageKmDistance.map(d => d.value !== null ? d.value : null))
+        maxYValue = Math.floor(longestAvgRoute / 10)
+
         xScale = scaleLinear().domain([0, 10]).range([marginWidth, rightMarginWidth])
         xScaleReverse = scaleLinear().domain([10, 0]).range([marginWidth, rightMarginWidth])
-        yScale = scaleLinear().domain([0, 5]).range([0, dimensions.height / 5])
+        yScale = scaleLinear().domain([0, 5]).range([0, dimensions.height / 4.5])
 
         averageKmDistance.forEach((mode, m) => {
             const element = {}
@@ -76,9 +81,15 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
                 i += 10
             }
 
+            const checkDataPosition = function (x) {
+                return (x !== startValue && x !== 0)
+                    && x < 10
+                    && (rowIndex > 0 && rowIndex % 2 !== 0) ? true : false
+            }
+
             // constructor is created on the fly to reverse scale
             const lineConstructor = line()
-                .x(d => (d[0] !== startValue && d[0] !== 0) && d[0] < 10 && rowIndex > 0
+                .x(d => checkDataPosition(d[0])
                     ? xScaleReverse(d[0])
                     : xScale(d[0]))
                 .y(d => yScale(d[1]))
@@ -91,27 +102,62 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
             element.path = lineConstructor(values)
 
             // accessory elements
-            const isReverse = lastCoor[0] !== 0 && lastCoor[0] < 10 && rowIndex > 0
-            element.labelX = isReverse
+            // const isReverse = lastCoor[0] !== 0 && lastCoor[0] < 5 && rowIndex > 0
+            element.labelX = checkDataPosition(lastCoor[0])
                 ? xScaleReverse(lastCoor[0])
                 : xScale(lastCoor[0])
             element.labelY = yScale(lastCoor[1])
 
-            const ticks = [...Array.from(Array(Math.round(mode.value))).keys()]
-            let iTick = 0
-            element.ticks = ticks.map(tick => {
-                iTick = iTick + 10
-                return {
-                    x: tick !== 0 && lastCoor[0] < 10 && tick > rowIndex * 10 ?
-                        xScaleReverse(tick - rowIndex * 10)
-                        : xScale(tick),
-                    y: tick > 10 ? yScale(String(iTick)[0]) : yScale(0)
-                }
+            const ticksIterations = [...Array.from(Array(rowIndex + 1)).keys()]
+            const ticks = [...Array.from(Array(10)).keys()]
+            const allTicks = []
+
+            ticksIterations.forEach(d => {
+                const realTicks = ticks.map(tick => {
+                    return {
+                        x: xScale(tick),
+                        y: yScale(d)
+                    }
+                })
+
+                allTicks.push(realTicks)
             })
+
+            element.ticks = allTicks.flat()
             plotAvgData.push(element)
         })
 
-        plotAvgData.sort((a, b) => orderOfModes.indexOf(a.mode) - orderOfModes.indexOf(b.mode));
+        plotAvgData.sort((a, b) => orderOfModes.indexOf(a.mode) - orderOfModes.indexOf(b.mode))
+
+        // code for right-side % bar
+        const percentageNumOfTrips = currentData.data.filter(d => d.column.includes('tripcount_percentage') && +d.year === defaultYear)
+        // To Do: fix problem with scale for bar
+        yBarScale = scaleLinear().domain([0, 100]).range([10, marginHeight])
+
+        const element = {}
+
+        percentageNumOfTrips.forEach((trip, t) => {
+            const nameOfMode = trip.column.split("_").pop()
+            const mode = nameOfMode.replace(/[{()}]/g, '')
+            if (mode !== 'sum') {
+                element[mode] = trip.value
+            }
+        })
+
+        const stacks = stack().keys(orderOfModes)([element])
+        plotPercData = stacks.map((bar, b) => {
+            const data = bar[0]
+
+            const label = data.data[bar.key].toFixed(2)
+            console.log(data.data)
+            return {
+                mode: bar.key,
+                fill: colors[b],
+                y1: yBarScale(data[0]),
+                y2: yBarScale(data[1]),
+                label
+            }
+        })
     }
 
     return (
@@ -127,22 +173,26 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
             <div className="visualization-container" ref={targetRef}>
                 <svg className="chart">
                     <g className="paths-avg-trip">
-                        <g className="paths">
-                            {
-                                plotAvgData.map((trip, t) => {
+                        {
+                            <g className="paths">
+                                <g className="main-x-axis" transform={`translate(${xScale(0)}, ${marginHeight})`}>
+                                    <line x1="0" x2={xScale(9.5)} y1="0" y2="0" />
+                                    <text x="0" y="15">average Km</text>
+                                </g>
+                                {plotAvgData.map((trip, t) => {
                                     return (
                                         <g
-                                            transform={`translate(0, ${(t + 0.5) * 60})`}
+                                            transform={`translate(0, ${(t + 0.5) * 65})`}
                                             key={t}
                                             className={trip.mode}
                                         >
                                             <g className="axis">
-                                                <text x={marginWidth} y="-8">{trip.mode}</text>
+                                                <text x={marginWidth} y="-18" fill={colors[t]}>{trip.mode}</text>
                                                 {
                                                     referenceXTicks.map((tick, t) => {
                                                         return (
                                                             <g transform={`translate(${xScale(tick)}, 0)`}>
-                                                                <line x1="0" x2="0" y1="0" y2="5" stroke="black" />
+                                                                <line x1="0" x2="0" y1="0" y2="5" />
                                                             </g>
                                                         )
                                                     })
@@ -159,22 +209,22 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
                                                     className="avgkm-marker"
                                                     transform={`translate(${trip.labelX}, ${trip.labelY + 5})`}
                                                 >
-                                                    <text x="5" y="-20">{trip.label}</text>
+                                                    <text x="5" y={-(trip.labelY + 2 * 10)} fill={colors[t]}>{trip.label}</text>
                                                     <line
                                                         x1="0"
                                                         x2="0"
                                                         y1="0"
-                                                        y2="-30"
-                                                        stroke="black"
+                                                        y2={-(trip.labelY + 2 * 10)}
+
                                                     />
                                                 </g>
-                                                <g className="mappedAxis">
+                                                <g className="mapped-axis">
                                                     {
                                                         trip.ticks.map((tick, t) => {
                                                             return (
                                                                 <g>
                                                                     <g transform={`translate(${tick.x}, ${tick.y})`} key="t">
-                                                                        <line x1="0" x2="0" y1="-5" y2="5" stroke="black" />
+                                                                        <line x1="0" x2="0" y1="-5" y2="5" />
                                                                     </g>
                                                                 </g>
                                                             )
@@ -185,8 +235,23 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
                                         </g>
                                     )
                                 })
-                            }
-                        </g>
+                                }
+                            </g>
+                        }
+                    </g>
+                    <g className="bar-percentage-trip" transform={`translate(${rightMarginWidth + marginWidth * 2}, 0)`}>
+                        <text x="10" y={marginHeight + 15} textAnchor="end">% der Trips</text>
+                        {
+                            plotPercData.map((trip, t) => {
+                                return (
+                                    <g transform={`translate(0, ${trip.y1})`}>
+                                        <text x="15" y="13" fill={trip.fill}>{trip.label}</text>
+                                        <rect width="10" height={trip.y2 - trip.y1} x="0" y="0" fill={trip.fill} />
+                                        <line x1="0" x2="30" y1="0" y2="0" />
+                                    </g>
+                                )
+                            })
+                        }
                     </g>
                 </svg>
             </div>
