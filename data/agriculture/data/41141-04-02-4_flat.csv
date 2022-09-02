@@ -1,0 +1,539 @@
+Statistik_Code;Statistik_Label;Zeit_Code;Zeit_Label;Zeit;1_Merkmal_Code;1_Merkmal_Label;1_Auspraegung_Code;1_Auspraegung_Label;BTR010__Landwirtschaftliche_Betriebe__Anzahl;FLC017__Landwirtschaftlich_genutzte_Flaeche__ha;BTR034__Landwirtschaftliche_Betriebe_mit_Viehhaltung__Anzahl;VIE003__Viehbestand__GV;BTR030__Landwirtsch._Betriebe_mit_oekologischem_Landbau__Anzahl;FLC047__Oekologisch_bewirtschaftete_LF__ha;BTR021__Landwirtschaftl._Betriebe_mit_oekolog._Viehhaltung__Anzahl;VIE004__Oekologisch_bewirtschafteter_Viehbestand__GV
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;DG;Deutschland;262776;16595024;168833;12016049;26133;1592735;17262;779815
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1;  Schleswig-Holstein;12194;982753;8937;941807;712;62689;547;37980
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1001;      Flensburg, kreisfreie Stadt;11;244;8;171;1;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1002;      Kiel, Landeshauptstadt, kreisfreie Stadt;31;2014;18;1553;2;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1003;      L�beck, Hansestadt, kreisfreie Stadt;71;5386;41;2848;8;1094;6;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1004;      Neum�nster, kreisfreie Stadt;26;1487;16;1662;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1051;      Dithmarschen, Landkreis;1272;100554;912;104009;81;7913;46;4111
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1053;      Herzogtum Lauenburg, Landkreis;691;66829;445;33485;55;5447;38;1997
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1054;      Nordfriesland, Landkreis;1882;140852;1540;170091;117;12058;100;8172
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1055;      Ostholstein, Landkreis;842;87360;504;32755;42;2843;33;1002
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1056;      Pinneberg, Landkreis;789;35082;452;36700;20;990;14;832
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1057;      Pl�n, Landkreis;660;70574;478;45409;50;3667;39;2109
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1058;      Rendsburg-Eckernf�rde, Landkreis;1634;138065;1268;149038;109;7359;80;4519
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1059;      Schleswig-Flensburg, Landkreis;1705;143366;1284;166159;105;10572;86;7869
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1060;      Segeberg, Landkreis;1036;76215;770;71557;54;4147;42;2244
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1061;      Steinburg, Landkreis;962;66944;779;93232;35;2918;31;2636
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;1062;      Stormarn, Landkreis;582;47781;422;33142;33;3542;30;1823
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;2;  Hamburg;591;14563;169;7074;38;1252;13;405
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3;  Niedersachsen;35348;2571337;25431;2930734;1748;122183;1136;61077
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;31;    Braunschweig, Stat. Region;4091;385144;2229;80721;236;19024;137;4507
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3101;      Braunschweig, kreisfreie Stadt;69;.;30;1145;7;742;4;111
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3102;      Salzgitter, kreisfreie Stadt;88;10373;39;1211;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3103;      Wolfsburg, kreisfreie Stadt;82;7723;43;989;1;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3151;      Gifhorn, Landkreis;784;76200;440;20887;46;4114;33;1363
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3152;      G�ttingen, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3153;      Goslar, Landkreis;279;26361;134;4158;14;1426;8;382
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3154;      Helmstedt, Landkreis;338;.;134;3254;17;2030;5;167
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3155;      Northeim, Landkreis;774;57500;490;19176;40;2114;25;560
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3156;      Osterode am Harz, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3157;      Peine, Landkreis;364;34383;177;5480;8;.;6;143
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3158;      Wolfenb�ttel, Landkreis;379;50944;120;2999;23;3186;8;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3159;      G�ttingen, Landkreis;934;72116;622;21424;80;5072;47;1596
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;32;    Hannover, Stat. Region;6070;484553;3642;291713;287;22151;173;8535
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3241;      Region Hannover, Landkreis;1409;114292;732;34903;75;5453;41;1555
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3241001;      Hannover, Landeshauptstadt;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3251;      Diepholz, Landkreis;1602;127191;1180;145535;71;6482;52;3661
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3252;      Hameln-Pyrmont, Landkreis;478;38914;277;12186;38;2971;18;720
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3254;      Hildesheim, Landkreis;769;66842;252;8400;24;1977;10;279
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3255;      Holzminden, Landkreis;307;24822;218;11814;18;1140;16;638
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3256;      Nienburg (Weser), Landkreis;1085;79561;716;63190;36;2808;21;1150
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3257;      Schaumburg, Landkreis;420;32931;267;15684;25;1319;15;532
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;33;    L�neburg, Stat. Region;9887;789740;7096;750461;743;55001;454;21575
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3351;      Celle, Landkreis;596;51610;394;28644;19;1088;13;648
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3352;      Cuxhaven, Landkreis;1745;134812;1490;203279;101;5794;70;3750
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3353;      Harburg, Landkreis;840;53691;563;38105;85;4172;55;2306
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3354;      L�chow-Dannenberg, Landkreis;551;58736;345;20088;109;9969;71;2605
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3355;      L�neburg, Landkreis;589;61179;356;25788;77;7214;46;2641
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3356;      Osterholz, Landkreis;675;38447;565;49436;64;3928;45;2268
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3357;      Rotenburg (W�mme), Landkreis;1517;125417;1241;163018;64;3386;43;1527
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3358;      Heidekreis, Landkreis;876;68286;636;47444;47;8912;31;1682
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3359;      Stade, Landkreis;1186;80083;684;101974;75;3873;19;1295
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3360;      Uelzen, Landkreis;643;72173;318;20186;56;4079;31;1453
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3361;      Verden, Landkreis;669;45306;504;52501;46;2584;30;1401
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;34;    Weser-Ems, Stat. Region;15300;911900;12464;1807839;482;26007;372;26459
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3401;      Delmenhorst, kreisfreie Stadt;56;2507;46;3527;5;216;4;113
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3402;      Emden, kreisfreie Stadt;55;4788;43;5653;3;.;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3403;      Oldenburg (Oldenburg), kreisfreie Stadt;42;2642;28;3002;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3404;      Osnabr�ck, kreisfreie Stadt;82;3188;52;3361;4;85;3;33
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3405;      Wilhelmshaven, kreisfreie Stadt;42;3528;35;4430;2;.;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3451;      Ammerland, Landkreis;836;42873;565;65386;16;791;11;715
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3452;      Aurich, Landkreis;1222;82252;989;99920;50;3323;41;3881
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3453;      Cloppenburg, Landkreis;1761;95359;1495;269839;16;798;11;395
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3454;      Emsland, Landkreis;2710;163692;2177;357955;85;2982;61;4580
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3455;      Friesland, Landkreis;547;43256;457;65688;34;2316;32;2684
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3456;      Grafschaft Bentheim, Landkreis;1116;58439;952;145731;19;567;20;1742
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3457;      Leer, Landkreis;1055;66516;919;104000;52;2816;40;2854
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3458;      Oldenburg, Landkreis;919;61809;756;100774;30;1810;18;763
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3459;      Osnabr�ck, Landkreis;2282;117022;1752;207486;75;3681;59;2771
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3460;      Vechta, Landkreis;1242;65763;1024;225464;18;751;10;332
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3461;      Wesermarsch, Landkreis;719;56692;646;89120;51;4378;41;4397
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;3462;      Wittmund, Landkreis;614;41574;528;56502;22;1020;17;902
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;4;  Bremen;133;7923;103;7587;24;1799;16;1114
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;4011;      Bremen, kreisfreie Stadt;127;7779;101;.;22;.;15;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;4012;      Bremerhaven, kreisfreie Stadt;6;145;2;.;2;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5;  Nordrhein-Westfalen;33611;1473157;23603;1725424;1950;83971;1546;57160
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;51;    D�sseldorf, Regierungsbezirk;4819;219508;2862;249664;137;6289;94;4439
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5111;      D�sseldorf, kreisfreie Stadt;101;4060;41;1610;1;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5112;      Duisburg, kreisfreie Stadt;64;2989;40;1397;3;68;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5113;      Essen, kreisfreie Stadt;86;3105;53;1882;5;258;4;162
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5114;      Krefeld, kreisfreie Stadt;83;.;32;2227;2;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5116;      M�nchengladbach, kreisfreie Stadt;129;.;56;2504;2;.;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5117;      M�lheim an der Ruhr, kreisfreie Stadt;49;1406;32;837;2;.;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5119;      Oberhausen, kreisfreie Stadt;17;580;7;375;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5120;      Remscheid, kreisfreie Stadt;40;1487;33;2063;3;80;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5122;      Solingen, kreisfreie Stadt;46;.;39;1210;5;155;3;60
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5124;      Wuppertal, kreisfreie Stadt;88;2816;67;2705;4;255;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5154;      Kleve, Kreis;1676;73120;1016;122219;37;1911;28;1828
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5158;      Mettmann, Kreis;269;12296;165;5967;15;748;13;418
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5162;      Rhein-Kreis Neuss;479;28209;184;7581;12;521;5;49
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5166;      Viersen, Kreis;666;28903;349;33391;12;571;6;425
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5170;      Wesel, Kreis;1026;49555;748;63695;34;1518;25;1313
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;53;    K�ln, Regierungsbezirk;5323;291647;3272;182093;497;23711;390;17431
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5314;      Bonn, kreisfreie Stadt;25;959;12;586;3;35;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5315;      K�ln, kreisfreie Stadt;86;8361;30;888;2;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5316;      Leverkusen, kreisfreie Stadt;48;1433;29;1577;1;.;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5334;      St�dteregion Aachen (einschl. Stadt Aachen);497;24469;355;22975;47;2130;41;1921
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5334002;      Aachen, krfr. Stadt;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5354;      Aachen, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5358;      D�ren, Kreis;675;48788;267;11887;22;1467;15;725
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5362;      Rhein-Erft-Kreis;423;33014;148;4546;9;769;4;74
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5366;      Euskirchen, Kreis;901;50836;619;29885;117;5442;96;3479
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5370;      Heinsberg, Kreis;684;36358;345;28423;7;242;6;181
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5374;      Oberbergischer Kreis;727;30448;632;37229;128;5105;110;4674
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5378;      Rheinisch-Bergischer Kreis;347;12864;273;13353;40;1406;30;1013
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5382;      Rhein-Sieg-Kreis;910;44116;562;30742;121;7030;85;5320
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;55;    M�nster, Regierungsbezirk;10352;389813;8157;745805;198;7744;143;5719
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5512;      Bottrop, kreisfreie Stadt;82;3602;59;6801;1;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5513;      Gelsenkirchen, kreisfreie Stadt;35;837;18;1189;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5515;      M�nster, kreisfreie Stadt;316;12715;226;16225;9;454;6;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5554;      Borken, Kreis;2704;87549;2193;219151;42;1581;30;1936
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5558;      Coesfeld, Kreis;1788;70725;1458;140487;26;1083;17;740
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5562;      Recklinghausen, Kreis;691;24718;489;38530;11;548;4;143
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5566;      Steinfurt, Kreis;2682;101473;2099;181216;63;2108;53;1786
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5570;      Warendorf, Kreis;2054;88194;1615;142206;46;1963;32;1029
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;57;    Detmold, Regierungsbezirk;7224;325940;4797;311666;423;19379;303;11319
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5711;      Bielefeld, kreisfreie Stadt;179;7073;90;3579;11;1048;6;470
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5754;      G�tersloh, Kreis;1494;52050;1037;73821;61;2035;37;1352
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5758;      Herford, Kreis;505;20727;252;13744;18;649;8;181
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5762;      H�xter, Kreis;1281;65478;904;52697;101;4954;79;2573
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5766;      Lippe, Kreis;850;54487;494;25274;73;3555;48;1222
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5770;      Minden-L�bbecke, Kreis;1421;65967;916;61769;54;2615;44;1744
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5774;      Paderborn, Kreis;1494;60157;1104;80780;105;4523;81;3778
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;59;    Arnsberg, Regierungsbezirk;5893;246250;4515;236197;695;26847;616;18253
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5911;      Bochum, kreisfreie Stadt;45;.;29;.;1;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5913;      Dortmund, kreisfreie Stadt;95;5212;57;2122;6;369;3;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5914;      Hagen, kreisfreie Stadt;60;1861;44;1618;6;.;5;132
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5915;      Hamm, kreisfreie Stadt;241;11266;161;12067;14;597;11;458
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5916;      Herne, kreisfreie Stadt;14;.;10;.;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5954;      Ennepe-Ruhr-Kreis;339;11349;268;10834;30;988;27;726
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5958;      Hochsauerlandkreis;1371;55839;1114;57609;245;8526;223;6743
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5962;      M�rkischer Kreis;602;26938;492;27610;64;3597;56;1755
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5966;      Olpe, Kreis;508;.;408;15452;102;2850;94;2515
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5970;      Siegen-Wittgenstein, Kreis;663;17408;581;13907;164;5923;156;4252
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5974;      Soest, Kreis;1431;74438;983;68811;48;2699;29;1335
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;5978;      Unna, Kreis;524;25342;368;24998;15;1025;11;305
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6;  Hessen;15128;764705;10221;411548;2108;114595;1674;63006
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;64;    Darmstadt, Regierungsbezirk;4935;235550;2790;102548;486;24032;354;12256
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6411;      Darmstadt, kreisfreie Stadt;34;1643;15;.;6;361;3;125
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6412;      Frankfurt am Main, kreisfreie Stadt;88;4141;25;937;7;303;4;154
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6413;      Offenbach am Main, kreisfreie Stadt;5;207;1;.;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6414;      Wiesbaden, Landeshauptstadt, kreisfreie Stadt;146;5404;42;.;13;1310;7;694
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6431;      Bergstra�e, Landkreis;562;23258;375;11785;43;1532;35;1039
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6432;      Darmstadt-Dieburg, Landkreis;469;26080;269;11680;29;1459;14;481
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6433;      Gro�-Gerau, Landkreis;247;15781;114;2706;10;649;5;100
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6434;      Hochtaunuskreis;234;11907;134;4183;20;1082;15;540
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6435;      Main-Kinzig-Kreis;984;44086;683;25525;168;7553;144;3927
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6436;      Main-Taunus-Kreis;180;7836;62;1737;12;486;3;156
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6437;      Odenwaldkreis;419;16431;341;16130;42;1631;33;1379
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6438;      Offenbach, Landkreis;131;5937;73;3400;5;287;5;166
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6439;      Rheingau-Taunus-Kreis;601;20105;206;4753;65;2189;35;801
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6440;      Wetteraukreis;835;52733;450;17902;66;5191;51;2694
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;65;    Gie�en, Regierungsbezirk;3832;205532;2768;106511;743;47441;626;25663
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6531;      Gie�en, Landkreis;562;34728;372;12698;94;6941;73;3932
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6532;      Lahn-Dill-Kreis;539;25408;411;10831;159;10586;135;5171
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6533;      Limburg-Weilburg, Landkreis;546;32130;343;13934;63;3852;50;2157
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6534;      Marburg-Biedenkopf, Landkreis;1106;49003;800;25011;197;10355;159;4721
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6535;      Vogelsbergkreis;1079;64264;842;44037;230;15707;209;9683
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;66;    Kassel, Regierungsbezirk;6361;323623;4663;202490;879;43122;694;25087
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6611;      Kassel, kreisfreie Stadt;26;700;13;225;6;107;5;49
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6631;      Fulda, Landkreis;1485;61612;1203;52100;282;11246;238;8215
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6632;      Hersfeld-Rotenburg, Landkreis;741;35355;571;20221;97;5380;71;2718
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6633;      Kassel, Landkreis;849;50326;552;23280;94;5821;58;2222
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6634;      Schwalm-Eder-Kreis;1162;69550;794;38309;100;5989;77;3641
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6635;      Waldeck-Frankenberg, Landkreis;1454;67763;1064;51906;199;9178;167;5833
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;6636;      Werra-Mei�ner-Kreis;644;38317;466;16448;101;5401;78;2409
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7;  Rheinland-Pfalz;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;71;    Koblenz, Stat. Region;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7111;      Koblenz, kreisfreie Stadt;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7131;      Ahrweiler, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7132;      Altenkirchen (Westerwald), Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7133;      Bad Kreuznach, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7134;      Birkenfeld, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7135;      Cochem-Zell, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7137;      Mayen-Koblenz, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7138;      Neuwied, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7140;      Rhein-Hunsr�ck-Kreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7141;      Rhein-Lahn-Kreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7143;      Westerwaldkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;72;    Trier, Stat. Region;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7211;      Trier, kreisfreie Stadt;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7231;      Bernkastel-Wittlich, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7232;      Eifelkreis Bitburg-Pr�m;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7233;      Vulkaneifel, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7235;      Trier-Saarburg, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;73;    Rheinhessen-Pfalz, Stat. Region;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7311;      Frankenthal (Pfalz), kreisfreie Stadt;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7312;      Kaiserslautern, kreisfreie Stadt;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7313;      Landau in der Pfalz, kreisfreie Stadt;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7314;      Ludwigshafen am Rhein, kreisfreie Stadt;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7315;      Mainz, kreisfreie Stadt;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7316;      Neustadt an der Weinstra�e, kreisfreie Stadt;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7317;      Pirmasens, kreisfreie Stadt;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7318;      Speyer, kreisfreie Stadt;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7319;      Worms, kreisfreie Stadt;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7320;      Zweibr�cken, kreisfreie Stadt;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7331;      Alzey-Worms, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7332;      Bad D�rkheim, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7333;      Donnersbergkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7334;      Germersheim, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7335;      Kaiserslautern, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7336;      Kusel, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7337;      S�dliche Weinstra�e, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7338;      Rhein-Pfalz-Kreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7339;      Mainz-Bingen, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;7340;      S�dwestpfalz, Landkreis;...;...;...;...;...;...;...;...
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8;  Baden-W�rttemberg, Land;39085;1408063;21757;942605;4456;173656;2542;95793
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;81;    Stuttgart, Regierungsbezirk;12429;463112;6717;324551;1241;45707;633;24175
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8111;      Stuttgart, Landeshauptstadt, Stadtkreis;182;2475;25;801;9;255;4;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8115;      B�blingen, Landkreis;555;22483;309;11169;46;2010;28;995
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8116;      Esslingen, Landkreis;629;20113;373;10679;64;1972;36;765
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8117;      G�ppingen, Landkreis;706;27956;540;27407;80;3268;45;2104
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8118;      Ludwigsburg, Landkreis;1121;32339;376;14599;82;2023;24;1200
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8119;      Rems-Murr-Kreis, Landkreis;1058;25335;536;19260;187;3789;65;2072
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8121;      Heilbronn, Universit�tsstadt, Stadtkreis;158;4035;10;168;8;135;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8125;      Heilbronn, Landkreis;1764;53758;392;13058;107;3497;33;988
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8126;      Hohenlohekreis, Landkreis;1042;41834;587;31027;98;4015;46;2086
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8127;      Schw�bisch Hall, Landkreis;1803;75698;1411;85346;180;6972;126;4827
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8128;      Main-Tauber-Kreis, Landkreis;1268;67520;546;25283;164;8654;71;2594
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8135;      Heidenheim, Landkreis;515;26160;342;19604;58;3086;37;1780
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8136;      Ostalbkreis, Landkreis;1628;63405;1270;66146;158;6031;117;4707
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;82;    Karlsruhe, Regierungsbezirk;4406;202747;2282;77207;394;20014;201;6839
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8211;      Baden-Baden, Stadtkreis;84;1448;18;357;6;271;5;129
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8212;      Karlsruhe, Stadtkreis;66;2581;27;483;11;268;5;78
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8215;      Karlsruhe, Landkreis;702;38067;308;6916;60;3535;29;1008
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8216;      Rastatt, Landkreis;455;14607;187;2893;19;688;6;108
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8221;      Heidelberg, Stadtkreis;66;1829;17;413;6;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8222;      Mannheim, Stadtkreis;55;2907;20;601;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8225;      Neckar-Odenwald-Kreis, Landkreis;802;45526;450;20627;64;3907;34;1190
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8226;      Rhein-Neckar-Kreis, Landkreis;842;38680;358;12234;53;2677;23;704
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8231;      Pforzheim, Stadtkreis;23;994;10;225;2;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8235;      Calw, Landkreis;431;17792;321;12128;50;1961;31;983
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8236;      Enzkreis, Landkreis;410;19564;252;9280;65;3904;33;1325
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8237;      Freudenstadt, Landkreis;470;18752;314;11051;58;2515;33;1257
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;83;    Freiburg, Regierungsbezirk;11988;316191;6179;176475;1407;50145;900;29007
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8311;      Freiburg im Breisgau, Stadtkreis;178;3458;35;809;17;404;4;136
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8315;      Breisgau-Hochschwarzwald, Landkreis;2528;48692;1014;24141;328;9253;195;5787
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8316;      Emmendingen, Landkreis;1186;22230;577;10695;93;2277;59;1281
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8317;      Ortenaukreis, Landkreis;3161;55914;1250;23520;187;5644;122;3524
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8325;      Rottweil, Landkreis;734;29873;515;15793;96;4211;67;2459
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8326;      Schwarzwald-Baar-Kreis, Landkreis;954;38254;711;26546;174;6815;123;4801
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8327;      Tuttlingen, Landkreis;416;23957;259;13705;59;3625;32;1153
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8335;      Konstanz, Landkreis;791;33003;422;21138;134;5230;58;2214
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8336;      L�rrach, Landkreis;946;22750;598;12309;111;3555;78;1868
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8337;      Waldshut, Landkreis;1094;38061;798;27819;208;9131;162;5785
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;84;    T�bingen, Regierungsbezirk;10262;426014;6579;364372;1414;57791;808;35771
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8415;      Reutlingen, Landkreis;997;44221;596;24973;157;6916;78;2634
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8416;      T�bingen, Landkreis;377;20031;189;7016;72;4729;39;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8417;      Zollernalbkreis, Landkreis;700;34459;398;14385;113;6732;51;2111
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8421;      Ulm, Stadtkreis;107;4669;52;3316;4;158;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8425;      Alb-Donau-Kreis, Landkreis;1651;73794;1116;61965;153;6119;99;3544
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8426;      Biberach, Landkreis;1633;75205;1176;80739;117;6038;92;5285
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8435;      Bodenseekreis, Landkreis;1412;33060;525;18862;233;5460;80;2387
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8436;      Ravensburg, Landkreis;2250;85956;1785;114291;430;15175;296;15006
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;8437;      Sigmaringen, Landkreis;1135;54619;742;38825;135;6464;72;2865
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9;  Bayern;84756;3107697;56143;2608043;9839;374939;6677;239869
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;91;    Oberbayern, Regierungsbezirk;22664;746757;16061;723245;3181;106648;2406;88243
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9161;      Ingolstadt;145;7188;61;1355;18;817;4;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9162;      M�nchen, Landeshauptstadt;118;6238;34;1201;9;1773;3;70
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9163;      Rosenheim;62;1524;46;2596;3;59;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9171;      Alt�tting, Landkreis;877;30089;604;33358;71;2532;45;1575
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9172;      Berchtesgadener Land, Landkreis;934;17300;829;25058;180;3241;159;3614
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9173;      Bad T�lz-Wolfratshausen, Landkreis;1027;30988;899;34203;223;7592;198;7836
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9174;      Dachau, Landkreis;811;36497;458;25576;97;4975;48;1185
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9175;      Ebersberg, Landkreis;823;24384;580;30100;86;2638;61;3242
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9176;      Eichst�tt, Landkreis;1261;53558;636;20279;89;4236;43;1302
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9177;      Erding, Landkreis;1649;58557;1097;64675;113;3919;66;2822
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9178;      Freising, Landkreis;1218;45832;626;22112;146;6227;85;2093
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9179;      F�rstenfeldbruck, Landkreis;537;21680;287;12621;72;2777;28;618
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9180;      Garmisch-Partenkirchen, Landkreis;649;18043;574;14789;94;2985;87;2544
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9181;      Landsberg am Lech, Landkreis;886;36455;609;32335;149;6295;109;5366
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9182;      Miesbach, Landkreis;959;25638;852;30284;342;9218;298;10117
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9183;      M�hldorf a.Inn, Landkreis;1567;46953;1197;65408;132;3627;99;3191
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9184;      M�nchen, Landkreis;486;18368;205;6357;48;1430;24;859
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9185;      Neuburg-Schrobenhausen, Landkreis;1092;41454;577;20723;47;2611;26;1130
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9186;      Pfaffenhofen a.d.Ilm, Landkreis;1178;38439;524;17701;95;3359;50;1139
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9187;      Rosenheim, Landkreis;2443;64232;2075;105007;430;11767;363;14412
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9188;      Starnberg, Landkreis;350;13661;231;9610;62;2802;46;1994
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9189;      Traunstein, Landkreis;2126;62080;1779;87116;361;10630;298;11077
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9190;      Weilheim-Schongau, Landkreis;1466;47598;1281;60782;314;11139;264;11881
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;92;    Niederbayern, Regierungsbezirk;14336;498985;9200;442832;1061;34164;691;19915
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9261;      Landshut;68;2278;41;1538;8;290;3;81
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9262;      Passau;48;1098;35;1000;4;147;3;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9263;      Straubing;78;3237;15;331;4;121;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9271;      Deggendorf, Landkreis;1260;41858;707;25111;78;1520;52;1055
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9272;      Freyung-Grafenau, Landkreis;1030;25878;837;28337;124;3303;110;2672
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9273;      Kelheim, Landkreis;1206;44132;541;20731;75;3007;35;1113
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9274;      Landshut, Landkreis;2216;85313;1428;90988;179;6538;99;3073
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9275;      Passau, Landkreis;2167;78988;1609;89309;157;5155;115;4048
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9276;      Regen, Landkreis;934;21699;836;28962;85;2162;76;2199
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9277;      Rottal-Inn, Landkreis;2242;72932;1601;88529;147;4553;89;3223
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9278;      Straubing-Bogen, Landkreis;1758;67147;912;34850;101;2821;67;1534
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9279;      Dingolfing-Landau, Landkreis;1329;54425;638;33147;99;4547;41;860
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;93;    Oberpfalz, Regierungsbezirk;10526;387400;7074;338743;988;37934;611;18766
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9361;      Amberg;50;2588;31;1585;11;271;6;190
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9362;      Regensburg;53;2243;7;35;8;281;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9363;      Weiden i.d.OPf.;72;2808;47;2418;9;330;7;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9371;      Amberg-Sulzbach, Landkreis;1181;46830;830;40929;135;4526;90;2534
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9372;      Cham, Landkreis;2109;62033;1666;76845;115;3174;97;2585
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9373;      Neumarkt i.d.OPf., Landkreis;1570;57891;979;38602;205;8453;117;3129
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9374;      Neustadt a.d.Waldnaab, Landkreis;1212;46826;917;45771;108;3770;75;2443
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9375;      Regensburg, Landkreis;1602;68477;709;36607;199;9582;92;2549
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9376;      Schwandorf, Landkreis;1578;55683;1081;53198;125;4363;73;2770
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9377;      Tirschenreuth, Landkreis;1099;42021;807;42753;73;3184;52;2261
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;94;    Oberfranken, Regierungsbezirk;7218;293977;4586;184593;847;36219;484;15737
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9461;      Bamberg;28;406;4;10;6;185;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9462;      Bayreuth;54;3398;38;2504;6;131;4;64
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9463;      Coburg;21;1126;16;698;1;.;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9464;      Hof;46;2479;27;1792;3;.;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9471;      Bamberg, Landkreis;1199;48620;656;20375;111;3901;64;1430
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9472;      Bayreuth, Landkreis;1250;48033;897;39345;133;4516;85;2819
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9473;      Coburg, Landkreis;577;30285;381;21572;56;2856;25;1207
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9474;      Forchheim, Landkreis;1008;24914;506;11043;79;3254;48;1327
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9475;      Hof, Landkreis;878;44210;634;34917;136;6410;70;2642
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9476;      Kronach, Landkreis;490;16688;310;8506;92;3901;64;1446
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9477;      Kulmbach, Landkreis;661;29662;455;18622;95;4857;59;2274
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9478;      Lichtenfels, Landkreis;564;21600;353;10803;47;1774;26;636
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9479;      Wunsiedel i.Fichtelgebirge, Landkreis;442;22557;309;14407;82;4261;36;1844
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;95;    Mittelfranken, Regierungsbezirk;8230;324849;5413;253868;621;25721;378;12847
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9561;      Ansbach;107;4069;75;2852;7;546;6;262
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9562;      Erlangen;76;2593;45;1765;12;434;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9563;      F�rth;69;2118;27;1137;5;.;3;8
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9564;      N�rnberg;152;3284;30;784;15;412;3;27
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9565;      Schwabach;35;930;21;850;1;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9571;      Ansbach, Landkreis;2528;107749;1753;94672;151;6264;100;3865
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9572;      Erlangen-H�chstadt, Landkreis;521;18835;290;8800;50;2582;27;1213
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9573;      F�rth, Landkreis;366;15490;239;10889;28;985;15;528
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9574;      N�rnberger Land, Landkreis;670;22395;521;14936;85;3903;60;1625
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9575;      Neustadt a.d.Aisch-Bad Windsheim, Landkreis;1510;68234;948;54033;130;5132;66;2055
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9576;      Roth, Landkreis;977;32481;657;25579;69;2076;42;1049
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9577;      Wei�enburg-Gunzenhausen, Landkreis;1219;46671;807;37571;68;3260;53;2032
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;96;    Unterfranken, Regierungsbezirk;7871;346160;3582;115588;1122;60250;563;15854
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9661;      Aschaffenburg;16;935;11;390;1;.;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9662;      Schweinfurt;7;395;4;184;1;.;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9663;      W�rzburg;55;1955;13;230;6;160;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9671;      Aschaffenburg, Landkreis;440;14458;298;6527;87;4036;67;2022
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9672;      Bad Kissingen, Landkreis;821;37682;487;15755;171;8713;110;3533
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9673;      Rh�n-Grabfeld, Landkreis;911;48605;439;13285;169;9441;92;2732
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9674;      Ha�berge, Landkreis;888;41982;483;15631;144;7801;75;2360
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9675;      Kitzingen, Landkreis;1257;39772;431;17483;90;2911;23;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9676;      Miltenberg, Landkreis;409;17879;243;8865;70;3096;42;1260
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9677;      Main-Spessart, Landkreis;859;37980;377;8804;135;7586;70;1748
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9678;      Schweinfurt, Landkreis;963;46260;381;12483;123;8178;44;1050
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9679;      W�rzburg, Landkreis;1245;58259;415;15952;125;8323;38;637
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;97;    Schwaben, Regierungsbezirk;13911;509569;10227;549174;2019;74004;1544;68509
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9761;      Augsburg;62;2673;24;787;5;234;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9762;      Kaufbeuren;33;1046;29;1576;12;370;9;439
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9763;      Kempten (Allg�u);88;3453;70;3916;38;1122;31;1658
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9764;      Memmingen;83;2448;60;3262;4;79;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9771;      Aichach-Friedberg, Landkreis;1102;45983;691;40557;90;4487;47;1434
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9772;      Augsburg, Landkreis;1233;50305;847;47114;89;3602;56;1956
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9773;      Dillingen a.d.Donau, Landkreis;985;44819;640;41366;48;2193;32;947
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9774;      G�nzburg, Landkreis;995;38200;704;36621;91;3757;67;3072
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9775;      Neu-Ulm, Landkreis;595;22191;371;18722;48;1850;25;1037
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9776;      Lindau (Bodensee), Landkreis;756;16999;583;22795;187;4899;163;5804
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9777;      Ostallg�u, Landkreis;2181;75233;1905;105910;494;18280;422;21285
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9778;      Unterallg�u, Landkreis;1868;70154;1565;105858;214;9069;180;10117
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9779;      Donau-Ries, Landkreis;1861;71562;1028;52107;174;7158;68;2507
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;9780;      Oberallg�u, Landkreis;2069;.;1710;68584;525;16903;442;18208
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;10;  Saarland;1094;74024;750;36861;146;13356;117;6458
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;10041;      Saarbr�cken, Regionalverband;103;6125;72;2705;11;1041;9;388
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;10041100;      Saarbr�cken, Landeshauptstadt;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;10042;      Merzig-Wadern, Landkreis;279;18133;187;9811;40;3422;31;1890
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;10043;      Neunkirchen, Landkreis;104;6695;81;3731;16;1803;13;626
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;10044;      Saarlouis, Landkreis;201;15365;111;6885;22;1629;17;901
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;10045;      Saarpfalz-Kreis;196;12887;145;5976;28;2286;22;1108
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;10046;      St. Wendel, Landkreis;211;14818;154;7754;29;3175;25;1546
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11;  Berlin;47;1864;28;946;6;295;4;122
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11001001;      Berlin-Mitte;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11002002;      Berlin-Friedrichshain-Kreuzberg;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11003003;      Berlin-Pankow;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11004004;      Berlin-Charlottenburg-Wilmersdorf;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11005005;      Berlin-Spandau;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11006006;      Berlin-Steglitz-Zehlendorf;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11007007;      Berlin-Tempelhof-Sch�neberg;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11008008;      Berlin-Neuk�lln;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11009009;      Berlin-Treptow-K�penick;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11010010;      Berlin-Marzahn-Hellersdorf;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11011011;      Berlin-Lichtenberg;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;11012012;      Berlin-Reinickendorf;.;.;.;.;.;.;.;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12;  Brandenburg;5413;1310361;3492;488154;818;173975;555;54887
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12051;      Brandenburg an der Havel, kreisfreie Stadt;16;2902;9;283;2;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12052;      Cottbus, kreisfreie Stadt;24;5185;21;1195;6;.;5;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12053;      Frankfurt (Oder), kreisfreie Stadt;40;6425;13;3384;4;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12054;      Potsdam, kreisfreie Stadt;26;4796;13;1267;6;.;5;841
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12060;      Barnim, Landkreis;244;49100;155;18688;57;10109;33;4399
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12061;      Dahme-Spreewald, Landkreis;341;71448;263;38111;76;23749;67;8048
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12062;      Elbe-Elster, Landkreis;353;88636;265;46190;28;4222;20;1440
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12063;      Havelland, Landkreis;355;89454;236;28533;56;12587;42;4924
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12064;      M�rkisch-Oderland, Landkreis;469;124915;230;32665;62;9837;38;2562
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12065;      Oberhavel, Landkreis;400;67573;279;22639;59;10014;35;2688
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12066;      Oberspreewald-Lausitz, Landkreis;189;37456;139;24460;33;7339;25;2795
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12067;      Oder-Spree, Landkreis;316;78802;214;33254;59;11002;36;2334
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12068;      Ostprignitz-Ruppin, Landkreis;477;123616;328;43084;79;16074;55;5365
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12069;      Potsdam-Mittelmark, Landkreis;521;106224;293;40746;55;10074;30;2730
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12070;      Prignitz, Landkreis;519;137313;363;51258;43;7820;34;3330
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12071;      Spree-Nei�e, Landkreis;294;49507;208;27483;52;9942;35;3129
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12072;      Teltow-Fl�ming, Landkreis;309;90903;182;30046;34;9719;21;2194
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;12073;      Uckermark, Landkreis;520;176103;281;44868;107;25510;72;7396
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13;  Mecklenburg-Vorpommern;4784;1343521;2853;495566;986;164258;693;69682
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13001;      Greifswald, Hansestadt,  kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13002;      Neubrandenburg, Stadt,  kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13003;      Rostock, Hanse- und Universit�tsstadt, kreisfreie Stadt;24;1142;11;389;2;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13004;      Schwerin, Landeshauptstadt, kreisfreie Stadt;13;427;8;258;4;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13005;      Stralsund, Hansestadt,  kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13006;      Wismar, Hansestadt,  kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13051;       Bad Doberan, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13052;      Landkreis Demmin;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13053;      G�strow, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13054;      Landkreis Ludwigslust;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13055;      Mecklenburg-Strelitz, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13056;      Landkreis M�ritz;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13057;      Nordvorpommern, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13058;      Landkreis Nordwestmecklenburg;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13059;      Ostvorpommern, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13060;      Landkreis Parchim;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13061;      R�gen, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13062;      Landkreis Uecker-Randow;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13071;      Mecklenburgische Seenplatte, Landkreis;1014;286751;596;86960;202;33536;152;13685
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13072;      Landkreis Rostock;822;225306;504;90419;167;26976;109;9933
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13073;      Vorpommern-R�gen, Landkreis;637;200525;352;53372;112;19908;80;10681
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13074;      Landkreis Nordwestmecklenburg;493;140126;264;48702;70;7622;48;2829
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13075;       Vorpommern-Greifswald, Landkreis;750;224768;447;78487;185;39067;131;18690
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;13076;      Landkreis Ludwigslust-Parchim;1031;264476;671;136980;244;36751;171;13737
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14;  Sachsen;6500;898375;4498;430971;719;70849;441;23450
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;141;    Chemnitz, Regierungsbezirk;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14161;      Chemnitz, kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14166;      Plauen, kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14167;      Zwickau, kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14171;      Annaberg, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14173;      Chemnitzer Land, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14177;      Freiberg, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14178;      Vogtlandkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14181;      Mittlerer Erzgebirgskreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14182;      Mittweida, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14188;      Stollberg, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14191;      Aue-Schwarzenberg, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14193;      Zwickauer Land, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;142;    Dresden, Regierungsbezirk;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14262;      Dresden, kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14263;      G�rlitz, kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14264;      Hoyerswerda, kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14272;      Bautzen, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14280;      Mei�en, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14284;      Niederschlesischer Oberlausitzkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14285;      Riesa-Gro�enhain, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14286;      L�bau-Zittau, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14287;      S�chsische Schweiz, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14290;      Wei�eritzkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14292;      Kamenz, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;143;    Leipzig, Regierungsbezirk;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14365;      Leipzig, kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14374;      Delitzsch, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14375;      D�beln, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14379;      Leipziger Land, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14383;      Muldentalkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14389;      Torgau-Oschatz, Landkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;145;    Chemnitz, Stat. Region;2757;.;2122;.;289;.;196;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14511;      Chemnitz, Stadt;76;7113;60;3727;3;94;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14521;      Erzgebirgskreis;688;63141;582;49257;65;7141;51;3844
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14522;      Mittelsachsen, Landkreis;965;135762;659;73534;111;8026;67;3006
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14523;      Vogtlandkreis;552;55246;428;36253;83;11742;59;6066
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14524;      Zwickau, Landkreis;476;50869;393;29540;27;1129;17;374
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;146;    Dresden, Stat. Region;2512;.;1664;.;285;.;179;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14612;      Dresden, Stadt;120;4654;43;1166;13;637;5;204
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14625;      Bautzen, Landkreis;636;98341;459;44461;45;6857;28;3520
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14626;      G�rlitz, Landkreis;524;86106;352;37256;57;3772;38;981
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14627;      Mei�en, Landkreis;616;92770;329;40580;58;7205;24;1118
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14628;      S�chsische Schweiz-Osterzgebirge, Landkreis;616;75810;481;34726;112;7972;84;2586
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;147;    Leipzig, Stat. Region;1231;.;712;.;145;.;66;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14713;      Leipzig, Stadt;54;8508;21;2252;10;485;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14729;      Leipzig, Landkreis;546;95286;348;34173;54;6737;25;634
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;14730;      Nordsachsen, Landkreis;631;124769;343;44046;81;9053;39;1040
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15;  Sachsen-Anhalt;4344;1162702;2292;402474;586;104917;299;20727
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15001;      Dessau-Ro�lau, kreisfreie Stadt;40;6109;34;1284;5;.;3;157
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15002;      Halle (Saale), kreisfreie Stadt;20;2690;12;192;6;1277;4;80
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15003;      Magdeburg, kreisfreie Stadt;21;4758;9;503;1;.;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15081;      Altmarkkreis Salzwedel;500;124687;324;54514;86;13950;50;4768
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15082;      Anhalt-Bitterfeld, Landkreis;306;89739;145;49523;35;10062;13;1788
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15083;      B�rde, Landkreis;564;146796;253;53151;41;5827;14;447
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15084;      Burgenlandkreis;434;93514;213;27750;21;3236;10;330
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15085;      Harz, Landkreis;340;100168;157;22736;43;8001;22;2093
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15086;      Jerichower Land, Landkreis;303;82195;176;41664;55;6738;27;1221
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15087;      Mansfeld-S�dharz, Landkreis;288;72831;153;15860;24;5084;16;1124
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15088;      Saalekreis;316;100306;134;26356;32;4192;9;361
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15089;      Salzlandkreis;300;100156;115;18375;25;3953;10;722
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15090;      Stendal, Landkreis;602;149618;371;52380;114;24325;68;6075
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15091;      Wittenberg, Landkreis;310;89136;196;38186;98;17404;53;1562
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;151;    Dessau, Stat. Region;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15101;      Dessau, kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15151;      Anhalt-Zerbst, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15153;      Bernburg, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15154;      Bitterfeld, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15159;      K�then, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15171;      Wittenberg, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;152;    Halle, Stat. Region;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15202;      Halle (Saale), kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15256;      Burgenlandkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15260;      Mansfelder Land, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15261;      Merseburg-Querfurt, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15265;      Saalkreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15266;      Sangerhausen, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15268;      Wei�enfels, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;153;    Magdeburg, Stat. Region;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15303;      Magdeburg, kreisfreie Stadt;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15352;      Aschersleben-Sta�furt, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15355;      B�rdekreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15357;      Halberstadt, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15358;      Jerichower Land, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15362;      Ohrekreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15363;      Stendal, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15364;      Quedlinburg, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15367;      Sch�nebeck, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15369;      Wernigerode, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;15370;      Altmarkkreis Salzwedel, Kreis;-;-;-;-;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16;  Th�ringen;3708;774830;2593;307783;374;50948;245;17259
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16051;      Erfurt, kreisfreie Stadt;84;13706;31;1723;6;802;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16052;      Gera, kreisfreie Stadt;50;4786;31;1023;5;281;4;125
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16053;      Jena, kreisfreie Stadt;17;894;12;402;1;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16054;      Suhl, kreisfreie Stadt;7;232;6;132;-;-;-;-
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16055;      Weimar, kreisfreie Stadt;14;2077;9;224;2;.;1;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16056;      Eisenach, kreisfreie Stadt;21;5870;18;1529;6;623;6;268
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16061;      Eichsfeld, Kreis;281;47136;215;16500;29;3008;16;1024
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16062;      Nordhausen, Kreis;130;35394;87;16978;13;1007;10;520
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16063;      Wartburgkreis;313;52636;284;25039;38;3321;31;1114
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16064;      Unstrut-Hainich-Kreis;234;66813;123;13876;25;3611;18;1219
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16065;      Kyffh�userkreis;229;62955;127;11798;19;4078;9;373
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16066;      Schmalkalden-Meiningen, Kreis;236;42308;184;23776;33;6582;24;2733
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16067;      Gotha, Kreis;142;49544;80;17957;22;6712;10;2211
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16068;      S�mmerda, Kreis;213;58555;86;10656;13;1661;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16069;      Hildburghausen, Kreis;124;33605;97;17730;5;1226;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16070;      Ilm-Kreis;128;30984;99;11203;11;1045;8;352
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16071;      Weimarer Land, Kreis;217;55248;148;18990;18;1301;13;632
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16072;      Sonneberg, Kreis;51;6823;46;4998;3;77;2;.
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16073;      Saalfeld-Rudolstadt, Kreis;177;33442;140;18751;34;6740;27;3492
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16074;      Saale-Holzland-Kreis;226;39254;178;22814;20;1464;13;447
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16075;      Saale-Orla-Kreis;284;50401;218;30719;37;3858;25;1534
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16076;      Greiz, Kreis;337;45767;265;28699;18;1360;14;280
+41141;Agrarstrukturerhebung / Landwirtschaftsz�hlung;JAHR;Jahr;2020;KREISE;Kreise und kreisfreie St�dte;16077;      Altenburger Land, Kreis;193;36401;109;12267;16;2014;8;719
