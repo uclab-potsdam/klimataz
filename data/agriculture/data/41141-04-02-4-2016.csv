@@ -1,0 +1,539 @@
+AGS;Name;Landwirtschaftlich genutzte Flaeche 2016
+0;Deutschland;16658928
+1;  Schleswig-Holstein;990403
+1001;      Flensburg, kreisfreie Stadt;145
+1002;      Kiel, Landeshauptstadt, kreisfreie Stadt;2196
+1003;      L�beck, Hansestadt, kreisfreie Stadt;5335
+1004;      Neum�nster, kreisfreie Stadt;1672
+1051;      Dithmarschen, Landkreis;100610
+1053;      Herzogtum Lauenburg, Landkreis;69330
+1054;      Nordfriesland, Landkreis;141740
+1055;      Ostholstein, Landkreis;89365
+1056;      Pinneberg, Landkreis;35658
+1057;      Pl�n, Landkreis;68767
+1058;      Rendsburg-Eckernf�rde, Landkreis;138682
+1059;      Schleswig-Flensburg, Landkreis;145051
+1060;      Segeberg, Landkreis;76023
+1061;      Steinburg, Landkreis;68362
+1062;      Stormarn, Landkreis;47467
+2;  Hamburg;14637
+3;  Niedersachsen;2598164
+31;    Braunschweig, Stat. Region;388606
+3101;      Braunschweig, kreisfreie Stadt;6905
+3102;      Salzgitter, kreisfreie Stadt;10684
+3103;      Wolfsburg, kreisfreie Stadt;8320
+3151;      Gifhorn, Landkreis;77568
+3152;      G�ttingen, Landkreis;57461
+3153;      Goslar, Landkreis;27510
+3154;      Helmstedt, Landkreis;41344
+3155;      Northeim, Landkreis;56617
+3156;      Osterode am Harz, Landkreis;15514
+3157;      Peine, Landkreis;35763
+3158;      Wolfenb�ttel, Landkreis;50920
+3159;      G�ttingen, Landkreis;-
+32;    Hannover, Stat. Region;493472
+3241;      Region Hannover, Landkreis;115858
+3241001;      Hannover, Landeshauptstadt;.
+3251;      Diepholz, Landkreis;129528
+3252;      Hameln-Pyrmont, Landkreis;39229
+3254;      Hildesheim, Landkreis;67905
+3255;      Holzminden, Landkreis;25566
+3256;      Nienburg (Weser), Landkreis;81809
+3257;      Schaumburg, Landkreis;33577
+33;    L�neburg, Stat. Region;802212
+3351;      Celle, Landkreis;52227
+3352;      Cuxhaven, Landkreis;136258
+3353;      Harburg, Landkreis;54922
+3354;      L�chow-Dannenberg, Landkreis;60650
+3355;      L�neburg, Landkreis;62195
+3356;      Osterholz, Landkreis;39610
+3357;      Rotenburg (W�mme), Landkreis;126042
+3358;      Heidekreis, Landkreis;69453
+3359;      Stade, Landkreis;80219
+3360;      Uelzen, Landkreis;74506
+3361;      Verden, Landkreis;46131
+34;    Weser-Ems, Stat. Region;913874
+3401;      Delmenhorst, kreisfreie Stadt;2674
+3402;      Emden, kreisfreie Stadt;4786
+3403;      Oldenburg (Oldenburg), kreisfreie Stadt;2457
+3404;      Osnabr�ck, kreisfreie Stadt;3370
+3405;      Wilhelmshaven, kreisfreie Stadt;3504
+3451;      Ammerland, Landkreis;42654
+3452;      Aurich, Landkreis;82643
+3453;      Cloppenburg, Landkreis;95505
+3454;      Emsland, Landkreis;162521
+3455;      Friesland, Landkreis;43888
+3456;      Grafschaft Bentheim, Landkreis;58296
+3457;      Leer, Landkreis;67200
+3458;      Oldenburg, Landkreis;63862
+3459;      Osnabr�ck, Landkreis;117136
+3460;      Vechta, Landkreis;64521
+3461;      Wesermarsch, Landkreis;56615
+3462;      Wittmund, Landkreis;42240
+4;  Bremen;8052
+4011;      Bremen, kreisfreie Stadt;7756
+4012;      Bremerhaven, kreisfreie Stadt;297
+5;  Nordrhein-Westfalen;1440539
+51;    D�sseldorf, Regierungsbezirk;213760
+5111;      D�sseldorf, kreisfreie Stadt;3056
+5112;      Duisburg, kreisfreie Stadt;3058
+5113;      Essen, kreisfreie Stadt;2980
+5114;      Krefeld, kreisfreie Stadt;3886
+5116;      M�nchengladbach, kreisfreie Stadt;5707
+5117;      M�lheim an der Ruhr, kreisfreie Stadt;1567
+5119;      Oberhausen, kreisfreie Stadt;492
+5120;      Remscheid, kreisfreie Stadt;1343
+5122;      Solingen, kreisfreie Stadt;1322
+5124;      Wuppertal, kreisfreie Stadt;2545
+5154;      Kleve, Kreis;72133
+5158;      Mettmann, Kreis;12003
+5162;      Rhein-Kreis Neuss;28030
+5166;      Viersen, Kreis;27786
+5170;      Wesel, Kreis;47851
+53;    K�ln, Regierungsbezirk;288524
+5314;      Bonn, kreisfreie Stadt;1016
+5315;      K�ln, kreisfreie Stadt;7978
+5316;      Leverkusen, kreisfreie Stadt;2145
+5334;      St�dteregion Aachen (einschl. Stadt Aachen);24205
+5334002;      Aachen, krfr. Stadt;.
+5354;      Aachen, Kreis;-
+5358;      D�ren, Kreis;48900
+5362;      Rhein-Erft-Kreis;32793
+5366;      Euskirchen, Kreis;50155
+5370;      Heinsberg, Kreis;36569
+5374;      Oberbergischer Kreis;29308
+5378;      Rheinisch-Bergischer Kreis;11959
+5382;      Rhein-Sieg-Kreis;43495
+55;    M�nster, Regierungsbezirk;382168
+5512;      Bottrop, kreisfreie Stadt;3819
+5513;      Gelsenkirchen, kreisfreie Stadt;1076
+5515;      M�nster, kreisfreie Stadt;12661
+5554;      Borken, Kreis;86124
+5558;      Coesfeld, Kreis;69345
+5562;      Recklinghausen, Kreis;24537
+5566;      Steinfurt, Kreis;99376
+5570;      Warendorf, Kreis;85231
+57;    Detmold, Regierungsbezirk;316090
+5711;      Bielefeld, kreisfreie Stadt;6947
+5754;      G�tersloh, Kreis;50723
+5758;      Herford, Kreis;20050
+5762;      H�xter, Kreis;64832
+5766;      Lippe, Kreis;52525
+5770;      Minden-L�bbecke, Kreis;64507
+5774;      Paderborn, Kreis;56506
+59;    Arnsberg, Regierungsbezirk;239998
+5911;      Bochum, kreisfreie Stadt;1889
+5913;      Dortmund, kreisfreie Stadt;5093
+5914;      Hagen, kreisfreie Stadt;1846
+5915;      Hamm, kreisfreie Stadt;11199
+5916;      Herne, kreisfreie Stadt;482
+5954;      Ennepe-Ruhr-Kreis;11061
+5958;      Hochsauerlandkreis;55352
+5962;      M�rkischer Kreis;24894
+5966;      Olpe, Kreis;14290
+5970;      Siegen-Wittgenstein, Kreis;16306
+5974;      Soest, Kreis;72923
+5978;      Unna, Kreis;24662
+6;  Hessen;767332
+64;    Darmstadt, Regierungsbezirk;236010
+6411;      Darmstadt, kreisfreie Stadt;1696
+6412;      Frankfurt am Main, kreisfreie Stadt;4192
+6413;      Offenbach am Main, kreisfreie Stadt;261
+6414;      Wiesbaden, Landeshauptstadt, kreisfreie Stadt;5486
+6431;      Bergstra�e, Landkreis;22985
+6432;      Darmstadt-Dieburg, Landkreis;25921
+6433;      Gro�-Gerau, Landkreis;16064
+6434;      Hochtaunuskreis;12147
+6435;      Main-Kinzig-Kreis;45041
+6436;      Main-Taunus-Kreis;7763
+6437;      Odenwaldkreis;16694
+6438;      Offenbach, Landkreis;6142
+6439;      Rheingau-Taunus-Kreis;19109
+6440;      Wetteraukreis;52508
+65;    Gie�en, Regierungsbezirk;206881
+6531;      Gie�en, Landkreis;34898
+6532;      Lahn-Dill-Kreis;25667
+6533;      Limburg-Weilburg, Landkreis;32076
+6534;      Marburg-Biedenkopf, Landkreis;49223
+6535;      Vogelsbergkreis;65017
+66;    Kassel, Regierungsbezirk;324442
+6611;      Kassel, kreisfreie Stadt;765
+6631;      Fulda, Landkreis;61807
+6632;      Hersfeld-Rotenburg, Landkreis;36153
+6633;      Kassel, Landkreis;49516
+6634;      Schwalm-Eder-Kreis;69259
+6635;      Waldeck-Frankenberg, Landkreis;68039
+6636;      Werra-Mei�ner-Kreis;38903
+7;  Rheinland-Pfalz;698763
+71;    Koblenz, Stat. Region;254526
+7111;      Koblenz, kreisfreie Stadt;1972
+7131;      Ahrweiler, Landkreis;18829
+7132;      Altenkirchen (Westerwald), Landkreis;16236
+7133;      Bad Kreuznach, Landkreis;32300
+7134;      Birkenfeld, Landkreis;20065
+7135;      Cochem-Zell, Landkreis;22295
+7137;      Mayen-Koblenz, Landkreis;36265
+7138;      Neuwied, Landkreis;16287
+7140;      Rhein-Hunsr�ck-Kreis;37301
+7141;      Rhein-Lahn-Kreis;26679
+7143;      Westerwaldkreis;26296
+72;    Trier, Stat. Region;179098
+7211;      Trier, kreisfreie Stadt;1860
+7231;      Bernkastel-Wittlich, Landkreis;34098
+7232;      Eifelkreis Bitburg-Pr�m;78482
+7233;      Vulkaneifel, Landkreis;31368
+7235;      Trier-Saarburg, Landkreis;33289
+73;    Rheinhessen-Pfalz, Stat. Region;265140
+7311;      Frankenthal (Pfalz), kreisfreie Stadt;2243
+7312;      Kaiserslautern, kreisfreie Stadt;1183
+7313;      Landau in der Pfalz, kreisfreie Stadt;2018
+7314;      Ludwigshafen am Rhein, kreisfreie Stadt;1548
+7315;      Mainz, kreisfreie Stadt;4961
+7316;      Neustadt an der Weinstra�e, kreisfreie Stadt;3330
+7317;      Pirmasens, kreisfreie Stadt;1105
+7318;      Speyer, kreisfreie Stadt;571
+7319;      Worms, kreisfreie Stadt;7089
+7320;      Zweibr�cken, kreisfreie Stadt;2999
+7331;      Alzey-Worms, Landkreis;40018
+7332;      Bad D�rkheim, Landkreis;16461
+7333;      Donnersbergkreis;32724
+7334;      Germersheim, Landkreis;16704
+7335;      Kaiserslautern, Landkreis;17241
+7336;      Kusel, Landkreis;24311
+7337;      S�dliche Weinstra�e, Landkreis;22791
+7338;      Rhein-Pfalz-Kreis;16248
+7339;      Mainz-Bingen, Landkreis;32642
+7340;      S�dwestpfalz, Landkreis;18953
+8;  Baden-W�rttemberg, Land;1415980
+81;    Stuttgart, Regierungsbezirk;465780
+8111;      Stuttgart, Landeshauptstadt, Stadtkreis;2511
+8115;      B�blingen, Landkreis;22448
+8116;      Esslingen, Landkreis;19908
+8117;      G�ppingen, Landkreis;28124
+8118;      Ludwigsburg, Landkreis;32389
+8119;      Rems-Murr-Kreis, Landkreis;25643
+8121;      Heilbronn, Universit�tsstadt, Stadtkreis;4118
+8125;      Heilbronn, Landkreis;53934
+8126;      Hohenlohekreis, Landkreis;41838
+8127;      Schw�bisch Hall, Landkreis;76105
+8128;      Main-Tauber-Kreis, Landkreis;68459
+8135;      Heidenheim, Landkreis;26413
+8136;      Ostalbkreis, Landkreis;63891
+82;    Karlsruhe, Regierungsbezirk;204379
+8211;      Baden-Baden, Stadtkreis;1584
+8212;      Karlsruhe, Stadtkreis;2597
+8215;      Karlsruhe, Landkreis;38432
+8216;      Rastatt, Landkreis;14724
+8221;      Heidelberg, Stadtkreis;1824
+8222;      Mannheim, Stadtkreis;2915
+8225;      Neckar-Odenwald-Kreis, Landkreis;46102
+8226;      Rhein-Neckar-Kreis, Landkreis;38774
+8231;      Pforzheim, Stadtkreis;970
+8235;      Calw, Landkreis;17877
+8236;      Enzkreis, Landkreis;19613
+8237;      Freudenstadt, Landkreis;18967
+83;    Freiburg, Regierungsbezirk;318213
+8311;      Freiburg im Breisgau, Stadtkreis;3449
+8315;      Breisgau-Hochschwarzwald, Landkreis;49323
+8316;      Emmendingen, Landkreis;22196
+8317;      Ortenaukreis, Landkreis;56010
+8325;      Rottweil, Landkreis;30064
+8326;      Schwarzwald-Baar-Kreis, Landkreis;38379
+8327;      Tuttlingen, Landkreis;24236
+8335;      Konstanz, Landkreis;33372
+8336;      L�rrach, Landkreis;23158
+8337;      Waldshut, Landkreis;38026
+84;    T�bingen, Regierungsbezirk;427608
+8415;      Reutlingen, Landkreis;43570
+8416;      T�bingen, Landkreis;20159
+8417;      Zollernalbkreis, Landkreis;34687
+8421;      Ulm, Stadtkreis;4646
+8425;      Alb-Donau-Kreis, Landkreis;74525
+8426;      Biberach, Landkreis;75677
+8435;      Bodenseekreis, Landkreis;33530
+8436;      Ravensburg, Landkreis;86042
+8437;      Sigmaringen, Landkreis;54773
+9;  Bayern;3125366
+91;    Oberbayern, Regierungsbezirk;750543
+9161;      Ingolstadt;6840
+9162;      M�nchen, Landeshauptstadt;6092
+9163;      Rosenheim;1500
+9171;      Alt�tting, Landkreis;30212
+9172;      Berchtesgadener Land, Landkreis;17365
+9173;      Bad T�lz-Wolfratshausen, Landkreis;30578
+9174;      Dachau, Landkreis;36714
+9175;      Ebersberg, Landkreis;24830
+9176;      Eichst�tt, Landkreis;55134
+9177;      Erding, Landkreis;58798
+9178;      Freising, Landkreis;46950
+9179;      F�rstenfeldbruck, Landkreis;22044
+9180;      Garmisch-Partenkirchen, Landkreis;15139
+9181;      Landsberg am Lech, Landkreis;36371
+9182;      Miesbach, Landkreis;25612
+9183;      M�hldorf a.Inn, Landkreis;47844
+9184;      M�nchen, Landkreis;19261
+9185;      Neuburg-Schrobenhausen, Landkreis;42431
+9186;      Pfaffenhofen a.d.Ilm, Landkreis;38947
+9187;      Rosenheim, Landkreis;64108
+9188;      Starnberg, Landkreis;13627
+9189;      Traunstein, Landkreis;62367
+9190;      Weilheim-Schongau, Landkreis;47779
+92;    Niederbayern, Regierungsbezirk;503338
+9261;      Landshut;2396
+9262;      Passau;1147
+9263;      Straubing;3295
+9271;      Deggendorf, Landkreis;42953
+9272;      Freyung-Grafenau, Landkreis;26150
+9273;      Kelheim, Landkreis;45192
+9274;      Landshut, Landkreis;85971
+9275;      Passau, Landkreis;79987
+9276;      Regen, Landkreis;22051
+9277;      Rottal-Inn, Landkreis;72920
+9278;      Straubing-Bogen, Landkreis;67069
+9279;      Dingolfing-Landau, Landkreis;54207
+93;    Oberpfalz, Regierungsbezirk;391374
+9361;      Amberg;2692
+9362;      Regensburg;2345
+9363;      Weiden i.d.OPf.;2940
+9371;      Amberg-Sulzbach, Landkreis;47322
+9372;      Cham, Landkreis;62532
+9373;      Neumarkt i.d.OPf., Landkreis;58256
+9374;      Neustadt a.d.Waldnaab, Landkreis;47127
+9375;      Regensburg, Landkreis;69890
+9376;      Schwandorf, Landkreis;56171
+9377;      Tirschenreuth, Landkreis;42099
+94;    Oberfranken, Regierungsbezirk;298469
+9461;      Bamberg;484
+9462;      Bayreuth;3293
+9463;      Coburg;1104
+9464;      Hof;2620
+9471;      Bamberg, Landkreis;48471
+9472;      Bayreuth, Landkreis;48129
+9473;      Coburg, Landkreis;32713
+9474;      Forchheim, Landkreis;25243
+9475;      Hof, Landkreis;45477
+9476;      Kronach, Landkreis;16650
+9477;      Kulmbach, Landkreis;29703
+9478;      Lichtenfels, Landkreis;21878
+9479;      Wunsiedel i.Fichtelgebirge, Landkreis;22702
+95;    Mittelfranken, Regierungsbezirk;327492
+9561;      Ansbach;4139
+9562;      Erlangen;2570
+9563;      F�rth;2138
+9564;      N�rnberg;3215
+9565;      Schwabach;990
+9571;      Ansbach, Landkreis;108450
+9572;      Erlangen-H�chstadt, Landkreis;18867
+9573;      F�rth, Landkreis;15737
+9574;      N�rnberger Land, Landkreis;22576
+9575;      Neustadt a.d.Aisch-Bad Windsheim, Landkreis;68658
+9576;      Roth, Landkreis;32867
+9577;      Wei�enburg-Gunzenhausen, Landkreis;47286
+96;    Unterfranken, Regierungsbezirk;350072
+9661;      Aschaffenburg;960
+9662;      Schweinfurt;406
+9663;      W�rzburg;2170
+9671;      Aschaffenburg, Landkreis;14824
+9672;      Bad Kissingen, Landkreis;37998
+9673;      Rh�n-Grabfeld, Landkreis;50279
+9674;      Ha�berge, Landkreis;42098
+9675;      Kitzingen, Landkreis;40220
+9676;      Miltenberg, Landkreis;17735
+9677;      Main-Spessart, Landkreis;38319
+9678;      Schweinfurt, Landkreis;46148
+9679;      W�rzburg, Landkreis;58916
+97;    Schwaben, Regierungsbezirk;504078
+9761;      Augsburg;2699
+9762;      Kaufbeuren;1024
+9763;      Kempten (Allg�u);3420
+9764;      Memmingen;2614
+9771;      Aichach-Friedberg, Landkreis;46371
+9772;      Augsburg, Landkreis;50805
+9773;      Dillingen a.d.Donau, Landkreis;45258
+9774;      G�nzburg, Landkreis;37798
+9775;      Neu-Ulm, Landkreis;22422
+9776;      Lindau (Bodensee), Landkreis;17068
+9777;      Ostallg�u, Landkreis;73096
+9778;      Unterallg�u, Landkreis;71316
+9779;      Donau-Ries, Landkreis;72627
+9780;      Oberallg�u, Landkreis;57560
+10;  Saarland;77755
+10041;      Saarbr�cken, Regionalverband;6436
+10041100;      Saarbr�cken, Landeshauptstadt;.
+10042;      Merzig-Wadern, Landkreis;19028
+10043;      Neunkirchen, Landkreis;7520
+10044;      Saarlouis, Landkreis;15722
+10045;      Saarpfalz-Kreis;13725
+10046;      St. Wendel, Landkreis;15324
+11;  Berlin;1845
+11001001;      Berlin-Mitte;-
+11002002;      Berlin-Friedrichshain-Kreuzberg;-
+11003003;      Berlin-Pankow;-
+11004004;      Berlin-Charlottenburg-Wilmersdorf;-
+11005005;      Berlin-Spandau;-
+11006006;      Berlin-Steglitz-Zehlendorf;-
+11007007;      Berlin-Tempelhof-Sch�neberg;-
+11008008;      Berlin-Neuk�lln;-
+11009009;      Berlin-Treptow-K�penick;-
+11010010;      Berlin-Marzahn-Hellersdorf;-
+11011011;      Berlin-Lichtenberg;-
+11012012;      Berlin-Reinickendorf;-
+12;  Brandenburg;1315469
+12051;      Brandenburg an der Havel, kreisfreie Stadt;3831
+12052;      Cottbus, kreisfreie Stadt;4801
+12053;      Frankfurt (Oder), kreisfreie Stadt;6426
+12054;      Potsdam, kreisfreie Stadt;4758
+12060;      Barnim, Landkreis;49686
+12061;      Dahme-Spreewald, Landkreis;71835
+12062;      Elbe-Elster, Landkreis;89688
+12063;      Havelland, Landkreis;87966
+12064;      M�rkisch-Oderland, Landkreis;126305
+12065;      Oberhavel, Landkreis;67419
+12066;      Oberspreewald-Lausitz, Landkreis;37337
+12067;      Oder-Spree, Landkreis;77847
+12068;      Ostprignitz-Ruppin, Landkreis;126161
+12069;      Potsdam-Mittelmark, Landkreis;106167
+12070;      Prignitz, Landkreis;137037
+12071;      Spree-Nei�e, Landkreis;49533
+12072;      Teltow-Fl�ming, Landkreis;91451
+12073;      Uckermark, Landkreis;177219
+13;  Mecklenburg-Vorpommern;1347590
+13001;      Greifswald, Hansestadt,  kreisfreie Stadt;-
+13002;      Neubrandenburg, Stadt,  kreisfreie Stadt;-
+13003;      Rostock, Hanse- und Universit�tsstadt, kreisfreie Stadt;2387
+13004;      Schwerin, Landeshauptstadt, kreisfreie Stadt;445
+13005;      Stralsund, Hansestadt,  kreisfreie Stadt;-
+13006;      Wismar, Hansestadt,  kreisfreie Stadt;-
+13051;       Bad Doberan, Landkreis;-
+13052;      Landkreis Demmin;-
+13053;      G�strow, Landkreis;-
+13054;      Landkreis Ludwigslust;-
+13055;      Mecklenburg-Strelitz, Landkreis;-
+13056;      Landkreis M�ritz;-
+13057;      Nordvorpommern, Landkreis;-
+13058;      Landkreis Nordwestmecklenburg;-
+13059;      Ostvorpommern, Landkreis;-
+13060;      Landkreis Parchim;-
+13061;      R�gen, Landkreis;-
+13062;      Landkreis Uecker-Randow;-
+13071;      Mecklenburgische Seenplatte, Landkreis;287229
+13072;      Landkreis Rostock;223131
+13073;      Vorpommern-R�gen, Landkreis;202482
+13074;      Landkreis Nordwestmecklenburg;139029
+13075;       Vorpommern-Greifswald, Landkreis;224839
+13076;      Landkreis Ludwigslust-Parchim;268048
+14;  Sachsen;903514
+141;    Chemnitz, Regierungsbezirk;-
+14161;      Chemnitz, kreisfreie Stadt;-
+14166;      Plauen, kreisfreie Stadt;-
+14167;      Zwickau, kreisfreie Stadt;-
+14171;      Annaberg, Landkreis;-
+14173;      Chemnitzer Land, Landkreis;-
+14177;      Freiberg, Landkreis;-
+14178;      Vogtlandkreis;-
+14181;      Mittlerer Erzgebirgskreis;-
+14182;      Mittweida, Landkreis;-
+14188;      Stollberg, Landkreis;-
+14191;      Aue-Schwarzenberg, Landkreis;-
+14193;      Zwickauer Land, Landkreis;-
+142;    Dresden, Regierungsbezirk;-
+14262;      Dresden, kreisfreie Stadt;-
+14263;      G�rlitz, kreisfreie Stadt;-
+14264;      Hoyerswerda, kreisfreie Stadt;-
+14272;      Bautzen, Landkreis;-
+14280;      Mei�en, Landkreis;-
+14284;      Niederschlesischer Oberlausitzkreis;-
+14285;      Riesa-Gro�enhain, Landkreis;-
+14286;      L�bau-Zittau, Landkreis;-
+14287;      S�chsische Schweiz, Landkreis;-
+14290;      Wei�eritzkreis;-
+14292;      Kamenz, Landkreis;-
+143;    Leipzig, Regierungsbezirk;-
+14365;      Leipzig, kreisfreie Stadt;-
+14374;      Delitzsch, Landkreis;-
+14375;      D�beln, Landkreis;-
+14379;      Leipziger Land, Landkreis;-
+14383;      Muldentalkreis;-
+14389;      Torgau-Oschatz, Landkreis;-
+145;    Chemnitz, Stat. Region;314123
+14511;      Chemnitz, Stadt;7118
+14521;      Erzgebirgskreis;63359
+14522;      Mittelsachsen, Landkreis;137289
+14523;      Vogtlandkreis;55111
+14524;      Zwickau, Landkreis;51245
+146;    Dresden, Stat. Region;359130
+14612;      Dresden, Stadt;4704
+14625;      Bautzen, Landkreis;98336
+14626;      G�rlitz, Landkreis;86906
+14627;      Mei�en, Landkreis;92962
+14628;      S�chsische Schweiz-Osterzgebirge, Landkreis;76222
+147;    Leipzig, Stat. Region;230261
+14713;      Leipzig, Stadt;8744
+14729;      Leipzig, Landkreis;95935
+14730;      Nordsachsen, Landkreis;125582
+15;  Sachsen-Anhalt;1174525
+15001;      Dessau-Ro�lau, kreisfreie Stadt;6219
+15002;      Halle (Saale), kreisfreie Stadt;2676
+15003;      Magdeburg, kreisfreie Stadt;5392
+15081;      Altmarkkreis Salzwedel;125531
+15082;      Anhalt-Bitterfeld, Landkreis;89651
+15083;      B�rde, Landkreis;150981
+15084;      Burgenlandkreis;93584
+15085;      Harz, Landkreis;103432
+15086;      Jerichower Land, Landkreis;84032
+15087;      Mansfeld-S�dharz, Landkreis;72557
+15088;      Saalekreis;101568
+15089;      Salzlandkreis;100612
+15090;      Stendal, Landkreis;148390
+15091;      Wittenberg, Landkreis;89900
+151;    Dessau, Stat. Region;-
+15101;      Dessau, kreisfreie Stadt;-
+15151;      Anhalt-Zerbst, Kreis;-
+15153;      Bernburg, Kreis;-
+15154;      Bitterfeld, Kreis;-
+15159;      K�then, Kreis;-
+15171;      Wittenberg, Kreis;-
+152;    Halle, Stat. Region;-
+15202;      Halle (Saale), kreisfreie Stadt;-
+15256;      Burgenlandkreis;-
+15260;      Mansfelder Land, Kreis;-
+15261;      Merseburg-Querfurt, Kreis;-
+15265;      Saalkreis;-
+15266;      Sangerhausen, Kreis;-
+15268;      Wei�enfels, Kreis;-
+153;    Magdeburg, Stat. Region;-
+15303;      Magdeburg, kreisfreie Stadt;-
+15352;      Aschersleben-Sta�furt, Kreis;-
+15355;      B�rdekreis;-
+15357;      Halberstadt, Kreis;-
+15358;      Jerichower Land, Kreis;-
+15362;      Ohrekreis;-
+15363;      Stendal, Kreis;-
+15364;      Quedlinburg, Kreis;-
+15367;      Sch�nebeck, Kreis;-
+15369;      Wernigerode, Kreis;-
+15370;      Altmarkkreis Salzwedel, Kreis;-
+16;  Th�ringen;778996
+16051;      Erfurt, kreisfreie Stadt;13350
+16052;      Gera, kreisfreie Stadt;4725
+16053;      Jena, kreisfreie Stadt;925
+16054;      Suhl, kreisfreie Stadt;281
+16055;      Weimar, kreisfreie Stadt;2058
+16056;      Eisenach, kreisfreie Stadt;5787
+16061;      Eichsfeld, Kreis;47207
+16062;      Nordhausen, Kreis;35617
+16063;      Wartburgkreis;53635
+16064;      Unstrut-Hainich-Kreis;66658
+16065;      Kyffh�userkreis;67876
+16066;      Schmalkalden-Meiningen, Kreis;41017
+16067;      Gotha, Kreis;47952
+16068;      S�mmerda, Kreis;57693
+16069;      Hildburghausen, Kreis;33467
+16070;      Ilm-Kreis;31576
+16071;      Weimarer Land, Kreis;55255
+16072;      Sonneberg, Kreis;6961
+16073;      Saalfeld-Rudolstadt, Kreis;33517
+16074;      Saale-Holzland-Kreis;39601
+16075;      Saale-Orla-Kreis;50506
+16076;      Greiz, Kreis;46620
+16077;      Altenburger Land, Kreis;36710

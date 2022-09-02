@@ -1,0 +1,539 @@
+Jahr;AGS;Name;Viehbestand 2016
+01.03.2016;0;Deutschland;12954359
+01.03.2016;1;  Schleswig-Holstein;1015024
+01.03.2016;1001;      Flensburg, kreisfreie Stadt;195
+01.03.2016;1002;      Kiel, Landeshauptstadt, kreisfreie Stadt;1601
+01.03.2016;1003;      L�beck, Hansestadt, kreisfreie Stadt;2752
+01.03.2016;1004;      Neum�nster, kreisfreie Stadt;1919
+01.03.2016;1051;      Dithmarschen, Landkreis;111849
+01.03.2016;1053;      Herzogtum Lauenburg, Landkreis;37724
+01.03.2016;1054;      Nordfriesland, Landkreis;179912
+01.03.2016;1055;      Ostholstein, Landkreis;34062
+01.03.2016;1056;      Pinneberg, Landkreis;39975
+01.03.2016;1057;      Pl�n, Landkreis;48847
+01.03.2016;1058;      Rendsburg-Eckernf�rde, Landkreis;161864
+01.03.2016;1059;      Schleswig-Flensburg, Landkreis;182506
+01.03.2016;1060;      Segeberg, Landkreis;75461
+01.03.2016;1061;      Steinburg, Landkreis;101175
+01.03.2016;1062;      Stormarn, Landkreis;35182
+01.03.2016;2;  Hamburg;7302
+01.03.2016;3;  Niedersachsen;3170580
+01.03.2016;31;    Braunschweig, Stat. Region;90531
+01.03.2016;3101;      Braunschweig, kreisfreie Stadt;1316
+01.03.2016;3102;      Salzgitter, kreisfreie Stadt;741
+01.03.2016;3103;      Wolfsburg, kreisfreie Stadt;1115
+01.03.2016;3151;      Gifhorn, Landkreis;23524
+01.03.2016;3152;      G�ttingen, Landkreis;19744
+01.03.2016;3153;      Goslar, Landkreis;5416
+01.03.2016;3154;      Helmstedt, Landkreis;3634
+01.03.2016;3155;      Northeim, Landkreis;21952
+01.03.2016;3156;      Osterode am Harz, Landkreis;5024
+01.03.2016;3157;      Peine, Landkreis;5298
+01.03.2016;3158;      Wolfenb�ttel, Landkreis;2765
+01.03.2016;3159;      G�ttingen, Landkreis;-
+01.03.2016;32;    Hannover, Stat. Region;313910
+01.03.2016;3241;      Region Hannover, Landkreis;39465
+01.03.2016;3241001;      Hannover, Landeshauptstadt;.
+01.03.2016;3251;      Diepholz, Landkreis;151012
+01.03.2016;3252;      Hameln-Pyrmont, Landkreis;13692
+01.03.2016;3254;      Hildesheim, Landkreis;9628
+01.03.2016;3255;      Holzminden, Landkreis;12454
+01.03.2016;3256;      Nienburg (Weser), Landkreis;71668
+01.03.2016;3257;      Schaumburg, Landkreis;15992
+01.03.2016;33;    L�neburg, Stat. Region;820107
+01.03.2016;3351;      Celle, Landkreis;30838
+01.03.2016;3352;      Cuxhaven, Landkreis;225436
+01.03.2016;3353;      Harburg, Landkreis;40636
+01.03.2016;3354;      L�chow-Dannenberg, Landkreis;22422
+01.03.2016;3355;      L�neburg, Landkreis;29774
+01.03.2016;3356;      Osterholz, Landkreis;56432
+01.03.2016;3357;      Rotenburg (W�mme), Landkreis;181770
+01.03.2016;3358;      Heidekreis, Landkreis;49171
+01.03.2016;3359;      Stade, Landkreis;107660
+01.03.2016;3360;      Uelzen, Landkreis;21492
+01.03.2016;3361;      Verden, Landkreis;54477
+01.03.2016;34;    Weser-Ems, Stat. Region;1946032
+01.03.2016;3401;      Delmenhorst, kreisfreie Stadt;4111
+01.03.2016;3402;      Emden, kreisfreie Stadt;5819
+01.03.2016;3403;      Oldenburg (Oldenburg), kreisfreie Stadt;3152
+01.03.2016;3404;      Osnabr�ck, kreisfreie Stadt;3738
+01.03.2016;3405;      Wilhelmshaven, kreisfreie Stadt;5072
+01.03.2016;3451;      Ammerland, Landkreis;74230
+01.03.2016;3452;      Aurich, Landkreis;108867
+01.03.2016;3453;      Cloppenburg, Landkreis;291547
+01.03.2016;3454;      Emsland, Landkreis;381837
+01.03.2016;3455;      Friesland, Landkreis;74333
+01.03.2016;3456;      Grafschaft Bentheim, Landkreis;148895
+01.03.2016;3457;      Leer, Landkreis;118599
+01.03.2016;3458;      Oldenburg, Landkreis;110474
+01.03.2016;3459;      Osnabr�ck, Landkreis;218511
+01.03.2016;3460;      Vechta, Landkreis;234830
+01.03.2016;3461;      Wesermarsch, Landkreis;98789
+01.03.2016;3462;      Wittmund, Landkreis;63225
+01.03.2016;4;  Bremen;8566
+01.03.2016;4011;      Bremen, kreisfreie Stadt;.
+01.03.2016;4012;      Bremerhaven, kreisfreie Stadt;.
+01.03.2016;5;  Nordrhein-Westfalen;1835480
+01.03.2016;51;    D�sseldorf, Regierungsbezirk;274257
+01.03.2016;5111;      D�sseldorf, kreisfreie Stadt;1370
+01.03.2016;5112;      Duisburg, kreisfreie Stadt;1224
+01.03.2016;5113;      Essen, kreisfreie Stadt;1950
+01.03.2016;5114;      Krefeld, kreisfreie Stadt;2303
+01.03.2016;5116;      M�nchengladbach, kreisfreie Stadt;2597
+01.03.2016;5117;      M�lheim an der Ruhr, kreisfreie Stadt;1006
+01.03.2016;5119;      Oberhausen, kreisfreie Stadt;.
+01.03.2016;5120;      Remscheid, kreisfreie Stadt;.
+01.03.2016;5122;      Solingen, kreisfreie Stadt;1038
+01.03.2016;5124;      Wuppertal, kreisfreie Stadt;2591
+01.03.2016;5154;      Kleve, Kreis;135256
+01.03.2016;5158;      Mettmann, Kreis;6037
+01.03.2016;5162;      Rhein-Kreis Neuss;8060
+01.03.2016;5166;      Viersen, Kreis;36019
+01.03.2016;5170;      Wesel, Kreis;72276
+01.03.2016;53;    K�ln, Regierungsbezirk;193280
+01.03.2016;5314;      Bonn, kreisfreie Stadt;533
+01.03.2016;5315;      K�ln, kreisfreie Stadt;588
+01.03.2016;5316;      Leverkusen, kreisfreie Stadt;1533
+01.03.2016;5334;      St�dteregion Aachen (einschl. Stadt Aachen);24543
+01.03.2016;5334002;      Aachen, krfr. Stadt;.
+01.03.2016;5354;      Aachen, Kreis;-
+01.03.2016;5358;      D�ren, Kreis;13274
+01.03.2016;5362;      Rhein-Erft-Kreis;4762
+01.03.2016;5366;      Euskirchen, Kreis;30601
+01.03.2016;5370;      Heinsberg, Kreis;31227
+01.03.2016;5374;      Oberbergischer Kreis;39380
+01.03.2016;5378;      Rheinisch-Bergischer Kreis;14387
+01.03.2016;5382;      Rhein-Sieg-Kreis;32453
+01.03.2016;55;    M�nster, Regierungsbezirk;791946
+01.03.2016;5512;      Bottrop, kreisfreie Stadt;6884
+01.03.2016;5513;      Gelsenkirchen, kreisfreie Stadt;1516
+01.03.2016;5515;      M�nster, kreisfreie Stadt;18081
+01.03.2016;5554;      Borken, Kreis;229159
+01.03.2016;5558;      Coesfeld, Kreis;146226
+01.03.2016;5562;      Recklinghausen, Kreis;40650
+01.03.2016;5566;      Steinfurt, Kreis;197566
+01.03.2016;5570;      Warendorf, Kreis;151865
+01.03.2016;57;    Detmold, Regierungsbezirk;328443
+01.03.2016;5711;      Bielefeld, kreisfreie Stadt;4295
+01.03.2016;5754;      G�tersloh, Kreis;78070
+01.03.2016;5758;      Herford, Kreis;14784
+01.03.2016;5762;      H�xter, Kreis;57385
+01.03.2016;5766;      Lippe, Kreis;28262
+01.03.2016;5770;      Minden-L�bbecke, Kreis;66688
+01.03.2016;5774;      Paderborn, Kreis;78958
+01.03.2016;59;    Arnsberg, Regierungsbezirk;247555
+01.03.2016;5911;      Bochum, kreisfreie Stadt;772
+01.03.2016;5913;      Dortmund, kreisfreie Stadt;2154
+01.03.2016;5914;      Hagen, kreisfreie Stadt;1680
+01.03.2016;5915;      Hamm, kreisfreie Stadt;12407
+01.03.2016;5916;      Herne, kreisfreie Stadt;591
+01.03.2016;5954;      Ennepe-Ruhr-Kreis;11626
+01.03.2016;5958;      Hochsauerlandkreis;60693
+01.03.2016;5962;      M�rkischer Kreis;29209
+01.03.2016;5966;      Olpe, Kreis;16175
+01.03.2016;5970;      Siegen-Wittgenstein, Kreis;14376
+01.03.2016;5974;      Soest, Kreis;70927
+01.03.2016;5978;      Unna, Kreis;26944
+01.03.2016;6;  Hessen;440880
+01.03.2016;64;    Darmstadt, Regierungsbezirk;106313
+01.03.2016;6411;      Darmstadt, kreisfreie Stadt;.
+01.03.2016;6412;      Frankfurt am Main, kreisfreie Stadt;841
+01.03.2016;6413;      Offenbach am Main, kreisfreie Stadt;.
+01.03.2016;6414;      Wiesbaden, Landeshauptstadt, kreisfreie Stadt;1530
+01.03.2016;6431;      Bergstra�e, Landkreis;12433
+01.03.2016;6432;      Darmstadt-Dieburg, Landkreis;11115
+01.03.2016;6433;      Gro�-Gerau, Landkreis;3070
+01.03.2016;6434;      Hochtaunuskreis;4396
+01.03.2016;6435;      Main-Kinzig-Kreis;27492
+01.03.2016;6436;      Main-Taunus-Kreis;1787
+01.03.2016;6437;      Odenwaldkreis;16519
+01.03.2016;6438;      Offenbach, Landkreis;3011
+01.03.2016;6439;      Rheingau-Taunus-Kreis;4501
+01.03.2016;6440;      Wetteraukreis;19294
+01.03.2016;65;    Gie�en, Regierungsbezirk;115250
+01.03.2016;6531;      Gie�en, Landkreis;.
+01.03.2016;6532;      Lahn-Dill-Kreis;.
+01.03.2016;6533;      Limburg-Weilburg, Landkreis;15026
+01.03.2016;6534;      Marburg-Biedenkopf, Landkreis;27264
+01.03.2016;6535;      Vogelsbergkreis;47464
+01.03.2016;66;    Kassel, Regierungsbezirk;219317
+01.03.2016;6611;      Kassel, kreisfreie Stadt;260
+01.03.2016;6631;      Fulda, Landkreis;56611
+01.03.2016;6632;      Hersfeld-Rotenburg, Landkreis;22546
+01.03.2016;6633;      Kassel, Landkreis;24591
+01.03.2016;6634;      Schwalm-Eder-Kreis;41560
+01.03.2016;6635;      Waldeck-Frankenberg, Landkreis;55264
+01.03.2016;6636;      Werra-Mei�ner-Kreis;18484
+01.03.2016;7;  Rheinland-Pfalz;306501
+01.03.2016;71;    Koblenz, Stat. Region;112968
+01.03.2016;7111;      Koblenz, kreisfreie Stadt;368
+01.03.2016;7131;      Ahrweiler, Landkreis;9665
+01.03.2016;7132;      Altenkirchen (Westerwald), Landkreis;14350
+01.03.2016;7133;      Bad Kreuznach, Landkreis;7095
+01.03.2016;7134;      Birkenfeld, Landkreis;10493
+01.03.2016;7135;      Cochem-Zell, Landkreis;6144
+01.03.2016;7137;      Mayen-Koblenz, Landkreis;11289
+01.03.2016;7138;      Neuwied, Landkreis;11134
+01.03.2016;7140;      Rhein-Hunsr�ck-Kreis;13572
+01.03.2016;7141;      Rhein-Lahn-Kreis;10497
+01.03.2016;7143;      Westerwaldkreis;18362
+01.03.2016;72;    Trier, Stat. Region;141854
+01.03.2016;7211;      Trier, kreisfreie Stadt;507
+01.03.2016;7231;      Bernkastel-Wittlich, Landkreis;18729
+01.03.2016;7232;      Eifelkreis Bitburg-Pr�m;79119
+01.03.2016;7233;      Vulkaneifel, Landkreis;26570
+01.03.2016;7235;      Trier-Saarburg, Landkreis;16929
+01.03.2016;73;    Rheinhessen-Pfalz, Stat. Region;51679
+01.03.2016;7311;      Frankenthal (Pfalz), kreisfreie Stadt;.
+01.03.2016;7312;      Kaiserslautern, kreisfreie Stadt;296
+01.03.2016;7313;      Landau in der Pfalz, kreisfreie Stadt;29
+01.03.2016;7314;      Ludwigshafen am Rhein, kreisfreie Stadt;179
+01.03.2016;7315;      Mainz, kreisfreie Stadt;195
+01.03.2016;7316;      Neustadt an der Weinstra�e, kreisfreie Stadt;299
+01.03.2016;7317;      Pirmasens, kreisfreie Stadt;576
+01.03.2016;7318;      Speyer, kreisfreie Stadt;67
+01.03.2016;7319;      Worms, kreisfreie Stadt;220
+01.03.2016;7320;      Zweibr�cken, kreisfreie Stadt;1722
+01.03.2016;7331;      Alzey-Worms, Landkreis;.
+01.03.2016;7332;      Bad D�rkheim, Landkreis;1159
+01.03.2016;7333;      Donnersbergkreis;6742
+01.03.2016;7334;      Germersheim, Landkreis;1776
+01.03.2016;7335;      Kaiserslautern, Landkreis;8184
+01.03.2016;7336;      Kusel, Landkreis;10575
+01.03.2016;7337;      S�dliche Weinstra�e, Landkreis;1480
+01.03.2016;7338;      Rhein-Pfalz-Kreis;496
+01.03.2016;7339;      Mainz-Bingen, Landkreis;2198
+01.03.2016;7340;      S�dwestpfalz, Landkreis;12775
+01.03.2016;8;  Baden-W�rttemberg, Land;1002741
+01.03.2016;81;    Stuttgart, Regierungsbezirk;343255
+01.03.2016;8111;      Stuttgart, Landeshauptstadt, Stadtkreis;878
+01.03.2016;8115;      B�blingen, Landkreis;11096
+01.03.2016;8116;      Esslingen, Landkreis;10907
+01.03.2016;8117;      G�ppingen, Landkreis;27839
+01.03.2016;8118;      Ludwigsburg, Landkreis;15821
+01.03.2016;8119;      Rems-Murr-Kreis, Landkreis;19674
+01.03.2016;8121;      Heilbronn, Universit�tsstadt, Stadtkreis;277
+01.03.2016;8125;      Heilbronn, Landkreis;14974
+01.03.2016;8126;      Hohenlohekreis, Landkreis;32509
+01.03.2016;8127;      Schw�bisch Hall, Landkreis;91388
+01.03.2016;8128;      Main-Tauber-Kreis, Landkreis;26944
+01.03.2016;8135;      Heidenheim, Landkreis;20792
+01.03.2016;8136;      Ostalbkreis, Landkreis;70155
+01.03.2016;82;    Karlsruhe, Regierungsbezirk;81151
+01.03.2016;8211;      Baden-Baden, Stadtkreis;387
+01.03.2016;8212;      Karlsruhe, Stadtkreis;538
+01.03.2016;8215;      Karlsruhe, Landkreis;7376
+01.03.2016;8216;      Rastatt, Landkreis;3184
+01.03.2016;8221;      Heidelberg, Stadtkreis;513
+01.03.2016;8222;      Mannheim, Stadtkreis;499
+01.03.2016;8225;      Neckar-Odenwald-Kreis, Landkreis;22180
+01.03.2016;8226;      Rhein-Neckar-Kreis, Landkreis;13502
+01.03.2016;8231;      Pforzheim, Stadtkreis;307
+01.03.2016;8235;      Calw, Landkreis;12085
+01.03.2016;8236;      Enzkreis, Landkreis;9579
+01.03.2016;8237;      Freudenstadt, Landkreis;11002
+01.03.2016;83;    Freiburg, Regierungsbezirk;187890
+01.03.2016;8311;      Freiburg im Breisgau, Stadtkreis;867
+01.03.2016;8315;      Breisgau-Hochschwarzwald, Landkreis;25314
+01.03.2016;8316;      Emmendingen, Landkreis;11577
+01.03.2016;8317;      Ortenaukreis, Landkreis;24955
+01.03.2016;8325;      Rottweil, Landkreis;17601
+01.03.2016;8326;      Schwarzwald-Baar-Kreis, Landkreis;27430
+01.03.2016;8327;      Tuttlingen, Landkreis;14600
+01.03.2016;8335;      Konstanz, Landkreis;23203
+01.03.2016;8336;      L�rrach, Landkreis;13292
+01.03.2016;8337;      Waldshut, Landkreis;29051
+01.03.2016;84;    T�bingen, Regierungsbezirk;390445
+01.03.2016;8415;      Reutlingen, Landkreis;27175
+01.03.2016;8416;      T�bingen, Landkreis;7361
+01.03.2016;8417;      Zollernalbkreis, Landkreis;14382
+01.03.2016;8421;      Ulm, Stadtkreis;3722
+01.03.2016;8425;      Alb-Donau-Kreis, Landkreis;68037
+01.03.2016;8426;      Biberach, Landkreis;86276
+01.03.2016;8435;      Bodenseekreis, Landkreis;20964
+01.03.2016;8436;      Ravensburg, Landkreis;122051
+01.03.2016;8437;      Sigmaringen, Landkreis;40476
+01.03.2016;9;  Bayern;2818180
+01.03.2016;91;    Oberbayern, Regierungsbezirk;777098
+01.03.2016;9161;      Ingolstadt;1661
+01.03.2016;9162;      M�nchen, Landeshauptstadt;1171
+01.03.2016;9163;      Rosenheim;2776
+01.03.2016;9171;      Alt�tting, Landkreis;37014
+01.03.2016;9172;      Berchtesgadener Land, Landkreis;26752
+01.03.2016;9173;      Bad T�lz-Wolfratshausen, Landkreis;35490
+01.03.2016;9174;      Dachau, Landkreis;28038
+01.03.2016;9175;      Ebersberg, Landkreis;32695
+01.03.2016;9176;      Eichst�tt, Landkreis;21816
+01.03.2016;9177;      Erding, Landkreis;71231
+01.03.2016;9178;      Freising, Landkreis;25481
+01.03.2016;9179;      F�rstenfeldbruck, Landkreis;14067
+01.03.2016;9180;      Garmisch-Partenkirchen, Landkreis;14757
+01.03.2016;9181;      Landsberg am Lech, Landkreis;33913
+01.03.2016;9182;      Miesbach, Landkreis;30410
+01.03.2016;9183;      M�hldorf a.Inn, Landkreis;71006
+01.03.2016;9184;      M�nchen, Landkreis;7142
+01.03.2016;9185;      Neuburg-Schrobenhausen, Landkreis;23382
+01.03.2016;9186;      Pfaffenhofen a.d.Ilm, Landkreis;20084
+01.03.2016;9187;      Rosenheim, Landkreis;111140
+01.03.2016;9188;      Starnberg, Landkreis;10657
+01.03.2016;9189;      Traunstein, Landkreis;93380
+01.03.2016;9190;      Weilheim-Schongau, Landkreis;63034
+01.03.2016;92;    Niederbayern, Regierungsbezirk;483196
+01.03.2016;9261;      Landshut;1827
+01.03.2016;9262;      Passau;1108
+01.03.2016;9263;      Straubing;351
+01.03.2016;9271;      Deggendorf, Landkreis;27450
+01.03.2016;9272;      Freyung-Grafenau, Landkreis;31341
+01.03.2016;9273;      Kelheim, Landkreis;23476
+01.03.2016;9274;      Landshut, Landkreis;99038
+01.03.2016;9275;      Passau, Landkreis;98480
+01.03.2016;9276;      Regen, Landkreis;30289
+01.03.2016;9277;      Rottal-Inn, Landkreis;94870
+01.03.2016;9278;      Straubing-Bogen, Landkreis;38175
+01.03.2016;9279;      Dingolfing-Landau, Landkreis;36791
+01.03.2016;93;    Oberpfalz, Regierungsbezirk;363816
+01.03.2016;9361;      Amberg;1874
+01.03.2016;9362;      Regensburg;147
+01.03.2016;9363;      Weiden i.d.OPf.;2647
+01.03.2016;9371;      Amberg-Sulzbach, Landkreis;44586
+01.03.2016;9372;      Cham, Landkreis;81014
+01.03.2016;9373;      Neumarkt i.d.OPf., Landkreis;42201
+01.03.2016;9374;      Neustadt a.d.Waldnaab, Landkreis;50057
+01.03.2016;9375;      Regensburg, Landkreis;39116
+01.03.2016;9376;      Schwandorf, Landkreis;56937
+01.03.2016;9377;      Tirschenreuth, Landkreis;45237
+01.03.2016;94;    Oberfranken, Regierungsbezirk;201090
+01.03.2016;9461;      Bamberg;103
+01.03.2016;9462;      Bayreuth;2693
+01.03.2016;9463;      Coburg;782
+01.03.2016;9464;      Hof;1926
+01.03.2016;9471;      Bamberg, Landkreis;22413
+01.03.2016;9472;      Bayreuth, Landkreis;42409
+01.03.2016;9473;      Coburg, Landkreis;24081
+01.03.2016;9474;      Forchheim, Landkreis;12240
+01.03.2016;9475;      Hof, Landkreis;36470
+01.03.2016;9476;      Kronach, Landkreis;9426
+01.03.2016;9477;      Kulmbach, Landkreis;20009
+01.03.2016;9478;      Lichtenfels, Landkreis;12086
+01.03.2016;9479;      Wunsiedel i.Fichtelgebirge, Landkreis;16451
+01.03.2016;95;    Mittelfranken, Regierungsbezirk;279407
+01.03.2016;9561;      Ansbach;3276
+01.03.2016;9562;      Erlangen;1673
+01.03.2016;9563;      F�rth;1215
+01.03.2016;9564;      N�rnberg;932
+01.03.2016;9565;      Schwabach;984
+01.03.2016;9571;      Ansbach, Landkreis;102018
+01.03.2016;9572;      Erlangen-H�chstadt, Landkreis;9548
+01.03.2016;9573;      F�rth, Landkreis;12316
+01.03.2016;9574;      N�rnberger Land, Landkreis;16136
+01.03.2016;9575;      Neustadt a.d.Aisch-Bad Windsheim, Landkreis;61277
+01.03.2016;9576;      Roth, Landkreis;27895
+01.03.2016;9577;      Wei�enburg-Gunzenhausen, Landkreis;42137
+01.03.2016;96;    Unterfranken, Regierungsbezirk;128770
+01.03.2016;9661;      Aschaffenburg;432
+01.03.2016;9662;      Schweinfurt;188
+01.03.2016;9663;      W�rzburg;265
+01.03.2016;9671;      Aschaffenburg, Landkreis;7088
+01.03.2016;9672;      Bad Kissingen, Landkreis;16865
+01.03.2016;9673;      Rh�n-Grabfeld, Landkreis;14466
+01.03.2016;9674;      Ha�berge, Landkreis;17801
+01.03.2016;9675;      Kitzingen, Landkreis;20337
+01.03.2016;9676;      Miltenberg, Landkreis;10209
+01.03.2016;9677;      Main-Spessart, Landkreis;9095
+01.03.2016;9678;      Schweinfurt, Landkreis;13682
+01.03.2016;9679;      W�rzburg, Landkreis;18341
+01.03.2016;97;    Schwaben, Regierungsbezirk;584803
+01.03.2016;9761;      Augsburg;.
+01.03.2016;9762;      Kaufbeuren;.
+01.03.2016;9763;      Kempten (Allg�u);4322
+01.03.2016;9764;      Memmingen;3481
+01.03.2016;9771;      Aichach-Friedberg, Landkreis;45098
+01.03.2016;9772;      Augsburg, Landkreis;50874
+01.03.2016;9773;      Dillingen a.d.Donau, Landkreis;43878
+01.03.2016;9774;      G�nzburg, Landkreis;38142
+01.03.2016;9775;      Neu-Ulm, Landkreis;19976
+01.03.2016;9776;      Lindau (Bodensee), Landkreis;23783
+01.03.2016;9777;      Ostallg�u, Landkreis;110774
+01.03.2016;9778;      Unterallg�u, Landkreis;115971
+01.03.2016;9779;      Donau-Ries, Landkreis;55612
+01.03.2016;9780;      Oberallg�u, Landkreis;70348
+01.03.2016;10;  Saarland;42566
+01.03.2016;10041;      Saarbr�cken, Regionalverband;2857
+01.03.2016;10041100;      Saarbr�cken, Landeshauptstadt;.
+01.03.2016;10042;      Merzig-Wadern, Landkreis;10988
+01.03.2016;10043;      Neunkirchen, Landkreis;4661
+01.03.2016;10044;      Saarlouis, Landkreis;7342
+01.03.2016;10045;      Saarpfalz-Kreis;7004
+01.03.2016;10046;      St. Wendel, Landkreis;9715
+01.03.2016;11;  Berlin;1001
+01.03.2016;11001001;      Berlin-Mitte;-
+01.03.2016;11002002;      Berlin-Friedrichshain-Kreuzberg;-
+01.03.2016;11003003;      Berlin-Pankow;-
+01.03.2016;11004004;      Berlin-Charlottenburg-Wilmersdorf;-
+01.03.2016;11005005;      Berlin-Spandau;-
+01.03.2016;11006006;      Berlin-Steglitz-Zehlendorf;-
+01.03.2016;11007007;      Berlin-Tempelhof-Sch�neberg;-
+01.03.2016;11008008;      Berlin-Neuk�lln;-
+01.03.2016;11009009;      Berlin-Treptow-K�penick;-
+01.03.2016;11010010;      Berlin-Marzahn-Hellersdorf;-
+01.03.2016;11011011;      Berlin-Lichtenberg;-
+01.03.2016;11012012;      Berlin-Reinickendorf;-
+01.03.2016;12;  Brandenburg;535512
+01.03.2016;12051;      Brandenburg an der Havel, kreisfreie Stadt;274
+01.03.2016;12052;      Cottbus, kreisfreie Stadt;1542
+01.03.2016;12053;      Frankfurt (Oder), kreisfreie Stadt;3494
+01.03.2016;12054;      Potsdam, kreisfreie Stadt;1197
+01.03.2016;12060;      Barnim, Landkreis;19658
+01.03.2016;12061;      Dahme-Spreewald, Landkreis;41153
+01.03.2016;12062;      Elbe-Elster, Landkreis;50763
+01.03.2016;12063;      Havelland, Landkreis;31222
+01.03.2016;12064;      M�rkisch-Oderland, Landkreis;37111
+01.03.2016;12065;      Oberhavel, Landkreis;25866
+01.03.2016;12066;      Oberspreewald-Lausitz, Landkreis;22705
+01.03.2016;12067;      Oder-Spree, Landkreis;35694
+01.03.2016;12068;      Ostprignitz-Ruppin, Landkreis;48510
+01.03.2016;12069;      Potsdam-Mittelmark, Landkreis;46060
+01.03.2016;12070;      Prignitz, Landkreis;57912
+01.03.2016;12071;      Spree-Nei�e, Landkreis;28196
+01.03.2016;12072;      Teltow-Fl�ming, Landkreis;36941
+01.03.2016;12073;      Uckermark, Landkreis;47215
+01.03.2016;13;  Mecklenburg-Vorpommern;537856
+01.03.2016;13001;      Greifswald, Hansestadt,  kreisfreie Stadt;-
+01.03.2016;13002;      Neubrandenburg, Stadt,  kreisfreie Stadt;-
+01.03.2016;13003;      Rostock, Hanse- und Universit�tsstadt, kreisfreie Stadt;1092
+01.03.2016;13004;      Schwerin, Landeshauptstadt, kreisfreie Stadt;339
+01.03.2016;13005;      Stralsund, Hansestadt,  kreisfreie Stadt;-
+01.03.2016;13006;      Wismar, Hansestadt,  kreisfreie Stadt;-
+01.03.2016;13051;       Bad Doberan, Landkreis;-
+01.03.2016;13052;      Landkreis Demmin;-
+01.03.2016;13053;      G�strow, Landkreis;-
+01.03.2016;13054;      Landkreis Ludwigslust;-
+01.03.2016;13055;      Mecklenburg-Strelitz, Landkreis;-
+01.03.2016;13056;      Landkreis M�ritz;-
+01.03.2016;13057;      Nordvorpommern, Landkreis;-
+01.03.2016;13058;      Landkreis Nordwestmecklenburg;-
+01.03.2016;13059;      Ostvorpommern, Landkreis;-
+01.03.2016;13060;      Landkreis Parchim;-
+01.03.2016;13061;      R�gen, Landkreis;-
+01.03.2016;13062;      Landkreis Uecker-Randow;-
+01.03.2016;13071;      Mecklenburgische Seenplatte, Landkreis;93743
+01.03.2016;13072;      Landkreis Rostock;98964
+01.03.2016;13073;      Vorpommern-R�gen, Landkreis;61026
+01.03.2016;13074;      Landkreis Nordwestmecklenburg;48668
+01.03.2016;13075;       Vorpommern-Greifswald, Landkreis;90904
+01.03.2016;13076;      Landkreis Ludwigslust-Parchim;143121
+01.03.2016;14;  Sachsen;462920
+01.03.2016;141;    Chemnitz, Regierungsbezirk;-
+01.03.2016;14161;      Chemnitz, kreisfreie Stadt;-
+01.03.2016;14166;      Plauen, kreisfreie Stadt;-
+01.03.2016;14167;      Zwickau, kreisfreie Stadt;-
+01.03.2016;14171;      Annaberg, Landkreis;-
+01.03.2016;14173;      Chemnitzer Land, Landkreis;-
+01.03.2016;14177;      Freiberg, Landkreis;-
+01.03.2016;14178;      Vogtlandkreis;-
+01.03.2016;14181;      Mittlerer Erzgebirgskreis;-
+01.03.2016;14182;      Mittweida, Landkreis;-
+01.03.2016;14188;      Stollberg, Landkreis;-
+01.03.2016;14191;      Aue-Schwarzenberg, Landkreis;-
+01.03.2016;14193;      Zwickauer Land, Landkreis;-
+01.03.2016;142;    Dresden, Regierungsbezirk;-
+01.03.2016;14262;      Dresden, kreisfreie Stadt;-
+01.03.2016;14263;      G�rlitz, kreisfreie Stadt;-
+01.03.2016;14264;      Hoyerswerda, kreisfreie Stadt;-
+01.03.2016;14272;      Bautzen, Landkreis;-
+01.03.2016;14280;      Mei�en, Landkreis;-
+01.03.2016;14284;      Niederschlesischer Oberlausitzkreis;-
+01.03.2016;14285;      Riesa-Gro�enhain, Landkreis;-
+01.03.2016;14286;      L�bau-Zittau, Landkreis;-
+01.03.2016;14287;      S�chsische Schweiz, Landkreis;-
+01.03.2016;14290;      Wei�eritzkreis;-
+01.03.2016;14292;      Kamenz, Landkreis;-
+01.03.2016;143;    Leipzig, Regierungsbezirk;-
+01.03.2016;14365;      Leipzig, kreisfreie Stadt;-
+01.03.2016;14374;      Delitzsch, Landkreis;-
+01.03.2016;14375;      D�beln, Landkreis;-
+01.03.2016;14379;      Leipziger Land, Landkreis;-
+01.03.2016;14383;      Muldentalkreis;-
+01.03.2016;14389;      Torgau-Oschatz, Landkreis;-
+01.03.2016;145;    Chemnitz, Stat. Region;207885
+01.03.2016;14511;      Chemnitz, Stadt;4114
+01.03.2016;14521;      Erzgebirgskreis;54131
+01.03.2016;14522;      Mittelsachsen, Landkreis;78931
+01.03.2016;14523;      Vogtlandkreis;38119
+01.03.2016;14524;      Zwickau, Landkreis;32590
+01.03.2016;146;    Dresden, Stat. Region;169298
+01.03.2016;14612;      Dresden, Stadt;1220
+01.03.2016;14625;      Bautzen, Landkreis;48161
+01.03.2016;14626;      G�rlitz, Landkreis;38589
+01.03.2016;14627;      Mei�en, Landkreis;43265
+01.03.2016;14628;      S�chsische Schweiz-Osterzgebirge, Landkreis;38064
+01.03.2016;147;    Leipzig, Stat. Region;85736
+01.03.2016;14713;      Leipzig, Stadt;2282
+01.03.2016;14729;      Leipzig, Landkreis;36350
+01.03.2016;14730;      Nordsachsen, Landkreis;47104
+01.03.2016;15;  Sachsen-Anhalt;424301
+01.03.2016;15001;      Dessau-Ro�lau, kreisfreie Stadt;1712
+01.03.2016;15002;      Halle (Saale), kreisfreie Stadt;225
+01.03.2016;15003;      Magdeburg, kreisfreie Stadt;611
+01.03.2016;15081;      Altmarkkreis Salzwedel;54003
+01.03.2016;15082;      Anhalt-Bitterfeld, Landkreis;42139
+01.03.2016;15083;      B�rde, Landkreis;54578
+01.03.2016;15084;      Burgenlandkreis;27414
+01.03.2016;15085;      Harz, Landkreis;23690
+01.03.2016;15086;      Jerichower Land, Landkreis;49696
+01.03.2016;15087;      Mansfeld-S�dharz, Landkreis;15868
+01.03.2016;15088;      Saalekreis;30065
+01.03.2016;15089;      Salzlandkreis;22129
+01.03.2016;15090;      Stendal, Landkreis;60046
+01.03.2016;15091;      Wittenberg, Landkreis;42127
+01.03.2016;151;    Dessau, Stat. Region;-
+01.03.2016;15101;      Dessau, kreisfreie Stadt;-
+01.03.2016;15151;      Anhalt-Zerbst, Kreis;-
+01.03.2016;15153;      Bernburg, Kreis;-
+01.03.2016;15154;      Bitterfeld, Kreis;-
+01.03.2016;15159;      K�then, Kreis;-
+01.03.2016;15171;      Wittenberg, Kreis;-
+01.03.2016;152;    Halle, Stat. Region;-
+01.03.2016;15202;      Halle (Saale), kreisfreie Stadt;-
+01.03.2016;15256;      Burgenlandkreis;-
+01.03.2016;15260;      Mansfelder Land, Kreis;-
+01.03.2016;15261;      Merseburg-Querfurt, Kreis;-
+01.03.2016;15265;      Saalkreis;-
+01.03.2016;15266;      Sangerhausen, Kreis;-
+01.03.2016;15268;      Wei�enfels, Kreis;-
+01.03.2016;153;    Magdeburg, Stat. Region;-
+01.03.2016;15303;      Magdeburg, kreisfreie Stadt;-
+01.03.2016;15352;      Aschersleben-Sta�furt, Kreis;-
+01.03.2016;15355;      B�rdekreis;-
+01.03.2016;15357;      Halberstadt, Kreis;-
+01.03.2016;15358;      Jerichower Land, Kreis;-
+01.03.2016;15362;      Ohrekreis;-
+01.03.2016;15363;      Stendal, Kreis;-
+01.03.2016;15364;      Quedlinburg, Kreis;-
+01.03.2016;15367;      Sch�nebeck, Kreis;-
+01.03.2016;15369;      Wernigerode, Kreis;-
+01.03.2016;15370;      Altmarkkreis Salzwedel, Kreis;-
+01.03.2016;16;  Th�ringen;344949
+01.03.2016;16051;      Erfurt, kreisfreie Stadt;1769
+01.03.2016;16052;      Gera, kreisfreie Stadt;1235
+01.03.2016;16053;      Jena, kreisfreie Stadt;410
+01.03.2016;16054;      Suhl, kreisfreie Stadt;143
+01.03.2016;16055;      Weimar, kreisfreie Stadt;259
+01.03.2016;16056;      Eisenach, kreisfreie Stadt;1550
+01.03.2016;16061;      Eichsfeld, Kreis;19832
+01.03.2016;16062;      Nordhausen, Kreis;16404
+01.03.2016;16063;      Wartburgkreis;28399
+01.03.2016;16064;      Unstrut-Hainich-Kreis;18254
+01.03.2016;16065;      Kyffh�userkreis;13971
+01.03.2016;16066;      Schmalkalden-Meiningen, Kreis;25652
+01.03.2016;16067;      Gotha, Kreis;20832
+01.03.2016;16068;      S�mmerda, Kreis;13968
+01.03.2016;16069;      Hildburghausen, Kreis;19671
+01.03.2016;16070;      Ilm-Kreis;12665
+01.03.2016;16071;      Weimarer Land, Kreis;20424
+01.03.2016;16072;      Sonneberg, Kreis;5194
+01.03.2016;16073;      Saalfeld-Rudolstadt, Kreis;20899
+01.03.2016;16074;      Saale-Holzland-Kreis;25044
+01.03.2016;16075;      Saale-Orla-Kreis;33120
+01.03.2016;16076;      Greiz, Kreis;32209
+01.03.2016;16077;      Altenburger Land, Kreis;13044
