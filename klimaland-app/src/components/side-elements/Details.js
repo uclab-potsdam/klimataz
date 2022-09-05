@@ -7,16 +7,22 @@ export default class Details extends Component {
   render() {
     return (
       <div className="details-container">
-        <div className="text-container">
-          <Text {...this.props} />
+        <div className="flex-container">
+          <div className="text-container">
+            <Text {...this.props} />
+          </div>
+          <div className="data-container">
+            <div className="locator-map">
+              <Locator lk={this.props.lk} />
+            </div>
+            <div className="lk-list">
+              <List />
+            </div>
+          </div>
         </div>
-        <div className="data-container">
-          <div className="locator-map">
-            <Locator lk={this.props.lk} />
-          </div>
-          <div className="lk-list">
-            <List />
-          </div>
+        <div className="footer-container">
+          <div className="logo-container"></div>
+          <div className="info-backside">Wie werden die Indikatoren berechnet?</div>
         </div>
       </div>
     );

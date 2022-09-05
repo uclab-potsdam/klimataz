@@ -73,6 +73,27 @@
             .modal-split {
                 height: 100%;
                 @include horizontal-top-layout;
+
+                .description {
+                    height: 15%;
+                }
+
+                .visualization-container {
+                    height: 85%;
+                    .chart {
+                        text {
+                            font-size: 12px;
+                            filter: brightness(0.75);
+                            stroke: none;
+                        }
+
+                        .main-x-axis, .axis, .mapped-axis, .avgkm-marker, .bar-percentage-trip {
+                            line {
+                             stroke: $default-text;
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -283,6 +304,11 @@
                         }
                     }
                 }
+            }
+
+            .avg-heating {
+                height: 100%;
+                @include horizontal-top-layout;
             }
         }
 

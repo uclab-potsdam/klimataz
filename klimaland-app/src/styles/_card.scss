@@ -191,117 +191,148 @@
         height: 100%;
         // back-side with explanation
         .details-container {
-            display: flex;
-            height: 100%;
-            .text-container {
-                width: 60%;
-                height: 100%;
-                overflow: scroll;
+            height: 90%;
 
-                border-right: 1px solid $default-text;
-                .text-inner-container {
-                    margin: 10px;
-                    height: 90%;
-                    
-                    .section-title {
-                            text-align: center;
-                            margin: 2rem 10px 10px 10px;
-                            border: 1px solid $mint-green;
-                            border-radius: 40rem / 8rem;
-                        }
-
-                    .section-text {
-                        margin: 20px;
-                        p {
-                            font-size: 1rem;
+            .flex-container {
+                display: flex;
+                height: 100%;    
+                
+                .text-container {
+                        width: 60%;
+                        height: 100%;
+                        overflow: scroll;
+                
+                        border-right: 1px solid $default-text;
+                
+                        .text-inner-container {
+                            margin: 10px;
+                            height: 90%;
+                
+                            .section-title {
+                                text-align: left;
+                                margin: 2rem 1rem 0.5rem 1rem;
+                                border-bottom: 1px solid $mint-green;
+                                width: 85%;
+                
+                                h2 {
+                                    margin-bottom: 0.5rem;
+                                    font-size: 24px;
+                                }
+                            }
+                
+                            .section-text {
+                                margin: 20px;
+                                width: 85%;
+                
+                                p {
+                                    font-size: 14px;
+                                    line-height: 1.2rem;
+                                }
+                            }
                         }
                     }
 
-                    .logo-container {
-                        background-image: url(../img/taz/taz-logo.svg);
-                        background-repeat: no-repeat;
-                        width: 250px;
-                        height: 50px;
-                        position: absolute;
-                        left: 1rem;
-                        bottom: 0.5rem;
-                        margin-left: 10px;
+                    .text-container::-webkit-scrollbar {
+                        display: none;
                     }
-                }
-            }
 
-            .text-container::-webkit-scrollbar {
-                display: none;
-            }
+                    /* Hide scrollbar for IE, Edge and Firefox */
+                    .text-container {
+                        -ms-overflow-style: none;
+                        /* IE and Edge */
+                        scrollbar-width: none;
+                        /* Firefox */
+                    }
 
-            /* Hide scrollbar for IE, Edge and Firefox */
-            .text-container {
-                -ms-overflow-style: none;
-                /* IE and Edge */
-                scrollbar-width: none;
-                /* Firefox */
-            }
-            
-            .data-container {
-                width: 40%;
-                height: 100%;
+                    .data-container {
+                        width: 40%;
+                        height: 100%;
 
-                .locator-map {
-                    border-bottom: 1px solid $default-text;
-                    position: relative;
-                }
-
-                .lk-list {
-                    margin: 0px 0px 0px 0px;
-                    .list-inner-container {
-
-                        .list-similar-container, 
-                        .list-dissimilar-container {
+                        .locator-map {
                             border-bottom: 1px solid $default-text;
-                            overflow-y: scroll;
-                            overflow-x: hidden;
-                            -ms-overflow-style: none;
-                            scrollbar-width: none;
-                            max-height: 120px;
-
-
-                            &::-webkit-scrollbar {
-                                display: none;
-                            }
-                            
-                            h5 {
-                                // padding-left: 0.5rem;
-                                width: calc(100% - 0.5rem);
-                                margin: 0px;
-                                padding: 0.2rem 0rem 0.2rem 0.5rem;
-                                border-bottom: 1px solid $default-text;
-                            }
-
-                            ul, ol {
-                                margin: 0.5rem 0rem 0rem 0rem;
-                            }
-
-                            ol {
-                                border-bottom: 1px solid $default-text;
-                                padding-bottom: 0.5rem;
-                            }
+                            position: relative;
                         }
 
-                        .list-dissimilar-container {
-                            h5 {
-                                background-color: $red;
-                                color: white;
-                            }
-                        }
+                        .lk-list {
+                            margin: 0px 0px 0px 0px;
 
-                        .list-similar-container {
-                            h5 {
-                                background-color: $taz-orange;
+                            .list-inner-container {
+
+                                .list-similar-container,
+                                .list-dissimilar-container {
+                                    // border-bottom: 1px solid $default-text;
+                                    overflow-y: scroll;
+                                    overflow-x: hidden;
+                                    -ms-overflow-style: none;
+                                    scrollbar-width: none;
+                                    max-height: 125px;
+
+
+                                    &::-webkit-scrollbar {
+                                        display: none;
+                                    }
+
+                                    h5 {
+                                        // padding-left: 0.5rem;
+                                        width: calc(100% - 0.5rem);
+                                        margin: 0px;
+                                        padding: 0.2rem 0rem 0.2rem 0.5rem;
+                                        // border-bottom: 1px solid $default-text;
+                                    }
+
+                                    ul,
+                                    ol {
+                                        margin: 0.5rem 0rem 0rem 0rem;
+                                    }
+
+                                    ol {
+                                        border-bottom: 1px solid $default-text;
+                                        padding-bottom: 0.5rem;
+                                    }
+                                }
+
+                                .list-dissimilar-container {
+                                    h5 {
+                                        background-color: $red;
+                                        color: white;
+                                    }
+                                }
+
+                                .list-similar-container {
+                                    h5 {
+                                        background-color: $taz-orange;
+                                    }
+                                }
                             }
                         }
                     }
-                }
             }
+        }
+
+        .footer-container {
+            height: 10%;
+            border-top: 1px solid $default-text;
+            display: flex;
+
+            .logo-container {
+                    background-image: url(../img/taz/taz-logo.svg);
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    width: 20%;
+                    min-height: 1rem;
+                    margin: 10px;
+                }
+
+                .info-backside {
+                    margin: 10px 0px 10px 0px;   
+                    font-size: 12px;  
+                    border: 1px solid $mint-green;     
+                    border-radius: 20px;
+                    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+                    background: linear-gradient(to left,$mint-green, rgba($mint-green, 0.5));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
         }
 
         // CSS Transition classes
