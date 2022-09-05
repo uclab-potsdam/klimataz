@@ -83,7 +83,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
                     y2={dimensions.height - marginHeight}
                     stroke="black"
                   />
-                  // YEAR
+                  {/* // YEAR */}
                   <text x="-18" y={marginHeight + 15} textAnchor={axis.taPosition}>
                     {axis.label}
                   </text>
