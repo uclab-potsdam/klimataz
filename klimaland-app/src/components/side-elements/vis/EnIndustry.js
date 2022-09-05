@@ -1,5 +1,5 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { line, stack, stackOffsetSilhouette } from 'd3-shape';
+import { line, stack, stackOffsetSilhouette, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
@@ -24,13 +24,14 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
   // inital variables
   const marginWidth = 0;
   const marginHeight = 0;
-  let axisElements = [];
+  let xAxisElements = [];
   let streamElements = [];
   let scaleCategory = function () {
     return undefined;
   };
   let lastYear = '?';
   let percRenewables = 0;
+  let xAxisLineAmount = 0;
 
   if (currentData !== undefined) {
     const lastDataPoint = currentData.data.slice(-1);
@@ -39,28 +40,32 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
 
     const uniqueEnergySource = uniq(currentData.data.map((d) => d.column));
 
-    // get min and max from data
     const domainX = extent(currentData.data.map((d) => +d.year));
-    // map domain onto range
     const xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth, dimensions.width - marginWidth]);
 
     const domainY = [0, max(currentData.data.map((d) => d.value))];
     const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
+
     scaleCategory = scaleOrdinal().domain(uniqueEnergySource).range(colorArray);
+
     const createLine = line()
       .x((d) => xScale(+d.year))
       .y((d) => yScale(d.value));
 
+    const areaGen = area()
+      .x((d) => xScale(+d.year))
+      .y0((d) => yScale(d[0]))
+      .y1((d) => yScale(d[1]));
+
     // get unique years from data
     const uniqueYears = uniq(currentData.data.map((d) => +d.year));
+    xAxisLineAmount = Math.round(40 / uniqueYears.length);
     const energyYears = [];
 
-    // create elements for vertical and horizontal axis, plus labels
-    axisElements = uniqueYears.map((year, a) => {
-      let taPosition = 'start';
-
+    // create elements for horizontal axis, plus labels
+    xAxisElements = uniqueYears.map((year, a) => {
       const currentYearData = currentData.data.filter((d) => +d.year === year);
 
       currentYearData.forEach((d) => {
@@ -70,15 +75,8 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
         });
       });
 
-      if (a === uniqueYears.length - 1) {
-        taPosition = 'end';
-      } else if (a !== 0) {
-        taPosition = 'middle';
-      }
-
       return {
         label: year,
-        taPosition,
         x: xScale(year),
       };
     });
@@ -86,14 +84,16 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
     streamElements = uniqueEnergySource.map((source, i) => {
       const currentSourceData = currentData.data.filter((d) => d.column === source);
 
+      let stackGen = stack().offset(stackOffsetSilhouette).keys(uniqueEnergySource);
+      // maybe I'm using the wrong key?
+
       return {
         id: source,
         stroke: scaleCategory(source),
-        path: createLine(currentSourceData),
+        path: areaGen(stackGen(currentData.data)),
+        // path: createLine(currentSourceData),
       };
     });
-
-    // var stackedData = stack().offset(stackOffsetSilhouette).keys(energySource)((d) => d);
   }
 
   return (
@@ -106,14 +106,14 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
             {streamElements.map((line, l) => {
               return (
                 <g key={l} className={`${line.id} line`}>
-                  <path d={line.path} stroke={line.stroke} fill="none" />
+                  <path d={line.path} stroke="none" fill={line.stroke} />
                 </g>
               );
             })}
           </g>
           <g className="axis">
-            {axisElements.map((axis, a) => {
-              if (a % 2 !== 0) {
+            {xAxisElements.map((axis, a) => {
+              if (a % xAxisLineAmount !== 0) {
                 return (
                   <g key={a} transform={`translate(${axis.x}, 0)`}>
                     <line
@@ -124,7 +124,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
                       stroke="black"
                     />
                     {/* // YEAR */}
-                    <text x="-18" y={marginHeight + 15} textAnchor={axis.taPosition}>
+                    <text x="-18" y={marginHeight + 15} textAnchor="middle">
                       {axis.label}
                     </text>
                   </g>
