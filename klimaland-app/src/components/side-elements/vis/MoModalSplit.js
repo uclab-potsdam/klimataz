@@ -28,7 +28,7 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
     const marginHeight = dimensions.height - dimensions.height / 8
     const rightMarginWidth = Math.round(dimensions.width - dimensions.width / 4)
     const orderOfModes = ['Fuß', 'Fahrrad', 'ÖPV', 'Mitfahrer', 'Fahrer']
-    const colors = ['#3762FB', '#2A4D9C', '#5F88C6', '#FFD0D0', '#FF7B7B']
+    const colors = ['#3762FB', '#5F88C6', '#2A4D9C', '#FFD0D0', '#FF7B7B']
     let yScale;
     let xScale;
     let xScaleReverse;

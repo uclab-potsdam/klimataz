@@ -16,9 +16,10 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+    font-family: 'AktivGrotesk';
+    // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    //     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    //     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -27,12 +28,13 @@ button {
     @include button;
     &.flip {
         position: absolute;
-        bottom: 2vh;
-        right: 2vh;
+        bottom: 1vh;
+        right: 1vh;
 
         img {
-            width: 80%;
+            width: 65%;
             max-width: 50px;
+            min-width: 20px;
         }
     }
 }
@@ -123,34 +125,41 @@ code {
                 .button-left {
                     .button {
                         float: left;
-                        margin-left: 0.5rem;
+                        margin-left: 1rem;
                     }
                 }
 
                 .button-right {
                     .button {
                         float: right;
-                        margin-right: 0.5rem;
+                        margin-right: 1rem;
                     }
                 }
             }
 
             .inner-button {
                 // width: 100%;
-                height: 50%;
+                height: 55%;
 
                 .close {
                     position:relative;
                     float: right;
-                    margin-right: 0.5rem;
-                    margin-top: 3rem;
+                    margin-right: 1rem;
+                    margin-top: 4rem;
+
+                    img {
+                        width: 70%;
+                    }
                 }
 
-                img {
-                    width: 80%;
-                    height: auto;
-                    // margin: 5px 0px 0px 50%;
-                    top: 0;
+                .switch {
+                    img {
+                            width: 50%;
+                            height: auto;
+                            // margin: 5px 0px 0px 50%;
+                            top: 0;
+                    }
+
                 }
             }
         }
