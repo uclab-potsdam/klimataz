@@ -1,8 +1,8 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { line } from 'd3-shape';
+import { line, stack, stackOffsetSilhouette } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
-import { union, uniq } from 'lodash';
-import { max, extent, mean, sum } from 'd3-array';
+import { uniq } from 'lodash';
+import { max, extent } from 'd3-array';
 
 const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
   const colorArray = ['#A80D35', '#FF7B7B', '#F6A219', '#3762FB', '#2A4D9C', '#5F88C6', '#5DCCD3'];
@@ -22,31 +22,49 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
   }, []);
 
   // inital variables
-  let uniqueEnergyTypes = [];
   const marginWidth = 0;
   const marginHeight = 0;
   let axisElements = [];
-  let yAxisValues = [];
-  let yAxis = [];
+  let streamElements = [];
   let scaleCategory = function () {
     return undefined;
   };
+  let lastYear = '?';
+  let percRenewables = 0;
 
   if (currentData !== undefined) {
+    const lastDataPoint = currentData.data.slice(-1);
+    lastYear = lastDataPoint[0]['year'];
+    percRenewables = lastDataPoint[0].value.toFixed(2);
+
+    const uniqueEnergySource = uniq(currentData.data.map((d) => d.column));
+
+    // get min and max from data
     const domainX = extent(currentData.data.map((d) => +d.year));
+    // map domain onto range
     const xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth, dimensions.width - marginWidth]);
 
-    const energyYeara = [];
-    const uniqueYears = uniq(currentData.data.map((d) => +d.year));
+    const domainY = [0, max(currentData.data.map((d) => d.value))];
+    const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
+    scaleCategory = scaleOrdinal().domain(uniqueEnergySource).range(colorArray);
+    const createLine = line()
+      .x((d) => xScale(+d.year))
+      .y((d) => yScale(d.value));
 
-    axisElements = uniqueYears.map((axis, a) => {
+    // get unique years from data
+    const uniqueYears = uniq(currentData.data.map((d) => +d.year));
+    const energyYears = [];
+
+    // create elements for vertical and horizontal axis, plus labels
+    axisElements = uniqueYears.map((year, a) => {
       let taPosition = 'start';
-      const currentYearData = currentData.data.filter((d) => +d.year === axis);
+
+      const currentYearData = currentData.data.filter((d) => +d.year === year);
 
       currentYearData.forEach((d) => {
-        energyYeara.push({
+        energyYears.push({
           label: `${d.year} %`,
           id: d.column,
         });
@@ -59,11 +77,23 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       }
 
       return {
-        label: axis,
+        label: year,
         taPosition,
-        x: xScale(axis),
+        x: xScale(year),
       };
     });
+
+    streamElements = uniqueEnergySource.map((source, i) => {
+      const currentSourceData = currentData.data.filter((d) => d.column === source);
+
+      return {
+        id: source,
+        stroke: scaleCategory(source),
+        path: createLine(currentSourceData),
+      };
+    });
+
+    // var stackedData = stack().offset(stackOffsetSilhouette).keys(energySource)((d) => d);
   }
 
   return (
@@ -72,23 +102,34 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
     >
       <div className="visualization-container" ref={targetRef}>
         <svg className="chart" width="100%" height="100%">
-          <g className="axis">
-            {axisElements.map((axis, a) => {
+          <g className="lines">
+            {streamElements.map((line, l) => {
               return (
-                <g key={a} transform={`translate(${axis.x}, 0)`}>
-                  <line
-                    x1="0"
-                    x2="0"
-                    y1={marginHeight}
-                    y2={dimensions.height - marginHeight}
-                    stroke="black"
-                  />
-                  {/* // YEAR */}
-                  <text x="-18" y={marginHeight + 15} textAnchor={axis.taPosition}>
-                    {axis.label}
-                  </text>
+                <g key={l} className={`${line.id} line`}>
+                  <path d={line.path} stroke={line.stroke} fill="none" />
                 </g>
               );
+            })}
+          </g>
+          <g className="axis">
+            {axisElements.map((axis, a) => {
+              if (a % 2 !== 0) {
+                return (
+                  <g key={a} transform={`translate(${axis.x}, 0)`}>
+                    <line
+                      x1="0"
+                      x2="0"
+                      y1={marginHeight}
+                      y2={dimensions.height - marginHeight}
+                      stroke="black"
+                    />
+                    {/* // YEAR */}
+                    <text x="-18" y={marginHeight + 15} textAnchor={axis.taPosition}>
+                      {axis.label}
+                    </text>
+                  </g>
+                );
+              }
             })}
           </g>
         </svg>
@@ -96,9 +137,8 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       <div className="description">
         <div className="title">
           <h3>
-            Der Ergieverbrauch von verarbeitenden Gewerben in RegionXY {/* <span>{lkData}</span> */}
-            besteht 2020 {/* <span>{lastYear}</span> */}
-            zu 0 % {/* <span>{renewVal Variable}</span>  */}
+            Der Ergieverbrauch von verarbeitenden Gewerben in {lkData} besteht{' '}
+            <span>{lastYear}</span> zu <span> {percRenewables}% </span>
             aus <span className="second-value"> erneuerbaren Energieträgern</span>
           </h3>
         </div>
