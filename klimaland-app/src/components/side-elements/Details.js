@@ -7,7 +7,7 @@ export default class Details extends Component {
   render() {
     return (
       <div className="details-container">
-        <div class="flex-container">
+        <div className="flex-container">
           <div className="text-container">
             <Text {...this.props} />
           </div>
@@ -20,7 +20,7 @@ export default class Details extends Component {
             </div>
           </div>
         </div>
-        <div class="footer-container">
+        <div className="footer-container">
           <div className="logo-container"></div>
           <div className="info-backside">Wie werden die Indikatoren berechnet?</div>
         </div>
