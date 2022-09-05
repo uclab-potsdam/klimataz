@@ -81,16 +81,28 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       };
     });
 
+    const element = {};
+    currentData.data.forEach((data, i) => {
+      const nameOfEnergySource = data.column;
+      element[nameOfEnergySource] = data.value;
+    });
+
+    const stacks = stack().keys(uniqueEnergySource)([element]);
+
+    const areaStack = areaGen(stacks);
+
+    console.log(areaStack());
+
     streamElements = uniqueEnergySource.map((source, i) => {
       const currentSourceData = currentData.data.filter((d) => d.column === source);
 
-      let stackGen = stack().offset(stackOffsetSilhouette).keys(uniqueEnergySource);
+      // let stackGen = stack().offset(stackOffsetSilhouette).keys(uniqueEnergySource);
       // maybe I'm using the wrong key?
 
       return {
         id: source,
         stroke: scaleCategory(source),
-        path: areaGen(stackGen(currentData.data)),
+        path: areaGen(stacks),
         // path: createLine(currentSourceData),
       };
     });
