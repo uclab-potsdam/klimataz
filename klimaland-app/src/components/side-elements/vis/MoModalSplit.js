@@ -1,5 +1,4 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { max } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { line, stack } from 'd3-shape';
 
@@ -20,10 +19,10 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
   let plotAvgData = [];
   let plotPercData = [];
   let defaultYear = 2017;
-  let maxYValue = null;
+  // let maxYValue = null;
   const referenceXTicks = [...Array.from(Array(11)).keys()];
   const marginWidth = Math.round(dimensions.width / 20);
-  const maxRangeHeight = Math.round(dimensions.height / 10);
+  // const maxRangeHeight = Math.round(dimensions.height / 10);
   const marginHeight = dimensions.height - dimensions.height / 8;
   const rightMarginWidth = Math.round(dimensions.width - dimensions.width / 4);
   const orderOfModes = ['Fuß', 'Fahrrad', 'ÖPV', 'Mitfahrer', 'Fahrer'];
@@ -37,8 +36,8 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
     averageKmDistance = currentData.data.filter(
       (d) => d.column.includes('average') && +d.year === defaultYear
     );
-    const longestAvgRoute = max(averageKmDistance.map((d) => (d.value !== null ? d.value : null)));
-    maxYValue = Math.floor(longestAvgRoute / 10);
+    // const longestAvgRoute = max(averageKmDistance.map((d) => (d.value !== null ? d.value : null)));
+    // maxYValue = Math.floor(longestAvgRoute / 10);
 
     xScale = scaleLinear().domain([0, 10]).range([marginWidth, rightMarginWidth]);
     xScaleReverse = scaleLinear().domain([10, 0]).range([marginWidth, rightMarginWidth]);
