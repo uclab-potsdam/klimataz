@@ -82,7 +82,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       element[nameOfEnergySource] = data.value;
     });
 
-    // const stacks = stack().keys(uniqueEnergySource)([element]);
+    const stacks = stack().keys(uniqueEnergySource)([element]);
 
     // const areaStack = areaGen(stacks);
 
@@ -99,12 +99,12 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
         .y0((d) => yScale(d[0]))
         .y1((d) => yScale(d[1]));
 
-      return {
-        id: source,
-        stroke: scaleCategory(source),
-        path: areaGen(stacks),
-        // path: createLine(currentSourceData),
-      };
+      // return {
+      //   id: source,
+      //   stroke: scaleCategory(source),
+      //   path: areaGen(stacks),
+      //   // path: createLine(currentSourceData),
+      // };
     });
 
     // streamElements = uniqueEnergySource.map((source, i) => {
