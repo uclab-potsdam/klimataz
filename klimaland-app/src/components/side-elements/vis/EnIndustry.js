@@ -86,26 +86,25 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
 
     // const areaStack = areaGen(stacks);
 
-    // console.log(stacks);
-
     streamElements = stacks.map((stream, s) => {
-      const currentSourceData = currentData.data.filter((d) => d.column === source);
+      const data = stream[0];
 
-      // let stackGen = stack().offset(stackOffsetSilhouette).keys(uniqueEnergySource);
-      // maybe I'm using the wrong key?
+      const label = data.data[stream.key];
 
-      const areaGen = area()
-        .x((d) => xScale(+d.year))
-        .y0((d) => yScale(d[0]))
-        .y1((d) => yScale(d[1]));
-
-      // return {
-      //   id: source,
-      //   stroke: scaleCategory(source),
-      //   path: areaGen(stacks),
-      //   // path: createLine(currentSourceData),
-      // };
+      return {
+        mode: stream.key,
+        fill: scaleCategory(stream),
+        // x: xScale(+d.year),
+        y0: yScale(s[0]),
+        y1: yScale(s[1]),
+        label,
+      };
     });
+
+    const areaGen = area()
+      .x((d) => xScale(+d.year))
+      .y0((d) => yScale(d[0]))
+      .y1((d) => yScale(d[1]));
 
     // streamElements = uniqueEnergySource.map((source, i) => {
     //   const currentSourceData = currentData.data.filter((d) => d.column === source);
@@ -129,12 +128,12 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       <div className="visualization-container" ref={targetRef}>
         <svg className="chart" width="100%" height="100%">
           <g className="lines">
-            {streamElements.map((line, l) => {
-              return (
-                <g key={l} className={`${line.id} line`}>
-                  <path d={line.path} stroke="none" fill={line.stroke} />
-                </g>
-              );
+            {streamElements.map((stream, s) => {
+              // return (
+              //   // <g key={s}>
+              //   //   <path d={areaGen(stream)} stroke="none" fill={stream.fill} />
+              //   // </g>
+              // );
             })}
           </g>
           <g className="axis">
