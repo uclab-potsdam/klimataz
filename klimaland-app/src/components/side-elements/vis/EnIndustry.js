@@ -54,11 +54,6 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       .x((d) => xScale(+d.year))
       .y((d) => yScale(d.value));
 
-    const areaGen = area()
-      .x((d) => xScale(+d.year))
-      .y0((d) => yScale(d[0]))
-      .y1((d) => yScale(d[1]));
-
     // get unique years from data
     const uniqueYears = uniq(currentData.data.map((d) => +d.year));
     xAxisLineAmount = Math.round(40 / uniqueYears.length);
@@ -87,17 +82,22 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       element[nameOfEnergySource] = data.value;
     });
 
-    const stacks = stack().keys(uniqueEnergySource)([element]);
+    // const stacks = stack().keys(uniqueEnergySource)([element]);
 
-    const areaStack = areaGen(stacks);
+    // const areaStack = areaGen(stacks);
 
-    console.log(areaStack());
+    // console.log(stacks);
 
-    streamElements = uniqueEnergySource.map((source, i) => {
+    streamElements = stacks.map((stream, s) => {
       const currentSourceData = currentData.data.filter((d) => d.column === source);
 
       // let stackGen = stack().offset(stackOffsetSilhouette).keys(uniqueEnergySource);
       // maybe I'm using the wrong key?
+
+      const areaGen = area()
+        .x((d) => xScale(+d.year))
+        .y0((d) => yScale(d[0]))
+        .y1((d) => yScale(d[1]));
 
       return {
         id: source,
@@ -106,6 +106,20 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
         // path: createLine(currentSourceData),
       };
     });
+
+    // streamElements = uniqueEnergySource.map((source, i) => {
+    //   const currentSourceData = currentData.data.filter((d) => d.column === source);
+
+    //   // let stackGen = stack().offset(stackOffsetSilhouette).keys(uniqueEnergySource);
+    //   // maybe I'm using the wrong key?
+
+    //   return {
+    //     id: source,
+    //     stroke: scaleCategory(source),
+    //     path: areaGen(source),
+    //     // path: createLine(currentSourceData),
+    //   };
+    // });
   }
 
   return (
