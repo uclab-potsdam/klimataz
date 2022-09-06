@@ -173,7 +173,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
             {streamEle.map((stream, s) => {
               return (
                 <g key={s}>
-                  <path d={stream.path} stroke="black" strokeWidth="0.5" fill={stream.fill} />
+                  <path d={stream.path} stroke="black" strokeWidth="0.75" fill={stream.fill} />
                 </g>
               );
             })}
