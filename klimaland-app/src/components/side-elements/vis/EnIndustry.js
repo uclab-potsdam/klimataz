@@ -98,11 +98,12 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       stackData.push(el);
     });
 
-    const stacks = stack().keys(uniqueEnergySource); //.offset(stackOffsetSilhouette);
+    const stacks = stack().keys(uniqueEnergySource).offset(stackOffsetSilhouette);
     const stackedSeries = stacks(stackData);
 
     // stream graph
     streamEle = stackedSeries.map((stream, s) => {
+      console.log(stream);
       return {
         fill: scaleCategory(stream.key),
         path: areaGen(stream),
