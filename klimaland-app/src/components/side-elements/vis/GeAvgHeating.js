@@ -39,7 +39,7 @@ const GeAvgHEating = ({ currentData, currentIndicator, currentSection, lkData, i
 
         const domainX = extent(currentData.data.map(d => { return +d.year }))
         yScale = scaleLinear().domain([250, 0]).range([dimensions.height, marginHeight])
-        xScale = scaleLinear().domain(domainX).range([marginWidth, dimensions.width - marginWidth * 4])
+        xScale = scaleLinear().domain(domainX).range([marginWidth, dimensions.width - marginWidth * 4.5])
         const colorScale = scaleOrdinal().domain(classesKeys).range(classesColors)
 
 
@@ -48,15 +48,16 @@ const GeAvgHEating = ({ currentData, currentIndicator, currentSection, lkData, i
         stacks.forEach((bar, b) => {
             const data = bar[0];
             const label = data.data[bar.key];
-            const y1 = b !== 0 ? yScale(data.data[prevClass]) : 0
+            const y1 = b !== 0 ? yScale(data.data[prevClass]) : 25
             const y2 = yScale(data.data[bar.key])
             classesData.push({
                 klass: bar.key,
                 y1,
                 y2,
-                yMid: dimensions.height - ((y1 + y2) / 2) + 5,
+                yMid: b !== 0 ? dimensions.height - ((y1 + y2) / 2) + 5 : dimensions.height - y2 + (y2 / 3),
                 fill: colorScale(bar.key),
-                label
+                label,
+                keyColor: bar.key === "A" || bar.key === "A+" ? "white" : "#484848"
             });
             prevClass = bar.key
 
@@ -115,7 +116,8 @@ const GeAvgHEating = ({ currentData, currentIndicator, currentSection, lkData, i
                                         return (
                                             <g key={k}>
                                                 <rect x={marginWidth} y={dimensions.height - klass.y2} width="30" height={klass.y2 - klass.y1} fill={klass.fill} />
-                                                <text x={marginWidth + 15} y={klass.yMid} textAnchor="middle" fill="#484848">{klass.klass}</text>
+                                                <text x={marginWidth + 15} y={klass.yMid} textAnchor="middle" fill={klass.keyColor}>{klass.klass}</text>
+                                                <text x={dimensions.width - marginWidth - 5} y={klass.yMid} textAnchor="end" fill="#484848">{klass.label}</text>
                                             </g>
                                         )
                                     })
@@ -136,8 +138,8 @@ const GeAvgHEating = ({ currentData, currentIndicator, currentSection, lkData, i
                                 barChartData.map((bar, b) => {
                                     return (
                                         <g key={b} transform={`translate(${bar.year}, 0)`}>
-                                            <rect x="0" y={dimensions.height - bar.kwh} height={bar.kwh} width="25" fill={bar.fill} opacity="50%" />
-                                            <rect x="0" y={dimensions.height - bar.kwh - 5} width="25" height="10" fill={bar.fill} rx="5" />
+                                            <rect x="0" y={dimensions.height - bar.kwh} height={bar.kwh - marginHeight} width="28" fill={bar.fill} stroke={bar.fill} fill-opacity="20%" />
+                                            <rect x="0" y={dimensions.height - bar.kwh - 5} width="28" height="10" fill={bar.fill} rx="5" />
                                             {/* <text x="0" y={marginHeight * 2}>{bar.valueLabel}</text> */}
                                         </g>
                                     )

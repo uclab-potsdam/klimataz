@@ -202,7 +202,7 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
                         <g className="mapped-axis">
                           {trip.ticks.map((tick, t) => {
                             return (
-                              <g>
+                              <g key={t}>
                                 <g transform={`translate(${tick.x}, ${tick.y})`}>
                                   <line x1="0" x2="0" y1="-5" y2="5" />
                                 </g>
