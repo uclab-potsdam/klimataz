@@ -30,7 +30,7 @@ const Canvas = () => {
     getCheckedEditorsPick();
   }, []); // only runs once at the beginning
 
-  // get parameters from iframe <iframe src="http://postcardapp.de/?ags-1001-2-11&indicator-Mo&ui-true">
+  // get parameters from iframe <iframe src="http://postcardapp.de/?ags-1001&indicator-Mo&ui-true">
   const getParamValue = function (parameter) {
     const url = window.location.search.substring(1); //get rid of "?" in querystring ags-1001-2-11&indicator-Mo&ui-true
     const splitParams = url.split('&'); //get key-value pairs

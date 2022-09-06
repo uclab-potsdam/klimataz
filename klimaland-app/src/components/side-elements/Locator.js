@@ -121,9 +121,9 @@ const Locator = ({ lk }) => {
               );
             })}
           </g>
-          <g className="zoom-pointer">
+          {+lk.value !== 0 && <g className="zoom-pointer">
             <path d={zoomPointerPath} markerEnd="url(#arrowhead)" />
-          </g>
+          </g>}
         </svg>
       </div>
     </div>

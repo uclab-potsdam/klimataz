@@ -11,12 +11,10 @@ const Text = ({ lk, section, activeSide }) => {
     }
     return (
         <div className="text-inner-container">
-            <div className="logo-container"></div>
             <div className="section-title">
                 <h2>{sectionFullName[section]}</h2>
             </div>
             <div className="section-text">
-                {/* <h4>Grüsse aus {lk.label}, mit der id {lk.value}!</h4> */}
                 <p>
                     Seite {activeSide}. Hallo!
                     Ich schicke dir Grüße aus dem schönen Landkreis {lk.label} in Brandenburg!
