@@ -25,7 +25,9 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
   const marginWidth = 0;
   const marginHeight = 0;
   let xAxisElements = [];
-  let streamElements = [];
+  let lineElements = [];
+
+  let streamEle = [];
   let scaleCategory = function () {
     return undefined;
   };
@@ -54,6 +56,11 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       .x((d) => xScale(+d.year))
       .y((d) => yScale(d.value));
 
+    const areaGen = area()
+      .x((d) => xScale(d.data.year))
+      .y0((d) => yScale(d[0]))
+      .y1((d) => yScale(d[1]));
+
     // get unique years from data
     const uniqueYears = uniq(currentData.data.map((d) => +d.year));
     xAxisLineAmount = Math.round(40 / uniqueYears.length);
@@ -76,47 +83,40 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       };
     });
 
-    const element = {};
-    currentData.data.forEach((data, i) => {
-      const nameOfEnergySource = data.column;
-      element[nameOfEnergySource] = data.value;
+    const stackData = [];
+
+    // prepare data for stacking
+    uniqueYears.forEach((year, y) => {
+      const currentYearData = currentData.data.filter((d) => +d.year === year);
+
+      const el = {};
+      currentYearData.map((d) => {
+        el.year = d.year;
+        const nameOfEnergySource = d.column;
+        el[nameOfEnergySource] = d.value !== null ? d.value : 0;
+      });
+      stackData.push(el);
     });
 
-    const stacks = stack().keys(uniqueEnergySource)([element]);
+    const stacks = stack().keys(uniqueEnergySource); //.offset(stackOffsetSilhouette);
+    const stackedSeries = stacks(stackData);
 
-    // const areaStack = areaGen(stacks);
-
-    streamElements = stacks.map((stream, s) => {
-      const data = stream[0];
-
-      const label = data.data[stream.key];
-
+    // stream graph
+    streamEle = stackedSeries.map((stream, s) => {
       return {
-        mode: stream.key,
-        fill: scaleCategory(stream),
-        // x: xScale(+d.year),
-        y0: yScale(s[0]),
-        y1: yScale(s[1]),
-        label,
+        fill: scaleCategory(stream.key),
+        path: areaGen(stream),
       };
     });
 
-    const areaGen = area()
-      .x((d) => xScale(+d.year))
-      .y0((d) => yScale(d[0]))
-      .y1((d) => yScale(d[1]));
-
-    // streamElements = uniqueEnergySource.map((source, i) => {
+    // line graph
+    // lineElements = uniqueEnergySource.map((source, i) => {
     //   const currentSourceData = currentData.data.filter((d) => d.column === source);
-
-    //   // let stackGen = stack().offset(stackOffsetSilhouette).keys(uniqueEnergySource);
-    //   // maybe I'm using the wrong key?
 
     //   return {
     //     id: source,
     //     stroke: scaleCategory(source),
-    //     path: areaGen(source),
-    //     // path: createLine(currentSourceData),
+    //     path: createLine(currentSourceData),
     //   };
     // });
   }
@@ -128,12 +128,19 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       <div className="visualization-container" ref={targetRef}>
         <svg className="chart" width="100%" height="100%">
           <g className="lines">
-            {streamElements.map((stream, s) => {
-              // return (
-              //   // <g key={s}>
-              //   //   <path d={areaGen(stream)} stroke="none" fill={stream.fill} />
-              //   // </g>
-              // );
+            {/* {lineElements.map((line, l) => {
+              return (
+                <g key={l} className={`${line.id} line`}>
+                  <path d={line.path} stroke={line.stroke} fill="none" />
+                </g>
+              );
+            })} */}
+            {streamEle.map((stream, s) => {
+              return (
+                <g key={s}>
+                  <path d={stream.path} stroke="white" fill={stream.fill} />
+                </g>
+              );
             })}
           </g>
           <g className="axis">
