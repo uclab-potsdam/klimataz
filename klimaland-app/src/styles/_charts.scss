@@ -295,6 +295,30 @@
             .avg-heating {
                 height: 100%;
                 @include horizontal-top-layout;
+
+                .visualization-container {
+                    height: 85%;
+
+                    svg {
+                        .non-clipped-elements {
+                            text {
+                                font-size: 10px;
+                            }
+                        }
+
+                        .clipped-container {
+                            .chart-axis {
+                                text {
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .description {
+                    height: 15%;
+                }
             }
         }
 
@@ -348,6 +372,7 @@
     stroke-width: 0.5;
     fill: white;
     -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 
     &.visible {
         fill: $lighter-orange;
