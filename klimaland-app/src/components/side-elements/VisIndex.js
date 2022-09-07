@@ -8,7 +8,7 @@ Vis['MoCarDensity'] = require('./vis/MoCarDensity.js').default;
 Vis['MoModalSplit'] = require('./vis/MoModalSplit.js').default;
 Vis['AbBiotonneWeight'] = require('./vis/AbBiotonneWeight.js').default;
 Vis['LaAnimalCount'] = require('./vis/LaAnimalCount.js').default;
-Vis['LaAnimalDensity'] = require('./vis/LaAnimalCount.js').default;
+Vis['LaAnimalDensity'] = require('./vis/LaAnimalDensity.js').default;
 Vis['GeNewBuildings'] = require('./vis/GeNewBuildings.js').default;
 Vis['GeAvgHeating'] = require('./vis/GeAvgHeating.js').default;
 
