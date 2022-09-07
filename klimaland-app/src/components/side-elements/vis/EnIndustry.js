@@ -1,12 +1,5 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import {
-  line,
-  stack,
-  stackOffsetSilhouette,
-  stackOrderAscending,
-  curveCatmullRom,
-  area,
-} from 'd3-shape';
+import { stack, stackOffsetSilhouette, stackOrderAscending, curveCatmullRom, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
@@ -17,7 +10,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
     '#007F87', // Erneuerbare Energien
     '#FF9B7B', // Heizöl
     '#E14552', // Kohle
-    '#FFBE53', // Sonstige Energieträger
+    '#a8a8a8', // Sonstige Energieträger
     '#2A4D9C', // Strom
     '#5F88C6', // Wärme
   ];
@@ -39,6 +32,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
   // inital variables
   const marginWidth = 0;
   const marginHeight = 0;
+  // const paddingHeight = 15;
   let xAxisElements = [];
   let streamEle = [];
   let scaleCategory = function () {
@@ -46,62 +40,53 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
   };
   let lastYear = '?';
   let percRenewables = 0;
-  let xAxisLineAmount = 0;
 
   if (currentData !== undefined) {
+    // parameters for description text
     const lastDataPoint = currentData.data.slice(-1);
     lastYear = lastDataPoint[0]['year'];
     percRenewables = lastDataPoint[0].value !== null ? lastDataPoint[0].value.toFixed(1) : 0;
 
+    // get all energy sources and filter out "insgesamt" and "Anteil_Erneuerbar"
     const uniqueEnergySourceAll = uniq(currentData.data.map((d) => d.column));
     const uniqueEnergySourceFiltered = uniqueEnergySourceAll.filter((category) => {
       return category !== 'insgesamt' && category !== 'Anteil_Erneuerbar';
     });
 
+    // setup domains for scaling
     const domainX = extent(currentData.data.map((d) => +d.year));
     const xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth, dimensions.width - marginWidth]);
-
     const domainY = [
       -max(currentData.data.map((d) => d.value / 2)),
       max(currentData.data.map((d) => d.value / 2)),
     ];
-
     const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
 
+    // map source to color
     scaleCategory = scaleOrdinal().domain(uniqueEnergySourceFiltered).range(colorArray);
-
-    const areaGen = area()
-      .x((d) => xScale(d.data.year))
-      .y0((d) => yScale(d[0]))
-      .y1((d) => yScale(d[1]))
-      .curve(curveCatmullRom.alpha(0.5));
 
     // get unique years from data
     const uniqueYears = uniq(currentData.data.map((d) => +d.year));
-    xAxisLineAmount = Math.round(40 / uniqueYears.length);
-    const energyYears = [];
 
     // create elements for horizontal axis, plus labels
     xAxisElements = uniqueYears.map((year, a) => {
-      const currentYearData = currentData.data.filter((d) => +d.year === year);
-
-      currentYearData.forEach((d) => {
-        energyYears.push({
-          label: `${d.year} %`,
-          id: d.column,
-        });
-      });
-
       return {
         label: year,
         x: xScale(year),
       };
     });
 
-    const stackData = [];
+    // create area for streams
+    const areaGen = area()
+      .x((d) => xScale(d.data.year))
+      .y0((d) => yScale(d[0]))
+      .y1((d) => yScale(d[1]))
+      .curve(curveCatmullRom.alpha(0.5));
+
     // prepare data for stacking
+    const stackData = [];
     uniqueYears.forEach((year, y) => {
       const currentYearData = currentData.data.filter((d) => +d.year === year);
 
@@ -109,16 +94,16 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       currentYearData.map((d) => {
         el.year = d.year;
         const nameOfEnergySource = d.column;
-        el[nameOfEnergySource] = d.value !== null ? d.value : 0;
+        return (el[nameOfEnergySource] = d.value !== null ? d.value : 0);
       });
       stackData.push(el);
     });
 
+    // create stacks
     const stacks = stack()
       .keys(uniqueEnergySourceFiltered)
       .order(stackOrderAscending)
       .offset(stackOffsetSilhouette);
-
     const stackedSeries = stacks(stackData);
 
     // stream graph
@@ -143,7 +128,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
         <svg className="chart" width="100%" height="100%">
           <g className="axis">
             {xAxisElements.map((axis, a) => {
-              if (a % xAxisLineAmount !== 0) {
+              if (a % 2 !== 0) {
                 return (
                   <g key={a} transform={`translate(${axis.x + 1}, 0)`}>
                     <line
@@ -159,6 +144,8 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
                     </text>
                   </g>
                 );
+              } else {
+                return null;
               }
             })}
           </g>
