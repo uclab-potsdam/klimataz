@@ -1,19 +1,25 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { line, stack, stackOffsetSilhouette, curveCatmullRom, area } from 'd3-shape';
+import {
+  line,
+  stack,
+  stackOffsetSilhouette,
+  stackOrderAscending,
+  curveCatmullRom,
+  area,
+} from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
 
 const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
   const colorArray = [
-    '#A80D35',
-    '#FF7B7B',
-    '#F6A219',
-    '#3762FB',
-    '#2A4D9C',
-    '#5F88C6',
-    '#5DCCD3',
-    '#5DCCA4',
+    '#FFD5C8', // Erdgas
+    '#007F87', // Erneuerbare Energien
+    '#FF9B7B', // Heizöl
+    '#E14552', // Kohle
+    '#FFBE53', // Sonstige Energieträger
+    '#2A4D9C', // Strom
+    '#5F88C6', // Wärme
   ];
 
   // getting sizes of container for maps
@@ -34,8 +40,6 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
   const marginWidth = 0;
   const marginHeight = 0;
   let xAxisElements = [];
-  let lineElements = [];
-
   let streamEle = [];
   let scaleCategory = function () {
     return undefined;
@@ -47,9 +51,12 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
   if (currentData !== undefined) {
     const lastDataPoint = currentData.data.slice(-1);
     lastYear = lastDataPoint[0]['year'];
-    percRenewables = lastDataPoint[0].value; //toFixed(2);
+    percRenewables = lastDataPoint[0].value !== null ? lastDataPoint[0].value.toFixed(1) : 0;
 
-    const uniqueEnergySource = uniq(currentData.data.map((d) => d.column));
+    const uniqueEnergySourceAll = uniq(currentData.data.map((d) => d.column));
+    const uniqueEnergySourceFiltered = uniqueEnergySourceAll.filter((category) => {
+      return category !== 'insgesamt' && category !== 'Anteil_Erneuerbar';
+    });
 
     const domainX = extent(currentData.data.map((d) => +d.year));
     const xScale = scaleLinear()
@@ -57,17 +64,13 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       .range([marginWidth, dimensions.width - marginWidth]);
 
     const domainY = [
-      -max(currentData.data.map((d) => d.value)),
-      max(currentData.data.map((d) => d.value)),
+      -max(currentData.data.map((d) => d.value / 2)),
+      max(currentData.data.map((d) => d.value / 2)),
     ];
 
     const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
 
-    scaleCategory = scaleOrdinal().domain(uniqueEnergySource).range(colorArray);
-
-    const createLine = line()
-      .x((d) => xScale(+d.year))
-      .y((d) => yScale(d.value));
+    scaleCategory = scaleOrdinal().domain(uniqueEnergySourceFiltered).range(colorArray);
 
     const areaGen = area()
       .x((d) => xScale(d.data.year))
@@ -98,7 +101,6 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
     });
 
     const stackData = [];
-
     // prepare data for stacking
     uniqueYears.forEach((year, y) => {
       const currentYearData = currentData.data.filter((d) => +d.year === year);
@@ -112,27 +114,25 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       stackData.push(el);
     });
 
-    const stacks = stack().keys(uniqueEnergySource).offset(stackOffsetSilhouette);
+    const stacks = stack()
+      .keys(uniqueEnergySourceFiltered)
+      .order(stackOrderAscending)
+      .offset(stackOffsetSilhouette);
+
     const stackedSeries = stacks(stackData);
 
     // stream graph
     streamEle = stackedSeries.map((stream, s) => {
       return {
+        id: stream.key,
         fill: scaleCategory(stream.key),
         path: areaGen(stream),
+        xPos: xScale(stream[14].data.year),
+        yPos: yScale(stream[14][0] - (stream[14][0] - stream[14][1]) / 2),
+        height: yScale(stream[14][0] - stream[14][1]),
+        width: stream.key.length,
       };
     });
-
-    // line graph
-    // lineElements = uniqueEnergySource.map((source, i) => {
-    //   const currentSourceData = currentData.data.filter((d) => d.column === source);
-
-    //   return {
-    //     id: source,
-    //     stroke: scaleCategory(source),
-    //     path: createLine(currentSourceData),
-    //   };
-    // });
   }
 
   return (
@@ -162,18 +162,32 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
               }
             })}
           </g>
-          <g className="lines">
-            {/* {lineElements.map((line, l) => {
-              return (
-                <g key={l} className={`${line.id} line`}>
-                  <path d={line.path} stroke={line.stroke} fill="none" />
-                </g>
-              );
-            })} */}
+          <g className="stream">
             {streamEle.map((stream, s) => {
               return (
                 <g key={s}>
                   <path d={stream.path} stroke="black" strokeWidth="0.75" fill={stream.fill} />
+                  {stream.height > 210 && (
+                    <g>
+                      <rect
+                        className="marker-label"
+                        x={stream.xPos - stream.width * 2}
+                        y={stream.yPos - 8}
+                        width={stream.width * 10}
+                        height="16"
+                        fill="white"
+                        stroke="black"
+                      />
+                      <text
+                        className="marker-label"
+                        x={stream.xPos - stream.width}
+                        y={stream.yPos + 4}
+                        fill="black"
+                      >
+                        {stream.id}
+                      </text>
+                    </g>
+                  )}
                 </g>
               );
             })}
@@ -183,9 +197,9 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       <div className="description">
         <div className="title">
           <h3>
-            Der Ergieverbrauch von verarbeitenden Gewerben in {lkData} besteht{' '}
+            Der Energieverbrauch in der Industrie in {lkData} basiert im Jahr{' '}
             <span>{lastYear}</span> zu <span> {percRenewables}% </span>
-            aus <span className="second-value"> erneuerbaren Energieträgern</span>
+            auf <span className="second-value"> erneuerbaren Energien</span>
           </h3>
         </div>
       </div>
