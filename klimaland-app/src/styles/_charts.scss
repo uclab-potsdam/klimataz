@@ -14,7 +14,7 @@
         &.Mo-chart {
             .car-density {
                 height: 100%;
-                @include vertical-layout;
+                @include responsive-layout;
 
                 .title {
                     span {
@@ -289,7 +289,7 @@
         &.Ge-chart {
             .newbuildings-energy {
                 height: 100%;
-                @include vertical-layout;
+                @include responsive-layout;
 
                 .legend {
                         svg {

@@ -1,9 +1,7 @@
 @import "_config.scss";
 @import "_card.scss";
-@import "_responsive.scss";
 @import "_charts.scss";
 @import "_text.scss";
-
 
 // remove for deployment
 .debug {
@@ -200,9 +198,9 @@ code {
                 }
 
                 &.help-postcard {
-                    width: $thumbnail-postcardwith;
-                    height: calc($thumbnail-postcardwith/1.4);
-                    transform: translate(0, calc($thumbnail-postcardwith/-1.4)) rotate(10deg);
+                    width: $thumbnail-postcardwidth;
+                    height: calc($thumbnail-postcardwidth/1.4);
+                    transform: translate(0, calc($thumbnail-postcardwidth/-1.4)) rotate(10deg);
                     transition: 0.2s;
 
                     .text {
@@ -220,3 +218,5 @@ code {
         }
     }
 }
+
+@import "_responsive.scss";

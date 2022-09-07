@@ -1,3 +1,4 @@
+@import 'node_modules/include-media/dist/_include-media.scss';
 //fonts
 @font-face {
     font-family: AktivGrotesk_bold;
@@ -14,6 +15,13 @@
     src: url('../fonts/chivo/Chivo-Light.otf');
 }
 
+// breakpoints for responsive devices
+$breakpoints: (
+    phone: 320px,
+    tablet: 768px,
+    desktop: 940px
+);
+
 //colors
 $light: #FFF9F1;
 $pink: rgb(255, 192, 192);
@@ -28,9 +36,11 @@ $dark-pink: #E5144B;
 $red: #FF7B7B;
 $default-text: #484848;
 $mint-green: #1A8579;
-//variables
+
+//size variables
 $postcardview-postcardwidth: 80vw;
-$thumbnail-postcardwith:30vw;
+$thumbnail-postcardwidth:30vw;
+$portait-postcardwidth:80vw;
 
 //effects
 $boxshadow: (
@@ -73,13 +83,37 @@ p, text {
     }
 }
 
+//reusable styles for postcards
+@mixin postcard {
+    z-index: -10;
+    transition: 0.2s;
+    background-color: $light;
+    border: 1px solid $taz-orange;
+    border-radius: 3px;
+    box-shadow: map-get($map: $boxshadow, $key: default);
+
+    &:hover {
+        transition: 0.2s;
+        box-shadow: map-get($map: $boxshadow, $key: hover);
+    }
+
+}
+
+@mixin stacked-postcard {
+    position: absolute;
+    transition: 1000ms;
+}
+
+@mixin portrait-postcard {
+
+}
+
 // reusable layouts for vis
 @mixin vertical-layout{
     display: inline-flex;
     .description {
         width: 35%;
         height: 100%;
-        // background-color: pink;
     
     
         .title {
@@ -200,36 +234,46 @@ p, text {
 
 }
 
+@mixin responsive-layout {
+    @include media(">phone", "<=tablet") {
+        @include horizontal-top-layout
+    }
+    
+    @include media(">=tablet") {
+        @include vertical-layout()
+    }
+}
+
 //breakpoints from bootstrap
 //https://getbootstrap.com/docs/5.0/layout/breakpoints/
 
 //media queries
-@mixin media-s{
-    @media screen and (min-width: 576px){
-        @content;
-    }
-}
+// @mixin media-s{
+//     @media screen and (min-width: 576px){
+//         @content;
+//     }
+// }
 
-@mixin media-md{
-    @media screen and (min-width: 768px){
-        @content;
-    }
-}
+// @mixin media-md{
+//     @media screen and (min-width: 768px){
+//         @content;
+//     }
+// }
 
-@mixin media-lg{
-    @media screen and (min-width: 992px){
-        @content;
-    }
-}
+// @mixin media-lg{
+//     @media screen and (min-width: 992px){
+//         @content;
+//     }
+// }
 
-@mixin media-xl{
-    @media screen and (min-width: 1200px){
-        @content;
-    }
-}
+// @mixin media-xl{
+//     @media screen and (min-width: 1200px){
+//         @content;
+//     }
+// }
 
-@mixin media-xxl{
-    @media screen and (min-width: 1400px){
-        @content;
-    }
-}
+// @mixin media-xxl{
+//     @media screen and (min-width: 1400px){
+//         @content;
+//     }
+// }
