@@ -84,7 +84,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
         })
 
         //scales and margins, using d3 as utility
-        const marginWidth = Math.ceil(dimensions.width / 5)
+        const marginWidth = Math.ceil(dimensions.width / 6)
         const marginHeight = Math.ceil(dimensions.height / 5)
 
         rectWidth = Math.ceil((dimensions.width - (marginWidth * 2)) / 10)
@@ -112,8 +112,8 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                 </div>
             </div>
             <div className="visualization-container" ref={targetRef}>
-                <svg className="chart">
-                    <g transform={isThumbnail ? 'translate(-10, 0)' : "translate(-35, -10)"}>
+                <svg className={`chart ${isThumbnail ? 'thumbnail-chart' : 'active-chart'}`}>
+                    <g className="cars-container">
                         <g className="grid">
                             {
                                 carSquares.map(function (sq, s) {
@@ -164,7 +164,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                                 <rect
                                                     width={rectWidth}
                                                     height={rectHeight}
-                                                    fill="#6E82AE"
+                                                    fill="#FF7B7B"
                                                     x="-3"
                                                     y="-3"
                                                 />
@@ -187,7 +187,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
                                                 <rect
                                                     width={rectWidth}
                                                     height={rectHeight}
-                                                    fill="#6E82AE"
+                                                    fill="#FF7B7B"
                                                     x="-6"
                                                     y="-6"
                                                 />
