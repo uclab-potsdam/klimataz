@@ -219,8 +219,8 @@ const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumb
         <div className="title">
           <h3>
             Der Energieverbrauch in {lkData} basiert im Jahr <span>{lastYear}</span> zu{' '}
-            <span> {percRenewables}% </span>
-            auf <span className="second-value"> erneuerbaren Energien</span>
+            <span> {percRenewables}%</span> auf{' '}
+            <span className="second-value"> erneuerbaren Energien</span>
           </h3>
         </div>
       </div>
