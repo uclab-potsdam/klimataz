@@ -100,7 +100,41 @@
         &.En-chart {
             .primary-energy {
                 height: 100%;
-                @include horizontal-bottom-layout;            
+                @include horizontal-bottom-layout;      
+                
+                .chart {
+                    .axis {
+                        line {
+                            stroke: $default-text;
+                        }
+
+                        text {
+                            font-size: 12px;
+                        }
+                    }
+
+                    .stream{
+                        text {
+                            font-size: 12px;
+                        }
+                    }
+                 }
+                 &.is-thumbnail {
+                
+                    .visualization-container {
+                        height: 100%;
+                        width: 100%;
+    
+                        .axis, text, rect {
+                            display: none;
+                        }
+    
+                    }
+    
+                    .description {
+                        display: none;
+                    }
+                }      
             }
             .energy-industry{
                 height: 100%;
@@ -123,24 +157,25 @@
                         }
                     }
                  }
-            }
-
-            &.is-thumbnail {
+                 &.is-thumbnail {
                 
-                .visualization-container {
-                    height: 100%;
-                    width: 100%;
-
-                    .axis, text, rect {
+                    .visualization-container {
+                        height: 100%;
+                        width: 100%;
+    
+                        .axis, text, rect {
+                            display: none;
+                        }
+    
+                    }
+    
+                    .description {
                         display: none;
                     }
-
-                }
-
-                .description {
-                    display: none;
                 }
             }
+
+
         }
 
         &.Ab-chart {

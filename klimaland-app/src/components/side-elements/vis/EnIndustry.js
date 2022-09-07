@@ -145,7 +145,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
             {xAxisElements.map((axis, a) => {
               if (a % xAxisLineAmount !== 0) {
                 return (
-                  <g key={a} transform={`translate(${axis.x}, 0)`}>
+                  <g key={a} transform={`translate(${axis.x + 1}, 0)`}>
                     <line
                       x1="0"
                       x2="0"
