@@ -399,7 +399,38 @@
         &.La-chart {
             .animal-count {
                 height: 100%;
-                @include horizontal-top-layout;
+                @include horizontal-bottom-layout;
+            
+                .chart{
+                    .legend {
+                        circle {
+                            // fill: white;
+                            stroke: $default-text;
+    
+                            &.mehrTiere {
+                                fill: $taz-orange;
+                            }
+    
+                            &.wenigerTiere {
+                                fill: $mint-green;
+                            }
+
+                            &.vorherigeZaehlung {
+                                stroke-dasharray: 2px 2px;
+                                fill: none;
+                            }
+                        }
+
+                        text {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+
+            .animal-density {
+                height: 100%;
+                @include vertical-layout;
             }
         }
                                 
