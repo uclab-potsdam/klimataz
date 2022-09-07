@@ -41,9 +41,10 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData, isThumbn
    let yAxisLabels;
    const width = dimensions.width;
    const height = dimensions.height;
+   let rotationX = width <= 300 ? 8 : 10
    const marginWidth = Math.round(dimensions.width / 10);
    const marginHeight = Math.round(dimensions.height / 10);
-   const radius = isThumbnail ? Math.ceil(width / 80) : Math.ceil(width / 100);
+   const radius = isThumbnail ? Math.ceil(width / 50) : Math.ceil(width / 80);
 
    if (currentData !== undefined) {
       const lastDataPoint = currentData.data.slice(-1)
@@ -75,6 +76,7 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData, isThumbn
             const currentDataPoint = {}
             currentDataPoint.value = d.value
             currentDataPoint.year = +d.year
+            currentDataPoint.yearClass = +d.year % 2 === 0 ? 'even-year' : 'odd-year'
 
             // data for optional pies
             const elWithSameYear = currentData.data.filter(el => +el.year === +d.year)
@@ -146,9 +148,10 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData, isThumbn
                            <line x1="0" x2="0" y1="0" y2={height - d.y} />
                            <circle cx="0" cy="0" r={radius} />
                            <text
+                              className={d.yearClass}
                               x="5"
                               y={height - d.y - 5}
-                              transform={`rotate(-90, 10, ${height - d.y - 10})`}>
+                              transform={`rotate(-90, ${rotationX}, ${height - d.y - rotationX})`}>
                               {d.year}
                            </text>
                            <g className={`pie ${piesAreActive && !isThumbnail ? 'show-pies' : ''}`}>
@@ -187,8 +190,8 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData, isThumbn
          <div className="description">
             < div className="title" >
                <h3>
-                  <span>{lastYear}</span> wurden in <span>{lkData}</span> <span>{lastValue}</span> Millionen tonnen organische Abfälle
-                  aus der <span className="first-value">Biotonne</span> und <span className="second-value">Garten- und Parkabfällen</span> entsorgt
+                  Im Jahr <span>{lastYear}</span> wurden in <span>{lkData}</span> <span>{lastValue}</span> Milliarden Tonnen
+                  organische Abfälle korrekt in der Biotonne oder als Gartenabfälle entsorgt XXXX und damit Co2-Emissionen verringert.
                </h3>
             </div>
          </div >

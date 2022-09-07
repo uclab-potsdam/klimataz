@@ -19,7 +19,7 @@
                 .title {
                     span {
                         &.first-value {
-                            color: $dark-blue;
+                            color: $red;
                         }
                         
                         &.second-value {
@@ -51,6 +51,14 @@
 
                     .gridded-data {
                         mix-blend-mode: multiply;
+                    }
+
+                    &.active-chart {
+                        transform: translate(-5px, -10px);
+                    }
+
+                    &.thumbnail-chart {
+                        transform: translate(-10px, 0px);
                     }
                 }
 

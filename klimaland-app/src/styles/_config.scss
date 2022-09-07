@@ -199,6 +199,17 @@ p, text {
         height: 80%;
     }
 
+    // @include media(">phone", "<=tablet") {
+    //     .description {
+    //         // background-color: blue;
+    //         .title {
+    //             h3 {
+    //                 font-size: 16px;
+    //             }
+    //         }
+    //     }
+    // }
+
 }
 
 @mixin horizontal-bottom-layout {
