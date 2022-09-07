@@ -1,26 +1,5 @@
 @import "_config.scss";
 
-//reusable styles
-@mixin postcard {
-    z-index: -10;
-    transition: 0.2s;
-    background-color: $light;
-    border: 1px solid $taz-orange;
-    border-radius: 3px;
-    box-shadow: map-get($map: $boxshadow, $key: default);
-    
-    &:hover{
-        transition: 0.2s;
-        box-shadow: map-get($map: $boxshadow, $key: hover);
-    }
-
-}
-
-@mixin stacked-postcard{
-    position: absolute;
-    transition: 1000ms;
-}
-
 .carousel-container{
     position: absolute;
     width: 100%;
@@ -63,6 +42,7 @@
     &-left{
         transform: rotate(-5deg) scale(1);
         -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
         z-index: -2;
         @include stacked-postcard;
 
@@ -75,6 +55,7 @@
     &-right{
         transform: rotate(5deg) scale(1);
         -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
         z-index: -1;
         @include stacked-postcard;
 
@@ -87,6 +68,7 @@
     &-back{
         transform: rotate(-2deg)  translate(-2px, -5px) scale(1);
         -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
         z-index: -3;
         @include stacked-postcard;
 
@@ -98,9 +80,10 @@
 
     &-ordered{
         //original ratio changed for styling
-        width: $thumbnail-postcardwith;
-        height: calc($thumbnail-postcardwith/1.5);
+        width: $thumbnail-postcardwidth;
+        height: calc($thumbnail-postcardwidth/1.5);
         -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
         position: relative;
         z-index: 0;
 
@@ -142,14 +125,16 @@
     //148mm x 105mm (ratio 1.4)
     width: $postcardview-postcardwidth; //60vw
     height: calc($postcardview-postcardwidth/1.6);
-    // margin: 0.5em;
     
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
+    
     transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
     -webkit-transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
+    
     transition: transform ease 500ms;
     transition: -webkit-transform ease 500ms;
+    
     box-shadow: -4px 4px 0px rgba($taz-orange, 0.4);
 
     &:hover {
@@ -331,6 +316,7 @@
                     padding: 0.2rem 0.5rem 0.2rem 0.5rem;
                     background: linear-gradient(to left,$mint-green, rgba($mint-green, 0.5));
                     -webkit-background-clip: text;
+                    background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
         }
