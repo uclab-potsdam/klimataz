@@ -97,9 +97,26 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
       }
     };
 
+    const colorCategory = scaleOrdinal().domain([0, 1, 2]).range(colorArray);
+
+    const checkChange = () => {};
     dataRinder.map((data, d) => {
       const currentArc = {};
       const scaledValue = animalScale(data);
+      let change = 0;
+
+      if (d - 1 >= 0) {
+        change = data.value - dataRinder[d - 1].value;
+      }
+
+      let test = 0;
+      if (change > 0) {
+        test = 1;
+      } else if ((change = 0)) {
+        test = 2;
+      } else {
+        test = 0;
+      }
 
       currentArc.id = data.column;
       currentArc.value = scaledValue;
@@ -107,6 +124,7 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
       currentArc.path = arcGenerator(scaledValue);
       currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
       currentArc.x = xScale(uniqueAnimals.indexOf(data.column));
+      currentArc.color = colorCategory(test);
 
       arcRinder.push(currentArc);
     });
@@ -140,25 +158,7 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
 
       arcSchweine.push(currentArc);
     });
-
     arcElements.push(arcSchweine);
-    console.log(currentData.data);
-    console.log(arcElements);
-    // currentData.data.map((data, d) => {
-    //   const currentArc = {};
-    //   const scaledValue = animalScale(data);
-
-    //   currentArc.id = data.column;
-    //   currentArc.value = scaledValue;
-    //   currentArc.year = +data.year;
-    //   currentArc.path = arcGenerator(scaledValue);
-    //   currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
-    //   currentArc.x = xScale(uniqueAnimals.indexOf(data.column));
-    //   // console.log(currentData.data[d].value);
-
-    //   arcElements.push(currentArc);
-    // });
-    // console.log(currentData.data);
   }
 
   return (
@@ -210,12 +210,12 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
             {arcRinder.map((arc, a) => {
               return (
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
-                  <path d={arc.path} stroke="black" strokeWidth="0.75" fill="none" />
+                  <path d={arc.path} stroke="black" strokeWidth="0.75" fill={arc.color} />
                   <text>{arc.label}</text>
                 </g>
               );
             })}
-            {arcSchafe.map((arc, a) => {
+            {/* {arcSchafe.map((arc, a) => {
               return (
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
                   <path d={arc.path} stroke="black" strokeWidth="0.75" fill="none" />
@@ -230,7 +230,7 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
                   <text>{arc.label}</text>
                 </g>
               );
-            })}
+            })} */}
           </g>
         </svg>
       </div>
