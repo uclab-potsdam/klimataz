@@ -96,6 +96,14 @@
 
     .chart-container {
         .svg-container {
+            &.En-chart {
+                .energy-industry, .primary-energy {
+                    .visualization-container {
+                        height: 75%;
+                    }
+                }
+            }
+
             &.Mo-chart {
                 .car-density {
                     .description {

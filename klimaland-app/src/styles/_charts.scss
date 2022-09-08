@@ -106,45 +106,7 @@
         }
 
         &.En-chart {
-            .primary-energy {
-                height: 100%;
-                @include horizontal-bottom-layout;      
-                
-                .chart {
-                    .axis {
-                        line {
-                            stroke: $default-text;
-                        }
-
-                        text {
-                            font-size: 12px;
-                        }
-                    }
-
-                    .stream{
-                        text {
-                            font-size: 12px;
-                        }
-                    }
-                 }
-                 &.is-thumbnail {
-                
-                    .visualization-container {
-                        height: 100%;
-                        width: 100%;
-    
-                        .axis, text, rect {
-                            display: none;
-                        }
-    
-                    }
-    
-                    .description {
-                        display: none;
-                    }
-                }      
-            }
-            .energy-industry{
+            .energy-industry, .primary-energy {
                 height: 100%;
                 @include horizontal-bottom-layout;   
 
@@ -155,16 +117,32 @@
                         }
 
                         text {
+                            fill: $default-text;
                             font-size: 12px;
                         }
                     }
 
-                    .stream{
-                        text {
-                            font-size: 12px;
+                    .streams-container {
+                        .stream {
+                            path {
+                                stroke: $default-text;
+                                stroke-width: 0.75;
+                            }
+
+                            text {
+                                font-size: 12px;
+                                fill: $default-text;
+                            }
+
+                            rect.marker-label {
+                                stroke: $default-text;
+                                fill: white;
+                            }
                         }
+
                     }
                  }
+                 
                  &.is-thumbnail {
                 
                     .visualization-container {
