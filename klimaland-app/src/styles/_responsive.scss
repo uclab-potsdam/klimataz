@@ -177,6 +177,42 @@
 
             &.Ge-chart {
                 .newbuildings-energy {
+                    .description {
+                        height: 19%;
+                        .caption {
+                            display: none;
+                        }
+
+                        .legend {
+                            position: absolute;
+                            bottom: 0;
+                            height: 19%;
+                            width: 100%;
+                            
+                            .legend-inner {
+                                font-size: 12px;
+                                position: absolute;
+                                width: 100%;
+                                bottom: 1rem;
+                        
+                                .legend-elements-container {
+                                    display: flex;
+                                    flex-direction: row;
+                                    flex-wrap: wrap;
+                        
+                                    .legend-element {
+                                        display: flex;
+                                        flex: 0 1 auto;
+                                        margin-left: 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .visualization-container {
+                        height: 70%;
+                    }
                     &.is-thumbnail {
                         .description {
                             display: none;
