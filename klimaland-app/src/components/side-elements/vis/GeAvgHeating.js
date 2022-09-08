@@ -92,11 +92,6 @@ const GeAvgHEating = ({ currentData, currentIndicator, currentSection, lkData, i
 
     return (
         <div className={`avg-heating ${isThumbnail ? 'is-thumbnail' : ''}`}>
-            <div className="description">
-                <div className="title">
-                    <h3>Wie hoch ist der Enrgieverbrauch zum Heizen?</h3>
-                </div>
-            </div>
             <div className="visualization-container" ref={targetRef}>
                 <svg className="chart">
                     <clipPath id="backgroundRect">
@@ -172,6 +167,11 @@ const GeAvgHEating = ({ currentData, currentIndicator, currentSection, lkData, i
                         }
                     </g>
                 </svg>
+            </div>
+            <div className="description">
+                <div className="title">
+                    <h3>Wie hoch ist der Enrgieverbrauch zum Heizen?</h3>
+                </div>
             </div>
         </div >
     );

@@ -142,7 +142,7 @@
 
                     }
                  }
-                 
+
                  &.is-thumbnail {
                 
                     .visualization-container {
@@ -278,10 +278,30 @@
                 @include responsive-layout;
 
                 .legend {
-                        svg {
+                        position: relative;
+                        .legend-inner {
                             font-size: 12px;
-                            g {
-                                cursor: pointer;
+                            width: 100%;
+                            
+                            .legend-elements-container {
+                                display: flex;
+                                flex-direction: column;
+                                
+                                .legend-element {
+                                    display: flex;
+                                    margin-left: 1rem;
+                                    
+                                    .element-color {
+                                        min-width: 10px;
+                                        height: 10px;
+                                        border-radius: 100%;    
+                                    }
+
+                                    p {
+                                        margin: 0;
+                                        margin-left: 5px;
+                                    }
+                                }
                             }
                         }
                     }
@@ -354,11 +374,9 @@
 
             .avg-heating {
                 height: 100%;
-                @include horizontal-top-layout;
+                @include horizontal-bottom-layout;
 
                 .visualization-container {
-                    height: 85%;
-
                     svg {
                         .non-clipped-elements {
                             text {
