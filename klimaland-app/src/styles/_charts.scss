@@ -401,6 +401,7 @@
                 height: 100%;
                 @include horizontal-bottom-layout;
             
+
                 .chart{
                     .legend {
                         circle {
@@ -431,6 +432,26 @@
             .animal-density {
                 height: 100%;
                 @include vertical-layout;
+
+                
+                .legend {
+                    margin-left: 1rem;
+                    margin-top: 2rem;
+                    svg {
+                        font-size: 12px;
+                        g {
+                            // cursor: pointer;
+                        }
+                    }
+                }
+
+                .caption {
+                    margin-left: 1rem;
+
+                    span {
+                        color: $dark-blue;
+                    }
+                }
             }
         }
                                 
