@@ -139,7 +139,14 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
                       stroke="black"
                     />
                     {/* // YEAR */}
-                    <text x="-18" y={marginHeight + 15} textAnchor="middle">
+                    <text
+                      x="-18"
+                      y={marginHeight + 15}
+                      textAnchor="middle"
+                      transform={dimensions.width <= 350
+                        ? `rotate(-90, -10, ${marginHeight + 10})`
+                        : ''}
+                    >
                       {axis.label}
                     </text>
                   </g>
@@ -149,11 +156,11 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
               }
             })}
           </g>
-          <g className="stream">
+          <g className="streams-container">
             {streamEle.map((stream, s) => {
               return (
-                <g key={s}>
-                  <path d={stream.path} stroke="black" strokeWidth="0.75" fill={stream.fill} />
+                <g key={s} className="stream">
+                  <path className="path" d={stream.path} fill={stream.fill} />
                   {stream.height > 210 && (
                     <g>
                       <rect
@@ -162,14 +169,11 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
                         y={stream.yPos - 8}
                         width={stream.width * 10}
                         height="16"
-                        fill="white"
-                        stroke="black"
                       />
                       <text
                         className="marker-label"
                         x={stream.xPos - stream.width}
                         y={stream.yPos + 4}
-                        fill="black"
                       >
                         {stream.id}
                       </text>
