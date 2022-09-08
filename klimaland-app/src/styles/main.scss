@@ -74,9 +74,8 @@ code {
 // In here all elements contained in main-container
 .indicators-iframe {
     max-width: 948px;
+    height: 100vh;
     width: 100%;
-    height: 624px;
-    border: 1px solid rgb(174, 174, 142);
 
     .main-container {
         width: 100%;
@@ -102,8 +101,8 @@ code {
             position: absolute;
             width: 100%;
             height: 100%;
-            // z-index: -1;
             right: 0;
+            top: 0;
 
             .button-switch-container {
                 display: flex;

@@ -418,7 +418,7 @@
         margin-bottom: 0.5rem;
 
         .locator-background {
-            width: 50%;
+            width: 45%;
 
             svg {
                 .zoom-pointer {
@@ -433,6 +433,7 @@
         .locator-zoom {
             width: 50%;
             margin-left: 0.5rem;
+            // padding: 1rem;
 
             .locator-zoom-inner {
                 background-color: $light;

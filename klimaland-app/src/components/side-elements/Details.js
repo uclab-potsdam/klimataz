@@ -21,8 +21,10 @@ export default class Details extends Component {
           </div>
         </div>
         <div className="footer-container">
-          <div className="logo-container"></div>
-          <div className="info-backside">Wie werden die Indikatoren berechnet?</div>
+          <div className="footer-inner-container">
+            <div className="logo-container"></div>
+            <div className="info-backside">Wie werden die Indikatoren berechnet?</div>
+          </div>
         </div>
       </div>
     );
