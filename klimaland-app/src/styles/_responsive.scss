@@ -21,13 +21,31 @@
     }
 
     .indicators-iframe {
+        max-width: 375px;
         .main-container {
+            margin-top: 10px;
             .selection-buttons {
                 .selection-container {
                     display:block;
                     margin-bottom: 0.5rem;
                     .selector {
                         width: 90%;
+                    }
+                }
+            }
+
+            .card-collection {
+                margin-top: -10px;
+                height: 100vh;
+                .card-container {
+                    height: 100vh;
+
+                    &.messy {
+                        margin-top: -10vh;                    
+                    }
+
+                    &.stacked {
+                            align-content: baseline;
                     }
                 }
             }
@@ -80,6 +98,89 @@
             width: calc($portait-postcardwidth/2.3);
             height: calc($portait-postcardwidth/1.8);
             z-index: 0;
+            margin: -6px 0px -15px 0px;
+        }
+
+        &.card-active {
+            .side-inner {
+                .details-container {
+                    height: 90%;
+
+                    .flex-container {
+                        display: block;
+                        position: relative;
+
+                        .text-container {
+                            width: 100%;
+                            position: absolute;
+                            border: none;
+                            z-index: 1;
+                            overflow: hidden;
+
+                            .text-inner-container {
+                                margin-top: 25%;
+
+                                .section-title {
+                                    margin-bottom: 0;
+                                }
+
+                                .section-text {
+                                    margin-top: 0;
+
+                                    p {
+                                        margin-top: 5px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .data-container {
+                            position: absolute;
+                            width: 90%;
+                            height: 25%;
+                            top: 0;
+                            right: 0;
+                            z-index: 0;
+
+                            .locator-map {
+                                border: none;
+                                height: 100%;
+
+                                .locator-container {
+                                    height: 100%;
+
+                                    .locator-zoom {
+                                        margin-left: 0;
+                                        text-align: right;
+                                        display: flex;
+                                        justify-content: right;
+                                    }
+
+                                    .locator-background {
+                                        width: 40%;
+                                    }
+                                }
+                            }
+
+                            .lk-list {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .footer-container {
+                        height: 10%;
+                        .footer-inner-container {
+                            height: 100%;
+                            display: inline-block;
+                            margin: 0rem 0rem 0rem 1rem;
+                            .logo-container {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -119,11 +220,7 @@
     
                         .chart {
                             &.active-chart {
-                                transform: translate(0px, 18px);
-    
-                                .cars-container {
-                                    transform: translate(10px, 0px);
-                                }
+                                transform: skew(0deg, 0deg);
                             }
     
                             &.thumbnail-chart {
@@ -142,6 +239,16 @@
     
                         .visualization-container {
                             height: 100%;
+                        }
+                    }
+                }
+
+                .modal-split {
+                    .visualization-container {
+                        .chart {
+                            .bar-percentage-trip {
+                                display: none;
+                            }
                         }
                     }
                 }

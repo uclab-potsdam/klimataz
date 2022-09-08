@@ -297,9 +297,11 @@
         .footer-container {
             height: 10%;
             border-top: 1px solid $default-text;
-            display: flex;
 
-            .logo-container {
+            .footer-inner-container {
+                display: flex;
+                
+                .logo-container {
                     background-image: url(../img/taz/taz-logo.svg);
                     background-repeat: no-repeat;
                     background-size: contain;
@@ -307,18 +309,19 @@
                     min-height: 1rem;
                     margin: 10px;
                 }
-
+                
                 .info-backside {
-                    margin: 10px 0px 10px 0px;   
-                    font-size: 12px;  
-                    border: 1px solid $mint-green;     
+                    margin: 10px 0px 10px 0px;
+                    font-size: 12px;
+                    border: 1px solid $mint-green;
                     border-radius: 20px;
-                    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
-                    background: linear-gradient(to left,$mint-green, rgba($mint-green, 0.5));
+                    padding: 0.2rem 0.5rem 0rem 0.5rem;
+                    background: linear-gradient(to left, $mint-green, rgba($mint-green, 0.5));
                     -webkit-background-clip: text;
                     background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
+            }
         }
 
         // CSS Transition classes
