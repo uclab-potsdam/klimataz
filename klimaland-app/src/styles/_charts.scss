@@ -54,11 +54,11 @@
                     }
 
                     &.active-chart {
-                        transform: translate(-5px, -10px);
+                        transform: translate(-20px, -10px) skew(-17deg, 0deg);
                     }
 
                     &.thumbnail-chart {
-                        transform: translate(-10px, 0px);
+                        transform: translate(-10px, 0px) skew(-17deg, 0deg);
                     }
                 }
 

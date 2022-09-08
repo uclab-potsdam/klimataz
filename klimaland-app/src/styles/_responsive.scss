@@ -1,4 +1,10 @@
 
+// Generic responsive rules for smaller devices
+// For cards with vertical layouts a mixin called `responsive-layout`
+// handles the switch to an horizontal layout
+
+// variables method based on github.com/eduardoboucas/include-media
+
 /*Tablet*/
 @include media(">=tablet", "<desktop") {
     body {
@@ -28,8 +34,32 @@
 
             .info-container {
                 .help {
-                    width: 100px;
-                    height: 100px;
+                    width: 50px;
+                    height: 50px;
+
+                    h2.mobile-title {
+                        display: block;
+                        text-align: center;
+                        margin: 0;
+                    }
+
+                    h4.desktop-title {
+                        display: none;
+                    }
+
+                    &.help-postcard {
+                        width: $portait-postcardwidth;
+                        height: calc($portait-postcardwidth*1.5);
+                        transform: translate(0, -50%) rotate(5deg);
+
+                        h4.desktop-title {
+                            display: block; 
+                        }
+
+                        h2.mobile-title {
+                            display: none;
+                        }
+                    }
                 }
             }
 
@@ -89,6 +119,7 @@
                             }
     
                             &.thumbnail-chart {
+                                transform: skew(0deg, 0deg);
                                 .cars-container {
                                     transform: translate(20px, 0px);
                                 }
@@ -109,7 +140,6 @@
             }
     
             &.Ab-chart {
-    
                 .biotonne-weight {
                     .visualization-container {
                         height: 60%;
@@ -132,6 +162,16 @@
 
                         .controls-container {
                             visibility: hidden;
+                        }
+                    }
+                }
+            }
+
+            &.Ge-chart {
+                .newbuildings-energy {
+                    &.is-thumbnail {
+                        .description {
+                            display: none;
                         }
                     }
                 }

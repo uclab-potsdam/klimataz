@@ -23,7 +23,7 @@ $breakpoints: (
 );
 
 //colors
-$light: #FFF9F1;
+$light: #fefaf6;
 $pink: rgb(255, 192, 192);
 $blue: rgb(170, 210, 238);
 $dark-blue: #2A4D9C;
@@ -31,6 +31,7 @@ $taz-orange: #f6a119;
 $orange-shade: rgba($taz-orange, 0.4);
 $lighter-orange-full: #fff4e5;
 $lighter-orange: rgba(255, 232, 201, 0.7);
+$pale-olive: rgb(211, 186, 153);
 $taz-pink: #F00048;
 $dark-pink: #E5144B;
 $red: #FF7B7B;
@@ -44,8 +45,8 @@ $portait-postcardwidth:80vw;
 
 //effects
 $boxshadow: (
-    default: (4px 4px 0px $orange-shade),
-    hover: (6px 6px 0px $orange-shade)
+    default: (3px 3px 0px $lighter-orange),
+    hover: (4.5px 4.5px 0px rgba($pale-olive, 0.7))
 );
 
 h1, h2, h3, h4, h5, h6, p, text {
@@ -88,8 +89,8 @@ p, text {
     z-index: -10;
     transition: 0.2s;
     background-color: $light;
-    border: 1px solid $taz-orange;
-    border-radius: 3px;
+    border: 1px solid $pale-olive;
+    border-radius: 0px;
     box-shadow: map-get($map: $boxshadow, $key: default);
 
     &:hover {
@@ -198,18 +199,6 @@ p, text {
     .visualization-container {
         height: 80%;
     }
-
-    // @include media(">phone", "<=tablet") {
-    //     .description {
-    //         // background-color: blue;
-    //         .title {
-    //             h3 {
-    //                 font-size: 16px;
-    //             }
-    //         }
-    //     }
-    // }
-
 }
 
 @mixin horizontal-bottom-layout {
