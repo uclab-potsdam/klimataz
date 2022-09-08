@@ -1,25 +1,12 @@
 @import "_config.scss";
 @import "_card.scss";
-@import "_responsive.scss";
 @import "_charts.scss";
 @import "_text.scss";
-
-
-// remove for deployment
-.debug {
-    color: red;
-    font-size: 10px;
-    position: fixed;
-    bottom: 0;
-}
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'AktivGrotesk';
-    // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    //     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    //     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -37,6 +24,10 @@ button {
             min-width: 20px;
         }
     }
+}
+
+button, .info-container, .card-preview, .selector {
+    cursor: pointer;
 }
 
 h1{
@@ -190,9 +181,13 @@ code {
                     box-shadow: 6px 6px 0px rgba($red, 0.44);
                 }
 
-                h4 {
+                h4, h2 {
                     margin: 1rem 0;
                     color: $red;
+
+                    &.mobile-title {
+                        display: none;
+                    }
                 }
 
                 .text {
@@ -200,9 +195,9 @@ code {
                 }
 
                 &.help-postcard {
-                    width: $thumbnail-postcardwith;
-                    height: calc($thumbnail-postcardwith/1.4);
-                    transform: translate(0, calc($thumbnail-postcardwith/-1.4)) rotate(10deg);
+                    width: $thumbnail-postcardwidth;
+                    height: calc($thumbnail-postcardwidth/1.4);
+                    transform: translate(0, calc($thumbnail-postcardwidth/-1.4)) rotate(10deg);
                     transition: 0.2s;
 
                     .text {
@@ -220,3 +215,5 @@ code {
         }
     }
 }
+
+@import "_responsive.scss";

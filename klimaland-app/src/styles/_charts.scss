@@ -14,12 +14,12 @@
         &.Mo-chart {
             .car-density {
                 height: 100%;
-                @include vertical-layout;
+                @include responsive-layout;
 
                 .title {
                     span {
                         &.first-value {
-                            color: $dark-blue;
+                            color: $red;
                         }
                         
                         &.second-value {
@@ -51,6 +51,14 @@
 
                     .gridded-data {
                         mix-blend-mode: multiply;
+                    }
+
+                    &.active-chart {
+                        transform: translate(-20px, -10px) skew(-17deg, 0deg);
+                    }
+
+                    &.thumbnail-chart {
+                        transform: translate(-10px, 0px) skew(-17deg, 0deg);
                     }
                 }
 
@@ -289,7 +297,7 @@
         &.Ge-chart {
             .newbuildings-energy {
                 height: 100%;
-                @include vertical-layout;
+                @include responsive-layout;
 
                 .legend {
                         svg {

@@ -37,7 +37,8 @@ export default class Info extends Component {
           className={`help ${this.state.inFocus ? 'help-postcard' : ''}`}
           onClick={this.state.inFocus ? this.handleHelpNotFocus : this.handleHelpFocus}
         >
-          <h4>How to use the postcards</h4>
+          <h4 className="desktop-title">How to use the postcards</h4>
+          <h2 className="mobile-title">?</h2>
           <p className="text">
             Single iFrames are sized based on the use case.
             The size of the container determines in which way
