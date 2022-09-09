@@ -2,13 +2,13 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { arc } from 'd3';
 import { max, extent } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
-import { uniq } from 'lodash';
+import { forEach, uniq } from 'lodash';
 
 const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
   const colorArray = [
+    '#FFF2DA', // erstes Jahr
     '#007F87', // Zunahme
     '#F6A219', // Abnahme
-    '#FFF2DA', // erstes Jahr
   ];
 
   // getting sizes of container for maps
@@ -30,7 +30,7 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
   const legendRadius = isThumbnail
     ? Math.ceil(dimensions.width / 80)
     : Math.ceil(dimensions.width / 100);
-  const radiusArc = Math.ceil(dimensions.width / 10);
+  const radiusArc = Math.ceil(dimensions.width / 12);
   let axisElements = [];
   let arcElements = [];
   let arcRinder = [];
@@ -58,7 +58,7 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
     const domainRind = [0, max(dataRinder.map((d) => d.value))];
     const domainSchaf = [0, max(dataSchafe.map((d) => d.value))];
     const domainSchwein = [0, max(dataSchweine.map((d) => d.value))];
-    const domainY = [0, uniqueYears.length - 1];
+    const domainY = [uniqueYears.length - 1, 0]; // switch 0 and uniqueYears.length - 1 for vertical swap
     const domainX = [0, uniqueAnimals.length - 1];
 
     const rindScale = scaleLinear().domain(domainRind).range([0, radiusArc]);
@@ -99,24 +99,43 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
 
     const colorCategory = scaleOrdinal().domain([0, 1, 2]).range(colorArray);
 
-    const checkChange = () => {};
-    dataRinder.map((data, d) => {
+    let animalData = [];
+    animalData.push(dataRinder);
+    animalData.push(dataSchafe);
+    animalData.push(dataSchweine);
+    console.log(animalData);
+
+    const checkChange = (data, d) => {
+      let animalArr;
+      uniqueAnimals.forEach((animal, a) => {
+        if (data.column === animal) animalArr = animalData[a];
+      });
+      let difference = 0;
+      let colorVal = 0;
+      if (d - 1 >= 0) {
+        // need to exchange dataRinder with higher data level
+        difference = data.value - animalArr[d - 1].value;
+      }
+
+      if (difference < 0) {
+        colorVal = 1;
+      } else if (difference > 0) {
+        colorVal = 2;
+      } else if (difference === 0) {
+        colorVal = 0;
+      }
+      return colorVal;
+    };
+
+    const dataAnimal = (data, d, animalArray) => {
       const currentArc = {};
       const scaledValue = animalScale(data);
-      let change = 0;
-
+      let prevScaledValue = 0;
       if (d - 1 >= 0) {
-        change = data.value - dataRinder[d - 1].value;
+        prevScaledValue = animalScale(animalArray[d - 1].value);
       }
 
-      let test = 0;
-      if (change > 0) {
-        test = 1;
-      } else if ((change = 0)) {
-        test = 2;
-      } else {
-        test = 0;
-      }
+      const colorValue = checkChange(data, d);
 
       currentArc.id = data.column;
       currentArc.value = scaledValue;
@@ -124,41 +143,46 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
       currentArc.path = arcGenerator(scaledValue);
       currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
       currentArc.x = xScale(uniqueAnimals.indexOf(data.column));
-      currentArc.color = colorCategory(test);
+      currentArc.color = colorCategory(colorValue);
+      currentArc.pathPrev = arcGenerator(prevScaledValue);
 
-      arcRinder.push(currentArc);
+      return currentArc;
+    };
+
+    animalData.map((animal) => {
+      const currentArc = [];
+      animal.map((data, d) => {
+        const scaledValue = animalScale(data);
+        // const prevScaledValue = 0;
+        // if (d - 1 >= 0) {
+        //   prevScaledValue = data[d - 1].value;
+        // }
+        const colorValue = checkChange(data, d);
+
+        currentArc.id = data.column;
+        currentArc.value = scaledValue;
+        currentArc.year = +data.year;
+        currentArc.path = arcGenerator(scaledValue);
+        currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
+        currentArc.x = xScale(uniqueAnimals.indexOf(data.column));
+        currentArc.color = colorCategory(colorValue);
+
+        // console.log(currentArc);
+        return currentArc;
+      });
+      arcElements.push(currentArc);
     });
-    arcElements.push(arcRinder);
+
+    dataRinder.map((data, d) => {
+      arcRinder.push(dataAnimal(data, d, dataRinder));
+    });
 
     dataSchafe.map((data, d) => {
-      const currentArc = {};
-      const scaledValue = animalScale(data);
-
-      currentArc.id = data.column;
-      currentArc.value = scaledValue;
-      currentArc.year = +data.year;
-      currentArc.path = arcGenerator(scaledValue);
-      currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
-      currentArc.x = xScale(uniqueAnimals.indexOf(data.column));
-
-      arcSchafe.push(currentArc);
+      arcSchafe.push(dataAnimal(data, d, dataSchafe));
     });
-    arcElements.push(arcSchafe);
-
     dataSchweine.map((data, d) => {
-      const currentArc = {};
-      const scaledValue = animalScale(data);
-
-      currentArc.id = data.column;
-      currentArc.value = scaledValue;
-      currentArc.year = +data.year;
-      currentArc.path = arcGenerator(scaledValue);
-      currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
-      currentArc.x = xScale(uniqueAnimals.indexOf(data.column));
-
-      arcSchweine.push(currentArc);
+      arcSchweine.push(dataAnimal(data, d, dataSchweine));
     });
-    arcElements.push(arcSchweine);
   }
 
   return (
@@ -211,26 +235,27 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
               return (
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
                   <path d={arc.path} stroke="black" strokeWidth="0.75" fill={arc.color} />
-                  <text>{arc.label}</text>
+                  {/* <text>{arc.id}</text> */}
+                  <path d={arc.pathPrev} stroke="white" strokeWidth="1.75" fill="none" />
                 </g>
               );
             })}
-            {/* {arcSchafe.map((arc, a) => {
+            {arcSchafe.map((arc, a) => {
               return (
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
-                  <path d={arc.path} stroke="black" strokeWidth="0.75" fill="none" />
-                  <text>{arc.label}</text>
+                  <path d={arc.path} stroke="black" strokeWidth="0.75" fill={arc.color} />
+                  {/* <text>{arc.label}</text> */}
                 </g>
               );
             })}
             {arcSchweine.map((arc, a) => {
               return (
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
-                  <path d={arc.path} stroke="black" strokeWidth="0.75" fill="none" />
-                  <text>{arc.label}</text>
+                  <path d={arc.path} stroke="black" strokeWidth="0.75" fill={arc.color} />
+                  {/* <text>{arc.label}</text> */}
                 </g>
               );
-            })} */}
+            })}
           </g>
         </svg>
       </div>

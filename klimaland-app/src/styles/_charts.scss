@@ -403,6 +403,7 @@
             
 
                 .chart{
+
                     .legend {
                         circle {
                             // fill: white;
@@ -426,6 +427,25 @@
                             font-size: 12px;
                         }
                     }
+
+                    
+                    
+                }
+                &.is-thumbnail {
+                
+                    .visualization-container {
+                        height: 100%;
+                        width: 100%;
+    
+                        .axis, text, rect {
+                            display: none;
+                        }
+    
+                    }
+    
+                    .description {
+                        display: none;
+                    }
                 }
             }
 
@@ -433,6 +453,7 @@
                 height: 100%;
                 @include vertical-layout;
 
+                
                 
                 .legend {
                     margin-left: 1rem;
