@@ -128,6 +128,11 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
       return colorVal;
     };
 
+    // adds . as thousand separator
+    const formatNumber = (num) => {
+      return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    };
+
     // map all parameters for animal group
     const dataAnimal = (data, d, animalArray) => {
       const currentArc = {};
@@ -140,6 +145,7 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
 
       currentArc.id = data.column;
       currentArc.value = scaledValue;
+      currentArc.valueTotal = formatNumber(data.value);
       currentArc.year = +data.year;
       currentArc.path = arcGenerator(scaledValue);
       currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
@@ -213,6 +219,12 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
                   <path d={arc.path} fill={arc.color} />
                   <path className="previousYear" d={arc.pathPrev} />
+                  <g>
+                    <rect className="labelCount" x="-35" y="-22" width="70" height="16" />
+                    <text x="0" y="-10" fill="black" textAnchor="middle">
+                      {arc.valueTotal}
+                    </text>
+                  </g>
                 </g>
               );
             })}
@@ -221,6 +233,12 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
                   <path d={arc.path} fill={arc.color} />
                   <path className="previousYear" d={arc.pathPrev} />
+                  <g>
+                    <rect className="labelCount" x="-35" y="-22" width="70" height="16" />
+                    <text x="0" y="-10" fill="black" textAnchor="middle">
+                      {arc.valueTotal}
+                    </text>
+                  </g>
                 </g>
               );
             })}
@@ -229,6 +247,12 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
                   <path d={arc.path} fill={arc.color} />
                   <path className="previousYear" d={arc.pathPrev} />
+                  <g>
+                    <rect className="labelCount" x="-35" y="-22" width="70" height="16" />
+                    <text x="0" y="-10" fill="black" textAnchor="middle">
+                      {arc.valueTotal}
+                    </text>
+                  </g>
                 </g>
               );
             })}

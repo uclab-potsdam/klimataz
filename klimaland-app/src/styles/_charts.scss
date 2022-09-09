@@ -437,6 +437,18 @@
                     }
 
                     .arcs {
+
+                        text {
+                            font-size: 12px;
+                        }
+
+                        .labelCount{
+                            fill: white;
+                            stroke: #484848;
+                            stroke-width: "0.5";
+
+                        }
+                        
                         path{
                             stroke-width: 0.75;
                             stroke: #484848;
@@ -463,6 +475,7 @@
                         .axis, text, rect, .legend {
                             display: none;
                         }
+
     
                     }
     
