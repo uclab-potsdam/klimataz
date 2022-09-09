@@ -1,3 +1,4 @@
+@import 'node_modules/include-media/dist/_include-media.scss';
 //fonts
 @font-face {
     font-family: AktivGrotesk_bold;
@@ -14,8 +15,15 @@
     src: url('../fonts/chivo/Chivo-Light.otf');
 }
 
+// breakpoints for responsive devices
+$breakpoints: (
+    phone: 320px,
+    tablet: 768px,
+    desktop: 940px
+);
+
 //colors
-$light: #FFF9F1;
+$light: #fefaf6;
 $pink: rgb(255, 192, 192);
 $blue: rgb(170, 210, 238);
 $dark-blue: #2A4D9C;
@@ -23,19 +31,22 @@ $taz-orange: #f6a119;
 $orange-shade: rgba($taz-orange, 0.4);
 $lighter-orange-full: #fff4e5;
 $lighter-orange: rgba(255, 232, 201, 0.7);
+$pale-olive: rgb(211, 186, 153);
 $taz-pink: #F00048;
 $dark-pink: #E5144B;
 $red: #FF7B7B;
 $default-text: #484848;
 $mint-green: #1A8579;
-//variables
+
+//size variables
 $postcardview-postcardwidth: 80vw;
-$thumbnail-postcardwith:30vw;
+$thumbnail-postcardwidth:30vw;
+$portait-postcardwidth:80vw;
 
 //effects
 $boxshadow: (
-    default: (4px 4px 0px $orange-shade),
-    hover: (6px 6px 0px $orange-shade)
+    default: (3px 3px 0px $lighter-orange),
+    hover: (4.5px 4.5px 0px rgba($pale-olive, 0.7))
 );
 
 h1, h2, h3, h4, h5, h6, p, text {
@@ -73,13 +84,37 @@ p, text {
     }
 }
 
+//reusable styles for postcards
+@mixin postcard {
+    z-index: -10;
+    transition: 0.2s;
+    background-color: $light;
+    border: 1px solid $pale-olive;
+    border-radius: 0px;
+    box-shadow: map-get($map: $boxshadow, $key: default);
+
+    &:hover {
+        transition: 0.2s;
+        box-shadow: map-get($map: $boxshadow, $key: hover);
+    }
+
+}
+
+@mixin stacked-postcard {
+    position: absolute;
+    transition: 1000ms;
+}
+
+@mixin portrait-postcard {
+
+}
+
 // reusable layouts for vis
 @mixin vertical-layout{
     display: inline-flex;
     .description {
         width: 35%;
         height: 100%;
-        // background-color: pink;
     
     
         .title {
@@ -164,7 +199,6 @@ p, text {
     .visualization-container {
         height: 80%;
     }
-
 }
 
 @mixin horizontal-bottom-layout {
@@ -200,36 +234,46 @@ p, text {
 
 }
 
+@mixin responsive-layout {
+    @include media(">phone", "<=tablet") {
+        @include horizontal-top-layout
+    }
+    
+    @include media(">=tablet") {
+        @include vertical-layout()
+    }
+}
+
 //breakpoints from bootstrap
 //https://getbootstrap.com/docs/5.0/layout/breakpoints/
 
 //media queries
-@mixin media-s{
-    @media screen and (min-width: 576px){
-        @content;
-    }
-}
+// @mixin media-s{
+//     @media screen and (min-width: 576px){
+//         @content;
+//     }
+// }
 
-@mixin media-md{
-    @media screen and (min-width: 768px){
-        @content;
-    }
-}
+// @mixin media-md{
+//     @media screen and (min-width: 768px){
+//         @content;
+//     }
+// }
 
-@mixin media-lg{
-    @media screen and (min-width: 992px){
-        @content;
-    }
-}
+// @mixin media-lg{
+//     @media screen and (min-width: 992px){
+//         @content;
+//     }
+// }
 
-@mixin media-xl{
-    @media screen and (min-width: 1200px){
-        @content;
-    }
-}
+// @mixin media-xl{
+//     @media screen and (min-width: 1200px){
+//         @content;
+//     }
+// }
 
-@mixin media-xxl{
-    @media screen and (min-width: 1400px){
-        @content;
-    }
-}
+// @mixin media-xxl{
+//     @media screen and (min-width: 1400px){
+//         @content;
+//     }
+// }

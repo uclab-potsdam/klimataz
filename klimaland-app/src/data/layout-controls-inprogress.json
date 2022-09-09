@@ -100,7 +100,7 @@
                         false
                     ],
                     "components": {
-                        "indicator": "_organicwaste_weight_",
+                        "indicator": "_organicwaste_kg_per_person_",
                         "component": "AbBiotonneWeight",
                         "showDataFootnote": false
                     }

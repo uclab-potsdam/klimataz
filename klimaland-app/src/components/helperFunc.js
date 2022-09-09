@@ -50,6 +50,12 @@ export function percentage(partialValue, totalValue) {
   return (100 * partialValue) / totalValue;
 }
 
+/**
+ * Turns first letter of string to uppercase string -> String
+ * @param {*} string string that needs to be converted
+ * @returns returns same string with first letter uppercase
+ */
+
 export function firstToUppercase(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
