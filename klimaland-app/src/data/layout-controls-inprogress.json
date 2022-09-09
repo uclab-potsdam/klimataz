@@ -144,6 +144,21 @@
                         true
                     ]
                 }
+            },
+            {
+                "2": {
+                    "combo": [
+                        3,
+                        true,
+                        2,
+                        false
+                    ],
+                    "components": {
+                        "indicator": "_animalcount_bydensity_",
+                        "component": "LaAnimalDensity",
+                        "showDataFootnote": false
+                    }
+                }
             }
         ]
     },

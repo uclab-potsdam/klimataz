@@ -182,7 +182,7 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
                         </text>
                         {referenceXTicks.map((tick, t) => {
                           return (
-                            <g transform={`translate(${xScale(tick)}, 0)`}>
+                            <g transform={`translate(${xScale(tick)}, 0)`} key={t}>
                               <line x1="0" x2="0" y1="0" y2="5" />
                             </g>
                           );

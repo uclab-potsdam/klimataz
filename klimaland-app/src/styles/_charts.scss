@@ -407,7 +407,128 @@
         &.La-chart {
             .animal-count {
                 height: 100%;
-                @include horizontal-top-layout;
+                @include horizontal-bottom-layout;
+            
+
+                .chart{
+
+                    .legend {
+                        circle {
+                            // fill: white;
+                            stroke: $default-text;
+    
+                            &.mehrTiere {
+                                fill: $taz-orange;
+                            }
+    
+                            &.wenigerTiere {
+                                fill: $mint-green;
+                            }
+
+                            &.vorherigeZaehlung {
+                                stroke-dasharray: 2px 2px;
+                                fill: none;
+                            }
+                        }
+
+                        text {
+                            font-size: 12px;
+                        }
+                    }
+
+                    .arcs {
+
+                        text {
+                            font-size: 12px;
+                        }
+
+                        .labelCount{
+                            fill: white;
+                            stroke: #484848;
+                            stroke-width: "0.5";
+
+                        }
+                        
+                        path{
+                            stroke-width: 0.75;
+                            stroke: #484848;
+
+                            &.previousYear{
+                                stroke-dasharray: 4px 4px;
+                                stroke-width: 1;
+                                fill: none;
+                            }
+                        }
+                    }
+
+                    
+                    
+                }
+                &.is-thumbnail {
+                
+                    .visualization-container {
+                        height: 100%;
+                        width: 100%;
+                        scale: 65%;
+                        transform: translateY(-10%) translateX(-3%);
+    
+                        .axis, text, rect, .legend {
+                            display: none;
+                        }
+
+    
+                    }
+    
+                    .description {
+                        display: none;
+                    }
+
+
+                }
+            }
+
+            .animal-density {
+                height: 100%;
+                @include vertical-layout;
+
+                .chart{
+                    .bars {
+                        .labelText {
+                            font-size: 12px;
+                            fill:  #484848;
+                        }
+
+                        .labelCount{
+                            fill: white;
+                            stroke: #484848;
+                            stroke-width: "0.5";
+                        }
+                        
+                        rect{
+                            stroke-width: 1;
+                            stroke: #484848;
+                        }
+                    }
+                }
+                
+                .legend {
+                    margin-left: 1rem;
+                    margin-top: 2rem;
+                    svg {
+                        font-size: 12px;
+                        g {
+                            // cursor: pointer;
+                        }
+                    }
+                }
+
+                .caption {
+                    margin-left: 1rem;
+
+                    span {
+                        color: $dark-blue;
+                    }
+                }
             }
         }
                                 
