@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { arc } from 'd3';
 import { max, extent } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
-import { forEach, uniq } from 'lodash';
+import { first, forEach, uniq } from 'lodash';
 
 const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
   const colorArray = [
@@ -32,32 +32,39 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
     : Math.ceil(dimensions.width / 100);
   const radiusArc = Math.ceil(dimensions.width / 12);
   let axisElements = [];
-  let arcElements = [];
   let arcRinder = [];
   let arcSchafe = [];
   let arcSchweine = [];
+  let firstYear = 2010;
+  let lastYear = 2020;
 
   if (currentData !== undefined) {
     // get unique years from data
     const uniqueYears = uniq(currentData.data.map((d) => +d.year));
-    const firstYear = uniqueYears[0];
+    firstYear = uniqueYears[0];
+    lastYear = uniqueYears.slice(-1)[0];
     const uniqueAnimals = uniq(currentData.data.map((d) => d.column));
 
+    // save data for each animal
     const dataRinder = currentData.data.filter((d) => {
+      if (d.value === null) d.value = 0;
       return d.column === 'Rinder';
     });
 
     const dataSchafe = currentData.data.filter((d) => {
+      if (d.value === null) d.value = 0;
       return d.column === 'Schafe';
     });
 
     const dataSchweine = currentData.data.filter((d) => {
+      if (d.value === null) d.value = 0;
       return d.column === 'Schweine';
     });
 
-    const domainRind = [0, max(dataRinder.map((d) => d.value))];
-    const domainSchaf = [0, max(dataSchafe.map((d) => d.value))];
-    const domainSchwein = [0, max(dataSchweine.map((d) => d.value))];
+    // defining domains and scaling
+    const domainRind = [0, max([1, max(dataRinder.map((d) => d.value))])];
+    const domainSchaf = [0, max([1, max(dataSchafe.map((d) => d.value))])];
+    const domainSchwein = [0, max([1, max(dataSchweine.map((d) => d.value))])];
     const domainY = [uniqueYears.length - 1, 0]; // switch 0 and uniqueYears.length - 1 for vertical swap
     const domainX = [0, uniqueAnimals.length - 1];
 
@@ -71,6 +78,8 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
       .domain(domainX)
       .range([marginWidth * 2.75, dimensions.width - marginWidth * 2.25]);
 
+    const colorCategory = scaleOrdinal().domain([0, 1, 2]).range(colorArray);
+
     // create elements for horizontal axis, plus labels
     axisElements = uniqueYears.map((year, a) => {
       return {
@@ -81,12 +90,14 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
       };
     });
 
+    // generates the half circles
     const arcGenerator = arc()
       .outerRadius((d) => d)
       .innerRadius(0)
       .startAngle(-Math.PI / 2)
       .endAngle(Math.PI / 2);
 
+    // scaling check according to each animal
     const animalScale = (d) => {
       if (d.column === 'Rinder') {
         return rindScale(d.value);
@@ -97,24 +108,14 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
       }
     };
 
-    const colorCategory = scaleOrdinal().domain([0, 1, 2]).range(colorArray);
-
-    let animalData = [];
-    animalData.push(dataRinder);
-    animalData.push(dataSchafe);
-    animalData.push(dataSchweine);
-    console.log(animalData);
-
-    const checkChange = (data, d) => {
-      let animalArr;
-      uniqueAnimals.forEach((animal, a) => {
-        if (data.column === animal) animalArr = animalData[a];
-      });
+    // check for in- or decrease of animal count and return index for fitting colorValue
+    const checkChange = (data, d, animalArray) => {
       let difference = 0;
       let colorVal = 0;
+
+      // only calculate if it is not the first year
       if (d - 1 >= 0) {
-        // need to exchange dataRinder with higher data level
-        difference = data.value - animalArr[d - 1].value;
+        difference = data.value - animalArray[d - 1].value;
       }
 
       if (difference < 0) {
@@ -127,15 +128,15 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
       return colorVal;
     };
 
+    // map all parameters for animal group
     const dataAnimal = (data, d, animalArray) => {
       const currentArc = {};
       const scaledValue = animalScale(data);
       let prevScaledValue = 0;
       if (d - 1 >= 0) {
-        prevScaledValue = animalScale(animalArray[d - 1].value);
+        prevScaledValue = animalScale(animalArray[d - 1]);
       }
-
-      const colorValue = checkChange(data, d);
+      const colorValue = checkChange(data, d, animalArray);
 
       currentArc.id = data.column;
       currentArc.value = scaledValue;
@@ -149,34 +150,10 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
       return currentArc;
     };
 
-    animalData.map((animal) => {
-      const currentArc = [];
-      animal.map((data, d) => {
-        const scaledValue = animalScale(data);
-        // const prevScaledValue = 0;
-        // if (d - 1 >= 0) {
-        //   prevScaledValue = data[d - 1].value;
-        // }
-        const colorValue = checkChange(data, d);
-
-        currentArc.id = data.column;
-        currentArc.value = scaledValue;
-        currentArc.year = +data.year;
-        currentArc.path = arcGenerator(scaledValue);
-        currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
-        currentArc.x = xScale(uniqueAnimals.indexOf(data.column));
-        currentArc.color = colorCategory(colorValue);
-
-        // console.log(currentArc);
-        return currentArc;
-      });
-      arcElements.push(currentArc);
-    });
-
+    // call function above for each animal group
     dataRinder.map((data, d) => {
       arcRinder.push(dataAnimal(data, d, dataRinder));
     });
-
     dataSchafe.map((data, d) => {
       arcSchafe.push(dataAnimal(data, d, dataSchafe));
     });
@@ -213,7 +190,7 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
                       x2={dimensions.width - marginWidth}
                       y1="0"
                       y2="0"
-                      stroke="black"
+                      stroke="#484848"
                     />
                     {/* YEAR */}
                     <text x={marginWidth} y="-10" textAnchor="start">
@@ -234,25 +211,24 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
             {arcRinder.map((arc, a) => {
               return (
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
-                  <path d={arc.path} stroke="black" strokeWidth="0.75" fill={arc.color} />
-                  {/* <text>{arc.id}</text> */}
-                  <path d={arc.pathPrev} stroke="white" strokeWidth="1.75" fill="none" />
+                  <path d={arc.path} fill={arc.color} />
+                  <path className="previousYear" d={arc.pathPrev} />
                 </g>
               );
             })}
             {arcSchafe.map((arc, a) => {
               return (
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
-                  <path d={arc.path} stroke="black" strokeWidth="0.75" fill={arc.color} />
-                  {/* <text>{arc.label}</text> */}
+                  <path d={arc.path} fill={arc.color} />
+                  <path className="previousYear" d={arc.pathPrev} />
                 </g>
               );
             })}
             {arcSchweine.map((arc, a) => {
               return (
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
-                  <path d={arc.path} stroke="black" strokeWidth="0.75" fill={arc.color} />
-                  {/* <text>{arc.label}</text> */}
+                  <path d={arc.path} fill={arc.color} />
+                  <path className="previousYear" d={arc.pathPrev} />
                 </g>
               );
             })}
@@ -262,8 +238,8 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
       <div className="description">
         <div className="title">
           <h3>
-            Entwicklung der Anzahl an Rindern, Schweinen und Schafen in {lkData} über die Jahre 2010
-            bis 2020.
+            Entwicklung der Anzahl an Rindern, Schweinen und Schafen in {lkData} über die Jahre{' '}
+            {firstYear} bis {lastYear}.
           </h3>
         </div>
       </div>

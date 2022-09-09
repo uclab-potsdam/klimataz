@@ -436,6 +436,19 @@
                         }
                     }
 
+                    .arcs {
+                        path{
+                            stroke-width: 0.75;
+                            stroke: #484848;
+
+                            &.previousYear{
+                                stroke-dasharray: 4px 4px;
+                                stroke-width: 1;
+                                fill: none;
+                            }
+                        }
+                    }
+
                     
                     
                 }
@@ -444,8 +457,10 @@
                     .visualization-container {
                         height: 100%;
                         width: 100%;
+                        scale: 65%;
+                        transform: translateY(-10%) translateX(-3%);
     
-                        .axis, text, rect {
+                        .axis, text, rect, .legend {
                             display: none;
                         }
     
@@ -454,6 +469,8 @@
                     .description {
                         display: none;
                     }
+
+
                 }
             }
 
