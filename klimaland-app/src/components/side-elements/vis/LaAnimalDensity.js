@@ -1,4 +1,7 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
+import { max } from 'd3-array';
+import { scaleLinear, scaleOrdinal } from 'd3-scale';
+import { uniq } from 'lodash';
 
 const LandDenisty = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
   // getting sizes of container for maps
@@ -15,15 +18,97 @@ const LandDenisty = ({ currentData, currentIndicator, currentSection, lkData, is
   }, []);
 
   // inital variables
-  const marginWidth = Math.round(dimensions.width / 10);
-  const marginHeight = Math.round(dimensions.height / 10);
-  const radius = isThumbnail ? Math.ceil(dimensions.width / 80) : Math.ceil(dimensions.width / 100);
+  const marginWidth = Math.round(dimensions.width / 8);
+  const marginHeight = Math.round(dimensions.height / 6);
+  const marginBars = Math.round(dimensions.height / 20);
+  const barWidth = Math.round(dimensions.height / 5);
+  let barElements = [];
+
+  if (currentData !== undefined) {
+    const uniqueYears = uniq(currentData.data.map((d) => +d.year));
+
+    // save data for under 2GV
+    const dataUnderTwoGV = currentData.data.filter((d) => {
+      if (d.value === null) d.value = 0;
+      return d.column === 'davon_auf_unter_2_0_GV_ha';
+    });
+
+    const dataOverTwoGV = currentData.data.filter((d) => {
+      if (d.value === null) d.value = 0;
+      return (
+        d.column === '2_0-2_5_GV_ha' ||
+        d.column === '2_5-5_0_GV_ha' ||
+        d.column === '5_0_und_mehr_GV_ha'
+      );
+    });
+
+    // combine values with over 2 GV
+    const accDataOverTwoGV = Object.values(
+      dataOverTwoGV.reduce(
+        (acc, { year, value }) => (
+          ((acc[year] = acc[year] || { year, value: 0 }).value += value), acc
+        ),
+        {}
+      )
+    );
+    //add column for description
+    accDataOverTwoGV.map((data, d) => {
+      data.column = 'ueber_2_GV_ha';
+    });
+
+    const domainX = [0, uniqueYears.length - 1];
+    const domainY = [0, max([1, max(currentData.data.map((d) => d.value))])];
+
+    const xScale = scaleLinear()
+      .domain(domainX)
+      .range([marginWidth * 2, dimensions.width - marginWidth * 2]);
+    const yScale = scaleLinear()
+      .domain(domainY)
+      .range([marginHeight, (dimensions.height - marginHeight) / 2]);
+
+    // adds . as thousand separator
+    const formatNumber = (num) => {
+      return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    };
+
+    // map all parameters for animal group
+    const mapBar = (data, d) => {
+      const currentBar = {};
+      const colorValue = 'fff';
+
+      currentBar.id = data.column;
+      currentBar.value = yScale(data.value);
+      currentBar.valueTotal = formatNumber(data.value);
+      currentBar.year = +data.year;
+      currentBar.x = xScale(uniqueYears.indexOf(parseInt(data.year)));
+      currentBar.color = colorValue;
+
+      return currentBar;
+    };
+
+    let overTwoGV = [];
+    let underTwoGV = [];
+
+    // call function above for each animal group
+    dataUnderTwoGV.map((data, d) => {
+      underTwoGV.push(mapBar(data, d));
+    });
+
+    accDataOverTwoGV.map((data, d) => {
+      overTwoGV.push(mapBar(data, d));
+    });
+
+    barElements.push(underTwoGV);
+    barElements.push(overTwoGV);
+  }
 
   return (
-    <div className={`animal-density vertical-layout ${isThumbnail ? 'is-thumbnail' : ''}`}>
+    <div className="animal-density vertical-layout">
       <div className="description">
         <div className="title">
-          <h3>Wie viele Tiere pro Fläche leben im Durchschnitt in {lkData}?</h3>
+          <h3>
+            Wie viele Tiere pro Fläche leben im Durchschnitt in <span>{lkData}</span>?
+          </h3>
         </div>
         <div className="caption">
           <p>
@@ -64,9 +149,75 @@ const LandDenisty = ({ currentData, currentIndicator, currentSection, lkData, is
       </div>
       <div className="visualization-container" ref={targetRef}>
         <svg className="chart" width="100%" height="100%">
-          <text x="100" y="100">
-            Hello this will be the chart
-          </text>
+          <g className="bars">
+            {barElements[0].map((bar, a) => {
+              return (
+                <g key={a} transform={`translate(${bar.x},${dimensions.height - marginHeight})`}>
+                  <rect
+                    x={-barWidth / 2}
+                    y={-bar.value}
+                    width={barWidth}
+                    height={bar.value}
+                    stroke={bar.color}
+                    fill="#FFBE53"
+                  />
+                  <g>
+                    <rect
+                      className="labelCount"
+                      x={-barWidth / 2 + barWidth / 12}
+                      y={-bar.value - 12 + marginBars}
+                      width={barWidth / 1.2}
+                      height="16"
+                      fill="white"
+                    />
+                    <text
+                      className="labelText"
+                      x={-barWidth / 2 + barWidth / 12 + 3}
+                      y={-bar.value + marginBars}
+                      textAnchor="ztart"
+                    >
+                      {bar.valueTotal} GV
+                    </text>
+                    <text x="0" y="20" textAnchor="middle">
+                      {bar.year}
+                    </text>
+                  </g>
+                </g>
+              );
+            })}
+            {barElements[1].map((bar, a) => {
+              return (
+                <g key={a} transform={`translate(${bar.x},${dimensions.height - marginHeight})`}>
+                  <rect
+                    x={-barWidth / 2}
+                    y={-bar.value - barElements[0][a].value - marginBars}
+                    width={barWidth}
+                    height={bar.value}
+                    stroke={bar.color}
+                    fill="#E14552"
+                  />
+                  <g>
+                    <rect
+                      className="labelCount"
+                      x={-barWidth / 2 + barWidth / 12}
+                      y={-bar.value - barElements[0][a].value - 12}
+                      width={barWidth / 1.2}
+                      height="16"
+                      fill="white"
+                    />
+                    <text
+                      className="labelText"
+                      x={-barWidth / 2 + barWidth / 12 + 3}
+                      y={-bar.value - barElements[0][a].value}
+                      textAnchor="start"
+                    >
+                      {bar.valueTotal} GV
+                    </text>
+                  </g>
+                </g>
+              );
+            })}
+          </g>
         </svg>
       </div>
     </div>

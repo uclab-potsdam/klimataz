@@ -491,7 +491,25 @@
                 height: 100%;
                 @include vertical-layout;
 
-                
+                .chart{
+                    .bars {
+                        .labelText {
+                            font-size: 12px;
+                            fill:  #484848;
+                        }
+
+                        .labelCount{
+                            fill: white;
+                            stroke: #484848;
+                            stroke-width: "0.5";
+                        }
+                        
+                        rect{
+                            stroke-width: 1;
+                            stroke: #484848;
+                        }
+                    }
+                }
                 
                 .legend {
                     margin-left: 1rem;

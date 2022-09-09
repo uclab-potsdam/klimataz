@@ -1,8 +1,8 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import { arc } from 'd3';
-import { max, extent } from 'd3-array';
+import { max } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
-import { first, forEach, uniq } from 'lodash';
+import { uniq } from 'lodash';
 
 const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
   const colorArray = [
@@ -25,7 +25,7 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
   }, []);
 
   // inital variables
-  const marginWidth = Math.round(dimensions.width / 10);
+  const marginWidth = Math.round(dimensions.width / 10); // for mobile a value like dimensions.width / 7 should work
   const marginHeight = Math.round(dimensions.height / 10);
   const legendRadius = isThumbnail
     ? Math.ceil(dimensions.width / 80)
