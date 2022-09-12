@@ -45,7 +45,9 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData, isThumbn
    const marginHeight = Math.round(dimensions.height / 10);
    const radius = isThumbnail ? Math.ceil(width / 50) : Math.ceil(width / (mobileThreshold * 10));
 
+
    if (currentData !== undefined) {
+
       const lastDataPoint = currentData.data.slice(-1);
       lastYear = lastDataPoint[0]['year'];
       lastValue = `${lastDataPoint[0]['value'].toFixed(1)}`;
