@@ -39,7 +39,8 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData, isThumbn
    let yAxisLabels;
    const width = dimensions.width;
    const height = dimensions.height;
-   let mobileThreshold = width <= 350 ? 8 : 10;
+   let mobileThreshold = width <= 350 ? 8 : 10
+   let tabletThreshold = width >= 600 && width <= 750 ? 50 : 0
    const marginWidth = Math.round(dimensions.width / 10);
    const marginHeight = Math.round(dimensions.height / 10);
    const radius = isThumbnail ? Math.ceil(width / 50) : Math.ceil(width / (mobileThreshold * 10));
@@ -163,7 +164,7 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData, isThumbn
                   );
                })}
                <g className="controls-container">
-                  <g transform={`translate(${width / 2 + marginWidth}, ${marginHeight / 2})`}>
+                  <g transform={`translate(${width / 2 + (marginWidth - tabletThreshold)}, ${marginHeight / 2})`}>
                      <g className={`legend ${piesAreActive ? 'show-legend' : ''}`}>
                         <circle className="biotonne" cx="0" cy="0" r={radius} />
                         <text x={radius + 5} y={radius / 2}>
