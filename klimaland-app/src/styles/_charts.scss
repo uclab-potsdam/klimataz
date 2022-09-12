@@ -128,18 +128,21 @@
                                 stroke: $default-text;
                                 stroke-width: 0.75;
                             }
-
-                            text {
-                                font-size: 12px;
-                                fill: $default-text;
-                            }
-
-                            rect.marker-label {
-                                stroke: $default-text;
-                                fill: white;
-                            }
                         }
 
+                    }
+
+                    .streams-labels-container {
+
+                        text {
+                            font-size: 12px;
+                            fill: $default-text;
+                        }
+                    
+                        rect.marker-label {
+                            stroke: $default-text;
+                            fill: white;
+                        }
                     }
                  }
 

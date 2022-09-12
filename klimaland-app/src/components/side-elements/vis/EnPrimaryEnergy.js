@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { stack, stackOffsetSilhouette, stackOrderAscending, curveCatmullRom, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
-import { max, extent } from 'd3-array';
+import { max, extent, mean } from 'd3-array';
 
 const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
   const colorArray = [
@@ -143,15 +143,26 @@ const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumb
 
     // stream graph
     streamEle = stackedSeries.map((stream, s) => {
-      const label = mapLabel(stream.key);
+      const maxStreamValue = max(stackData.map(d => { return d[stream.key] }))
+      const labelThreshold = mean(stackData.map(d => { return d[stream.key] }))
+
+      let yearOfMax = 0
+      stackData.map((d) => {
+        if (d[stream.key] === maxStreamValue) {
+          yearOfMax = d.year;
+        }
+      })
+
       return {
         id: stream.key,
         fill: scaleCategory(stream.key),
         path: areaGen(stream),
-        xPos: xScale(stream[21].data.year),
-        yPos: yScale(stream[21][0] - (stream[21][0] - stream[21][1]) / 2),
-        height: yScale(stream[21][0] - stream[21][1]),
-        width: label.length,
+        xPos: xScale(yearOfMax),
+        yPos: yScale(stream[14][0] - (stream[14][0] - stream[14][1]) / 2),
+        height: yScale(stream[14][0] - stream[14][1]),
+        width: stream.key.length,
+        labelThreshold,
+        maxStreamValue
       };
     });
   }
@@ -195,26 +206,34 @@ const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumb
               return (
                 <g key={s} className="stream">
                   <path d={stream.path} fill={stream.fill} />
-                  {stream.height > 210 && (
+                </g>
+              );
+            })}
+          </g>
+          <g className="streams-labels-container">
+            {streamEle.map((label, l) => {
+              return (
+                <g key={l}>
+                  {label.maxStreamValue > label.labelThreshold && (
                     <g>
                       <rect
                         className="marker-label"
-                        x={stream.xPos - stream.width * 2}
-                        y={stream.yPos - 8}
-                        width={stream.width * 8}
+                        x={label.xPos - label.width * 2}
+                        y={label.yPos - 8}
+                        width={label.width * 10}
                         height="16"
                       />
                       <text
                         className="marker-label"
-                        x={stream.xPos - stream.width}
-                        y={stream.yPos + 4}
+                        x={label.xPos - label.width}
+                        y={label.yPos + 4}
                       >
-                        {mapLabel(stream.id)}
+                        {label.id}
                       </text>
                     </g>
                   )}
                 </g>
-              );
+              )
             })}
           </g>
         </svg>
