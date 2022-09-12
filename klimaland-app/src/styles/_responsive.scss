@@ -7,8 +7,66 @@
 
 /*Tablet*/
 @include media(">=tablet", "<desktop") {
-    body {
-        background-color: lightblue;
+
+    .chart-container {
+        .svg-container {
+            &.Ge-chart {
+                .description {
+                    .caption {
+                        p {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+
+            &.Ab-chart {
+                .biotonne-weight {
+                    .description {
+                            .title {
+                                h3 {
+                                    font-size: 16px;
+                                    padding-top: 0.5rem;
+                                    padding-bottom: 0.5rem;
+                                }
+                            }
+                        }
+                }
+            }
+        }
+    }
+
+    .indicators-iframe {
+        .main-container {
+            .button-container {
+                    .inner-button {
+                        height: 42%;
+                }
+            }
+
+            .card-active {
+                .side-inner {
+                    .details-container {
+                        height: calc(90% - 10px);
+
+                        .locator-map {
+                            height: 45%;
+                        }
+
+                        .lk-list {
+                            height: 50%;    
+                        }
+                    }
+
+                    .footer-container {
+                        height: calc(10% + 10px);
+                        .info-backside {
+                            padding-bottom: 0rem;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -82,6 +140,11 @@
             }
 
             .button-container {
+
+                .button-switch-container {
+                    display: none;
+                }
+
                 .inner-button {
                 .close {
                         margin-top: 2.5rem;
@@ -137,7 +200,7 @@
                         .data-container {
                             position: absolute;
                             width: 90%;
-                            height: 25%;
+                            height: 20%;
                             top: 0;
                             right: 0;
                             z-index: 0;
@@ -145,19 +208,23 @@
                             .locator-map {
                                 border: none;
                                 height: 100%;
+                                margin-top: 1rem;
 
                                 .locator-container {
                                     height: 100%;
+                                    display: flex;
+                                    justify-content: right;
 
                                     .locator-zoom {
                                         margin-left: 0;
                                         text-align: right;
                                         display: flex;
                                         justify-content: right;
+                                        width: 30%;
                                     }
 
                                     .locator-background {
-                                        width: 40%;
+                                        width: 30%;
                                     }
                                 }
                             }
@@ -176,6 +243,10 @@
                             margin: 0rem 0rem 0rem 1rem;
                             .logo-container {
                                 display: none;
+                            }
+
+                            .info-backside {
+                                padding-bottom: 0;
                             }
                         }
                     }

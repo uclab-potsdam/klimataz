@@ -9,8 +9,6 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
   const [activeSide, setActiveSide] = useState(0);
   const [flipped, setFlipped] = useState(0);
   const [flipping, setFlipping] = useState(0);
-  //TODO: flip first, after that switch the content on the side
-  //maybe with gsap??
 
   useEffect(() => {
     const currentVal = flipped ? false : true;

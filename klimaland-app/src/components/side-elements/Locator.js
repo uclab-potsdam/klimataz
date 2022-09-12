@@ -24,8 +24,8 @@ const Locator = ({ lk }) => {
 
   width = dimensions.width
   height = dimensions.height
-  const zoomWidth = width / 2
-  const zoomHeight = height / 2
+  // const zoomWidth = width / 2
+  const zoomHeight = width / 2
 
   // projection for main map
   const projection = geoMercator().fitSize([width, height], currentMap);
@@ -55,8 +55,8 @@ const Locator = ({ lk }) => {
   const currentZoomCentroid = geoGenerator.centroid(currentFeature)
   const zoomPointerPath = `M ${currentZoomCentroid[0]},${currentZoomCentroid[1] + 1}
     C ${currentZoomCentroid[0] + 10},${currentZoomCentroid[1] + 10} 
-    ${currentZoomCentroid[0] + 10}, ${width / 2} 0,${width / 2}  
-    L 0, ${width / 2}`
+    ${currentZoomCentroid[0] + 1}, ${height / 2} 2,${height / 2}  
+    L 2, ${height / 2}`
 
   // prepare single shapes for background map
   const singleShapes = currentMap.features.map((d) => {
@@ -79,7 +79,7 @@ const Locator = ({ lk }) => {
       <div className="locator-zoom" ref={targetRef}>
         <div className="locator-zoom-inner">
           {
-            +lk.value !== 0 && <svg width={height} height={height}>
+            +lk.value !== 0 && <svg width={width} height={width}>
               <clipPath id="myClip">
                 <circle cx="50%" cy="50%" r="50%" stroke="black" />
               </clipPath>

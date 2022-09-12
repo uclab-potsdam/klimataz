@@ -362,7 +362,7 @@
                             left: 0;
                     
                             .axis {
-                                .x-axis, text, rect {
+                                .x-axis, text, rect, line {
                                     display: none;
                                 }
                             }
@@ -377,6 +377,7 @@
                 @include horizontal-bottom-layout;
 
                 .visualization-container {
+                    height: 85%;
                     svg {
                         .non-clipped-elements {
                             text {
@@ -533,15 +534,22 @@
 
 .locator-map {
     .locator-container {
+        width: 100%;
         height: 150px;
         display:flex;
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
+        position: absolute;
+        float: right;
 
         .locator-background {
-            width: 45%;
+            width: 50%;
+            // background-color: pink;
+            margin-right: 0.5rem;
+            margin-left: 0.5rem;
 
             svg {
+                float: right;
                 .zoom-pointer {
                     path {
                         fill: none;
@@ -554,13 +562,12 @@
         .locator-zoom {
             width: 50%;
             margin-left: 0.5rem;
-            // padding: 1rem;
+            // background-color: blue;
 
             .locator-zoom-inner {
-                background-color: $light;
-                // clip-path: circle(45%);
                 position: absolute;
-                
+                top: 50%;
+                transform: translateY(-45%);
             }
         }
     }

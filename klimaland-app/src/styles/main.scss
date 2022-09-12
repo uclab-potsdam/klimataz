@@ -93,6 +93,21 @@ code {
                 .selector {
                     width: 30%;
                     margin: 1rem;
+
+                    svg {
+                            path {
+                                fill: $red;
+                            }
+                    }
+
+                    .css-1s2u09g-control{
+                        border-color: $pale-olive; 
+                        border-radius: 0;
+                        box-shadow: 4px 4px 0px rgba($pale-olive, 0.20);
+                        .css-1rhbuit-multiValue {
+                            background-color: $lighter-orange;
+                        }
+                    }
                 }
         
         }
@@ -167,7 +182,6 @@ code {
                 color: $red;
                 border-color: $red;
                 border-style: solid;
-                border-radius: 6px;
                 border-width: 1px;
                 width: 250px;
                 height: 50px;

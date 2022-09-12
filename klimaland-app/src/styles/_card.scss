@@ -236,10 +236,13 @@
                         .locator-map {
                             border-bottom: 1px solid $default-text;
                             position: relative;
+                            height: 40%;
                         }
 
                         .lk-list {
                             margin: 0px 0px 0px 0px;
+                            height: 60%;
+                            overflow: hidden;
 
                             .list-inner-container {
 
@@ -315,7 +318,7 @@
                     font-size: 12px;
                     border: 1px solid $mint-green;
                     border-radius: 20px;
-                    padding: 0.2rem 0.5rem 0rem 0.5rem;
+                    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
                     background: linear-gradient(to left, $mint-green, rgba($mint-green, 0.5));
                     -webkit-background-clip: text;
                     background-clip: text;
