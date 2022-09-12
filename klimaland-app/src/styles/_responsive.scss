@@ -33,6 +33,21 @@
                         }
                 }
             }
+
+            &.La-chart {
+                .animal-density {
+                    .description {
+                        .caption {
+                                p {
+                                    font-size: 12px;
+                                }
+                            }
+                        .legend {
+                            margin-top: 0rem;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -276,6 +291,84 @@
                 }
             }
 
+            &.La-chart {
+                .animal-count {
+                    .description {
+                        height: 25%;
+                    }
+
+                    .visualization-container {
+                        height: 75%;
+                        .label-container {
+                            transform: translateY(28px);
+                        }
+
+                        .arcs, .x-axis-container {
+                            transform: translateY(-60px);
+
+                            .animal-label {
+                                transform: translateY(20px);
+                                font-size: 14px;
+                            }
+                        }
+
+                        .axis {
+                            .year-label {
+                                font-size: 12px;
+                                transform: translateX(-20px);
+                            }
+                        }
+                        
+                        .legend {
+                            transform: translateY(90%);
+                            .label-item {
+                                transform: translate(30px, -5px);
+                        
+                                &.vorherigeZaehlung {
+                                    transform: translate(-210px, 20px);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .animal-density {
+                    .description {
+                        .caption {
+                            font-size: 12px;
+                            margin-right: 1rem;
+                        }
+
+                        .legend {
+                            transform: translateY(-20px);
+
+                            .legend-item {
+                                font-size: 10px;
+                                &.unter-label {
+                                    transform: translate(140px, 0px);
+                                }
+                            }
+                        }
+                    }
+
+                    .visualization-container {
+
+                        .chart {
+                            transform: translateY(20px);
+                            .bars {
+                                .year-label {
+                                        font-size: 14px;
+                                 }
+                            }
+                            
+                            .labelText {
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+
             &.Mo-chart {
                 .car-density {
                     .description {
@@ -395,6 +488,20 @@
                         .description {
                             display: none;
                         }
+                    }
+                }
+
+                .avg-heating {
+                    .visualization-container {
+                        transform: translateY(-10px);
+
+                        // .non-clipped-elements {
+                        //     g {
+                        //         text {
+                        //         transform-origin: center;
+                        //         transform: rotate(45deg);                                }
+                        //     }
+                        // }
                     }
                 }
             }

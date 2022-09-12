@@ -173,24 +173,30 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
       <div className="visualization-container" ref={targetRef}>
         <svg className="chart" width="100%" height="100%">
           <g className="legend" transform={`translate(${marginWidth / 2}, ${marginHeight / 1.5})`}>
-            <circle className="wenigerTiere" cx="0" cy="0" r={legendRadius} />
-            <text x={legendRadius + 5} y={legendRadius / 2}>
-              weniger Tiere
-            </text>
-            <circle className="mehrTiere" cx="120" cy="0" r={legendRadius} />
-            <text x={legendRadius + 125} y={legendRadius / 2}>
-              mehr Tiere
-            </text>
-            <circle className="vorherigeZaehlung" cx="240" cy="0" r={legendRadius} />
-            <text x={legendRadius + 245} y={legendRadius / 2}>
-              als im Vergleich zur vorherigen Zählung
-            </text>
+            <g className="label-item wenigerTiere">
+              <circle className="wenigerTiere" cx="0" cy="0" r={legendRadius} />
+              <text x={legendRadius + 10} y={legendRadius / 2 + 2}>
+                weniger Tiere
+              </text>
+            </g>
+            <g className="label-item mehrTiere">
+              <circle className="mehrTiere" cx="120" cy="0" r={legendRadius} />
+              <text x={legendRadius + 130} y={legendRadius / 2 + 2}>
+                mehr Tiere
+              </text>
+            </g>
+            <g className="label-item vorherigeZaehlung">
+              <circle className="vorherigeZaehlung" cx="240" cy="0" r={legendRadius} />
+              <text x={legendRadius + 250} y={legendRadius / 2 + 2}>
+                als im Vergleich zur vorherigen Zählung
+              </text>
+            </g>
           </g>
           <g className="axis">
             {axisElements.map((axis, a) => {
               return (
-                <g key={a}>
-                  <g key={a} transform={`translate(0, ${axis.y})`}>
+                <g key={a} className="x-axis-container">
+                  <g key={a} transform={`translate(0, ${axis.y})`} >
                     <line
                       x1={marginWidth}
                       x2={dimensions.width - marginWidth}
@@ -199,13 +205,13 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
                       stroke="#484848"
                     />
                     {/* YEAR */}
-                    <text x={marginWidth} y="-10" textAnchor="start">
+                    <text className="year-label" x={marginWidth} y="-10" textAnchor="start">
                       {axis.label}
                     </text>
                   </g>
                   <g key={axis.labelAnimal} transform={`translate(${axis.x},0)`}>
                     {/* Animal */}
-                    <text x="0" y={marginHeight * 2} textAnchor="middle">
+                    <text x="0" y={marginHeight * 2} textAnchor="middle" className="animal-label">
                       {axis.labelAnimal}
                     </text>
                   </g>
@@ -219,7 +225,7 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
                   <path d={arc.path} fill={arc.color} />
                   <path className="previousYear" d={arc.pathPrev} />
-                  <g>
+                  <g className="label-container">
                     <rect className="labelCount" x="-35" y="-22" width="70" height="16" />
                     <text x="0" y="-10" fill="black" textAnchor="middle">
                       {arc.valueTotal}
@@ -233,7 +239,7 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
                   <path d={arc.path} fill={arc.color} />
                   <path className="previousYear" d={arc.pathPrev} />
-                  <g>
+                  <g className="label-container">
                     <rect className="labelCount" x="-35" y="-22" width="70" height="16" />
                     <text x="0" y="-10" fill="black" textAnchor="middle">
                       {arc.valueTotal}
@@ -247,7 +253,7 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
                   <path d={arc.path} fill={arc.color} />
                   <path className="previousYear" d={arc.pathPrev} />
-                  <g>
+                  <g className="label-container">
                     <rect className="labelCount" x="-35" y="-22" width="70" height="16" />
                     <text x="0" y="-10" fill="black" textAnchor="middle">
                       {arc.valueTotal}

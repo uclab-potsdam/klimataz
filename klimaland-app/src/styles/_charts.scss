@@ -486,7 +486,7 @@
 
             .animal-density {
                 height: 100%;
-                @include vertical-layout;
+                @include responsive-layout;
 
                 .chart{
                     .bars {
