@@ -26,6 +26,14 @@ export class SelectionButtons extends Component {
   }
 
   render() {
+    const orderedLandkreise = this.props.landkreise.sort((a, b) => {
+      if (a.label > b.label) {
+        return 1
+      } if (a.label < b.label) {
+        return - 1
+      }
+    })
+
     return (
       <div className="selection-buttons">
         {!this.props.postcardView && this.props.uiVis && (
@@ -39,7 +47,7 @@ export class SelectionButtons extends Component {
               key={`my_unique_select_key__${this.props.landkreisSelection}`}
               value={this.props.landkreisSelection || ''}
               onChange={this.changeLandkreis}
-              options={this.props.landkreise}
+              options={orderedLandkreise}
               //add nameAddition to label.
               //this is the (Landkreis) (kreisfreie Stadt) for Schweinfurt cases
               getOptionLabel={(options) =>

@@ -24,8 +24,8 @@ const Locator = ({ lk }) => {
 
   width = dimensions.width
   height = dimensions.height
-  const zoomWidth = width / 2
-  const zoomHeight = height / 2
+  // const zoomWidth = width / 2
+  const zoomHeight = width / 2
 
   // projection for main map
   const projection = geoMercator().fitSize([width, height], currentMap);
@@ -42,21 +42,21 @@ const Locator = ({ lk }) => {
 
   // translate and rescale for zoom map
   const translatedProj = geoMercator()
-    .fitSize([zoomWidth, zoomHeight], currentMap)
+    .fitSize([zoomHeight, zoomHeight], currentMap)
     .scale(1)
     .translate([0, 0]);
   const geoTranslated = geoPath().projection(translatedProj);
   const b = geoTranslated.bounds(currentFeature);
-  const s = 0.95 / Math.max((b[1][0] - b[0][0]) / zoomWidth, (b[1][1] - b[0][1]) / zoomHeight);
-  const t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+  const s = 0.95 / Math.max((b[1][0] - b[0][0]) / zoomHeight, (b[1][1] - b[0][1]) / zoomHeight);
+  const t = [(height - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
   translatedProj.translate(t).scale(s);
 
   // create arrow for pointer
   const currentZoomCentroid = geoGenerator.centroid(currentFeature)
   const zoomPointerPath = `M ${currentZoomCentroid[0]},${currentZoomCentroid[1] + 1}
     C ${currentZoomCentroid[0] + 10},${currentZoomCentroid[1] + 10} 
-    ${currentZoomCentroid[0] + 10}, ${width / 2} 0,${width / 2}  
-    L 0, ${width / 2}`
+    ${currentZoomCentroid[0] + 1}, ${height / 2} 2,${height / 2}  
+    L 2, ${height / 2}`
 
   // prepare single shapes for background map
   const singleShapes = currentMap.features.map((d) => {
@@ -79,7 +79,7 @@ const Locator = ({ lk }) => {
       <div className="locator-zoom" ref={targetRef}>
         <div className="locator-zoom-inner">
           {
-            +lk.value !== 0 && <svg width={width} height={height}>
+            +lk.value !== 0 && <svg width={width} height={width}>
               <clipPath id="myClip">
                 <circle cx="50%" cy="50%" r="50%" stroke="black" />
               </clipPath>

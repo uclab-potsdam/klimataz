@@ -106,45 +106,7 @@
         }
 
         &.En-chart {
-            .primary-energy {
-                height: 100%;
-                @include horizontal-bottom-layout;      
-                
-                .chart {
-                    .axis {
-                        line {
-                            stroke: $default-text;
-                        }
-
-                        text {
-                            font-size: 12px;
-                        }
-                    }
-
-                    .stream{
-                        text {
-                            font-size: 12px;
-                        }
-                    }
-                 }
-                 &.is-thumbnail {
-                
-                    .visualization-container {
-                        height: 100%;
-                        width: 100%;
-    
-                        .axis, text, rect {
-                            display: none;
-                        }
-    
-                    }
-    
-                    .description {
-                        display: none;
-                    }
-                }      
-            }
-            .energy-industry{
+            .energy-industry, .primary-energy {
                 height: 100%;
                 @include horizontal-bottom-layout;   
 
@@ -155,16 +117,32 @@
                         }
 
                         text {
+                            fill: $default-text;
                             font-size: 12px;
                         }
                     }
 
-                    .stream{
-                        text {
-                            font-size: 12px;
+                    .streams-container {
+                        .stream {
+                            path {
+                                stroke: $default-text;
+                                stroke-width: 0.75;
+                            }
+
+                            text {
+                                font-size: 12px;
+                                fill: $default-text;
+                            }
+
+                            rect.marker-label {
+                                stroke: $default-text;
+                                fill: white;
+                            }
                         }
+
                     }
                  }
+
                  &.is-thumbnail {
                 
                     .visualization-container {
@@ -300,10 +278,30 @@
                 @include responsive-layout;
 
                 .legend {
-                        svg {
+                        position: relative;
+                        .legend-inner {
                             font-size: 12px;
-                            g {
-                                cursor: pointer;
+                            width: 100%;
+                            
+                            .legend-elements-container {
+                                display: flex;
+                                flex-direction: column;
+                                
+                                .legend-element {
+                                    display: flex;
+                                    margin-left: 1rem;
+                                    
+                                    .element-color {
+                                        min-width: 10px;
+                                        height: 10px;
+                                        border-radius: 100%;    
+                                    }
+
+                                    p {
+                                        margin: 0;
+                                        margin-left: 5px;
+                                    }
+                                }
                             }
                         }
                     }
@@ -364,7 +362,7 @@
                             left: 0;
                     
                             .axis {
-                                .x-axis, text, rect {
+                                .x-axis, text, rect, line {
                                     display: none;
                                 }
                             }
@@ -376,11 +374,10 @@
 
             .avg-heating {
                 height: 100%;
-                @include horizontal-top-layout;
+                @include horizontal-bottom-layout;
 
                 .visualization-container {
                     height: 85%;
-
                     svg {
                         .non-clipped-elements {
                             text {
@@ -489,7 +486,7 @@
 
             .animal-density {
                 height: 100%;
-                @include vertical-layout;
+                @include responsive-layout;
 
                 .chart{
                     .bars {
@@ -537,15 +534,22 @@
 
 .locator-map {
     .locator-container {
+        width: 100%;
         height: 150px;
         display:flex;
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
+        position: absolute;
+        float: right;
 
         .locator-background {
             width: 50%;
+            // background-color: pink;
+            margin-right: 0.5rem;
+            margin-left: 0.5rem;
 
             svg {
+                float: right;
                 .zoom-pointer {
                     path {
                         fill: none;
@@ -558,12 +562,12 @@
         .locator-zoom {
             width: 50%;
             margin-left: 0.5rem;
+            // background-color: blue;
 
             .locator-zoom-inner {
-                background-color: $light;
-                // clip-path: circle(45%);
                 position: absolute;
-                
+                top: 50%;
+                transform: translateY(-45%);
             }
         }
     }
