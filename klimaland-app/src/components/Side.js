@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useCallback } from 'react';
 import { setStateAsync } from './helperFunc.js';
 import { CSSTransition } from 'react-transition-group';
 
@@ -6,6 +6,9 @@ import { CSSTransition } from 'react-transition-group';
 import Chart from './side-elements/Chart.js';
 //side elements
 import Details from './side-elements/Details.js';
+
+import { toPng, toCanvas } from 'html-to-image';
+
 export default class Side extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +33,28 @@ export default class Side extends Component {
 
     this.vis = this.vis.bind(this);
     this.openUpCard = this.openUpCard.bind(this);
+
+    this.myRef = React.createRef();
+    this.onShareButtonClick = this.onShareButtonClick.bind(this);
+  }
+
+  onShareButtonClick() {
+    if (this.myRef.current === null) {
+      return;
+    }
+
+    toPng(this.myRef.current, {
+      cacheBust: true,
+    })
+      .then((dataUrl) => {
+        const link = document.createElement('a');
+        link.download = 'klimaland_taz.png';
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   /**
@@ -61,7 +86,7 @@ export default class Side extends Component {
   vis() {
     if (
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-      undefined &&
+        undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -123,6 +148,7 @@ export default class Side extends Component {
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
           <div className="side-inner">
+            <button onClick={this.onShareButtonClick}>share ✺◟( ᐛ )◞✺</button>
             {!this.state.showViz && ( //TEXT
               <Details
                 lk={this.props.lk}
@@ -130,8 +156,17 @@ export default class Side extends Component {
                 activeSide={this.props.activeSide}
               />
             )}
-            {this.state.showViz &&
-              this.vis()}
+            {this.state.showViz && this.vis()}
+          </div>
+          <div className="side-inner export" ref={this.myRef}>
+            {!this.state.showViz && ( //TEXT
+              <Details
+                lk={this.props.lk}
+                section={this.props.section}
+                activeSide={this.props.activeSide}
+              />
+            )}
+            {this.state.showViz && this.vis()}
           </div>
         </div>
       </CSSTransition>
