@@ -45,6 +45,7 @@ export default class Side extends Component {
 
     toPng(this.myRef.current, {
       cacheBust: true,
+      backgroundColor: '#fefaf6',
     })
       .then((dataUrl) => {
         const link = document.createElement('a');
@@ -147,8 +148,7 @@ export default class Side extends Component {
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
-          <div className="side-inner">
-            <button onClick={this.onShareButtonClick}>share ✺◟( ᐛ )◞✺</button>
+          <div className="side-inner" ref={this.myRef}>
             {!this.state.showViz && ( //TEXT
               <Details
                 lk={this.props.lk}
@@ -158,7 +158,8 @@ export default class Side extends Component {
             )}
             {this.state.showViz && this.vis()}
           </div>
-          <div className="side-inner export" ref={this.myRef}>
+          <button onClick={this.onShareButtonClick}>share ✺◟( ᐛ )◞✺</button>
+          {/* <div className="side-inner export" ref={this.myRef}>
             {!this.state.showViz && ( //TEXT
               <Details
                 lk={this.props.lk}
@@ -167,7 +168,7 @@ export default class Side extends Component {
               />
             )}
             {this.state.showViz && this.vis()}
-          </div>
+          </div> */}
         </div>
       </CSSTransition>
     );
