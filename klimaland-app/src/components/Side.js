@@ -131,6 +131,12 @@ export default class Side extends Component {
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
+          {this.props.isThumbnail && (
+            <div>
+              <h4 className="gruss">Herzliche Grüße aus</h4>
+              <h2 className="wordart-1">{this.props.lk.label}</h2>
+            </div>
+          )}
           <div className="side-inner">
             {!this.state.showViz && ( //TEXT
               <Details
