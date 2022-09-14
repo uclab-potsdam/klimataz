@@ -61,7 +61,7 @@ export default class Side extends Component {
   vis() {
     if (
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-      undefined &&
+        undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -122,6 +122,12 @@ export default class Side extends Component {
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
+          {this.props.isThumbnail && (
+            <div>
+              <h4 className="gruss">Herzliche Grüße aus</h4>
+              <h2 className="wordart-1">{this.props.lk.label}</h2>
+            </div>
+          )}
           <div className="side-inner">
             {!this.state.showViz && ( //TEXT
               <Details
@@ -130,8 +136,7 @@ export default class Side extends Component {
                 activeSide={this.props.activeSide}
               />
             )}
-            {this.state.showViz &&
-              this.vis()}
+            {this.state.showViz && this.vis()}
           </div>
         </div>
       </CSSTransition>
