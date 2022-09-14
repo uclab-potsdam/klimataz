@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { stack, stackOffsetSilhouette, stackOrderAscending, curveCatmullRom, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
-import { max, extent } from 'd3-array';
+import { max, extent, mean } from 'd3-array';
 
 const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
   const colorArray = [
@@ -18,6 +18,8 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
   // getting sizes of container for maps
   const targetRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [highlighedStream, setHighlightedStream] = useState('');
+
   //   const [currentId, setCurrentId] = useState('');
 
   useLayoutEffect(() => {
@@ -41,11 +43,19 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
   let lastYear = '?';
   let percRenewables = 0;
 
+  let switchHighlightedStream = function (id) {
+    if (currentData !== undefined) {
+      // console.log(id)
+      setHighlightedStream(id)
+    }
+  };
+
   if (currentData !== undefined) {
     // parameters for description text
     const lastDataPoint = currentData.data.slice(-1);
     lastYear = lastDataPoint[0]['year'];
-    percRenewables = lastDataPoint[0].value !== null ? lastDataPoint[0].value.toFixed(1) : 0;
+    const lastRenValue = currentData.data.filter(d => { return d.column === 'Erneuerbare Energien' && d.year === '2020' })
+    percRenewables = lastRenValue[0].value !== null ? lastRenValue[0].value.toFixed(1) : 0;
 
     // get all energy sources and filter out "insgesamt" and "Anteil_Erneuerbar"
     const uniqueEnergySourceAll = uniq(currentData.data.map((d) => d.column));
@@ -108,14 +118,30 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
 
     // stream graph
     streamEle = stackedSeries.map((stream, s) => {
+      const maxStreamValue = max(stackData.map(d => {
+        return d['year'] !== 1992 && +d['year'] !== 2020 ? d[stream.key] : 0
+      }))
+
+      let yearOfMax = 0
+      let indexOfMax = 0
+      stackData.forEach((d, i) => {
+        if (d[stream.key] === maxStreamValue) {
+          yearOfMax = d.year;
+          indexOfMax = i
+        }
+      })
+
       return {
+        klass: stream.key.substring(0, 3) + '-stream',
         id: stream.key,
         fill: scaleCategory(stream.key),
         path: areaGen(stream),
-        xPos: xScale(stream[14].data.year),
-        yPos: yScale(stream[14][0] - (stream[14][0] - stream[14][1]) / 2),
-        height: yScale(stream[14][0] - stream[14][1]),
+        xPos: xScale(yearOfMax),
+        yPos: yScale(stream[indexOfMax][0] - (stream[indexOfMax][0] - stream[indexOfMax][1]) / 2),
+        height: yScale(stream[indexOfMax][0] - stream[indexOfMax][1]),
         width: stream.key.length,
+        threshold: highlighedStream === stream.key || (maxStreamValue > 50000 && highlighedStream === ''), //Fixed value for now, maybe make it dynamic?
+        maxStreamValue
       };
     });
   }
@@ -159,28 +185,36 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
           <g className="streams-container">
             {streamEle.map((stream, s) => {
               return (
-                <g key={s} className="stream">
-                  <path className="path" d={stream.path} fill={stream.fill} />
-                  {stream.height > 210 && (
-                    <g>
-                      <rect
-                        className="marker-label"
-                        x={stream.xPos - stream.width * 2}
-                        y={stream.yPos - 8}
-                        width={stream.width * 10}
-                        height="16"
-                      />
-                      <text
-                        className="marker-label"
-                        x={stream.xPos - stream.width}
-                        y={stream.yPos + 4}
-                      >
-                        {stream.id}
-                      </text>
-                    </g>
-                  )}
+                <g
+                  key={s}
+                  className={`stream ${stream.klass}`}
+                  onMouseEnter={() => switchHighlightedStream(stream.id)}
+                  onMouseLeave={() => switchHighlightedStream('')}
+                >
+                  <path className={`path ${stream.id}`} d={stream.path} fill={stream.fill} />
                 </g>
               );
+            })}
+          </g>
+          <g className="streams-labels-container">
+            {streamEle.map((label, l) => {
+              return (
+                <g key={l}>
+                  <g className="label">
+                    <foreignObject
+                      className={label.threshold ? 'visible' : 'invisible'}
+                      x={label.xPos - label.width * 2}
+                      y={label.yPos - 8}
+                      width="1"
+                      height="1"
+                    >
+                      <div xmlns="http://www.w3.org/1999/xhtml" className={label.klass}>
+                        <p>{label.id}</p>
+                      </div>
+                    </foreignObject>
+                  </g>
+                </g>
+              )
             })}
           </g>
         </svg>
