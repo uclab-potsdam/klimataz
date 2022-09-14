@@ -1,13 +1,15 @@
-import React, { Component, useCallback } from 'react';
+import React, { Component } from 'react';
 import { setStateAsync } from './helperFunc.js';
 import { CSSTransition } from 'react-transition-group';
+
+import { ReactComponent as Greetings } from '../img/regions/heidenheim.svg';
 
 //chart container
 import Chart from './side-elements/Chart.js';
 //side elements
 import Details from './side-elements/Details.js';
 
-import { toPng, toCanvas } from 'html-to-image';
+import { toPng } from 'html-to-image';
 
 export default class Side extends Component {
   constructor(props) {
@@ -148,7 +150,7 @@ export default class Side extends Component {
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
-          <div className="side-inner" ref={this.myRef}>
+          <div className="side-inner">
             {!this.state.showViz && ( //TEXT
               <Details
                 lk={this.props.lk}
@@ -156,19 +158,35 @@ export default class Side extends Component {
                 activeSide={this.props.activeSide}
               />
             )}
+
             {this.state.showViz && this.vis()}
           </div>
-          <button onClick={this.onShareButtonClick}>share ✺◟( ᐛ )◞✺</button>
-          {/* <div className="side-inner export" ref={this.myRef}>
-            {!this.state.showViz && ( //TEXT
-              <Details
-                lk={this.props.lk}
-                section={this.props.section}
-                activeSide={this.props.activeSide}
-              />
-            )}
-            {this.state.showViz && this.vis()}
-          </div> */}
+          {!this.props.isThumbnail && (
+            <div>
+              <button
+                onClick={this.onShareButtonClick}
+                style={{
+                  backgroundColor: 'rgb(226, 196, 255)',
+                  border: '2px solid rgb(172, 83, 255)',
+                  borderRadius: '10px',
+                }}
+              >
+                . share ✺◟( ᐛ )◞✺ .
+              </button>
+              <div className="side-inner export" ref={this.myRef}>
+                {!this.state.showViz && ( //TEXT
+                  <Details
+                    lk={this.props.lk}
+                    section={this.props.section}
+                    activeSide={this.props.activeSide}
+                  />
+                )}
+                {this.state.showViz && this.vis()}
+                <div className="logo-container"></div>
+                <Greetings className="greetings" />
+              </div>
+            </div>
+          )}
         </div>
       </CSSTransition>
     );
