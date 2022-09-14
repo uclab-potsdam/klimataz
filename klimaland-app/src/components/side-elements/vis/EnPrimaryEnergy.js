@@ -57,7 +57,6 @@ const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumb
   let lastYear = '?';
   let percRenewables = 0;
 
-  //handle click events on controller to show pie
   let switchHighlightedStream = function (id) {
     if (currentData !== undefined) {
       // console.log(id)

@@ -18,6 +18,8 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
   // getting sizes of container for maps
   const targetRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [highlighedStream, setHighlightedStream] = useState('');
+
   //   const [currentId, setCurrentId] = useState('');
 
   useLayoutEffect(() => {
@@ -40,6 +42,13 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
   };
   let lastYear = '?';
   let percRenewables = 0;
+
+  let switchHighlightedStream = function (id) {
+    if (currentData !== undefined) {
+      // console.log(id)
+      setHighlightedStream(id)
+    }
+  };
 
   if (currentData !== undefined) {
     // parameters for description text
@@ -131,7 +140,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
         yPos: yScale(stream[indexOfMax][0] - (stream[indexOfMax][0] - stream[indexOfMax][1]) / 2),
         height: yScale(stream[indexOfMax][0] - stream[indexOfMax][1]),
         width: stream.key.length,
-        labelThreshold: maxStreamValue >= 50000, //Fixed value for now, maybe make it dynamic?
+        threshold: highlighedStream === stream.key || (maxStreamValue > 50000 && highlighedStream === ''), //Fixed value for now, maybe make it dynamic?
         maxStreamValue
       };
     });
@@ -176,7 +185,12 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
           <g className="streams-container">
             {streamEle.map((stream, s) => {
               return (
-                <g key={s} className={`stream ${stream.klass}`}>
+                <g
+                  key={s}
+                  className={`stream ${stream.klass}`}
+                  onMouseEnter={() => switchHighlightedStream(stream.id)}
+                  onMouseLeave={() => switchHighlightedStream('')}
+                >
                   <path className={`path ${stream.id}`} d={stream.path} fill={stream.fill} />
                 </g>
               );
@@ -186,20 +200,19 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
             {streamEle.map((label, l) => {
               return (
                 <g key={l}>
-                  {label.labelThreshold && (
-                    <g className="label">
-                      <foreignObject
-                        x={label.xPos - label.width * 2}
-                        y={label.yPos - 8}
-                        width="1"
-                        height="1"
-                      >
-                        <div xmlns="http://www.w3.org/1999/xhtml" className={label.klass}>
-                          <p>{label.id}</p>
-                        </div>
-                      </foreignObject>
-                    </g>
-                  )}
+                  <g className="label">
+                    <foreignObject
+                      className={label.threshold ? 'visible' : 'invisible'}
+                      x={label.xPos - label.width * 2}
+                      y={label.yPos - 8}
+                      width="1"
+                      height="1"
+                    >
+                      <div xmlns="http://www.w3.org/1999/xhtml" className={label.klass}>
+                        <p>{label.id}</p>
+                      </div>
+                    </foreignObject>
+                  </g>
                 </g>
               )
             })}
