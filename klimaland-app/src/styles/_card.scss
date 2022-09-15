@@ -215,10 +215,39 @@
                                     span {
                                         text-decoration: underline;
                                         color: $taz-orange;
-                                    }
+                                    
 
-                                    span.location-name {
-                                        color: $dark-blue;
+                                        &.mittleren {
+                                            color: $taz-orange;
+                                        }
+
+                                        &.oberen, 
+                                        &.energy-data-renewables, 
+                                        &.mo-km-umweltfreundlich,
+                                        &.ab-data-co,
+                                        &.ab-data-bio,
+                                        &.land-data-unter,
+                                        &.land-data-oeko,
+                                        &.ge-data-erneuerbare {
+                                            color: $mint-green;
+                                        }
+
+                                        &.unteren, 
+                                        &.gerics-data, 
+                                        &.energy-data-fossil, 
+                                        &.autos,
+                                        &.land-data-tierzahl,
+                                        &.ge-data-heat {
+                                            color: $red;
+                                        }
+
+                                        &.energy-data-geheim {
+                                            color: lighten($default-text, 20%);
+                                        }
+
+                                        &.location-name {
+                                            color: $dark-blue;
+                                        }
                                     }
                                 }
                             }
