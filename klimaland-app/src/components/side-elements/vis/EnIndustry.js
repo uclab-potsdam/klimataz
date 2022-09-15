@@ -62,7 +62,7 @@ const EnIndustry = ({
     const lastDataPoint = currentData.data.slice(-1);
     lastYear = lastDataPoint[0]['year'];
     const lastRenValue = currentData.data.filter((d) => {
-      return d.column === 'Erneuerbare Energien' && d.year === '2020';
+      return d.column === 'Anteil_Erneuerbar' && d.year === '2020';
     });
     percRenewables = lastRenValue[0].value !== null ? lastRenValue[0].value.toFixed(1) : 0;
 
@@ -71,8 +71,6 @@ const EnIndustry = ({
     const uniqueEnergySourceFiltered = uniqueEnergySourceAll.filter((category) => {
       return category !== 'insgesamt' && category !== 'Anteil_Erneuerbar';
     });
-
-    console.log(uniqueEnergySourceFiltered);
 
     // setup domains for scaling
     const domainX = extent(currentData.data.map((d) => +d.year));
@@ -115,7 +113,6 @@ const EnIndustry = ({
       currentYearData.map((d) => {
         el.year = d.year;
         const nameOfEnergySource = d.column;
-        console.log(nameOfEnergySource, d.value);
         return (el[nameOfEnergySource] = d.value !== null ? d.value : 0);
       });
       stackData.push(el);
