@@ -7,6 +7,8 @@ const Locator = ({ lk }) => {
   let width = 100
   let height = 100
 
+  console.log(lk)
+
   const currentMap = +lk.value < 20 ? bundeslaenderOutline : LandkreiseOutline
 
   // getting sizes of container for maps
@@ -34,7 +36,8 @@ const Locator = ({ lk }) => {
   let currentPath;
 
   currentMap.features.forEach((f) => {
-    if (+lk.value === +f.properties.ARS || lk.value === +f.properties.SN_L) {
+    if ((+lk.value === +f.properties.ARS || lk.value === +f.properties.SN_L)
+      && !f.properties.GEN.includes('(Bodensee)') && f.properties.GF >= 9) {
       currentFeature = f;
       currentPath = geoGenerator(f);
     }
