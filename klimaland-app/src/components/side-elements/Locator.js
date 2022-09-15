@@ -6,9 +6,6 @@ import bundeslaenderOutline from '../../data/bundeslaender.json';
 const Locator = ({ lk }) => {
   let width = 100
   let height = 100
-
-  console.log(lk)
-
   const currentMap = +lk.value < 20 ? bundeslaenderOutline : LandkreiseOutline
 
   // getting sizes of container for maps
