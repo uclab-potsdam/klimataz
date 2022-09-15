@@ -5,7 +5,7 @@ import { stack } from 'd3-shape';
 
 
 
-const GeAvgHEating = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
+const GeAvgHEating = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
 
     // getting sizes of container for maps
     const targetRef = useRef();
@@ -189,7 +189,7 @@ const GeAvgHEating = ({ currentData, currentIndicator, currentSection, lkData, i
             </div>
             <div className="description">
                 <div className="title">
-                    <h3>Wie hoch ist der Energieverbrauch beim Heizen in {lkData}?</h3>
+                    <h3>Wie hoch ist der Energieverbrauch beim Heizen in {locationLabel}?</h3>
                 </div>
             </div>
         </div >

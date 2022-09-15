@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { setStateAsync } from '../helperFunc';
 import VisIndex from './VisIndex';
+import selectorControls from '../../data/selector-controls.json';
 
 export default class Chart extends Component {
   constructor(props) {
@@ -48,6 +49,25 @@ export default class Chart extends Component {
     const localData = this.props.localData[this.props.section];
     const currentSnippet = localData[this.state.currentIndicator];
 
+    let locationLabel = ''
+    const locationLabels = {}
+    selectorControls.landkreise.forEach(d => {
+      if (d.value === this.props.localData.ags) {
+        locationLabels['lk'] = d.label
+      }
+
+      if (d.value === this.props.localData.bundesland) {
+        locationLabels['bundesland'] = d.label
+      }
+    })
+
+    if (currentSnippet !== undefined) {
+      locationLabel = currentSnippet.regional ?
+        locationLabels['lk'] :
+        locationLabels['bundesland']
+    }
+
+
     return (
       <div className="chart-container">
         <div width="100%" className={'svg-container ' + this.props.section + '-chart'}>
@@ -55,7 +75,7 @@ export default class Chart extends Component {
             currentSection={this.props.section}
             currentData={currentSnippet}
             currentIndicator={this.state.currentIndicator}
-            lkData={this.props.lk.label}
+            locationLabel={locationLabel}
             isThumbnail={this.props.isThumbnail}
           />
         </div>

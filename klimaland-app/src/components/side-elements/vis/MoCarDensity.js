@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { max } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 
-const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
+const MoCarDensity = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
     // getting sizes of container for maps
     const targetRef = useRef();
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -111,7 +111,7 @@ const MoCarDensity = ({ currentData, currentIndicator, currentSection, lkData, i
             <div className="description">
                 <div className="title">
                     <h3>
-                        <span>{lkData}</span>:
+                        <span>{locationLabel}</span>:
                         Auf 100 Einwohner besitzen <span className="first-value">{totalCars}</span> ein
                         Auto. <span className="second-value">{hybridCars}</span> davon sind Hybrid oder Elektro.
                     </h3>

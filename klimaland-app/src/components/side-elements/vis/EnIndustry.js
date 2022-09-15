@@ -4,7 +4,7 @@ import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent, mean } from 'd3-array';
 
-const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
+const EnIndustry = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
   const colorArray = [
     '#FFD5C8', // Erdgas
     '#007F87', // Erneuerbare Energien
@@ -222,7 +222,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, lkData, isT
       <div className="description">
         <div className="title">
           <h3>
-            Der Energieverbrauch in der Industrie in {lkData} basiert im Jahr{' '}
+            Der Energieverbrauch in der Industrie in {locationLabel} basiert im Jahr{' '}
             <span>{lastYear}</span> zu <span> {percRenewables}% </span>
             auf <span className="second-value"> erneuerbaren Energien</span>
           </h3>
