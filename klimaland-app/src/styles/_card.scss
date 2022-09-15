@@ -199,10 +199,20 @@
             height: 1.5rem;
             left: 52%;
 
+            & .gruss-thumb{
+                position: absolute;
+                font-size: 0.9rem;
+                right: 0;
+                bottom: 55px;
+                margin: 0;
+                color: $dark-pink;
+                transform: scale(0.8, 1.2) rotate(-1deg);
+                z-index: 2;
+            }
+
             & .wordart-1 {
                 position: absolute;
                 font-size: 1.9rem;
-                // width: 100%;
                 right: 0;
                 bottom: 20px;
                 margin: 0;

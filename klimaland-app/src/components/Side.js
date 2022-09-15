@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { setStateAsync } from './helperFunc.js';
 import { CSSTransition } from 'react-transition-group';
 
-import { ReactComponent as Greetings } from '../img/regions/heidenheim.svg';
-
 //chart container
 import Chart from './side-elements/Chart.js';
 //side elements
@@ -180,6 +178,7 @@ export default class Side extends Component {
                 </div>
 
                 <div className="greetings">
+                  <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
                   <h2 className="wordart-1">{this.props.lk.label}</h2>
                 </div>
                 <div className="logo-container"></div>
