@@ -60,7 +60,7 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
   let switchHighlightedStream = function (id) {
     if (currentData !== undefined) {
       // console.log(id)
-      setHighlightedStream(id)
+      setHighlightedStream(id);
     }
   };
 
@@ -68,7 +68,9 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
     // parameters for description text
     const lastDataPoint = currentData.data.slice(-1);
     lastYear = lastDataPoint[0]['year'];
-    const lastRenValue = currentData.data.filter(d => { return d.column === 'Gesamt Erneuerbare Energieträger' && d.year === '2020' })
+    const lastRenValue = currentData.data.filter((d) => {
+      return d.column === 'Anteil Erneuerbar' && d.year === '2020';
+    });
     percRenewables = lastRenValue[0].value !== null ? lastRenValue[0].value.toFixed(1) : 0;
 
     // get all energy sources and filter out "insgesamt" and "Anteil_Erneuerbar"
@@ -83,8 +85,8 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
         category !== 'Wasserkraft' &&
         category !== 'Windkraft' &&
         category !== 'Solarenergie' &&
-        category !== 'Biomasse 1)' &&
-        category !== 'Sonstige erneuerbare Energien 2)'
+        category !== 'Biomasse' &&
+        category !== 'Sonstige erneuerbare Energien'
       );
     });
 
@@ -151,19 +153,21 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
 
     // stream graph
     streamEle = stackedSeries.map((stream, s) => {
-      const maxStreamValue = max(stackData.map(d => {
-        // filtering first and last year to avoid labels overflow
-        return +d['year'] !== 1990 && +d['year'] !== 2020 ? d[stream.key] : 0
-      }))
+      const maxStreamValue = max(
+        stackData.map((d) => {
+          // filtering first and last year to avoid labels overflow
+          return +d['year'] !== 1990 && +d['year'] !== 2020 ? d[stream.key] : 0;
+        })
+      );
 
-      let yearOfMax = 0
-      let indexOfMax = 0
+      let yearOfMax = 0;
+      let indexOfMax = 0;
       stackData.forEach((d, i) => {
         if (d[stream.key] === maxStreamValue) {
           yearOfMax = d.year;
-          indexOfMax = i
+          indexOfMax = i;
         }
-      })
+      });
 
       return {
         klass: stream.key.substring(0, 3) + '-stream',
@@ -174,8 +178,9 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
         yPos: yScale(stream[indexOfMax][0] - (stream[indexOfMax][0] - stream[indexOfMax][1]) / 2),
         height: yScale(stream[indexOfMax][0] - stream[indexOfMax][1]),
         width: stream.key.length,
-        threshold: highlighedStream === stream.key || (maxStreamValue > 50000 && highlighedStream === ''), //Fixed value for now, maybe make it dynamic?
-        maxStreamValue
+        threshold:
+          highlighedStream === stream.key || (maxStreamValue > 50000 && highlighedStream === ''), //Fixed value for now, maybe make it dynamic?
+        maxStreamValue,
       };
     });
   }
@@ -201,9 +206,9 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
                       x="-18"
                       y={marginHeight + 15}
                       textAnchor="middle"
-                      transform={dimensions.width <= 350
-                        ? `rotate(-90, -10, ${marginHeight + 10})`
-                        : ''}
+                      transform={
+                        dimensions.width <= 350 ? `rotate(-90, -10, ${marginHeight + 10})` : ''
+                      }
                     >
                       {axis.label}
                     </text>
@@ -231,7 +236,7 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
           <g className="streams-labels-container">
             {streamEle.map((label, l) => {
               return (
-                <g key={l} >
+                <g key={l}>
                   <g className="label">
                     <foreignObject
                       className={label.threshold ? 'visible' : 'invisible'}
@@ -246,7 +251,7 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
                     </foreignObject>
                   </g>
                 </g>
-              )
+              );
             })}
           </g>
         </svg>
