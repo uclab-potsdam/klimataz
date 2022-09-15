@@ -164,15 +164,43 @@
     &-ordered{
         margin:1rem;
     }
+
 }
 
 .card-active {
     .side-outer {
-            width: 100%;
-            height: 100%;
-        }
-    .side-inner {
+        width: 100%;
+        height: 100%;
+    }
 
+    .social-media-layout{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+    
+        & .logo-container {
+            position: absolute;
+            background-image: url(../img/taz/taz-logo.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 100%;
+            height: 1.5rem;
+            min-height: 1rem;
+            bottom: 8px;
+            left: 8px;
+        }  
+
+        & .greetings{
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            height: 1.5rem;
+        }
+    }
+
+    .side-inner {
         background-color: $light;
         width: 100%;
         height: 100%;
@@ -349,40 +377,40 @@
             opacity: 0;
             transition: opacity 20ms;
         }
-        
-        &.export{
-            position: absolute;
-            // height: 90%;
-            // width: 90%;
-            top: 0;
-            z-index: -10;
-            background-color: rgb(226, 196, 255);
-        }
-             
-        .logo-container {
-            position: absolute;
-            background-image: url(../img/taz/taz-logo.svg);
-            background-repeat: no-repeat;
-            background-size: contain;
-            width: 20%;
-            min-height: 1rem;
-            left: 2%;
-            bottom: 10px;
-        }
 
-        .greetings{
-            position: absolute;
-            bottom: 10px;
-            right: 5%;
-            width: 20%;
-            
-        }
+        .export{
+            background-color: $light;
+            width: 85%;
+            height: 85%;
+            transform: translate(7.5%, 6%);
+            border-style: solid;
+            border-color: $mint-green;
+            border-width: 0.5;
+            box-shadow: 4px 4px 0px rgba($mint-green, .8);
+            }
        
     }
+     
 
+    button {
+        @include button;
+        &.buttonDownload {
+            position: absolute;
+            bottom: 1vh;
+            right: 9vh;
     
+            img {
+                width: 65%;
+                max-width: 50px;
+                min-width: 25px;
+            }
+        }
+    
+    }
 
-    
+
+
+
 }
 
 

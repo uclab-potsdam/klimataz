@@ -10,6 +10,7 @@ import Chart from './side-elements/Chart.js';
 import Details from './side-elements/Details.js';
 
 import { toPng } from 'html-to-image';
+import share from '../img/buttons/share.svg';
 
 export default class Side extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ export default class Side extends Component {
 
     toPng(this.myRef.current, {
       cacheBust: true,
-      backgroundColor: '#fefaf6',
+      backgroundColor: '#fff',
     })
       .then((dataUrl) => {
         const link = document.createElement('a');
@@ -161,31 +162,32 @@ export default class Side extends Component {
 
             {this.state.showViz && this.vis()}
           </div>
+
           {!this.props.isThumbnail && (
-            <div>
-              <button
-                onClick={this.onShareButtonClick}
-                style={{
-                  backgroundColor: 'rgb(226, 196, 255)',
-                  border: '2px solid rgb(172, 83, 255)',
-                  borderRadius: '10px',
-                }}
-              >
-                . share ✺◟( ᐛ )◞✺ .
-              </button>
-              <div className="side-inner export" ref={this.myRef}>
-                {!this.state.showViz && ( //TEXT
-                  <Details
-                    lk={this.props.lk}
-                    section={this.props.section}
-                    activeSide={this.props.activeSide}
-                  />
-                )}
-                {this.state.showViz && this.vis()}
-                <div className="logo-container"></div>
+            <>
+              <div className="social-media-layout" ref={this.myRef}>
+                <div className="side-inner">
+                  <div className="side-inner export">
+                    {!this.state.showViz && ( //TEXT
+                      <Details
+                        lk={this.props.lk}
+                        section={this.props.section}
+                        activeSide={this.props.activeSide}
+                      />
+                    )}
+                    {this.state.showViz && this.vis()}
+                  </div>
+                </div>
+
                 <Greetings className="greetings" />
+                <div className="greetings">{this.props.lk.label}</div>
+                <div className="logo-container"></div>
               </div>
-            </div>
+
+              <button className="buttonDownload" onClick={this.onShareButtonClick}>
+                <img src={share} className="button img" alt="flip-button-img" />
+              </button>
+            </>
           )}
         </div>
       </CSSTransition>
