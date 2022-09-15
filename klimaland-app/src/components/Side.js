@@ -151,7 +151,7 @@ export default class Side extends Component {
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
-          <div className="side-inner">
+          {/* <div className="side-inner">
             {!this.state.showViz && ( //TEXT
               <Details
                 lk={this.props.lk}
@@ -161,7 +161,7 @@ export default class Side extends Component {
             )}
 
             {this.state.showViz && this.vis()}
-          </div>
+          </div> */}
 
           {!this.props.isThumbnail && (
             <>
@@ -179,8 +179,9 @@ export default class Side extends Component {
                   </div>
                 </div>
 
-                <Greetings className="greetings" />
-                <div className="greetings">{this.props.lk.label}</div>
+                <div className="greetings">
+                  <h2 className="wordart-1">{this.props.lk.label}</h2>
+                </div>
                 <div className="logo-container"></div>
               </div>
 

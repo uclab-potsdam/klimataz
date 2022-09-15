@@ -194,9 +194,26 @@
 
         & .greetings{
             position: absolute;
-            bottom: 8px;
-            right: 8px;
+            width: 44%;
+            bottom: 0;
             height: 1.5rem;
+            left: 52%;
+
+            & .wordart-1 {
+                position: absolute;
+                font-size: 1.9rem;
+                // width: 100%;
+                right: 0;
+                bottom: 20px;
+                margin: 0;
+                transform: scale(0.8, 1.0) rotate(-2deg);
+                font-family: Impact, sans-serif;
+                color: $blue;
+                -webkit-text-stroke: 1.25px $dark-blue;
+                text-shadow: 0.35rem -0.35rem 0 $dark-blue;
+                letter-spacing: -0.15vw;
+                z-index: 1;
+            }
         }
     }
 
