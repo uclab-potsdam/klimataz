@@ -26,6 +26,8 @@ export default class Side extends Component {
         width: '300',
         height: '200',
       },
+      sectionLabel: ['Energie', 'Mobilität', 'Abfall', 'Landwirtschaft', 'Gebäude'],
+      section: ['En', 'Mo', 'Ab', 'La', 'Ge'],
     };
 
     this.vis = this.vis.bind(this);
@@ -133,8 +135,16 @@ export default class Side extends Component {
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
           {this.props.isThumbnail && (
             <div>
-              <h4 className="gruss">Herzliche Grüße aus</h4>
+              <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
               <h2 className="wordart-1">{this.props.lk.label}</h2>
+              <h4 className="section-thumb">
+                {this.state.sectionLabel[this.state.section.indexOf(this.props.section)]}
+              </h4>
+              <svg className="rating-thumb" width="50%" height="35%">
+                <circle className="lower" cx="32" cy="32" r="30" stroke="#E5144B" fill="#fefaf6" />
+                <circle className="middle" cx="67" cy="32" r="30" stroke="#f6a119" fill="#fefaf6" />
+                <circle className="upper" cx="102" cy="32" r="30" stroke="#1A8579" fill="#1A8579" />
+              </svg>
             </div>
           )}
           <div className="side-inner">
