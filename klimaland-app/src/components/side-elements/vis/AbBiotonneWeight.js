@@ -3,7 +3,7 @@ import { scaleLinear } from 'd3-scale';
 import { extent, max, min } from 'd3-array';
 import { pie, arc } from 'd3';
 
-const Waste = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
+const Waste = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
    const targetRef = useRef();
    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
    const [piesAreActive, setPies] = useState(false);
@@ -215,7 +215,7 @@ const Waste = ({ currentData, currentIndicator, currentSection, lkData, isThumbn
          <div className="description">
             <div className="title">
                <h3>
-                  Im Jahr <span>{lastYear}</span> wurden in <span>{lkData}</span> <span>{lastValue}</span>{' '}
+                  Im Jahr <span>{lastYear}</span> wurden in <span>{locationLabel}</span> <span>{lastValue}</span>{' '}
                   Kg pro Kopf organische Abfälle korrekt in der Biotonne oder als Gartenabfälle entsorgt
                   XXXX und damit Co2-Emissionen verringert.
                </h3>

@@ -3,7 +3,7 @@ import { max } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 
-const LandDenisty = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
+const LandDenisty = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -114,7 +114,7 @@ const LandDenisty = ({ currentData, currentIndicator, currentSection, lkData, is
       <div className="description">
         <div className="title">
           <h3>
-            Wie viele Tiere pro Fläche leben im Durchschnitt in <span>{lkData}</span>?
+            Wie viele Tiere pro Fläche leben im Durchschnitt in <span>{locationLabel}</span>?
           </h3>
         </div>
         <div className="caption">

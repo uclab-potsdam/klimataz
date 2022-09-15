@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { line, stack } from 'd3-shape';
 
-const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
+const MoModalSplit = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
   const targetRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
@@ -175,7 +175,7 @@ const MoModalSplit = ({ currentData, currentIndicator, currentSection, lkData, i
       <div className="description">
         <div className="title">
           <h3>
-            Mit was und wie weit fahren Menschen in <span>{lkData}</span> zur Arbeit?
+            Mit was und wie weit fahren Menschen in <span>{locationLabel}</span> zur Arbeit?
           </h3>
         </div>
       </div>

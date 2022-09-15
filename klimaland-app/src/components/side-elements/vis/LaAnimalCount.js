@@ -4,7 +4,7 @@ import { max } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 
-const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
+const Land = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
   const colorArray = [
     '#FFF2DA', // erstes Jahr
     '#007F87', // Zunahme
@@ -268,7 +268,7 @@ const Land = ({ currentData, currentIndicator, currentSection, lkData, isThumbna
       <div className="description">
         <div className="title">
           <h3>
-            Entwicklung der Anzahl an Rindern, Schweinen und Schafen in {lkData} über die Jahre{' '}
+            Entwicklung der Anzahl an Rindern, Schweinen und Schafen in {locationLabel} über die Jahre{' '}
             {firstYear} bis {lastYear}.
           </h3>
         </div>

@@ -5,7 +5,7 @@ import { max, extent, mean, sum } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { line } from 'd3-shape';
 
-const Buildings = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
+const Buildings = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -162,7 +162,7 @@ const Buildings = ({ currentData, currentIndicator, currentSection, lkData, isTh
         </div>
         <div className="caption">
           <p>
-            Jedes Jahr wurden in {lkData} <span>{numberOfBuildings}</span> neue Wohneinheiten
+            Jedes Jahr wurden in {locationLabel} <span>{numberOfBuildings}</span> neue Wohneinheiten
             (Wohnungen oder Häuser) fertiggestellt. <span>{firstToUppercase(currentId)}</span> are
             xxx%.
           </p>
