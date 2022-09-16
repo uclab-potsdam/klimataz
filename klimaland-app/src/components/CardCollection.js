@@ -28,6 +28,7 @@ export default class CardCollection extends Component {
     //bind functions called by components
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.addCardToSelection = this.addCardToSelection.bind(this);
   }
 
   /**
@@ -48,6 +49,14 @@ export default class CardCollection extends Component {
       windowSize: { width: window.innerWidth, height: window.innerHeight },
     });
     this.generateCards();
+  }
+
+  /**
+   * when someone clicked on a list item, pass this to parent
+   * @param {} lk AGS and name of location clicked on in the list as value-label pair
+   */
+  addCardToSelection(lk) {
+    this.props.addCardToSelection(lk);
   }
 
   /**
@@ -205,6 +214,7 @@ export default class CardCollection extends Component {
                 windowSize={this.state.windowSize}
                 localData={localData}
                 layoutControls={this.layoutControls[section]}
+                handleClickOnList={this.addCardToSelection}
               />
             </Card>
           );

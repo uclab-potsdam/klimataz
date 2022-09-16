@@ -1,34 +1,33 @@
 import React from "react";
+import parse from 'html-react-parser';
+// eslint-disable-next-line import/no-webpack-loader-syntax
 
-const Text = ({ lk, section, activeSide }) => {
 
-    const sectionFullName = {
-        La: "Landwirtschaft",
-        Mo: "Mobilität",
-        Ge: "Gebäude",
-        En: "Energie",
-        Ab: "Abfall"
-    }
+const Text = ({ lk, section, data, sectionFullName }) => {
+
+    const agsText = data.filter(d => { return +d.AGS === lk.value })
+
+    const activeCardText = agsText.map((text, t) => {
+        const thirdKey = sectionFullName[section].en + '_third'
+        const textKey = sectionFullName[section].en + '_postcard'
+        return {
+            gerics: text.gerics_text,
+            ranking: text[thirdKey],
+            text: text[textKey]
+        }
+    })
+
+
     return (
         <div className="text-inner-container">
             <div className="section-title">
-                <h2>{sectionFullName[section]}</h2>
+                <h2>{sectionFullName[section].de}</h2>
             </div>
-            <div className="section-text">
+            {(data.length !== 0 && <div className="section-text">
                 <p>
-                    Seite {activeSide}. Hallo!
-                    Ich schicke dir Grüße aus dem schönen Landkreis {lk.label} in Brandenburg!
-                    Momentan wird es hier an 7,7 Tagen im Jahr über 30 Grad, aber wenn wir so
-                    weitermachen, werden es Mitte des Jahrhunderts schon 9 sein. 30 Prozent
-                    mehr! Wir könnten etwas dagegen tun, zum Beispiel im Bereich Verkehr.
-                    Im Barnim gibt XY Autos pro 100 Einwohner, damit liegt der Landkreis
-                    was den Autobesitz angeht im Vergleich im adjektiv Drittel. In Brandenburg
-                    werden nur XY Prozent der Arbeitswege mit Fahrrad, öffentlichem Verkehr
-                    oder zu Fuß erledigt. Um die Erderhitzung zu stoppen, müssen die Emissionen
-                    im Verkehr bei null sein. Schaffen wir das?
-                    Viele Grüße!
+                    {parse(activeCardText[0].text)}
                 </p>
-            </div>
+            </div>)}
         </div>
     );
 };
