@@ -211,7 +211,44 @@
                 
                                 p {
                                     font-size: 14px;
-                                    line-height: 1.2rem;
+                                    // line-height: 1.2rem;
+                                    span {
+                                        text-decoration: underline;
+                                        color: $taz-orange;
+                                    
+
+                                        &.mittleren {
+                                            color: $taz-orange;
+                                        }
+
+                                        &.oberen, 
+                                        &.energy-data-renewables, 
+                                        &.mo-km-umweltfreundlich,
+                                        &.ab-data-co,
+                                        &.ab-data-bio,
+                                        &.land-data-unter,
+                                        &.land-data-oeko,
+                                        &.ge-data-erneuerbare {
+                                            color: $mint-green;
+                                        }
+
+                                        &.unteren, 
+                                        &.gerics-data, 
+                                        &.energy-data-fossil, 
+                                        &.autos,
+                                        &.land-data-tierzahl,
+                                        &.ge-data-heat {
+                                            color: $red;
+                                        }
+
+                                        &.energy-data-geheim {
+                                            color: lighten($default-text, 20%);
+                                        }
+
+                                        &.location-name {
+                                            color: $dark-blue;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -246,14 +283,37 @@
 
                             .list-inner-container {
 
-                                .list-similar-container,
-                                .list-dissimilar-container {
+                                .list-similar-container {
                                     // border-bottom: 1px solid $default-text;
-                                    overflow-y: scroll;
-                                    overflow-x: hidden;
+                                    // overflow-x: hidden;
                                     -ms-overflow-style: none;
                                     scrollbar-width: none;
-                                    max-height: 125px;
+                                    height: 100%;
+
+                                    &.mittleren {
+                                        h5 {
+                                            color: white;
+                                            background-color: $taz-orange;                                     
+                                        }
+                                    }
+
+                                    &.oberen {
+                                        h5 {
+                                            color: white;
+                                            background-color: $mint-green;
+                                        }
+                                    }
+
+                                    &.unteren {
+                                        h5 {
+                                            color: white;
+                                            background-color: $red;
+                                        }
+                                    }
+
+                                    ul {
+                                        overflow-y: scroll;
+                                    }
 
 
                                     &::-webkit-scrollbar {
@@ -265,7 +325,7 @@
                                         width: calc(100% - 0.5rem);
                                         margin: 0px;
                                         padding: 0.2rem 0rem 0.2rem 0.5rem;
-                                        // border-bottom: 1px solid $default-text;
+                                        border-bottom: 1px solid $default-text;
                                     }
 
                                     ul,
@@ -276,19 +336,6 @@
                                     ol {
                                         border-bottom: 1px solid $default-text;
                                         padding-bottom: 0.5rem;
-                                    }
-                                }
-
-                                .list-dissimilar-container {
-                                    h5 {
-                                        background-color: $red;
-                                        color: white;
-                                    }
-                                }
-
-                                .list-similar-container {
-                                    h5 {
-                                        background-color: $taz-orange;
                                     }
                                 }
                             }
