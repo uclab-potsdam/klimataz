@@ -10,6 +10,7 @@ const EnIndustry = ({
   currentSection,
   locationLabel,
   isThumbnail,
+  footnote,
 }) => {
   const colorArray = [
     '#FFD5C8', // Erdgas
@@ -50,6 +51,7 @@ const EnIndustry = ({
   let lastYear = '?';
   let percRenewables = 0;
   let percGeheim = 0;
+  let secretFootnote = 'In ' + locationLabel[0] + ' ist dieser Vebrauch geheim. ';
 
   let switchHighlightedStream = function (id) {
     if (currentData !== undefined) {
@@ -248,7 +250,9 @@ const EnIndustry = ({
             Der Energieverbrauch in der Industrie in {locationLabel[1]} basiert im Jahr{' '}
             <span>{lastYear}</span> zu <span> {percRenewables} % </span>
             auf <span className="second-value"> erneuerbaren Energien</span>.{' '}
-            {percGeheim > 0 && <div>In {locationLabel[0]} ist dieser Vebrauch geheim.</div>}
+            {percGeheim > 0 && secretFootnote}
+            {footnote}
+            {footnote !== '' && '.'}
           </h3>
         </div>
       </div>

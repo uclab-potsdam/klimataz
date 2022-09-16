@@ -227,6 +227,7 @@ const Waste = ({
             Im Jahr <span>{lastYear}</span> wurden in <span>{locationLabel}</span> pro Kopf{' '}
             <span>{lastValue}</span> kg organische Abfälle korrekt in der Biotonne oder als
             Gartenabfälle entsorgt und damit Co2-Emissionen verringert. {footnote}
+            {footnote !== '' && '.'}
           </h3>
         </div>
       </div>
