@@ -148,8 +148,41 @@
             left: 3%;
             z-index: 2;
 
+
+
             circle {
                 stroke-width: 0.5;
+
+                &.inactive {
+                    fill: $light;
+                    &.lower {
+                        stroke: $red;
+                    }
+                    
+                    &.middle {
+                        stroke: $taz-orange;
+                    }
+                
+                    &.upper {
+                        stroke: $mint-green;
+                    }
+                }
+
+                &.active {
+                    stroke: $light;
+                    
+                    &.lower {
+                        fill: $red;
+                    }
+                
+                    &.middle {
+                        fill: $taz-orange;
+                    }
+                
+                    &.upper {
+                        fill: $mint-green;
+                    }
+                }
 
             }
         }

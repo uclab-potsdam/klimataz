@@ -129,6 +129,7 @@ export default class Side extends Component {
   }
 
   render() {
+    const indicatorRanking = 'unter'
     // TO DO: Solve issue of inconsistent activeSide during carousel switch
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
@@ -145,9 +146,9 @@ export default class Side extends Component {
                 {this.state.sectionLabel[this.state.section.indexOf(this.props.section)]}
               </h4>
               <svg className="rating-thumb" width="50%" height="35%">
-                <circle className="lower" cx="32" cy="32" r="30" stroke="#E5144B" fill="#fefaf6" />
-                <circle className="middle" cx="67" cy="32" r="30" stroke="#f6a119" fill="#fefaf6" />
-                <circle className="upper" cx="102" cy="32" r="30" stroke="#1A8579" fill="#1A8579" />
+                <circle className={`${indicatorRanking === 'unter' ? 'active' : 'inactive'} lower`} cx="32" cy="32" r="30" />
+                <circle className={`${indicatorRanking === 'middle' ? 'active' : 'inactive'} middle`} cx="67" cy="32" r="30" />
+                <circle className={`${indicatorRanking === 'upper' ? 'active' : 'inactive'} upper`} cx="102" cy="32" r="30" />
               </svg>
             </div>
           )}

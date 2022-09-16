@@ -340,10 +340,9 @@ export default class LayoutManager extends Component {
   }
 
   render() {
-    console.log(this.state.landkreisSelection[0])
     return (
       <div className="main-container">
-        {this.state.mode === 'lk'
+        {(this.state.mode === 'lk' && this.state.postcardView === false)
           && <div className="word-art-title">
             <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
             <h2 className="wordart">{this.state.landkreisSelection[0].label}</h2>
