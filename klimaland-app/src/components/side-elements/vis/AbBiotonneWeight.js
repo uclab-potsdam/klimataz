@@ -105,7 +105,7 @@ const Waste = ({ currentData, currentIndicator, currentSection, locationLabel, i
             });
 
             currentDataPoint.x = xScale(+d.year);
-            currentDataPoint.y = yScale(d.value);
+            currentDataPoint.y = d.value === null ? yScale(0) : yScale(d.value);
             currentDataPoint.pie = pieShape;
             currentDataPoint.class = 'mean';
 
