@@ -104,14 +104,122 @@
     .side-outer {
         width: 100%;
         height: 100%;
+        overflow: hidden;
+
+        .overlay-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            .section-thumb {
+                display: inline-flex;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+
+                h4.section-title {
+                    color: darken($pale-olive, 20%);
+                }
+        
+                &.lk {
+                    h4 {
+                        margin-top: 0.5rem;
+                        margin-left: 0.5rem;
+                        display: inline-block;
+                    }
+                }
+        
+                &.comparison {
+                    // display: grid;
+                    display: block;
+
+                    h4.section-title {
+                        margin-left: 1rem;
+                        margin-top: 0.5rem;
+                    }
+        
+                    .word-art-title {
+                        width: 100%;
+                        height: 50px;
+                        right: 0.5rem;
+                        top: -0.5rem;
+                        margin-top: 1.5rem;
+                        left: -15%;
+                        z-index: 2;
+                        text-align: left;
+        
+                        .gruss-thumb {
+                            font-size: 0.8rem;
+                        }
+        
+                        .wordart {
+                            width: 100%;
+                            height: 100%;
+                            font-size: 1.5rem;
+                            padding: 0;
+                            padding-top: 0.5rem;
+                            padding-left: 0.2rem;
+                            margin-top: 0.5rem;
+                            letter-spacing: -0.10vw;
+                            line-height: 1rem;
+                        }
+                    }
+                }
+            }
+
+            & .rating-thumb {
+                position: absolute;
+                top: 60%;
+                left: 3%;
+                z-index: 2;
+
+                circle {
+                    stroke-width: 0.5;
+
+                    &.inactive {
+                        fill: $light;
+
+                        &.lower {
+                            stroke: $red;
+                        }
+
+                        &.middle {
+                            stroke: $taz-orange;
+                        }
+
+                        &.upper {
+                            stroke: $mint-green;
+                        }
+                    }
+
+                    &.active {
+                        stroke: $pale-olive;
+
+                        &.lower {
+                            fill: $red;
+                        }
+
+                        &.middle {
+                            fill: $taz-orange;
+                        }
+
+                        &.upper {
+                            fill: $mint-green;
+                        }
+                    }
+
+                }
+            }
+        }
     }
 
     .side-inner {
         width: 100%;
         height: 100%;
+        transform: translateX(40%);
         background-color: rgba($lighter-orange, 0.5);
-        clip-path: circle(35%);    
+        clip-path: circle(55%);    
     }
+      
 }
 
 .side {

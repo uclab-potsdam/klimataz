@@ -82,6 +82,19 @@ code {
         height: 100%;
         position: relative;
 
+        .word-art-title {
+            @include wordart-style-1;
+            text-align: right;
+            margin-top: 1rem;
+            width: 80%;
+            position: absolute;
+            right: 0;
+
+            .wordart {
+                font-size: 2.5rem;
+            }
+        }
+
         //container of location selector
         .selection-container {
                 width: 100%;
@@ -93,6 +106,10 @@ code {
                 .selector {
                     width: 30%;
                     margin: 1rem;
+
+                    &.lk {
+                        width: 40%;
+                    }
 
                     svg {
                             path {
@@ -172,7 +189,7 @@ code {
         // Info box explaining the project
         .info-container {
             position: absolute;
-            bottom: 5%;
+            bottom: 2%;
             width: 100%;
             height: 10%;
             z-index: 9999;

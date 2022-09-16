@@ -58,7 +58,10 @@
                     }
 
                     &.thumbnail-chart {
-                        transform: translate(-10px, 0px) skew(-17deg, 0deg);
+                        transform: translate(-50px, 0px) skew(-17deg, 0deg);
+                        .cars-container {
+                            transform: scale(0.9);
+                        }
                     }
                 }
 
@@ -483,7 +486,7 @@
                 &.is-thumbnail {
 
                     .visualization-container {
-
+                        transform: translateX(-30%);
                         .chart {
                             width: 100%;
                             left: 0;
@@ -598,7 +601,7 @@
                         height: 100%;
                         width: 100%;
                         scale: 65%;
-                        transform: translateY(-10%) translateX(-3%);
+                        transform: translateY(-10%) translateX(-30%);
     
                         .axis, text, rect, .legend {
                             display: none;
