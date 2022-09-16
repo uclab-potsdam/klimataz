@@ -243,6 +243,7 @@ export default class CardCollection extends Component {
                 section={section}
                 windowSize={this.state.windowSize}
                 isThumbnail={true}
+                mode={this.props.mode}
                 localData={localData}
                 clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview
                 layoutControls={this.layoutControls[section]}
