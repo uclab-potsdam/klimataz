@@ -167,6 +167,8 @@ export default class CardCollection extends Component {
             classProp = 'card card-back';
           }
 
+          const footnote = this.data[element.lk.value].footnote;
+
           return (
             <Card
               key={i}
@@ -186,6 +188,7 @@ export default class CardCollection extends Component {
                 localData={this.data[element.lk.value]}
                 layoutControls={this.layoutControls[section]}
                 handleClickOnList={this.addCardToSelection}
+                footnote={footnote}
               />
             </Card>
           );
