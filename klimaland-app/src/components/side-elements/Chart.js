@@ -12,7 +12,8 @@ export default class Chart extends Component {
         this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components
           .component,
       currentIndicator:
-        this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components.indicator,
+        this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components
+          .indicator,
     };
     //TODO: store range or max Val in data as well
     //TODO: reusable code snippets like scales or axis
@@ -49,24 +50,25 @@ export default class Chart extends Component {
     const localData = this.props.localData[this.props.section];
     const currentSnippet = localData[this.state.currentIndicator];
 
-    let locationLabel = ''
-    const locationLabels = {}
-    selectorControls.landkreise.forEach(d => {
+    let locationLabel = '';
+    const locationLabels = {};
+    selectorControls.landkreise.forEach((d) => {
       if (d.value === this.props.localData.ags) {
-        locationLabels['lk'] = d.label
+        locationLabels['lk'] = d.label;
       }
 
       if (d.value === this.props.localData.bundesland) {
-        locationLabels['bundesland'] = d.label
+        locationLabels['bundesland'] = d.label;
       }
-    })
+    });
 
     if (currentSnippet !== undefined) {
-      locationLabel = currentSnippet.regional ?
-        locationLabels['lk'] :
-        locationLabels['bundesland']
-    }
+      locationLabel = currentSnippet.regional ? locationLabels['lk'] : locationLabels['bundesland'];
 
+      if (this.state.currentIndicator == '_industry_consumption_') {
+        locationLabel = [locationLabels['lk'], locationLabels['bundesland']];
+      }
+    }
 
     return (
       <div className="chart-container">
