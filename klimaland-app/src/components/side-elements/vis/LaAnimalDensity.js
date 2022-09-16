@@ -87,7 +87,7 @@ const LandDenisty = ({
       .range([marginWidth * 2, dimensions.width - marginWidth * 2]);
     const yScale = scaleLinear()
       .domain(domainY)
-      .range([5, (dimensions.height - marginHeight) / 2]);
+      .range([0, (dimensions.height - marginHeight) / 2]);
 
     // adds . as thousand separator
     const formatNumber = (num) => {
@@ -142,7 +142,7 @@ const LandDenisty = ({
         </div>
         <div className="legend">
           <svg height="180px">
-            <g class="legend-item uber-label">
+            <g className="legend-item uber-label">
               <path d="M17 0L17 17L-1.05984e-07 17L-7.62939e-06 6.60564e-07L17 0Z" fill="#E14552" />
               <path
                 d="M-7.62939e-06 6.60564e-07L7.08333 0L9.91667 0L17 0L17 7.08333L17 9.91667L17 17L9.91667 17L7.08333 17L-1.05984e-07 17L8.12377e-07 9.91667L9.09514e-07 7.08333L-7.62939e-06 6.60564e-07Z"
@@ -156,7 +156,7 @@ const LandDenisty = ({
                 über 2 GV pro Hektar
               </text>
             </g>
-            <g transform="translate(0, 30)" class="legend-item unter-label">
+            <g transform="translate(0, 30)" className="legend-item unter-label">
               <path d="M17 0L17 17L-1.05984e-07 17L-7.62939e-06 6.60564e-07L17 0Z" fill="#FFBA4E" />
               <path d="M17 0L17 17L-1.05984e-07 17L4.76837e-07 0L17 0Z" fill="#FFBA4E" />
               <path
@@ -189,7 +189,7 @@ const LandDenisty = ({
                       <rect
                         className="labelCount"
                         x="0"
-                        y={min([-16, -bar.value])}
+                        y={min([-20, -bar.value])}
                         width={barWidth}
                         height="16"
                         fill="white"
@@ -197,8 +197,8 @@ const LandDenisty = ({
                       <text
                         className="labelText"
                         x={barWidth / 6}
-                        y={min([-16, -bar.value + 12])}
-                        textAnchor="ztart"
+                        y={min([-8, -bar.value + 12])}
+                        textAnchor="start"
                       >
                         {bar.valueTotal} GV
                       </text>
@@ -210,12 +210,12 @@ const LandDenisty = ({
                 </g>
               );
             })}
-            {/* {barElements[1].map((bar, a) => {
+            {barElements[1].map((bar, a) => {
               return (
                 <g key={a} transform={`translate(${bar.x},${dimensions.height - marginHeight})`}>
                   <rect
                     x={-barWidth / 2}
-                    y={-bar.value - barElements[0][a].value - marginBars}
+                    y={-bar.value - max([16, barElements[0][a].value]) - marginBars}
                     width={barWidth}
                     height={bar.value}
                     stroke={bar.color}
@@ -223,24 +223,30 @@ const LandDenisty = ({
                   />
                   <g
                     transform={`translate(${-barWidth / 2}, ${
-                      -bar.value - barElements[0][a].value - 5
+                      -bar.value - max([16, barElements[0][a].value])
                     })`}
                   >
                     <rect
                       className="labelCount"
                       x="0"
-                      y="0"
+                      y={min([-5, bar.value - 30])}
                       width={barWidth}
                       height="16"
-                      fill="white"
+                      fill="blue"
                     />
-                    <text className="labelText" x={barWidth / 6} y="12" textAnchor="start">
+                    <text
+                      className="labelText"
+                      x={barWidth / 6}
+                      y={min([7, bar.value - 18])}
+                      textAnchor="start"
+                      color="red"
+                    >
                       {bar.valueTotal} GV
                     </text>
                   </g>
                 </g>
               );
-            })} */}
+            })}
           </g>
         </svg>
       </div>
