@@ -144,44 +144,47 @@ export default class Side extends Component {
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
-          {this.props.isThumbnail && (
-            <div className={`section-thumb ${this.props.mode}`}>
-              {this.props.mode === 'comparison'
-                && <div className="word-art-title">
-                  <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
-                  <h2 className="wordart">{this.props.lk.label}</h2>
-                </div>
-              }
-              <h4>
-                {this.state.sectionLabel[this.state.section.indexOf(this.props.section)]}
-              </h4>
-              <svg className="rating-thumb" width="50%" height="35%">
-                {currentAgs[0] !== undefined && (<g><circle
-                  className={`${currentAgs[0][indicatorRanking] === 'unteren Drittel' ?
-                    'active'
-                    : 'inactive'} 
+          <div className="overlay-container">
+            {this.props.isThumbnail && (
+              <div className={`section-thumb ${this.props.mode}`}>
+                {this.props.mode === 'comparison'
+                  && <div className="word-art-title">
+                    <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
+                    <h2 className="wordart">{this.props.lk.label}</h2>
+                  </div>
+                }
+                <h4 className="section-title">
+                  {this.state.sectionLabel[this.state.section.indexOf(this.props.section)]}
+                </h4>
+                {currentAgs[0] !== undefined && (
+                  <svg className="rating-thumb" width="50%" height="35%">
+                    <g><circle
+                      className={`${currentAgs[0][indicatorRanking] === 'unteren Drittel' ?
+                        'active'
+                        : 'inactive'} 
                   lower`}
-                  cx="32"
-                  cy="32"
-                  r="30"
-                />
-                  <circle
-                    className={`${currentAgs[0][indicatorRanking] === 'mittleren Drittel' ?
-                      'active'
-                      : 'inactive'} middle`}
-                    cx="67"
-                    cy="32"
-                    r="30" />
-                  <circle
-                    className={`${currentAgs[0][indicatorRanking] === 'oberen Drittel' ?
-                      'active'
-                      : 'inactive'} upper`}
-                    cx="102"
-                    cy="32"
-                    r="30" /></g>)}
-              </svg>
-            </div>
-          )}
+                      cx="32"
+                      cy="32"
+                      r="30"
+                    />
+                      <circle
+                        className={`${currentAgs[0][indicatorRanking] === 'mittleren Drittel' ?
+                          'active'
+                          : 'inactive'} middle`}
+                        cx="67"
+                        cy="32"
+                        r="30" />
+                      <circle
+                        className={`${currentAgs[0][indicatorRanking] === 'oberen Drittel' ?
+                          'active'
+                          : 'inactive'} upper`}
+                        cx="102"
+                        cy="32"
+                        r="30" /></g>
+                  </svg>)}
+              </div>
+            )}
+          </div>
           <div className="side-inner">
             {!this.state.showViz && ( //TEXT
               <Details

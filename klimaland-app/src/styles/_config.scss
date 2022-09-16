@@ -16,6 +16,7 @@
 }
 
 @import url("https://fonts.googleapis.com/css?family=Modak");
+@import url('https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap');
 
 // breakpoints for responsive devices
 $breakpoints: (
@@ -104,11 +105,12 @@ p, text {
             display:inline-block;
             padding-left: 7px;
             padding-right: 7px;
+            padding-top: 7px;
             background-clip: text;
-            font-family: 'Modak', sans-serif;
-            background-image: linear-gradient(0deg, rgba(246, 161, 25, 1) 0%, rgba(255, 213, 200, 1) 100%);
+            font-family: 'Vampiro One', sans-serif;
+            background-image: linear-gradient(0deg, rgba(246, 161, 25, 1) 0%, $blue 70%);
             -webkit-text-fill-color: transparent;
-            -webkit-text-stroke: 0.20px rgb(255, 101, 140);
+            // -webkit-text-stroke: 0.20px rgb(255, 101, 140);
             // text-shadow: 2px 2px 5px red;
             letter-spacing: -0.25vw;
             z-index: 1;
