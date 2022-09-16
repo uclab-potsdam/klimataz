@@ -92,12 +92,32 @@ export default class CardCollection extends Component {
       this.layoutControls[element.section.value].params[0] == undefined ||
       this.layoutControls[element.section.value].params[0][0] == undefined ||
       this.layoutControls[element.section.value].params[0][0].combo == undefined ||
+      this.layoutControls[element.section.value].params[0][0].components.indicator == undefined ||
       this.props.activeCard > this.layoutControls[element.section.value].params
     ) {
       throw new Error('No Layout Data for Selected Element');
     }
     if (this.data[element.lk.value][element.section.value] == undefined) {
       throw new Error('No Climate Protection Data for Selected Element');
+    }
+  }
+
+  checkIndicatorData(element) {
+    let indicator0 = this.layoutControls[element.section.value].params[0][0].components.indicator;
+    if (
+      this.data[element.lk.value][element.section.value][indicator0] == undefined ||
+      this.data[element.lk.value][element.section.value][indicator0].data == undefined
+    ) {
+      throw new Error('No Climate Protection Data for Indicator of Selected Element');
+    }
+    if (this.layoutControls[element.section.value].params[2] !== undefined) {
+      let indicator2 = this.layoutControls[element.section.value].params[2][2].components.indicator;
+      if (
+        this.data[element.lk.value][element.section.value][indicator2] == undefined ||
+        this.data[element.lk.value][element.section.value][indicator2].data == undefined
+      ) {
+        throw new Error('No Climate Protection Data for Indicator of Selected Element');
+      }
     }
   }
 
@@ -199,6 +219,7 @@ export default class CardCollection extends Component {
               localData[section][key] = BLdata;
             }
           }
+          this.checkIndicatorData(element);
 
           return (
             <Card
