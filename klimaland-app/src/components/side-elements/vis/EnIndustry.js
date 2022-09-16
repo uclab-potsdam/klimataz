@@ -49,6 +49,7 @@ const EnIndustry = ({
   };
   let lastYear = '?';
   let percRenewables = 0;
+  let percGeheim = 0;
 
   let switchHighlightedStream = function (id) {
     if (currentData !== undefined) {
@@ -65,6 +66,11 @@ const EnIndustry = ({
       return d.column === 'Anteil_Erneuerbar' && d.year === '2020';
     });
     percRenewables = lastRenValue[0].value !== null ? lastRenValue[0].value.toFixed(1) : 0;
+
+    const lastGeheimValue = currentData.data.filter((d) => {
+      return d.column === 'Anteil_Geheim' && d.year === '2020';
+    });
+    percGeheim = lastGeheimValue[0].value !== null ? lastGeheimValue[0].value.toFixed(1) : 0;
 
     // get all energy sources and filter out "insgesamt" and "Anteil_Erneuerbar"
     const uniqueEnergySourceAll = uniq(currentData.data.map((d) => d.column));
@@ -239,9 +245,10 @@ const EnIndustry = ({
       <div className="description">
         <div className="title">
           <h3>
-            Der Energieverbrauch in der Industrie in {locationLabel} basiert im Jahr{' '}
-            <span>{lastYear}</span> zu <span> {percRenewables}% </span>
-            auf <span className="second-value"> erneuerbaren Energien</span>.
+            Der Energieverbrauch in der Industrie in {locationLabel[1]} basiert im Jahr{' '}
+            <span>{lastYear}</span> zu <span> {percRenewables} % </span>
+            auf <span className="second-value"> erneuerbaren Energien</span>.{' '}
+            {percGeheim > 0 && <div>In {locationLabel[0]} ist dieser Vebrauch geheim.</div>}
           </h3>
         </div>
       </div>

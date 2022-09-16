@@ -121,6 +121,33 @@ export default class CardCollection extends Component {
     }
   }
 
+  getLocalData(element, section) {
+    //get local data
+    let localData = this.data[element.lk.value];
+
+    //use BL data for not regional data for each indicator
+    //TODO: show somewhere, that this data is not on Landkreis Level as indicated by regional:false
+    for (const [key, value] of Object.entries(localData[section])) {
+      //for industry data: get bundesland data for landkreise where energy is secret (stored in json under "regional")
+      if (key == '_industry_consumption_') {
+        if (element.lk.value > 16 && !value.regional) {
+          //get  bundesland data
+          let BLdata = this.data[localData.bundesland][section][key];
+          //store bundesland data at indicator of landkreis
+          localData[section][key] = BLdata;
+        }
+      }
+      //if data not regional
+      if (!value.regional && value.data == undefined) {
+        //get  bundesland data
+        let BLdata = this.data[localData.bundesland][section][key];
+        //store bundesland data at indicator of landkreis
+        localData[section][key] = BLdata;
+      }
+    }
+    return localData;
+  }
+
   /**
    * generates list of card components dynamically depending on mode and cardSelection
    * pulls Local Data for the Landkreis of each card and passes it as prop to Side.js
@@ -158,6 +185,8 @@ export default class CardCollection extends Component {
             classProp = 'card card-back';
           }
 
+          let localData = this.getLocalData(element, section);
+
           return (
             <Card
               key={i}
@@ -174,7 +203,7 @@ export default class CardCollection extends Component {
                 isTopCard={isTopCard} //this is true for the postcard on top
                 section={section}
                 windowSize={this.state.windowSize}
-                localData={this.data[element.lk.value]}
+                localData={localData}
                 layoutControls={this.layoutControls[section]}
               />
             </Card>
@@ -205,21 +234,8 @@ export default class CardCollection extends Component {
           this.checkData(element);
           const section = element.section.value;
 
-          //get local data
-          let localData = this.data[element.lk.value];
-
-          //use BL data for not regional data for each indicator
-          //TODO: show somewhere, that this data is not on Landkreis Level as indicated by regional:false
-          for (const [key, value] of Object.entries(localData[section])) {
-            //if data not regional
-            if (!value.regional && value.data == undefined) {
-              //get  bundesland data
-              let BLdata = this.data[localData.bundesland][section][key];
-              //store bundesland data at indicator of landkreis
-              localData[section][key] = BLdata;
-            }
-          }
-          this.checkIndicatorData(element);
+          let localData = this.getLocalData(element, section);
+          this.checkIndicatorData(element); //does this really check the data after local data??
 
           return (
             <Card
