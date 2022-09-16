@@ -129,7 +129,17 @@ export default class Side extends Component {
   }
 
   render() {
-    const indicatorRanking = 'unter'
+    const sectionFullName = {
+      La: { de: 'Landwirtschaft', en: 'agriculture' },
+      Mo: { de: 'Mobilität', en: 'mobility' },
+      Ge: { de: 'Gebäude', en: 'buildings' },
+      En: { de: 'Energie', en: 'energy' },
+      Ab: { de: 'Abfall', en: 'waste' },
+    };
+
+    let indicatorRanking = sectionFullName[this.props.section].en + "_third"
+    const currentAgs = this.props.textData.filter(d => +d.AGS === this.props.lk.value)
+
     // TO DO: Solve issue of inconsistent activeSide during carousel switch
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
@@ -146,15 +156,36 @@ export default class Side extends Component {
                 {this.state.sectionLabel[this.state.section.indexOf(this.props.section)]}
               </h4>
               <svg className="rating-thumb" width="50%" height="35%">
-                <circle className={`${indicatorRanking === 'unter' ? 'active' : 'inactive'} lower`} cx="32" cy="32" r="30" />
-                <circle className={`${indicatorRanking === 'middle' ? 'active' : 'inactive'} middle`} cx="67" cy="32" r="30" />
-                <circle className={`${indicatorRanking === 'upper' ? 'active' : 'inactive'} upper`} cx="102" cy="32" r="30" />
+                {currentAgs[0] !== undefined && (<g><circle
+                  className={`${currentAgs[0][indicatorRanking] === 'unteren Drittel' ?
+                    'active'
+                    : 'inactive'} 
+                  lower`}
+                  cx="32"
+                  cy="32"
+                  r="30"
+                />
+                  <circle
+                    className={`${currentAgs[0][indicatorRanking] === 'mittleren Drittel' ?
+                      'active'
+                      : 'inactive'} middle`}
+                    cx="67"
+                    cy="32"
+                    r="30" />
+                  <circle
+                    className={`${currentAgs[0][indicatorRanking] === 'oberen Drittel' ?
+                      'active'
+                      : 'inactive'} upper`}
+                    cx="102"
+                    cy="32"
+                    r="30" /></g>)}
               </svg>
             </div>
           )}
           <div className="side-inner">
             {!this.state.showViz && ( //TEXT
               <Details
+                textData={this.props.textData}
                 lk={this.props.lk}
                 section={this.props.section}
                 activeSide={this.props.activeSide}

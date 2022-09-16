@@ -1,5 +1,7 @@
+/* eslint-disable array-callback-return */
 import { Component } from 'react';
 import { mod, isInt } from './helperFunc.js';
+import { readString } from 'react-papaparse';
 
 //components
 import Card from './Card';
@@ -8,6 +10,7 @@ import Side from './Side';
 //data (same for all cards, so imported here)
 import Data from '../data/data.json';
 import LayoutControls from '../data/layout-controls-inprogress.json';
+import DynamicText from '../data/final_postcard_texts.csv';
 
 export default class CardCollection extends Component {
   constructor(props) {
@@ -15,21 +18,48 @@ export default class CardCollection extends Component {
     this.state = {
       //cards includes all rendered cards
       cards: [],
+      textData: [],
       windowSize: {
         width: 0,
         height: 0,
       },
     };
 
+    console.log(this.state)
+
+    // readString(DynamicText, papaConfig)
+
     //load all the data
     this.data = Data;
     this.layoutControls = LayoutControls;
+    // this.textData = DynamicTextData;
 
+    // console.log(DynamicTextData)
     //bind functions called by components
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     this.addCardToSelection = this.addCardToSelection.bind(this);
+
+    this.updateData = this.updateData.bind(this);
   }
+
+  componentWillMount() {
+    readString(DynamicText, {
+      header: true,
+      download: true,
+      skipEmptyLines: true,
+      // Here this is also available. So we can call our custom class method
+      complete: (results, file) => { this.updateData(results) }
+    });
+  }
+
+  updateData(result) {
+    // console.log(result)
+    const data = result.data;
+    // Here this is available and we can call this.setState (since it's binded in the constructor)
+    this.setState({ textData: data }); // or shorter ES syntax: this.setState({ data });
+  }
+
 
   /**
    * calls switchToPostcardView in LayoutControls
@@ -69,12 +99,12 @@ export default class CardCollection extends Component {
       typeof element !== 'object' ||
       Array.isArray(element) ||
       element == null ||
-      element == undefined
+      element === undefined
     ) {
       throw new Error('Selected Element is not an Object');
     }
     //check lk type
-    if (element.lk == undefined || element.lk.value == undefined || !isInt(element.lk.value)) {
+    if (element.lk === undefined || element.lk.value === undefined || !isInt(element.lk.value)) {
       throw new Error('Selected Landkreis is not valid');
     }
     if (typeof element.lk.label !== 'string' || !element.lk.label instanceof String) {
@@ -82,31 +112,31 @@ export default class CardCollection extends Component {
     }
     //check section type
     if (
-      element.section == undefined ||
-      element.section.value == undefined ||
+      element.section === undefined ||
+      element.section.value === undefined ||
       !['Ge', 'En', 'Ab', 'La', 'Mo'].includes(element.section.value)
     ) {
       throw new Error('Selected Section is not valid');
     }
     //check if data exists
     if (
-      this.data[element.lk.value] == undefined ||
-      this.layoutControls[element.section.value] == undefined
+      this.data[element.lk.value] === undefined ||
+      this.layoutControls[element.section.value] === undefined
     ) {
       throw new Error('No Data for Selected Element');
     }
     //check if lower level data exists
     if (
-      this.layoutControls[element.section.value].params == undefined ||
-      this.layoutControls[element.section.value].params[0] == undefined ||
-      this.layoutControls[element.section.value].params[0][0] == undefined ||
-      this.layoutControls[element.section.value].params[0][0].combo == undefined ||
-      this.layoutControls[element.section.value].params[0][0].components.indicator == undefined ||
+      this.layoutControls[element.section.value].params === undefined ||
+      this.layoutControls[element.section.value].params[0] === undefined ||
+      this.layoutControls[element.section.value].params[0][0] === undefined ||
+      this.layoutControls[element.section.value].params[0][0].combo === undefined ||
+      this.layoutControls[element.section.value].params[0][0].components.indicator === undefined ||
       this.props.activeCard > this.layoutControls[element.section.value].params
     ) {
       throw new Error('No Layout Data for Selected Element');
     }
-    if (this.data[element.lk.value][element.section.value] == undefined) {
+    if (this.data[element.lk.value][element.section.value] === undefined) {
       throw new Error('No Climate Protection Data for Selected Element');
     }
   }
@@ -114,16 +144,16 @@ export default class CardCollection extends Component {
   checkIndicatorData(element) {
     let indicator0 = this.layoutControls[element.section.value].params[0][0].components.indicator;
     if (
-      this.data[element.lk.value][element.section.value][indicator0] == undefined ||
-      this.data[element.lk.value][element.section.value][indicator0].data == undefined
+      this.data[element.lk.value][element.section.value][indicator0] === undefined ||
+      this.data[element.lk.value][element.section.value][indicator0].data === undefined
     ) {
       throw new Error('No Climate Protection Data for Indicator of Selected Element');
     }
     if (this.layoutControls[element.section.value].params[2] !== undefined) {
       let indicator2 = this.layoutControls[element.section.value].params[2][2].components.indicator;
       if (
-        this.data[element.lk.value][element.section.value][indicator2] == undefined ||
-        this.data[element.lk.value][element.section.value][indicator2].data == undefined
+        this.data[element.lk.value][element.section.value][indicator2] === undefined ||
+        this.data[element.lk.value][element.section.value][indicator2].data === undefined
       ) {
         throw new Error('No Climate Protection Data for Indicator of Selected Element');
       }
@@ -184,6 +214,7 @@ export default class CardCollection extends Component {
                 section={section}
                 windowSize={this.state.windowSize}
                 localData={this.data[element.lk.value]}
+                textData={this.state.textData}
                 layoutControls={this.layoutControls[section]}
                 handleClickOnList={this.addCardToSelection}
               />
@@ -222,7 +253,7 @@ export default class CardCollection extends Component {
           //TODO: show somewhere, that this data is not on Landkreis Level as indicated by regional:false
           for (const [key, value] of Object.entries(localData[section])) {
             //if data not regional
-            if (!value.regional && value.data == undefined) {
+            if (!value.regional && value.data === undefined) {
               //get  bundesland data
               let BLdata = this.data[localData.bundesland][section][key];
               //store bundesland data at indicator of landkreis
@@ -243,6 +274,7 @@ export default class CardCollection extends Component {
                 section={section}
                 windowSize={this.state.windowSize}
                 isThumbnail={true}
+                textData={this.state.textData}
                 mode={this.props.mode}
                 localData={localData}
                 clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview

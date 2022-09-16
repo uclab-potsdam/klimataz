@@ -1,89 +1,82 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>TEST / klimaland</title>
-    <meta name="description" content="taz playground" />
-    <meta name="author" content="more-ginger" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-    <style>
-      body {
-        font-family: sans-serif;
-        max-width: 1280px;
-        margin: 0 auto;
-      }
 
-      .general-container {
-        max-width: 948px;
-        height: 624px;
-        margin: 0 auto;
-        /*padding: 10%;*/
-      }
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>TEST / klimaland</title>
+  <meta name="description" content="taz playground" />
+  <meta name="author" content="more-ginger" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
 
-      iframe {
-        background-color: white;
-        /* border: 0.5px solid black; */
-        overflow-y: hidden;
-        /* width: 100%;
+    .general-container {
+      max-width: 948px;
+      height: 624px;
+      margin: 0 auto;
+      /*padding: 10%;*/
+    }
+
+    iframe {
+      background-color: white;
+      /* border: 0.5px solid black; */
+      overflow-y: hidden;
+      /* width: 100%;
           min-height: 624px; */
-      }
+    }
 
-      .output {
-        background: #eee;
-      }
-    </style>
-  </head>
+    .output {
+      background: #eee;
+    }
+  </style>
+</head>
 
-  <body>
-    <div class="general-container">
-      <div class="title">
-        <h1>One title</h1>
-      </div>
-      <div class="text-paragraph">
-        <p>
-          Single iFrames are sized based on the use case. The size of the container determines in
-          which way the visualization is shown to the user and prevent weird things (e.g.,
-          overlapping squares, misplaced labels and so on). The overall app is built with Nuxt so it
-          is possible to reference single pages automatically generated on build. Within the iFrame
-          it is possible to scroll horizontally and hover on single elements to explore its content.
-          Soon it will be also possible to proceed via click (as a fallback in case scroll doesn't
-          work). The general container size is already following taz specs.
-          <a href="https://github.com/more-ginger/taz-horizontal-scroll">
-            Here's the github folder with the code</a
-          >.
-        </p>
-      </div>
-      <!-- <div class="title"><h1>visualization container</h1></div> -->
-      <div class="iframe-desktop">
-        <!-- En:Energie, Mo:Mobilität, Ab:Abfall, La:Landwirtschaft, Ge:Gebäude -->
-        <iframe
-          id="inlineFrameExample"
-          title="Inline Frame Example"
-          width="100%"
-          height="624"
-          src="http://localhost:3000/?ags&indicator-La&ui-true"
-          frameborder="0"
-          scrolling="no"
-        >
-        </iframe>
-
-        <!-- <iframe id="myIframe" src="" height="250px"  width="100%" scrolling="yes" frameborder="0"></iframe> -->
-      </div>
-      <div class="text-paragraph">
-        <p>
-          Single iFrames are sized based on the use case. The size of the container determines in
-          which way the visualization is shown to the user and prevent weird things (e.g.,
-          overlapping squares, misplaced labels and so on). The overall app is built with Nuxt so it
-          is possible to reference single pages automatically generated on build. Within the iFrame
-          it is possible to scroll horizontally and hover on single elements to explore its content.
-          Soon it will be also possible to proceed via click (as a fallback in case scroll doesn't
-          work). The general container size is already following taz specs.
-          <a href="https://github.com/more-ginger/taz-horizontal-scroll">
-            Here's the github folder with the code</a
-          >.
-        </p>
-      </div>
+<body>
+  <div class="general-container">
+    <div class="title">
+      <h1>One title</h1>
     </div>
-  </body>
+    <div class="text-paragraph">
+      <p>
+        Single iFrames are sized based on the use case. The size of the container determines in
+        which way the visualization is shown to the user and prevent weird things (e.g.,
+        overlapping squares, misplaced labels and so on). The overall app is built with Nuxt so it
+        is possible to reference single pages automatically generated on build. Within the iFrame
+        it is possible to scroll horizontally and hover on single elements to explore its content.
+        Soon it will be also possible to proceed via click (as a fallback in case scroll doesn't
+        work). The general container size is already following taz specs.
+        <a href="https://github.com/more-ginger/taz-horizontal-scroll">
+          Here's the github folder with the code</a>.
+      </p>
+    </div>
+    <!-- <div class="title"><h1>visualization container</h1></div> -->
+    <div class="iframe-desktop">
+      <!-- En:Energie, Mo:Mobilität, Ab:Abfall, La:Landwirtschaft, Ge:Gebäude -->
+      <iframe id="inlineFrameExample" title="Inline Frame Example" width="100%" height="624"
+        src="http://localhost:3000/?ags-11&indicator-La&ui-true" frameborder="0" scrolling="no">
+      </iframe>
+
+      <!-- <iframe id="myIframe" src="" height="250px"  width="100%" scrolling="yes" frameborder="0"></iframe> -->
+    </div>
+    <div class="text-paragraph">
+      <p>
+        Single iFrames are sized based on the use case. The size of the container determines in
+        which way the visualization is shown to the user and prevent weird things (e.g.,
+        overlapping squares, misplaced labels and so on). The overall app is built with Nuxt so it
+        is possible to reference single pages automatically generated on build. Within the iFrame
+        it is possible to scroll horizontally and hover on single elements to explore its content.
+        Soon it will be also possible to proceed via click (as a fallback in case scroll doesn't
+        work). The general container size is already following taz specs.
+        <a href="https://github.com/more-ginger/taz-horizontal-scroll">
+          Here's the github folder with the code</a>.
+      </p>
+    </div>
+  </div>
+</body>
+
 </html>
