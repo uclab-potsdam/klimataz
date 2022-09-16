@@ -4,7 +4,13 @@ import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent, mean } from 'd3-array';
 
-const EnIndustry = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
+const EnIndustry = ({
+  currentData,
+  currentIndicator,
+  currentSection,
+  locationLabel,
+  isThumbnail,
+}) => {
   const colorArray = [
     '#FFD5C8', // Erdgas
     '#007F87', // Erneuerbare Energien
@@ -13,6 +19,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, locationLab
     '#a8a8a8', // Sonstige Energieträger
     '#2A4D9C', // Strom
     '#5F88C6', // Wärme
+    '#757575', // Geheim
   ];
 
   // getting sizes of container for maps
@@ -46,7 +53,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, locationLab
   let switchHighlightedStream = function (id) {
     if (currentData !== undefined) {
       // console.log(id)
-      setHighlightedStream(id)
+      setHighlightedStream(id);
     }
   };
 
@@ -54,7 +61,9 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, locationLab
     // parameters for description text
     const lastDataPoint = currentData.data.slice(-1);
     lastYear = lastDataPoint[0]['year'];
-    const lastRenValue = currentData.data.filter(d => { return d.column === 'Erneuerbare Energien' && d.year === '2020' })
+    const lastRenValue = currentData.data.filter((d) => {
+      return d.column === 'Anteil_Erneuerbar' && d.year === '2020';
+    });
     percRenewables = lastRenValue[0].value !== null ? lastRenValue[0].value.toFixed(1) : 0;
 
     // get all energy sources and filter out "insgesamt" and "Anteil_Erneuerbar"
@@ -118,18 +127,20 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, locationLab
 
     // stream graph
     streamEle = stackedSeries.map((stream, s) => {
-      const maxStreamValue = max(stackData.map(d => {
-        return d['year'] !== 1992 && +d['year'] !== 2020 ? d[stream.key] : 0
-      }))
+      const maxStreamValue = max(
+        stackData.map((d) => {
+          return d['year'] !== 1992 && +d['year'] !== 2020 ? d[stream.key] : 0;
+        })
+      );
 
-      let yearOfMax = 0
-      let indexOfMax = 0
+      let yearOfMax = 0;
+      let indexOfMax = 0;
       stackData.forEach((d, i) => {
         if (d[stream.key] === maxStreamValue) {
           yearOfMax = d.year;
-          indexOfMax = i
+          indexOfMax = i;
         }
-      })
+      });
 
       return {
         klass: stream.key.substring(0, 3) + '-stream',
@@ -140,8 +151,9 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, locationLab
         yPos: yScale(stream[indexOfMax][0] - (stream[indexOfMax][0] - stream[indexOfMax][1]) / 2),
         height: yScale(stream[indexOfMax][0] - stream[indexOfMax][1]),
         width: stream.key.length,
-        threshold: highlighedStream === stream.key || (maxStreamValue > 50000 && highlighedStream === ''), //Fixed value for now, maybe make it dynamic?
-        maxStreamValue
+        threshold:
+          highlighedStream === stream.key || (maxStreamValue > 50000 && highlighedStream === ''), //Fixed value for now, maybe make it dynamic?
+        maxStreamValue,
       };
     });
   }
@@ -169,9 +181,9 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, locationLab
                       x="-18"
                       y={marginHeight + 15}
                       textAnchor="middle"
-                      transform={dimensions.width <= 350
-                        ? `rotate(-90, -10, ${marginHeight + 10})`
-                        : ''}
+                      transform={
+                        dimensions.width <= 350 ? `rotate(-90, -10, ${marginHeight + 10})` : ''
+                      }
                     >
                       {axis.label}
                     </text>
@@ -214,7 +226,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, locationLab
                     </foreignObject>
                   </g>
                 </g>
-              )
+              );
             })}
           </g>
         </svg>
@@ -224,7 +236,7 @@ const EnIndustry = ({ currentData, currentIndicator, currentSection, locationLab
           <h3>
             Der Energieverbrauch in der Industrie in {locationLabel} basiert im Jahr{' '}
             <span>{lastYear}</span> zu <span> {percRenewables}% </span>
-            auf <span className="second-value"> erneuerbaren Energien</span>
+            auf <span className="second-value"> erneuerbaren Energien</span>.
           </h3>
         </div>
       </div>
