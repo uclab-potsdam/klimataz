@@ -15,6 +15,9 @@
     src: url('../fonts/chivo/Chivo-Light.otf');
 }
 
+@import url("https://fonts.googleapis.com/css?family=Modak");
+@import url('https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap');
+
 // breakpoints for responsive devices
 $breakpoints: (
     phone: 320px,
@@ -71,6 +74,64 @@ p, text {
 
 @mixin title{
     font-family: "Chivo";
+}
+
+@mixin wordart-style-setup {
+        .gruss-thumb {
+            font-size: 0.9rem;
+            margin: 0;
+            z-index: 2;
+        }
+
+        .wordart {
+            font-size: 1.5rem;
+            width: 100%;
+            margin: 0px;    
+        }
+}
+
+@mixin wordart-style-1 {
+    @include wordart-style-setup;
+    transform: scale(0.8, 1.2) rotate(-2deg) translate(30px, 10px);
+
+    .gruss-thumb {
+        color: rgba(229, 20, 75, 1);
+        margin-top: 0.5rem;
+    }
+
+    .wordart {
+            transform: translateY(-10px);
+            -webkit-background-clip: text;
+            display:inline-block;
+            padding-left: 7px;
+            padding-right: 7px;
+            padding-top: 7px;
+            background-clip: text;
+            font-family: 'Vampiro One', sans-serif;
+            background-image: linear-gradient(0deg, rgba(246, 161, 25, 1) 0%, $blue 70%);
+            -webkit-text-fill-color: transparent;
+            // -webkit-text-stroke: 0.20px rgb(255, 101, 140);
+            // text-shadow: 2px 2px 5px red;
+            letter-spacing: -0.25vw;
+            z-index: 1;
+    }
+}
+
+@mixin wordart-style-2 {
+    position: absolute;
+    font-size: 1.65rem;
+    width: 50%;
+    margin: 0px;
+    left: -3%;
+    top: 22px;
+    transform: scale(0.8, 1.2) rotate(-2deg);
+    font-family: Impact, sans-serif;
+    background: $dark-blue;
+    background: linear-gradient(to right, $dark-blue 0%, $dark-pink 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.15vw;
+    z-index: 1;
 }
 
 @mixin button{
@@ -252,37 +313,3 @@ p, text {
         @include vertical-layout()
     }
 }
-
-//breakpoints from bootstrap
-//https://getbootstrap.com/docs/5.0/layout/breakpoints/
-
-//media queries
-// @mixin media-s{
-//     @media screen and (min-width: 576px){
-//         @content;
-//     }
-// }
-
-// @mixin media-md{
-//     @media screen and (min-width: 768px){
-//         @content;
-//     }
-// }
-
-// @mixin media-lg{
-//     @media screen and (min-width: 992px){
-//         @content;
-//     }
-// }
-
-// @mixin media-xl{
-//     @media screen and (min-width: 1200px){
-//         @content;
-//     }
-// }
-
-// @mixin media-xxl{
-//     @media screen and (min-width: 1400px){
-//         @content;
-//     }
-// }
