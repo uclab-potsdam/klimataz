@@ -25,8 +25,6 @@ export default class CardCollection extends Component {
       },
     };
 
-    console.log(this.state)
-
     // readString(DynamicText, papaConfig)
 
     //load all the data
@@ -49,7 +47,9 @@ export default class CardCollection extends Component {
       download: true,
       skipEmptyLines: true,
       // Here this is also available. So we can call our custom class method
-      complete: (results, file) => { this.updateData(results) }
+      complete: (results, file) => {
+        this.updateData(results);
+      },
     });
   }
 
@@ -59,7 +59,6 @@ export default class CardCollection extends Component {
     // Here this is available and we can call this.setState (since it's binded in the constructor)
     this.setState({ textData: data }); // or shorter ES syntax: this.setState({ data });
   }
-
 
   /**
    * calls switchToPostcardView in LayoutControls
@@ -224,6 +223,8 @@ export default class CardCollection extends Component {
             classProp = 'card card-back';
           }
 
+          const footnote = this.data[element.lk.value].footnote;
+
           let localData = this.getLocalData(element, section);
 
           return (
@@ -246,6 +247,7 @@ export default class CardCollection extends Component {
                 textData={this.state.textData}
                 layoutControls={this.layoutControls[section]}
                 handleClickOnList={this.addCardToSelection}
+                footnote={footnote}
               />
             </Card>
           );

@@ -79,6 +79,7 @@ export default class Chart extends Component {
             currentIndicator={this.state.currentIndicator}
             locationLabel={locationLabel}
             isThumbnail={this.props.isThumbnail}
+            footnote={this.props.footnote}
           />
         </div>
       </div>
