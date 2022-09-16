@@ -19,6 +19,7 @@ export default class LayoutManager extends Component {
 
     //methods called by cardcollection
     this.switchToPostcardView = this.switchToPostcardView.bind(this);
+    this.addCardToSelection = this.addCardToSelection.bind(this);
 
     //methods called by selectionbuttons
     this.updateShuffleSelection = this.updateShuffleSelection.bind(this);
@@ -75,6 +76,20 @@ export default class LayoutManager extends Component {
     if (!this.state.postcardView) return;
 
     this.setState({ postcardView: false });
+  }
+
+  /**
+   * called by clickOnList (of similar landkreise). switch to landkreis view of the new landkreis.
+   * since we are already in postcard view here, we just stay on the same postcard and the same side automatically.
+   * @param {} lk AGS and name of location clicked on in the list as value-label pair
+   */
+  addCardToSelection(lk) {
+    setStateAsync(this, {
+      landkreisSelection: [lk],
+      showEditorsPick: false,
+    }).then(() => {
+      this.updateCardSelection();
+    });
   }
 
   /**
@@ -356,6 +371,7 @@ export default class LayoutManager extends Component {
           handleSwitchNext={this.handleSwitchNext}
           handleSwitchBack={this.handleSwitchBack}
           switchToPostcardView={this.switchToPostcardView}
+          addCardToSelection={this.addCardToSelection}
         />
         {/* we could also put the code below into "SelectionButtons.js" or a more general
         buttons component and switch between the selection and shuffle or zoomed

@@ -30,6 +30,7 @@ export default class Side extends Component {
 
     this.vis = this.vis.bind(this);
     this.openUpCard = this.openUpCard.bind(this);
+    this.handleClickOnList = this.handleClickOnList.bind(this);
   }
 
   /**
@@ -61,7 +62,7 @@ export default class Side extends Component {
   vis() {
     if (
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-      undefined &&
+        undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -70,6 +71,14 @@ export default class Side extends Component {
       //if not specified yet: return nothing
       return;
     }
+  }
+
+  /**
+   * when someone clicked on a list item, pass this to parent
+   * @param {} lk AGS and name of location clicked on in the list as value-label pair
+   */
+  handleClickOnList(lk) {
+    this.props.handleClickOnList(lk);
   }
 
   async openUpCard(e) {
@@ -128,10 +137,10 @@ export default class Side extends Component {
                 lk={this.props.lk}
                 section={this.props.section}
                 activeSide={this.props.activeSide}
+                handleClickOnList={this.handleClickOnList}
               />
             )}
-            {this.state.showViz &&
-              this.vis()}
+            {this.state.showViz && this.vis()}
           </div>
         </div>
       </CSSTransition>
