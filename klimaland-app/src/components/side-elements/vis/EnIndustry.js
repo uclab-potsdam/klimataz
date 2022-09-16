@@ -69,7 +69,12 @@ const EnIndustry = ({
     // get all energy sources and filter out "insgesamt" and "Anteil_Erneuerbar"
     const uniqueEnergySourceAll = uniq(currentData.data.map((d) => d.column));
     const uniqueEnergySourceFiltered = uniqueEnergySourceAll.filter((category) => {
-      return category !== 'insgesamt' && category !== 'Anteil_Erneuerbar';
+      return (
+        category !== 'insgesamt' &&
+        category !== 'Anteil_Erneuerbar' &&
+        category !== 'Anteil_Geheim' &&
+        category !== 'has_regional'
+      );
     });
 
     // setup domains for scaling
