@@ -82,6 +82,19 @@ code {
         height: 100%;
         position: relative;
 
+        .word-art-title {
+            @include wordart-style-1;
+            text-align: right;
+            margin-top: 1rem;
+            width: 80%;
+            position: absolute;
+            right: 0;
+
+            .wordart {
+                font-size: 3rem;
+            }
+        }
+
         //container of location selector
         .selection-container {
                 width: 100%;

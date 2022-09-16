@@ -63,7 +63,7 @@ export default class Side extends Component {
   vis() {
     if (
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-        undefined &&
+      undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -125,10 +125,14 @@ export default class Side extends Component {
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
           {this.props.isThumbnail && (
-            <div>
-              <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
-              <h2 className="wordart-1">{this.props.lk.label}</h2>
-              <h4 className="section-thumb">
+            <div className={`section-thumb ${this.props.mode}`}>
+              {this.props.mode === 'comparison'
+                && <div className="word-art-title">
+                  <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
+                  <h2 className="wordart">{this.props.lk.label}</h2>
+                </div>
+              }
+              <h4>
                 {this.state.sectionLabel[this.state.section.indexOf(this.props.section)]}
               </h4>
               <svg className="rating-thumb" width="50%" height="35%">

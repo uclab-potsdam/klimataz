@@ -15,6 +15,8 @@
     src: url('../fonts/chivo/Chivo-Light.otf');
 }
 
+@import url("https://fonts.googleapis.com/css?family=Modak");
+
 // breakpoints for responsive devices
 $breakpoints: (
     phone: 320px,
@@ -71,6 +73,63 @@ p, text {
 
 @mixin title{
     font-family: "Chivo";
+}
+
+@mixin wordart-style-setup {
+        .gruss-thumb {
+            font-size: 0.9rem;
+            margin: 0;
+            z-index: 2;
+        }
+
+        .wordart {
+            font-size: 1.5rem;
+            width: 100%;
+            margin: 0px;    
+        }
+}
+
+@mixin wordart-style-1 {
+    @include wordart-style-setup;
+    transform: scale(0.8, 1.2) rotate(-2deg);
+
+    .gruss-thumb {
+        color: rgba(229, 20, 75, 1);
+        margin-top: 0.5rem;
+    }
+
+    .wordart {
+            -webkit-background-clip: text;
+            display:inline-block;
+            padding-left: 7px;
+            padding-right: 7px;
+            background-clip: text;
+            font-family: 'Modak', sans-serif;
+            background-image: linear-gradient(106deg, rgba(229, 20, 75, 1) 0%, rgba(255, 213, 200, 1) 38%, rgba(246, 161, 25, 1) 100%);
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 0.25px rgba(229, 20, 75, 1);
+            // text-shadow: 2px 2px 0px #d2d2d22e;
+            // text-shadow: 0.15rem -0.15rem 0 $blue;
+            letter-spacing: -0.25vw;
+            z-index: 1;
+    }
+}
+
+@mixin wordart-style-2 {
+    position: absolute;
+    font-size: 1.65rem;
+    width: 50%;
+    margin: 0px;
+    left: -3%;
+    top: 22px;
+    transform: scale(0.8, 1.2) rotate(-2deg);
+    font-family: Impact, sans-serif;
+    background: $dark-blue;
+    background: linear-gradient(to right, $dark-blue 0%, $dark-pink 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.15vw;
+    z-index: 1;
 }
 
 @mixin button{
@@ -252,37 +311,3 @@ p, text {
         @include vertical-layout()
     }
 }
-
-//breakpoints from bootstrap
-//https://getbootstrap.com/docs/5.0/layout/breakpoints/
-
-//media queries
-// @mixin media-s{
-//     @media screen and (min-width: 576px){
-//         @content;
-//     }
-// }
-
-// @mixin media-md{
-//     @media screen and (min-width: 768px){
-//         @content;
-//     }
-// }
-
-// @mixin media-lg{
-//     @media screen and (min-width: 992px){
-//         @content;
-//     }
-// }
-
-// @mixin media-xl{
-//     @media screen and (min-width: 1200px){
-//         @content;
-//     }
-// }
-
-// @mixin media-xxl{
-//     @media screen and (min-width: 1400px){
-//         @content;
-//     }
-// }
