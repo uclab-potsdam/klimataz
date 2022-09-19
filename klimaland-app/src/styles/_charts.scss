@@ -417,6 +417,7 @@
                                 flex-direction: column;
                                 
                                 .legend-element {
+                                    cursor: pointer;
                                     display: flex;
                                     margin-left: 1rem;
                                     
@@ -429,6 +430,10 @@
                                     p {
                                         margin: 0;
                                         margin-left: 5px;
+
+                                        &.selected {
+                                            font-weight: 800;
+                                        }
                                     }
                                 }
                             }
@@ -437,6 +442,7 @@
 
                 .caption {
                     margin-left: 1rem;
+                    height: 30%;
 
                     span {
                         color: $dark-blue;
@@ -480,6 +486,282 @@
                             }
                             
                         }
+                    }
+                }
+
+                .fossils, div.fossils {
+                    background-color: $red;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $red;
+                            filter: brightness(0.75);
+                        }
+                    }
+
+                    path,
+                    rect {
+                        stroke: $red;
+                    }
+
+                    circle,
+                    text {
+                        fill: $red;
+                    }
+
+                }
+
+                .gas, div.gas {
+                    background-color: $taz-orange;
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $taz-orange;
+                            filter: brightness(0.75);
+                        }
+                    }
+                    path,
+                    rect {
+                        stroke: $taz-orange;
+                    }
+
+                    circle,
+                    text {
+                        fill: $taz-orange;
+                    }
+                }
+
+                .geothermie, div.geothermie {
+                    background-color: $mint-green;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $mint-green;
+                            filter: brightness(0.75);
+                        }
+                    }
+
+                    path,
+                    rect {
+                        stroke: $mint-green;
+                    }
+
+                    circle,
+                    text {
+                        fill: $mint-green;
+                    }
+                }
+
+                .renewables, div.renewables {
+                    background-color: $electric-blue;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $electric-blue;
+                            filter: brightness(0.75);
+                        }
+                    }
+                    
+                    path,
+                    rect {
+                        stroke: $electric-blue;
+                    }
+
+                    circle,
+                    text {
+                        fill: $electric-blue;
+                    }
+                }
+
+                .umweltthermie, div.umweltthermie {
+                    background-color: $marine-blue;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $marine-blue;
+                            filter: brightness(0.75);
+                        }
+                    }
+
+                    path,
+                    rect {
+                        stroke: $marine-blue;
+                    }
+
+                    circle,
+                    text {
+                        fill: $marine-blue;
+                    }
+                }
+
+                .fernkälte, div.fernkälte {
+                    background-color: $blue;
+                    
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $blue;
+                            filter: brightness(0.75);
+                        }
+                    }
+                    
+                    path,
+                    rect {
+                        stroke: $blue;
+                    }
+
+                    circle,
+                    text {
+                        fill: $blue;
+                    }
+                }
+
+                .holz, div.holz {
+                    background-color: $pale-olive;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $pale-olive;
+                            filter: brightness(0.75);
+                        }
+                    }
+
+                    path,
+                    rect {
+                        stroke: $pale-olive;
+                    }
+
+                    circle,
+                    text {
+                        fill: $pale-olive;
+                    }
+                }
+
+                .solarthermie, div.solarthermie {
+                    background-color: lighten($taz-orange, 30%);
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: lighten($taz-orange, 30%);
+                            filter: brightness(0.75);
+                        }
+                    }
+                    
+                    path,
+                    rect {
+                        stroke:lighten($taz-orange, 30%);
+                    }
+                
+                    circle,
+                    text {
+                        fill: lighten($taz-orange, 30%);
+                    }
+                }
+
+                .biomethan, div.biomethan {
+                    background-color: lighten($brown, 50%);
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: lighten($brown, 50%);
+                            filter: brightness(0.75);
+                        }
+                    }
+                
+                    path,
+                    rect {
+                        stroke: lighten($brown, 50%);
+                    }
+                
+                    circle,
+                    text {
+                        fill: lighten($brown, 50%);
+                    }
+                }
+
+                .biomasse, div.biomasse {
+                    background-color: #dbb28d;
+                
+                    path,
+                    rect {
+                        stroke: #dbb28d;
+                    }
+                
+                    circle,
+                    text {
+                        fill: #dbb28d;
+                    }
+                }
+
+                .keine, div.keine {
+                    background-color: #e0baff;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color:  #e0baff;
+                            filter: brightness(0.75);
+                        }
+                    }
+                
+                    path,
+                    rect {
+                        stroke: #e0baff;
+                    }
+                
+                    circle,
+                    text {
+                        fill: #e0baff;
+                    }
+                }
+                .öl, div.öl {
+                    background-color: lighten($default-text, 20%);
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: lighten($default-text, 20%);
+                            filter: brightness(0.75);
+                        }
+                    }
+                
+                    path,
+                    rect {
+                        stroke: lighten($default-text, 20%);
+                    }
+                
+                    circle,
+                    text {
+                        fill: lighten($default-text, 20%);
+                    }
+                }
+                .heizenergie, div.heizenergie {}
+                .strom, div.strom {
+                    background-color: $pink;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $pink;
+                            filter: brightness(0.75);
+                        }
+                    }
+                
+                    path,
+                    rect {
+                        stroke: $pink;
+                    }
+                
+                    circle,
+                    text {
+                        fill: $pink;
                     }
                 }
 
