@@ -15,7 +15,7 @@ const Buildings = ({
   // getting sizes of container for maps
   const targetRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [currentId, setCurrentId] = useState('Renewables');
+  const [currentId, setCurrentId] = useState('');
 
   useLayoutEffect(() => {
     if (targetRef.current) {
@@ -60,12 +60,15 @@ const Buildings = ({
   //clean labels to create classes
   const cleanKlassString = function (label) {
     let cleanedKlassString = label
-    if (label.includes('/') && !label.includes(' ')) {
-      cleanedKlassString = cleanedKlassString.split('/')[1]
-    } else if (label.includes('(')) {
-      cleanedKlassString = cleanedKlassString.split(' ')[0]
-    } else if (label.includes(' ') && !label.includes('(')) {
-      cleanedKlassString = cleanedKlassString.split(' ')[1]
+
+    if (label !== ' ') {
+      if (label.includes('/') && !label.includes(' ')) {
+        cleanedKlassString = cleanedKlassString.split('/')[1].toLowerCase()
+      } else if (label.includes('(')) {
+        cleanedKlassString = cleanedKlassString.split(' ')[0].toLowerCase()
+      } else if (label.includes(' ') && !label.includes('(')) {
+        cleanedKlassString = cleanedKlassString.split(' ')[1].toLowerCase()
+      }
     }
 
     return cleanedKlassString
@@ -80,23 +83,38 @@ const Buildings = ({
 
   if (currentData !== undefined) {
     // arrays
-    const energyData = currentData.data.filter((d) => { return d.column !== 'Number_buil' })
+
+    //here filter out aggregated categories
+    const energyData = currentData.data.filter((d) => {
+      return d.column !== 'Number_buil' &&
+        d.column !== 'Fossils' &&
+        d.column !== 'Renewables'
+    })
+
+    const numberOfBuildingsObj = currentData.data.filter((d) => {
+      return d.column === 'Number_buil'
+    })
+
     energyData.forEach((d) => (d.column = firstToUppercase(d.column)));
 
     const uniqueYears = uniq(energyData.map((d) => +d.year));
-    const allBuildings = energyData.map((d) => d.value);
     const existingEnergies = energyData.filter((d) => d.value !== null);
-    const existingEnergiesLY = existingEnergies.filter((d) => +d.year === max(uniqueYears))
-    const selectedEnergyObj = existingEnergiesLY.filter((d) => d.column === currentId)
-    selectedEnergy = selectedEnergyObj[0].value.toFixed(1)
 
+    // calc predefined label
+    const existingEnergiesLY = existingEnergies.filter((d) => +d.year === max(uniqueYears))
+    const maxValueForLY = max(existingEnergiesLY.map((d) => d.value))
+    const selectedEnergyObj = currentId === '' ?
+      existingEnergiesLY.filter((d) => d.value === maxValueForLY) :
+      existingEnergiesLY.filter((d) => d.column === currentId)
+
+    selectedEnergy = selectedEnergyObj[0].value.toFixed(1)
     uniqueEnergyTypes = uniq(existingEnergies.map((d) => d.column)).sort(
       (a, b) => a.localeCompare(b));
-    numberOfBuildings = Math.round(mean(allBuildings));
+    numberOfBuildings = numberOfBuildingsObj[0].value;
 
-    // Selects higher element in dataset
+    // // Selects higher element in dataset
     if (currentId === '') {
-      setCurrentId(uniqueEnergyTypes[0]);
+      setCurrentId(selectedEnergyObj[0].column);
     }
 
     // calc variation on domain based on highest value in dataset
@@ -166,7 +184,7 @@ const Buildings = ({
         <div className="title">
           <h3>Wie wird in Neubauten geheizt?</h3>
         </div>
-        <div className={`${cleanKlassString(currentId.toLowerCase())} caption`}>
+        <div className={`${cleanKlassString(currentId).toLowerCase()} caption`}>
           <p>
             Durchschnittlich werden in {locationLabel} pro Jahr <span>{numberOfBuildings}</span>{' '}
             neue Wohnungen oder Häuser fertiggestellt.
