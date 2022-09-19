@@ -63,20 +63,22 @@ export function firstToUppercase(string) {
 /**
  * Shortens and formats numbers
  * @param {*} numberValue number as input
- * @returns returns same number formated from 1400000 to 1,4 M and adds thousand separator
+ * @returns returns number as string formatted from 1400000 to 1,4 M and adds thousand separator and comma as decimal separator
  */
 export function formatNumber(numberValue) {
-  const sign = Math.sign(Number(numberValue));
-  // Nine Zeroes for Billions
-  return Math.abs(Number(numberValue)) >= 1.0e9
-    ? sign * (Math.abs(Number(numberValue)) / 1.0e9).toFixed(1) + ' Mrd'
-    : // Six Zeroes for Millions
-    Math.abs(Number(numberValue)) >= 1.0e6
-    ? sign * (Math.abs(Number(numberValue)) / 1.0e6).toFixed(1) + ' M'
-    : // : // Three Zeroes for Thousands
-      // Math.abs(Number(numberValue)) >= 1.0e3
-      // ? sign * (Math.abs(Number(numberValue)) / 1.0e3).toFixed(2) + 'k'
-      Math.abs(Number(numberValue))
+  let num;
+  if (numberValue % 1 === 0) {
+    num = numberValue;
+  } else {
+    num = numberValue.toFixed(1); // max one decimal
+  }
+
+  return Math.abs(Number(num)) >= 1.0e9
+    ? (Math.abs(Number(num)) / 1.0e9).toFixed(1).replace('.', ',') + ' Mrd'
+    : Math.abs(Number(num)) >= 1.0e6
+    ? (Math.abs(Number(num)) / 1.0e6).toFixed(1).replace('.', ',') + ' M'
+    : Math.abs(Number(num))
         .toString()
+        .replace('.', ',') // replaces . with comma for decimal separator
         .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'); // adds dot . after 3 digits -> 1.000
 }
