@@ -85,6 +85,7 @@ const Canvas = () => {
     } else {
       if (definedUI[0] === 'true') uiVis = true;
       if (definedUI[0] === 'false') uiVis = false;
+      else uiVis = true;
     }
 
     // -------- SET EDITORS PICK FOR EACH VIEW -------
