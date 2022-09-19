@@ -742,26 +742,48 @@
                         fill: lighten($default-text, 20%);
                     }
                 }
-                .heizenergie, div.heizenergie {}
-                .strom, div.strom {
+                .heizenergie, div.heizenergie {
                     background-color: $pink;
+
+                        &.caption {
+                            background-color: transparent;
+
+                            .energy-number {
+                                color: $pink;
+                                filter: brightness(0.75);
+                            }
+                        }
+
+                        path,
+                        rect {
+                            stroke: $pink;
+                        }
+
+                        circle,
+                        text {
+                            fill: $pink;
+                        }
+                }
+
+                .strom, div.strom {
+                    background-color: rgb(127, 86, 187);
 
                     &.caption {
                         background-color: transparent;
                         .energy-number {
-                            color: $pink;
+                            color: rgb(127, 86, 187);
                             filter: brightness(0.75);
                         }
                     }
                 
                     path,
                     rect {
-                        stroke: $pink;
+                        stroke: rgb(127, 86, 187);
                     }
                 
                     circle,
                     text {
-                        fill: $pink;
+                        fill: rgb(127, 86, 187);
                     }
                 }
 
