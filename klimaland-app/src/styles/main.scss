@@ -204,9 +204,10 @@ code {
                 width: 250px;
                 height: 50px;
                 padding: 1rem;
-                -webkit-transform:translate(-10px, 10px) rotate(-5deg);
                 transform: translate(-10px, 10px) rotate(-5deg);
+                -webkit-transform:translate(-10px, 10px) rotate(-5deg);
                 transition: 0.2s;
+                -webkit-transition: 0.2s;
                 box-shadow: 4px 4px 0px rgba($red, 0.44);
 
                 &:hover {
@@ -229,9 +230,10 @@ code {
                 &.help-postcard {
                     width: $thumbnail-postcardwidth;
                     height: calc($thumbnail-postcardwidth/1.4);
-                    -webkit-transform:translate(0, calc($thumbnail-postcardwidth/-1.4)) rotate(10deg);
                     transform: translate(0, calc($thumbnail-postcardwidth/-1.4)) rotate(10deg);
+                    -webkit-transform:translate(0, calc($thumbnail-postcardwidth/-1.4)) rotate(10deg);
                     transition: 0.2s;
+                    -webkit-transition: 0.2s;
 
                     .text {
                         opacity: 1; 
