@@ -65,12 +65,14 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
     const domainRind = [0, max([1, max(dataRinder.map((d) => d.value))])];
     const domainSchaf = [0, max([1, max(dataSchafe.map((d) => d.value))])];
     const domainSchwein = [0, max([1, max(dataSchweine.map((d) => d.value))])];
+    const domainTier = [0, max([1, max(currentData.data.map((d) => d.value))])];
     const domainY = [uniqueYears.length - 1, 0]; // switch 0 and uniqueYears.length - 1 for vertical swap
     const domainX = [0, uniqueAnimals.length - 1];
 
     const rindScale = scaleLinear().domain(domainRind).range([0, radiusArc]);
     const schafScale = scaleLinear().domain(domainSchaf).range([0, radiusArc]);
     const schweinScale = scaleLinear().domain(domainSchwein).range([0, radiusArc]);
+    const tierScale = scaleLinear().domain(domainTier).range([0, radiusArc]);
     const yScale = scaleLinear()
       .domain(domainY)
       .range([marginHeight * 4, dimensions.height - marginHeight]);
@@ -100,11 +102,11 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
     // scaling check according to each animal
     const animalScale = (d) => {
       if (d.column === 'Rinder') {
-        return rindScale(d.value);
+        return tierScale(d.value);
       } else if (d.column === 'Schafe') {
-        return schafScale(d.value);
+        return tierScale(d.value);
       } else if (d.column === 'Schweine') {
-        return schweinScale(d.value);
+        return tierScale(d.value);
       }
     };
 
@@ -196,7 +198,7 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
             {axisElements.map((axis, a) => {
               return (
                 <g key={a} className="x-axis-container">
-                  <g key={a} transform={`translate(0, ${axis.y})`} >
+                  <g key={a} transform={`translate(0, ${axis.y})`}>
                     <line
                       x1={marginWidth}
                       x2={dimensions.width - marginWidth}
@@ -268,8 +270,8 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
       <div className="description">
         <div className="title">
           <h3>
-            Entwicklung der Anzahl an Rindern, Schweinen und Schafen in {locationLabel} über die Jahre{' '}
-            {firstYear} bis {lastYear}.
+            Entwicklung der Anzahl an Rindern, Schweinen und Schafen in {locationLabel} über die
+            Jahre {firstYear} bis {lastYear}.
           </h3>
         </div>
       </div>
