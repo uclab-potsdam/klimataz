@@ -38,12 +38,18 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
   let firstYear = 2010;
   let lastYear = 2020;
 
+  // move position in array for custom order Schweine, Rinder, Schafe
+  Array.prototype.move = function (from, to) {
+    this.splice(to, 0, this.splice(from, 1)[0]);
+  };
+
   if (currentData !== undefined) {
     // get unique years from data
     const uniqueYears = uniq(currentData.data.map((d) => +d.year));
     firstYear = uniqueYears[0];
     lastYear = uniqueYears.slice(-1)[0];
     const uniqueAnimals = uniq(currentData.data.map((d) => d.column));
+    uniqueAnimals.move(2, 0);
 
     // save data for each animal
     const dataRinder = currentData.data.filter((d) => {
@@ -62,22 +68,17 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
     });
 
     // defining domains and scaling
-    const domainRind = [0, max([1, max(dataRinder.map((d) => d.value))])];
-    const domainSchaf = [0, max([1, max(dataSchafe.map((d) => d.value))])];
-    const domainSchwein = [0, max([1, max(dataSchweine.map((d) => d.value))])];
+    const domainTier = [0, max([1, max(currentData.data.map((d) => d.value))])];
     const domainY = [uniqueYears.length - 1, 0]; // switch 0 and uniqueYears.length - 1 for vertical swap
     const domainX = [0, uniqueAnimals.length - 1];
 
-    const rindScale = scaleLinear().domain(domainRind).range([0, radiusArc]);
-    const schafScale = scaleLinear().domain(domainSchaf).range([0, radiusArc]);
-    const schweinScale = scaleLinear().domain(domainSchwein).range([0, radiusArc]);
+    const tierScale = scaleLinear().domain(domainTier).range([0, radiusArc]);
     const yScale = scaleLinear()
       .domain(domainY)
       .range([marginHeight * 4, dimensions.height - marginHeight]);
     const xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth * 2.75, dimensions.width - marginWidth * 2.25]);
-
     const colorCategory = scaleOrdinal().domain([0, 1, 2]).range(colorArray);
 
     // create elements for horizontal axis, plus labels
@@ -96,17 +97,6 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
       .innerRadius(0)
       .startAngle(-Math.PI / 2)
       .endAngle(Math.PI / 2);
-
-    // scaling check according to each animal
-    const animalScale = (d) => {
-      if (d.column === 'Rinder') {
-        return rindScale(d.value);
-      } else if (d.column === 'Schafe') {
-        return schafScale(d.value);
-      } else if (d.column === 'Schweine') {
-        return schweinScale(d.value);
-      }
-    };
 
     // check for in- or decrease of animal count and return index for fitting colorValue
     const checkChange = (data, d, animalArray) => {
@@ -136,10 +126,10 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
     // map all parameters for animal group
     const dataAnimal = (data, d, animalArray) => {
       const currentArc = {};
-      const scaledValue = animalScale(data);
+      const scaledValue = tierScale(data.value);
       let prevScaledValue = 0;
       if (d - 1 >= 0) {
-        prevScaledValue = animalScale(animalArray[d - 1]);
+        prevScaledValue = tierScale(animalArray[d - 1].value);
       }
       const colorValue = checkChange(data, d, animalArray);
 
@@ -157,14 +147,14 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
     };
 
     // call function above for each animal group
+    dataSchweine.map((data, d) => {
+      arcSchweine.push(dataAnimal(data, d, dataSchweine));
+    });
     dataRinder.map((data, d) => {
       arcRinder.push(dataAnimal(data, d, dataRinder));
     });
     dataSchafe.map((data, d) => {
       arcSchafe.push(dataAnimal(data, d, dataSchafe));
-    });
-    dataSchweine.map((data, d) => {
-      arcSchweine.push(dataAnimal(data, d, dataSchweine));
     });
   }
 
@@ -196,7 +186,7 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
             {axisElements.map((axis, a) => {
               return (
                 <g key={a} className="x-axis-container">
-                  <g key={a} transform={`translate(0, ${axis.y})`} >
+                  <g key={a} transform={`translate(0, ${axis.y})`}>
                     <line
                       x1={marginWidth}
                       x2={dimensions.width - marginWidth}
@@ -220,14 +210,28 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
             })}
           </g>
           <g className="arcs">
+            {arcSchweine.map((arc, a) => {
+              return (
+                <g key={a} transform={`translate(${arc.x},${arc.y})`}>
+                  <path d={arc.path} fill={arc.color} />
+                  <path className="previousYear" d={arc.pathPrev} />
+                  <g className="label-container">
+                    <rect className="labelCount" x="-35" y="3" width="70" height="16" />
+                    <text x="0" y="15" fill="black" textAnchor="middle">
+                      {arc.valueTotal}
+                    </text>
+                  </g>
+                </g>
+              );
+            })}
             {arcRinder.map((arc, a) => {
               return (
                 <g key={a} transform={`translate(${arc.x},${arc.y})`}>
                   <path d={arc.path} fill={arc.color} />
                   <path className="previousYear" d={arc.pathPrev} />
                   <g className="label-container">
-                    <rect className="labelCount" x="-35" y="-22" width="70" height="16" />
-                    <text x="0" y="-10" fill="black" textAnchor="middle">
+                    <rect className="labelCount" x="-35" y="3" width="70" height="16" />
+                    <text x="0" y="15" fill="black" textAnchor="middle">
                       {arc.valueTotal}
                     </text>
                   </g>
@@ -240,22 +244,8 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
                   <path d={arc.path} fill={arc.color} />
                   <path className="previousYear" d={arc.pathPrev} />
                   <g className="label-container">
-                    <rect className="labelCount" x="-35" y="-22" width="70" height="16" />
-                    <text x="0" y="-10" fill="black" textAnchor="middle">
-                      {arc.valueTotal}
-                    </text>
-                  </g>
-                </g>
-              );
-            })}
-            {arcSchweine.map((arc, a) => {
-              return (
-                <g key={a} transform={`translate(${arc.x},${arc.y})`}>
-                  <path d={arc.path} fill={arc.color} />
-                  <path className="previousYear" d={arc.pathPrev} />
-                  <g className="label-container">
-                    <rect className="labelCount" x="-35" y="-22" width="70" height="16" />
-                    <text x="0" y="-10" fill="black" textAnchor="middle">
+                    <rect className="labelCount" x="-35" y="3" width="70" height="16" />
+                    <text x="0" y="15" fill="black" textAnchor="middle">
                       {arc.valueTotal}
                     </text>
                   </g>
@@ -268,8 +258,8 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
       <div className="description">
         <div className="title">
           <h3>
-            Entwicklung der Anzahl an Rindern, Schweinen und Schafen in {locationLabel} über die Jahre{' '}
-            {firstYear} bis {lastYear}.
+            Entwicklung der Anzahl an Rindern, Schweinen und Schafen in {locationLabel} über die
+            Jahre {firstYear} bis {lastYear}.
           </h3>
         </div>
       </div>
