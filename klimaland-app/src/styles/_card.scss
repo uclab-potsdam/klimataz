@@ -33,6 +33,7 @@
 
     &-active{
         // scaling to avoid overflow
+        -webkit-transform: translateY(0px);
         transform: translateY(0px);
         z-index: 1;
         opacity: 1;
@@ -40,6 +41,7 @@
     }
 
     &-left{
+        -webkit-transform:rotate(-5deg) scale(1);
         transform: rotate(-5deg) scale(1);
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
@@ -53,6 +55,7 @@
     }
     
     &-right{
+        -webkit-transform:rotate(5deg) scale(1);
         transform: rotate(5deg) scale(1);
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
@@ -66,6 +69,7 @@
     }
 
     &-back{
+        -webkit-transform:rotate(-2deg)  translate(-2px, -5px) scale(1);
         transform: rotate(-2deg)  translate(-2px, -5px) scale(1);
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
@@ -215,6 +219,7 @@
     .side-inner {
         width: 100%;
         height: 100%;
+        -webkit-transform:translateX(40%);
         transform: translateX(40%);
         background-color: rgba($lighter-orange, 0.5);
         clip-path: circle(55%);    
@@ -262,10 +267,13 @@
         margin: 0;
         display:flex; //for using flex stretch below
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform:rotateX(0deg);
         transform: rotateX(0deg);  //fix backface visibility firefox
     }
 
     & .card-back{
+        -webkit-transform:rotateY(180deg);
         transform: rotateY(180deg);
     }
 

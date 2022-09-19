@@ -141,6 +141,7 @@
                     &.help-postcard {
                         width: $portait-postcardwidth;
                         height: calc($portait-postcardwidth*1.5);
+                        -webkit-transform:translate(0, -50%) rotate(5deg);
                         transform: translate(0, -50%) rotate(5deg);
 
                         h4.desktop-title {
@@ -300,13 +301,16 @@
                     .visualization-container {
                         height: 75%;
                         .label-container {
+                            -webkit-transform: translateY(28px);
                             transform: translateY(28px);
                         }
 
                         .arcs, .x-axis-container {
+                            -webkit-transform:translateY(-60px);
                             transform: translateY(-60px);
 
                             .animal-label {
+                                -webkit-transform:translateY(20px);
                                 transform: translateY(20px);
                                 font-size: 14px;
                             }
@@ -315,16 +319,20 @@
                         .axis {
                             .year-label {
                                 font-size: 12px;
+                                -webkit-transform:translateX(-20px);
                                 transform: translateX(-20px);
                             }
                         }
                         
                         .legend {
+                            -webkit-transform:translateY(90%);
                             transform: translateY(90%);
                             .label-item {
+                                -webkit-transform: translate(30px, -5px);
                                 transform: translate(30px, -5px);
                         
                                 &.vorherigeZaehlung {
+                                    -webkit-transform:translate(-210px, 20px);
                                     transform: translate(-210px, 20px);
                                 }
                             }
@@ -340,11 +348,13 @@
                         }
 
                         .legend {
+                            -webkit-transform:translateY(-20px);
                             transform: translateY(-20px);
 
                             .legend-item {
                                 font-size: 10px;
                                 &.unter-label {
+                                    -webkit-transform:translate(140px, 0px);
                                     transform: translate(140px, 0px);
                                 }
                             }
@@ -354,6 +364,7 @@
                     .visualization-container {
 
                         .chart {
+                            -webkit-transform:translateY(20px);
                             transform: translateY(20px);
                             .bars {
                                 .year-label {
@@ -374,22 +385,27 @@
                     .description {
                         .legend {
                             background-image: url('../img/legends/MoCarDensity-mobile.svg');
+                            -webkit-transform:scale(0.9);
                             transform: scale(0.9);
                             margin-top: 0;
                         }
                     }
     
                     .visualization-container {
+                        -webkit-transform:scale(0.9);
                         transform: scale(0.9);
     
                         .chart {
                             &.active-chart {
+                                -webkit-transform:skew(0deg, 0deg);
                                 transform: skew(0deg, 0deg);
                             }
     
                             &.thumbnail-chart {
+                                -webkit-transform:skew(0deg, 0deg);
                                 transform: skew(0deg, 0deg);
                                 .cars-container {
+                                    -webkit-transform:translate(20px, 0px);
                                     transform: translate(20px, 0px);
                                 }
                             }
@@ -493,6 +509,7 @@
 
                 .avg-heating {
                     .visualization-container {
+                        -webkit-transform:translateY(-10px);
                         transform: translateY(-10px);
 
                         // .non-clipped-elements {
