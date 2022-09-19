@@ -56,7 +56,7 @@ const Buildings = ({
   };
   const marginHeight = Math.ceil(dimensions.width / 10);
   const marginWidth = Math.ceil(dimensions.height / 10);
-  
+
   //clean labels to create classes
   const cleanKlassString = function (label) {
     let cleanedKlassString = label
@@ -87,7 +87,8 @@ const Buildings = ({
     const allBuildings = energyData.map((d) => d.value);
     const existingEnergies = energyData.filter((d) => d.value !== null);
     const existingEnergiesLY = existingEnergies.filter((d) => +d.year === max(uniqueYears))
-    selectedEnergy = existingEnergiesLY.filter((d) => d.column === currentId)
+    const selectedEnergyObj = existingEnergiesLY.filter((d) => d.column === currentId)
+    selectedEnergy = selectedEnergyObj[0].value.toFixed(1)
 
     uniqueEnergyTypes = uniq(existingEnergies.map((d) => d.column)).sort(
       (a, b) => a.localeCompare(b));
@@ -168,8 +169,8 @@ const Buildings = ({
         <div className={`${cleanKlassString(currentId.toLowerCase())} caption`}>
           <p>
             Durchschnittlich werden in {locationLabel} pro Jahr <span>{numberOfBuildings}</span>{' '}
-            neue Wohnungen oder Häuser fertiggestellt. 
-            Zu <span className="energy-number">{selectedEnergy[0].value.toFixed(1)}%</span> wird davon mit{' '}
+            neue Wohnungen oder Häuser fertiggestellt.
+            Zu <span className="energy-number">{selectedEnergy}%</span> wird davon mit{' '}
             <span className="energy-number">{firstToUppercase(currentId)}</span> geheizt.
           </p>
         </div>
