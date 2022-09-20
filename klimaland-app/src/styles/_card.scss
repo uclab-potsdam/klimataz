@@ -5,7 +5,6 @@
         .card-active {
             .side-container {
                 .card-front {&.side-odd {
-                    background-color: blue;
                     backface-visibility: visible;
                     -webkit-backface-visibility: visible;
                     transform: rotateY(0deg);

@@ -66,8 +66,6 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
       console.log('card class for rotation is not set');
     }
 
-    console.log(activeSide, flipping)
-
     return (
       <div className={`${cardSide} side-${activeSide % 2 === 0 ? 'even' : 'odd'}`}>
         {sideWithProps(rotation)}
