@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { stack, stackOffsetSilhouette, stackOrderAscending, curveMonotoneX, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
-import { max, extent, mean } from 'd3-array';
+import { max, extent } from 'd3-array';
 import { formatNumber } from './../../helperFunc';
 
 const EnIndustry = ({
@@ -173,75 +173,76 @@ const EnIndustry = ({
     <div
       className={`energy-industry horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}
     >
-      <div className="visualization-container" ref={targetRef}>
-        <svg className="chart" width="100%" height="100%">
-          <g className="axis">
-            {xAxisElements.map((axis, a) => {
-              if (a % 2 !== 0) {
+      {currentData.data !== undefined && (
+        <div className="visualization-container" ref={targetRef}>
+          <svg className="chart" width="100%" height="100%">
+            <g className="axis">
+              {xAxisElements.map((axis, a) => {
+                if (a % 2 !== 0) {
+                  return (
+                    <g key={a} transform={`translate(${axis.x + 1}, 0)`}>
+                      <line
+                        x1="0"
+                        x2="0"
+                        y1={marginHeight}
+                        y2={dimensions.height - marginHeight}
+                        stroke="black"
+                      />
+                      {/* // YEAR */}
+                      <text
+                        x="-18"
+                        y={marginHeight + 15}
+                        textAnchor="middle"
+                        transform={
+                          dimensions.width <= 350 ? `rotate(-90, -10, ${marginHeight + 10})` : ''
+                        }
+                      >
+                        {axis.label}
+                      </text>
+                    </g>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </g>
+            <g className="streams-container">
+              {streamEle.map((stream, s) => {
                 return (
-                  <g key={a} transform={`translate(${axis.x + 1}, 0)`}>
-                    <line
-                      x1="0"
-                      x2="0"
-                      y1={marginHeight}
-                      y2={dimensions.height - marginHeight}
-                      stroke="black"
-                    />
-                    {/* // YEAR */}
-                    <text
-                      x="-18"
-                      y={marginHeight + 15}
-                      textAnchor="middle"
-                      transform={
-                        dimensions.width <= 350 ? `rotate(-90, -10, ${marginHeight + 10})` : ''
-                      }
-                    >
-                      {axis.label}
-                    </text>
+                  <g
+                    key={s}
+                    className={`stream ${stream.klass}`}
+                    onMouseEnter={() => switchHighlightedStream(stream.id)}
+                    onMouseLeave={() => switchHighlightedStream('')}
+                  >
+                    <path className={`path ${stream.id}`} d={stream.path} fill={stream.fill} />
                   </g>
                 );
-              } else {
-                return null;
-              }
-            })}
-          </g>
-          <g className="streams-container">
-            {streamEle.map((stream, s) => {
-              return (
-                <g
-                  key={s}
-                  className={`stream ${stream.klass}`}
-                  onMouseEnter={() => switchHighlightedStream(stream.id)}
-                  onMouseLeave={() => switchHighlightedStream('')}
-                >
-                  <path className={`path ${stream.id}`} d={stream.path} fill={stream.fill} />
-                </g>
-              );
-            })}
-          </g>
-          <g className="streams-labels-container">
-            {streamEle.map((label, l) => {
-              return (
-                <g key={l}>
-                  <g className="label">
-                    <foreignObject
-                      className={label.threshold ? 'visible' : 'invisible'}
-                      x={label.xPos - label.width * 2}
-                      y={label.yPos - 8}
-                      width="1"
-                      height="1"
-                    >
-                      <div xmlns="http://www.w3.org/1999/xhtml" className={label.klass}>
-                        <p>{label.id}</p>
-                      </div>
-                    </foreignObject>
+              })}
+            </g>
+            <g className="streams-labels-container">
+              {streamEle.map((label, l) => {
+                return (
+                  <g key={l}>
+                    <g className="label">
+                      <foreignObject
+                        className={label.threshold ? 'visible' : 'invisible'}
+                        x={label.xPos - label.width * 2}
+                        y={label.yPos - 8}
+                        width="1"
+                        height="1"
+                      >
+                        <div xmlns="http://www.w3.org/1999/xhtml" className={label.klass}>
+                          <p>{label.id}</p>
+                        </div>
+                      </foreignObject>
+                    </g>
                   </g>
-                </g>
-              );
-            })}
-          </g>
-        </svg>
-      </div>
+                );
+              })}
+            </g>
+          </svg>
+        </div>)}
       <div className="description">
         <div className="title">
           <h3>

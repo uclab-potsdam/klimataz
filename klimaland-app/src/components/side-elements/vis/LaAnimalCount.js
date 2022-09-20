@@ -176,98 +176,99 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
 
   return (
     <div className={`animal-count horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}>
-      <div className="visualization-container" ref={targetRef}>
-        <svg className="chart" width="100%" height="100%">
-          <g className="legend" transform={`translate(${marginWidth / 2}, ${marginHeight / 1.5})`}>
-            <g className="label-item wenigerTiere">
-              <circle className="wenigerTiere" cx="0" cy="0" r={legendRadius} />
-              <text x={legendRadius + 10} y={legendRadius / 2 + 2}>
-                weniger Tiere
-              </text>
+      {currentData.data !== undefined && (
+        <div className="visualization-container" ref={targetRef}>
+          <svg className="chart" width="100%" height="100%">
+            <g className="legend" transform={`translate(${marginWidth / 2}, ${marginHeight / 1.5})`}>
+              <g className="label-item wenigerTiere">
+                <circle className="wenigerTiere" cx="0" cy="0" r={legendRadius} />
+                <text x={legendRadius + 10} y={legendRadius / 2 + 2}>
+                  weniger Tiere
+                </text>
+              </g>
+              <g className="label-item mehrTiere">
+                <circle className="mehrTiere" cx="120" cy="0" r={legendRadius} />
+                <text x={legendRadius + 130} y={legendRadius / 2 + 2}>
+                  mehr Tiere
+                </text>
+              </g>
+              <g className="label-item vorherigeZaehlung">
+                <circle className="vorherigeZaehlung" cx="240" cy="0" r={legendRadius} />
+                <text x={legendRadius + 250} y={legendRadius / 2 + 2}>
+                  als im Vergleich zur vorherigen Zählung
+                </text>
+              </g>
             </g>
-            <g className="label-item mehrTiere">
-              <circle className="mehrTiere" cx="120" cy="0" r={legendRadius} />
-              <text x={legendRadius + 130} y={legendRadius / 2 + 2}>
-                mehr Tiere
-              </text>
+            <g className="axis">
+              {axisElements.map((axis, a) => {
+                return (
+                  <g key={a} className="x-axis-container">
+                    <g key={a} transform={`translate(0, ${axis.y})`}>
+                      <line
+                        x1={marginWidth}
+                        x2={dimensions.width - marginWidth}
+                        y1="0"
+                        y2="0"
+                        stroke="#484848"
+                      />
+                      {/* YEAR */}
+                      <text className="year-label" x={marginWidth} y="-10" textAnchor="start">
+                        {axis.label}
+                      </text>
+                    </g>
+                    <g key={axis.labelAnimal} transform={`translate(${axis.x},0)`}>
+                      {/* Animal */}
+                      <text x="0" y={marginHeight * 2} textAnchor="middle" className="animal-label">
+                        {axis.labelAnimal}
+                      </text>
+                    </g>
+                  </g>
+                );
+              })}
             </g>
-            <g className="label-item vorherigeZaehlung">
-              <circle className="vorherigeZaehlung" cx="240" cy="0" r={legendRadius} />
-              <text x={legendRadius + 250} y={legendRadius / 2 + 2}>
-                als im Vergleich zur vorherigen Zählung
-              </text>
+            <g className="arcs">
+              {arcSchweine.map((arc, a) => {
+                return (
+                  <g key={a} transform={`translate(${arc.x},${arc.y})`}>
+                    <path d={arc.path} fill={arc.color} />
+                    <path className="previousYear" d={arc.pathPrev} />
+                    <g className="label-container">
+                      <text x="0" y={marginLabel + 12} fill="black" textAnchor="middle">
+                        {arc.valueTotal}
+                      </text>
+                    </g>
+                  </g>
+                );
+              })}
+              {arcRinder.map((arc, a) => {
+                return (
+                  <g key={a} transform={`translate(${arc.x},${arc.y})`}>
+                    <path d={arc.path} fill={arc.color} />
+                    <path className="previousYear" d={arc.pathPrev} />
+                    <g className="label-container">
+                      <text x="0" y={marginLabel + 12} fill="black" textAnchor="middle">
+                        {arc.valueTotal}
+                      </text>
+                    </g>
+                  </g>
+                );
+              })}
+              {arcSchafe.map((arc, a) => {
+                return (
+                  <g key={a} transform={`translate(${arc.x},${arc.y})`}>
+                    <path d={arc.path} fill={arc.color} />
+                    <path className="previousYear" d={arc.pathPrev} />
+                    <g className="label-container">
+                      <text x="0" y={marginLabel + 12} fill="black" textAnchor="middle">
+                        {arc.valueTotal}
+                      </text>
+                    </g>
+                  </g>
+                );
+              })}
             </g>
-          </g>
-          <g className="axis">
-            {axisElements.map((axis, a) => {
-              return (
-                <g key={a} className="x-axis-container">
-                  <g key={a} transform={`translate(0, ${axis.y})`}>
-                    <line
-                      x1={marginWidth}
-                      x2={dimensions.width - marginWidth}
-                      y1="0"
-                      y2="0"
-                      stroke="#484848"
-                    />
-                    {/* YEAR */}
-                    <text className="year-label" x={marginWidth} y="-10" textAnchor="start">
-                      {axis.label}
-                    </text>
-                  </g>
-                  <g key={axis.labelAnimal} transform={`translate(${axis.x},0)`}>
-                    {/* Animal */}
-                    <text x="0" y={marginHeight * 2} textAnchor="middle" className="animal-label">
-                      {axis.labelAnimal}
-                    </text>
-                  </g>
-                </g>
-              );
-            })}
-          </g>
-          <g className="arcs">
-            {arcSchweine.map((arc, a) => {
-              return (
-                <g key={a} transform={`translate(${arc.x},${arc.y})`}>
-                  <path d={arc.path} fill={arc.color} />
-                  <path className="previousYear" d={arc.pathPrev} />
-                  <g className="label-container">
-                    <text x="0" y={marginLabel + 12} fill="black" textAnchor="middle">
-                      {arc.valueTotal}
-                    </text>
-                  </g>
-                </g>
-              );
-            })}
-            {arcRinder.map((arc, a) => {
-              return (
-                <g key={a} transform={`translate(${arc.x},${arc.y})`}>
-                  <path d={arc.path} fill={arc.color} />
-                  <path className="previousYear" d={arc.pathPrev} />
-                  <g className="label-container">
-                    <text x="0" y={marginLabel + 12} fill="black" textAnchor="middle">
-                      {arc.valueTotal}
-                    </text>
-                  </g>
-                </g>
-              );
-            })}
-            {arcSchafe.map((arc, a) => {
-              return (
-                <g key={a} transform={`translate(${arc.x},${arc.y})`}>
-                  <path d={arc.path} fill={arc.color} />
-                  <path className="previousYear" d={arc.pathPrev} />
-                  <g className="label-container">
-                    <text x="0" y={marginLabel + 12} fill="black" textAnchor="middle">
-                      {arc.valueTotal}
-                    </text>
-                  </g>
-                </g>
-              );
-            })}
-          </g>
-        </svg>
-      </div>
+          </svg>
+        </div>)}
       <div className="description">
         <div className="title">
           <h3>

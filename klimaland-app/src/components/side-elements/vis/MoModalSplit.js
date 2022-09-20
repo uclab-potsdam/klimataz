@@ -60,6 +60,7 @@ const MoModalSplit = ({
   let xScaleReverse;
   let yBarScale;
 
+
   if (currentData.data !== undefined) {
     averageKmDistance = currentData.data.filter(
       (d) => d.column.includes('average') && +d.year === defaultYear
@@ -190,86 +191,89 @@ const MoModalSplit = ({
           </h3>
         </div>
       </div>
-      <div className="visualization-container" ref={targetRef}>
-        <svg className="chart">
-          <g className="paths-avg-trip">
-            {
-              <g className="paths">
-                <g className="main-x-axis" transform={`translate(${xScale(0)}, ${marginHeight})`}>
-                  <line x1="0" x2={xScale(9.5)} y1="0" y2="0" />
-                  {/* <text x="0" y="15">
-                    average Km
-                  </text> */}
-                </g>
-                {plotAvgData.map((trip, t) => {
-                  return (
-                    <g
-                      transform={`translate(0, ${(t + 0.5) * tabletThreshold})`}
-                      key={t}
-                      className={trip.mode}
-                    >
-                      <g className="axis">
-                        <text x={marginWidth} y="-18" fill={colors[t]}>
-                          {trip.mode}
-                        </text>
-                        {referenceXTicks.map((tick, t) => {
-                          return (
-                            <g transform={`translate(${xScale(tick)}, 0)`} key={t}>
-                              <line x1="0" x2="0" y1="0" y2="5" />
-                            </g>
-                          );
-                        })}
-                      </g>
-                      <g className="paths">
-                        <path d={trip.path} stroke={colors[t]} fill="none" strokeWidth="10" />
+      {
+        currentData.data !== undefined && (
+          <div className="visualization-container" ref={targetRef}>
+            <svg className="chart">
+              <g className="paths-avg-trip">
+                {
+                  <g className="paths">
+                    <g className="main-x-axis" transform={`translate(${xScale(0)}, ${marginHeight})`}>
+                      <line x1="0" x2={xScale(9.5)} y1="0" y2="0" />
+                      {/* <text x="0" y="15">
+                      average Km
+                    </text> */}
+                    </g>
+                    {plotAvgData.map((trip, t) => {
+                      return (
                         <g
-                          className="avgkm-marker"
-                          transform={`translate(${trip.labelX}, ${trip.labelY + 5})`}
+                          transform={`translate(0, ${(t + 0.5) * tabletThreshold})`}
+                          key={t}
+                          className={trip.mode}
                         >
-                          <text x="5" y={-(trip.labelY + 2 * 10)} fill={colors[t]}>
-                            {trip.label}
-                          </text>
-                          <line x1="0" x2="0" y1="0" y2={-(trip.labelY + 2 * 10)} />
-                        </g>
-                        <g className="mapped-axis">
-                          {trip.ticks.map((tick, t) => {
-                            return (
-                              <g key={t}>
-                                <g transform={`translate(${tick.x}, ${tick.y})`}>
-                                  <line x1="0" x2="0" y1="-5" y2="5" />
+                          <g className="axis">
+                            <text x={marginWidth} y="-18" fill={colors[t]}>
+                              {trip.mode}
+                            </text>
+                            {referenceXTicks.map((tick, t) => {
+                              return (
+                                <g transform={`translate(${xScale(tick)}, 0)`} key={t}>
+                                  <line x1="0" x2="0" y1="0" y2="5" />
                                 </g>
-                              </g>
-                            );
-                          })}
+                              );
+                            })}
+                          </g>
+                          <g className="paths">
+                            <path d={trip.path} stroke={colors[t]} fill="none" strokeWidth="10" />
+                            <g
+                              className="avgkm-marker"
+                              transform={`translate(${trip.labelX}, ${trip.labelY + 5})`}
+                            >
+                              <text x="5" y={-(trip.labelY + 2 * 10)} fill={colors[t]}>
+                                {trip.label}
+                              </text>
+                              <line x1="0" x2="0" y1="0" y2={-(trip.labelY + 2 * 10)} />
+                            </g>
+                            <g className="mapped-axis">
+                              {trip.ticks.map((tick, t) => {
+                                return (
+                                  <g key={t}>
+                                    <g transform={`translate(${tick.x}, ${tick.y})`}>
+                                      <line x1="0" x2="0" y1="-5" y2="5" />
+                                    </g>
+                                  </g>
+                                );
+                              })}
+                            </g>
+                          </g>
                         </g>
-                      </g>
+                      );
+                    })}
+                  </g>
+                }
+              </g>
+              <g
+                className="bar-percentage-trip"
+                transform={`translate(${rightMarginWidth + marginWidth * 2}, 0)`}
+              >
+                <text x="10" y={marginHeight + 15} textAnchor="middle">
+                  % der Trips
+                </text>
+                {plotPercData.map((trip, t) => {
+                  return (
+                    <g transform={`translate(0, ${trip.y1})`} key={t}>
+                      <text x="15" y="13" fill={trip.fill}>
+                        {formatNumber(trip.label)}%
+                      </text>
+                      <rect width="10" height={trip.y2 - trip.y1} x="0" y="0" fill={trip.fill} />
+                      <line x1="0" x2="30" y1="0" y2="0" />
                     </g>
                   );
                 })}
               </g>
-            }
-          </g>
-          <g
-            className="bar-percentage-trip"
-            transform={`translate(${rightMarginWidth + marginWidth * 2}, 0)`}
-          >
-            <text x="10" y={marginHeight + 15} textAnchor="middle">
-              % der Trips
-            </text>
-            {plotPercData.map((trip, t) => {
-              return (
-                <g transform={`translate(0, ${trip.y1})`} key={t}>
-                  <text x="15" y="13" fill={trip.fill}>
-                    {formatNumber(trip.label)}%
-                  </text>
-                  <rect width="10" height={trip.y2 - trip.y1} x="0" y="0" fill={trip.fill} />
-                  <line x1="0" x2="30" y1="0" y2="0" />
-                </g>
-              );
-            })}
-          </g>
-        </svg>
-      </div>
+            </svg>
+          </div>
+        )}
     </div>
   );
 };
