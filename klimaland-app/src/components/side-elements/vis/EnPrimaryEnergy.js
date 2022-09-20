@@ -3,6 +3,7 @@ import { stack, stackOffsetSilhouette, stackOrderAscending, curveCatmullRom, are
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent, mean } from 'd3-array';
+import { formatNumber } from './../../helperFunc';
 
 const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
   const colorArray = [
@@ -260,7 +261,7 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
         <div className="title">
           <h3>
             Der Energieverbrauch in {locationLabel} basiert im Jahr <span>{lastYear}</span> zu{' '}
-            <span> {percRenewables}%</span> auf{' '}
+            <span> {formatNumber(percRenewables)}%</span> auf{' '}
             <span className="second-value"> erneuerbaren Energien</span>
           </h3>
         </div>
