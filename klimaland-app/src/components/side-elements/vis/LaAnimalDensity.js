@@ -250,9 +250,9 @@ const LandDenisty = ({
                     <g transform={`translate(${-barWidth / 2}, ${marginBars - 5})`}>
                       <rect
                         className="labelCount"
-                        x={barWidth - bar.valueTotal.length * 7}
+                        x={barWidth - (bar.valueTotal.length > 4 ? bar.valueTotal.length * 7 : 25)}
                         y={min([-20, -bar.value])}
-                        width={bar.valueTotal.length * 7}
+                        width={bar.valueTotal.length > 4 ? bar.valueTotal.length * 7 : 25}
                         height="16"
                         fill="white"
                       />
@@ -298,9 +298,9 @@ const LandDenisty = ({
                   >
                     <rect
                       className="labelCount"
-                      x={barWidth - bar.valueTotal.length * 7}
+                      x={barWidth - (bar.valueTotal.length > 4 ? bar.valueTotal.length * 7 : 25)}
                       y={min([-5, bar.value - 30])}
-                      width={bar.valueTotal.length * 7}
+                      width={bar.valueTotal.length > 4 ? bar.valueTotal.length * 7 : 25}
                       height="16"
                     />
                     <text
