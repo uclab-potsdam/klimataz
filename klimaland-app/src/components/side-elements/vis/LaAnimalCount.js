@@ -232,7 +232,6 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
                   <path d={arc.path} fill={arc.color} />
                   <path className="previousYear" d={arc.pathPrev} />
                   <g className="label-container">
-                    <rect className="labelCount" x="-35" y={marginLabel} width="70" height="16" />
                     <text x="0" y={marginLabel + 12} fill="black" textAnchor="middle">
                       {arc.valueTotal}
                     </text>
@@ -246,7 +245,6 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
                   <path d={arc.path} fill={arc.color} />
                   <path className="previousYear" d={arc.pathPrev} />
                   <g className="label-container">
-                    <rect className="labelCount" x="-35" y={marginLabel} width="70" height="16" />
                     <text x="0" y={marginLabel + 12} fill="black" textAnchor="middle">
                       {arc.valueTotal}
                     </text>
@@ -260,7 +258,6 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
                   <path d={arc.path} fill={arc.color} />
                   <path className="previousYear" d={arc.pathPrev} />
                   <g className="label-container">
-                    <rect className="labelCount" x="-35" y={marginLabel} width="70" height="16" />
                     <text x="0" y={marginLabel + 12} fill="black" textAnchor="middle">
                       {arc.valueTotal}
                     </text>

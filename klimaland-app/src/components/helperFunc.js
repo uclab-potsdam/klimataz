@@ -76,7 +76,9 @@ export function formatNumber(numberValue) {
   return Math.abs(Number(num)) >= 1.0e9
     ? (Math.abs(Number(num)) / 1.0e9).toFixed(1).replace('.', ',') + ' Mrd'
     : Math.abs(Number(num)) >= 1.0e6
-    ? (Math.abs(Number(num)) / 1.0e6).toFixed(1).replace('.', ',') + ' M'
+    ? (Math.abs(Number(num)) / 1.0e6).toFixed(1).replace('.', ',') + ' Mio'
+    : Math.abs(Number(num)) >= 1.0e3
+    ? (Math.abs(Number(num)) / 1.0e3).toFixed(1).replace('.', ',') + ' Tsd'
     : Math.abs(Number(num))
         .toString()
         .replace('.', ',') // replaces . with comma for decimal separator
