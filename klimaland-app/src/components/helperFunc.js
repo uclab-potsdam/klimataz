@@ -70,7 +70,7 @@ export function formatNumber(numberValue) {
   if (numberValue % 1 === 0) {
     num = numberValue;
   } else {
-    num = numberValue.toFixed(1); // max one decimal
+    num = Number(numberValue).toFixed(1); // max one decimal
   }
 
   return Math.abs(Number(num)) >= 1.0e9

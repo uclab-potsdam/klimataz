@@ -3,6 +3,7 @@ import { stack, stackOffsetSilhouette, stackOrderAscending, curveCatmullRom, are
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent, mean } from 'd3-array';
+import { formatNumber } from './../../helperFunc';
 
 const EnIndustry = ({
   currentData,
@@ -248,7 +249,7 @@ const EnIndustry = ({
         <div className="title">
           <h3>
             Der Energieverbrauch in der Industrie in {locationLabel[1]} basiert im Jahr{' '}
-            <span>{lastYear}</span> zu <span> {percRenewables} % </span>
+            <span>{lastYear}</span> zu <span> {formatNumber(percRenewables)} % </span>
             auf <span className="second-value"> erneuerbaren Energien</span>.{' '}
             {percGeheim > 70 && secretFootnote}
             {footnote}
