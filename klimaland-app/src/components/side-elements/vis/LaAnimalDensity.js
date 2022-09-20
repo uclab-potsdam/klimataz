@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import { max } from 'd3-array';
-import { scaleLinear, scaleOrdinal } from 'd3-scale';
+import { scaleLinear } from 'd3-scale';
 import { min, uniq } from 'lodash';
 import { formatNumber } from './../../helperFunc';
 
@@ -41,12 +41,16 @@ const LandDenisty = ({
   };
 
   // inital variables
-  const isMobile = dimensions.width <= 350 && window.mobileCheck(window);
-  const marginWidth = Math.round(dimensions.width / 8);
+  const isMobile = dimensions.width <= 450 && window.mobileCheck(window);
+  let marginWidth = Math.round(dimensions.width / 8);
   const marginHeight = Math.round(dimensions.height / 6);
   const marginBars = Math.round(dimensions.height / 50);
-  const barWidth = Math.round(dimensions.height / 5);
+  const barWidth = Math.round(dimensions.height / 4.5);
   let barElements = [];
+
+  if (isMobile) {
+    marginWidth = Math.round(dimensions.width / 10);
+  }
 
   if (currentData !== undefined) {
     const uniqueYears = uniq(currentData.data.map((d) => +d.year));
@@ -88,7 +92,7 @@ const LandDenisty = ({
       .range([marginWidth * 2, dimensions.width - marginWidth * 2]);
     const yScale = scaleLinear()
       .domain(domainY)
-      .range([0, (dimensions.height - marginHeight) / 2]);
+      .range([0, (dimensions.height - marginHeight) / 1.35]);
 
     // map all parameters for animal group
     const mapBar = (data, d) => {
@@ -132,8 +136,8 @@ const LandDenisty = ({
         <div className="caption">
           <p>
             Um die Anzahl verschiedener Tiere vergleichen zu können, gibt es die{' '}
-            <span>Großvieheinheit (GV)</span>. Sie entspricht in etwa 500 kg also 640 Legehennen
-            oder 10 Schafen oder 8 Schweinen oder einem Rind.
+            <span>Großvieheinheit (GV)</span>. Sie entspricht 500 kg also in etwa einem Rind, 8
+            Schweinen, 10 Schafen oder 640 Legehennen.
           </p>
         </div>
         <div className="legend">
@@ -246,15 +250,15 @@ const LandDenisty = ({
                     <g transform={`translate(${-barWidth / 2}, ${marginBars - 5})`}>
                       <rect
                         className="labelCount"
-                        x="0"
+                        x={barWidth - bar.valueTotal.length * 7}
                         y={min([-20, -bar.value])}
-                        width={barWidth / 2.5}
+                        width={bar.valueTotal.length * 7}
                         height="16"
                         fill="white"
                       />
                       <text
                         className="labelText"
-                        x={barWidth / 2.9}
+                        x={barWidth - 2}
                         y={min([-8, -bar.value + 12])}
                         textAnchor="end"
                       >
@@ -294,14 +298,14 @@ const LandDenisty = ({
                   >
                     <rect
                       className="labelCount"
-                      x="0"
+                      x={barWidth - bar.valueTotal.length * 7}
                       y={min([-5, bar.value - 30])}
-                      width={barWidth / 2.5}
+                      width={bar.valueTotal.length * 7}
                       height="16"
                     />
                     <text
                       className="labelText"
-                      x={barWidth / 2.9}
+                      x={barWidth - 2}
                       y={min([7, bar.value - 18])}
                       textAnchor="end"
                     >
