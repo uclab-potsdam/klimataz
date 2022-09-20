@@ -52,16 +52,22 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
   const renderSide = function (cardSide) {
     let rotation;
     if (cardSide === 'card-front') {
-      rotation = { transform: 'rotateY(' + activeSide * 180 - 180 + 'deg)' };
+      rotation = {
+        transform: 'rotateY(' + activeSide * 180 - 180 + 'deg)',
+        WebkitTransform: 'rotateY(' + activeSide * 180 - 180 + 'deg)',
+      };
     } else if (cardSide === 'card-back') {
-      rotation = { transform: 'rotateY(' + activeSide * 180 + 'deg)' };
+      rotation = {
+        transform: 'rotateY(' + activeSide * 180 + 'deg)',
+        WebkitTransform: 'rotateY(' + activeSide * 180 + 'deg)',
+      };
     } else {
       //card-preview
       console.log('card class for rotation is not set');
     }
 
     return (
-      <div className={cardSide}>
+      <div className={`${cardSide} side-${activeSide % 2 === 0 ? 'even' : 'odd'}`}>
         {sideWithProps(rotation)}
         <button
           className="button flip"
@@ -84,7 +90,10 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
   return (
     <div className={classProp}>
       {isThumbnail && (
-        <div className="card-preview" style={{ transform: previewRotation }}>
+        <div
+          className="card-preview"
+          style={{ transform: previewRotation, WebkitTransform: previewRotation }}
+        >
           {sideWithProps({})}
         </div>
       )}
@@ -93,6 +102,7 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
           className={`side-container ${flipped ? 'flip' : ''}`}
           style={{
             transform: 'rotateY(' + activeSide * 180 + 'deg)',
+            WebkitTransform: 'rotateY(' + activeSide * 180 + 'deg)',
           }}
           {...swipeHandler}
         >

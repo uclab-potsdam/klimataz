@@ -1,5 +1,22 @@
 @import "_config.scss";
 
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+        .card-active {
+            .side-container {
+                .card-front {&.side-odd {
+                    backface-visibility: visible;
+                    -webkit-backface-visibility: visible;
+                    transform: rotateY(0deg);
+                    -webkit-transform: rotateY(-180deg);
+                    // -moz-transform: rotateY(0deg);
+                }}
+            }
+
+        }
+    }
+}
+
 .carousel-container{
     position: absolute;
     width: 100%;
@@ -34,6 +51,7 @@
     &-active{
         // scaling to avoid overflow
         transform: translateY(0px);
+        -webkit-transform: translateY(0px);
         z-index: 1;
         opacity: 1;
         @include stacked-postcard;
@@ -41,8 +59,9 @@
 
     &-left{
         transform: rotate(-5deg) scale(1);
-        -webkit-backface-visibility: hidden;
+        -webkit-transform:rotate(-5deg) scale(1);
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         z-index: -2;
         @include stacked-postcard;
 
@@ -54,8 +73,9 @@
     
     &-right{
         transform: rotate(5deg) scale(1);
-        -webkit-backface-visibility: hidden;
+        -webkit-transform:rotate(5deg) scale(1);
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         z-index: -1;
         @include stacked-postcard;
 
@@ -67,8 +87,9 @@
 
     &-back{
         transform: rotate(-2deg)  translate(-2px, -5px) scale(1);
-        -webkit-backface-visibility: hidden;
+        -webkit-transform:rotate(-2deg)  translate(-2px, -5px) scale(1);
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         z-index: -3;
         @include stacked-postcard;
 
@@ -82,8 +103,8 @@
         //original ratio changed for styling
         width: $thumbnail-postcardwidth;
         height: calc($thumbnail-postcardwidth/1.5);
-        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         position: relative;
         z-index: 0;
 
@@ -216,6 +237,7 @@
         width: 100%;
         height: 100%;
         transform: translateX(40%);
+        -webkit-transform:translateX(40%);
         background-color: rgba($lighter-orange, 0.5);
         clip-path: circle(55%);    
     }
@@ -262,11 +284,14 @@
         margin: 0;
         display:flex; //for using flex stretch below
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         transform: rotateX(0deg);  //fix backface visibility firefox
+        -webkit-transform:rotateX(0deg);
     }
 
     & .card-back{
         transform: rotateY(180deg);
+        -webkit-transform:rotateY(180deg);
     }
 
     &-ordered{
@@ -428,22 +453,31 @@
                                         display: none;
                                     }
 
+
                                     h5 {
                                         // padding-left: 0.5rem;
                                         width: calc(100% - 0.5rem);
-                                        margin: 0px;
-                                        padding: 0.2rem 0rem 0.2rem 0.5rem;
+                                        margin: 0;
+                                        padding: 0.45rem 0rem 0.45rem 0.5rem;
                                         border-bottom: 1px solid $default-text;
                                     }
 
-                                    ul,
-                                    ol {
-                                        margin: 0.5rem 0rem 0rem 0rem;
+                                    ul {
+                                        margin: 0.0rem 0rem 0rem 0rem;
+                                        
+
+                                        
                                     }
 
                                     ol {
+                                        padding-top: 0.5rem;
                                         border-bottom: 1px solid $default-text;
                                         padding-bottom: 0.5rem;
+
+                                        &:hover {
+                                            background-color: $lighter-orange-full;
+                                            cursor: pointer;
+                                        }
                                     }
                                 }
                             }
@@ -491,16 +525,20 @@
         &.side-transition-enter-done {
             opacity: 1;
             transition: opacity 20ms;
+            -webkit-transition: opacity 20ms;
+
         }
 
         &.side-transition-exit {
             opacity: 1;
             transition: opacity 20ms;
+            -webkit-transition: opacity 20ms;
         }
 
         &.side-transition-exit-active {
             opacity: 0;
             transition: opacity 20ms;
+            -webkit-transition: opacity 20ms;
         }
     }
 }

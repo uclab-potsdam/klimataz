@@ -17,6 +17,7 @@ button {
         position: absolute;
         bottom: 1vh;
         right: 1vh;
+        z-index:4;
 
         img {
             width: 65%;
@@ -133,6 +134,7 @@ code {
         
         .button-container {
             position: absolute;
+            background-color: transparent;
             width: 100%;
             height: 100%;
             right: 0;
@@ -206,7 +208,9 @@ code {
                 height: 50px;
                 padding: 1rem;
                 transform: translate(-10px, 10px) rotate(-5deg);
+                -webkit-transform:translate(-10px, 10px) rotate(-5deg);
                 transition: 0.2s;
+                -webkit-transition: 0.2s;
                 box-shadow: 4px 4px 0px rgba($red, 0.44);
 
                 &:hover {
@@ -230,7 +234,9 @@ code {
                     width: $thumbnail-postcardwidth;
                     height: calc($thumbnail-postcardwidth/1.4);
                     transform: translate(0, calc($thumbnail-postcardwidth/-1.4)) rotate(10deg);
+                    -webkit-transform:translate(0, calc($thumbnail-postcardwidth/-1.4)) rotate(10deg);
                     transition: 0.2s;
+                    -webkit-transition: 0.2s;
 
                     .text {
                         opacity: 1; 
