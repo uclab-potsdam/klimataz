@@ -238,6 +238,8 @@ export default class CardCollection extends Component {
 
           const footnote = this.data[element.lk.value].footnote;
 
+          const localData = this.getLocalData(element, section);
+
           let localTextData = [];
           let similarAgs = [];
 
@@ -288,7 +290,7 @@ export default class CardCollection extends Component {
                 section={section}
                 sectionName={element.section.label}
                 windowSize={this.state.windowSize}
-                localData={this.data[element.lk.value]}
+                localData={localData}
                 textData={localTextData}
                 thirdKey={thirdKey}
                 similarAgs={similarAgs}
@@ -325,7 +327,7 @@ export default class CardCollection extends Component {
           const section = element.section.value;
 
           //get local data
-          let localData = this.data[element.lk.value];
+          let localData = this.getLocalData(element, section);
 
           //use BL data for not regional data for each indicator
           //TODO: show somewhere, that this data is not on Landkreis Level as indicated by regional:false
