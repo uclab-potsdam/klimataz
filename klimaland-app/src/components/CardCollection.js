@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import { Component } from 'react';
-import { mod, isInt } from './helperFunc.js';
+import { mod, isInt, setStateAsync } from './helperFunc.js';
 import { readString } from 'react-papaparse';
 
 //components
@@ -23,6 +23,15 @@ export default class CardCollection extends Component {
         width: 0,
         height: 0,
       },
+      textLoaded: false,
+    };
+
+    this.sectionFullName = {
+      La: { de: 'Landwirtschaft', en: 'agriculture' },
+      Mo: { de: 'Mobilität', en: 'mobility' },
+      Ge: { de: 'Gebäude', en: 'buildings' },
+      En: { de: 'Energie', en: 'energy' },
+      Ab: { de: 'Abfall', en: 'waste' },
     };
 
     // readString(DynamicText, papaConfig)
@@ -41,23 +50,25 @@ export default class CardCollection extends Component {
     this.updateData = this.updateData.bind(this);
   }
 
-  componentWillMount() {
-    readString(DynamicText, {
-      header: true,
-      download: true,
-      skipEmptyLines: true,
-      // Here this is also available. So we can call our custom class method
-      complete: (results, file) => {
-        this.updateData(results);
-      },
-    });
-  }
+  // componentWillMount() {
+  //   readString(DynamicText, {
+  //     header: true,
+  //     download: true,
+  //     skipEmptyLines: true,
+  //     // Here this is also available. So we can call our custom class method
+  //     complete: (results, file) => {
+  //       this.updateData(results);
+  //     },
+  //   });
+  // }
 
-  updateData(result) {
+  async updateData(result) {
     // console.log(result)
     const data = result.data;
     // Here this is available and we can call this.setState (since it's binded in the constructor)
-    this.setState({ textData: data }); // or shorter ES syntax: this.setState({ data });
+    await setStateAsync(this, { textData: data, textLoaded: true }).then(() => {
+      this.generateCards();
+    }); // or shorter ES syntax: this.setState({ data });
   }
 
   /**
@@ -195,6 +206,8 @@ export default class CardCollection extends Component {
     let list;
     let classProp;
 
+    if (!this.state.textLoaded) return;
+
     //if in postcardview: use css class for carousel
     if (this.props.postcardView) {
       //for each item in cardSelection
@@ -225,7 +238,39 @@ export default class CardCollection extends Component {
 
           const footnote = this.data[element.lk.value].footnote;
 
-          let localData = this.getLocalData(element, section);
+          let localTextData = [];
+          let similarAgs = [];
+
+          //get to get upper, middle or lower third (ranking) from text data
+          const thirdKey = this.sectionFullName[section].en + '_third';
+
+          if (this.state.textData !== undefined) {
+            //get dynamic text data for current ags
+            localTextData = this.state.textData.filter((d) => {
+              return +d.AGS === element.lk.value;
+            });
+
+            // pulling similar lks (within the bl)
+            similarAgs = this.state.textData
+              .filter((d) => {
+                return element.lk.value !== 0
+                  ? d[thirdKey] === localTextData[0][thirdKey] && +d.AGS !== element.lk.value
+                  : +d.AGS !== element.lk.value;
+              })
+              .map(function (d) {
+                return {
+                  value: +d.AGS,
+                  label: d.Name,
+                };
+              });
+
+            // shuffle the array
+            const shuffled = similarAgs.sort(() => 0.5 - Math.random());
+            // get 10 random location
+            const randomSample = shuffled.slice(0, 10);
+
+            similarAgs = randomSample;
+          }
 
           return (
             <Card
@@ -242,9 +287,12 @@ export default class CardCollection extends Component {
                 isThumbnail={false}
                 isTopCard={isTopCard} //this is true for the postcard on top
                 section={section}
+                sectionName={element.section.label}
                 windowSize={this.state.windowSize}
                 localData={this.data[element.lk.value]}
-                textData={this.state.textData}
+                textData={localTextData}
+                thirdKey={thirdKey}
+                similarAgs={similarAgs}
                 layoutControls={this.layoutControls[section]}
                 handleClickOnList={this.addCardToSelection}
                 footnote={footnote}
@@ -293,6 +341,14 @@ export default class CardCollection extends Component {
           }
           this.checkIndicatorData(element);
 
+          //get dynamic text data for current ags
+          let localTextData = this.state.textData.filter((d) => {
+            return +d.AGS === element.lk.value;
+          });
+
+          //get to get upper, middle or lower third (ranking) from text data
+          const thirdKey = this.sectionFullName[section].en + '_third';
+
           return (
             <Card
               key={i}
@@ -305,9 +361,10 @@ export default class CardCollection extends Component {
                 section={section}
                 windowSize={this.state.windowSize}
                 isThumbnail={true}
-                textData={this.state.textData}
+                textData={localTextData}
                 mode={this.props.mode}
                 localData={localData}
+                thirdKey={thirdKey}
                 clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview
                 layoutControls={this.layoutControls[section]}
               />
@@ -326,10 +383,22 @@ export default class CardCollection extends Component {
   /**
    * React LifeCyle Hook
    * update window size on mount
+   * it is not recommended to use componentWillMount() anymore, which is why we read the dynamic text data here
    */
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
+
+    //read dynamic text file
+    readString(DynamicText, {
+      header: true,
+      download: true,
+      skipEmptyLines: true,
+      // Here this is also available. So we can call our custom class method
+      complete: (results, file) => {
+        this.updateData(results);
+      },
+    });
   }
 
   /**
