@@ -10,6 +10,8 @@ const Text = ({ lk, section, data, sectionFullName }) => {
     const activeCardText = agsText.map((text, t) => {
         const thirdKey = sectionFullName[section].en + '_third'
         const textKey = sectionFullName[section].en + '_postcard'
+
+        console.log(thirdKey, textKey)
         return {
             gerics: text.gerics_text,
             ranking: text[thirdKey],
