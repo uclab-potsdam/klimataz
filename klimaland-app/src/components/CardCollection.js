@@ -9,6 +9,7 @@ import Side from './Side';
 
 //data (same for all cards, so imported here)
 import Data from '../data/data.json';
+//import Data from '../data/data.json';
 import LayoutControls from '../data/layout-controls-inprogress.json';
 import DynamicText from '../data/final_postcard_texts.csv';
 
