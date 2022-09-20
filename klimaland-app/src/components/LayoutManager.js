@@ -324,11 +324,11 @@ export default class LayoutManager extends Component {
         return list;
       })
       .then((list) => {
-        console.log('set state async', this.state.mode);
+        // console.log('set state async', this.state.mode);
         setStateAsync(this, { cardSelection: list });
       })
       .then(() => {
-        console.log('set state done', this.state.mode);
+        // console.log('set state done', this.state.mode);
         if (this.state.mode === 'singlePCview') {
           this.switchToPostcardView(
             this.state.landkreisSelection[0],
