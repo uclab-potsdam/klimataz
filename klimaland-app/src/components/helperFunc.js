@@ -59,3 +59,28 @@ export function percentage(partialValue, totalValue) {
 export function firstToUppercase(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+/**
+ * Shortens and formats numbers
+ * @param {*} numberValue number as input
+ * @returns returns number as string formatted from 1400000 to 1,4 M and adds thousand separator and comma as decimal separator
+ */
+export function formatNumber(numberValue) {
+  let num;
+  if (numberValue % 1 === 0) {
+    num = numberValue;
+  } else {
+    num = Number(numberValue).toFixed(1); // max one decimal
+  }
+
+  return Math.abs(Number(num)) >= 1.0e9
+    ? (Math.abs(Number(num)) / 1.0e9).toFixed(1).replace('.', ',') + ' Mrd'
+    : Math.abs(Number(num)) >= 1.0e6
+    ? (Math.abs(Number(num)) / 1.0e6).toFixed(1).replace('.', ',') + ' Mio'
+    : Math.abs(Number(num)) >= 1.0e3
+    ? (Math.abs(Number(num)) / 1.0e3).toFixed(1).replace('.', ',') + ' Tsd'
+    : Math.abs(Number(num))
+        .toString()
+        .replace('.', ',') // replaces . with comma for decimal separator
+        .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'); // adds dot . after 3 digits -> 1.000
+}

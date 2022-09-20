@@ -15,7 +15,7 @@ const Buildings = ({
   // getting sizes of container for maps
   const targetRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [currentId, setCurrentId] = useState('');
+  const [currentId, setCurrentId] = useState('Renewables');
 
   useLayoutEffect(() => {
     if (targetRef.current) {
@@ -49,22 +49,27 @@ const Buildings = ({
   let yAxisValues = [];
   let yAxis = [];
   let numberOfBuildings = 0;
+  let selectedEnergy = 0;
   const isMobile = dimensions.width <= 350 && window.mobileCheck(window);
   let scaleCategory = function () {
     return undefined;
   };
   const marginHeight = Math.ceil(dimensions.width / 10);
   const marginWidth = Math.ceil(dimensions.height / 10);
-  const energyTypesOrder = [
-    'Fossils',
-    'Andere fossile Energie',
-    'Gas',
-    'Renewables',
-    'Umweltthermie',
-    'Andere erneuerbare Energien',
-    'Strom',
-  ];
-  const colorArray = ['#A80D35', '#FF7B7B', '#F6A219', '#3762FB', '#2A4D9C', '#5F88C6', '#5DCCD3'];
+  
+  //clean labels to create classes
+  const cleanKlassString = function (label) {
+    let cleanedKlassString = label
+    if (label.includes('/') && !label.includes(' ')) {
+      cleanedKlassString = cleanedKlassString.split('/')[1]
+    } else if (label.includes('(')) {
+      cleanedKlassString = cleanedKlassString.split(' ')[0]
+    } else if (label.includes(' ') && !label.includes('(')) {
+      cleanedKlassString = cleanedKlassString.split(' ')[1]
+    }
+
+    return cleanedKlassString
+  }
 
   //handle click on legend to change label
   let changeId = function (id) {
@@ -75,15 +80,17 @@ const Buildings = ({
 
   if (currentData !== undefined) {
     // arrays
-    currentData.data.forEach((d) => (d.column = firstToUppercase(d.column)));
+    const energyData = currentData.data.filter((d) => { return d.column !== 'Number_buil' })
+    energyData.forEach((d) => (d.column = firstToUppercase(d.column)));
 
-    const sortedData = [...currentData.data].sort(
-      (a, b) => energyTypesOrder.indexOf(a.column) - energyTypesOrder.indexOf(b.column)
-    );
-    const uniqueYears = uniq(currentData.data.map((d) => +d.year));
-    const allBuildings = currentData.data.map((d) => d.value);
+    const uniqueYears = uniq(energyData.map((d) => +d.year));
+    const allBuildings = energyData.map((d) => d.value);
+    const existingEnergies = energyData.filter((d) => d.value !== null);
+    const existingEnergiesLY = existingEnergies.filter((d) => +d.year === max(uniqueYears))
+    selectedEnergy = existingEnergiesLY.filter((d) => d.column === currentId)
 
-    uniqueEnergyTypes = uniq(sortedData.map((d) => d.column));
+    uniqueEnergyTypes = uniq(existingEnergies.map((d) => d.column)).sort(
+      (a, b) => a.localeCompare(b));
     numberOfBuildings = Math.round(mean(allBuildings));
 
     // Selects higher element in dataset
@@ -91,51 +98,32 @@ const Buildings = ({
       setCurrentId(uniqueEnergyTypes[0]);
     }
 
-    // constructors and scales
-    let totalValue = 0;
-    const yearlyTotal = uniqueYears.map((year) => {
-      let yearValue = 0;
-      currentData.data.forEach((d) => {
-        if (+d.year === year) {
-          totalValue = totalValue + d.value;
-          yearValue = yearValue + d.value;
-        }
-      });
-
-      currentData.data.forEach((d) => {
-        if (+d.year === year) {
-          d.perc = percentage(d.value, yearValue);
-        }
-      });
-      return yearValue;
-    });
-
     // calc variation on domain based on highest value in dataset
-    const maxValue = max(currentData.data.map((d) => d.perc));
+    const maxValue = max(energyData.map((d) => d.value));
     const maxDomainVal = maxValue >= 45 ? 100 : 50;
     const domainY = [0, maxDomainVal];
-    const domainX = extent(currentData.data.map((d) => +d.year));
+    const domainX = extent(energyData.map((d) => +d.year));
     const xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth, dimensions.width - marginWidth]);
     const yScale = scaleLinear()
       .domain(domainY)
       .range([dimensions.height - marginHeight, marginHeight]);
-    scaleCategory = scaleOrdinal().domain(uniqueEnergyTypes).range(colorArray);
     const createLine = line()
       .x((d) => xScale(+d.year))
-      .y((d) => yScale(d.perc));
+      .y((d) => yScale(d.value));
 
     yAxisValues = yScale.ticks(2);
     yAxis = yAxisValues.map((d) => yScale(d));
 
     // iterate over array and creates line for each energy type
     lineElements = uniqueEnergyTypes.map((type, t) => {
-      const currentTypeData = currentData.data.filter((d) => d.column === type);
+      const currentTypeData = existingEnergies.filter((d) => d.column === type);
+      let typeKlass = type.toLowerCase()
 
       return {
         id: type,
-        stroke: scaleCategory(type),
+        klassName: cleanKlassString(typeKlass),
         path: createLine(currentTypeData),
       };
     });
@@ -144,12 +132,13 @@ const Buildings = ({
     axisElements = uniqueYears.map((axis, a) => {
       const energyMarkers = [];
       let taPosition = 'start';
-      const currentYearData = currentData.data.filter((d) => +d.year === axis);
+      const currentYearData = existingEnergies.filter((d) => +d.year === axis);
 
       currentYearData.forEach((d) => {
         energyMarkers.push({
-          y: yScale(d.perc),
-          label: `${d.perc.toFixed(1)} %`,
+          y: yScale(d.value),
+          klassName: cleanKlassString(d.column.toLowerCase()),
+          label: `${d.value.toFixed(1)} %`,
           id: d.column,
         });
       });
@@ -176,11 +165,12 @@ const Buildings = ({
         <div className="title">
           <h3>Wie wird in Neubauten geheizt?</h3>
         </div>
-        <div className="caption">
+        <div className={`${cleanKlassString(currentId.toLowerCase())} caption`}>
           <p>
             Durchschnittlich werden in {locationLabel} pro Jahr <span>{numberOfBuildings}</span>{' '}
-            neue Wohnungen oder Häuser fertiggestellt. Zu xx% wird davon mit{' '}
-            <span>{firstToUppercase(currentId)}</span> geheizt.
+            neue Wohnungen oder Häuser fertiggestellt. 
+            Zu <span className="energy-number">{selectedEnergy[0].value.toFixed(1)}%</span> wird davon mit{' '}
+            <span className="energy-number">{firstToUppercase(currentId)}</span> geheizt.
           </p>
         </div>
         <div className="legend">
@@ -190,10 +180,9 @@ const Buildings = ({
                 return (
                   <div key={t} onClick={() => changeId(type)} className="legend-element">
                     <div
-                      className="element-color"
-                      style={{ backgroundColor: scaleCategory(type) }}
+                      className={`element-color ${cleanKlassString(type.toLowerCase())}`}
                     />
-                    <p x="15" y="10">
+                    <p x="15" y="10" className={type === currentId ? 'selected' : ''}>
                       {firstToUppercase(type)}
                     </p>
                   </div>
@@ -227,8 +216,8 @@ const Buildings = ({
           <g className="lines">
             {lineElements.map((line, l) => {
               return (
-                <g key={l} className={`${line.id} line`}>
-                  <path d={line.path} stroke={line.stroke} fill="none" />
+                <g key={l} className={`${line.klassName} ${line.type} line`}>
+                  <path d={line.path} fill="none" />
                 </g>
               );
             })}
@@ -246,9 +235,9 @@ const Buildings = ({
                       <g
                         key={e}
                         transform={`translate(0, ${en.y})`}
-                        className={`year-marker ${en.id === currentId ? 'default' : 'optional'}`}
+                        className={`year-marker ${en.klassName} ${en.id === currentId ? 'default' : 'optional'}`}
                       >
-                        <circle cx="0" cy="0" r="3" fill={scaleCategory(en.id)} />
+                        <circle cx="0" cy="0" r="3" />
                         <g transform="translate(5, 0)">
                           <rect
                             className="marker-label"
@@ -257,7 +246,6 @@ const Buildings = ({
                             width="45"
                             height="20"
                             fill="white"
-                            stroke={scaleCategory(en.id)}
                             rx="2"
                           />
                           <text
