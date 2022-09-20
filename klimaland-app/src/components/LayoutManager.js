@@ -59,10 +59,14 @@ export default class LayoutManager extends Component {
   switchToPostcardView(lk, section) {
     this.setState({ postcardView: true });
 
+    console.log('switch to postcard view', lk, section);
+
     //get card id of clicked card
     let chosenCard = this.state.cardSelection.findIndex(
       (x) => x.lk === lk && x.section.value === section
     );
+
+    console.log(chosenCard);
 
     //set active card to this card id
     this.setState({ activeCard: chosenCard });
@@ -102,6 +106,8 @@ export default class LayoutManager extends Component {
     if (!this.state.postcardView) return;
 
     let newActiveCard = 0;
+
+    console.log(this.state.cardSelection);
 
     //if going to the next card
     if (goFurther) {
@@ -183,10 +189,9 @@ export default class LayoutManager extends Component {
       this.state.landkreisSelection.length === 1 &&
       this.props.editorspick[0].view.value === 3
     ) {
-      this.switchToPostcardView(this.state.landkreisSelection, this.state.sectionSelection);
       mode = 'singlePCview';
     } else if (
-      this.state.landkreisSelection.length === 1 ||
+      (this.state.landkreisSelection.length === 1 && this.state.sectionSelection.length > 1) ||
       this.state.landkreisSelection.length === undefined
     ) {
       mode = 'lk';
@@ -253,76 +258,102 @@ export default class LayoutManager extends Component {
    * always calles "updateMode" first and adds cards to the cardSelection List depending on the mode
    */
   async updateCardSelection() {
-    await this.updateMode().then(() => {
-      let list = [];
+    await this.updateMode()
+      .then(() => {
+        let list = [];
 
-      //shuffle: use shuffle selection
-      if (this.state.mode === 'shuffle') {
-        list = this.state.shuffleSelection;
-      }
+        //shuffle: use shuffle selection
+        if (this.state.mode === 'shuffle') {
+          list = this.state.shuffleSelection;
+        }
 
-      //lk: get all five sections for this landkreis
-      else if (this.state.mode === 'lk') {
-        list = [];
-        let selectedLK;
-        // set default value for landkreisSelection if nothing is selected
-        if (this.state.landkreisSelection[0] === undefined) {
-          selectedLK = { value: '0', label: 'Deutschland' };
-        } else {
+        //lk: get all five sections for this landkreis
+        else if (this.state.mode === 'lk') {
+          console.log('hallo lk');
+          list = [];
+          let selectedLK;
+          // set default value for landkreisSelection if nothing is selected
+          if (this.state.landkreisSelection[0] === undefined) {
+            selectedLK = { value: '0', label: 'Deutschland' };
+          } else {
+            selectedLK = {
+              value: this.state.landkreisSelection[0].value,
+              label: this.state.landkreisSelection[0].label,
+            };
+          } //set selected value for landkreisSelection
+
+          //add one card per section
+          this.props.sectionsData.forEach((element) => {
+            list.push({ lk: selectedLK, section: { value: element.value, label: element.label } });
+          });
+        }
+
+        //comparison: get selected section for each landkreise
+        else if (this.state.mode === 'comparison') {
+          let selectedSection;
+
+          // set default value for section if undefined
+          if (this.state.sectionSelection === undefined) {
+            selectedSection = 'En';
+          }
+          //set selected value for section
+          else {
+            selectedSection = this.state.sectionSelection;
+          }
+
+          //add one card per landkreisSelection
+          this.state.landkreisSelection.forEach((element) => {
+            list.push({
+              lk: { value: element.value, label: element.label },
+              section: selectedSection,
+            });
+          });
+        }
+
+        //single postcard view
+        else if (this.state.mode === 'singlePCview') {
+          let selectedLK;
           selectedLK = {
             value: this.state.landkreisSelection[0].value,
             label: this.state.landkreisSelection[0].label,
           };
-        } //set selected value for landkreisSelection
 
-        //add one card per section
-        this.props.sectionsData.forEach((element) => {
-          list.push({ lk: selectedLK, section: { value: element.value, label: element.label } });
-        });
-      }
-
-      //comparison: get selected section for each landkreise
-      else if (this.state.mode === 'comparison') {
-        let selectedSection;
-
-        // set default value for section if undefined
-        if (this.state.sectionSelection === undefined) {
-          selectedSection = 'En';
-        }
-        //set selected value for section
-        else {
+          let selectedSection;
           selectedSection = this.state.sectionSelection;
+
+          console.log(this.state.landkreisSelection);
+
+          list.push({
+            lk: selectedLK,
+            section: selectedSection,
+          });
+
+          // //add one card per landkreisSelection
+          // this.state.landkreisSelection.forEach((element) => {
+          //   list.push({
+          //     lk: { value: element.value, label: element.label },
+          //     section: selectedSection,
+          //   });
+          // });
+          //this.handleSwitchNext();
         }
-
-        //add one card per landkreisSelection
-        this.state.landkreisSelection.forEach((element) => {
-          list.push({
-            lk: { value: element.value, label: element.label },
-            section: selectedSection,
-          });
-        });
-      } else if (this.state.mode === 'singlePCview') {
-        let selectedLK;
-        selectedLK = {
-          value: this.state.landkreisSelection[0].value,
-          label: this.state.landkreisSelection[0].label,
-        };
-
-        let selectedSection;
-        selectedSection = this.state.sectionSelection;
-
-        //add one card per landkreisSelection
-        this.state.landkreisSelection.forEach((element) => {
-          list.push({
-            lk: { value: element.value, label: element.label },
-            section: selectedSection,
-          });
-        });
-        this.handleSwitchNext();
-      }
-
-      this.setState({ cardSelection: list });
-    });
+        console.log('vorher', list);
+        return list;
+      })
+      .then((list) => {
+        console.log('set state async');
+        setStateAsync(this, { cardSelection: list });
+      })
+      .then(() => {
+        console.log('set state done', this.state.mode);
+        if (this.state.mode === 'singlePCview') {
+          console.log(this.state.cardSelection);
+          this.switchToPostcardView(
+            this.state.landkreisSelection[0],
+            this.state.sectionSelection.value
+          );
+        }
+      });
   }
 
   /**
@@ -342,12 +373,12 @@ export default class LayoutManager extends Component {
   render() {
     return (
       <div className="main-container">
-        {(this.state.mode === 'lk' && this.state.postcardView === false)
-          && <div className="word-art-title">
+        {this.state.mode === 'lk' && this.state.postcardView === false && (
+          <div className="word-art-title">
             <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
             <h2 className="wordart">{this.state.landkreisSelection[0].label}</h2>
           </div>
-        }
+        )}
         <SelectionButtons
           mode={this.state.mode}
           postcardView={this.state.postcardView}
