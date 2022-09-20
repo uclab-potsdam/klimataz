@@ -74,12 +74,12 @@ p, text {
 }
 
 //reusable code
-
 @mixin title{
     font-family: "Chivo";
 }
 
 @mixin wordart-style-setup {
+        pointer-events: none;
         z-index: 1;
         .gruss-thumb {
             font-size: 0.9rem;
