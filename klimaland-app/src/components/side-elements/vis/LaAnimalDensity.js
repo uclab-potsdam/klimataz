@@ -2,6 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { max } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { min, uniq } from 'lodash';
+import { formatNumber } from './../../helperFunc';
 
 const LandDenisty = ({
   currentData,
@@ -89,11 +90,6 @@ const LandDenisty = ({
       .domain(domainY)
       .range([0, (dimensions.height - marginHeight) / 2]);
 
-    // adds . as thousand separator
-    const formatNumber = (num) => {
-      return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-    };
-
     // map all parameters for animal group
     const mapBar = (data, d) => {
       const currentBar = {};
@@ -135,13 +131,16 @@ const LandDenisty = ({
         </div>
         <div className="caption">
           <p>
-            Um die Anzahl verschiedener Tiere vergleichen zu können, gibt es die{' '}
-            <span>Großvieheinheit (GV)</span>. Sie entspricht in etwa 500kg also 640 Legehennen oder
-            10 Schafen oder 8 Schweinen oder einem Rind.
-          </p>
+          Um die Anzahl verschiedener Tiere vergleichen zu können, gibt es die{' '}
+          <span>Großvieheinheit (GV)</span>. Sie entspricht in etwa 500 kg also 640 Legehennen oder
+          10 Schafen oder 8 Schweinen oder einem Rind.
+          {/* </p> */}
         </div>
         <div className="legend">
           <svg height="180px">
+            <text x="10" y="0">
+              Anzahl in GV
+            </text>
             <g className="legend-item uber-label">
               <path d="M17 0L17 17L-1.05984e-07 17L-7.62939e-06 6.60564e-07L17 0Z" fill="#E14552" />
               <path
@@ -250,7 +249,7 @@ const LandDenisty = ({
                         y={min([-8, -bar.value + 12])}
                         textAnchor="start"
                       >
-                        {bar.valueTotal} GV
+                        {bar.valueTotal}
                       </text>
                     </g>
                     <text x="0" y="25" textAnchor="middle" className="year-label">
@@ -297,7 +296,7 @@ const LandDenisty = ({
                       y={min([7, bar.value - 18])}
                       textAnchor="start"
                     >
-                      {bar.valueTotal} GV
+                      {bar.valueTotal}
                     </text>
                   </g>
                 </g>
