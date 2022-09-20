@@ -4,6 +4,7 @@ import { uniq } from 'lodash';
 import { max, extent, mean, sum } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { line } from 'd3-shape';
+import { formatNumber } from './../../helperFunc';
 
 const Buildings = ({
   currentData,
@@ -59,20 +60,20 @@ const Buildings = ({
 
   //clean labels to create classes
   const cleanKlassString = function (label) {
-    let cleanedKlassString = label
+    let cleanedKlassString = label;
 
     if (label !== ' ') {
       if (label.includes('/') && !label.includes(' ')) {
-        cleanedKlassString = cleanedKlassString.split('/')[1].toLowerCase()
+        cleanedKlassString = cleanedKlassString.split('/')[1].toLowerCase();
       } else if (label.includes('(')) {
-        cleanedKlassString = cleanedKlassString.split(' ')[0].toLowerCase()
+        cleanedKlassString = cleanedKlassString.split(' ')[0].toLowerCase();
       } else if (label.includes(' ') && !label.includes('(')) {
-        cleanedKlassString = cleanedKlassString.split(' ')[1].toLowerCase()
+        cleanedKlassString = cleanedKlassString.split(' ')[1].toLowerCase();
       }
     }
 
-    return cleanedKlassString
-  }
+    return cleanedKlassString;
+  };
 
   //handle click on legend to change label
   let changeId = function (id) {
@@ -86,14 +87,12 @@ const Buildings = ({
 
     //here filter out aggregated categories
     const energyData = currentData.data.filter((d) => {
-      return d.column !== 'Number_buil' &&
-        d.column !== 'Fossils' &&
-        d.column !== 'Renewables'
-    })
+      return d.column !== 'Number_buil' && d.column !== 'Fossils' && d.column !== 'Renewables';
+    });
 
     const numberOfBuildingsObj = currentData.data.filter((d) => {
-      return d.column === 'Number_buil'
-    })
+      return d.column === 'Number_buil';
+    });
 
     energyData.forEach((d) => (d.column = firstToUppercase(d.column)));
 
@@ -101,15 +100,17 @@ const Buildings = ({
     const existingEnergies = energyData.filter((d) => d.value !== null);
 
     // calc predefined label
-    const existingEnergiesLY = existingEnergies.filter((d) => +d.year === max(uniqueYears))
-    const maxValueForLY = max(existingEnergiesLY.map((d) => d.value))
-    const selectedEnergyObj = currentId === '' ?
-      existingEnergiesLY.filter((d) => d.value === maxValueForLY) :
-      existingEnergiesLY.filter((d) => d.column === currentId)
+    const existingEnergiesLY = existingEnergies.filter((d) => +d.year === max(uniqueYears));
+    const maxValueForLY = max(existingEnergiesLY.map((d) => d.value));
+    const selectedEnergyObj =
+      currentId === ''
+        ? existingEnergiesLY.filter((d) => d.value === maxValueForLY)
+        : existingEnergiesLY.filter((d) => d.column === currentId);
 
-    selectedEnergy = selectedEnergyObj[0].value.toFixed(1)
-    uniqueEnergyTypes = uniq(existingEnergies.map((d) => d.column)).sort(
-      (a, b) => a.localeCompare(b));
+    selectedEnergy = selectedEnergyObj[0].value.toFixed(1);
+    uniqueEnergyTypes = uniq(existingEnergies.map((d) => d.column)).sort((a, b) =>
+      a.localeCompare(b)
+    );
     numberOfBuildings = numberOfBuildingsObj[0].value;
 
     // // Selects higher element in dataset
@@ -138,7 +139,7 @@ const Buildings = ({
     // iterate over array and creates line for each energy type
     lineElements = uniqueEnergyTypes.map((type, t) => {
       const currentTypeData = existingEnergies.filter((d) => d.column === type);
-      let typeKlass = type.toLowerCase()
+      let typeKlass = type.toLowerCase();
 
       return {
         id: type,
@@ -157,7 +158,7 @@ const Buildings = ({
         energyMarkers.push({
           y: yScale(d.value),
           klassName: cleanKlassString(d.column.toLowerCase()),
-          label: `${d.value.toFixed(1)} %`,
+          label: `${d.value.toFixed(0)} %`,
           id: d.column,
         });
       });
@@ -186,9 +187,10 @@ const Buildings = ({
         </div>
         <div className={`${cleanKlassString(currentId).toLowerCase()} caption`}>
           <p>
-            Durchschnittlich werden in {locationLabel} pro Jahr <span>{numberOfBuildings}</span>{' '}
-            neue Wohnungen oder Häuser fertiggestellt.
-            Zu <span className="energy-number">{selectedEnergy}%</span> wird davon mit{' '}
+            Durchschnittlich werden in {locationLabel} pro Jahr{' '}
+            <span>{formatNumber(numberOfBuildings)}</span> neue Wohnungen oder Häuser
+            fertiggestellt. Zu{' '}
+            <span className="energy-number">{formatNumber(selectedEnergy)} %</span> wird davon mit{' '}
             <span className="energy-number">{firstToUppercase(currentId)}</span> geheizt.
           </p>
         </div>
@@ -198,9 +200,7 @@ const Buildings = ({
               {uniqueEnergyTypes.map((type, t) => {
                 return (
                   <div key={t} onClick={() => changeId(type)} className="legend-element">
-                    <div
-                      className={`element-color ${cleanKlassString(type.toLowerCase())}`}
-                    />
+                    <div className={`element-color ${cleanKlassString(type.toLowerCase())}`} />
                     <p x="15" y="10" className={type === currentId ? 'selected' : ''}>
                       {firstToUppercase(type)}
                     </p>
@@ -254,7 +254,9 @@ const Buildings = ({
                       <g
                         key={e}
                         transform={`translate(0, ${en.y})`}
-                        className={`year-marker ${en.klassName} ${en.id === currentId ? 'default' : 'optional'}`}
+                        className={`year-marker ${en.klassName} ${
+                          en.id === currentId ? 'default' : 'optional'
+                        }`}
                       >
                         <circle cx="0" cy="0" r="3" />
                         <g transform="translate(5, 0)">
@@ -262,17 +264,17 @@ const Buildings = ({
                             className="marker-label"
                             x={a === axis.length - 1 ? -40 : -2}
                             y="-25"
-                            width="45"
+                            width="35"
                             height="20"
                             fill="white"
                             rx="2"
                           />
                           <text
                             className="marker-label"
-                            x="2"
+                            x={a === axis.length - 1 ? -36 : 2}
                             y="-10"
                             fill={scaleCategory(en.id)}
-                            textAnchor={`${a === axis.length - 1 ? 'end' : 'start'}`}
+                            textAnchor="start"
                           >
                             {en.label}
                           </text>
