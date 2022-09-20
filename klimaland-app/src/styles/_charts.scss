@@ -38,6 +38,7 @@
 
                 .chart {
                     transform: skew(-17deg, 0deg);
+                    -webkit-transform:skew(-17deg, 0deg);
 
                     rect {
                         rx: 1px;
@@ -55,12 +56,15 @@
 
                     &.active-chart {
                         transform: translate(-20px, -10px) skew(-17deg, 0deg);
+                        -webkit-transform:translate(-20px, -10px) skew(-17deg, 0deg);
                     }
 
                     &.thumbnail-chart {
                         transform: translate(-50px, 0px) skew(-17deg, 0deg);
+                        -webkit-transform:translate(-50px, 0px) skew(-17deg, 0deg);
                         .cars-container {
                             transform: scale(0.9);
+                            -webkit-transform:scale(0.9);
                         }
                     }
                 }
@@ -141,15 +145,18 @@
                             pointer-events: none;
                             overflow: visible;
                             transform: translateY(-10px);
+                            -webkit-transform:translateY(-10px);
 
                             &.invisible {
                                 opacity: 0;
                                 transition: opacity 200ms;
+                                -webkit-transition: opacity 200ms;
                             }
 
                             &.visible {
                                 opacity: 1;
                                 transition: opacity 200ms;
+                                -webkit-transition: opacity 200ms;
                             }
 
                             .Str-stream {
@@ -230,6 +237,7 @@
                             .Ges-stream {
                                 width: 120px;
                                 transform: translateX(-100px);
+                                -webkit-transform:translateX(-100px);
                             }
 
                             .Wär-stream {
@@ -321,11 +329,13 @@
 
                     rect {
                         transition: 0.5s;
+                        -webkit-transition: 0.5s;
                         transition-timing-function: ease;
                     }
 
                     .pie, .legend {
                         transition: 0.5s;
+                        -webkit-transition: 0.5s;
                         transition-timing-function: ease;
                         opacity: 0;
 
@@ -768,6 +778,7 @@
                 &.is-thumbnail {
 
                     .visualization-container {
+                        -webkit-transform:translateX(-30%);
                         transform: translateX(-30%);
                         .chart {
                             width: 100%;
@@ -884,6 +895,7 @@
                         width: 100%;
                         scale: 65%;
                         transform: translateY(-10%) translateX(-30%);
+                        -webkit-transform:translateY(-10%) translateX(-30%);
     
                         .axis, text, rect, .legend {
                             display: none;
@@ -984,6 +996,7 @@
                 position: absolute;
                 top: 50%;
                 transform: translateY(-45%);
+                -webkit-transform:translateY(-45%);
             }
         }
     }
@@ -994,8 +1007,8 @@
     stroke: $default-text;
     stroke-width: 0.5;
     fill: white;
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 
     &.visible {
         fill: $lighter-orange;
