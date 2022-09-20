@@ -1,5 +1,5 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { stack, stackOffsetSilhouette, stackOrderAscending, curveCatmullRom, area } from 'd3-shape';
+import { stack, stackOffsetSilhouette, stackOrderAscending, curveMonotoneX, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent, mean } from 'd3-array';
@@ -51,8 +51,8 @@ const EnIndustry = ({
   };
   let lastYear = '?';
   let percRenewables = 0;
-  let percGeheim = 0;
   let secretFootnote = 'In ' + locationLabel[0] + ' ist dieser Vebrauch geheim. ';
+  let showBundeslandForLK = false;
 
   let switchHighlightedStream = function (id) {
     if (currentData !== undefined) {
@@ -70,10 +70,7 @@ const EnIndustry = ({
     });
     percRenewables = lastRenValue[0].value !== null ? lastRenValue[0].value.toFixed(1) : 0;
 
-    const lastGeheimValue = currentData.data.filter((d) => {
-      return d.column === 'Anteil_Geheim' && d.year === '2020';
-    });
-    percGeheim = lastGeheimValue[0].value !== null ? lastGeheimValue[0].value.toFixed(1) : 0;
+    showBundeslandForLK = !currentData.regional;
 
     // get all energy sources and filter out "insgesamt" and "Anteil_Erneuerbar"
     const uniqueEnergySourceAll = uniq(currentData.data.map((d) => d.column));
@@ -116,7 +113,7 @@ const EnIndustry = ({
       .x((d) => xScale(d.data.year))
       .y0((d) => yScale(d[0]))
       .y1((d) => yScale(d[1]))
-      .curve(curveCatmullRom.alpha(0.5));
+      .curve(curveMonotoneX);
 
     // prepare data for stacking
     const stackData = [];
@@ -248,10 +245,11 @@ const EnIndustry = ({
       <div className="description">
         <div className="title">
           <h3>
-            Der Energieverbrauch in der Industrie in {locationLabel[1]} basiert im Jahr{' '}
-            <span>{lastYear}</span> zu <span> {formatNumber(percRenewables)} </span> % auf{' '}
+            Der Energieverbrauch in der Industrie in{' '}
+            {showBundeslandForLK ? locationLabel[1] : locationLabel[0]} basiert im Jahr{' '}
+            <span>{lastYear}</span> zu <span> {formatNumber(percRenewables)}</span> % auf{' '}
             <span className="second-value"> erneuerbaren Energien</span>.{' '}
-            {percGeheim > 70 && secretFootnote}
+            {showBundeslandForLK && secretFootnote}
             {footnote}
             {footnote !== '' && '.'}
           </h3>

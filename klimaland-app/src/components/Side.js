@@ -26,8 +26,8 @@ export default class Side extends Component {
         width: '300',
         height: '200',
       },
-      sectionLabel: ['Energie', 'Mobilität', 'Abfall', 'Landwirtschaft', 'Gebäude'],
       section: ['En', 'Mo', 'Ab', 'La', 'Ge'],
+      ranking: 'mittleren Drittel',
     };
 
     this.vis = this.vis.bind(this);
@@ -64,7 +64,7 @@ export default class Side extends Component {
   vis() {
     if (
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-      undefined &&
+        undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -101,7 +101,9 @@ export default class Side extends Component {
       this.props.activeSide !== prevProps.activeSide ||
       this.props.layoutControls !== prevProps.layoutControls ||
       this.props.isThumbnail !== prevProps.isThumbnail ||
-      this.props.windowSize !== prevProps.windowSize
+      this.props.windowSize !== prevProps.windowSize ||
+      this.props.textData !== prevProps.textData ||
+      this.props.thirdKey !== prevProps.thirdKey
     ) {
       //update layout for top card
       //only for top card because of performance
@@ -113,6 +115,7 @@ export default class Side extends Component {
           showViz: layoutdata.combo[1],
           indicator: layoutdata.combo[2],
           showLocator: layoutdata.combo[3],
+          ranking: this.props.textData[0][this.props.thirdKey],
         });
       }
 
@@ -126,71 +129,66 @@ export default class Side extends Component {
    */
   async componentDidMount() {
     await this.updateChartSize();
+    await setStateAsync(this, { ranking: this.props.textData[0][this.props.thirdKey] });
   }
 
   render() {
-    const sectionFullName = {
-      La: { de: 'Landwirtschaft', en: 'agriculture' },
-      Mo: { de: 'Mobilität', en: 'mobility' },
-      Ge: { de: 'Gebäude', en: 'buildings' },
-      En: { de: 'Energie', en: 'energy' },
-      Ab: { de: 'Abfall', en: 'waste' },
-    };
-
-    let indicatorRanking = sectionFullName[this.props.section].en + "_third"
-    const currentAgs = this.props.textData.filter(d => +d.AGS === this.props.lk.value)
-
     // TO DO: Solve issue of inconsistent activeSide during carousel switch
+
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
           <div className="overlay-container">
             {this.props.isThumbnail && (
               <div className={`section-thumb ${this.props.mode}`}>
-                {this.props.mode === 'comparison'
-                  && <div className="word-art-title">
+                {this.props.mode === 'comparison' && (
+                  <div className="word-art-title">
                     <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
                     <h2 className="wordart">{this.props.lk.label}</h2>
                   </div>
-                }
-                <h4 className="section-title">
-                  {this.state.sectionLabel[this.state.section.indexOf(this.props.section)]}
-                </h4>
-                {currentAgs[0] !== undefined && (
-                  <svg className="rating-thumb" width="50%" height="35%">
-                    <g><circle
-                      className={`${currentAgs[0][indicatorRanking] === 'unteren Drittel' ?
-                        'active'
-                        : 'inactive'} 
+                )}
+                <h4 className="section-title">{this.props.sectionName}</h4>
+                <svg className="rating-thumb" width="50%" height="35%">
+                  <g>
+                    <circle
+                      className={`${
+                        this.state.ranking === 'unteren Drittel' ? 'active' : 'inactive'
+                      } 
                   lower`}
                       cx="32"
                       cy="32"
                       r="30"
                     />
-                      <circle
-                        className={`${currentAgs[0][indicatorRanking] === 'mittleren Drittel' ?
-                          'active'
-                          : 'inactive'} middle`}
-                        cx="67"
-                        cy="32"
-                        r="30" />
-                      <circle
-                        className={`${currentAgs[0][indicatorRanking] === 'oberen Drittel' ?
-                          'active'
-                          : 'inactive'} upper`}
-                        cx="102"
-                        cy="32"
-                        r="30" /></g>
-                  </svg>)}
+                    <circle
+                      className={`${
+                        this.state.ranking === 'mittleren Drittel' ? 'active' : 'inactive'
+                      } middle`}
+                      cx="67"
+                      cy="32"
+                      r="30"
+                    />
+                    <circle
+                      className={`${
+                        this.state.ranking === 'oberen Drittel' ? 'active' : 'inactive'
+                      } upper`}
+                      cx="102"
+                      cy="32"
+                      r="30"
+                    />
+                  </g>
+                </svg>
               </div>
             )}
           </div>
           <div className="side-inner">
             {!this.state.showViz && ( //TEXT
               <Details
-                textData={this.props.textData}
                 lk={this.props.lk}
                 section={this.props.section}
+                sectionName={this.props.sectionName}
+                textData={this.props.textData}
+                similarAgs={this.props.similarAgs}
+                thirdKey={this.props.thirdKey}
                 activeSide={this.props.activeSide}
                 handleClickOnList={this.handleClickOnList}
               />

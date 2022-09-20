@@ -261,7 +261,7 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
         <div className="title">
           <h3>
             Der Energieverbrauch in {locationLabel} basiert im Jahr <span>{lastYear}</span> zu{' '}
-            <span> {formatNumber(percRenewables)}</span> % auf{' '}
+            <span> {formatNumber(percRenewables)}</span> % auf{' '}
             <span className="second-value"> erneuerbaren Energien</span>
           </h3>
         </div>
