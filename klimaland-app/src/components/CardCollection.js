@@ -362,6 +362,7 @@ export default class CardCollection extends Component {
               <Side
                 lk={element.lk}
                 section={section}
+                sectionName={element.section.label}
                 windowSize={this.state.windowSize}
                 isThumbnail={true}
                 textData={localTextData}
