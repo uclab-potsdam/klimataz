@@ -344,8 +344,12 @@ export default class LayoutManager extends Component {
       <div className="main-container">
         {(this.state.mode === 'lk' && this.state.postcardView === false)
           && <div className="word-art-title">
-            <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
-            <h2 className="wordart">{this.state.landkreisSelection[0].label}</h2>
+            <h4 className="gruss-thumb" />
+            <h2 className="wordart additional-0">{this.state.landkreisSelection[0].label}</h2>
+            <h2 className="wordart additional-1">{this.state.landkreisSelection[0].label}</h2>
+            <h2 className="wordart additional-2">{this.state.landkreisSelection[0].label}</h2>
+            <h2 className="wordart additional-3">{this.state.landkreisSelection[0].label}</h2>
+            <h2 className="wordart additional-3">{this.state.landkreisSelection[0].label}</h2>
           </div>
         }
         <SelectionButtons

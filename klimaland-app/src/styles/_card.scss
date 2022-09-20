@@ -138,10 +138,11 @@
                     }
         
                     .word-art-title {
+                        @include wordart-style-1;
                         width: 100%;
                         height: 50px;
                         right: 0.5rem;
-                        top: -0.5rem;
+                        top: 0.2rem;
                         margin-top: 1.5rem;
                         left: -15%;
                         z-index: 2;
