@@ -5,11 +5,14 @@
 }
 
 .chart-container {
-
     height: 100%;
 
     .svg-container {
         height: 100%;
+
+        .visualization-container {
+            cursor: crosshair;
+        }
         // Specific styling for sections' charts
         &.Mo-chart {
             .car-density {
@@ -323,8 +326,33 @@
                         stroke: $default-text;
                     }
 
-                    .year-el circle {
-                        fill: $lighter-orange-full;
+                    .year-el {
+                        transition: all 0.5s;
+                        circle {
+                            fill: $lighter-orange-full;
+                        }
+
+                        .interactive-labels {
+                            opacity: 0;
+                           rect {
+                            stroke: $pale-olive;
+                           }
+                        }
+                    }
+
+                    .year-el:hover {
+                        transition: all 0.5s;
+                        
+                        line {
+                            stroke-dasharray: none;
+                        }
+                        circle {
+                            fill: $pale-olive;
+                        }
+                        .interactive-labels {
+                            opacity: 1;
+                            
+                        }
                     }
 
                     rect {
