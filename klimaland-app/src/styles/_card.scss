@@ -453,22 +453,31 @@
                                         display: none;
                                     }
 
+
                                     h5 {
                                         // padding-left: 0.5rem;
                                         width: calc(100% - 0.5rem);
-                                        margin: 0px;
-                                        padding: 0.2rem 0rem 0.2rem 0.5rem;
+                                        margin: 0;
+                                        padding: 0.45rem 0rem 0.45rem 0.5rem;
                                         border-bottom: 1px solid $default-text;
                                     }
 
-                                    ul,
-                                    ol {
-                                        margin: 0.5rem 0rem 0rem 0rem;
+                                    ul {
+                                        margin: 0.0rem 0rem 0rem 0rem;
+                                        
+
+                                        
                                     }
 
                                     ol {
+                                        padding-top: 0.5rem;
                                         border-bottom: 1px solid $default-text;
                                         padding-bottom: 0.5rem;
+
+                                        &:hover {
+                                            background-color: $lighter-orange-full;
+                                            cursor: pointer;
+                                        }
                                     }
                                 }
                             }
