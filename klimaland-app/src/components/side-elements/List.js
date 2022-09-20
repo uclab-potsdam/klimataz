@@ -36,8 +36,8 @@ const List = ({ lk, data, section, sectionFullName, handleClickOnList }) => {
   return (
     <div className="list-inner-container">
       <div className={`list-similar-container ${agsRanking}`}>
-        {lk.value !== 0 && <h5>{agsCurrentCard[0][thirdKey]} wie:</h5>}
-        {lk.value === 0 && <h5>Check out also:</h5>}
+        {lk.value !== 0 && <h5>Auch im {agsCurrentCard[0][thirdKey]}:</h5>}
+        {lk.value === 0 && <h5>Erkunde weitere Regionen:</h5>}
         <ul>
           {randomSample.map((ags, a) => {
             return (
