@@ -331,6 +331,14 @@ export default class CardCollection extends Component {
           }
           this.checkIndicatorData(element);
 
+          //get dynamic text data for current ags
+          let localTextData = this.state.textData.filter((d) => {
+            return +d.AGS === element.lk.value;
+          });
+
+          //get to get upper, middle or lower third (ranking) from text data
+          const thirdKey = this.sectionFullName[section].en + '_third';
+
           return (
             <Card
               key={i}
@@ -343,9 +351,10 @@ export default class CardCollection extends Component {
                 section={section}
                 windowSize={this.state.windowSize}
                 isThumbnail={true}
-                textData={this.state.textData}
+                textData={localTextData}
                 mode={this.props.mode}
                 localData={localData}
+                thirdKey={thirdKey}
                 clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview
                 layoutControls={this.layoutControls[section]}
               />

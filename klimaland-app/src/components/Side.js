@@ -26,9 +26,11 @@ export default class Side extends Component {
         width: '300',
         height: '200',
       },
-      sectionLabel: ['Energie', 'Mobilität', 'Abfall', 'Landwirtschaft', 'Gebäude'],
       section: ['En', 'Mo', 'Ab', 'La', 'Ge'],
+      ranking: this.props.textData[0][this.props.thirdKey],
     };
+
+    console.log(this.props.textData);
 
     this.vis = this.vis.bind(this);
     this.openUpCard = this.openUpCard.bind(this);
@@ -101,7 +103,9 @@ export default class Side extends Component {
       this.props.activeSide !== prevProps.activeSide ||
       this.props.layoutControls !== prevProps.layoutControls ||
       this.props.isThumbnail !== prevProps.isThumbnail ||
-      this.props.windowSize !== prevProps.windowSize
+      this.props.windowSize !== prevProps.windowSize ||
+      this.props.textData !== prevProps.textData ||
+      this.props.thirdKey !== prevProps.thirdKey
     ) {
       //update layout for top card
       //only for top card because of performance
@@ -113,6 +117,7 @@ export default class Side extends Component {
           showViz: layoutdata.combo[1],
           indicator: layoutdata.combo[2],
           showLocator: layoutdata.combo[3],
+          ranking: this.props.textData[0][this.props.thirdKey],
         });
       }
 
@@ -130,6 +135,7 @@ export default class Side extends Component {
 
   render() {
     // TO DO: Solve issue of inconsistent activeSide during carousel switch
+
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
@@ -142,46 +148,36 @@ export default class Side extends Component {
                     <h2 className="wordart">{this.props.lk.label}</h2>
                   </div>
                 )}
-                <h4 className="section-title">
-                  {this.state.sectionLabel[this.state.section.indexOf(this.props.section)]}
-                </h4>
-                {this.props.localTextData !== undefined && (
-                  <svg className="rating-thumb" width="50%" height="35%">
-                    <g>
-                      <circle
-                        className={`${
-                          this.props.localTextData[0][this.props.thirdKey] === 'unteren Drittel'
-                            ? 'active'
-                            : 'inactive'
-                        } 
+                <h4 className="section-title">{this.props.sectionName}</h4>
+                <svg className="rating-thumb" width="50%" height="35%">
+                  <g>
+                    <circle
+                      className={`${
+                        this.state.ranking === 'unteren Drittel' ? 'active' : 'inactive'
+                      } 
                   lower`}
-                        cx="32"
-                        cy="32"
-                        r="30"
-                      />
-                      <circle
-                        className={`${
-                          this.props.localTextData[0][this.props.thirdKey] === 'mittleren Drittel'
-                            ? 'active'
-                            : 'inactive'
-                        } middle`}
-                        cx="67"
-                        cy="32"
-                        r="30"
-                      />
-                      <circle
-                        className={`${
-                          this.props.localTextData[0][this.props.thirdKey] === 'oberen Drittel'
-                            ? 'active'
-                            : 'inactive'
-                        } upper`}
-                        cx="102"
-                        cy="32"
-                        r="30"
-                      />
-                    </g>
-                  </svg>
-                )}
+                      cx="32"
+                      cy="32"
+                      r="30"
+                    />
+                    <circle
+                      className={`${
+                        this.state.ranking === 'mittleren Drittel' ? 'active' : 'inactive'
+                      } middle`}
+                      cx="67"
+                      cy="32"
+                      r="30"
+                    />
+                    <circle
+                      className={`${
+                        this.state.ranking === 'oberen Drittel' ? 'active' : 'inactive'
+                      } upper`}
+                      cx="102"
+                      cy="32"
+                      r="30"
+                    />
+                  </g>
+                </svg>
               </div>
             )}
           </div>
