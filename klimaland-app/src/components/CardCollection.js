@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import { Component } from 'react';
-import { mod, isInt } from './helperFunc.js';
+import { mod, isInt, setStateAsync } from './helperFunc.js';
 import { readString } from 'react-papaparse';
 
 //components
@@ -23,6 +23,7 @@ export default class CardCollection extends Component {
         width: 0,
         height: 0,
       },
+      textLoaded: false,
     };
 
     this.sectionFullName = {
@@ -61,11 +62,13 @@ export default class CardCollection extends Component {
   //   });
   // }
 
-  updateData(result) {
+  async updateData(result) {
     // console.log(result)
     const data = result.data;
     // Here this is available and we can call this.setState (since it's binded in the constructor)
-    this.setState({ textData: data }); // or shorter ES syntax: this.setState({ data });
+    await setStateAsync(this, { textData: data, textLoaded: true }).then(() => {
+      this.generateCards();
+    }); // or shorter ES syntax: this.setState({ data });
   }
 
   /**
@@ -203,6 +206,8 @@ export default class CardCollection extends Component {
     let list;
     let classProp;
 
+    if (!this.state.textLoaded) return;
+
     //if in postcardview: use css class for carousel
     if (this.props.postcardView) {
       //for each item in cardSelection
@@ -233,34 +238,39 @@ export default class CardCollection extends Component {
 
           const footnote = this.data[element.lk.value].footnote;
 
-          //get dynamic text data for current ags
-          let localTextData = this.state.textData.filter((d) => {
-            return +d.AGS === element.lk.value;
-          });
+          let localTextData = [];
+          let similarAgs = [];
 
           //get to get upper, middle or lower third (ranking) from text data
           const thirdKey = this.sectionFullName[section].en + '_third';
 
-          // pulling similar lks (within the bl)
-          let similarAgs = this.state.textData
-            .filter((d) => {
-              return element.lk.value !== 0
-                ? d[thirdKey] === localTextData[0][thirdKey] && +d.AGS !== element.lk.value
-                : +d.AGS !== element.lk.value;
-            })
-            .map(function (d) {
-              return {
-                value: +d.AGS,
-                label: d.Name,
-              };
+          if (this.state.textData !== undefined) {
+            //get dynamic text data for current ags
+            localTextData = this.state.textData.filter((d) => {
+              return +d.AGS === element.lk.value;
             });
 
-          // shuffle the array
-          const shuffled = similarAgs.sort(() => 0.5 - Math.random());
-          // get 10 random location
-          const randomSample = shuffled.slice(0, 10);
+            // pulling similar lks (within the bl)
+            similarAgs = this.state.textData
+              .filter((d) => {
+                return element.lk.value !== 0
+                  ? d[thirdKey] === localTextData[0][thirdKey] && +d.AGS !== element.lk.value
+                  : +d.AGS !== element.lk.value;
+              })
+              .map(function (d) {
+                return {
+                  value: +d.AGS,
+                  label: d.Name,
+                };
+              });
 
-          similarAgs = randomSample;
+            // shuffle the array
+            const shuffled = similarAgs.sort(() => 0.5 - Math.random());
+            // get 10 random location
+            const randomSample = shuffled.slice(0, 10);
+
+            similarAgs = randomSample;
+          }
 
           return (
             <Card

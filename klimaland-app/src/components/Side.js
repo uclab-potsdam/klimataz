@@ -27,7 +27,7 @@ export default class Side extends Component {
         height: '200',
       },
       section: ['En', 'Mo', 'Ab', 'La', 'Ge'],
-      ranking: this.props.textData[0][this.props.thirdKey],
+      ranking: 'mittleren Drittel',
     };
 
     this.vis = this.vis.bind(this);
@@ -129,6 +129,7 @@ export default class Side extends Component {
    */
   async componentDidMount() {
     await this.updateChartSize();
+    await setStateAsync(this, { ranking: this.props.textData[0][this.props.thirdKey] });
   }
 
   render() {
