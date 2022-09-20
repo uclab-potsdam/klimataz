@@ -64,7 +64,7 @@ export default class Side extends Component {
   vis() {
     if (
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-      undefined &&
+        undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -129,17 +129,6 @@ export default class Side extends Component {
   }
 
   render() {
-    const sectionFullName = {
-      La: { de: 'Landwirtschaft', en: 'agriculture' },
-      Mo: { de: 'Mobilität', en: 'mobility' },
-      Ge: { de: 'Gebäude', en: 'buildings' },
-      En: { de: 'Energie', en: 'energy' },
-      Ab: { de: 'Abfall', en: 'waste' },
-    };
-
-    let indicatorRanking = sectionFullName[this.props.section].en + "_third"
-    const currentAgs = this.props.textData.filter(d => +d.AGS === this.props.lk.value)
-
     // TO DO: Solve issue of inconsistent activeSide during carousel switch
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
@@ -147,50 +136,64 @@ export default class Side extends Component {
           <div className="overlay-container">
             {this.props.isThumbnail && (
               <div className={`section-thumb ${this.props.mode}`}>
-                {this.props.mode === 'comparison'
-                  && <div className="word-art-title">
+                {this.props.mode === 'comparison' && (
+                  <div className="word-art-title">
                     <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
                     <h2 className="wordart">{this.props.lk.label}</h2>
                   </div>
-                }
+                )}
                 <h4 className="section-title">
                   {this.state.sectionLabel[this.state.section.indexOf(this.props.section)]}
                 </h4>
-                {currentAgs[0] !== undefined && (
+                {this.props.localTextData !== undefined && (
                   <svg className="rating-thumb" width="50%" height="35%">
-                    <g><circle
-                      className={`${currentAgs[0][indicatorRanking] === 'unteren Drittel' ?
-                        'active'
-                        : 'inactive'} 
-                  lower`}
-                      cx="32"
-                      cy="32"
-                      r="30"
-                    />
+                    <g>
                       <circle
-                        className={`${currentAgs[0][indicatorRanking] === 'mittleren Drittel' ?
-                          'active'
-                          : 'inactive'} middle`}
+                        className={`${
+                          this.props.localTextData[0][this.props.thirdKey] === 'unteren Drittel'
+                            ? 'active'
+                            : 'inactive'
+                        } 
+                  lower`}
+                        cx="32"
+                        cy="32"
+                        r="30"
+                      />
+                      <circle
+                        className={`${
+                          this.props.localTextData[0][this.props.thirdKey] === 'mittleren Drittel'
+                            ? 'active'
+                            : 'inactive'
+                        } middle`}
                         cx="67"
                         cy="32"
-                        r="30" />
+                        r="30"
+                      />
                       <circle
-                        className={`${currentAgs[0][indicatorRanking] === 'oberen Drittel' ?
-                          'active'
-                          : 'inactive'} upper`}
+                        className={`${
+                          this.props.localTextData[0][this.props.thirdKey] === 'oberen Drittel'
+                            ? 'active'
+                            : 'inactive'
+                        } upper`}
                         cx="102"
                         cy="32"
-                        r="30" /></g>
-                  </svg>)}
+                        r="30"
+                      />
+                    </g>
+                  </svg>
+                )}
               </div>
             )}
           </div>
           <div className="side-inner">
             {!this.state.showViz && ( //TEXT
               <Details
-                textData={this.props.textData}
                 lk={this.props.lk}
                 section={this.props.section}
+                sectionName={this.props.sectionName}
+                textData={this.props.textData}
+                similarAgs={this.props.similarAgs}
+                thirdKey={this.props.thirdKey}
                 activeSide={this.props.activeSide}
                 handleClickOnList={this.handleClickOnList}
               />
