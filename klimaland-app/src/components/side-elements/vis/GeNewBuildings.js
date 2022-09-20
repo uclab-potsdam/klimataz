@@ -1,8 +1,8 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { percentage, firstToUppercase } from '../../helperFunc';
+import { firstToUppercase } from '../../helperFunc';
 import { uniq } from 'lodash';
-import { max, extent, mean, sum } from 'd3-array';
-import { scaleLinear, scaleOrdinal } from 'd3-scale';
+import { max, extent } from 'd3-array';
+import { scaleLinear } from 'd3-scale';
 import { line } from 'd3-shape';
 import { formatNumber } from './../../helperFunc';
 
@@ -49,7 +49,7 @@ const Buildings = ({
   let axisElements = [];
   let yAxisValues = [];
   let yAxis = [];
-  let numberOfBuildings = 0;
+  let numberOfBuildings = [{ value: 0 }];
   let selectedEnergy = 0;
   const isMobile = dimensions.width <= 350 && window.mobileCheck(window);
   let scaleCategory = function () {
@@ -107,11 +107,13 @@ const Buildings = ({
         ? existingEnergiesLY.filter((d) => d.value === maxValueForLY)
         : existingEnergiesLY.filter((d) => d.column === currentId);
 
-    selectedEnergy = selectedEnergyObj[0].value.toFixed(1);
     uniqueEnergyTypes = uniq(existingEnergies.map((d) => d.column)).sort((a, b) =>
       a.localeCompare(b)
     );
-    numberOfBuildings = numberOfBuildingsObj[0].value;
+
+    numberOfBuildings = numberOfBuildingsObj[0] !== undefined ? numberOfBuildingsObj[0].value : numberOfBuildings;
+    selectedEnergy = selectedEnergyObj[0] !== undefined ? selectedEnergyObj[0].value.toFixed(1) : selectedEnergy;
+
 
     // // Selects higher element in dataset
     if (currentId === '') {
@@ -254,9 +256,8 @@ const Buildings = ({
                       <g
                         key={e}
                         transform={`translate(0, ${en.y})`}
-                        className={`year-marker ${en.klassName} ${
-                          en.id === currentId ? 'default' : 'optional'
-                        }`}
+                        className={`year-marker ${en.klassName} ${en.id === currentId ? 'default' : 'optional'
+                          }`}
                       >
                         <circle cx="0" cy="0" r="3" />
                         <g transform="translate(5, 0)">
