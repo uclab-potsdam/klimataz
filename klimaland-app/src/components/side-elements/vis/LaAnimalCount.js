@@ -3,6 +3,7 @@ import { arc } from 'd3';
 import { max } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
+import { formatNumber } from './../../helperFunc';
 
 const Land = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
   const colorArray = [
@@ -116,11 +117,6 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
         colorVal = 0;
       }
       return colorVal;
-    };
-
-    // adds . as thousand separator
-    const formatNumber = (num) => {
-      return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
     };
 
     // map all parameters for animal group
