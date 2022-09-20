@@ -2,6 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { extent, max, min } from 'd3-array';
 import { pie, arc } from 'd3';
+import { formatNumber } from './../../helperFunc';
 
 const Waste = ({
   currentData,
@@ -225,8 +226,8 @@ const Waste = ({
         <div className="title">
           <h3>
             Im Jahr <span>{lastYear}</span> wurden in <span>{locationLabel}</span> pro Kopf{' '}
-            <span>{lastValue}</span> kg organische Abfälle korrekt in der Biotonne oder als
-            Gartenabfälle entsorgt und damit Co2-Emissionen verringert. {footnote}
+            <span>{formatNumber(lastValue)}</span> kg organische Abfälle korrekt in der Biotonne
+            oder als Gartenabfälle entsorgt und damit Co2-Emissionen verringert. {footnote}
             {footnote !== '' && '.'}
           </h3>
         </div>
