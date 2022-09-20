@@ -30,8 +30,6 @@ export default class Side extends Component {
       ranking: this.props.textData[0][this.props.thirdKey],
     };
 
-    console.log(this.props.textData);
-
     this.vis = this.vis.bind(this);
     this.openUpCard = this.openUpCard.bind(this);
     this.handleClickOnList = this.handleClickOnList.bind(this);
