@@ -1,5 +1,5 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { stack, stackOffsetSilhouette, stackOrderAscending, curveCatmullRom, area } from 'd3-shape';
+import { stack, stackOffsetSilhouette, stackOrderAscending, curveMonotoneX, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent, mean } from 'd3-array';
@@ -113,7 +113,7 @@ const EnIndustry = ({
       .x((d) => xScale(d.data.year))
       .y0((d) => yScale(d[0]))
       .y1((d) => yScale(d[1]))
-      .curve(curveCatmullRom.alpha(0.5));
+      .curve(curveMonotoneX);
 
     // prepare data for stacking
     const stackData = [];
@@ -247,7 +247,7 @@ const EnIndustry = ({
           <h3>
             Der Energieverbrauch in der Industrie in{' '}
             {showBundeslandForLK ? locationLabel[1] : locationLabel[0]} basiert im Jahr{' '}
-            <span>{lastYear}</span> zu <span> {formatNumber(percRenewables)} </span> % auf{' '}
+            <span>{lastYear}</span> zu <span> {formatNumber(percRenewables)}</span> % auf{' '}
             <span className="second-value"> erneuerbaren Energien</span>.{' '}
             {showBundeslandForLK && secretFootnote}
             {footnote}
