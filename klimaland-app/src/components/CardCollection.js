@@ -280,7 +280,6 @@ export default class CardCollection extends Component {
               sides={this.layoutControls[section]}
               handleSwitchNext={this.props.handleSwitchNext}
               handleSwitchBack={this.props.handleSwitchBack}
-              clickOnCard={this.handleClickOnCard}
             >
               <Side
                 lk={element.lk}

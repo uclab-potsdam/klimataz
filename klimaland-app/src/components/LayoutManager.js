@@ -59,14 +59,10 @@ export default class LayoutManager extends Component {
   switchToPostcardView(lk, section) {
     this.setState({ postcardView: true });
 
-    console.log('switch to postcard view', lk, section);
-
     //get card id of clicked card
     let chosenCard = this.state.cardSelection.findIndex(
-      (x) => x.lk === lk && x.section.value === section
+      (x) => x.lk.value === lk.value && x.section.value === section
     );
-
-    console.log(chosenCard);
 
     //set active card to this card id
     this.setState({ activeCard: chosenCard });
@@ -106,8 +102,6 @@ export default class LayoutManager extends Component {
     if (!this.state.postcardView) return;
 
     let newActiveCard = 0;
-
-    console.log(this.state.cardSelection);
 
     //if going to the next card
     if (goFurther) {
@@ -267,9 +261,9 @@ export default class LayoutManager extends Component {
           list = this.state.shuffleSelection;
         }
 
-        //lk: get all five sections for this landkreis
+        //LK
+        //get all five sections for this landkreis
         else if (this.state.mode === 'lk') {
-          console.log('hallo lk');
           list = [];
           let selectedLK;
           // set default value for landkreisSelection if nothing is selected
@@ -288,7 +282,8 @@ export default class LayoutManager extends Component {
           });
         }
 
-        //comparison: get selected section for each landkreise
+        //COMPARISON
+        // get selected section for each landkreise
         else if (this.state.mode === 'comparison') {
           let selectedSection;
 
@@ -310,7 +305,7 @@ export default class LayoutManager extends Component {
           });
         }
 
-        //single postcard view
+        //SINGLE POSTCARD VIEW
         else if (this.state.mode === 'singlePCview') {
           let selectedLK;
           selectedLK = {
@@ -321,33 +316,20 @@ export default class LayoutManager extends Component {
           let selectedSection;
           selectedSection = this.state.sectionSelection;
 
-          console.log(this.state.landkreisSelection);
-
           list.push({
             lk: selectedLK,
             section: selectedSection,
           });
-
-          // //add one card per landkreisSelection
-          // this.state.landkreisSelection.forEach((element) => {
-          //   list.push({
-          //     lk: { value: element.value, label: element.label },
-          //     section: selectedSection,
-          //   });
-          // });
-          //this.handleSwitchNext();
         }
-        console.log('vorher', list);
         return list;
       })
       .then((list) => {
-        console.log('set state async');
+        console.log('set state async', this.state.mode);
         setStateAsync(this, { cardSelection: list });
       })
       .then(() => {
         console.log('set state done', this.state.mode);
         if (this.state.mode === 'singlePCview') {
-          console.log(this.state.cardSelection);
           this.switchToPostcardView(
             this.state.landkreisSelection[0],
             this.state.sectionSelection.value
