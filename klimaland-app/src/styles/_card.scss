@@ -245,17 +245,21 @@
         clip-path: circle(55%  at 90% 50%);   
         transition: clip-path ease 1000ms;
         
-        
-        
     }
 
 
     &:hover, &:active {
-
         .side-inner {
-         clip-path: circle(115% at 90% 50%); 
+            clip-path: circle(115% at 90% 50%); 
+
         }
+
         }
+
+    &:active{
+        scale: 1.25;
+        transition: scale ease 500ms;
+    }
       
 }
 
