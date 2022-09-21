@@ -63,7 +63,7 @@ export default class LayoutManager extends Component {
 
     //get card id of clicked card
     let chosenCard = this.state.cardSelection.findIndex(
-      (x) => x.lk === lk && x.section.value === section
+      (x) => x.lk.value === lk.value && x.section.value === section
     );
 
     //set active card to this card id
@@ -217,10 +217,9 @@ export default class LayoutManager extends Component {
       this.state.landkreisSelection.length === 1 &&
       this.props.editorspick[0].view.value === 3
     ) {
-      this.switchToPostcardView(this.state.landkreisSelection, this.state.sectionSelection);
       mode = 'singlePCview';
     } else if (
-      this.state.landkreisSelection.length === 1 ||
+      (this.state.landkreisSelection.length === 1 && this.state.sectionSelection.length > 1) ||
       this.state.landkreisSelection.length === undefined
     ) {
       mode = 'lk';
@@ -287,76 +286,90 @@ export default class LayoutManager extends Component {
    * always calles "updateMode" first and adds cards to the cardSelection List depending on the mode
    */
   async updateCardSelection() {
-    await this.updateMode().then(() => {
-      let list = [];
+    await this.updateMode()
+      .then(() => {
+        let list = [];
 
-      //shuffle: use shuffle selection
-      if (this.state.mode === 'shuffle') {
-        list = this.state.shuffleSelection;
-      }
+        //shuffle: use shuffle selection
+        if (this.state.mode === 'shuffle') {
+          list = this.state.shuffleSelection;
+        }
 
-      //lk: get all five sections for this landkreis
-      else if (this.state.mode === 'lk') {
-        list = [];
-        let selectedLK;
-        // set default value for landkreisSelection if nothing is selected
-        if (this.state.landkreisSelection[0] === undefined) {
-          selectedLK = { value: '0', label: 'Deutschland' };
-        } else {
+        //LK
+        //get all five sections for this landkreis
+        else if (this.state.mode === 'lk') {
+          list = [];
+          let selectedLK;
+          // set default value for landkreisSelection if nothing is selected
+          if (this.state.landkreisSelection[0] === undefined) {
+            selectedLK = { value: '0', label: 'Deutschland' };
+          } else {
+            selectedLK = {
+              value: this.state.landkreisSelection[0].value,
+              label: this.state.landkreisSelection[0].label,
+            };
+          } //set selected value for landkreisSelection
+
+          //add one card per section
+          this.props.sectionsData.forEach((element) => {
+            list.push({ lk: selectedLK, section: { value: element.value, label: element.label } });
+          });
+        }
+
+        //COMPARISON
+        // get selected section for each landkreise
+        else if (this.state.mode === 'comparison') {
+          let selectedSection;
+
+          // set default value for section if undefined
+          if (this.state.sectionSelection === undefined) {
+            selectedSection = 'En';
+          }
+          //set selected value for section
+          else {
+            selectedSection = this.state.sectionSelection;
+          }
+
+          //add one card per landkreisSelection
+          this.state.landkreisSelection.forEach((element) => {
+            list.push({
+              lk: { value: element.value, label: element.label },
+              section: selectedSection,
+            });
+          });
+        }
+
+        //SINGLE POSTCARD VIEW
+        else if (this.state.mode === 'singlePCview') {
+          let selectedLK;
           selectedLK = {
             value: this.state.landkreisSelection[0].value,
             label: this.state.landkreisSelection[0].label,
           };
-        } //set selected value for landkreisSelection
 
-        //add one card per section
-        this.props.sectionsData.forEach((element) => {
-          list.push({ lk: selectedLK, section: { value: element.value, label: element.label } });
-        });
-      }
-
-      //comparison: get selected section for each landkreise
-      else if (this.state.mode === 'comparison') {
-        let selectedSection;
-
-        // set default value for section if undefined
-        if (this.state.sectionSelection === undefined) {
-          selectedSection = 'En';
-        }
-        //set selected value for section
-        else {
+          let selectedSection;
           selectedSection = this.state.sectionSelection;
+
+          list.push({
+            lk: selectedLK,
+            section: selectedSection,
+          });
         }
-
-        //add one card per landkreisSelection
-        this.state.landkreisSelection.forEach((element) => {
-          list.push({
-            lk: { value: element.value, label: element.label },
-            section: selectedSection,
-          });
-        });
-      } else if (this.state.mode === 'singlePCview') {
-        let selectedLK;
-        selectedLK = {
-          value: this.state.landkreisSelection[0].value,
-          label: this.state.landkreisSelection[0].label,
-        };
-
-        let selectedSection;
-        selectedSection = this.state.sectionSelection;
-
-        //add one card per landkreisSelection
-        this.state.landkreisSelection.forEach((element) => {
-          list.push({
-            lk: { value: element.value, label: element.label },
-            section: selectedSection,
-          });
-        });
-        this.handleSwitchNext();
-      }
-
-      this.setState({ cardSelection: list });
-    });
+        return list;
+      })
+      .then((list) => {
+        // console.log('set state async', this.state.mode);
+        setStateAsync(this, { cardSelection: list });
+      })
+      .then(() => {
+        // console.log('set state done', this.state.mode);
+        if (this.state.mode === 'singlePCview') {
+          this.switchToPostcardView(
+            this.state.landkreisSelection[0],
+            this.state.sectionSelection.value
+          );
+        }
+      });
   }
 
   /**
