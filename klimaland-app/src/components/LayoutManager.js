@@ -427,16 +427,16 @@ export default class LayoutManager extends Component {
                 </div>
                 <div className="button-switch-container">
                   <div className="inner-button button-left">
-                    <h4 className="switch-preview">{this.state.previewLeftCard}</h4>
                     <button className="button switch" onClick={this.handleSwitchBack}>
                       <img src={switchCardLeft} className="button img" alt="switch-button-img" />
                     </button>
+                    <h6 className="switch-preview">{this.state.previewLeftCard}</h6>
                   </div>
                   <div className="inner-button button-right">
-                    <h4 className="switch-preview">{this.state.previewRightCard}</h4>
                     <button className="button switch" onClick={this.handleSwitchNext}>
                       <img src={switchCardRight} className="button img" alt="switch-button-img" />
                     </button>
+                    <h6 className="switch-preview">{this.state.previewRightCard}</h6>
                   </div>
                 </div>
               </>
