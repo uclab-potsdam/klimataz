@@ -54,8 +54,14 @@
     .indicators-iframe {
         .main-container {
             .button-container {
-                    .inner-button {
-                        height: 42%;
+                .inner-button {
+                    height: 42%;
+                }
+
+                .button-switch-container {
+                    .switch-preview {
+                        display: none;
+                    }
                 }
             }
 

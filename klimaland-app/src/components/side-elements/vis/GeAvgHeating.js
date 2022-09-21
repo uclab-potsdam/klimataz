@@ -13,6 +13,7 @@ const GeAvgHEating = ({
   // getting sizes of container for maps
   const targetRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [higlightedBar, setHiglightedBar] = useState('');
 
   useLayoutEffect(() => {
     if (targetRef.current) {
@@ -63,6 +64,13 @@ const GeAvgHEating = ({
     '#E95850',
   ];
 
+  let switchHighlightedBar = function (i) {
+    if (currentData !== undefined) {
+      // console.log(id)
+      setHiglightedBar(i);
+    }
+  };
+
   if (currentData !== undefined) {
     currentData.data.forEach((d) => {
       if (d.year.length === 2) {
@@ -92,10 +100,16 @@ const GeAvgHEating = ({
         klass: bar.key,
         y1,
         y2,
-        yMid: b !== 0 ? height - (y1 + y2) / 2 + 5 : height - y2 + y2 / 3,
+        yMid: b !== 0
+          ? height - (y1 + y2) / 2 + 5
+          : height - y2 + y2 / 3,
         fill: colorScale(bar.key),
         label,
-        keyColor: bar.key === 'A' || bar.key === 'A+' || bar.key === 'B' ? 'white' : '#484848',
+        keyColor: bar.key === 'A'
+          || bar.key === 'A+'
+          || bar.key === 'B'
+          ? 'white'
+          : '#484848',
       });
       prevClass = bar.key;
     });
@@ -106,7 +120,8 @@ const GeAvgHEating = ({
         if (k !== 0) {
           const prevKlass = classesKeys[k - 1];
 
-          if (bar.value <= energyClasses[klass] && bar.value > energyClasses[prevKlass]) {
+          if (bar.value <= energyClasses[klass]
+            && bar.value > energyClasses[prevKlass]) {
             enKlass = klass;
           }
         }
@@ -181,7 +196,13 @@ const GeAvgHEating = ({
             <g className="chart-bars" transform={`translate(${marginWidth + 10}, 0)`}>
               {barChartData.map((bar, b) => {
                 return (
-                  <g key={b} transform={`translate(${bar.year}, 0)`}>
+                  <g
+                    key={b}
+                    className={`single-bar ${higlightedBar === b || higlightedBar === '' ? 'in-focus' : 'no-focus'}`}
+                    transform={`translate(${bar.year}, 0)`}
+                    onMouseEnter={() => switchHighlightedBar(b)}
+                    onMouseLeave={() => switchHighlightedBar('')}
+                  >
                     <rect
                       x="0.5"
                       y={height - bar.kwh}
@@ -199,7 +220,10 @@ const GeAvgHEating = ({
                       fill={bar.fill}
                       rx="5"
                     />
-                    {/* <text x="0" y={marginHeight * 2}>{bar.valueLabel}</text> */}
+                    <g transform={`translate(-25, ${height - bar.kwh - 30})`} className="interactive-labels">
+                      <rect x="-1" y="-11" width="80" height="15" rx="1" stroke={bar.fill} />
+                      <text x="0" y="0">{Math.round(bar.valueLabel)} kWh/m²a</text>
+                    </g>
                   </g>
                 );
               })}
@@ -217,10 +241,10 @@ const GeAvgHEating = ({
           <g className="non-clipped-elements">
             {barChartData.map((label, l) => {
               return (
-                <g key={l} transform={`translate(${label.year + 20}, 0)`}>
+                <g key={l} transform={`translate(${label.year + 50}, 0)`}>
                   <text
                     x="0"
-                    y={height - marginHeight + 10}
+                    y={height - marginHeight + 15}
                     textAnchor="middle"
                     transform={isMobile ? `rotate(90, 0, ${height - marginHeight + 15})` : ''}
                   >
@@ -230,7 +254,11 @@ const GeAvgHEating = ({
               );
             })}
 
-            <text x={width - marginWidth} y={height - marginHeight + 10} textAnchor="end">
+            <text
+              x={width - marginWidth + 10}
+              y={height - marginHeight + 15}
+              textAnchor="end"
+            >
               kWh/m²a
             </text>
           </g>
@@ -238,7 +266,7 @@ const GeAvgHEating = ({
       </div>
       <div className="description">
         <div className="title">
-          <h3>Wie hoch ist der Energieverbrauch beim Heizen in {locationLabel}?</h3>
+          <h3>Wie hoch ist der Energieverbrauch beim Heizen in <span>{locationLabel}</span>?</h3>
         </div>
       </div>
     </div>
