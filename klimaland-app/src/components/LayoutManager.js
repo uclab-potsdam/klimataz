@@ -395,6 +395,12 @@ export default class LayoutManager extends Component {
             {
               <div className="button-toggle-container">
                 <svg>
+                  <defs>
+                    <linearGradient id="MyGradient">
+                      <stop offset="50%" stopColor="#e6c9a2" />
+                      <stop offset="100%" stopColor="#ffe8c9" />
+                    </linearGradient>
+                  </defs>
                   <g className="toggle" onClick={this.switchLandkreisMode}>
                     <rect className="controller-bg" x="10" y="10" width="40" height="20" rx="10" />
                     <rect
