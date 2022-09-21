@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { setStateAsync } from './helperFunc.js';
+import { setStateAsync } from '../helpers/helperFunc';
 import { CSSTransition } from 'react-transition-group';
 
 //chart container

@@ -3,7 +3,7 @@ import { stack, stackOffsetSilhouette, stackOrderAscending, curveMonotoneX, area
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
-import { formatNumber } from './../../helperFunc';
+import { formatNumber } from './../../../helpers/helperFunc';
 
 const EnIndustry = ({
   currentData,
