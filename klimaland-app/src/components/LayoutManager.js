@@ -83,7 +83,7 @@ export default class LayoutManager extends Component {
    * @param section section of postcard that was clicked on
    */
   switchToPostcardView(lk, section) {
-    this.setState({ postcardView: true });
+    this.setState({ postcardView: true, dataLevelLK: true });
 
     //get card id of clicked card
     let chosenCard = this.state.cardSelection.findIndex(
