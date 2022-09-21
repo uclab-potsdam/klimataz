@@ -110,7 +110,7 @@ export default class LayoutManager extends Component {
     const rightCard = (this.state.activeCard + 1) % this.state.cardSelection.length;
     let sectionLabel = this.state.cardSelection[rightCard].section.label;
     if (sectionLabel == 'Landwirtschaft') sectionLabel = 'Landw.';
-    const rightCardPreview = sectionLabel + '\n' + this.state.cardSelection[rightCard].lk.label;
+    const rightCardPreview = sectionLabel + ':\n' + this.state.cardSelection[rightCard].lk.label;
     this.setState({ previewRightCard: rightCardPreview });
     //if going back
 
@@ -429,14 +429,14 @@ export default class LayoutManager extends Component {
                   <div className="inner-button button-left">
                     <button className="button switch" onClick={this.handleSwitchBack}>
                       <img src={switchCardLeft} className="button img" alt="switch-button-img" />
+                      <h6 className="switch-preview">{this.state.previewLeftCard}</h6>
                     </button>
-                    <h6 className="switch-preview">{this.state.previewLeftCard}</h6>
                   </div>
                   <div className="inner-button button-right">
                     <button className="button switch" onClick={this.handleSwitchNext}>
                       <img src={switchCardRight} className="button img" alt="switch-button-img" />
+                      <h6 className="switch-preview">{this.state.previewRightCard}</h6>
                     </button>
-                    <h6 className="switch-preview">{this.state.previewRightCard}</h6>
                   </div>
                 </div>
               </>

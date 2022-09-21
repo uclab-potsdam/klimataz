@@ -147,7 +147,7 @@ code {
                 height:20%;
 
                 .inner-button{
-                    display: flex;
+                    // display: flex;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
@@ -156,42 +156,52 @@ code {
                     .switch-preview{
                         white-space: pre-wrap;
                         margin-top: 0.5rem;
+                        opacity: 0;
+                        transition: all 0.5s;
                     }
                 }
 
                 .button-left {
+                    text-align: right;
                     .switch {
+                        transition: all 0.5s;
                         position: relative;
-                        right: -1rem;
+                        right: 0rem;
                         bottom: 0;
+                        text-align: right;
 
                         &:hover {
                             transition: all 0.5s;
-                            right: 0;
+                            right: 1rem;
                         }
-                    }
-
-                    .switch-preview {
-                        text-align: right;
                     }
                 }
 
                 .button-right {
+                    text-align: left;
                     .switch {
                         transition: all 0.5s;
                         position: relative;
                         bottom: 0;
-                        left: -1rem;
+                        left: 0rem;
+                        text-align: left;
+                        // left: -1rem;
 
                         &:hover {
                             transition: all 0.5s;
-                            left: 0;
+                            left: 1rem;
                         }
                     }
                 }
 
                 .button-left, .button-right {
-
+                    :hover {
+                        .switch-preview {
+                            transition: all 0.5s;
+                            opacity: 1;
+                        }
+                    }
+                    width: 9%;
                     img {
                         position: relative;
                     }
@@ -219,7 +229,8 @@ code {
 
                 .switch {
                     img {
-                            width: 50%;
+                            // width: 30%;
+                            width: 25px;    
                             height: auto;
                             // margin: 5px 0px 0px 50%;
                             top: 0;
