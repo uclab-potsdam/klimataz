@@ -366,6 +366,7 @@ export default class CardCollection extends Component {
                 isThumbnail={true}
                 textData={localTextData}
                 mode={this.props.mode}
+                landkreisModeOn={this.props.landkreisModeOn}
                 localData={localData}
                 thirdKey={thirdKey}
                 clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview

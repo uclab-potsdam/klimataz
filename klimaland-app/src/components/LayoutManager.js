@@ -48,6 +48,7 @@ export default class LayoutManager extends Component {
       activeCard: 0,
       //true when currently editors pick is displayed
       showEditorsPick: true,
+      landkreisModeOn: true,
     };
   }
 
@@ -342,12 +343,12 @@ export default class LayoutManager extends Component {
   render() {
     return (
       <div className="main-container">
-        {(this.state.mode === 'lk' && this.state.postcardView === false)
-          && <div className="word-art-title">
+        {this.state.mode === 'lk' && this.state.postcardView === false && (
+          <div className="word-art-title">
             <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
             <h2 className="wordart">{this.state.landkreisSelection[0].label}</h2>
           </div>
-        }
+        )}
         <SelectionButtons
           mode={this.state.mode}
           postcardView={this.state.postcardView}
@@ -374,6 +375,7 @@ export default class LayoutManager extends Component {
           mode={this.state.mode}
           postcardView={this.state.postcardView}
           activeCard={this.state.activeCard}
+          landkreisModeOn={this.state.landkreisModeOn}
           handleSwitchNext={this.handleSwitchNext}
           handleSwitchBack={this.handleSwitchBack}
           switchToPostcardView={this.switchToPostcardView}
