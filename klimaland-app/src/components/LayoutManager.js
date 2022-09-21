@@ -129,6 +129,12 @@ export default class LayoutManager extends Component {
     }
     //otherwise, update cards to match selection
     else {
+      let defaultLK = this.props.editorspick[0].lk.value;
+      if (this.state.mode == 'lk' && this.state.landkreisSelection[0].value == defaultLK) {
+        e = e.filter((d) => {
+          return d.value !== defaultLK;
+        });
+      }
       setStateAsync(this, { landkreisSelection: e, showEditorsPick: false }).then(() => {
         this.updateCardSelection();
       });
@@ -342,12 +348,12 @@ export default class LayoutManager extends Component {
   render() {
     return (
       <div className="main-container">
-        {(this.state.mode === 'lk' && this.state.postcardView === false)
-          && <div className="word-art-title">
+        {this.state.mode === 'lk' && this.state.postcardView === false && (
+          <div className="word-art-title">
             <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
             <h2 className="wordart">{this.state.landkreisSelection[0].label}</h2>
           </div>
-        }
+        )}
         <SelectionButtons
           mode={this.state.mode}
           postcardView={this.state.postcardView}
