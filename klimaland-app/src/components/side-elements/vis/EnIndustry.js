@@ -28,6 +28,8 @@ const EnIndustry = ({
   const targetRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [highlighedStream, setHighlightedStream] = useState('');
+  const [activeLabel, setactiveLabel] = useState('');
+
 
   //   const [currentId, setCurrentId] = useState('');
 
@@ -55,9 +57,14 @@ const EnIndustry = ({
   let showBundeslandForLK = false;
 
   let switchHighlightedStream = function (id) {
-    if (currentData !== undefined) {
-      // console.log(id)
+    if (currentData.data !== undefined) {
       setHighlightedStream(id);
+    }
+  };
+
+  let switchActiveLabel = function (index) {
+    if (currentData.data !== undefined) {
+      setactiveLabel(index);
     }
   };
 
@@ -146,6 +153,7 @@ const EnIndustry = ({
 
       let yearOfMax = 0;
       let indexOfMax = 0;
+
       stackData.forEach((d, i) => {
         if (d[stream.key] === maxStreamValue) {
           yearOfMax = d.year;
@@ -153,12 +161,36 @@ const EnIndustry = ({
         }
       });
 
+      const labelRects = []
+      for (let index = 0; index < stream['length']; index++) {
+        // const next = index > stream['length'] ? stream['length'] - 1 : index + 1
+        // console.log(next)
+        const scaledFloor = yScale(stream[index][0])
+        const scaledCeil = yScale(stream[index][1])
+        const year = stackData[index].year;
+        const value = stackData[index][stream.key]
+        const y = Math.abs(scaledCeil)
+        const yValue = Math.abs(scaledFloor - (scaledFloor - scaledCeil) / 2)
+        // const width = Math.abs(xScale(stackData[next].year) - xScale(year))
+        const height = Math.abs(scaledCeil - scaledFloor)
+        const labelEl = {
+          x: xScale(year),
+          y,
+          yValue,
+          height,
+          value
+        }
+
+        labelRects.push(labelEl)
+      }
+
       return {
         klass: stream.key.substring(0, 3) + '-stream',
         id: stream.key,
         fill: scaleCategory(stream.key),
         path: areaGen(stream),
         xPos: xScale(yearOfMax),
+        labels: labelRects,
         yPos: yScale(stream[indexOfMax][0] - (stream[indexOfMax][0] - stream[indexOfMax][1]) / 2),
         height: yScale(stream[indexOfMax][0] - stream[indexOfMax][1]),
         width: stream.key.length,
@@ -173,76 +205,123 @@ const EnIndustry = ({
     <div
       className={`energy-industry horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}
     >
-      {currentData.data !== undefined && (
-        <div className="visualization-container" ref={targetRef}>
-          <svg className="chart" width="100%" height="100%">
-            <g className="axis">
-              {xAxisElements.map((axis, a) => {
-                if (a % 2 !== 0) {
-                  return (
-                    <g key={a} transform={`translate(${axis.x + 1}, 0)`}>
-                      <line
-                        x1="0"
-                        x2="0"
-                        y1={marginHeight}
-                        y2={dimensions.height - marginHeight}
-                        stroke="black"
-                      />
-                      {/* // YEAR */}
-                      <text
-                        x="-18"
-                        y={marginHeight + 15}
-                        textAnchor="middle"
-                        transform={
-                          dimensions.width <= 350 ? `rotate(-90, -10, ${marginHeight + 10})` : ''
-                        }
-                      >
-                        {axis.label}
-                      </text>
-                    </g>
-                  );
-                } else {
-                  return null;
-                }
-              })}
-            </g>
-            <g className="streams-container">
-              {streamEle.map((stream, s) => {
+      <div className="visualization-container" ref={targetRef}>
+        <svg className="chart" width="100%" height="100%">
+          <g className="axis">
+            {xAxisElements.map((axis, a) => {
+              if (a % 2 !== 0) {
                 return (
-                  <g
-                    key={s}
-                    className={`stream ${stream.klass}`}
-                    onMouseEnter={() => switchHighlightedStream(stream.id)}
-                    onMouseLeave={() => switchHighlightedStream('')}
-                  >
-                    <path className={`path ${stream.id}`} d={stream.path} fill={stream.fill} />
+                  <g key={a} transform={`translate(${axis.x + 1}, 0)`}>
+                    <line
+                      x1="0"
+                      x2="0"
+                      y1={marginHeight}
+                      y2={dimensions.height - marginHeight}
+                      stroke="black"
+                    />
+                    {/* // YEAR */}
+                    <text
+                      x="-18"
+                      y={marginHeight + 15}
+                      textAnchor="middle"
+                      transform={
+                        dimensions.width <= 350 ? `rotate(-90, -10, ${marginHeight + 10})` : ''
+                      }
+                    >
+                      {axis.label}
+                    </text>
                   </g>
                 );
-              })}
-            </g>
-            <g className="streams-labels-container">
-              {streamEle.map((label, l) => {
-                return (
-                  <g key={l}>
-                    <g className="label">
-                      <foreignObject
-                        className={label.threshold ? 'visible' : 'invisible'}
-                        x={label.xPos - label.width * 2}
-                        y={label.yPos - 8}
-                        width="1"
-                        height="1"
-                      >
-                        <div xmlns="http://www.w3.org/1999/xhtml" className={label.klass}>
-                          <p>{label.id}</p>
-                        </div>
-                      </foreignObject>
-                    </g>
+              } else {
+                return null;
+              }
+            })}
+          </g>
+          <g className="streams-container">
+            {streamEle.map((stream, s) => {
+              return (
+                <g
+                  key={s}
+                  className={`stream ${stream.klass}`}
+                  onMouseEnter={() => switchHighlightedStream(stream.id)}
+                  onMouseLeave={() => switchHighlightedStream('')}
+                >
+                  <path className={`path ${stream.id}`} d={stream.path} fill={stream.fill} />
+                </g>
+              );
+            })}
+          </g>
+          <g className="streams-labels-container">
+            {streamEle.map((label, l) => {
+              return (
+                <g key={l}>
+                  <g className="label">
+                    <foreignObject
+                      className={label.threshold ? 'visible' : 'invisible'}
+                      x={label.xPos - label.width * 2}
+                      y={label.yPos - 8}
+                      width="1"
+                      height="1"
+                    >
+                      <div xmlns="http://www.w3.org/1999/xhtml" className={label.klass}>
+                        <p>{label.id}</p>
+                      </div>
+                    </foreignObject>
                   </g>
-                );
-              })}
-            </g>
-          </svg>
-        </div>)}
+                </g>
+              );
+            })}
+          </g>
+          <g className="years-labels-container">
+            {streamEle.map((stream, s) => {
+              return (
+                <g
+                  key={s}
+                  className="stream-labels"
+                  onMouseEnter={() => switchHighlightedStream(stream.id)}
+                  onMouseLeave={() => switchHighlightedStream('')}
+                >
+                  {
+                    stream.labels.map((label, l) => {
+                      return (
+                        <g key={l}>
+                          <rect
+                            x={label.x}
+                            y={label.y}
+                            width="40"
+                            height={label.height}
+                            opacity="0"
+                            onMouseEnter={() => switchActiveLabel(l)}
+                            onMouseLeave={() => switchActiveLabel('')}
+                          />
+                          {label.value !== 0 && (
+                            <g
+                              className={`interactive-labels ${activeLabel === l ? 'active-label' : ''}`}
+                              transform={`translate(${label.x}, ${label.yValue})`}
+                            >
+                              <foreignObject
+                                className={stream.threshold ? 'visible' : 'invisible'}
+                                x="0"
+                                y="0"
+                                width="1"
+                                height="1"
+                              >
+                                <div xmlns="http://www.w3.org/1999/xhtml" className={stream.klass}>
+                                  <p>{formatNumber(label.value)}</p>
+                                </div>
+                              </foreignObject>
+                            </g>
+                          )}
+                        </g>
+                      )
+                    })
+                  }
+                </g>
+              )
+            })}
+          </g>
+        </svg>
+      </div>
       <div className="description">
         <div className="title">
           <h3>

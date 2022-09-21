@@ -182,142 +182,142 @@ const LandDenisty = ({
           </svg>
         </div>
       </div>
-      {currentData.data !== undefined && (
-        <div className="visualization-container" ref={targetRef}>
-          <svg className="chart" width="100%" height="100%">
-            <defs>
+      <div className="visualization-container" ref={targetRef}>
+        <svg className="chart" width="100%" height="100%">
+          <defs>
             // orange rectangle pattern
-              <pattern
-                id="diagonalHatch1"
-                width="10"
-                height="10"
-                patternTransform="rotate(45)"
-                patternUnits="userSpaceOnUse"
-              >
-                <rect fill="#FFBA4E" width="10" height="10" />
-                <line x1="0" y1="0" x2="0" y2="10" stroke="black" />
-              </pattern>
-              <pattern
-                id="diagonalHatch2"
-                width="10"
-                height="10"
-                patternTransform="rotate(-45)"
-                patternUnits="userSpaceOnUse"
-              >
-                <line x1="0" y1="0" x2="0" y2="10" stroke="black" />
-              </pattern>
+            <pattern
+              id="diagonalHatch1"
+              width="10"
+              height="10"
+              patternTransform="rotate(45)"
+              patternUnits="userSpaceOnUse"
+            >
+              <rect fill="#FFBA4E" width="10" height="10" />
+              <line x1="0" y1="0" x2="0" y2="10" stroke="black" />
+            </pattern>
+            <pattern
+              id="diagonalHatch2"
+              width="10"
+              height="10"
+              patternTransform="rotate(-45)"
+              patternUnits="userSpaceOnUse"
+            >
+              <line x1="0" y1="0" x2="0" y2="10" stroke="black" />
+            </pattern>
             // red rectangle pattern
-              <pattern
-                id="diagonalHatch3"
-                width="5"
-                height="5"
-                patternTransform="rotate(45)"
-                patternUnits="userSpaceOnUse"
-              >
-                <rect fill="#E14552" width="5" height="5" />
-                <line x1="0" y1="0" x2="0" y2="5" stroke="black" />
-              </pattern>
-              <pattern
-                id="diagonalHatch4"
-                width="5"
-                height="5"
-                patternTransform="rotate(-45)"
-                patternUnits="userSpaceOnUse"
-              >
-                <line x1="0" y1="0" x2="0" y2="5" stroke="black" />
-              </pattern>
-            </defs>
-            <g className="bars">
-              {barElements[0].map((bar, a) => {
-                return (
-                  <g key={a} transform={`translate(${bar.x},${dimensions.height - marginHeight})`}>
-                    <rect
-                      x={-barWidth / 2}
-                      y={-bar.value}
-                      width={barWidth}
-                      height={bar.value}
-                      stroke={bar.color}
-                      fill="url(#diagonalHatch1)"
-                    />
-                    <rect
-                      x={-barWidth / 2}
-                      y={-bar.value}
-                      width={barWidth}
-                      height={bar.value}
-                      stroke={bar.color}
-                      fill="url(#diagonalHatch2)"
-                    />
-                    <g>
-                      <g transform={`translate(${-barWidth / 2}, ${marginBars - 5})`}>
-                        <rect
-                          className="labelCount"
-                          x={barWidth - bar.valueTotal.length * 7}
-                          y={min([-20, -bar.value])}
-                          width={bar.valueTotal.length * 7}
-                          height="16"
-                          fill="white"
-                        />
-                        <text
-                          className="labelText"
-                          x={barWidth - 2}
-                          y={min([-8, -bar.value + 12])}
-                          textAnchor="end"
-                        >
-                          {bar.valueTotal}
-                        </text>
-                      </g>
-                      <text x="0" y="25" textAnchor="middle" className="year-label">
-                        {bar.year}
-                      </text>
-                    </g>
-                  </g>
-                );
-              })}
-              {barElements[1].map((bar, a) => {
-                return (
-                  <g key={a} transform={`translate(${bar.x},${dimensions.height - marginHeight})`}>
-                    <rect
-                      x={-barWidth / 2}
-                      y={-bar.value - max([16, barElements[0][a].value]) - marginBars}
-                      width={barWidth}
-                      height={bar.value}
-                      stroke={bar.color}
-                      fill="url(#diagonalHatch3)"
-                    />
-                    <rect
-                      x={-barWidth / 2}
-                      y={-bar.value - max([16, barElements[0][a].value]) - marginBars}
-                      width={barWidth}
-                      height={bar.value}
-                      stroke={bar.color}
-                      fill="url(#diagonalHatch4)"
-                    />
-                    <g
-                      transform={`translate(${-barWidth / 2}, ${-bar.value - max([16, barElements[0][a].value])
-                        })`}
-                    >
+            <pattern
+              id="diagonalHatch3"
+              width="5"
+              height="5"
+              patternTransform="rotate(45)"
+              patternUnits="userSpaceOnUse"
+            >
+              <rect fill="#E14552" width="5" height="5" />
+              <line x1="0" y1="0" x2="0" y2="5" stroke="black" />
+            </pattern>
+            <pattern
+              id="diagonalHatch4"
+              width="5"
+              height="5"
+              patternTransform="rotate(-45)"
+              patternUnits="userSpaceOnUse"
+            >
+              <line x1="0" y1="0" x2="0" y2="5" stroke="black" />
+            </pattern>
+          </defs>
+          <g className="bars">
+            {barElements[0].map((bar, a) => {
+              return (
+                <g key={a} transform={`translate(${bar.x},${dimensions.height - marginHeight})`}>
+                  <rect
+                    x={-barWidth / 2}
+                    y={-bar.value}
+                    width={barWidth}
+                    height={bar.value}
+                    stroke={bar.color}
+                    fill="url(#diagonalHatch1)"
+                  />
+                  <rect
+                    x={-barWidth / 2}
+                    y={-bar.value}
+                    width={barWidth}
+                    height={bar.value}
+                    stroke={bar.color}
+                    fill="url(#diagonalHatch2)"
+                  />
+                  <g>
+                    <g transform={`translate(${-barWidth / 2}, ${marginBars - 5})`}>
                       <rect
                         className="labelCount"
-                        x={barWidth - bar.valueTotal.length * 7}
-                        y={min([-5, bar.value - 30])}
-                        width={bar.valueTotal.length * 7}
+                        x={barWidth - (bar.valueTotal.length > 4 ? bar.valueTotal.length * 7 : 25)}
+                        y={min([-20, -bar.value])}
+                        width={bar.valueTotal.length > 4 ? bar.valueTotal.length * 7 : 25}
                         height="16"
+                        fill="white"
                       />
                       <text
                         className="labelText"
                         x={barWidth - 2}
-                        y={min([7, bar.value - 18])}
+                        y={min([-8, -bar.value + 12])}
                         textAnchor="end"
                       >
                         {bar.valueTotal}
                       </text>
                     </g>
+                    <text x="0" y="25" textAnchor="middle" className="year-label">
+                      {bar.year}
+                    </text>
                   </g>
-                );
-              })}
-            </g>
-          </svg>
-        </div>)}
+                </g>
+              );
+            })}
+            {barElements[1].map((bar, a) => {
+              return (
+                <g key={a} transform={`translate(${bar.x},${dimensions.height - marginHeight})`}>
+                  <rect
+                    x={-barWidth / 2}
+                    y={-bar.value - max([16, barElements[0][a].value]) - marginBars}
+                    width={barWidth}
+                    height={bar.value}
+                    stroke={bar.color}
+                    fill="url(#diagonalHatch3)"
+                  />
+                  <rect
+                    x={-barWidth / 2}
+                    y={-bar.value - max([16, barElements[0][a].value]) - marginBars}
+                    width={barWidth}
+                    height={bar.value}
+                    stroke={bar.color}
+                    fill="url(#diagonalHatch4)"
+                  />
+                  <g
+                    transform={`translate(${-barWidth / 2}, ${
+                      -bar.value - max([16, barElements[0][a].value])
+                    })`}
+                  >
+                    <rect
+                      className="labelCount"
+                      x={barWidth - (bar.valueTotal.length > 4 ? bar.valueTotal.length * 7 : 25)}
+                      y={min([-5, bar.value - 30])}
+                      width={bar.valueTotal.length > 4 ? bar.valueTotal.length * 7 : 25}
+                      height="16"
+                    />
+                    <text
+                      className="labelText"
+                      x={barWidth - 2}
+                      y={min([7, bar.value - 18])}
+                      textAnchor="end"
+                    >
+                      {bar.valueTotal}
+                    </text>
+                  </g>
+                </g>
+              );
+            })}
+          </g>
+        </svg>
+      </div>
     </div>
   );
 };

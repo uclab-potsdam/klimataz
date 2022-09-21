@@ -13,6 +13,7 @@ const GeAvgHEating = ({
   // getting sizes of container for maps
   const targetRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [higlightedBar, setHiglightedBar] = useState('');
 
   useLayoutEffect(() => {
     if (targetRef.current) {
@@ -63,6 +64,13 @@ const GeAvgHEating = ({
     '#E95850',
   ];
 
+  let switchHighlightedBar = function (i) {
+    if (currentData !== undefined) {
+      // console.log(id)
+      setHiglightedBar(i);
+    }
+  };
+
   if (currentData !== undefined) {
     currentData.data.forEach((d) => {
       if (d.year.length === 2) {
@@ -92,10 +100,16 @@ const GeAvgHEating = ({
         klass: bar.key,
         y1,
         y2,
-        yMid: b !== 0 ? height - (y1 + y2) / 2 + 5 : height - y2 + y2 / 3,
+        yMid: b !== 0
+          ? height - (y1 + y2) / 2 + 5
+          : height - y2 + y2 / 3,
         fill: colorScale(bar.key),
         label,
-        keyColor: bar.key === 'A' || bar.key === 'A+' || bar.key === 'B' ? 'white' : '#484848',
+        keyColor: bar.key === 'A'
+          || bar.key === 'A+'
+          || bar.key === 'B'
+          ? 'white'
+          : '#484848',
       });
       prevClass = bar.key;
     });
@@ -106,7 +120,8 @@ const GeAvgHEating = ({
         if (k !== 0) {
           const prevKlass = classesKeys[k - 1];
 
-          if (bar.value <= energyClasses[klass] && bar.value > energyClasses[prevKlass]) {
+          if (bar.value <= energyClasses[klass]
+            && bar.value > energyClasses[prevKlass]) {
             enKlass = klass;
           }
         }
@@ -125,121 +140,133 @@ const GeAvgHEating = ({
 
   return (
     <div className={`avg-heating ${isThumbnail ? 'is-thumbnail' : ''}`}>
-      {currentData.data !== undefined && (
-        <div className="visualization-container" ref={targetRef}>
-          <svg className="chart" transform="translate(0, 20)">
-            <clipPath id="backgroundRect">
-              <rect
-                x={marginWidth}
-                y="0%"
-                width={width - marginWidth * 2}
-                height={height - marginHeight}
-                stroke="black"
-                rx="10"
-              />
-            </clipPath>
-            <g className="clipped-container" clipPath="url(#backgroundRect)">
-              <g className="chart-axis">
-                <g className="bar-axis">
-                  {classesData.map((klass, k) => {
-                    return (
-                      <g key={k}>
-                        <rect
-                          x={marginWidth}
-                          y={height - klass.y2}
-                          width="30"
-                          height={klass.y2 - klass.y1}
-                          fill={klass.fill}
-                        />
-                        <text
-                          x={marginWidth + 15}
-                          y={klass.yMid}
-                          textAnchor="middle"
-                          fill={klass.keyColor}
-                        >
-                          {klass.klass}
-                        </text>
-                        <text
-                          x={width - marginWidth - 5}
-                          y={height - klass.y2 + 15}
-                          textAnchor="end"
-                          fill="#484848"
-                        >
-                          {klass.label}
-                        </text>
-                      </g>
-                    );
-                  })}
-                </g>
-                {classesKeys.map((klass, k) => {
+      <div className="visualization-container" ref={targetRef}>
+        <svg className="chart" transform="translate(0, 20)">
+          <clipPath id="backgroundRect">
+            <rect
+              x={marginWidth}
+              y="0%"
+              width={width - marginWidth * 2}
+              height={height - marginHeight}
+              stroke="black"
+              rx="10"
+            />
+          </clipPath>
+          <g className="clipped-container" clipPath="url(#backgroundRect)">
+            <g className="chart-axis">
+              <g className="bar-axis">
+                {classesData.map((klass, k) => {
                   return (
-                    <g key={k} transform={`translate(0, ${height - yScale(energyClasses[klass])})`}>
-                      <line x1="0" x2={width} y1="0" y2="0" stroke="#484848" />
+                    <g key={k}>
+                      <rect
+                        x={marginWidth}
+                        y={height - klass.y2}
+                        width="30"
+                        height={klass.y2 - klass.y1}
+                        fill={klass.fill}
+                      />
+                      <text
+                        x={marginWidth + 15}
+                        y={klass.yMid}
+                        textAnchor="middle"
+                        fill={klass.keyColor}
+                      >
+                        {klass.klass}
+                      </text>
+                      <text
+                        x={width - marginWidth - 5}
+                        y={height - klass.y2 + 15}
+                        textAnchor="end"
+                        fill="#484848"
+                      >
+                        {klass.label}
+                      </text>
                     </g>
                   );
                 })}
               </g>
-              <g className="chart-bars" transform={`translate(${marginWidth + 10}, 0)`}>
-                {barChartData.map((bar, b) => {
-                  return (
-                    <g key={b} transform={`translate(${bar.year}, 0)`}>
-                      <rect
-                        x="0.5"
-                        y={height - bar.kwh}
-                        height={bar.kwh - marginHeight}
-                        width={barsSize - 1}
-                        fill={bar.fill}
-                        stroke={bar.fill}
-                        fillOpacity="20%"
-                      />
-                      <rect
-                        x="0"
-                        y={height - bar.kwh - 5}
-                        width={barsSize}
-                        height="10"
-                        fill={bar.fill}
-                        rx="5"
-                      />
-                      {/* <text x="0" y={marginHeight * 2}>{bar.valueLabel}</text> */}
-                    </g>
-                  );
-                })}
-              </g>
-              <rect
-                x={marginWidth + 0.5}
-                y="0.5"
-                width={width - marginWidth * 2 - 1}
-                height={height - marginHeight - 1}
-                stroke="#484848"
-                fill="none"
-                rx="10"
-              />
-            </g>
-            <g className="non-clipped-elements">
-              {barChartData.map((label, l) => {
+              {classesKeys.map((klass, k) => {
                 return (
-                  <g key={l} transform={`translate(${label.year + 20}, 0)`}>
-                    <text
-                      x="0"
-                      y={height - marginHeight + 10}
-                      textAnchor="middle"
-                      transform={isMobile ? `rotate(90, 0, ${height - marginHeight + 15})` : ''}
-                    >
-                      {label.yearLabel}
-                    </text>
+                  <g key={k} transform={`translate(0, ${height - yScale(energyClasses[klass])})`}>
+                    <line x1="0" x2={width} y1="0" y2="0" stroke="#484848" />
                   </g>
                 );
               })}
-
-              <text x={width - marginWidth} y={height - marginHeight + 10} textAnchor="end">
-                kWh/m²a
-              </text>
             </g>
-          </svg>
-        </div>)}
+            <g className="chart-bars" transform={`translate(${marginWidth + 10}, 0)`}>
+              {barChartData.map((bar, b) => {
+                return (
+                  <g
+                    key={b}
+                    className={`single-bar ${higlightedBar === b || higlightedBar === '' ? 'in-focus' : 'no-focus'}`}
+                    transform={`translate(${bar.year}, 0)`}
+                    onMouseEnter={() => switchHighlightedBar(b)}
+                    onMouseLeave={() => switchHighlightedBar('')}
+                  >
+                    <rect
+                      x="0.5"
+                      y={height - bar.kwh}
+                      height={bar.kwh - marginHeight}
+                      width={barsSize - 1}
+                      fill={bar.fill}
+                      stroke={bar.fill}
+                      fillOpacity="20%"
+                    />
+                    <rect
+                      x="0"
+                      y={height - bar.kwh - 5}
+                      width={barsSize}
+                      height="10"
+                      fill={bar.fill}
+                      rx="5"
+                    />
+                    <g transform={`translate(-25, ${height - bar.kwh - 30})`} className="interactive-labels">
+                      <rect x="-1" y="-11" width="80" height="15" rx="1" stroke={bar.fill} />
+                      <text x="0" y="0">{Math.round(bar.valueLabel)} kWh/m²a</text>
+                    </g>
+                  </g>
+                );
+              })}
+            </g>
+            <rect
+              x={marginWidth + 0.5}
+              y="0.5"
+              width={width - marginWidth * 2 - 1}
+              height={height - marginHeight - 1}
+              stroke="#484848"
+              fill="none"
+              rx="10"
+            />
+          </g>
+          <g className="non-clipped-elements">
+            {barChartData.map((label, l) => {
+              return (
+                <g key={l} transform={`translate(${label.year + 50}, 0)`}>
+                  <text
+                    x="0"
+                    y={height - marginHeight + 15}
+                    textAnchor="middle"
+                    transform={isMobile ? `rotate(90, 0, ${height - marginHeight + 15})` : ''}
+                  >
+                    {label.yearLabel}
+                  </text>
+                </g>
+              );
+            })}
+
+            <text
+              x={width - marginWidth + 10}
+              y={height - marginHeight + 15}
+              textAnchor="end"
+            >
+              kWh/m²a
+            </text>
+          </g>
+        </svg>
+      </div>
       <div className="description">
         <div className="title">
-          <h3>Wie hoch ist der Energieverbrauch beim Heizen in {locationLabel}?</h3>
+          <h3>Wie hoch ist der Energieverbrauch beim Heizen in <span>{locationLabel}</span>?</h3>
         </div>
       </div>
     </div>
