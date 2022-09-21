@@ -54,8 +54,14 @@
     .indicators-iframe {
         .main-container {
             .button-container {
-                    .inner-button {
-                        height: 42%;
+                .inner-button {
+                    height: 42%;
+                }
+
+                .button-switch-container {
+                    .switch-preview {
+                        display: none;
+                    }
                 }
             }
 
@@ -142,6 +148,7 @@
                         width: $portait-postcardwidth;
                         height: calc($portait-postcardwidth*1.5);
                         transform: translate(0, -50%) rotate(5deg);
+                        -webkit-transform:translate(0, -50%) rotate(5deg);
 
                         h4.desktop-title {
                             display: block; 
@@ -301,13 +308,16 @@
                         height: 75%;
                         .label-container {
                             transform: translateY(28px);
+                            -webkit-transform: translateY(28px);
                         }
 
                         .arcs, .x-axis-container {
                             transform: translateY(-60px);
+                            -webkit-transform:translateY(-60px);
 
                             .animal-label {
                                 transform: translateY(20px);
+                                -webkit-transform:translateY(20px);
                                 font-size: 14px;
                             }
                         }
@@ -316,16 +326,20 @@
                             .year-label {
                                 font-size: 12px;
                                 transform: translateX(-20px);
+                                -webkit-transform:translateX(-20px);
                             }
                         }
                         
                         .legend {
                             transform: translateY(90%);
+                            -webkit-transform:translateY(90%);
                             .label-item {
                                 transform: translate(30px, -5px);
+                                -webkit-transform: translate(30px, -5px);
                         
                                 &.vorherigeZaehlung {
                                     transform: translate(-210px, 20px);
+                                    -webkit-transform:translate(-210px, 20px);
                                 }
                             }
                         }
@@ -341,11 +355,13 @@
 
                         .legend {
                             transform: translateY(-20px);
+                            -webkit-transform:translateY(-20px);
 
                             .legend-item {
                                 font-size: 10px;
                                 &.unter-label {
                                     transform: translate(140px, 0px);
+                                    -webkit-transform:translate(140px, 0px);
                                 }
                             }
                         }
@@ -355,6 +371,7 @@
 
                         .chart {
                             transform: translateY(20px);
+                            -webkit-transform:translateY(20px);
                             .bars {
                                 .year-label {
                                         font-size: 14px;
@@ -375,22 +392,27 @@
                         .legend {
                             background-image: url('../img/legends/MoCarDensity-mobile.svg');
                             transform: scale(0.9);
+                            -webkit-transform:scale(0.9);
                             margin-top: 0;
                         }
                     }
     
                     .visualization-container {
                         transform: scale(0.9);
+                        -webkit-transform:scale(0.9);
     
                         .chart {
                             &.active-chart {
                                 transform: skew(0deg, 0deg);
+                                -webkit-transform:skew(0deg, 0deg);
                             }
     
                             &.thumbnail-chart {
                                 transform: skew(0deg, 0deg);
+                                -webkit-transform:skew(0deg, 0deg);
                                 .cars-container {
                                     transform: translate(20px, 0px);
+                                    -webkit-transform:translate(20px, 0px);
                                 }
                             }
                         }
@@ -494,6 +516,7 @@
                 .avg-heating {
                     .visualization-container {
                         transform: translateY(-10px);
+                        -webkit-transform:translateY(-10px);
 
                         // .non-clipped-elements {
                         //     g {

@@ -5,11 +5,14 @@
 }
 
 .chart-container {
-
     height: 100%;
 
     .svg-container {
         height: 100%;
+
+        .visualization-container {
+            cursor: crosshair;
+        }
         // Specific styling for sections' charts
         &.Mo-chart {
             .car-density {
@@ -38,6 +41,7 @@
 
                 .chart {
                     transform: skew(-17deg, 0deg);
+                    -webkit-transform:skew(-17deg, 0deg);
 
                     rect {
                         rx: 1px;
@@ -55,12 +59,15 @@
 
                     &.active-chart {
                         transform: translate(-20px, -10px) skew(-17deg, 0deg);
+                        -webkit-transform:translate(-20px, -10px) skew(-17deg, 0deg);
                     }
 
                     &.thumbnail-chart {
                         transform: translate(-50px, 0px) skew(-17deg, 0deg);
+                        -webkit-transform:translate(-50px, 0px) skew(-17deg, 0deg);
                         .cars-container {
                             transform: scale(0.9);
+                            -webkit-transform:scale(0.9);
                         }
                     }
                 }
@@ -136,20 +143,23 @@
 
                     }
 
-                    .streams-labels-container {
+                    .streams-labels-container, .years-labels-container {
                         foreignObject {
                             pointer-events: none;
                             overflow: visible;
                             transform: translateY(-10px);
+                            -webkit-transform:translateY(-10px);
 
                             &.invisible {
                                 opacity: 0;
                                 transition: opacity 200ms;
+                                -webkit-transition: opacity 200ms;
                             }
 
                             &.visible {
                                 opacity: 1;
                                 transition: opacity 200ms;
+                                -webkit-transition: opacity 200ms;
                             }
 
                             .Str-stream {
@@ -230,6 +240,7 @@
                             .Ges-stream {
                                 width: 120px;
                                 transform: translateX(-100px);
+                                -webkit-transform:translateX(-100px);
                             }
 
                             .Wär-stream {
@@ -270,6 +281,32 @@
                             }
                         }
                     }
+
+                    .years-labels-container {
+                        foreignObject {
+                            white-space: nowrap;
+
+                            .Ges-stream {
+                                    width: 20px;
+                                    transform: translateX(0px);
+                                    -webkit-transform: translateX(0px);
+                            }
+                        }
+                        div {
+                            min-width: 40px;
+                            
+                        }
+                        
+                        .interactive-labels {
+                                opacity: 0;
+                                pointer-events: none;
+                        
+                                &.active-label {
+                                    opacity: 1;
+                                }
+                        
+                        }
+                    }
                  }
 
                  &.is-thumbnail {
@@ -278,7 +315,7 @@
                         height: 100%;
                         width: 100%;
     
-                        .axis, .label {
+                        .axis, .label, .interactive-labels {
                             display: none;
                         }
     
@@ -315,17 +352,44 @@
                         stroke: $default-text;
                     }
 
-                    .year-el circle {
-                        fill: $lighter-orange-full;
+                    .year-el {
+                        transition: all 0.5s;
+                        circle {
+                            fill: $lighter-orange-full;
+                        }
+
+                        .interactive-labels {
+                            opacity: 0;
+                           rect {
+                            stroke: $pale-olive;
+                           }
+                        }
+                    }
+
+                    .year-el:hover {
+                        transition: all 0.5s;
+                        
+                        line {
+                            stroke-dasharray: none;
+                        }
+                        circle {
+                            fill: $pale-olive;
+                        }
+                        .interactive-labels {
+                            opacity: 1;
+                            
+                        }
                     }
 
                     rect {
                         transition: 0.5s;
+                        -webkit-transition: 0.5s;
                         transition-timing-function: ease;
                     }
 
                     .pie, .legend {
                         transition: 0.5s;
+                        -webkit-transition: 0.5s;
                         transition-timing-function: ease;
                         opacity: 0;
 
@@ -388,7 +452,8 @@
                         }
 
                         .year-el {
-                            text {
+                            pointer-events: none;
+                            text, .interactive-labels {
                                 display: none;
                             }
                         }
@@ -417,6 +482,7 @@
                                 flex-direction: column;
                                 
                                 .legend-element {
+                                    cursor: pointer;
                                     display: flex;
                                     margin-left: 1rem;
                                     
@@ -429,6 +495,10 @@
                                     p {
                                         margin: 0;
                                         margin-left: 5px;
+
+                                        &.selected {
+                                            font-weight: 800;
+                                        }
                                     }
                                 }
                             }
@@ -437,6 +507,7 @@
 
                 .caption {
                     margin-left: 1rem;
+                    height: 30%;
 
                     span {
                         color: $dark-blue;
@@ -483,9 +554,308 @@
                     }
                 }
 
+                .fossile, div.fossile {
+                    background-color: $red;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $red;
+                            filter: brightness(0.75);
+                        }
+                    }
+
+                    path,
+                    rect {
+                        stroke: $red;
+                    }
+
+                    circle,
+                    text {
+                        fill: $red;
+                    }
+
+                }
+
+                .gas, div.gas {
+                    background-color: $taz-orange;
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $taz-orange;
+                            filter: brightness(0.75);
+                        }
+                    }
+                    path,
+                    rect {
+                        stroke: $taz-orange;
+                    }
+
+                    circle,
+                    text {
+                        fill: $taz-orange;
+                    }
+                }
+
+                .geothermie, div.geothermie {
+                    background-color: $mint-green;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $mint-green;
+                            filter: brightness(0.75);
+                        }
+                    }
+
+                    path,
+                    rect {
+                        stroke: $mint-green;
+                    }
+
+                    circle,
+                    text {
+                        fill: $mint-green;
+                    }
+                }
+
+                .erneuerbare, div.erneuerbare {
+                    background-color: $electric-blue;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $electric-blue;
+                            filter: brightness(0.75);
+                        }
+                    }
+                    
+                    path,
+                    rect {
+                        stroke: $electric-blue;
+                    }
+
+                    circle,
+                    text {
+                        fill: $electric-blue;
+                    }
+                }
+
+                .umweltthermie, div.umweltthermie {
+                    background-color: $marine-blue;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $marine-blue;
+                            filter: brightness(0.75);
+                        }
+                    }
+
+                    path,
+                    rect {
+                        stroke: $marine-blue;
+                    }
+
+                    circle,
+                    text {
+                        fill: $marine-blue;
+                    }
+                }
+
+                .fernkälte, div.fernkälte {
+                    background-color: $blue;
+                    
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $blue;
+                            filter: brightness(0.75);
+                        }
+                    }
+                    
+                    path,
+                    rect {
+                        stroke: $blue;
+                    }
+
+                    circle,
+                    text {
+                        fill: $blue;
+                    }
+                }
+
+                .holz, div.holz {
+                    background-color: $pale-olive;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $pale-olive;
+                            filter: brightness(0.75);
+                        }
+                    }
+
+                    path,
+                    rect {
+                        stroke: $pale-olive;
+                    }
+
+                    circle,
+                    text {
+                        fill: $pale-olive;
+                    }
+                }
+
+                .solarthermie, div.solarthermie {
+                    background-color: lighten($taz-orange, 30%);
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: lighten($taz-orange, 30%);
+                            filter: brightness(0.75);
+                        }
+                    }
+                    
+                    path,
+                    rect {
+                        stroke:lighten($taz-orange, 30%);
+                    }
+                
+                    circle,
+                    text {
+                        fill: lighten($taz-orange, 30%);
+                    }
+                }
+
+                .biomethan, div.biomethan {
+                    background-color: lighten($brown, 50%);
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: lighten($brown, 50%);
+                            filter: brightness(0.75);
+                        }
+                    }
+                
+                    path,
+                    rect {
+                        stroke: lighten($brown, 50%);
+                    }
+                
+                    circle,
+                    text {
+                        fill: lighten($brown, 50%);
+                    }
+                }
+
+                .biomasse, div.biomasse {
+                    background-color: #dbb28d;
+                
+                    path,
+                    rect {
+                        stroke: #dbb28d;
+                    }
+                
+                    circle,
+                    text {
+                        fill: #dbb28d;
+                    }
+                }
+
+                .keine, div.keine {
+                    background-color: #e0baff;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color:  #e0baff;
+                            filter: brightness(0.75);
+                        }
+                    }
+                
+                    path,
+                    rect {
+                        stroke: #e0baff;
+                    }
+                
+                    circle,
+                    text {
+                        fill: #e0baff;
+                    }
+                }
+                .öl, div.öl {
+                    background-color: lighten($default-text, 20%);
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: lighten($default-text, 20%);
+                            filter: brightness(0.75);
+                        }
+                    }
+                
+                    path,
+                    rect {
+                        stroke: lighten($default-text, 20%);
+                    }
+                
+                    circle,
+                    text {
+                        fill: lighten($default-text, 20%);
+                    }
+                }
+                .heizenergie, div.heizenergie {
+                    background-color: $pink;
+
+                        &.caption {
+                            background-color: transparent;
+
+                            .energy-number {
+                                color: $pink;
+                                filter: brightness(0.75);
+                            }
+                        }
+
+                        path,
+                        rect {
+                            stroke: $pink;
+                        }
+
+                        circle,
+                        text {
+                            fill: $pink;
+                        }
+                }
+
+                .strom, div.strom {
+                    background-color: rgb(127, 86, 187);
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: rgb(127, 86, 187);
+                            filter: brightness(0.75);
+                        }
+                    }
+                
+                    path,
+                    rect {
+                        stroke: rgb(127, 86, 187);
+                    }
+                
+                    circle,
+                    text {
+                        fill: rgb(127, 86, 187);
+                    }
+                }
+
                 &.is-thumbnail {
 
                     .visualization-container {
+                        -webkit-transform:translateX(-30%);
                         transform: translateX(-30%);
                         .chart {
                             width: 100%;
@@ -520,6 +890,33 @@
                         }
 
                         .clipped-container {
+                            .single-bar {
+                                transition: all 0.5s;
+                                .interactive-labels {
+                                    opacity: 0;
+                                    text {
+                                        font-size: 12px;
+                                        fill: $default-text;
+                                    }
+
+                                    rect {
+                                        fill: white;
+                                    }
+                                }
+
+                                &.no-focus {
+                                    opacity: 0.5;
+                                }
+                                
+                            }
+
+                           .single-bar:hover {
+                                transition: all 0.5s;
+                                .interactive-labels {
+                                    opacity: 1;
+                                }
+                            }
+
                             .chart-axis {
                                 text {
                                     font-size: 12px;
@@ -602,6 +999,7 @@
                         width: 100%;
                         scale: 65%;
                         transform: translateY(-10%) translateX(-30%);
+                        -webkit-transform:translateY(-10%) translateX(-30%);
     
                         .axis, text, rect, .legend {
                             display: none;
@@ -702,6 +1100,7 @@
                 position: absolute;
                 top: 50%;
                 transform: translateY(-45%);
+                -webkit-transform:translateY(-45%);
             }
         }
     }
@@ -712,8 +1111,8 @@
     stroke: $default-text;
     stroke-width: 0.5;
     fill: white;
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 
     &.visible {
         fill: $lighter-orange;

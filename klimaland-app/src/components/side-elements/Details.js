@@ -38,19 +38,15 @@ export default class Details extends Component {
   }
 
   render() {
-    const sectionFullName = {
-      La: { de: 'Landwirtschaft', en: 'agriculture' },
-      Mo: { de: 'Mobilität', en: 'mobility' },
-      Ge: { de: 'Gebäude', en: 'buildings' },
-      En: { de: 'Energie', en: 'energy' },
-      Ab: { de: 'Abfall', en: 'waste' },
-    };
-
     return (
       <div className="details-container">
         <div className="flex-container">
           <div className="text-container">
-            <Text {...this.props} sectionFullName={sectionFullName} data={this.props.textData} />
+            <Text
+              sectionName={this.props.sectionName}
+              data={this.props.textData}
+              thirdKey={this.props.thirdKey}
+            />
           </div>
           <div className="data-container">
             <div className="locator-map">
@@ -58,9 +54,10 @@ export default class Details extends Component {
             </div>
             <div className="lk-list">
               <List
-                {...this.props}
-                sectionFullName={sectionFullName}
+                lk={this.props.lk}
                 data={this.props.textData}
+                similarAgs={this.props.similarAgs}
+                thirdKey={this.props.thirdKey}
                 handleClickOnList={this.handleClickOnList}
               />
             </div>

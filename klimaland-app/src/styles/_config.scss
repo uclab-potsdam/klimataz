@@ -26,6 +26,7 @@ $breakpoints: (
 );
 
 //colors
+$wine-red: #A80D35;
 $taz-pink: #F00048;
 $dark-pink: #E5144B;
 $red: #FF7B7B;
@@ -33,6 +34,8 @@ $pink: rgb(255, 192, 192);
 $pale-pink: #FFD5C8;
 
 $dark-blue: #2A4D9C;
+$electric-blue: #3762FB;
+$marine-blue: #5DCCD3;
 $dust-blue: rgb(71, 84, 117);
 $blue: rgb(170, 210, 238);
 
@@ -71,7 +74,6 @@ p, text {
 }
 
 //reusable code
-
 @mixin title{
     font-family: "Chivo";
 }

@@ -1,9 +1,10 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { percentage, firstToUppercase } from '../../helperFunc';
+import { firstToUppercase } from '../../helperFunc';
 import { uniq } from 'lodash';
-import { max, extent, mean, sum } from 'd3-array';
-import { scaleLinear, scaleOrdinal } from 'd3-scale';
+import { max, extent } from 'd3-array';
+import { scaleLinear } from 'd3-scale';
 import { line } from 'd3-shape';
+import { formatNumber } from './../../helperFunc';
 
 const Buildings = ({
   currentData,
@@ -48,23 +49,48 @@ const Buildings = ({
   let axisElements = [];
   let yAxisValues = [];
   let yAxis = [];
-  let numberOfBuildings = 0;
+  let numberOfBuildings = [{ value: 0 }];
+  let selectedEnergy = 0;
   const isMobile = dimensions.width <= 350 && window.mobileCheck(window);
   let scaleCategory = function () {
     return undefined;
   };
   const marginHeight = Math.ceil(dimensions.width / 10);
   const marginWidth = Math.ceil(dimensions.height / 10);
-  const energyTypesOrder = [
-    'Fossils',
-    'Andere fossile Energie',
-    'Gas',
-    'Renewables',
-    'Umweltthermie',
-    'Andere erneuerbare Energien',
-    'Strom',
-  ];
-  const colorArray = ['#A80D35', '#FF7B7B', '#F6A219', '#3762FB', '#2A4D9C', '#5F88C6', '#5DCCD3'];
+
+  const customLegendOrder = [
+    "Solarthermie",
+    "Geothermie",
+    "Umweltthermie (Luft/Wasser)",
+    "Fernwärme/Fernkälte",
+    "Sonstige Heizenergie",
+    "Keine Energie (einschl. Passivhaus)",
+    "Andere erneuerbare Energien",
+    "Gas",
+    "Öl",
+    "Holz",
+    "Biogas/Biomethan",
+    "Sonstige Biomasse",
+    "Strom",
+    "Andere fossile Energien"
+  ]
+
+  //clean labels to create classes
+  const cleanKlassString = function (label) {
+    let cleanedKlassString = label;
+
+    if (label !== ' ') {
+      if (label.includes('/') && !label.includes(' ')) {
+        cleanedKlassString = cleanedKlassString.split('/')[1].toLowerCase();
+      } else if (label.includes('(')) {
+        cleanedKlassString = cleanedKlassString.split(' ')[0].toLowerCase();
+      } else if (label.includes(' ') && !label.includes('(')) {
+        cleanedKlassString = cleanedKlassString.split(' ')[1].toLowerCase();
+      }
+    }
+
+    return cleanedKlassString;
+  };
 
   //handle click on legend to change label
   let changeId = function (id) {
@@ -75,67 +101,67 @@ const Buildings = ({
 
   if (currentData !== undefined) {
     // arrays
-    currentData.data.forEach((d) => (d.column = firstToUppercase(d.column)));
 
-    const sortedData = [...currentData.data].sort(
-      (a, b) => energyTypesOrder.indexOf(a.column) - energyTypesOrder.indexOf(b.column)
-    );
-    const uniqueYears = uniq(currentData.data.map((d) => +d.year));
-    const allBuildings = currentData.data.map((d) => d.value);
-
-    uniqueEnergyTypes = uniq(sortedData.map((d) => d.column));
-    numberOfBuildings = Math.round(mean(allBuildings));
-
-    // Selects higher element in dataset
-    if (currentId === '') {
-      setCurrentId(uniqueEnergyTypes[0]);
-    }
-
-    // constructors and scales
-    let totalValue = 0;
-    const yearlyTotal = uniqueYears.map((year) => {
-      let yearValue = 0;
-      currentData.data.forEach((d) => {
-        if (+d.year === year) {
-          totalValue = totalValue + d.value;
-          yearValue = yearValue + d.value;
-        }
-      });
-
-      currentData.data.forEach((d) => {
-        if (+d.year === year) {
-          d.perc = percentage(d.value, yearValue);
-        }
-      });
-      return yearValue;
+    //here filter out aggregated categories
+    const energyData = currentData.data.filter((d) => {
+      return d.column !== 'Number_buil' && d.column !== 'Fossils' && d.column !== 'Renewables';
     });
 
+    const numberOfBuildingsObj = currentData.data.filter((d) => {
+      return d.column === 'Number_buil';
+    });
+
+    energyData.forEach((d) => (d.column = firstToUppercase(d.column)));
+
+    const uniqueYears = uniq(energyData.map((d) => +d.year));
+    const existingEnergies = energyData.filter((d) => d.value !== null);
+
+    // calc predefined label
+    const existingEnergiesLY = existingEnergies.filter((d) => +d.year === max(uniqueYears));
+    const maxValueForLY = max(existingEnergiesLY.map((d) => d.value));
+    const selectedEnergyObj =
+      currentId === ''
+        ? existingEnergiesLY.filter((d) => d.value === maxValueForLY)
+        : existingEnergiesLY.filter((d) => d.column === currentId);
+
+    uniqueEnergyTypes = uniq(existingEnergies.map((d) => d.column).sort((a, b) =>
+      customLegendOrder.indexOf(a) - customLegendOrder.indexOf(b)));
+
+    numberOfBuildings = numberOfBuildingsObj[0] !== undefined ? numberOfBuildingsObj[0].value : numberOfBuildings;
+    selectedEnergy = selectedEnergyObj[0] !== undefined ? selectedEnergyObj[0].value.toFixed(1) : selectedEnergy;
+
+
+    // // Selects higher element in dataset
+    if (currentId === '') {
+      setCurrentId(selectedEnergyObj[0].column);
+    }
+
     // calc variation on domain based on highest value in dataset
-    const maxValue = max(currentData.data.map((d) => d.perc));
+    const maxValue = max(energyData.map((d) => d.value));
     const maxDomainVal = maxValue >= 45 ? 100 : 50;
     const domainY = [0, maxDomainVal];
-    const domainX = extent(currentData.data.map((d) => +d.year));
+    const domainX = extent(energyData.map((d) => +d.year));
     const xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth, dimensions.width - marginWidth]);
     const yScale = scaleLinear()
       .domain(domainY)
       .range([dimensions.height - marginHeight, marginHeight]);
-    scaleCategory = scaleOrdinal().domain(uniqueEnergyTypes).range(colorArray);
     const createLine = line()
       .x((d) => xScale(+d.year))
-      .y((d) => yScale(d.perc));
+      .y((d) => yScale(d.value));
 
     yAxisValues = yScale.ticks(2);
     yAxis = yAxisValues.map((d) => yScale(d));
 
     // iterate over array and creates line for each energy type
     lineElements = uniqueEnergyTypes.map((type, t) => {
-      const currentTypeData = currentData.data.filter((d) => d.column === type);
+      const currentTypeData = existingEnergies.filter((d) => d.column === type);
+      let typeKlass = type.toLowerCase();
 
       return {
         id: type,
-        stroke: scaleCategory(type),
+        klassName: cleanKlassString(typeKlass),
         path: createLine(currentTypeData),
       };
     });
@@ -144,12 +170,13 @@ const Buildings = ({
     axisElements = uniqueYears.map((axis, a) => {
       const energyMarkers = [];
       let taPosition = 'start';
-      const currentYearData = currentData.data.filter((d) => +d.year === axis);
+      const currentYearData = existingEnergies.filter((d) => +d.year === axis);
 
       currentYearData.forEach((d) => {
         energyMarkers.push({
-          y: yScale(d.perc),
-          label: `${d.perc.toFixed(1)} %`,
+          y: yScale(d.value),
+          klassName: cleanKlassString(d.column.toLowerCase()),
+          label: `${d.value.toFixed(0)} %`,
           id: d.column,
         });
       });
@@ -176,11 +203,13 @@ const Buildings = ({
         <div className="title">
           <h3>Wie wird in Neubauten geheizt?</h3>
         </div>
-        <div className="caption">
+        <div className={`${cleanKlassString(currentId).toLowerCase()} caption`}>
           <p>
-            Durchschnittlich werden in {locationLabel} pro Jahr <span>{numberOfBuildings}</span>{' '}
-            neue Wohnungen oder Häuser fertiggestellt. Zu xx% wird davon mit{' '}
-            <span>{firstToUppercase(currentId)}</span> geheizt.
+            Durchschnittlich werden in {locationLabel} pro Jahr{' '}
+            <span>{formatNumber(numberOfBuildings)}</span> neue Wohnungen oder Häuser
+            fertiggestellt. Zu{' '}
+            <span className="energy-number">{formatNumber(selectedEnergy)} %</span> wird davon mit{' '}
+            <span className="energy-number">{firstToUppercase(currentId)}</span> geheizt.
           </p>
         </div>
         <div className="legend">
@@ -189,11 +218,8 @@ const Buildings = ({
               {uniqueEnergyTypes.map((type, t) => {
                 return (
                   <div key={t} onClick={() => changeId(type)} className="legend-element">
-                    <div
-                      className="element-color"
-                      style={{ backgroundColor: scaleCategory(type) }}
-                    />
-                    <p x="15" y="10">
+                    <div className={`element-color ${cleanKlassString(type.toLowerCase())}`} />
+                    <p x="15" y="10" className={type === currentId ? 'selected' : ''}>
                       {firstToUppercase(type)}
                     </p>
                   </div>
@@ -227,8 +253,8 @@ const Buildings = ({
           <g className="lines">
             {lineElements.map((line, l) => {
               return (
-                <g key={l} className={`${line.id} line`}>
-                  <path d={line.path} stroke={line.stroke} fill="none" />
+                <g key={l} className={`${line.klassName} ${line.type} line`}>
+                  <path d={line.path} fill="none" />
                 </g>
               );
             })}
@@ -246,26 +272,26 @@ const Buildings = ({
                       <g
                         key={e}
                         transform={`translate(0, ${en.y})`}
-                        className={`year-marker ${en.id === currentId ? 'default' : 'optional'}`}
+                        className={`year-marker ${en.klassName} ${en.id === currentId ? 'default' : 'optional'
+                          }`}
                       >
-                        <circle cx="0" cy="0" r="3" fill={scaleCategory(en.id)} />
+                        <circle cx="0" cy="0" r="3" />
                         <g transform="translate(5, 0)">
                           <rect
                             className="marker-label"
                             x={a === axis.length - 1 ? -40 : -2}
                             y="-25"
-                            width="45"
+                            width="35"
                             height="20"
                             fill="white"
-                            stroke={scaleCategory(en.id)}
                             rx="2"
                           />
                           <text
                             className="marker-label"
-                            x="2"
+                            x={a === axis.length - 1 ? -36 : 2}
                             y="-10"
                             fill={scaleCategory(en.id)}
-                            textAnchor={`${a === axis.length - 1 ? 'end' : 'start'}`}
+                            textAnchor="start"
                           >
                             {en.label}
                           </text>
