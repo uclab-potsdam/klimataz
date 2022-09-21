@@ -426,7 +426,8 @@
                         }
 
                         .year-el {
-                            text {
+                            pointer-events: none;
+                            text, .interactive-labels {
                                 display: none;
                             }
                         }
@@ -863,6 +864,33 @@
                         }
 
                         .clipped-container {
+                            .single-bar {
+                                transition: all 0.5s;
+                                .interactive-labels {
+                                    opacity: 0;
+                                    text {
+                                        font-size: 12px;
+                                        fill: $default-text;
+                                    }
+
+                                    rect {
+                                        fill: white;
+                                    }
+                                }
+
+                                &.no-focus {
+                                    opacity: 0.5;
+                                }
+                                
+                            }
+
+                           .single-bar:hover {
+                                transition: all 0.5s;
+                                .interactive-labels {
+                                    opacity: 1;
+                                }
+                            }
+
                             .chart-axis {
                                 text {
                                     font-size: 12px;
