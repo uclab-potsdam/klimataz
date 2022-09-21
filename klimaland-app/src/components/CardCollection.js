@@ -414,9 +414,9 @@ export default class CardCollection extends Component {
     if (
       this.props.cardSelection !== prevProps.cardSelection ||
       this.props.postcardView !== prevProps.postcardView ||
-      this.props.activeCard !== prevProps.activeCard
+      this.props.activeCard !== prevProps.activeCard ||
+      this.props.landkreisModeOn !== prevProps.landkreisModeOn
     ) {
-      //   console.log("props did update");
       this.generateCards();
     }
   }

@@ -140,6 +140,25 @@ code {
             right: 0;
             top: 0;
 
+            .button-toggle-container{
+                position: absolute;
+                top:0;
+                left:0;
+                
+                .toggle{
+                    rect {
+                        transition: 0.5s;
+                        -webkit-transition: 0.5s;
+                        transition-timing-function: ease;
+                    }
+    
+                    .controller-bg {
+                        fill: url(#MyGradient);
+                        stroke: #484848;
+                    }
+                }
+            }
+
             .button-switch-container {
                 display: flex;
 

@@ -26,10 +26,11 @@ export default class LayoutManager extends Component {
     this.changeLandkreis = this.changeLandkreis.bind(this);
     this.changeSection = this.changeSection.bind(this);
 
-    //methods called by other components
+    //methods called by buttons
     this.handleSwitchNext = this.nextCard.bind(this, true);
     this.handleSwitchBack = this.nextCard.bind(this, false);
     this.closePostcardView = this.closePostcardView.bind(this);
+    this.switchLandkreisMode = this.switchLandkreisMode.bind(this);
 
     this.state = {
       //card selection if we are in shuffle mode
@@ -48,7 +49,7 @@ export default class LayoutManager extends Component {
       activeCard: 0,
       //true when currently editors pick is displayed
       showEditorsPick: true,
-      landkreisModeOn: false,
+      landkreisModeOn: true,
     };
   }
 
@@ -77,6 +78,11 @@ export default class LayoutManager extends Component {
     if (!this.state.postcardView) return;
 
     this.setState({ postcardView: false });
+  }
+
+  switchLandkreisMode() {
+    let switchLandkreis = !this.state.landkreisModeOn;
+    this.setState({ landkreisModeOn: switchLandkreis });
   }
 
   /**
@@ -386,6 +392,34 @@ export default class LayoutManager extends Component {
         view buttons*/}
         {this.state.postcardView && (
           <div className="button-container">
+            {
+              <div className="button-toggle-container">
+                <svg>
+                  <g className="toggle" onClick={this.switchLandkreisMode}>
+                    <rect className="controller-bg" x="10" y="10" width="40" height="20" rx="10" />
+                    <rect
+                      x={this.state.landkreisModeOn ? 30 : 10}
+                      y="10"
+                      width="20"
+                      height="20"
+                      rx="10"
+                      fill="#FFF9F1"
+                      stroke="#484848"
+                    />
+                    {this.state.landkreisModeOn && (
+                      <text x="60" y="25">
+                        Landkreis
+                      </text>
+                    )}
+                    {!this.state.landkreisModeOn && (
+                      <text x="60" y="25">
+                        Bundesland
+                      </text>
+                    )}
+                  </g>
+                </svg>
+              </div>
+            }
             {this.props.editorspick[0].view.value !== 3 && (
               <>
                 <div className="inner-button">

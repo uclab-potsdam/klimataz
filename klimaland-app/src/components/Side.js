@@ -11,7 +11,6 @@ export default class Side extends Component {
     super(props);
 
     let layoutdata = this.props.layoutControls.params[0][0];
-    console.log(layoutdata);
     // name	      value	type
     // order	      describes the order in which the layout should be shown ordering hiccups	Int
     // vis/text	   if true shows the visualization, if fals shows text	                     Bool
@@ -41,7 +40,7 @@ export default class Side extends Component {
     if (this.props.isTopCard && !this.props.isThumbnail) {
       let activeSideWithMode = this.props.activeSide;
       //if not in landkreis mode
-      if (!this.props.landkreisModeOn && this.props.section !== 'La') {
+      if (!this.props.landkreisModeOn && this.props.section !== 'Ab') {
         //side 0 --> side 2
         if (activeSideWithMode == 0) activeSideWithMode = 2;
         //side 1 --> side 1
@@ -56,7 +55,6 @@ export default class Side extends Component {
           component: layoutdata.components.component,
         });
       } else {
-        console.log('no indicator here');
         await setStateAsync(this, {
           showViz: layoutdata.combo[1],
           indicator: '',
@@ -105,6 +103,8 @@ export default class Side extends Component {
           localData={this.props.localData}
           indicator={this.state.indicator}
           component={this.state.component}
+          isThumbnail={this.props.isThumbnail}
+          footnote={this.props.footnote}
         />
       );
     } else {
@@ -139,7 +139,8 @@ export default class Side extends Component {
       this.props.activeSide !== prevProps.activeSide ||
       this.props.layoutControls !== prevProps.layoutControls ||
       this.props.isThumbnail !== prevProps.isThumbnail ||
-      this.props.windowSize !== prevProps.windowSize
+      this.props.windowSize !== prevProps.windowSize ||
+      this.props.landkreisModeOn !== prevProps.landkreisModeOn
     ) {
       //update layout for top card
       await this.updateLayout();
