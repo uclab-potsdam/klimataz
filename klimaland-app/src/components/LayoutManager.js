@@ -17,6 +17,30 @@ export default class LayoutManager extends Component {
   constructor(props) {
     super(props);
 
+    //contextual indicator toggle labels
+    this.toggleLabels = {
+      La: {
+        lk: 'Tieranzahl',
+        bl: 'Tiere pro Fläche',
+      },
+      En: {
+        lk: 'Industrie',
+        bl: 'Energieverbrauch',
+      },
+      Mo: {
+        lk: 'PkW-Dichte',
+        bl: 'Transportmittel',
+      },
+      Ge: {
+        lk: 'Heizenergie',
+        bl: 'Energieeffizienz',
+      },
+      Ab: {
+        lk: '',
+        bl: '',
+      },
+    };
+
     //methods called by cardcollection
     this.switchToPostcardView = this.switchToPostcardView.bind(this);
     this.addCardToSelection = this.addCardToSelection.bind(this);
@@ -30,7 +54,7 @@ export default class LayoutManager extends Component {
     this.handleSwitchNext = this.nextCard.bind(this, true);
     this.handleSwitchBack = this.nextCard.bind(this, false);
     this.closePostcardView = this.closePostcardView.bind(this);
-    this.switchLandkreisMode = this.switchLandkreisMode.bind(this);
+    this.switchDataLevel = this.switchDataLevel.bind(this);
 
     this.state = {
       //card selection if we are in shuffle mode
@@ -49,7 +73,7 @@ export default class LayoutManager extends Component {
       activeCard: 0,
       //true when currently editors pick is displayed
       showEditorsPick: true,
-      landkreisModeOn: true,
+      dataLevelLK: true,
     };
   }
 
@@ -80,9 +104,17 @@ export default class LayoutManager extends Component {
     this.setState({ postcardView: false });
   }
 
-  switchLandkreisMode() {
-    let switchLandkreis = !this.state.landkreisModeOn;
-    this.setState({ landkreisModeOn: switchLandkreis });
+  switchDataLevel() {
+    let levelUpdate = !this.state.dataLevelLK;
+    this.setState({ dataLevelLK: levelUpdate });
+  }
+
+  /**
+   * gets the section of the current active card. activeCard is the card currently displayed in postcardView.
+   * @returns section value ("En","La", ..)of activeCard
+   */
+  getActiveCardSection() {
+    return this.state.cardSelection[this.state.activeCard].section.value;
   }
 
   /**
@@ -381,7 +413,7 @@ export default class LayoutManager extends Component {
           mode={this.state.mode}
           postcardView={this.state.postcardView}
           activeCard={this.state.activeCard}
-          landkreisModeOn={this.state.landkreisModeOn}
+          dataLevelLK={this.state.dataLevelLK}
           handleSwitchNext={this.handleSwitchNext}
           handleSwitchBack={this.handleSwitchBack}
           switchToPostcardView={this.switchToPostcardView}
@@ -392,7 +424,7 @@ export default class LayoutManager extends Component {
         view buttons*/}
         {this.state.postcardView && (
           <div className="button-container">
-            {
+            {this.getActiveCardSection() !== 'Ab' && (
               <div className="button-toggle-container">
                 <svg>
                   <defs>
@@ -401,10 +433,10 @@ export default class LayoutManager extends Component {
                       <stop offset="100%" stopColor="#ffe8c9" />
                     </linearGradient>
                   </defs>
-                  <g className="toggle" onClick={this.switchLandkreisMode}>
+                  <g className="toggle" onClick={this.switchDataLevel}>
                     <rect className="controller-bg" x="10" y="10" width="40" height="20" rx="10" />
                     <rect
-                      x={this.state.landkreisModeOn ? 30 : 10}
+                      x={this.state.dataLevelLK ? 30 : 10}
                       y="10"
                       width="20"
                       height="20"
@@ -412,20 +444,20 @@ export default class LayoutManager extends Component {
                       fill="#FFF9F1"
                       stroke="#484848"
                     />
-                    {this.state.landkreisModeOn && (
+                    {this.state.dataLevelLK && (
                       <text x="60" y="25">
-                        Landkreis
+                        {this.toggleLabels[this.getActiveCardSection()].lk}
                       </text>
                     )}
-                    {!this.state.landkreisModeOn && (
+                    {!this.state.dataLevelLK && (
                       <text x="60" y="25">
-                        Bundesland
+                        {this.toggleLabels[this.getActiveCardSection()].bl}
                       </text>
                     )}
                   </g>
                 </svg>
               </div>
-            }
+            )}
             {this.props.editorspick[0].view.value !== 3 && (
               <>
                 <div className="inner-button">

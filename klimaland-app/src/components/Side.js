@@ -40,7 +40,7 @@ export default class Side extends Component {
     if (this.props.isTopCard && !this.props.isThumbnail) {
       let activeSideWithMode = this.props.activeSide;
       //if not in landkreis mode
-      if (!this.props.landkreisModeOn && this.props.section !== 'Ab') {
+      if (!this.props.dataLevelLK && this.props.section !== 'Ab') {
         //side 0 --> side 2
         if (activeSideWithMode == 0) activeSideWithMode = 2;
         //side 1 --> side 1
@@ -140,7 +140,7 @@ export default class Side extends Component {
       this.props.layoutControls !== prevProps.layoutControls ||
       this.props.isThumbnail !== prevProps.isThumbnail ||
       this.props.windowSize !== prevProps.windowSize ||
-      this.props.landkreisModeOn !== prevProps.landkreisModeOn
+      this.props.dataLevelLK !== prevProps.dataLevelLK
     ) {
       //update layout for top card
       await this.updateLayout();
