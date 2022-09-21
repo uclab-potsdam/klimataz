@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { stack, stackOffsetSilhouette, stackOrderAscending, curveMonotoneX, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
-import { max, extent, mean } from 'd3-array';
+import { max, extent } from 'd3-array';
 import { formatNumber } from './../../helperFunc';
 
 const EnIndustry = ({
@@ -28,6 +28,8 @@ const EnIndustry = ({
   const targetRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [highlighedStream, setHighlightedStream] = useState('');
+  const [activeLabel, setactiveLabel] = useState('');
+
 
   //   const [currentId, setCurrentId] = useState('');
 
@@ -55,9 +57,14 @@ const EnIndustry = ({
   let showBundeslandForLK = false;
 
   let switchHighlightedStream = function (id) {
-    if (currentData !== undefined) {
-      // console.log(id)
+    if (currentData.data !== undefined) {
       setHighlightedStream(id);
+    }
+  };
+
+  let switchActiveLabel = function (index) {
+    if (currentData.data !== undefined) {
+      setactiveLabel(index);
     }
   };
 
@@ -136,12 +143,6 @@ const EnIndustry = ({
       .offset(stackOffsetSilhouette);
     const stackedSeries = stacks(stackData);
 
-    // const valueLabels = stackData.map((label, l) => {
-    //   return {
-
-    //   }
-    // })
-
     // stream graph
     streamEle = stackedSeries.map((stream, s) => {
       const maxStreamValue = max(
@@ -160,12 +161,36 @@ const EnIndustry = ({
         }
       });
 
+      const labelRects = []
+      for (let index = 0; index < stream['length']; index++) {
+        // const next = index > stream['length'] ? stream['length'] - 1 : index + 1
+        // console.log(next)
+        const scaledFloor = yScale(stream[index][0])
+        const scaledCeil = yScale(stream[index][1])
+        const year = stackData[index].year;
+        const value = stackData[index][stream.key]
+        const y = Math.abs(scaledCeil)
+        const yValue = Math.abs(scaledFloor - (scaledFloor - scaledCeil) / 2)
+        // const width = Math.abs(xScale(stackData[next].year) - xScale(year))
+        const height = Math.abs(scaledCeil - scaledFloor)
+        const labelEl = {
+          x: xScale(year),
+          y,
+          yValue,
+          height,
+          value
+        }
+
+        labelRects.push(labelEl)
+      }
+
       return {
         klass: stream.key.substring(0, 3) + '-stream',
         id: stream.key,
         fill: scaleCategory(stream.key),
         path: areaGen(stream),
         xPos: xScale(yearOfMax),
+        labels: labelRects,
         yPos: yScale(stream[indexOfMax][0] - (stream[indexOfMax][0] - stream[indexOfMax][1]) / 2),
         height: yScale(stream[indexOfMax][0] - stream[indexOfMax][1]),
         width: stream.key.length,
@@ -245,6 +270,54 @@ const EnIndustry = ({
                   </g>
                 </g>
               );
+            })}
+          </g>
+          <g className="years-labels-container">
+            {streamEle.map((stream, s) => {
+              return (
+                <g
+                  key={s}
+                  className="stream-labels"
+                  onMouseEnter={() => switchHighlightedStream(stream.id)}
+                  onMouseLeave={() => switchHighlightedStream('')}
+                >
+                  {
+                    stream.labels.map((label, l) => {
+                      return (
+                        <g key={l}>
+                          <rect
+                            x={label.x}
+                            y={label.y}
+                            width="40"
+                            height={label.height}
+                            opacity="0"
+                            onMouseEnter={() => switchActiveLabel(l)}
+                            onMouseLeave={() => switchActiveLabel('')}
+                          />
+                          {label.value !== 0 && (
+                            <g
+                              className={`interactive-labels ${activeLabel === l ? 'active-label' : ''}`}
+                              transform={`translate(${label.x}, ${label.yValue})`}
+                            >
+                              <foreignObject
+                                className={stream.threshold ? 'visible' : 'invisible'}
+                                x="0"
+                                y="0"
+                                width="1"
+                                height="1"
+                              >
+                                <div xmlns="http://www.w3.org/1999/xhtml" className={stream.klass}>
+                                  <p>{formatNumber(label.value)}</p>
+                                </div>
+                              </foreignObject>
+                            </g>
+                          )}
+                        </g>
+                      )
+                    })
+                  }
+                </g>
+              )
             })}
           </g>
         </svg>

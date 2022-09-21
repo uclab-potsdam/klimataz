@@ -143,7 +143,7 @@
 
                     }
 
-                    .streams-labels-container {
+                    .streams-labels-container, .years-labels-container {
                         foreignObject {
                             pointer-events: none;
                             overflow: visible;
@@ -281,6 +281,32 @@
                             }
                         }
                     }
+
+                    .years-labels-container {
+                        foreignObject {
+                            white-space: nowrap;
+
+                            .Ges-stream {
+                                    width: 20px;
+                                    transform: translateX(0px);
+                                    -webkit-transform: translateX(0px);
+                            }
+                        }
+                        div {
+                            min-width: 40px;
+                            
+                        }
+                        
+                        .interactive-labels {
+                                opacity: 0;
+                                pointer-events: none;
+                        
+                                &.active-label {
+                                    opacity: 1;
+                                }
+                        
+                        }
+                    }
                  }
 
                  &.is-thumbnail {
@@ -289,7 +315,7 @@
                         height: 100%;
                         width: 100%;
     
-                        .axis, .label {
+                        .axis, .label, .interactive-labels {
                             display: none;
                         }
     
