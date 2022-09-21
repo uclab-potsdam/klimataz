@@ -97,26 +97,29 @@ export default class LayoutManager extends Component {
     });
   }
 
+  /**
+   * creates text on arrows left and right in postcard view.
+   * called by methods switchToPostcardView and nextCard
+   * set state "previewLeftCard" and "previewRightCard"
+   */
   setNextCardPreviews() {
     //switch to next card in postcard view
     if (!this.state.postcardView) return;
 
     //if going to the next card
     const rightCard = (this.state.activeCard + 1) % this.state.cardSelection.length;
-    const rightCardPreview =
-      this.state.cardSelection[rightCard].section.label +
-      ' in ' +
-      this.state.cardSelection[rightCard].lk.label;
+    let sectionLabel = this.state.cardSelection[rightCard].section.label;
+    if (sectionLabel == 'Landwirtschaft') sectionLabel = 'Landw.';
+    const rightCardPreview = sectionLabel + '\n' + this.state.cardSelection[rightCard].lk.label;
     this.setState({ previewRightCard: rightCardPreview });
     //if going back
 
     let leftCard = this.state.activeCard - 1;
     //if new card -1: set last card of selection as new card
     if (leftCard < 0) leftCard = this.state.cardSelection.length - 1;
-    const leftCardPreview =
-      this.state.cardSelection[leftCard].section.label +
-      ' in ' +
-      this.state.cardSelection[leftCard].lk.label;
+    sectionLabel = this.state.cardSelection[leftCard].section.label;
+    if (sectionLabel == 'Landwirtschaft') sectionLabel = 'Landw.';
+    const leftCardPreview = sectionLabel + '\n' + this.state.cardSelection[leftCard].lk.label;
     this.setState({ previewLeftCard: leftCardPreview });
   }
 
@@ -424,13 +427,13 @@ export default class LayoutManager extends Component {
                 </div>
                 <div className="button-switch-container">
                   <div className="inner-button button-left">
-                    <div>{this.state.previewLeftCard}</div>
+                    <h4 className="switch-preview">{this.state.previewLeftCard}</h4>
                     <button className="button switch" onClick={this.handleSwitchBack}>
                       <img src={switchCardLeft} className="button img" alt="switch-button-img" />
                     </button>
                   </div>
                   <div className="inner-button button-right">
-                    <div>{this.state.previewRightCard}</div>
+                    <h4 className="switch-preview">{this.state.previewRightCard}</h4>
                     <button className="button switch" onClick={this.handleSwitchNext}>
                       <img src={switchCardRight} className="button img" alt="switch-button-img" />
                     </button>

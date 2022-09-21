@@ -142,30 +142,33 @@ code {
 
             .button-switch-container {
                 display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                height:20%;
+
+                .inner-button{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    align-content: stretch;
+
+                    .switch-preview{
+                        white-space: pre-wrap;
+                    }
+                }
 
                 .button-left, .button-right {
-                    width: 50%;
-                    position: relative;
-                }
-
-                .button-left {
                     .button {
-                        float: left;
-                        margin-left: 1rem;
+                        margin-bottom: auto;
                     }
                 }
 
-                .button-right {
-                    .button {
-                        float: right;
-                        margin-right: 1rem;
-                    }
-                }
             }
 
             .inner-button {
                 // width: 100%;
-                height: 50%;
+                height: 40%;
 
                 .close {
                     position:relative;
