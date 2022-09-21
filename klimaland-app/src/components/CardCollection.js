@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import { Component } from 'react';
-import { mod, isInt, setStateAsync } from './helperFunc.js';
+import { mod, isInt, setStateAsync } from '../helpers/helperFunc';
 import { readString } from 'react-papaparse';
 
 //components

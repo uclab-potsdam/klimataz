@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { max } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { min, uniq } from 'lodash';
-import { formatNumber } from './../../helperFunc';
+import { formatNumber } from '../../../helpers/helperFunc';
 
 const LandDenisty = ({
   currentData,
