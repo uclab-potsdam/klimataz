@@ -123,6 +123,18 @@ const Canvas = () => {
       uiVis = false;
 
       try {
+        //get DATALEVEL param
+        //only in single post card view
+        // let definedLevelLK = getParamValue('levelLK');
+        // let levelLK = true;
+        // if (definedLevelLK == undefined) {
+        //   levelLK = true;
+        // } else {
+        //   if (definedLevelLK[0] === 'true') levelLK = true;
+        //   if (definedLevelLK[0] === 'false') levelLK = false;
+        //   else levelLK = true;
+        // }
+
         let name = getCheckedLandkreisLabel(ags[0]);
         let sectionLabel = getCheckedSectionLabel(sections[0]);
         checkedPick.push({
@@ -130,6 +142,7 @@ const Canvas = () => {
           section: { value: sections[0], label: sectionLabel },
           ui: { value: uiVis },
           view: { value: 3, label: 'singlePCview' },
+          //levelLK: { value: levelLK },
         });
         if (checkedPick.length !== 0) {
           setEditorsPick(checkedPick);
