@@ -136,6 +136,12 @@ const EnIndustry = ({
       .offset(stackOffsetSilhouette);
     const stackedSeries = stacks(stackData);
 
+    // const valueLabels = stackData.map((label, l) => {
+    //   return {
+
+    //   }
+    // })
+
     // stream graph
     streamEle = stackedSeries.map((stream, s) => {
       const maxStreamValue = max(
@@ -146,6 +152,7 @@ const EnIndustry = ({
 
       let yearOfMax = 0;
       let indexOfMax = 0;
+
       stackData.forEach((d, i) => {
         if (d[stream.key] === maxStreamValue) {
           yearOfMax = d.year;
