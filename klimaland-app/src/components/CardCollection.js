@@ -289,6 +289,7 @@ export default class CardCollection extends Component {
                 lk={element.lk}
                 isThumbnail={false}
                 isTopCard={isTopCard} //this is true for the postcard on top
+                landkreisModeOn={this.props.landkreisModeOn}
                 section={section}
                 sectionName={element.section.label}
                 windowSize={this.state.windowSize}
@@ -366,7 +367,7 @@ export default class CardCollection extends Component {
                 isThumbnail={true}
                 textData={localTextData}
                 mode={this.props.mode}
-                landkreisModeOn={this.props.landkreisModeOn}
+                landkreisModeOn={true} //always true in thumbnail view
                 localData={localData}
                 thirdKey={thirdKey}
                 clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview

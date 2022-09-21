@@ -48,7 +48,7 @@ export default class LayoutManager extends Component {
       activeCard: 0,
       //true when currently editors pick is displayed
       showEditorsPick: true,
-      landkreisModeOn: true,
+      landkreisModeOn: false,
     };
   }
 

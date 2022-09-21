@@ -10,18 +10,18 @@ export default class Side extends Component {
   constructor(props) {
     super(props);
 
-    let layoutdata = this.props.layoutControls.params[this.props.activeSide][this.props.activeSide];
-
+    let layoutdata = this.props.layoutControls.params[0][0];
+    console.log(layoutdata);
     // name	      value	type
     // order	      describes the order in which the layout should be shown ordering hiccups	Int
     // vis/text	   if true shows the visualization, if fals shows text	                     Bool
     // indicator	describes which data should be imported in the layout                      Int
     // locator map	if true shows the map	                                                   Bool
     this.state = {
-      order: layoutdata.combo[0],
+      // order: layoutdata.combo[0],
       showViz: layoutdata.combo[1],
-      indicatorInt: layoutdata.combo[2],
-      showLocator: layoutdata.combo[3],
+      indicator: layoutdata.components.indicator,
+      component: layoutdata.components.component,
       chartStyle: {
         width: '300',
         height: '200',
@@ -33,6 +33,38 @@ export default class Side extends Component {
     this.vis = this.vis.bind(this);
     this.openUpCard = this.openUpCard.bind(this);
     this.handleClickOnList = this.handleClickOnList.bind(this);
+  }
+
+  async updateLayout() {
+    //only for top card because of performance
+    //for thumbnails: always stay in landkreis mode
+    if (this.props.isTopCard && !this.props.isThumbnail) {
+      let activeSideWithMode = this.props.activeSide;
+      //if not in landkreis mode
+      if (!this.props.landkreisModeOn && this.props.section !== 'La') {
+        //side 0 --> side 2
+        if (activeSideWithMode == 0) activeSideWithMode = 2;
+        //side 1 --> side 1
+      }
+
+      let layoutdata = this.props.layoutControls.params[activeSideWithMode][activeSideWithMode];
+
+      if (layoutdata.components !== undefined) {
+        await setStateAsync(this, {
+          showViz: layoutdata.combo[1],
+          indicator: layoutdata.components.indicator,
+          component: layoutdata.components.component,
+        });
+      } else {
+        console.log('no indicator here');
+        await setStateAsync(this, {
+          showViz: layoutdata.combo[1],
+          indicator: '',
+          component: '',
+          ranking: this.props.textData[0][this.props.thirdKey],
+        });
+      }
+    }
   }
 
   /**
@@ -63,12 +95,18 @@ export default class Side extends Component {
    */
   vis() {
     if (
-      this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-        undefined &&
+      this.props.localData !== undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
-      return <Chart {...this.props} />;
+      return (
+        <Chart
+          section={this.props.section}
+          localData={this.props.localData}
+          indicator={this.state.indicator}
+          component={this.state.component}
+        />
+      );
     } else {
       //if not specified yet: return nothing
       return;
@@ -101,25 +139,16 @@ export default class Side extends Component {
       this.props.activeSide !== prevProps.activeSide ||
       this.props.layoutControls !== prevProps.layoutControls ||
       this.props.isThumbnail !== prevProps.isThumbnail ||
-      this.props.windowSize !== prevProps.windowSize ||
-      this.props.textData !== prevProps.textData ||
-      this.props.thirdKey !== prevProps.thirdKey
+      this.props.windowSize !== prevProps.windowSize
     ) {
       //update layout for top card
-      //only for top card because of performance
-      if (this.props.isTopCard) {
-        let layoutdata =
-          this.props.layoutControls.params[this.props.activeSide][this.props.activeSide];
-        await setStateAsync(this, {
-          order: layoutdata.combo[0],
-          showViz: layoutdata.combo[1],
-          indicator: layoutdata.combo[2],
-          showLocator: layoutdata.combo[3],
-          ranking: this.props.textData[0][this.props.thirdKey],
-        });
-      }
-
+      await this.updateLayout();
+      //update chart size
       await this.updateChartSize();
+    }
+
+    if (this.props.textData !== prevProps.textData || this.props.thirdKey !== prevProps.thirdKey) {
+      await setStateAsync(this, { ranking: this.props.textData[0][this.props.thirdKey] });
     }
   }
 
@@ -128,6 +157,7 @@ export default class Side extends Component {
    * updates chart size
    */
   async componentDidMount() {
+    await this.updateLayout();
     await this.updateChartSize();
     await setStateAsync(this, { ranking: this.props.textData[0][this.props.thirdKey] });
   }
