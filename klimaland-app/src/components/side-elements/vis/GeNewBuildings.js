@@ -58,6 +58,23 @@ const Buildings = ({
   const marginHeight = Math.ceil(dimensions.width / 10);
   const marginWidth = Math.ceil(dimensions.height / 10);
 
+  const customLegendOrder = [
+    "Solarthermie",
+    "Geothermie",
+    "Umweltthermie (Luft/Wasser)",
+    "Fernwärme/Fernkälte",
+    "Sonstige Heizenergie",
+    "Keine Energie (einschl. Passivhaus)",
+    "Andere erneuerbare Energien",
+    "Gas",
+    "Öl",
+    "Holz",
+    "Biogas/Biomethan",
+    "Sonstige Biomasse",
+    "Strom",
+    "Andere fossile Energien"
+  ]
+
   //clean labels to create classes
   const cleanKlassString = function (label) {
     let cleanedKlassString = label;
@@ -107,9 +124,8 @@ const Buildings = ({
         ? existingEnergiesLY.filter((d) => d.value === maxValueForLY)
         : existingEnergiesLY.filter((d) => d.column === currentId);
 
-    uniqueEnergyTypes = uniq(existingEnergies.map((d) => d.column)).sort((a, b) =>
-      a.localeCompare(b)
-    );
+    uniqueEnergyTypes = uniq(existingEnergies.map((d) => d.column).sort((a, b) =>
+      customLegendOrder.indexOf(a) - customLegendOrder.indexOf(b)));
 
     numberOfBuildings = numberOfBuildingsObj[0] !== undefined ? numberOfBuildingsObj[0].value : numberOfBuildings;
     selectedEnergy = selectedEnergyObj[0] !== undefined ? selectedEnergyObj[0].value.toFixed(1) : selectedEnergy;
