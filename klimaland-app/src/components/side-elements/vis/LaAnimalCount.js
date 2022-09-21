@@ -176,10 +176,13 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
 
   return (
     <div className={`animal-count horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}>
-      {currentData.data !== undefined && (
+      {currentData !== undefined && currentData.data !== undefined && (
         <div className="visualization-container" ref={targetRef}>
           <svg className="chart" width="100%" height="100%">
-            <g className="legend" transform={`translate(${marginWidth / 2}, ${marginHeight / 1.5})`}>
+            <g
+              className="legend"
+              transform={`translate(${marginWidth / 2}, ${marginHeight / 1.5})`}
+            >
               <g className="label-item wenigerTiere">
                 <circle className="wenigerTiere" cx="0" cy="0" r={legendRadius} />
                 <text x={legendRadius + 10} y={legendRadius / 2 + 2}>
@@ -268,7 +271,8 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
               })}
             </g>
           </svg>
-        </div>)}
+        </div>
+      )}
       <div className="description">
         <div className="title">
           <h3>

@@ -59,21 +59,21 @@ const Buildings = ({
   const marginWidth = Math.ceil(dimensions.height / 10);
 
   const customLegendOrder = [
-    "Solarthermie",
-    "Geothermie",
-    "Umweltthermie (Luft/Wasser)",
-    "Fernwärme/Fernkälte",
-    "Sonstige Heizenergie",
-    "Keine Energie (einschl. Passivhaus)",
-    "Andere erneuerbare Energien",
-    "Gas",
-    "Öl",
-    "Holz",
-    "Biogas/Biomethan",
-    "Sonstige Biomasse",
-    "Strom",
-    "Andere fossile Energien"
-  ]
+    'Solarthermie',
+    'Geothermie',
+    'Umweltthermie (Luft/Wasser)',
+    'Fernwärme/Fernkälte',
+    'Sonstige Heizenergie',
+    'Keine Energie (einschl. Passivhaus)',
+    'Andere erneuerbare Energien',
+    'Gas',
+    'Öl',
+    'Holz',
+    'Biogas/Biomethan',
+    'Sonstige Biomasse',
+    'Strom',
+    'Andere fossile Energien',
+  ];
 
   //clean labels to create classes
   const cleanKlassString = function (label) {
@@ -124,12 +124,16 @@ const Buildings = ({
         ? existingEnergiesLY.filter((d) => d.value === maxValueForLY)
         : existingEnergiesLY.filter((d) => d.column === currentId);
 
-    uniqueEnergyTypes = uniq(existingEnergies.map((d) => d.column).sort((a, b) =>
-      customLegendOrder.indexOf(a) - customLegendOrder.indexOf(b)));
+    uniqueEnergyTypes = uniq(
+      existingEnergies
+        .map((d) => d.column)
+        .sort((a, b) => customLegendOrder.indexOf(a) - customLegendOrder.indexOf(b))
+    );
 
-    numberOfBuildings = numberOfBuildingsObj[0] !== undefined ? numberOfBuildingsObj[0].value : numberOfBuildings;
-    selectedEnergy = selectedEnergyObj[0] !== undefined ? selectedEnergyObj[0].value.toFixed(1) : selectedEnergy;
-
+    numberOfBuildings =
+      numberOfBuildingsObj[0] !== undefined ? numberOfBuildingsObj[0].value : numberOfBuildings;
+    selectedEnergy =
+      selectedEnergyObj[0] !== undefined ? selectedEnergyObj[0].value.toFixed(1) : selectedEnergy;
 
     // // Selects higher element in dataset
     if (currentId === '') {
@@ -229,7 +233,7 @@ const Buildings = ({
           </div>
         </div>
       </div>
-      {currentData.data !== undefined && (
+      {currentData !== undefined && currentData.data !== undefined && (
         <div className="visualization-container" ref={targetRef}>
           <svg className="chart">
             <g className="axis">
@@ -273,7 +277,9 @@ const Buildings = ({
                         <g
                           key={e}
                           transform={`translate(0, ${en.y})`}
-                          className={`year-marker ${en.klassName} ${en.id === currentId ? 'default' : 'optional'}`}
+                          className={`year-marker ${en.klassName} ${
+                            en.id === currentId ? 'default' : 'optional'
+                          }`}
                         >
                           <circle cx="0" cy="0" r="3" />
                           <g transform="translate(5, 0)">
@@ -304,7 +310,8 @@ const Buildings = ({
               })}
             </g>
           </svg>
-        </div>)}
+        </div>
+      )}
     </div>
   );
 };

@@ -129,8 +129,9 @@ const MoCarDensity = ({
 
   return (
     <div
-      className={`car-density vertical-layout ${isThumbnail ? 'is-thumbnail' : ''} ${isMobile ? 'is-mobile' : ''
-        }`}
+      className={`car-density vertical-layout ${isThumbnail ? 'is-thumbnail' : ''} ${
+        isMobile ? 'is-mobile' : ''
+      }`}
     >
       <div className="description">
         <div className="title">
@@ -142,7 +143,7 @@ const MoCarDensity = ({
         </div>
         <div className="legend"></div>
       </div>
-      {currentData.data !== undefined && (
+      {currentData !== undefined && currentData.data !== undefined && (
         <div className="visualization-container" ref={targetRef}>
           <svg className={`chart ${isThumbnail ? 'thumbnail-chart' : 'active-chart'}`}>
             <g className="cars-container">
@@ -207,7 +208,8 @@ const MoCarDensity = ({
               </g>
             </g>
           </svg>
-        </div>)}
+        </div>
+      )}
     </div>
   );
 };
