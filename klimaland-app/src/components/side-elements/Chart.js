@@ -24,17 +24,8 @@ export default class Chart extends Component {
   //  * @param {*} prevProps
   //  */
   // async componentDidUpdate(prevProps) {
-  //   if (
-  //     this.props.layoutControls !== prevProps.layoutControls ||
-  //     this.props.activeSide !== prevProps.activeSide
-  //   ) {
-  //     await setStateAsync(this, {
-  //       chartComponentName:
-  //         this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components
-  //           .component,
-  //       currentIndicator:
-  //         this.props.layoutControls.params[this.props.activeSide][0].components.indicator,
-  //     });
+  //   if (this.props.indicator !== prevProps.indicator) {
+  //     this.render();
   //   }
   // }
 

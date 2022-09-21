@@ -37,7 +37,7 @@ export default class Side extends Component {
   async updateLayout() {
     //only for top card because of performance
     //for thumbnails: always stay in landkreis mode
-    if (this.props.isTopCard && !this.props.isThumbnail) {
+    if (this.props.isTopCard || this.props.isThumbnail) {
       let activeSideWithMode = this.props.activeSide;
       //if not in landkreis mode
       if (!this.props.dataLevelLK && this.props.section !== 'Ab') {
@@ -179,35 +179,37 @@ export default class Side extends Component {
                   </div>
                 )}
                 <h4 className="section-title">{this.props.sectionName}</h4>
-                <svg className="rating-thumb" width="50%" height="35%">
-                  <g>
-                    <circle
-                      className={`${
-                        this.state.ranking === 'unteren Drittel' ? 'active' : 'inactive'
-                      } 
+                {this.props.lk.value !== 0 && (
+                  <svg className="rating-thumb" width="50%" height="35%">
+                    <g>
+                      <circle
+                        className={`${
+                          this.state.ranking === 'unteren Drittel' ? 'active' : 'inactive'
+                        } 
                   lower`}
-                      cx="32"
-                      cy="32"
-                      r="30"
-                    />
-                    <circle
-                      className={`${
-                        this.state.ranking === 'mittleren Drittel' ? 'active' : 'inactive'
-                      } middle`}
-                      cx="67"
-                      cy="32"
-                      r="30"
-                    />
-                    <circle
-                      className={`${
-                        this.state.ranking === 'oberen Drittel' ? 'active' : 'inactive'
-                      } upper`}
-                      cx="102"
-                      cy="32"
-                      r="30"
-                    />
-                  </g>
-                </svg>
+                        cx="32"
+                        cy="32"
+                        r="30"
+                      />
+                      <circle
+                        className={`${
+                          this.state.ranking === 'mittleren Drittel' ? 'active' : 'inactive'
+                        } middle`}
+                        cx="67"
+                        cy="32"
+                        r="30"
+                      />
+                      <circle
+                        className={`${
+                          this.state.ranking === 'oberen Drittel' ? 'active' : 'inactive'
+                        } upper`}
+                        cx="102"
+                        cy="32"
+                        r="30"
+                      />
+                    </g>
+                  </svg>
+                )}
               </div>
             )}
           </div>
