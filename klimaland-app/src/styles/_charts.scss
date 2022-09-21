@@ -5,11 +5,14 @@
 }
 
 .chart-container {
-
     height: 100%;
 
     .svg-container {
         height: 100%;
+
+        .visualization-container {
+            cursor: crosshair;
+        }
         // Specific styling for sections' charts
         &.Mo-chart {
             .car-density {
@@ -145,7 +148,7 @@
 
                     }
 
-                    .streams-labels-container {
+                    .streams-labels-container, .years-labels-container {
                         foreignObject {
                             pointer-events: none;
                             overflow: visible;
@@ -283,6 +286,32 @@
                             }
                         }
                     }
+
+                    .years-labels-container {
+                        foreignObject {
+                            white-space: nowrap;
+
+                            .Ges-stream {
+                                    width: 20px;
+                                    transform: translateX(0px);
+                                    -webkit-transform: translateX(0px);
+                            }
+                        }
+                        div {
+                            min-width: 40px;
+                            
+                        }
+                        
+                        .interactive-labels {
+                                opacity: 0;
+                                pointer-events: none;
+                        
+                                &.active-label {
+                                    opacity: 1;
+                                }
+                        
+                        }
+                    }
                  }
 
                  &.is-thumbnail {
@@ -291,7 +320,7 @@
                         height: 100%;
                         width: 100%;
     
-                        .axis, .label {
+                        .axis, .label, .interactive-labels {
                             display: none;
                         }
     
@@ -328,8 +357,33 @@
                         stroke: $default-text;
                     }
 
-                    .year-el circle {
-                        fill: $lighter-orange-full;
+                    .year-el {
+                        transition: all 0.5s;
+                        circle {
+                            fill: $lighter-orange-full;
+                        }
+
+                        .interactive-labels {
+                            opacity: 0;
+                           rect {
+                            stroke: $pale-olive;
+                           }
+                        }
+                    }
+
+                    .year-el:hover {
+                        transition: all 0.5s;
+                        
+                        line {
+                            stroke-dasharray: none;
+                        }
+                        circle {
+                            fill: $pale-olive;
+                        }
+                        .interactive-labels {
+                            opacity: 1;
+                            
+                        }
                     }
 
                     rect {
@@ -403,7 +457,8 @@
                         }
 
                         .year-el {
-                            text {
+                            pointer-events: none;
+                            text, .interactive-labels {
                                 display: none;
                             }
                         }
@@ -838,6 +893,33 @@
                         }
 
                         .clipped-container {
+                            .single-bar {
+                                transition: all 0.5s;
+                                .interactive-labels {
+                                    opacity: 0;
+                                    text {
+                                        font-size: 12px;
+                                        fill: $default-text;
+                                    }
+
+                                    rect {
+                                        fill: white;
+                                    }
+                                }
+
+                                &.no-focus {
+                                    opacity: 0.5;
+                                }
+                                
+                            }
+
+                           .single-bar:hover {
+                                transition: all 0.5s;
+                                .interactive-labels {
+                                    opacity: 1;
+                                }
+                            }
+
                             .chart-axis {
                                 text {
                                     font-size: 12px;
