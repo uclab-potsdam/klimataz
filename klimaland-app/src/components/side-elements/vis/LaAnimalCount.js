@@ -276,8 +276,8 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
       <div className="description">
         <div className="title">
           <h3>
-            Entwicklung der Anzahl an Rindern, Schweinen und Schafen in {locationLabel} über die
-            Jahre {firstYear} bis {lastYear}.
+            Entwicklung der Anzahl an Rindern, Schweinen und Schafen in <span>{locationLabel}</span>{' '}
+            über die Jahre {firstYear} bis {lastYear}.
           </h3>
         </div>
       </div>

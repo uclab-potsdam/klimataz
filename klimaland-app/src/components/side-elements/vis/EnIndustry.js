@@ -325,8 +325,9 @@ const EnIndustry = ({
         <div className="title">
           <h3>
             Der Energieverbrauch in der Industrie in{' '}
-            {showBundeslandForLK ? locationLabel[1] : locationLabel[0]} basiert im Jahr{' '}
-            <span>{lastYear}</span> zu <span> {formatNumber(percRenewables)}</span> % auf{' '}
+            <span>{showBundeslandForLK ? locationLabel[1] : locationLabel[0]}</span> basiert im Jahr{' '}
+            <span>{lastYear}</span> zu{' '}
+            <span className="second-value"> {formatNumber(percRenewables)}</span> % auf{' '}
             <span className="second-value"> erneuerbaren Energien</span>.{' '}
             {showBundeslandForLK && secretFootnote}
             {footnote}

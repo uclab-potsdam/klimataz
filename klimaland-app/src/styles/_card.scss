@@ -433,10 +433,8 @@
                                     font-size: 14px;
                                     // line-height: 1.2rem;
                                     span {
-                                        text-decoration: underline;
                                         color: $taz-orange;
                                     
-
                                         &.mittleren {
                                             color: $taz-orange;
                                         }
@@ -466,7 +464,7 @@
                                         }
 
                                         &.location-name {
-                                            color: $dark-blue;
+                                            color: $dust-blue;
                                         }
                                     }
                                 }
