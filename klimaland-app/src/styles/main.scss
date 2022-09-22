@@ -147,11 +147,6 @@ code {
                 height:20%;
 
                 .inner-button{
-                    // display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    align-content: stretch;
 
                     .switch-preview{
                         white-space: pre-wrap;
@@ -163,16 +158,26 @@ code {
 
                 .button-left {
                     text-align: right;
+                    margin: 0;
+                    padding: 0;
+
                     .switch {
                         transition: all 0.5s;
                         position: relative;
                         right: 0rem;
                         bottom: 0;
                         text-align: right;
+                    }
+                    
+                    &:hover {
+                        .switch {
+                        transition: all 0.5s;
+                        right: 1rem;
+                        }
 
-                        &:hover {
+                        .switch-preview {
                             transition: all 0.5s;
-                            right: 1rem;
+                            opacity: 1;
                         }
                     }
                 }
@@ -185,22 +190,22 @@ code {
                         bottom: 0;
                         left: 0rem;
                         text-align: left;
-                        // left: -1rem;
-
-                        &:hover {
-                            transition: all 0.5s;
-                            left: 1rem;
-                        }
                     }
-                }
 
-                .button-left, .button-right {
-                    :hover {
+                    &:hover {
+                        .switch {
+                        transition: all 0.5s;
+                        left: 1rem;
+                        }
+
                         .switch-preview {
                             transition: all 0.5s;
                             opacity: 1;
                         }
                     }
+                }
+
+                .button-left, .button-right {
                     width: 9%;
                     img {
                         position: relative;
