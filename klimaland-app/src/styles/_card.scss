@@ -318,16 +318,73 @@
     &-ordered{
         margin:1rem;
     }
+
 }
 
 
 
 .card-active {
     .side-outer {
+        width: 100%;
+        height: 100%;
+    }
+
+    .social-media-layout{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+    
+        & .logo-container {
+            position: absolute;
+            background-image: url(../img/taz/taz-logo.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
             width: 100%;
-            height: 100%;
+            height: 1.5rem;
+            min-height: 1rem;
+            bottom: 8px;
+            left: 8px;
+        }  
+
+        & .greetings{
+            position: absolute;
+            width: 44%;
+            bottom: 0;
+            height: 1.5rem;
+            left: 52%;
+
+            & .gruss-thumb{
+                position: absolute;
+                font-size: 0.9rem;
+                right: 0;
+                bottom: 55px;
+                margin: 0;
+                color: $dark-pink;
+                transform: scale(0.8, 1.2) rotate(-1deg);
+                z-index: 2;
+            }
+
+            & .wordart-1 {
+                position: absolute;
+                font-size: 1.9rem;
+                right: 0;
+                bottom: 20px;
+                margin: 0;
+                transform: scale(0.8, 1.0) rotate(-2deg);
+                font-family: Impact, sans-serif;
+                color: $blue;
+                -webkit-text-stroke: 1.25px $dark-blue;
+                text-shadow: 0.35rem -0.35rem 0 $dark-blue;
+                letter-spacing: -0.15vw;
+                z-index: 1;
+            }
         }
+    }
+
     .side-inner {
+        background-color: $light;
         width: 100%;
         height: 100%;
 
@@ -570,7 +627,40 @@
             transition: opacity 20ms;
             -webkit-transition: opacity 20ms;
         }
+
+        .export{
+            background-color: $light;
+            width: 85%;
+            height: 85%;
+            transform: translate(7.5%, 6%);
+            border-style: solid;
+            border-color: $mint-green;
+            border-width: 0.5;
+            box-shadow: 4px 4px 0px rgba($mint-green, .8);
+            }
+       
     }
+     
+
+    button {
+        @include button;
+        &.buttonDownload {
+            position: absolute;
+            bottom: 1vh;
+            right: 9vh;
+    
+            img {
+                width: 65%;
+                max-width: 50px;
+                min-width: 25px;
+            }
+        }
+    
+    }
+
+
+
+
 }
 
 
