@@ -20,7 +20,7 @@ export default class LayoutManager extends Component {
     //contextual indicator toggle labels
     this.toggleLabels = {
       La: {
-        lk: 'Tieranzahl',
+        lk: 'Tierhaltung',
         bl: 'Tiere pro Fläche',
       },
       En: {
