@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { extent, max, min } from 'd3-array';
 import { pie, arc } from 'd3';
-import { formatNumber } from './../../helperFunc';
+import { formatNumber } from '../../../helpers/helperFunc';
 
 const Waste = ({
   currentData,
@@ -114,6 +114,7 @@ const Waste = ({
         currentDataPoint.y = d.value === null ? yScale(0) : yScale(d.value);
         currentDataPoint.pie = pieShape;
         currentDataPoint.class = 'mean';
+        currentDataPoint.kgValue = d.value === null ? '/' : d.value.toFixed(1);
 
         if (minSumValue === d.value) {
           currentDataPoint.class = 'minimum';
@@ -153,8 +154,23 @@ const Waste = ({
           {chartData.map(function (d, i) {
             return (
               <g transform={`translate(${d.x}, ${d.y})`} key={i} className={`year-el ${d.class}`}>
+                <rect x="-20" y="0" width="40" height={height - d.y} opacity="0" />
                 <line x1="0" x2="0" y1="0" y2={height - d.y} />
                 <circle cx="0" cy="0" r={radius} />
+                <g transform="translate(-10, 55)" className="interactive-labels">
+                  <rect
+                    className="marker-label"
+                    x="-20"
+                    y="-30"
+                    width="60"
+                    height="20"
+                    fill="white"
+                    rx="2"
+                  />
+                  <text x="-15" y="-15">
+                    {formatNumber(d.kgValue)} Kg
+                  </text>
+                </g>
                 <text
                   className={d.yearClass}
                   x="5"
@@ -226,7 +242,7 @@ const Waste = ({
         <div className="title">
           <h3>
             Im Jahr <span>{lastYear}</span> wurden in <span>{locationLabel}</span> pro Kopf{' '}
-            <span>{formatNumber(lastValue)}</span> kg organische Abfälle korrekt in der Biotonne
+            <span>{formatNumber(lastValue)} kg</span> organische Abfälle korrekt in der Biotonne
             oder als Gartenabfälle entsorgt und damit Co2-Emissionen verringert. {footnote}
             {footnote !== '' && '.'}
           </h3>

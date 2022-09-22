@@ -1,10 +1,9 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { firstToUppercase } from '../../helperFunc';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { line } from 'd3-shape';
-import { formatNumber } from './../../helperFunc';
+import { firstToUppercase, formatNumber } from './../../../helpers/helperFunc';
 
 const Buildings = ({
   currentData,
@@ -58,6 +57,23 @@ const Buildings = ({
   const marginHeight = Math.ceil(dimensions.width / 10);
   const marginWidth = Math.ceil(dimensions.height / 10);
 
+  const customLegendOrder = [
+    'Solarthermie',
+    'Geothermie',
+    'Umweltthermie (Luft/Wasser)',
+    'Fernwärme/Fernkälte',
+    'Sonstige Heizenergie',
+    'Keine Energie (einschl. Passivhaus)',
+    'Andere erneuerbare Energien',
+    'Gas',
+    'Öl',
+    'Holz',
+    'Biogas/Biomethan',
+    'Sonstige Biomasse',
+    'Strom',
+    'Andere fossile Energien',
+  ];
+
   //clean labels to create classes
   const cleanKlassString = function (label) {
     let cleanedKlassString = label;
@@ -107,13 +123,16 @@ const Buildings = ({
         ? existingEnergiesLY.filter((d) => d.value === maxValueForLY)
         : existingEnergiesLY.filter((d) => d.column === currentId);
 
-    uniqueEnergyTypes = uniq(existingEnergies.map((d) => d.column)).sort((a, b) =>
-      a.localeCompare(b)
+    uniqueEnergyTypes = uniq(
+      existingEnergies
+        .map((d) => d.column)
+        .sort((a, b) => customLegendOrder.indexOf(a) - customLegendOrder.indexOf(b))
     );
 
-    numberOfBuildings = numberOfBuildingsObj[0] !== undefined ? numberOfBuildingsObj[0].value : numberOfBuildings;
-    selectedEnergy = selectedEnergyObj[0] !== undefined ? selectedEnergyObj[0].value.toFixed(1) : selectedEnergy;
-
+    numberOfBuildings =
+      numberOfBuildingsObj[0] !== undefined ? numberOfBuildingsObj[0].value : numberOfBuildings;
+    selectedEnergy =
+      selectedEnergyObj[0] !== undefined ? selectedEnergyObj[0].value.toFixed(1) : selectedEnergy;
 
     // // Selects higher element in dataset
     if (currentId === '') {
@@ -213,82 +232,85 @@ const Buildings = ({
           </div>
         </div>
       </div>
-      <div className="visualization-container" ref={targetRef}>
-        <svg className="chart">
-          <g className="axis">
-            <g className="x-axis">
-              {yAxis.map((yaxis, ya) => {
+      {currentData !== undefined && currentData.data !== undefined && (
+        <div className="visualization-container" ref={targetRef}>
+          <svg className="chart">
+            <g className="axis">
+              <g className="x-axis">
+                {yAxis.map((yaxis, ya) => {
+                  return (
+                    <g key={ya} transform={`translate(0, ${yaxis})`}>
+                      <line x1={marginWidth} x2={dimensions.width - marginWidth} y1="0" y2="0" />
+                      <text
+                        x={marginWidth + 5}
+                        y={isMobile && yAxisValues[ya] !== 100 ? '-10' : '15'}
+                        textAnchor="start"
+                      >
+                        {yAxisValues[ya]}%
+                      </text>
+                    </g>
+                  );
+                })}
+              </g>
+            </g>
+
+            <g className="lines">
+              {lineElements.map((line, l) => {
                 return (
-                  <g key={ya} transform={`translate(0, ${yaxis})`}>
-                    <line x1={marginWidth} x2={dimensions.width - marginWidth} y1="0" y2="0" />
-                    <text
-                      x={marginWidth + 5}
-                      y={isMobile && yAxisValues[ya] !== 100 ? '-10' : '15'}
-                      textAnchor="start"
-                    >
-                      {yAxisValues[ya]}%
-                    </text>
+                  <g key={l} className={`${line.klassName} ${line.type} line`}>
+                    <path d={line.path} fill="none" />
                   </g>
                 );
               })}
             </g>
-          </g>
-
-          <g className="lines">
-            {lineElements.map((line, l) => {
-              return (
-                <g key={l} className={`${line.klassName} ${line.type} line`}>
-                  <path d={line.path} fill="none" />
-                </g>
-              );
-            })}
-          </g>
-          <g className="axis">
-            {axisElements.map((axis, a) => {
-              return (
-                <g key={a} transform={`translate(${axis.x}, 0)`}>
-                  <line x1="0" x2="0" y1={marginHeight} y2={dimensions.height - marginHeight} />
-                  <text x="-2" y={marginHeight - 10} textAnchor={axis.taPosition}>
-                    {axis.label}
-                  </text>
-                  {axis.energyMarkers.map((en, e) => {
-                    return (
-                      <g
-                        key={e}
-                        transform={`translate(0, ${en.y})`}
-                        className={`year-marker ${en.klassName} ${en.id === currentId ? 'default' : 'optional'
+            <g className="axis">
+              {axisElements.map((axis, a) => {
+                return (
+                  <g key={a} transform={`translate(${axis.x}, 0)`}>
+                    <line x1="0" x2="0" y1={marginHeight} y2={dimensions.height - marginHeight} />
+                    <text x="-2" y={marginHeight - 10} textAnchor={axis.taPosition}>
+                      {axis.label}
+                    </text>
+                    {axis.energyMarkers.map((en, e) => {
+                      return (
+                        <g
+                          key={e}
+                          transform={`translate(0, ${en.y})`}
+                          className={`year-marker ${en.klassName} ${
+                            en.id === currentId ? 'default' : 'optional'
                           }`}
-                      >
-                        <circle cx="0" cy="0" r="3" />
-                        <g transform="translate(5, 0)">
-                          <rect
-                            className="marker-label"
-                            x={a === axis.length - 1 ? -40 : -2}
-                            y="-25"
-                            width="35"
-                            height="20"
-                            fill="white"
-                            rx="2"
-                          />
-                          <text
-                            className="marker-label"
-                            x={a === axis.length - 1 ? -36 : 2}
-                            y="-10"
-                            fill={scaleCategory(en.id)}
-                            textAnchor="start"
-                          >
-                            {en.label}
-                          </text>
+                        >
+                          <circle cx="0" cy="0" r="3" />
+                          <g transform="translate(5, 0)">
+                            <rect
+                              className="marker-label"
+                              x={a === axis.length - 1 ? -40 : -2}
+                              y="-25"
+                              width="45"
+                              height="20"
+                              fill="white"
+                              rx="2"
+                            />
+                            <text
+                              className="marker-label"
+                              x="2"
+                              y="-10"
+                              fill={scaleCategory(en.id)}
+                              textAnchor={`${a === axis.length - 1 ? 'end' : 'start'}`}
+                            >
+                              {en.label}
+                            </text>
+                          </g>
                         </g>
-                      </g>
-                    );
-                  })}
-                </g>
-              );
-            })}
-          </g>
-        </svg>
-      </div>
+                      );
+                    })}
+                  </g>
+                );
+              })}
+            </g>
+          </svg>
+        </div>
+      )}
     </div>
   );
 };

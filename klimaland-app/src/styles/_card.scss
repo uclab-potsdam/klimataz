@@ -112,6 +112,7 @@
             z-index: 999;
         }
     }
+
 }
 
 .card-preview {
@@ -139,6 +140,9 @@
 
                 h4.section-title {
                     color: darken($pale-olive, 20%);
+
+                    margin-left: 0.5rem;
+                    margin-top: 0.5rem;
                 }
         
                 &.lk {
@@ -153,11 +157,6 @@
                     // display: grid;
                     display: block;
 
-                    h4.section-title {
-                        margin-left: 1rem;
-                        margin-top: 0.5rem;
-                    }
-        
                     .word-art-title {
                         width: 100%;
                         height: 50px;
@@ -231,15 +230,33 @@
                 }
             }
         }
+
+
     }
 
     .side-inner {
         width: 100%;
         height: 100%;
-        transform: translateX(40%);
-        -webkit-transform:translateX(40%);
+        // transform: translateX(40%);
+        // -webkit-transform:translateX(40%);
         background-color: rgba($lighter-orange, 0.5);
-        clip-path: circle(55%);    
+        clip-path: circle(55%  at 90% 50%);   
+        transition: clip-path ease 1000ms;
+        
+    }
+
+
+    &:hover, &:active {
+        .side-inner {
+            clip-path: circle(115% at 90% 50%); 
+
+        }
+
+        }
+
+    &:active{
+        scale: 1.25;
+        transition: scale ease 500ms;
     }
       
 }
@@ -251,6 +268,7 @@
 .side-container{
 
     @include postcard;
+
 
     //148mm x 105mm (ratio 1.4)
     width: $postcardview-postcardwidth; //60vw
@@ -269,12 +287,15 @@
 
     &:hover {
         box-shadow: -4px 4px 0px rgba($pale-olive, 0.4);
+
+        // scale: 2;
     }
 
 
     &.flip{
         //flipped boxshader, no shader on hover
         box-shadow: map-get($map: $boxshadow, $key: default);
+
     }
 
     & .card-front, .card-back{
@@ -297,16 +318,82 @@
     &-ordered{
         margin:1rem;
     }
+
 }
+
+
 
 .card-active {
     .side-outer {
-            width: 100%;
-            height: 100%;
-        }
-    .side-inner {
         width: 100%;
         height: 100%;
+    }
+
+    .social-media-layout{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+    
+        & .logo-container {
+            position: absolute;
+            background-image: url(../img/taz/taz-logo.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 100%;
+            height: 1.5rem;
+            min-height: 1rem;
+            bottom: 8px;
+            left: 8px;
+        }  
+
+        & .greetings{
+            position: absolute;
+            width: 44%;
+            bottom: 0;
+            height: 1.5rem;
+            left: 52%;
+
+            & .gruss-thumb{
+                position: absolute;
+                font-size: 0.9rem;
+                right: 0;
+                bottom: 55px;
+                margin: 0;
+                color: $dark-pink;
+                transform: scale(0.8, 1.2) rotate(-1deg);
+                z-index: 2;
+            }
+
+            & .wordart-1 {
+                position: absolute;
+                font-size: 1.9rem;
+                right: 0;
+                bottom: 20px;
+                margin: 0;
+                transform: scale(0.8, 1.0) rotate(-2deg);
+                font-family: Impact, sans-serif;
+                color: $blue;
+                -webkit-text-stroke: 1.25px $dark-blue;
+                text-shadow: 0.35rem -0.35rem 0 $dark-blue;
+                letter-spacing: -0.15vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    .side-inner {
+        background-color: $light;
+        width: 100%;
+        height: 100%;
+
+        // clip-path: circle(35% at 100% 50%); 
+        // animation: 1.5s ease-out 0.1s 1 increaseEllipse;
+    
+        // clip-path: circle(100%); 
+
+
         // back-side with explanation
         .details-container {
             height: 90%;
@@ -540,7 +627,40 @@
             transition: opacity 20ms;
             -webkit-transition: opacity 20ms;
         }
+
+        .export{
+            background-color: $light;
+            width: 85%;
+            height: 85%;
+            transform: translate(7.5%, 6%);
+            border-style: solid;
+            border-color: $mint-green;
+            border-width: 0.5;
+            box-shadow: 4px 4px 0px rgba($mint-green, .8);
+            }
+       
     }
+     
+
+    button {
+        @include button;
+        &.buttonDownload {
+            position: absolute;
+            bottom: 1vh;
+            right: 9vh;
+    
+            img {
+                width: 65%;
+                max-width: 50px;
+                min-width: 25px;
+            }
+        }
+    
+    }
+
+
+
+
 }
 
 

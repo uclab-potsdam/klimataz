@@ -161,25 +161,74 @@ code {
 
             .button-switch-container {
                 display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                height:20%;
 
-                .button-left, .button-right {
-                    width: 50%;
-                    position: relative;
+                .inner-button{
+                    // display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    align-content: stretch;
+
+                    .switch-preview{
+                        white-space: pre-wrap;
+                        margin-top: 0.5rem;
+                        opacity: 0;
+                        transition: all 0.5s;
+                    }
                 }
 
                 .button-left {
-                    .button {
-                        float: left;
-                        margin-left: 1rem;
+                    text-align: right;
+                    .switch {
+                        transition: all 0.5s;
+                        position: relative;
+                        right: 0rem;
+                        bottom: 0;
+                        text-align: right;
+
+                        &:hover {
+                            transition: all 0.5s;
+                            right: 1rem;
+                        }
                     }
                 }
 
                 .button-right {
-                    .button {
-                        float: right;
-                        margin-right: 1rem;
+                    text-align: left;
+                    .switch {
+                        transition: all 0.5s;
+                        position: relative;
+                        bottom: 0;
+                        left: 0rem;
+                        text-align: left;
+                        // left: -1rem;
+
+                        &:hover {
+                            transition: all 0.5s;
+                            left: 1rem;
+                        }
                     }
                 }
+
+                .button-left, .button-right {
+                    :hover {
+                        .switch-preview {
+                            transition: all 0.5s;
+                            opacity: 1;
+                        }
+                    }
+                    width: 9%;
+                    img {
+                        position: relative;
+                    }
+                    .button {
+                        margin-bottom: auto;
+                    }
+                }
+
             }
 
             .inner-button {
@@ -199,7 +248,8 @@ code {
 
                 .switch {
                     img {
-                            width: 50%;
+                            // width: 30%;
+                            width: 25px;    
                             height: auto;
                             // margin: 5px 0px 0px 50%;
                             top: 0;

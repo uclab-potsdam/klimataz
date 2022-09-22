@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { setStateAsync } from './helperFunc.js';
+import { setStateAsync } from '../helpers/helperFunc';
 import { CSSTransition } from 'react-transition-group';
 
 //chart container
 import Chart from './side-elements/Chart.js';
 //side elements
 import Details from './side-elements/Details.js';
+
+import { toPng } from 'html-to-image';
+import share from '../img/buttons/share.svg';
+
 export default class Side extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +36,29 @@ export default class Side extends Component {
     this.vis = this.vis.bind(this);
     this.openUpCard = this.openUpCard.bind(this);
     this.handleClickOnList = this.handleClickOnList.bind(this);
+
+    this.myRef = React.createRef();
+    this.onShareButtonClick = this.onShareButtonClick.bind(this);
+  }
+
+  onShareButtonClick() {
+    if (this.myRef.current === null) {
+      return;
+    }
+
+    toPng(this.myRef.current, {
+      cacheBust: true,
+      backgroundColor: '#fff',
+    })
+      .then((dataUrl) => {
+        const link = document.createElement('a');
+        link.download = 'klimaland_taz.png';
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   async updateLayout() {
@@ -228,6 +255,39 @@ export default class Side extends Component {
             )}
             {this.state.showViz && this.vis()}
           </div>
+          {!this.props.isThumbnail && (
+            <>
+              <div className="social-media-layout" ref={this.myRef}>
+                <div className="side-inner">
+                  <div className="side-inner export">
+                    {!this.state.showViz && ( //TEXT
+                      <Details
+                        lk={this.props.lk}
+                        section={this.props.section}
+                        sectionName={this.props.sectionName}
+                        textData={this.props.textData}
+                        similarAgs={this.props.similarAgs}
+                        thirdKey={this.props.thirdKey}
+                        activeSide={this.props.activeSide}
+                        handleClickOnList={this.handleClickOnList}
+                      />
+                    )}
+                    {this.state.showViz && this.vis()}
+                  </div>
+                </div>
+
+                <div className="greetings">
+                  <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
+                  <h2 className="wordart-1">{this.props.lk.label}</h2>
+                </div>
+                <div className="logo-container"></div>
+              </div>
+
+              <button className="buttonDownload" onClick={this.onShareButtonClick}>
+                <img src={share} className="button img" alt="flip-button-img" />
+              </button>
+            </>
+          )}
         </div>
       </CSSTransition>
     );

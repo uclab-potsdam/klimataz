@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { line, stack } from 'd3-shape';
-import { formatNumber } from './../../helperFunc';
+import { formatNumber } from '../../../helpers/helperFunc';
 
 const MoModalSplit = ({
   currentData,
@@ -195,12 +195,6 @@ const MoModalSplit = ({
           <g className="paths-avg-trip">
             {
               <g className="paths">
-                <g className="main-x-axis" transform={`translate(${xScale(0)}, ${marginHeight})`}>
-                  <line x1="0" x2={xScale(9.5)} y1="0" y2="0" />
-                  {/* <text x="0" y="15">
-                    average Km
-                  </text> */}
-                </g>
                 {plotAvgData.map((trip, t) => {
                   return (
                     <g
@@ -259,7 +253,7 @@ const MoModalSplit = ({
             {plotPercData.map((trip, t) => {
               return (
                 <g transform={`translate(0, ${trip.y1})`} key={t}>
-                  <text x="15" y="13" fill={trip.fill}>
+                  <text x="35" y="5" fill={trip.fill}>
                     {formatNumber(trip.label)}%
                   </text>
                   <rect width="10" height={trip.y2 - trip.y1} x="0" y="0" fill={trip.fill} />

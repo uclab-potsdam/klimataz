@@ -3,7 +3,7 @@ import LayoutManager from './LayoutManager';
 
 //data
 import DropDownControls from '../data/selector-controls.json';
-import { isInt } from './helperFunc';
+import { isInt } from '../helpers/helperFunc';
 
 const Canvas = () => {
   //load data from selector json

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
 import flipCard from '../img/buttons/flip.svg';
-import { mod } from './helperFunc';
+import { mod } from '../helpers/helperFunc';
 
 const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handleSwitchNext }) => {
   const [activeSide, setActiveSide] = useState(0);
