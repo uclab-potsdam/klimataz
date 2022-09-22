@@ -493,26 +493,37 @@ export default class LayoutManager extends Component {
                     </linearGradient>
                   </defs>
                   <g className="toggle" onClick={this.switchDataLevel}>
-                    <rect className="controller-bg" x="10" y="10" width="40" height="20" rx="10" />
-                    <rect
-                      x={this.state.dataLevelLK ? 30 : 10}
-                      y="10"
-                      width="20"
-                      height="20"
-                      rx="10"
-                      fill="#FFF9F1"
-                      stroke="#484848"
-                    />
-                    {this.state.dataLevelLK && (
-                      <text x="60" y="25">
-                        {this.toggleLabels[this.getActiveCardSection()].lk}
-                      </text>
-                    )}
-                    {!this.state.dataLevelLK && (
-                      <text x="60" y="25">
-                        {this.toggleLabels[this.getActiveCardSection()].bl}
-                      </text>
-                    )}
+                    <g
+                      transform={
+                        'translate(' +
+                        this.toggleLabels[this.getActiveCardSection()].lk.length * 9 +
+                        ', 10)'
+                      }
+                    >
+                      <rect className="controller-bg" x="0" y="0" width="40" height="20" rx="10" />
+                      <rect
+                        x={this.state.dataLevelLK ? 0 : 20}
+                        y="0"
+                        width="20"
+                        height="20"
+                        rx="10"
+                        fill="#FFF9F1"
+                        stroke="#484848"
+                      />
+                    </g>
+                    {/* {this.state.dataLevelLK && ( */}
+                    <text x="0" y="25">
+                      {this.toggleLabels[this.getActiveCardSection()].lk}
+                    </text>
+                    {/* )} */}
+                    {/* {!this.state.dataLevelLK && ( */}
+                    <text
+                      x={this.toggleLabels[this.getActiveCardSection()].lk.length * 9 + 50}
+                      y="25"
+                    >
+                      {this.toggleLabels[this.getActiveCardSection()].bl}
+                    </text>
+                    {/* )} */}
                   </g>
                 </svg>
               </div>
