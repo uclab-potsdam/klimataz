@@ -92,6 +92,8 @@ export default class LayoutManager extends Component {
       (x) => x.lk.value === lk.value && x.section.value === section
     );
 
+    if (chosenCard == -1) chosenCard = 0;
+
     //set active card to this card id
     await setStateAsync(this, { activeCard: chosenCard }).then(() => {
       //update preview for left and right card
@@ -143,7 +145,8 @@ export default class LayoutManager extends Component {
    */
   setNextCardPreviews() {
     //switch to next card in postcard view
-    if (!this.state.postcardView) return;
+    if (!this.state.postcardView) return; //only in postcard view
+    if (this.props.editorspick[0].view.value === 3) return; //not in single postcard view
 
     //if going to the next card
     const rightCard = (this.state.activeCard + 1) % this.state.cardSelection.length;
@@ -170,6 +173,7 @@ export default class LayoutManager extends Component {
   async nextCard(goFurther) {
     //switch to next card in postcard view
     if (!this.state.postcardView) return;
+    if (this.props.editorspick[0].view.value === 3) return; //not in single postcard view
 
     let newActiveCard = 0;
 
@@ -403,7 +407,7 @@ export default class LayoutManager extends Component {
         return list;
       })
       .then((list) => {
-        setStateAsync(this, { cardSelection: list });
+        return setStateAsync(this, { cardSelection: list });
       })
       .then(() => {
         if (this.state.mode === 'singlePCview') {

@@ -12,6 +12,7 @@ const Canvas = () => {
   let sectionsData = DropDownControls.indicators;
 
   const [sectionOptions, setSectionOptions] = useState(sectionsData);
+  const [iframeLoaded, setiframeLoaded] = useState(false);
 
   let defaultSections = sectionsData.map((el) => {
     return el.value;
@@ -107,10 +108,12 @@ const Canvas = () => {
           view: { value: 0, label: 'mainView' },
         }));
         if (mainPick.length !== 0) {
+          setiframeLoaded(true);
           setEditorsPick(mainPick);
         }
       } catch (error) {
         console.log(error);
+        setiframeLoaded(true);
         setEditorsPick(mainPick);
         return; //if selected landkreis or section not valid in thumbnail view, set default Pick and stop function
       }
@@ -145,10 +148,12 @@ const Canvas = () => {
           //levelLK: { value: levelLK },
         });
         if (checkedPick.length !== 0) {
+          setiframeLoaded(true);
           setEditorsPick(checkedPick);
         }
       } catch (error) {
         console.log(error);
+        setiframeLoaded(true);
         setEditorsPick(defaultPick);
         return; //if selected landkreis or section not valid in thumbnail view, set default Pick and stop function
       }
@@ -172,10 +177,12 @@ const Canvas = () => {
           });
         });
         if (checkedPick.length !== 0) {
+          setiframeLoaded(true);
           setEditorsPick(checkedPick);
         }
       } catch (error) {
         console.log(error);
+        setiframeLoaded(true);
         setEditorsPick(defaultPick);
         return; //if selected landkreis not valid in LK view, set default Pick and stop function
       }
@@ -237,6 +244,7 @@ const Canvas = () => {
       });
 
       if (checkedPick.length !== 0) {
+        setiframeLoaded(true);
         setEditorsPick(checkedPick);
         setSectionOptions(comparisonOptions);
       }
@@ -288,11 +296,13 @@ const Canvas = () => {
 
   return (
     <div className="indicators-iframe">
-      <LayoutManager
-        editorspick={editorsPick}
-        landkreiseData={landkreiseData}
-        sectionsData={sectionOptions}
-      />
+      {iframeLoaded && (
+        <LayoutManager
+          editorspick={editorsPick}
+          landkreiseData={landkreiseData}
+          sectionsData={sectionOptions}
+        />
+      )}
     </div>
   );
 };
