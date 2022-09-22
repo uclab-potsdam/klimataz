@@ -1,0 +1,14 @@
+{
+  "name": "2371179e77c209a5",
+  "main": "2371179e77c209a5@410.js",
+  "version": "410.0.0",
+  "homepage": "https://observablehq.com/d/2371179e77c209a5",
+  "author": {
+    "name": "johannahahaha",
+    "url": "https://observablehq.com/@4b83d088af438dc2"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

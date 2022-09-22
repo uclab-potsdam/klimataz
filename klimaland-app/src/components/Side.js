@@ -201,7 +201,7 @@ export default class Side extends Component {
               <div className={`section-thumb ${this.props.mode}`}>
                 {this.props.mode === 'comparison' && (
                   <div className="word-art-title">
-                    <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
+                    <h4 className="gruss-thumb">Sonnige Grüße aus</h4>
                     <h2 className="wordart">{this.props.lk.label}</h2>
                   </div>
                 )}
