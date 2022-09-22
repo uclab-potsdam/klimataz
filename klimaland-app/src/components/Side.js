@@ -130,11 +130,11 @@ export default class Side extends Component {
       this.props.isThumbnail !== prevProps.isThumbnail ||
       this.props.windowSize !== prevProps.windowSize ||
       this.props.textData !== prevProps.textData ||
-      this.props.thirdKey !== prevProps.thirdKey
+      this.props.section !== prevProps.section
     ) {
       //update layout for top card
       //only for top card because of performance
-      if (this.props.isTopCard) {
+      if (this.props.isTopCard || this.props.isThumbnail) {
         let layoutdata =
           this.props.layoutControls.params[this.props.activeSide][this.props.activeSide];
         await setStateAsync(this, {
@@ -215,7 +215,6 @@ export default class Side extends Component {
                 sectionName={this.props.sectionName}
                 textData={this.props.textData}
                 similarAgs={this.props.similarAgs}
-                thirdKey={this.props.thirdKey}
                 activeSide={this.props.activeSide}
                 handleClickOnList={this.handleClickOnList}
               />
@@ -234,7 +233,6 @@ export default class Side extends Component {
                         sectionName={this.props.sectionName}
                         textData={this.props.textData}
                         similarAgs={this.props.similarAgs}
-                        thirdKey={this.props.thirdKey}
                         activeSide={this.props.activeSide}
                         handleClickOnList={this.handleClickOnList}
                       />

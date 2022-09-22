@@ -363,7 +363,7 @@ export default class CardCollection extends Component {
       this.props.postcardView !== prevProps.postcardView ||
       this.props.activeCard !== prevProps.activeCard
     ) {
-      //   console.log("props did update");
+      //console.log('props did update');
       this.generateCards();
     }
   }

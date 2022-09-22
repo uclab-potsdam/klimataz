@@ -1,6 +1,6 @@
 import React from 'react';
 
-const List = ({ lk, data, similarAgs, section, thirdKey, handleClickOnList }) => {
+const List = ({ lk, data, similarAgs, section, handleClickOnList }) => {
   const agsRanking = data[section]['third'].substring(0, data[section]['third'].indexOf(' '));
 
   /**
