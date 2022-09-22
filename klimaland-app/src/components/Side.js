@@ -142,7 +142,7 @@ export default class Side extends Component {
           showViz: layoutdata.combo[1],
           indicator: layoutdata.combo[2],
           showLocator: layoutdata.combo[3],
-          ranking: this.props.textData[0][this.props.thirdKey],
+          ranking: this.props.textData[this.props.section]['third'],
         });
       }
 
@@ -156,7 +156,7 @@ export default class Side extends Component {
    */
   async componentDidMount() {
     await this.updateChartSize();
-    await setStateAsync(this, { ranking: this.props.textData[0][this.props.thirdKey] });
+    await setStateAsync(this, { ranking: this.props.textData[this.props.section]['third'] });
   }
 
   render() {

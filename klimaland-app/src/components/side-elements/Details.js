@@ -45,6 +45,7 @@ export default class Details extends Component {
             <Text
               sectionName={this.props.sectionName}
               data={this.props.textData}
+              section={this.props.section}
               thirdKey={this.props.thirdKey}
             />
           </div>
@@ -56,6 +57,7 @@ export default class Details extends Component {
               <List
                 lk={this.props.lk}
                 data={this.props.textData}
+                section={this.props.section}
                 similarAgs={this.props.similarAgs}
                 thirdKey={this.props.thirdKey}
                 handleClickOnList={this.handleClickOnList}
