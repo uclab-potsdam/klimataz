@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { extent, max, min } from 'd3-array';
 import { pie, arc } from 'd3';
-import { formatNumber } from './../../helperFunc';
+import { formatNumber } from '../../../helpers/helperFunc';
 
 const Waste = ({
   currentData,
@@ -170,7 +170,6 @@ const Waste = ({
                   <text x="-15" y="-15">
                     {formatNumber(d.kgValue)} Kg
                   </text>
-
                 </g>
                 <text
                   className={d.yearClass}
@@ -190,8 +189,9 @@ const Waste = ({
           })}
           <g className="controls-container">
             <g
-              transform={`translate(${width / 2 + (marginWidth - tabletThreshold)}, ${marginHeight / 2
-                })`}
+              transform={`translate(${width / 2 + (marginWidth - tabletThreshold)}, ${
+                marginHeight / 2
+              })`}
             >
               <g className={`legend ${piesAreActive ? 'show-legend' : ''}`}>
                 <circle className="biotonne" cx="0" cy="0" r={radius} />

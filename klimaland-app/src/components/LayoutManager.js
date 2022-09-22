@@ -3,7 +3,7 @@ import { Component } from 'react';
 //our components
 import CardCollection from './CardCollection';
 import SelectionButtons from './SelectionButtons';
-import { getRandomElement, setStateAsync } from './helperFunc.js';
+import { getRandomElement, setStateAsync } from '../helpers/helperFunc';
 import Info from './Info.js';
 // import TitleCanvas from "./TitleCanvas";
 

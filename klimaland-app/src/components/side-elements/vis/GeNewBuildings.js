@@ -1,10 +1,9 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { firstToUppercase } from '../../helperFunc';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { line } from 'd3-shape';
-import { formatNumber } from './../../helperFunc';
+import { firstToUppercase, formatNumber } from './../../../helpers/helperFunc';
 
 const Buildings = ({
   currentData,

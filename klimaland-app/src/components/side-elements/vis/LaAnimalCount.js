@@ -3,7 +3,7 @@ import { arc } from 'd3';
 import { max } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
-import { formatNumber } from './../../helperFunc';
+import { formatNumber } from '../../../helpers/helperFunc';
 
 const Land = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
   const colorArray = [
