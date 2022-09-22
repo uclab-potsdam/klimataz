@@ -1,5 +1,23 @@
 @import "_config.scss";
 
+//colors
+// renewables = ["Solarthermie","Geothermie","Umweltthermie (Luft/Wasser)","Holz","Biogas/Biomethan","Sonstige Biomasse","Keine Energie (einschl. Passivhaus)"]
+// fossils = ["Gas","Strom","Öl","Fernwärme/Fernkälte","Sonstige Heizenergie"]
+// $solarthermie: ;
+// $geothermie: ;
+// $umweltthermie: ;
+// $fernwaerme: ;
+// $sonstigeHeizenergie: ;
+// $keineEnergie: ;
+// $andereErneuerbare: ;
+// $gas: ;
+// $oel: ;
+// $holz: ;
+// $biogas: ;
+// $sonstigeBiomasse: ;
+// $strom: ;
+// $andereFossile: ;
+
 .chart-outer-container {
     height: 100%;
 }
@@ -678,30 +696,8 @@
                 }
 
                 .fernkälte, div.fernkälte {
-                    background-color: $blue;
-                    
-                    &.caption {
-                        background-color: transparent;
-                        .energy-number {
-                            color: $blue;
-                            filter: brightness(0.75);
-                        }
-                    }
-                    
-                    path,
-                    rect {
-                        stroke: $blue;
-                    }
-
-                    circle,
-                    text {
-                        fill: $blue;
-                    }
-                }
-
-                .holz, div.holz {
                     background-color: $pale-olive;
-
+                    
                     &.caption {
                         background-color: transparent;
                         .energy-number {
@@ -709,7 +705,7 @@
                             filter: brightness(0.75);
                         }
                     }
-
+                    
                     path,
                     rect {
                         stroke: $pale-olive;
@@ -718,6 +714,28 @@
                     circle,
                     text {
                         fill: $pale-olive;
+                    }
+                }
+
+                .holz, div.holz {
+                    background-color: $blue;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $blue;
+                            filter: brightness(0.75);
+                        }
+                    }
+
+                    path,
+                    rect {
+                        stroke: $blue;
+                    }
+
+                    circle,
+                    text {
+                        fill: $blue;
                     }
                 }
 
