@@ -202,6 +202,12 @@ export default class LayoutManager extends Component {
     }
     //otherwise, update cards to match selection
     else {
+      let defaultLK = this.props.editorspick[0].lk.value;
+      if (this.state.mode == 'lk' && this.state.landkreisSelection[0].value == defaultLK) {
+        e = e.filter((d) => {
+          return d.value !== defaultLK;
+        });
+      }
       setStateAsync(this, { landkreisSelection: e, showEditorsPick: false }).then(() => {
         this.updateCardSelection();
       });
@@ -258,7 +264,7 @@ export default class LayoutManager extends Component {
     ) {
       mode = 'singlePCview';
     } else if (
-      (this.state.landkreisSelection.length === 1 && this.state.sectionSelection.length > 1) ||
+      (this.state.landkreisSelection.length === 1 && this.props.editorspick[0].view.value !== 3) ||
       this.state.landkreisSelection.length === undefined
     ) {
       mode = 'lk';
@@ -397,11 +403,9 @@ export default class LayoutManager extends Component {
         return list;
       })
       .then((list) => {
-        // console.log('set state async', this.state.mode);
         setStateAsync(this, { cardSelection: list });
       })
       .then(() => {
-        // console.log('set state done', this.state.mode);
         if (this.state.mode === 'singlePCview') {
           this.switchToPostcardView(
             this.state.landkreisSelection[0],
