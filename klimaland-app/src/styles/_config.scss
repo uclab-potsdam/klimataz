@@ -101,11 +101,11 @@ p, text {
     .gruss-thumb, .gruss-thumb:after {
         color: $dark-blue;
         margin-top: 0.5rem;
-        content: 'Herzliche Grüße aus';
+        content: 'Sonnige Grüße aus';
     }
 
     .wordart {
-        transform: translateY(15px);
+        transform: translateY(-10px);
         -webkit-background-clip: text;
         display:inline-block;
         padding-left: 7px;
@@ -115,29 +115,31 @@ p, text {
         font-family: 'Vampiro One', sans-serif;
         background-image: linear-gradient(0deg, rgba(246, 161, 25, 1) 0%, $blue 70%);
         -webkit-text-fill-color: transparent;
-        letter-spacing: -0.25vw;  
+        letter-spacing: -0.25vw; 
         
-        &.additional {
-            display: none;
+        &:not(.main) {
+            &[class*="additional-"] {
+                display: none;
+            }
         }
     }
 }
 
 @mixin wordart-style-2 {
         @include wordart-style-setup;
-        transform: rotate(4deg);
+        transform: rotate(2deg);
 
         .gruss-thumb, .gruss-thumb:after {
             color: $taz-pink;
             margin-top: 0.5rem;
-            content: 'Sonnige Grüße aus';
+            content: 'Herzliche Grüße aus';
         }
 
         .wordart {
             display: inline-block;
             position: absolute;
             right: 0;
-            background: linear-gradient(to left, $dark-blue 0%, $dark-pink 20%);
+            background: linear-gradient(to right, $dark-blue 0%, $dark-pink 90%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -150,6 +152,7 @@ p, text {
             $i: 10;
             @for $i from 0 to 40 {
                 &.additional-#{$i} {
+
                     top: #{-$i}px;
                     left: #{$i*2}px;
                     // transform: translateX(#{$i*10}px)
