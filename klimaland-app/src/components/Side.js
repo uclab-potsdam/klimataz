@@ -6,6 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 import Chart from './side-elements/Chart.js';
 //side elements
 import Details from './side-elements/Details.js';
+import TitleArt from './TitleArt.js'
 export default class Side extends Component {
   constructor(props) {
     super(props);
@@ -139,47 +140,25 @@ export default class Side extends Component {
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
           <div className="overlay-container">
-            {this.props.isThumbnail && (
-              <div className={`section-thumb ${this.props.mode}`}>
-                {this.props.mode === 'comparison'
-                  && (<div className="word-art-title">
-                    <h4 className="gruss-thumb"></h4>
-                    <h2 className="wordart main additional-0">{this.props.lk.label}</h2>
-                    <h2 className="wordart additional additional-1">{this.props.lk.label}</h2>
-                    <h2 className="wordart additional additional-2">{this.props.lk.label}</h2>
-                    <h2 className="wordart additional additional-3">{this.props.lk.label}</h2>
-                    <h2 className="wordart additional additional-3">{this.props.lk.label}</h2>
-                  </div>
-                  )}
+            <div className="overlay-inner">
+              <div className="postcard-title">
                 <h4 className="section-title">{this.props.sectionName}</h4>
-                <svg className="rating-thumb" width="50%" height="35%">
-                  <g>
-                    <circle
-                      className={`${this.state.ranking === 'unteren Drittel' ? 'active' : 'inactive'
-                        } 
-                  lower`}
-                      cx="32"
-                      cy="32"
-                      r="30"
-                    />
-                    <circle
-                      className={`${this.state.ranking === 'mittleren Drittel' ? 'active' : 'inactive'
-                        } middle`}
-                      cx="67"
-                      cy="32"
-                      r="30"
-                    />
-                    <circle
-                      className={`${this.state.ranking === 'oberen Drittel' ? 'active' : 'inactive'
-                        } upper`}
-                      cx="102"
-                      cy="32"
-                      r="30"
-                    />
-                  </g>
-                </svg>
+                {this.props.isThumbnail && (
+                  <div className={`section-thumb ${this.props.mode}`}>
+                    {this.props.mode === 'comparison'
+                      && (
+                        <TitleArt landkreisLabel={this.props.lk.label} />
+                      )}
+                    {this.state.ranking !== '' && (
+                      <div className={`indicator-ranking ${this.state.ranking}`}>
+                        <p>{this.state.ranking}</p>
+                      </div>
+                    )
+                    }
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
           <div className="side-inner">
             {!this.state.showViz && ( //TEXT

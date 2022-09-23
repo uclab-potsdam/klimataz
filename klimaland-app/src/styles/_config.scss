@@ -96,7 +96,7 @@ p, text {
 
 @mixin wordart-style-1 {
     @include wordart-style-setup;
-    transform: scale(0.8, 1.2) rotate(-2deg) translate(30px, 10px);
+    transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, 10px);
 
     .gruss-thumb, .gruss-thumb:after {
         color: $dark-blue;
