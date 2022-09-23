@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { setStateAsync } from '../helperFunc';
+import { setStateAsync } from '../../helpers/helperFunc';
 import VisIndex from './VisIndex';
 import selectorControls from '../../data/selector-controls.json';
 

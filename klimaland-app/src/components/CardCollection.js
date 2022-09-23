@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import { Component } from 'react';
-import { mod, isInt, setStateAsync } from './helperFunc.js';
+import { mod, isInt, setStateAsync } from '../helpers/helperFunc';
 import { readString } from 'react-papaparse';
 
 //components
@@ -283,7 +283,6 @@ export default class CardCollection extends Component {
               sides={this.layoutControls[section]}
               handleSwitchNext={this.props.handleSwitchNext}
               handleSwitchBack={this.props.handleSwitchBack}
-              clickOnCard={this.handleClickOnCard}
             >
               <Side
                 lk={element.lk}

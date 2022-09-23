@@ -3,7 +3,7 @@ import { stack, stackOffsetSilhouette, stackOrderAscending, curveMonotoneX, area
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
-import { formatNumber } from './../../helperFunc';
+import { formatNumber } from './../../../helpers/helperFunc';
 
 const EnIndustry = ({
   currentData,
@@ -29,7 +29,6 @@ const EnIndustry = ({
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [highlighedStream, setHighlightedStream] = useState('');
   const [activeLabel, setactiveLabel] = useState('');
-
 
   //   const [currentId, setCurrentId] = useState('');
 
@@ -57,13 +56,13 @@ const EnIndustry = ({
   let showBundeslandForLK = false;
 
   let switchHighlightedStream = function (id) {
-    if (currentData.data !== undefined) {
+    if (currentData !== undefined && currentData.data !== undefined) {
       setHighlightedStream(id);
     }
   };
 
   let switchActiveLabel = function (index) {
-    if (currentData.data !== undefined) {
+    if (currentData !== undefined && currentData.data !== undefined) {
       setactiveLabel(index);
     }
   };
@@ -161,27 +160,27 @@ const EnIndustry = ({
         }
       });
 
-      const labelRects = []
+      const labelRects = [];
       for (let index = 0; index < stream['length']; index++) {
         // const next = index > stream['length'] ? stream['length'] - 1 : index + 1
         // console.log(next)
-        const scaledFloor = yScale(stream[index][0])
-        const scaledCeil = yScale(stream[index][1])
+        const scaledFloor = yScale(stream[index][0]);
+        const scaledCeil = yScale(stream[index][1]);
         const year = stackData[index].year;
-        const value = stackData[index][stream.key]
-        const y = Math.abs(scaledCeil)
-        const yValue = Math.abs(scaledFloor - (scaledFloor - scaledCeil) / 2)
+        const value = stackData[index][stream.key];
+        const y = Math.abs(scaledCeil);
+        const yValue = Math.abs(scaledFloor - (scaledFloor - scaledCeil) / 2);
         // const width = Math.abs(xScale(stackData[next].year) - xScale(year))
-        const height = Math.abs(scaledCeil - scaledFloor)
+        const height = Math.abs(scaledCeil - scaledFloor);
         const labelEl = {
           x: xScale(year),
           y,
           yValue,
           height,
-          value
-        }
+          value,
+        };
 
-        labelRects.push(labelEl)
+        labelRects.push(labelEl);
       }
 
       return {
@@ -281,43 +280,43 @@ const EnIndustry = ({
                   onMouseEnter={() => switchHighlightedStream(stream.id)}
                   onMouseLeave={() => switchHighlightedStream('')}
                 >
-                  {
-                    stream.labels.map((label, l) => {
-                      return (
-                        <g key={l}>
-                          <rect
-                            x={label.x}
-                            y={label.y}
-                            width="40"
-                            height={label.height}
-                            opacity="0"
-                            onMouseEnter={() => switchActiveLabel(l)}
-                            onMouseLeave={() => switchActiveLabel('')}
-                          />
-                          {label.value !== 0 && (
-                            <g
-                              className={`interactive-labels ${activeLabel === l ? 'active-label' : ''}`}
-                              transform={`translate(${label.x}, ${label.yValue})`}
+                  {stream.labels.map((label, l) => {
+                    return (
+                      <g key={l}>
+                        <rect
+                          x={label.x}
+                          y={label.y}
+                          width="40"
+                          height={label.height}
+                          opacity="0"
+                          onMouseEnter={() => switchActiveLabel(l)}
+                          onMouseLeave={() => switchActiveLabel('')}
+                        />
+                        {label.value !== 0 && (
+                          <g
+                            className={`interactive-labels ${
+                              activeLabel === l ? 'active-label' : ''
+                            }`}
+                            transform={`translate(${label.x}, ${label.yValue})`}
+                          >
+                            <foreignObject
+                              className={stream.threshold ? 'visible' : 'invisible'}
+                              x="0"
+                              y="0"
+                              width="1"
+                              height="1"
                             >
-                              <foreignObject
-                                className={stream.threshold ? 'visible' : 'invisible'}
-                                x="0"
-                                y="0"
-                                width="1"
-                                height="1"
-                              >
-                                <div xmlns="http://www.w3.org/1999/xhtml" className={stream.klass}>
-                                  <p>{formatNumber(label.value)}</p>
-                                </div>
-                              </foreignObject>
-                            </g>
-                          )}
-                        </g>
-                      )
-                    })
-                  }
+                              <div xmlns="http://www.w3.org/1999/xhtml" className={stream.klass}>
+                                <p>{formatNumber(label.value)}</p>
+                              </div>
+                            </foreignObject>
+                          </g>
+                        )}
+                      </g>
+                    );
+                  })}
                 </g>
-              )
+              );
             })}
           </g>
         </svg>
@@ -326,8 +325,9 @@ const EnIndustry = ({
         <div className="title">
           <h3>
             Der Energieverbrauch in der Industrie in{' '}
-            {showBundeslandForLK ? locationLabel[1] : locationLabel[0]} basiert im Jahr{' '}
-            <span>{lastYear}</span> zu <span> {formatNumber(percRenewables)}</span> % auf{' '}
+            <span>{showBundeslandForLK ? locationLabel[1] : locationLabel[0]}</span> basiert im Jahr{' '}
+            <span>{lastYear}</span> zu{' '}
+            <span className="second-value"> {formatNumber(percRenewables)}</span> % auf{' '}
             <span className="second-value"> erneuerbaren Energien</span>.{' '}
             {showBundeslandForLK && secretFootnote}
             {footnote}

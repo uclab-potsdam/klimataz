@@ -143,71 +143,73 @@ const MoCarDensity = ({
         </div>
         <div className="legend"></div>
       </div>
-      <div className="visualization-container" ref={targetRef}>
-        <svg className={`chart ${isThumbnail ? 'thumbnail-chart' : 'active-chart'}`}>
-          <g className="cars-container">
-            <g className="grid">
-              {carSquares.map(function (sq, s) {
-                return (
-                  <g
-                    key={`${s}-grid`}
-                    className="without-car"
-                    transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
-                  >
-                    <rect
-                      width={rectWidth}
-                      height={rectHeight}
-                      x={!sq.ownsCar ? '10' : '0'}
-                      y={!sq.ownsCar ? '10' : '0'}
-                    />
-                  </g>
-                );
-              })}
-            </g>
-            <g className="gridded-data">
-              {carSquares.map((sq, s) => {
-                if (sq.isHybrid) {
+      {currentData !== undefined && currentData.data !== undefined && (
+        <div className="visualization-container" ref={targetRef}>
+          <svg className={`chart ${isThumbnail ? 'thumbnail-chart' : 'active-chart'}`}>
+            <g className="cars-container">
+              <g className="grid">
+                {carSquares.map(function (sq, s) {
                   return (
                     <g
-                      key={`${s}-hybrid`}
-                      className="hybrid-cars"
+                      key={`${s}-grid`}
+                      className="without-car"
                       transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
                     >
-                      <rect width={rectWidth} height={rectHeight} fill="#F6A219" x="-3" y="-3" />
+                      <rect
+                        width={rectWidth}
+                        height={rectHeight}
+                        x={!sq.ownsCar ? '10' : '0'}
+                        y={!sq.ownsCar ? '10' : '0'}
+                      />
                     </g>
                   );
-                }
-                if (sq.ownsCar) {
-                  return (
-                    <g
-                      key={`${s}-car`}
-                      className="owns-car"
-                      transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
-                    >
-                      <rect width={rectWidth} height={rectHeight} fill="#FF7B7B" x="-3" y="-3" />
-                    </g>
-                  );
-                }
-              })}
+                })}
+              </g>
+              <g className="gridded-data">
+                {carSquares.map((sq, s) => {
+                  if (sq.isHybrid) {
+                    return (
+                      <g
+                        key={`${s}-hybrid`}
+                        className="hybrid-cars"
+                        transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
+                      >
+                        <rect width={rectWidth} height={rectHeight} fill="#F6A219" x="-3" y="-3" />
+                      </g>
+                    );
+                  }
+                  if (sq.ownsCar) {
+                    return (
+                      <g
+                        key={`${s}-car`}
+                        className="owns-car"
+                        transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
+                      >
+                        <rect width={rectWidth} height={rectHeight} fill="#FF7B7B" x="-3" y="-3" />
+                      </g>
+                    );
+                  }
+                })}
+              </g>
+              <g className="gridded-data is-excess">
+                {carSquares.map(function (sq, s) {
+                  if (sq.isExcess) {
+                    return (
+                      <g
+                        key={`${s}-excess`}
+                        className="is-excess owns-car"
+                        transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
+                      >
+                        <rect width={rectWidth} height={rectHeight} fill="#FF7B7B" x="-6" y="-6" />
+                      </g>
+                    );
+                  }
+                })}
+              </g>
             </g>
-            <g className="gridded-data is-excess">
-              {carSquares.map(function (sq, s) {
-                if (sq.isExcess) {
-                  return (
-                    <g
-                      key={`${s}-excess`}
-                      className="is-excess owns-car"
-                      transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
-                    >
-                      <rect width={rectWidth} height={rectHeight} fill="#FF7B7B" x="-6" y="-6" />
-                    </g>
-                  );
-                }
-              })}
-            </g>
-          </g>
-        </svg>
-      </div>
+          </svg>
+        </div>
+      )}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { max } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { min, uniq } from 'lodash';
-import { formatNumber } from './../../helperFunc';
+import { formatNumber } from '../../../helpers/helperFunc';
 
 const LandDenisty = ({
   currentData,
@@ -135,9 +135,9 @@ const LandDenisty = ({
         </div>
         <div className="caption">
           <p>
-            Um die Anzahl verschiedener Tiere vergleichen zu können, gibt es die{' '}
-            <span>Großvieheinheit (GV)</span>. Sie entspricht 500 kg also in etwa einem Rind, 8
-            Schweinen, 10 Schafen oder 640 Legehennen.
+            Um die Anzahl verschiedener Tiere vergleichen zu können, gibt es die Großvieheinheit
+            (GV). Sie entspricht 500 kg also in etwa einem Rind, 8 Schweinen, 10 Schafen oder 640
+            Legehennen.
           </p>
         </div>
         <div className="legend">
