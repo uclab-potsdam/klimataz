@@ -6,10 +6,9 @@ import SelectionButtons from './SelectionButtons';
 import { getRandomElement, setStateAsync } from '../helpers/helperFunc';
 import Info from './Info.js';
 import TitleArt from './TitleArt.js';
-// import TitleCanvas from "./TitleCanvas";
+import Sources from './Sources';
 
 //images
-//import switchCard from '../img/buttons/switch.svg';
 import switchCardLeft from '../img/buttons/caret-left.svg';
 import switchCardRight from '../img/buttons/caret-right.svg';
 import closeCard from '../img/buttons/close.svg';
@@ -553,6 +552,7 @@ export default class LayoutManager extends Component {
         )}
 
         {!this.state.postcardView && <Info />}
+        <Sources />
       </div>
     );
   }
