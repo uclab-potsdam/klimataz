@@ -280,10 +280,10 @@ code {
                 border-style: solid;
                 border-width: 1px;
                 width: 250px;
-                height: 50px;
+                height: $thumbnail-postcardwidth;
                 padding: 1rem;
-                transform: translate(-10px, 10px) rotate(-5deg);
-                -webkit-transform:translate(-10px, 10px) rotate(-5deg);
+                transform: translate(-5px, 15px) rotate(-3deg);
+                -webkit-transform:translate(-5px, 15px) rotate(-3deg);
                 transition: 0.2s;
                 -webkit-transition: 0.2s;
                 box-shadow: 4px 4px 0px rgba($red, 0.44);
@@ -293,7 +293,7 @@ code {
                 }
 
                 h4, h2 {
-                    margin: 1rem 0;
+                    margin: 0.5rem 0;
                     color: $red;
 
                     &.mobile-title {
@@ -306,10 +306,10 @@ code {
                 }
 
                 &.help-postcard {
-                    width: $thumbnail-postcardwidth;
-                    height: calc($thumbnail-postcardwidth/1.4);
-                    transform: translate(0, calc($thumbnail-postcardwidth/-1.4)) rotate(10deg);
-                    -webkit-transform:translate(0, calc($thumbnail-postcardwidth/-1.4)) rotate(10deg);
+                    width: calc($thumbnail-postcardwidth/0.65);
+                    height: $thumbnail-postcardwidth/0.95;
+                    transform: translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
+                    -webkit-transform:translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
                     transition: 0.2s;
                     -webkit-transition: 0.2s;
 
@@ -320,6 +320,30 @@ code {
                     .close {
                         @include button;
                         position: absolute;
+
+                        right: 0rem;
+                        top: 0.5rem;
+                        height: 10%;
+
+                        img {
+                            width: 70%;
+                        }
+                    }
+
+                    .img-flip{
+                        width: 25%;
+                        max-width: 18px;
+                        min-width: 10px;
+                    }
+
+                    .info-highlight{
+                        color: darken($pale-olive, 20%);
+                    }
+
+                    .info-suchleiste{
+                        background-color: $lighter-orange;
+                        border-radius: 5%;
+                        border-width: 10px;
                     }
                 }
     

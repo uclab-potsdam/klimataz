@@ -32,6 +32,7 @@ export default class Side extends Component {
       },
       section: ['En', 'Mo', 'Ab', 'La', 'Ge'],
       ranking: '',
+      exportActive: false,
     };
 
     this.vis = this.vis.bind(this);
@@ -42,20 +43,26 @@ export default class Side extends Component {
     this.onShareButtonClick = this.onShareButtonClick.bind(this);
   }
 
-  onShareButtonClick() {
+  async onShareButtonClick() {
     if (this.myRef.current === null) {
       return;
     }
 
-    toPng(this.myRef.current, {
-      cacheBust: true,
-      backgroundColor: '#fff',
-    })
+    await setStateAsync(this, { exportActive: true })
+      .then(() => {
+        return toPng(this.myRef.current, {
+          cacheBust: true,
+          backgroundColor: '#fff',
+        });
+      })
       .then((dataUrl) => {
         const link = document.createElement('a');
         link.download = 'klimaland_taz.png';
         link.href = dataUrl;
         link.click();
+      })
+      .then(() => {
+        setStateAsync(this, { exportActive: false });
       })
       .catch((err) => {
         console.log(err);
@@ -192,7 +199,9 @@ export default class Side extends Component {
   async componentDidMount() {
     await this.updateLayout();
     await this.updateChartSize();
-    await setStateAsync(this, { ranking: this.props.textData[this.props.section]['third'] });
+    if (this.props.isTopCard || this.props.isThumbnail) {
+      await setStateAsync(this, { ranking: this.props.textData[this.props.section]['third'] });
+    }
   }
 
   render() {
@@ -223,7 +232,8 @@ export default class Side extends Component {
             </div>
           </div>
           <div className="side-inner">
-            {!this.state.showViz && ( //TEXT
+            {!this.state.showViz && this.props.isTopCard && (
+              //TEXT
               <Details
                 lk={this.props.lk}
                 section={this.props.section}
@@ -236,24 +246,26 @@ export default class Side extends Component {
             )}
             {this.state.showViz && this.vis()}
           </div>
-          {!this.props.isThumbnail && (
+          {!this.props.isThumbnail && this.props.isTopCard && (
             <>
               <div className="social-media-layout" ref={this.myRef}>
                 <div className="side-inner">
-                  <div className="side-inner export">
-                    {!this.state.showViz && ( //TEXT
-                      <Details
-                        lk={this.props.lk}
-                        section={this.props.section}
-                        sectionName={this.props.sectionName}
-                        textData={this.props.textData}
-                        similarAgs={this.props.similarAgs}
-                        activeSide={this.props.activeSide}
-                        handleClickOnList={this.handleClickOnList}
-                      />
-                    )}
-                    {this.state.showViz && this.vis()}
-                  </div>
+                  {this.state.exportActive && (
+                    <div className="side-inner export">
+                      {!this.state.showViz && ( //TEXT
+                        <Details
+                          lk={this.props.lk}
+                          section={this.props.section}
+                          sectionName={this.props.sectionName}
+                          textData={this.props.textData}
+                          similarAgs={this.props.similarAgs}
+                          activeSide={this.props.activeSide}
+                          handleClickOnList={this.handleClickOnList}
+                        />
+                      )}
+                      {this.state.showViz && this.vis()}
+                    </div>
+                  )}
                 </div>
                 <TitleArt landkreisLabel={this.props.lk.label} />
                 <div className="logo-container"></div>
