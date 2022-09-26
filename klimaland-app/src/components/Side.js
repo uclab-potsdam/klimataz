@@ -10,7 +10,6 @@ import TitleArt from './TitleArt.js';
 
 import { toPng } from 'html-to-image';
 import share from '../img/buttons/share.svg';
-import { set } from 'lodash';
 
 export default class Side extends Component {
   constructor(props) {
