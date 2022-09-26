@@ -179,7 +179,7 @@ export default class CardCollection extends Component {
     //TODO: show somewhere, that this data is not on Landkreis Level as indicated by regional:false
     for (const [key, value] of Object.entries(localData[section])) {
       //for industry data: get bundesland data for landkreise where energy is secret (stored in json under "regional")
-      if (key == '_industry_consumption_') {
+      if (key === '_industry_consumption_') {
         if (element.lk.value > 16 && !value.regional) {
           //get  bundesland data
           let BLdata = this.data[localData.bundesland][section][key];
@@ -188,7 +188,7 @@ export default class CardCollection extends Component {
         }
       }
       //if data not regional
-      if (!value.regional && value.data == undefined) {
+      if (!value.regional && value.data === undefined) {
         //get  bundesland data
         let BLdata = this.data[localData.bundesland][section][key];
         //store bundesland data at indicator of landkreis
@@ -288,6 +288,7 @@ export default class CardCollection extends Component {
                 lk={element.lk}
                 isThumbnail={false}
                 isTopCard={isTopCard} //this is true for the postcard on top
+                dataLevelLK={this.props.dataLevelLK}
                 section={section}
                 sectionName={element.section.label}
                 windowSize={this.state.windowSize}
@@ -366,6 +367,7 @@ export default class CardCollection extends Component {
                 isThumbnail={true}
                 textData={localTextData}
                 mode={this.props.mode}
+                dataLevelLK={true} //always true in thumbnail view
                 localData={localData}
                 thirdKey={thirdKey}
                 clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview
@@ -412,9 +414,9 @@ export default class CardCollection extends Component {
     if (
       this.props.cardSelection !== prevProps.cardSelection ||
       this.props.postcardView !== prevProps.postcardView ||
-      this.props.activeCard !== prevProps.activeCard
+      this.props.activeCard !== prevProps.activeCard ||
+      this.props.dataLevelLK !== prevProps.dataLevelLK
     ) {
-      //   console.log("props did update");
       this.generateCards();
     }
   }

@@ -5,7 +5,7 @@ import CardCollection from './CardCollection';
 import SelectionButtons from './SelectionButtons';
 import { getRandomElement, setStateAsync } from '../helpers/helperFunc';
 import Info from './Info.js';
-import TitleArt from './TitleArt.js'
+import TitleArt from './TitleArt.js';
 // import TitleCanvas from "./TitleCanvas";
 
 //images
@@ -18,6 +18,30 @@ export default class LayoutManager extends Component {
   constructor(props) {
     super(props);
 
+    //contextual indicator toggle labels
+    this.toggleLabels = {
+      La: {
+        lk: 'Tierhaltung',
+        bl: 'Tiere pro Fläche',
+      },
+      En: {
+        lk: 'Industrie',
+        bl: 'Energieverbrauch',
+      },
+      Mo: {
+        lk: 'PkW-Dichte',
+        bl: 'Transportmittel',
+      },
+      Ge: {
+        lk: 'Heizenergie',
+        bl: 'Energieeffizienz',
+      },
+      Ab: {
+        lk: '',
+        bl: '',
+      },
+    };
+
     //methods called by cardcollection
     this.switchToPostcardView = this.switchToPostcardView.bind(this);
     this.addCardToSelection = this.addCardToSelection.bind(this);
@@ -27,10 +51,11 @@ export default class LayoutManager extends Component {
     this.changeLandkreis = this.changeLandkreis.bind(this);
     this.changeSection = this.changeSection.bind(this);
 
-    //methods called by other components
+    //methods called by buttons
     this.handleSwitchNext = this.nextCard.bind(this, true);
     this.handleSwitchBack = this.nextCard.bind(this, false);
     this.closePostcardView = this.closePostcardView.bind(this);
+    this.switchDataLevel = this.switchDataLevel.bind(this);
 
     this.state = {
       //card selection if we are in shuffle mode
@@ -49,6 +74,7 @@ export default class LayoutManager extends Component {
       activeCard: 0,
       //true when currently editors pick is displayed
       showEditorsPick: true,
+      dataLevelLK: true,
       previewLeftCard: '',
       previewRightCard: '',
     };
@@ -60,12 +86,18 @@ export default class LayoutManager extends Component {
    * @param section section of postcard that was clicked on
    */
   async switchToPostcardView(lk, section) {
-    this.setState({ postcardView: true });
+    if (this.props.editorspick[0].view.value !== 3) {
+      this.setState({ postcardView: true, dataLevelLK: true });
+    } else {
+      this.setState({ postcardView: true, dataLevelLK: this.props.editorspick[0].levelLK.value });
+    }
 
     //get card id of clicked card
     let chosenCard = this.state.cardSelection.findIndex(
       (x) => x.lk.value === lk.value && x.section.value === section
     );
+
+    if (chosenCard === -1) chosenCard = 0;
 
     //set active card to this card id
     await setStateAsync(this, { activeCard: chosenCard }).then(() => {
@@ -82,6 +114,19 @@ export default class LayoutManager extends Component {
     if (!this.state.postcardView) return;
 
     this.setState({ postcardView: false });
+  }
+
+  switchDataLevel() {
+    let levelUpdate = !this.state.dataLevelLK;
+    this.setState({ dataLevelLK: levelUpdate });
+  }
+
+  /**
+   * gets the section of the current active card. activeCard is the card currently displayed in postcardView.
+   * @returns section value ("En","La", ..)of activeCard
+   */
+  getActiveCardSection() {
+    return this.state.cardSelection[this.state.activeCard].section.value;
   }
 
   /**
@@ -105,12 +150,13 @@ export default class LayoutManager extends Component {
    */
   setNextCardPreviews() {
     //switch to next card in postcard view
-    if (!this.state.postcardView) return;
+    if (!this.state.postcardView) return; //only in postcard view
+    if (this.props.editorspick[0].view.value === 3) return; //not in single postcard view
 
     //if going to the next card
     const rightCard = (this.state.activeCard + 1) % this.state.cardSelection.length;
     let sectionLabel = this.state.cardSelection[rightCard].section.label;
-    if (sectionLabel == 'Landwirtschaft') sectionLabel = 'Landw.';
+    if (sectionLabel === 'Landwirtschaft') sectionLabel = 'Landw.';
     const rightCardPreview = sectionLabel + ':\n' + this.state.cardSelection[rightCard].lk.label;
     this.setState({ previewRightCard: rightCardPreview });
     //if going back
@@ -119,7 +165,7 @@ export default class LayoutManager extends Component {
     //if new card -1: set last card of selection as new card
     if (leftCard < 0) leftCard = this.state.cardSelection.length - 1;
     sectionLabel = this.state.cardSelection[leftCard].section.label;
-    if (sectionLabel == 'Landwirtschaft') sectionLabel = 'Landw.';
+    if (sectionLabel === 'Landwirtschaft') sectionLabel = 'Landw.';
     const leftCardPreview = sectionLabel + '\n' + this.state.cardSelection[leftCard].lk.label;
     this.setState({ previewLeftCard: leftCardPreview });
   }
@@ -132,6 +178,7 @@ export default class LayoutManager extends Component {
   async nextCard(goFurther) {
     //switch to next card in postcard view
     if (!this.state.postcardView) return;
+    if (this.props.editorspick[0].view.value === 3) return; //not in single postcard view
 
     let newActiveCard = 0;
 
@@ -159,13 +206,13 @@ export default class LayoutManager extends Component {
    */
   async changeLandkreis(e) {
     //if everything is deselected, show editors pick
-    if (e.length == 0) {
+    if (e.length === 0) {
       this.setEditorsPick();
     }
     //otherwise, update cards to match selection
     else {
       let defaultLK = this.props.editorspick[0].lk.value;
-      if (this.state.mode == 'lk' && this.state.landkreisSelection[0].value == defaultLK) {
+      if (this.state.mode === 'lk' && this.state.landkreisSelection[0].value === defaultLK) {
         e = e.filter((d) => {
           return d.value !== defaultLK;
         });
@@ -246,7 +293,7 @@ export default class LayoutManager extends Component {
   async updateShuffleSelection() {
     //if we shuffle for the first time:
     //switch to shuffle mode and use editors pick as first shuffle option
-    if (!this.state.showEditorsPick & (this.state.mode != 'shuffle')) {
+    if (!this.state.showEditorsPick & (this.state.mode !== 'shuffle')) {
       await this.setEditorsPick();
     }
     //if reshuffling (means we are already in shuffle mode or in editors pick)
@@ -365,7 +412,7 @@ export default class LayoutManager extends Component {
         return list;
       })
       .then((list) => {
-        setStateAsync(this, { cardSelection: list });
+        return setStateAsync(this, { cardSelection: list });
       })
       .then(() => {
         if (this.state.mode === 'singlePCview') {
@@ -394,10 +441,9 @@ export default class LayoutManager extends Component {
   render() {
     return (
       <div className="main-container">
-        {(this.state.mode === 'lk' && this.state.postcardView === false)
-          && (
-            <TitleArt landkreisLabel={this.state.landkreisSelection[0].label} />
-         )}
+        {this.state.mode === 'lk' && this.state.postcardView === false && (
+          <TitleArt landkreisLabel={this.state.landkreisSelection[0].label} />
+        )}
         <SelectionButtons
           mode={this.state.mode}
           postcardView={this.state.postcardView}
@@ -424,6 +470,7 @@ export default class LayoutManager extends Component {
           mode={this.state.mode}
           postcardView={this.state.postcardView}
           activeCard={this.state.activeCard}
+          dataLevelLK={this.state.dataLevelLK}
           handleSwitchNext={this.handleSwitchNext}
           handleSwitchBack={this.handleSwitchBack}
           switchToPostcardView={this.switchToPostcardView}
@@ -434,6 +481,51 @@ export default class LayoutManager extends Component {
         view buttons*/}
         {this.state.postcardView && (
           <div className="button-container">
+            {this.getActiveCardSection() !== 'Ab' && (
+              <div className="button-toggle-container">
+                <svg>
+                  <defs>
+                    <linearGradient id="MyGradient">
+                      <stop offset="50%" stopColor="#e6c9a2" />
+                      <stop offset="100%" stopColor="#ffe8c9" />
+                    </linearGradient>
+                  </defs>
+                  <g className="toggle" onClick={this.switchDataLevel}>
+                    <g
+                      transform={
+                        'translate(' +
+                        this.toggleLabels[this.getActiveCardSection()].lk.length * 9 +
+                        ', 10)'
+                      }
+                    >
+                      <rect className="controller-bg" x="0" y="0" width="40" height="20" rx="10" />
+                      <rect
+                        x={this.state.dataLevelLK ? 0 : 20}
+                        y="0"
+                        width="20"
+                        height="20"
+                        rx="10"
+                        fill="#FFF9F1"
+                        stroke="#484848"
+                      />
+                    </g>
+                    {/* {this.state.dataLevelLK && ( */}
+                    <text x="0" y="25">
+                      {this.toggleLabels[this.getActiveCardSection()].lk}
+                    </text>
+                    {/* )} */}
+                    {/* {!this.state.dataLevelLK && ( */}
+                    <text
+                      x={this.toggleLabels[this.getActiveCardSection()].lk.length * 9 + 50}
+                      y="25"
+                    >
+                      {this.toggleLabels[this.getActiveCardSection()].bl}
+                    </text>
+                    {/* )} */}
+                  </g>
+                </svg>
+              </div>
+            )}
             {this.props.editorspick[0].view.value !== 3 && (
               <>
                 <div className="inner-button">
