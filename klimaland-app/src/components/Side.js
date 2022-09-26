@@ -220,11 +220,7 @@ export default class Side extends Component {
                     {this.state.showViz && this.vis()}
                   </div>
                 </div>
-
-                <div className="greetings">
-                  <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
-                  <h2 className="wordart-1">{this.props.lk.label}</h2>
-                </div>
+                <TitleArt landkreisLabel={this.props.lk.label} />
                 <div className="logo-container"></div>
               </div>
 
