@@ -6,6 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 import Chart from './side-elements/Chart.js';
 //side elements
 import Details from './side-elements/Details.js';
+import TitleArt from './TitleArt.js';
 
 import { toPng } from 'html-to-image';
 import share from '../img/buttons/share.svg';
@@ -69,7 +70,7 @@ export default class Side extends Component {
       //if not in landkreis mode
       if (!this.props.dataLevelLK && this.props.section !== 'Ab') {
         //side 0 --> side 2
-        if (activeSideWithMode == 0) activeSideWithMode = 2;
+        if (activeSideWithMode === 0) activeSideWithMode = 2;
         //side 1 --> side 1
       }
 
@@ -121,6 +122,8 @@ export default class Side extends Component {
   vis() {
     if (
       this.props.localData !== undefined &&
+      this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
+        undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -197,48 +200,23 @@ export default class Side extends Component {
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
           <div className="overlay-container">
-            {this.props.isThumbnail && (
-              <div className={`section-thumb ${this.props.mode}`}>
-                {this.props.mode === 'comparison' && (
-                  <div className="word-art-title">
-                    <h4 className="gruss-thumb">Sonnige Grüße aus</h4>
-                    <h2 className="wordart">{this.props.lk.label}</h2>
+            <div className="overlay-inner">
+              <div className="postcard-title">
+                <h4 className="section-title">{this.props.sectionName}</h4>
+                {this.props.isThumbnail && (
+                  <div className={`section-thumb ${this.props.mode}`}>
+                    {this.props.mode === 'comparison' && (
+                      <TitleArt landkreisLabel={this.props.lk.label} />
+                    )}
+                    {this.state.ranking !== '' && (
+                      <div className={`indicator-ranking ${this.state.ranking}`}>
+                        <p>{this.state.ranking}</p>
+                      </div>
+                    )}
                   </div>
                 )}
-                <h4 className="section-title">{this.props.sectionName}</h4>
-                {this.props.lk.value !== 0 && (
-                  <svg className="rating-thumb" width="50%" height="35%">
-                    <g>
-                      <circle
-                        className={`${
-                          this.state.ranking === 'unteren Drittel' ? 'active' : 'inactive'
-                        } 
-                  lower`}
-                        cx="32"
-                        cy="32"
-                        r="30"
-                      />
-                      <circle
-                        className={`${
-                          this.state.ranking === 'mittleren Drittel' ? 'active' : 'inactive'
-                        } middle`}
-                        cx="67"
-                        cy="32"
-                        r="30"
-                      />
-                      <circle
-                        className={`${
-                          this.state.ranking === 'oberen Drittel' ? 'active' : 'inactive'
-                        } upper`}
-                        cx="102"
-                        cy="32"
-                        r="30"
-                      />
-                    </g>
-                  </svg>
-                )}
               </div>
-            )}
+            </div>
           </div>
           <div className="side-inner">
             {!this.state.showViz && ( //TEXT
@@ -275,11 +253,7 @@ export default class Side extends Component {
                     {this.state.showViz && this.vis()}
                   </div>
                 </div>
-
-                <div className="greetings">
-                  <h4 className="gruss-thumb">Herzliche Grüße aus</h4>
-                  <h2 className="wordart-1">{this.props.lk.label}</h2>
-                </div>
+                <TitleArt landkreisLabel={this.props.lk.label} />
                 <div className="logo-container"></div>
               </div>
 

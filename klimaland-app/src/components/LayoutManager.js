@@ -5,6 +5,7 @@ import CardCollection from './CardCollection';
 import SelectionButtons from './SelectionButtons';
 import { getRandomElement, setStateAsync } from '../helpers/helperFunc';
 import Info from './Info.js';
+import TitleArt from './TitleArt.js'
 // import TitleCanvas from "./TitleCanvas";
 
 //images
@@ -440,12 +441,10 @@ export default class LayoutManager extends Component {
   render() {
     return (
       <div className="main-container">
-        {this.state.mode === 'lk' && this.state.postcardView === false && (
-          <div className="word-art-title">
-            <h4 className="gruss-thumb">Sonnige Grüße aus</h4>
-            <h2 className="wordart">{this.state.landkreisSelection[0].label}</h2>
-          </div>
-        )}
+        {(this.state.mode === 'lk' && this.state.postcardView === false)
+          && (
+            <TitleArt landkreisLabel={this.state.landkreisSelection[0].label} />
+         )}
         <SelectionButtons
           mode={this.state.mode}
           postcardView={this.state.postcardView}

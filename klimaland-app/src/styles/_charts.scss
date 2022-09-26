@@ -1,5 +1,23 @@
 @import "_config.scss";
 
+//colors
+// renewables = ["Solarthermie","Geothermie","Umweltthermie (Luft/Wasser)","Holz","Biogas/Biomethan","Sonstige Biomasse","Keine Energie (einschl. Passivhaus)"]
+// fossils = ["Gas","Strom","Öl","Fernwärme/Fernkälte","Sonstige Heizenergie"]
+// $solarthermie: ;
+// $geothermie: ;
+// $umweltthermie: ;
+// $fernwaerme: ;
+// $sonstigeHeizenergie: ;
+// $keineEnergie: ;
+// $andereErneuerbare: ;
+// $gas: ;
+// $oel: ;
+// $holz: ;
+// $biogas: ;
+// $sonstigeBiomasse: ;
+// $strom: ;
+// $andereFossile: ;
+
 .chart-outer-container {
     height: 100%;
 }
@@ -63,22 +81,25 @@
                     }
 
                     &.thumbnail-chart {
-                        transform: translate(-50px, 0px) skew(-17deg, 0deg);
-                        -webkit-transform:translate(-50px, 0px) skew(-17deg, 0deg);
+                        // transform: translate(-50px, 30px) skew(-17deg, 0deg);
+                        // -webkit-transform:translate(-50px, 30px) skew(-17deg, 0deg);
                         .cars-container {
-                            transform: scale(0.9);
-                            -webkit-transform:scale(0.9);
+                            transform: translate(50px, 30px) scale(0.7);
+                            -webkit-transform:translate(50px, 30px) scale(0.7);
                         }
                     }
                 }
 
                 &.is-thumbnail {
 
-                    transform: translateX(20%);
-                    -webkit-transform:translateX(20%);
-
                     .chart {
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
 
+                        // transform: translateX(30%);
+                        // -webkit-transform: translateX(30%);
+                        // left: -10px;
                         .grid {
                             stroke: $default-text;
                             stroke-width: 0.5;
@@ -124,6 +145,15 @@
             .energy-industry, .primary-energy {
                 height: 100%;
                 @include horizontal-bottom-layout;   
+
+                .title {
+                    span {
+                
+                        &.second-value {
+                            color: $mint-green;
+                        }
+                    }               
+                }
 
                 .chart {
                     .axis {
@@ -515,7 +545,7 @@
                     height: 30%;
 
                     span {
-                        color: $dark-blue;
+                        color: $dust-blue;
                     }
                 }
 
@@ -669,30 +699,8 @@
                 }
 
                 .fernkälte, div.fernkälte {
-                    background-color: $blue;
-                    
-                    &.caption {
-                        background-color: transparent;
-                        .energy-number {
-                            color: $blue;
-                            filter: brightness(0.75);
-                        }
-                    }
-                    
-                    path,
-                    rect {
-                        stroke: $blue;
-                    }
-
-                    circle,
-                    text {
-                        fill: $blue;
-                    }
-                }
-
-                .holz, div.holz {
                     background-color: $pale-olive;
-
+                    
                     &.caption {
                         background-color: transparent;
                         .energy-number {
@@ -700,7 +708,7 @@
                             filter: brightness(0.75);
                         }
                     }
-
+                    
                     path,
                     rect {
                         stroke: $pale-olive;
@@ -709,6 +717,28 @@
                     circle,
                     text {
                         fill: $pale-olive;
+                    }
+                }
+
+                .holz, div.holz {
+                    background-color: $blue;
+
+                    &.caption {
+                        background-color: transparent;
+                        .energy-number {
+                            color: $blue;
+                            filter: brightness(0.75);
+                        }
+                    }
+
+                    path,
+                    rect {
+                        stroke: $blue;
+                    }
+
+                    circle,
+                    text {
+                        fill: $blue;
                     }
                 }
 
