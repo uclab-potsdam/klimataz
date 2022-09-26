@@ -73,6 +73,7 @@
                     }
 
                     .grid {
+                        cursor: crosshair;
                         stroke: $default-text;
                         fill: $light;
                     }
@@ -82,6 +83,7 @@
                     }
 
                     &.active-chart {
+                        cursor: pointer;
                         transform: translate(-20px, -10px) skew(-17deg, 0deg);
                         -webkit-transform:translate(-20px, -10px) skew(-17deg, 0deg);
                     }
