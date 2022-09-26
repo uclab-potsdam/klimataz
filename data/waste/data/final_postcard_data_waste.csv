@@ -1,32 +1,32 @@
 ,AGS,Name,Bundesland,kg_per_person_2016,kg_per_person_2020,waste_rank,waste_third
 0,0,Deutschland,Deutschland,123.40312669209378,127.88392803316977,0.0,
 1,1,Schleswig-Holstein,Schleswig-Holstein,117.645630040466,122.78713445269892,7.0,mittleren Drittel
-2,2,Hamburg,Hamburg,51.31354953884088,55.292964342896376,15.0,unteren Drittel
-3,3,Niedersachsen,Niedersachsen,163.23148979603394,166.17344008268464,2.0,oberen Drittel
-4,4,Bremen,Bremen,85.83976792736091,83.54579271609839,13.0,unteren Drittel
+2,2,Hamburg,Hamburg,51.31354953884088,55.292964342896376,15.0,schlechtesten Drittel
+3,3,Niedersachsen,Niedersachsen,163.23148979603394,166.17344008268464,2.0,besten Drittel
+4,4,Bremen,Bremen,85.83976792736091,83.54579271609839,13.0,schlechtesten Drittel
 5,5,Nordrhein-Westfalen,Nordrhein-Westfalen,116.22959066746414,116.27624672465087,9.0,mittleren Drittel
-6,6,Hessen,Hessen,138.45691546619008,132.71882429700594,5.0,oberen Drittel
-7,7,Rheinland-Pfalz,Rheinland-Pfalz,171.97808292218522,189.7146953523956,1.0,oberen Drittel
-8,8,Baden-Württemberg,Baden-Württemberg,140.2922764128539,143.71969918516933,4.0,oberen Drittel
-9,9,Bayern,Bayern,153.39464815307323,154.2378062771272,3.0,oberen Drittel
+6,6,Hessen,Hessen,138.45691546619008,132.71882429700594,5.0,besten Drittel
+7,7,Rheinland-Pfalz,Rheinland-Pfalz,171.97808292218522,189.7146953523956,1.0,besten Drittel
+8,8,Baden-Württemberg,Baden-Württemberg,140.2922764128539,143.71969918516933,4.0,besten Drittel
+9,9,Bayern,Bayern,153.39464815307323,154.2378062771272,3.0,besten Drittel
 10,10,Saarland,Saarland,135.6372491473946,126.05603100028354,6.0,mittleren Drittel
-11,11,Berlin,Berlin,23.86938679601548,36.244762680372304,16.0,unteren Drittel
-12,12,Brandenburg,Brandenburg,66.45626958192098,88.13936867041659,12.0,unteren Drittel
+11,11,Berlin,Berlin,23.86938679601548,36.244762680372304,16.0,schlechtesten Drittel
+12,12,Brandenburg,Brandenburg,66.45626958192098,88.13936867041659,12.0,schlechtesten Drittel
 13,13,Mecklenburg-Vorpommern,Mecklenburg-Vorpommern,74.59361733038466,94.2044011139986,11.0,mittleren Drittel
-14,14,Sachsen,Sachsen,55.997342337894985,79.78671614894078,14.0,unteren Drittel
+14,14,Sachsen,Sachsen,55.997342337894985,79.78671614894078,14.0,schlechtesten Drittel
 15,15,Sachsen-Anhalt,Sachsen-Anhalt,122.93426679998498,122.28044044896004,8.0,mittleren Drittel
 16,16,Thüringen,Thüringen,105.39736289969824,116.04834742531142,10.0,mittleren Drittel
-17,1001,Flensburg,Schleswig-Holstein,69.47113185103852,67.27155469566571,357.0,unteren Drittel
-18,1002,Kiel,Schleswig-Holstein,65.47015248079339,66.23249702961465,360.0,unteren Drittel
-19,1003,Lübeck,Schleswig-Holstein,86.73262209753037,102.999360655282,297.0,unteren Drittel
-20,1004,Neumünster,Schleswig-Holstein,133.94829317269077,198.2479194042926,70.0,oberen Drittel
+17,1001,Flensburg,Schleswig-Holstein,69.47113185103852,67.27155469566571,357.0,schlechtesten Drittel
+18,1002,Kiel,Schleswig-Holstein,65.47015248079339,66.23249702961465,360.0,schlechtesten Drittel
+19,1003,Lübeck,Schleswig-Holstein,86.73262209753037,102.999360655282,297.0,schlechtesten Drittel
+20,1004,Neumünster,Schleswig-Holstein,133.94829317269077,198.2479194042926,70.0,besten Drittel
 21,1051,Dithmarschen,Schleswig-Holstein,131.371668164121,139.32353228118365,203.0,mittleren Drittel
 22,1053,Herzogtum Lauenburg,Schleswig-Holstein,114.44507671880366,132.21559411906483,223.0,mittleren Drittel
-23,1054,Nordfriesland,Schleswig-Holstein,39.05387870923929,59.23528391176629,373.0,unteren Drittel
-24,1055,Ostholstein,Schleswig-Holstein,57.45145981584857,64.85281928858934,364.0,unteren Drittel
-25,1056,Pinneberg,Schleswig-Holstein,107.48326911377002,109.3208445684911,285.0,unteren Drittel
+23,1054,Nordfriesland,Schleswig-Holstein,39.05387870923929,59.23528391176629,373.0,schlechtesten Drittel
+24,1055,Ostholstein,Schleswig-Holstein,57.45145981584857,64.85281928858934,364.0,schlechtesten Drittel
+25,1056,Pinneberg,Schleswig-Holstein,107.48326911377002,109.3208445684911,285.0,schlechtesten Drittel
 26,1057,Plön,Schleswig-Holstein,135.1095157067046,134.56201247748407,216.0,mittleren Drittel
-27,1058,Rendsburg-Eckernförde,Schleswig-Holstein,183.32800904761385,192.25883937182684,82.0,oberen Drittel
+27,1058,Rendsburg-Eckernförde,Schleswig-Holstein,183.32800904761385,192.25883937182684,82.0,besten Drittel
 28,1059,Schleswig-Flensburg,Schleswig-Holstein,124.87606009512544,141.04822671936915,201.0,mittleren Drittel
 29,1060,Segeberg,Schleswig-Holstein,164.17433467408674,133.21247306722492,221.0,mittleren Drittel
 30,1061,Steinburg,Schleswig-Holstein,134.91563981042654,148.1033770446651,180.0,mittleren Drittel
@@ -34,304 +34,304 @@
 32,3101,Braunschweig,Niedersachsen,146.25583611818217,164.59541118679115,139.0,mittleren Drittel
 33,3102,Salzgitter,Niedersachsen,139.85993749276537,120.02002580247628,259.0,mittleren Drittel
 34,3103,Wolfsburg,Niedersachsen,168.93042474719348,151.2516149870801,173.0,mittleren Drittel
-35,3151,Gifhorn,Niedersachsen,103.88614527121756,102.92449796024307,298.0,unteren Drittel
-36,3153,Goslar,Niedersachsen,88.46273708317932,90.49061534806368,325.0,unteren Drittel
-37,3154,Helmstedt,Niedersachsen,107.83131875889184,107.6728075351297,289.0,unteren Drittel
+35,3151,Gifhorn,Niedersachsen,103.88614527121756,102.92449796024307,298.0,schlechtesten Drittel
+36,3153,Goslar,Niedersachsen,88.46273708317932,90.49061534806368,325.0,schlechtesten Drittel
+37,3154,Helmstedt,Niedersachsen,107.83131875889184,107.6728075351297,289.0,schlechtesten Drittel
 38,3155,Northeim,Niedersachsen,111.06953072374824,124.02483076829677,250.0,mittleren Drittel
-39,3157,Peine,Niedersachsen,174.76443648997213,173.41951061511733,124.0,oberen Drittel
-40,3158,Wolfenbüttel,Niedersachsen,183.33553893998544,179.42208929214735,114.0,oberen Drittel
-41,3159,Göttingen,Niedersachsen,112.6656780762234,117.9746835443038,267.0,unteren Drittel
+39,3157,Peine,Niedersachsen,174.76443648997213,173.41951061511733,124.0,besten Drittel
+40,3158,Wolfenbüttel,Niedersachsen,183.33553893998544,179.42208929214735,114.0,besten Drittel
+41,3159,Göttingen,Niedersachsen,112.6656780762234,117.9746835443038,267.0,schlechtesten Drittel
 42,3241,Region Hannover,Niedersachsen,144.5129276573518,136.32468645322115,209.0,mittleren Drittel
-43,3251,Diepholz,Niedersachsen,289.9917240866274,336.90249092042995,7.0,oberen Drittel
-44,3252,Hameln-Pyrmont,Niedersachsen,289.2793309277307,283.82016422129493,13.0,oberen Drittel
+43,3251,Diepholz,Niedersachsen,289.9917240866274,336.90249092042995,7.0,besten Drittel
+44,3252,Hameln-Pyrmont,Niedersachsen,289.2793309277307,283.82016422129493,13.0,besten Drittel
 45,3254,Hildesheim,Niedersachsen,116.73278038225747,124.25580112101764,248.0,mittleren Drittel
-46,3255,Holzminden,Niedersachsen,93.3855404838484,92.25575797285173,319.0,unteren Drittel
-47,3256,Nienburg (Weser),Niedersachsen,305.564471659136,258.3418965021168,19.0,oberen Drittel
-48,3257,Schaumburg,Niedersachsen,271.9330524819815,291.59880307564106,12.0,oberen Drittel
+46,3255,Holzminden,Niedersachsen,93.3855404838484,92.25575797285173,319.0,schlechtesten Drittel
+47,3256,Nienburg (Weser),Niedersachsen,305.564471659136,258.3418965021168,19.0,besten Drittel
+48,3257,Schaumburg,Niedersachsen,271.9330524819815,291.59880307564106,12.0,besten Drittel
 49,3351,Celle,Niedersachsen,123.13169254919548,133.8454505925769,218.0,mittleren Drittel
-50,3352,Cuxhaven,Niedersachsen,69.2303820405698,68.37636928771892,355.0,unteren Drittel
-51,3353,Harburg,Niedersachsen,167.40969775412862,183.17605149678147,105.0,oberen Drittel
-52,3354,Lüchow-Dannenberg,Niedersachsen,213.1694828469022,324.4335401933901,9.0,oberen Drittel
-53,3355,Lüneburg,Niedersachsen,149.94080559455963,183.8684289087307,100.0,oberen Drittel
-54,3356,Osterholz,Niedersachsen,147.06065042814674,199.9389392882065,68.0,oberen Drittel
-55,3357,Rotenburg (Wümme),Niedersachsen,185.662169772054,187.94304682465375,92.0,oberen Drittel
-56,3358,Heidekreis,Niedersachsen,169.81402310209754,202.0868083898215,65.0,oberen Drittel
+50,3352,Cuxhaven,Niedersachsen,69.2303820405698,68.37636928771892,355.0,schlechtesten Drittel
+51,3353,Harburg,Niedersachsen,167.40969775412862,183.17605149678147,105.0,besten Drittel
+52,3354,Lüchow-Dannenberg,Niedersachsen,213.1694828469022,324.4335401933901,9.0,besten Drittel
+53,3355,Lüneburg,Niedersachsen,149.94080559455963,183.8684289087307,100.0,besten Drittel
+54,3356,Osterholz,Niedersachsen,147.06065042814674,199.9389392882065,68.0,besten Drittel
+55,3357,Rotenburg (Wümme),Niedersachsen,185.662169772054,187.94304682465375,92.0,besten Drittel
+56,3358,Heidekreis,Niedersachsen,169.81402310209754,202.0868083898215,65.0,besten Drittel
 57,3359,Stade,Niedersachsen,214.13126494014023,140.47244554604907,202.0,mittleren Drittel
-58,3360,Uelzen,Niedersachsen,146.52381106055225,176.92241211675994,119.0,oberen Drittel
+58,3360,Uelzen,Niedersachsen,146.52381106055225,176.92241211675994,119.0,besten Drittel
 59,3361,Verden,Niedersachsen,101.91987750474816,148.35652085423118,178.0,mittleren Drittel
-60,3401,Delmenhorst,Niedersachsen,104.575248231553,105.9055778485994,293.0,unteren Drittel
-61,3402,Emden,Niedersachsen,93.84779938992988,117.37578698319766,269.0,unteren Drittel
+60,3401,Delmenhorst,Niedersachsen,104.575248231553,105.9055778485994,293.0,schlechtesten Drittel
+61,3402,Emden,Niedersachsen,93.84779938992988,117.37578698319766,269.0,schlechtesten Drittel
 62,3403,Oldenburg (Oldenburg),Niedersachsen,170.39303365497764,141.0512661772943,200.0,mittleren Drittel
 63,3404,Osnabrück,Niedersachsen,161.21167794234168,153.6447391656467,166.0,mittleren Drittel
-64,3405,Wilhelmshaven,Niedersachsen,122.79366412514273,112.17066326191332,278.0,unteren Drittel
-65,3451,Ammerland,Niedersachsen,174.71352426282417,192.27493772036644,81.0,oberen Drittel
+64,3405,Wilhelmshaven,Niedersachsen,122.79366412514273,112.17066326191332,278.0,schlechtesten Drittel
+65,3451,Ammerland,Niedersachsen,174.71352426282417,192.27493772036644,81.0,besten Drittel
 66,3452,Aurich,Niedersachsen,170.79330337882632,162.29532332867103,150.0,mittleren Drittel
 67,3453,Cloppenburg,Niedersachsen,154.3421924908094,160.76972982992723,154.0,mittleren Drittel
-68,3454,Emsland,Niedersachsen,211.35314927922684,201.79369470708053,66.0,oberen Drittel
-69,3455,Friesland,Niedersachsen,276.18408885366176,251.0937547362359,25.0,oberen Drittel
-70,3456,Grafschaft Bentheim,Niedersachsen,185.85107166531637,181.75225359160493,108.0,oberen Drittel
-71,3457,Leer,Niedersachsen,75.29732010721949,85.9210533988792,333.0,unteren Drittel
+68,3454,Emsland,Niedersachsen,211.35314927922684,201.79369470708053,66.0,besten Drittel
+69,3455,Friesland,Niedersachsen,276.18408885366176,251.0937547362359,25.0,besten Drittel
+70,3456,Grafschaft Bentheim,Niedersachsen,185.85107166531637,181.75225359160493,108.0,besten Drittel
+71,3457,Leer,Niedersachsen,75.29732010721949,85.9210533988792,333.0,schlechtesten Drittel
 72,3458,Oldenburg,Niedersachsen,181.4200982360755,162.41338130481415,148.0,mittleren Drittel
-73,3459,Osnabrück,Niedersachsen,218.6850879492231,219.84527263673564,42.0,oberen Drittel
-74,3460,Vechta,Niedersachsen,211.80488433533088,262.4532004620802,18.0,oberen Drittel
-75,3461,Wesermarsch,Niedersachsen,175.44409847449654,175.48913289051558,120.0,oberen Drittel
-76,3462,Wittmund,Niedersachsen,93.0890807123644,94.83479715600168,314.0,unteren Drittel
-77,4011,Bremen,Bremen,91.51893431191104,90.36081846469916,326.0,unteren Drittel
-78,4012,Bremerhaven,Bremen,57.416352601872,49.54340111133616,379.0,unteren Drittel
-79,5111,Düsseldorf,Nordrhein-Westfalen,53.85907408313357,51.268043247389706,378.0,unteren Drittel
-80,5112,Duisburg,Nordrhein-Westfalen,72.67252848382999,65.194551156014,363.0,unteren Drittel
-81,5113,Essen,Nordrhein-Westfalen,58.37580863134643,46.6711880703622,385.0,unteren Drittel
-82,5114,Krefeld,Nordrhein-Westfalen,110.76133537908048,110.9484932376435,281.0,unteren Drittel
+73,3459,Osnabrück,Niedersachsen,218.6850879492231,219.84527263673564,42.0,besten Drittel
+74,3460,Vechta,Niedersachsen,211.80488433533088,262.4532004620802,18.0,besten Drittel
+75,3461,Wesermarsch,Niedersachsen,175.44409847449654,175.48913289051558,120.0,besten Drittel
+76,3462,Wittmund,Niedersachsen,93.0890807123644,94.83479715600168,314.0,schlechtesten Drittel
+77,4011,Bremen,Bremen,91.51893431191104,90.36081846469916,326.0,schlechtesten Drittel
+78,4012,Bremerhaven,Bremen,57.416352601872,49.54340111133616,379.0,schlechtesten Drittel
+79,5111,Düsseldorf,Nordrhein-Westfalen,53.85907408313357,51.268043247389706,378.0,schlechtesten Drittel
+80,5112,Duisburg,Nordrhein-Westfalen,72.67252848382999,65.194551156014,363.0,schlechtesten Drittel
+81,5113,Essen,Nordrhein-Westfalen,58.37580863134643,46.6711880703622,385.0,schlechtesten Drittel
+82,5114,Krefeld,Nordrhein-Westfalen,110.76133537908048,110.9484932376435,281.0,schlechtesten Drittel
 83,5116,Mönchengladbach,Nordrhein-Westfalen,127.07099741304972,120.45905301060984,258.0,mittleren Drittel
-84,5117,Mülheim an der Ruhr,Nordrhein-Westfalen,96.52735526746852,98.07454906067716,309.0,unteren Drittel
-85,5119,Oberhausen,Nordrhein-Westfalen,66.31595878551627,68.10265023906551,356.0,unteren Drittel
-86,5120,Remscheid,Nordrhein-Westfalen,78.52745206172985,76.94859930413573,344.0,unteren Drittel
-87,5122,Solingen,Nordrhein-Westfalen,81.62584640169155,70.2292186214218,352.0,unteren Drittel
-88,5124,Wuppertal,Nordrhein-Westfalen,53.57132722267942,51.81350069294994,377.0,unteren Drittel
+84,5117,Mülheim an der Ruhr,Nordrhein-Westfalen,96.52735526746852,98.07454906067716,309.0,schlechtesten Drittel
+85,5119,Oberhausen,Nordrhein-Westfalen,66.31595878551627,68.10265023906551,356.0,schlechtesten Drittel
+86,5120,Remscheid,Nordrhein-Westfalen,78.52745206172985,76.94859930413573,344.0,schlechtesten Drittel
+87,5122,Solingen,Nordrhein-Westfalen,81.62584640169155,70.2292186214218,352.0,schlechtesten Drittel
+88,5124,Wuppertal,Nordrhein-Westfalen,53.57132722267942,51.81350069294994,377.0,schlechtesten Drittel
 89,5154,Kleve,Nordrhein-Westfalen,122.4023536311463,125.58277474121932,245.0,mittleren Drittel
 90,5158,Mettmann,Nordrhein-Westfalen,118.46030076118572,119.61463654345664,261.0,mittleren Drittel
-91,5162,Rhein-Kreis Neuss,Nordrhein-Westfalen,123.06702038973609,104.2276455140586,295.0,unteren Drittel
+91,5162,Rhein-Kreis Neuss,Nordrhein-Westfalen,123.06702038973609,104.2276455140586,295.0,schlechtesten Drittel
 92,5166,Viersen,Nordrhein-Westfalen,149.78453331188717,128.3697778492376,234.0,mittleren Drittel
 93,5170,Wesel,Nordrhein-Westfalen,130.60654299730354,132.20230682462787,224.0,mittleren Drittel
-94,5314,Bonn,Nordrhein-Westfalen,99.21614280170742,93.56008699887168,317.0,unteren Drittel
-95,5315,Köln,Nordrhein-Westfalen,60.63470376927975,65.95489793243735,361.0,unteren Drittel
-96,5316,Leverkusen,Nordrhein-Westfalen,92.75778141533785,78.56380220249534,343.0,unteren Drittel
+94,5314,Bonn,Nordrhein-Westfalen,99.21614280170742,93.56008699887168,317.0,schlechtesten Drittel
+95,5315,Köln,Nordrhein-Westfalen,60.63470376927975,65.95489793243735,361.0,schlechtesten Drittel
+96,5316,Leverkusen,Nordrhein-Westfalen,92.75778141533785,78.56380220249534,343.0,schlechtesten Drittel
 97,5334,Städteregion Aachen,Nordrhein-Westfalen,127.95037576564964,123.19831270626322,252.0,mittleren Drittel
 98,5358,Düren,Nordrhein-Westfalen,136.71815378979824,138.30429207211284,205.0,mittleren Drittel
 99,5362,Rhein-Erft-Kreis,Nordrhein-Westfalen,138.73942377708897,131.42366767388327,227.0,mittleren Drittel
-100,5366,Euskirchen,Nordrhein-Westfalen,172.28376272214726,173.99760237498649,122.0,oberen Drittel
+100,5366,Euskirchen,Nordrhein-Westfalen,172.28376272214726,173.99760237498649,122.0,besten Drittel
 101,5370,Heinsberg,Nordrhein-Westfalen,152.77596368112535,163.05203971020595,146.0,mittleren Drittel
 102,5374,Oberbergischer Kreis,Nordrhein-Westfalen,,,,
 103,5378,Rheinisch-Bergischer Kreis,Nordrhein-Westfalen,,,,
 104,5382,Rhein-Sieg-Kreis,Nordrhein-Westfalen,160.84863528553794,142.53258380179054,196.0,mittleren Drittel
-105,5512,Bottrop,Nordrhein-Westfalen,140.45771618870785,116.3577196987767,271.0,unteren Drittel
-106,5513,Gelsenkirchen,Nordrhein-Westfalen,89.95992808386154,80.43843229578742,340.0,unteren Drittel
+105,5512,Bottrop,Nordrhein-Westfalen,140.45771618870785,116.3577196987767,271.0,schlechtesten Drittel
+106,5513,Gelsenkirchen,Nordrhein-Westfalen,89.95992808386154,80.43843229578742,340.0,schlechtesten Drittel
 107,5515,Münster,Nordrhein-Westfalen,129.63449907967396,143.17816202754082,194.0,mittleren Drittel
-108,5554,Borken,Nordrhein-Westfalen,217.85843900483715,232.58527875922968,36.0,oberen Drittel
-109,5558,Coesfeld,Nordrhein-Westfalen,208.717051945265,203.196926311211,63.0,oberen Drittel
+108,5554,Borken,Nordrhein-Westfalen,217.85843900483715,232.58527875922968,36.0,besten Drittel
+109,5558,Coesfeld,Nordrhein-Westfalen,208.717051945265,203.196926311211,63.0,besten Drittel
 110,5562,Recklinghausen,Nordrhein-Westfalen,130.49846482878183,127.7968184433156,235.0,mittleren Drittel
-111,5566,Steinfurt,Nordrhein-Westfalen,191.0762383300068,203.8478615430268,62.0,oberen Drittel
-112,5570,Warendorf,Nordrhein-Westfalen,174.93807246961228,185.1472692733322,95.0,oberen Drittel
+111,5566,Steinfurt,Nordrhein-Westfalen,191.0762383300068,203.8478615430268,62.0,besten Drittel
+112,5570,Warendorf,Nordrhein-Westfalen,174.93807246961228,185.1472692733322,95.0,besten Drittel
 113,5711,Bielefeld,Nordrhein-Westfalen,110.65193986522758,124.49139303587008,247.0,mittleren Drittel
 114,5754,Gütersloh,Nordrhein-Westfalen,125.97698353914014,134.686336748735,215.0,mittleren Drittel
 115,5758,Herford,Nordrhein-Westfalen,116.1131777882218,126.80654727456326,236.0,mittleren Drittel
 116,5762,Höxter,Nordrhein-Westfalen,145.57118184061187,150.7060094897981,175.0,mittleren Drittel
-117,5766,Lippe,Nordrhein-Westfalen,181.47609999627437,188.9241144767559,88.0,oberen Drittel
-118,5770,Minden-Lübbecke,Nordrhein-Westfalen,169.28103736861345,181.5934508653753,109.0,oberen Drittel
+117,5766,Lippe,Nordrhein-Westfalen,181.47609999627437,188.9241144767559,88.0,besten Drittel
+118,5770,Minden-Lübbecke,Nordrhein-Westfalen,169.28103736861345,181.5934508653753,109.0,besten Drittel
 119,5774,Paderborn,Nordrhein-Westfalen,145.75455933525123,161.5483159550489,151.0,mittleren Drittel
-120,5911,Bochum,Nordrhein-Westfalen,79.63663268661625,84.24108392279958,337.0,unteren Drittel
-121,5913,Dortmund,Nordrhein-Westfalen,55.03462709089761,62.56806239960797,367.0,unteren Drittel
-122,5914,Hagen,Nordrhein-Westfalen,67.53210882474795,60.544711612352735,369.0,unteren Drittel
-123,5915,Hamm,Nordrhein-Westfalen,66.16324462190443,65.84454117239491,362.0,unteren Drittel
-124,5916,Herne,Nordrhein-Westfalen,61.28567236914285,59.23919969415064,372.0,unteren Drittel
-125,5954,Ennepe-Ruhr-Kreis,Nordrhein-Westfalen,76.51809917202974,81.1438120880141,338.0,unteren Drittel
+120,5911,Bochum,Nordrhein-Westfalen,79.63663268661625,84.24108392279958,337.0,schlechtesten Drittel
+121,5913,Dortmund,Nordrhein-Westfalen,55.03462709089761,62.56806239960797,367.0,schlechtesten Drittel
+122,5914,Hagen,Nordrhein-Westfalen,67.53210882474795,60.544711612352735,369.0,schlechtesten Drittel
+123,5915,Hamm,Nordrhein-Westfalen,66.16324462190443,65.84454117239491,362.0,schlechtesten Drittel
+124,5916,Herne,Nordrhein-Westfalen,61.28567236914285,59.23919969415064,372.0,schlechtesten Drittel
+125,5954,Ennepe-Ruhr-Kreis,Nordrhein-Westfalen,76.51809917202974,81.1438120880141,338.0,schlechtesten Drittel
 126,5958,Hochsauerlandkreis,Nordrhein-Westfalen,132.77970328174507,143.07995212909702,195.0,mittleren Drittel
-127,5962,Märkischer Kreis,Nordrhein-Westfalen,95.15143919052464,91.05813606354396,323.0,unteren Drittel
+127,5962,Märkischer Kreis,Nordrhein-Westfalen,95.15143919052464,91.05813606354396,323.0,schlechtesten Drittel
 128,5966,Olpe,Nordrhein-Westfalen,138.8397057407229,136.43316686912314,208.0,mittleren Drittel
-129,5970,Siegen-Wittgenstein,Nordrhein-Westfalen,106.38175387593412,102.91806265903423,299.0,unteren Drittel
-130,5974,Soest,Nordrhein-Westfalen,182.90762626178915,198.40141387833205,69.0,oberen Drittel
+129,5970,Siegen-Wittgenstein,Nordrhein-Westfalen,106.38175387593412,102.91806265903423,299.0,schlechtesten Drittel
+130,5974,Soest,Nordrhein-Westfalen,182.90762626178915,198.40141387833205,69.0,besten Drittel
 131,5978,Unna,Nordrhein-Westfalen,132.2292437333225,144.51574877165172,190.0,mittleren Drittel
-132,6411,Darmstadt,Hessen,97.9884017098903,101.96388857476724,300.0,unteren Drittel
-133,6412,Frankfurt am Main,Hessen,41.255326487546405,43.25327442337692,388.0,unteren Drittel
-134,6413,Offenbach am Main,Hessen,49.49875189623482,49.47590379855148,380.0,unteren Drittel
-135,6414,Wiesbaden,Hessen,93.18526469730097,90.1406630798,327.0,unteren Drittel
-136,6431,Bergstraße,Hessen,185.10459626401925,170.93149825655408,127.0,oberen Drittel
-137,6432,Darmstadt-Dieburg,Hessen,197.25592378470807,194.5374721616656,73.0,oberen Drittel
-138,6433,Groß-Gerau,Hessen,176.47233734133692,178.23332982846702,118.0,oberen Drittel
+132,6411,Darmstadt,Hessen,97.9884017098903,101.96388857476724,300.0,schlechtesten Drittel
+133,6412,Frankfurt am Main,Hessen,41.255326487546405,43.25327442337692,388.0,schlechtesten Drittel
+134,6413,Offenbach am Main,Hessen,49.49875189623482,49.47590379855148,380.0,schlechtesten Drittel
+135,6414,Wiesbaden,Hessen,93.18526469730097,90.1406630798,327.0,schlechtesten Drittel
+136,6431,Bergstraße,Hessen,185.10459626401925,170.93149825655408,127.0,besten Drittel
+137,6432,Darmstadt-Dieburg,Hessen,197.25592378470807,194.5374721616656,73.0,besten Drittel
+138,6433,Groß-Gerau,Hessen,176.47233734133692,178.23332982846702,118.0,besten Drittel
 139,6434,Hochtaunuskreis,Hessen,164.2701209833568,143.8758265516413,191.0,mittleren Drittel
 140,6435,Main-Kinzig-Kreis,Hessen,133.79168016510084,131.8032957938196,225.0,mittleren Drittel
 141,6436,Main-Taunus-Kreis,Hessen,133.5762893071088,121.2802594623512,257.0,mittleren Drittel
-142,6437,Odenwaldkreis,Hessen,205.71558881759665,193.02561134423385,79.0,oberen Drittel
+142,6437,Odenwaldkreis,Hessen,205.71558881759665,193.02561134423385,79.0,besten Drittel
 143,6438,Offenbach,Hessen,149.33625157865262,145.72196262992858,187.0,mittleren Drittel
-144,6439,Rheingau-Taunus-Kreis,Hessen,195.47794988904928,193.0183052077276,80.0,oberen Drittel
-145,6440,Wetteraukreis,Hessen,130.36582717479286,109.2272347939282,286.0,unteren Drittel
+144,6439,Rheingau-Taunus-Kreis,Hessen,195.47794988904928,193.0183052077276,80.0,besten Drittel
+145,6440,Wetteraukreis,Hessen,130.36582717479286,109.2272347939282,286.0,schlechtesten Drittel
 146,6531,Gießen,Hessen,141.79579147832698,135.53357603242205,211.0,mittleren Drittel
-147,6532,Lahn-Dill-Kreis,Hessen,132.0205924258287,114.7201951273419,274.0,unteren Drittel
+147,6532,Lahn-Dill-Kreis,Hessen,132.0205924258287,114.7201951273419,274.0,schlechtesten Drittel
 148,6533,Limburg-Weilburg,Hessen,141.07599349291192,134.8880672815179,213.0,mittleren Drittel
-149,6534,Marburg-Biedenkopf,Hessen,174.16218731250996,178.338613193007,117.0,oberen Drittel
-150,6535,Vogelsbergkreis,Hessen,100.82726702080816,188.33052148692963,91.0,oberen Drittel
-151,6611,Kassel,Hessen,144.97995599361002,111.85885957582268,280.0,unteren Drittel
-152,6631,Fulda,Hessen,199.63376588144865,196.39678418817792,71.0,oberen Drittel
+149,6534,Marburg-Biedenkopf,Hessen,174.16218731250996,178.338613193007,117.0,besten Drittel
+150,6535,Vogelsbergkreis,Hessen,100.82726702080816,188.33052148692963,91.0,besten Drittel
+151,6611,Kassel,Hessen,144.97995599361002,111.85885957582268,280.0,schlechtesten Drittel
+152,6631,Fulda,Hessen,199.63376588144865,196.39678418817792,71.0,besten Drittel
 153,6632,Hersfeld-Rotenburg,Hessen,152.8706098135281,141.26712328767124,199.0,mittleren Drittel
-154,6633,Kassel,Hessen,224.9213819885608,214.7531507508217,48.0,oberen Drittel
-155,6634,Schwalm-Eder-Kreis,Hessen,119.4942160625052,106.21663701067617,292.0,unteren Drittel
+154,6633,Kassel,Hessen,224.9213819885608,214.7531507508217,48.0,besten Drittel
+155,6634,Schwalm-Eder-Kreis,Hessen,119.4942160625052,106.21663701067617,292.0,schlechtesten Drittel
 156,6635,Waldeck-Frankenberg,Hessen,174.9036191103205,153.8255136461208,165.0,mittleren Drittel
-157,6636,Werra-Meißner-Kreis,Hessen,102.1641162779181,112.86808068288587,276.0,unteren Drittel
-158,7111,Koblenz,Rheinland-Pfalz,72.84010386866775,69.92803471266801,353.0,unteren Drittel
-159,7131,Ahrweiler,Rheinland-Pfalz,136.3434665836285,171.37623678906183,125.0,oberen Drittel
-160,7132,Altenkirchen (Westerwald),Rheinland-Pfalz,190.49945332309767,184.2478328569105,99.0,oberen Drittel
+157,6636,Werra-Meißner-Kreis,Hessen,102.1641162779181,112.86808068288587,276.0,schlechtesten Drittel
+158,7111,Koblenz,Rheinland-Pfalz,72.84010386866775,69.92803471266801,353.0,schlechtesten Drittel
+159,7131,Ahrweiler,Rheinland-Pfalz,136.3434665836285,171.37623678906183,125.0,besten Drittel
+160,7132,Altenkirchen (Westerwald),Rheinland-Pfalz,190.49945332309767,184.2478328569105,99.0,besten Drittel
 161,7133,Bad Kreuznach,Rheinland-Pfalz,131.79831249364642,121.81094326786186,255.0,mittleren Drittel
-162,7134,Birkenfeld,Rheinland-Pfalz,277.7014567011968,324.5329704317704,8.0,oberen Drittel
-163,7135,Cochem-Zell,Rheinland-Pfalz,248.9493081598345,251.7295137873916,23.0,oberen Drittel
-164,7137,Mayen-Koblenz,Rheinland-Pfalz,158.4463393561474,251.71100537278969,24.0,oberen Drittel
-165,7138,Neuwied,Rheinland-Pfalz,227.38615268512757,217.18332778175187,47.0,oberen Drittel
-166,7140,Rhein-Hunsrück-Kreis,Rheinland-Pfalz,323.8697027934696,341.3023084883125,5.0,oberen Drittel
-167,7141,Rhein-Lahn-Kreis,Rheinland-Pfalz,183.5940368656826,178.7654804444662,115.0,oberen Drittel
+162,7134,Birkenfeld,Rheinland-Pfalz,277.7014567011968,324.5329704317704,8.0,besten Drittel
+163,7135,Cochem-Zell,Rheinland-Pfalz,248.9493081598345,251.7295137873916,23.0,besten Drittel
+164,7137,Mayen-Koblenz,Rheinland-Pfalz,158.4463393561474,251.71100537278969,24.0,besten Drittel
+165,7138,Neuwied,Rheinland-Pfalz,227.38615268512757,217.18332778175187,47.0,besten Drittel
+166,7140,Rhein-Hunsrück-Kreis,Rheinland-Pfalz,323.8697027934696,341.3023084883125,5.0,besten Drittel
+167,7141,Rhein-Lahn-Kreis,Rheinland-Pfalz,183.5940368656826,178.7654804444662,115.0,besten Drittel
 168,7143,Westerwaldkreis,Rheinland-Pfalz,174.32981639282286,163.955036237243,144.0,mittleren Drittel
-169,7211,Trier,Rheinland-Pfalz,174.84415427213992,238.2147227554927,30.0,oberen Drittel
-170,7231,Bernkastel-Wittlich,Rheinland-Pfalz,174.84415427213992,238.2147227554927,30.0,oberen Drittel
-171,7232,Eifelkreis Bitburg-Prüm,Rheinland-Pfalz,174.84415427213992,238.2147227554927,30.0,oberen Drittel
-172,7233,Vulkaneifel,Rheinland-Pfalz,174.84415427213992,238.2147227554927,30.0,oberen Drittel
-173,7235,Trier-Saarburg,Rheinland-Pfalz,174.84415427213992,238.2147227554927,30.0,oberen Drittel
-174,7311,Frankenthal (Pfalz),Rheinland-Pfalz,172.29848281556403,239.46666666666667,26.0,oberen Drittel
-175,7312,Kaiserslautern,Rheinland-Pfalz,103.43195504622264,108.59705805623004,287.0,unteren Drittel
+169,7211,Trier,Rheinland-Pfalz,174.84415427213992,238.2147227554927,30.0,besten Drittel
+170,7231,Bernkastel-Wittlich,Rheinland-Pfalz,174.84415427213992,238.2147227554927,30.0,besten Drittel
+171,7232,Eifelkreis Bitburg-Prüm,Rheinland-Pfalz,174.84415427213992,238.2147227554927,30.0,besten Drittel
+172,7233,Vulkaneifel,Rheinland-Pfalz,174.84415427213992,238.2147227554927,30.0,besten Drittel
+173,7235,Trier-Saarburg,Rheinland-Pfalz,174.84415427213992,238.2147227554927,30.0,besten Drittel
+174,7311,Frankenthal (Pfalz),Rheinland-Pfalz,172.29848281556403,239.46666666666667,26.0,besten Drittel
+175,7312,Kaiserslautern,Rheinland-Pfalz,103.43195504622264,108.59705805623004,287.0,schlechtesten Drittel
 176,7313,Landau in der Pfalz,Rheinland-Pfalz,210.84206407859847,160.029988218914,158.0,mittleren Drittel
-177,7314,Ludwigshafen am Rhein,Rheinland-Pfalz,102.91019739408598,93.17500883765943,318.0,unteren Drittel
-178,7315,Mainz,Rheinland-Pfalz,94.37638155183394,85.5828263242494,334.0,unteren Drittel
-179,7316,Neustadt an der Weinstraße,Rheinland-Pfalz,110.82711571350713,116.92867594642254,270.0,unteren Drittel
+177,7314,Ludwigshafen am Rhein,Rheinland-Pfalz,102.91019739408598,93.17500883765943,318.0,schlechtesten Drittel
+178,7315,Mainz,Rheinland-Pfalz,94.37638155183394,85.5828263242494,334.0,schlechtesten Drittel
+179,7316,Neustadt an der Weinstraße,Rheinland-Pfalz,110.82711571350713,116.92867594642254,270.0,schlechtesten Drittel
 180,7317,Pirmasens,Rheinland-Pfalz,118.9380443388757,123.45679012345678,251.0,mittleren Drittel
-181,7318,Speyer,Rheinland-Pfalz,116.6544677652272,110.30527581245936,283.0,unteren Drittel
-182,7319,Worms,Rheinland-Pfalz,103.43241116290332,100.0371439868678,306.0,unteren Drittel
+181,7318,Speyer,Rheinland-Pfalz,116.6544677652272,110.30527581245936,283.0,schlechtesten Drittel
+182,7319,Worms,Rheinland-Pfalz,103.43241116290332,100.0371439868678,306.0,schlechtesten Drittel
 183,7320,Zweibrücken,Rheinland-Pfalz,109.24247705356105,161.2599629422664,153.0,mittleren Drittel
-184,7331,Alzey-Worms,Rheinland-Pfalz,194.12310740500948,193.8186130130437,75.0,oberen Drittel
-185,7332,Bad Dürkheim,Rheinland-Pfalz,198.05956678700363,188.87401882650147,89.0,oberen Drittel
-186,7333,Donnersbergkreis,Rheinland-Pfalz,199.9255348855764,252.8495214392565,22.0,oberen Drittel
-187,7334,Germersheim,Rheinland-Pfalz,175.57817557817555,205.85864223369452,61.0,oberen Drittel
-188,7335,Kaiserslautern,Rheinland-Pfalz,279.88512283894454,266.16817155756206,16.0,oberen Drittel
-189,7336,Kusel,Rheinland-Pfalz,184.02234164092584,338.4494686541616,6.0,oberen Drittel
-190,7337,Südliche Weinstraße,Rheinland-Pfalz,190.42250980745817,183.72855040935883,103.0,oberen Drittel
+184,7331,Alzey-Worms,Rheinland-Pfalz,194.12310740500948,193.8186130130437,75.0,besten Drittel
+185,7332,Bad Dürkheim,Rheinland-Pfalz,198.05956678700363,188.87401882650147,89.0,besten Drittel
+186,7333,Donnersbergkreis,Rheinland-Pfalz,199.9255348855764,252.8495214392565,22.0,besten Drittel
+187,7334,Germersheim,Rheinland-Pfalz,175.57817557817555,205.85864223369452,61.0,besten Drittel
+188,7335,Kaiserslautern,Rheinland-Pfalz,279.88512283894454,266.16817155756206,16.0,besten Drittel
+189,7336,Kusel,Rheinland-Pfalz,184.02234164092584,338.4494686541616,6.0,besten Drittel
+190,7337,Südliche Weinstraße,Rheinland-Pfalz,190.42250980745817,183.72855040935883,103.0,besten Drittel
 191,7338,Rhein-Pfalz-Kreis,Rheinland-Pfalz,126.77482798951928,126.37476252633212,237.0,mittleren Drittel
-192,7339,Mainz-Bingen,Rheinland-Pfalz,195.40213400642497,195.48516723791516,72.0,oberen Drittel
-193,7340,Südwestpfalz,Rheinland-Pfalz,257.3965422011943,275.25497302764666,15.0,oberen Drittel
-194,8111,Stuttgart,Baden-Württemberg,83.44638489758484,89.03626022322527,329.0,unteren Drittel
-195,8115,Böblingen,Baden-Württemberg,166.90075876938388,178.64942046027213,116.0,oberen Drittel
+192,7339,Mainz-Bingen,Rheinland-Pfalz,195.40213400642497,195.48516723791516,72.0,besten Drittel
+193,7340,Südwestpfalz,Rheinland-Pfalz,257.3965422011943,275.25497302764666,15.0,besten Drittel
+194,8111,Stuttgart,Baden-Württemberg,83.44638489758484,89.03626022322527,329.0,schlechtesten Drittel
+195,8115,Böblingen,Baden-Württemberg,166.90075876938388,178.64942046027213,116.0,besten Drittel
 196,8116,Esslingen,Baden-Württemberg,137.19950377464107,147.3397586658596,181.0,mittleren Drittel
 197,8117,Göppingen,Baden-Württemberg,168.84116598198085,143.39151637871404,192.0,mittleren Drittel
 198,8118,Ludwigsburg,Baden-Württemberg,156.66422508189223,146.37843114587747,185.0,mittleren Drittel
 199,8119,Rems-Murr-Kreis,Baden-Württemberg,137.8833114895268,153.30013152782914,168.0,mittleren Drittel
 200,8121,Heilbronn,Baden-Württemberg,144.84814698111836,144.5222919862721,189.0,mittleren Drittel
 201,8125,Heilbronn,Baden-Württemberg,142.87068498182603,166.1926937923508,136.0,mittleren Drittel
-202,8126,Hohenlohekreis,Baden-Württemberg,207.19312668828883,231.69423136611536,37.0,oberen Drittel
-203,8127,Schwäbisch Hall,Baden-Württemberg,114.00408379025488,110.72475487718587,282.0,unteren Drittel
+202,8126,Hohenlohekreis,Baden-Württemberg,207.19312668828883,231.69423136611536,37.0,besten Drittel
+203,8127,Schwäbisch Hall,Baden-Württemberg,114.00408379025488,110.72475487718587,282.0,schlechtesten Drittel
 204,8128,Main-Tauber-Kreis,Baden-Württemberg,156.4630993241302,152.2489523981791,171.0,mittleren Drittel
 205,8135,Heidenheim,Baden-Württemberg,135.25680998950554,133.60991476673794,220.0,mittleren Drittel
 206,8136,Ostalbkreis,Baden-Württemberg,144.88730274369598,141.82262467625853,197.0,mittleren Drittel
-207,8211,Baden-Baden,Baden-Württemberg,407.4612849172298,353.92883550650146,3.0,oberen Drittel
+207,8211,Baden-Baden,Baden-Württemberg,407.4612849172298,353.92883550650146,3.0,besten Drittel
 208,8212,Karlsruhe,Baden-Württemberg,140.83271236358826,138.38851495934327,204.0,mittleren Drittel
-209,8215,Karlsruhe,Baden-Württemberg,187.18163588342568,171.1819573371049,126.0,oberen Drittel
-210,8216,Rastatt,Baden-Württemberg,225.55011423853355,236.4848270721398,34.0,oberen Drittel
-211,8221,Heidelberg,Baden-Württemberg,88.84775566867191,91.62724185938102,322.0,unteren Drittel
-212,8222,Mannheim,Baden-Württemberg,55.83025188578028,46.68717975209947,384.0,unteren Drittel
-213,8225,Neckar-Odenwald-Kreis,Baden-Württemberg,195.9616968411061,222.494210588538,41.0,oberen Drittel
+209,8215,Karlsruhe,Baden-Württemberg,187.18163588342568,171.1819573371049,126.0,besten Drittel
+210,8216,Rastatt,Baden-Württemberg,225.55011423853355,236.4848270721398,34.0,besten Drittel
+211,8221,Heidelberg,Baden-Württemberg,88.84775566867191,91.62724185938102,322.0,schlechtesten Drittel
+212,8222,Mannheim,Baden-Württemberg,55.83025188578028,46.68717975209947,384.0,schlechtesten Drittel
+213,8225,Neckar-Odenwald-Kreis,Baden-Württemberg,195.9616968411061,222.494210588538,41.0,besten Drittel
 214,8226,Rhein-Neckar-Kreis,Baden-Württemberg,133.78581925055104,128.97071135812692,231.0,mittleren Drittel
-215,8231,Pforzheim,Baden-Württemberg,31.4511753702639,42.93899187404774,389.0,unteren Drittel
+215,8231,Pforzheim,Baden-Württemberg,31.4511753702639,42.93899187404774,389.0,schlechtesten Drittel
 216,8235,Calw,Baden-Württemberg,192.67760964349836,166.71974224003895,134.0,mittleren Drittel
-217,8236,Enzkreis,Baden-Württemberg,246.8998103890573,206.93159517802076,59.0,oberen Drittel
+217,8236,Enzkreis,Baden-Württemberg,246.8998103890573,206.93159517802076,59.0,besten Drittel
 218,8237,Freudenstadt,Baden-Württemberg,141.9206115243547,153.99107836842282,164.0,mittleren Drittel
 219,8311,Freiburg im Breisgau,Baden-Württemberg,113.84067841293556,119.43794925088768,264.0,mittleren Drittel
-220,8315,Breisgau-Hochschwarzwald,Baden-Württemberg,161.3303330056525,169.74179493859182,128.0,oberen Drittel
+220,8315,Breisgau-Hochschwarzwald,Baden-Württemberg,161.3303330056525,169.74179493859182,128.0,besten Drittel
 221,8316,Emmendingen,Baden-Württemberg,123.72971681643604,124.04861502319282,249.0,mittleren Drittel
 222,8317,Ortenaukreis,Baden-Württemberg,113.15219470945462,119.91307966156548,260.0,mittleren Drittel
 223,8325,Rottweil,Baden-Württemberg,147.2669833076695,156.1648331264358,162.0,mittleren Drittel
 224,8326,Schwarzwald-Baar-Kreis,Baden-Württemberg,140.81986253117802,146.62802059453568,184.0,mittleren Drittel
-225,8327,Tuttlingen,Baden-Württemberg,183.5156640288447,173.6776725342669,123.0,oberen Drittel
+225,8327,Tuttlingen,Baden-Württemberg,183.5156640288447,173.6776725342669,123.0,besten Drittel
 226,8335,Konstanz,Baden-Württemberg,143.18670687583943,151.17332924329676,174.0,mittleren Drittel
-227,8336,Lörrach,Baden-Württemberg,182.08266496736908,207.40510920198216,58.0,oberen Drittel
-228,8337,Waldshut,Baden-Württemberg,124.01392935825456,192.17225249216,83.0,oberen Drittel
+227,8336,Lörrach,Baden-Württemberg,182.08266496736908,207.40510920198216,58.0,besten Drittel
+228,8337,Waldshut,Baden-Württemberg,124.01392935825456,192.17225249216,83.0,besten Drittel
 229,8415,Reutlingen,Baden-Württemberg,148.2001675572546,164.66954437785438,138.0,mittleren Drittel
-230,8416,Tübingen,Baden-Württemberg,76.114585883767,107.02890082329922,290.0,unteren Drittel
+230,8416,Tübingen,Baden-Württemberg,76.114585883767,107.02890082329922,290.0,schlechtesten Drittel
 231,8417,Zollernalbkreis,Baden-Württemberg,101.99518679195948,129.1991025060307,230.0,mittleren Drittel
-232,8421,Ulm,Baden-Württemberg,112.58299516752318,117.49535224081326,268.0,unteren Drittel
-233,8425,Alb-Donau-Kreis,Baden-Württemberg,137.33847856898996,106.3550685152671,291.0,unteren Drittel
-234,8426,Biberach,Baden-Württemberg,101.90310184194163,94.25463535228675,316.0,unteren Drittel
+232,8421,Ulm,Baden-Württemberg,112.58299516752318,117.49535224081326,268.0,schlechtesten Drittel
+233,8425,Alb-Donau-Kreis,Baden-Württemberg,137.33847856898996,106.3550685152671,291.0,schlechtesten Drittel
+234,8426,Biberach,Baden-Württemberg,101.90310184194163,94.25463535228675,316.0,schlechtesten Drittel
 235,8435,Bodenseekreis,Baden-Württemberg,167.65382268737974,160.38017264721137,156.0,mittleren Drittel
 236,8436,Ravensburg,Baden-Württemberg,116.48030906127607,137.21457353928812,206.0,mittleren Drittel
-237,8437,Sigmaringen,Baden-Württemberg,109.26117827672232,98.47570754356758,308.0,unteren Drittel
+237,8437,Sigmaringen,Baden-Württemberg,109.26117827672232,98.47570754356758,308.0,schlechtesten Drittel
 238,9161,Ingolstadt,Bayern,174.09588518321746,155.48513347742275,163.0,mittleren Drittel
-239,9162,München,Bayern,52.33213663037859,55.968880568632486,375.0,unteren Drittel
+239,9162,München,Bayern,52.33213663037859,55.968880568632486,375.0,schlechtesten Drittel
 240,9163,Rosenheim,Bayern,109.66619862139392,121.40082716107624,256.0,mittleren Drittel
-241,9171,Altötting,Bayern,98.68216629197052,94.5689361778351,315.0,unteren Drittel
+241,9171,Altötting,Bayern,98.68216629197052,94.5689361778351,315.0,schlechtesten Drittel
 242,9172,Berchtesgadener Land,Bayern,82.48468606431852,133.82301767189895,219.0,mittleren Drittel
-243,9173,Bad Tölz-Wolfratshausen,Bayern,186.27653817996625,189.0618662839672,87.0,oberen Drittel
+243,9173,Bad Tölz-Wolfratshausen,Bayern,186.27653817996625,189.0618662839672,87.0,besten Drittel
 244,9174,Dachau,Bayern,140.79250061323663,131.55231212568577,226.0,mittleren Drittel
-245,9175,Ebersberg,Bayern,203.2427921965817,233.17209263590368,35.0,oberen Drittel
-246,9176,Eichstätt,Bayern,144.3183903125191,179.77156845812465,113.0,oberen Drittel
-247,9177,Erding,Bayern,191.103825620805,190.52350404273852,86.0,oberen Drittel
-248,9178,Freising,Bayern,87.33639357690141,104.35187701385922,294.0,unteren Drittel
-249,9179,Fürstenfeldbruck,Bayern,97.5343198513306,97.3073054768218,312.0,unteren Drittel
-250,9180,Garmisch-Partenkirchen,Bayern,91.69634830501724,107.95319385131232,288.0,unteren Drittel
-251,9181,Landsberg am Lech,Bayern,267.0288481785639,254.7781753278411,20.0,oberen Drittel
-252,9182,Miesbach,Bayern,185.23090622090905,188.5948713853648,90.0,oberen Drittel
+245,9175,Ebersberg,Bayern,203.2427921965817,233.17209263590368,35.0,besten Drittel
+246,9176,Eichstätt,Bayern,144.3183903125191,179.77156845812465,113.0,besten Drittel
+247,9177,Erding,Bayern,191.103825620805,190.52350404273852,86.0,besten Drittel
+248,9178,Freising,Bayern,87.33639357690141,104.35187701385922,294.0,schlechtesten Drittel
+249,9179,Fürstenfeldbruck,Bayern,97.5343198513306,97.3073054768218,312.0,schlechtesten Drittel
+250,9180,Garmisch-Partenkirchen,Bayern,91.69634830501724,107.95319385131232,288.0,schlechtesten Drittel
+251,9181,Landsberg am Lech,Bayern,267.0288481785639,254.7781753278411,20.0,besten Drittel
+252,9182,Miesbach,Bayern,185.23090622090905,188.5948713853648,90.0,besten Drittel
 253,9183,Mühldorf am Inn,Bayern,124.8432283478476,141.3596833872754,198.0,mittleren Drittel
 254,9184,München,Bayern,130.2339802856685,130.1657205770908,229.0,mittleren Drittel
 255,9185,Neuburg-Schrobenhausen,Bayern,172.89236520849215,146.8228793615062,183.0,mittleren Drittel
-256,9186,Pfaffenhofen an der Ilm,Bayern,215.3015949154575,230.27538566383743,40.0,oberen Drittel
+256,9186,Pfaffenhofen an der Ilm,Bayern,215.3015949154575,230.27538566383743,40.0,besten Drittel
 257,9187,Rosenheim,Bayern,196.3870957718689,152.35689914068797,170.0,mittleren Drittel
 258,9188,Starnberg,Bayern,148.80651960929848,134.84371568699217,214.0,mittleren Drittel
-259,9189,Traunstein,Bayern,88.34812547383301,88.49198523818914,330.0,unteren Drittel
-260,9190,Weilheim-Schongau,Bayern,173.3465811039975,175.01138584042195,121.0,oberen Drittel
+259,9189,Traunstein,Bayern,88.34812547383301,88.49198523818914,330.0,schlechtesten Drittel
+260,9190,Weilheim-Schongau,Bayern,173.3465811039975,175.01138584042195,121.0,besten Drittel
 261,9261,Landshut,Bayern,170.39628704034274,161.4452884417984,152.0,mittleren Drittel
-262,9262,Passau,Bayern,218.721854563966,210.98922064294567,52.0,oberen Drittel
-263,9263,Straubing,Bayern,221.3312969326715,218.55834663530203,45.0,oberen Drittel
-264,9271,Deggendorf,Bayern,219.4624195372488,210.13734631190417,53.0,oberen Drittel
-265,9272,Freyung-Grafenau,Bayern,220.83653108211817,209.9802182375088,54.0,oberen Drittel
+262,9262,Passau,Bayern,218.721854563966,210.98922064294567,52.0,besten Drittel
+263,9263,Straubing,Bayern,221.3312969326715,218.55834663530203,45.0,besten Drittel
+264,9271,Deggendorf,Bayern,219.4624195372488,210.13734631190417,53.0,besten Drittel
+265,9272,Freyung-Grafenau,Bayern,220.83653108211817,209.9802182375088,54.0,besten Drittel
 266,9273,Kelheim,Bayern,148.35499170619076,150.012156576708,176.0,mittleren Drittel
 267,9274,Landshut,Bayern,112.30555448334428,118.85278954780354,265.0,mittleren Drittel
-268,9275,Passau,Bayern,220.6147037648753,209.60021503820028,56.0,oberen Drittel
-269,9276,Regen,Bayern,220.43867490639616,209.82241020268265,55.0,oberen Drittel
+268,9275,Passau,Bayern,220.6147037648753,209.60021503820028,56.0,besten Drittel
+269,9276,Regen,Bayern,220.43867490639616,209.82241020268265,55.0,besten Drittel
 270,9277,Rottal-Inn,Bayern,152.31112634491754,158.8177339901478,160.0,mittleren Drittel
-271,9278,Straubing-Bogen,Bayern,222.8661271303454,217.8681999115436,46.0,oberen Drittel
+271,9278,Straubing-Bogen,Bayern,222.8661271303454,217.8681999115436,46.0,besten Drittel
 272,9279,Dingolfing-Landau,Bayern,152.15446940600833,158.9609641725968,159.0,mittleren Drittel
-273,9361,Amberg,Bayern,209.21885331066403,193.90278702558737,74.0,oberen Drittel
+273,9361,Amberg,Bayern,209.21885331066403,193.90278702558737,74.0,besten Drittel
 274,9362,Regensburg,Bayern,150.18366770274088,166.4477572732646,135.0,mittleren Drittel
-275,9363,Weiden in der Oberpfalz,Bayern,204.14646773662164,184.5303867403315,97.0,oberen Drittel
+275,9363,Weiden in der Oberpfalz,Bayern,204.14646773662164,184.5303867403315,97.0,besten Drittel
 276,9371,Amberg-Sulzbach,Bayern,140.71585977924258,122.18683857938989,254.0,mittleren Drittel
-277,9372,Cham,Bayern,212.88548511637435,214.24891095601663,50.0,oberen Drittel
+277,9372,Cham,Bayern,212.88548511637435,214.24891095601663,50.0,besten Drittel
 278,9373,Neumarkt in der Oberpfalz,Bayern,113.37363855934134,158.0181179515622,161.0,mittleren Drittel
-279,9374,Neustadt an der Waldnaab,Bayern,160.10071090047393,187.268212795182,93.0,oberen Drittel
-280,9375,Regensburg,Bayern,204.57158456748968,230.8480247072449,39.0,oberen Drittel
-281,9376,Schwandorf,Bayern,49.6209984729884,47.9400849963294,383.0,unteren Drittel
-282,9377,Tirschenreuth,Bayern,31.45999616007022,49.249609462173616,381.0,unteren Drittel
+279,9374,Neustadt an der Waldnaab,Bayern,160.10071090047393,187.268212795182,93.0,besten Drittel
+280,9375,Regensburg,Bayern,204.57158456748968,230.8480247072449,39.0,besten Drittel
+281,9376,Schwandorf,Bayern,49.6209984729884,47.9400849963294,383.0,schlechtesten Drittel
+282,9377,Tirschenreuth,Bayern,31.45999616007022,49.249609462173616,381.0,schlechtesten Drittel
 283,9461,Bamberg,Bayern,102.3592939281518,118.52779299371365,266.0,mittleren Drittel
 284,9462,Bayreuth,Bayern,124.30028057209334,119.46305099394986,263.0,mittleren Drittel
-285,9463,Coburg,Bayern,103.30890409291229,84.86362078252779,335.0,unteren Drittel
-286,9464,Hof,Bayern,344.9527477148485,364.8639674141633,1.0,oberen Drittel
-287,9471,Bamberg,Bayern,179.36620972049136,181.23758449324396,111.0,oberen Drittel
-288,9472,Bayreuth,Bayern,224.2288882898841,238.6211286760096,27.0,oberen Drittel
-289,9473,Coburg,Bayern,277.1000991537344,231.44008963740745,38.0,oberen Drittel
-290,9474,Forchheim,Bayern,156.92483884121847,186.8096054888508,94.0,oberen Drittel
-291,9475,Hof,Bayern,350.6229474013449,363.4815175303104,2.0,oberen Drittel
-292,9476,Kronach,Bayern,177.92436365787646,190.5357546530028,85.0,oberen Drittel
-293,9477,Kulmbach,Bayern,290.1809898184546,283.81027048216384,14.0,oberen Drittel
+285,9463,Coburg,Bayern,103.30890409291229,84.86362078252779,335.0,schlechtesten Drittel
+286,9464,Hof,Bayern,344.9527477148485,364.8639674141633,1.0,besten Drittel
+287,9471,Bamberg,Bayern,179.36620972049136,181.23758449324396,111.0,besten Drittel
+288,9472,Bayreuth,Bayern,224.2288882898841,238.6211286760096,27.0,besten Drittel
+289,9473,Coburg,Bayern,277.1000991537344,231.44008963740745,38.0,besten Drittel
+290,9474,Forchheim,Bayern,156.92483884121847,186.8096054888508,94.0,besten Drittel
+291,9475,Hof,Bayern,350.6229474013449,363.4815175303104,2.0,besten Drittel
+292,9476,Kronach,Bayern,177.92436365787646,190.5357546530028,85.0,besten Drittel
+293,9477,Kulmbach,Bayern,290.1809898184546,283.81027048216384,14.0,besten Drittel
 294,9478,Lichtenfels,Bayern,153.5564225690276,160.6216840022781,155.0,mittleren Drittel
-295,9479,Wunsiedel im Fichtelgebirge,Bayern,253.68550368550368,305.8465557006697,10.0,oberen Drittel
-296,9561,Ansbach,Bayern,225.9462583068477,219.40452484345383,43.0,oberen Drittel
+295,9479,Wunsiedel im Fichtelgebirge,Bayern,253.68550368550368,305.8465557006697,10.0,besten Drittel
+296,9561,Ansbach,Bayern,225.9462583068477,219.40452484345383,43.0,besten Drittel
 297,9562,Erlangen,Bayern,146.28349570928356,136.00569471014813,210.0,mittleren Drittel
-298,9563,Fürth,Bayern,133.1307863448243,114.90918166007658,273.0,unteren Drittel
-299,9564,Nürnberg,Bayern,92.7881194930692,90.78583163771016,324.0,unteren Drittel
-300,9565,Schwabach,Bayern,230.23067285724807,202.47954014029617,64.0,oberen Drittel
+298,9563,Fürth,Bayern,133.1307863448243,114.90918166007658,273.0,schlechtesten Drittel
+299,9564,Nürnberg,Bayern,92.7881194930692,90.78583163771016,324.0,schlechtesten Drittel
+300,9565,Schwabach,Bayern,230.23067285724807,202.47954014029617,64.0,besten Drittel
 301,9571,Ansbach,Bayern,115.51888812040973,132.3361177664098,222.0,mittleren Drittel
 302,9572,Erlangen-Höchstadt,Bayern,157.10041592394532,148.3364107020021,179.0,mittleren Drittel
-303,9573,Fürth,Bayern,166.01564184149487,167.75769830237164,132.0,oberen Drittel
+303,9573,Fürth,Bayern,166.01564184149487,167.75769830237164,132.0,besten Drittel
 304,9574,Nürnberger Land,Bayern,123.40949595305904,119.46734602057928,262.0,mittleren Drittel
-305,9575,Neustadt an der Aisch-Bad Windsheim,Bayern,260.4397374461402,301.7220949522079,11.0,oberen Drittel
+305,9575,Neustadt an der Aisch-Bad Windsheim,Bayern,260.4397374461402,301.7220949522079,11.0,besten Drittel
 306,9576,Roth,Bayern,174.92414166593662,143.24358329139406,193.0,mittleren Drittel
-307,9577,Weißenburg-Gunzenhausen,Bayern,158.88437227318195,168.7921191795368,131.0,oberen Drittel
+307,9577,Weißenburg-Gunzenhausen,Bayern,158.88437227318195,168.7921191795368,131.0,besten Drittel
 308,9661,Aschaffenburg,Bayern,171.60738288984925,162.42343842614807,147.0,mittleren Drittel
 309,9662,Schweinfurt,Bayern,155.88726196798422,124.85230405671524,246.0,mittleren Drittel
-310,9663,Würzburg,Bayern,114.47504166336005,97.85434094238856,311.0,unteren Drittel
-311,9671,Aschaffenburg,Bayern,176.75673183327186,185.0244477779432,96.0,oberen Drittel
-312,9672,Bad Kissingen,Bayern,281.2803103782735,263.0538243076893,17.0,oberen Drittel
-313,9673,Röhn-Grabfeld,Bayern,370.120844029804,348.5599295686077,4.0,oberen Drittel
+310,9663,Würzburg,Bayern,114.47504166336005,97.85434094238856,311.0,schlechtesten Drittel
+311,9671,Aschaffenburg,Bayern,176.75673183327186,185.0244477779432,96.0,besten Drittel
+312,9672,Bad Kissingen,Bayern,281.2803103782735,263.0538243076893,17.0,besten Drittel
+313,9673,Röhn-Grabfeld,Bayern,370.120844029804,348.5599295686077,4.0,besten Drittel
 314,9674,Haßberge,Bayern,174.23820416483946,165.4108573123702,137.0,mittleren Drittel
-315,9675,Kitzingen,Bayern,225.87689976378303,214.45864596056532,49.0,oberen Drittel
+315,9675,Kitzingen,Bayern,225.87689976378303,214.45864596056532,49.0,besten Drittel
 316,9676,Miltenberg,Bayern,206.82573146729112,153.51514257085822,167.0,mittleren Drittel
 317,9677,Main-Spessart,Bayern,127.6078574199729,122.29313520035562,253.0,mittleren Drittel
-318,9678,Schweinfurt,Bayern,179.21496564277192,193.053297824508,78.0,oberen Drittel
-319,9679,Würzburg,Bayern,202.20316565346712,191.14058648899487,84.0,oberen Drittel
+318,9678,Schweinfurt,Bayern,179.21496564277192,193.053297824508,78.0,besten Drittel
+319,9679,Würzburg,Bayern,202.20316565346712,191.14058648899487,84.0,besten Drittel
 320,9761,Augsburg,Bayern,135.0558041880767,131.3693675421695,228.0,mittleren Drittel
-321,9762,Kaufbeuren,Bayern,213.08016877637127,211.83556490976667,51.0,oberen Drittel
+321,9762,Kaufbeuren,Bayern,213.08016877637127,211.83556490976667,51.0,besten Drittel
 322,9763,Kempten (Allgäu),Bayern,168.49057441987887,164.41833478387002,140.0,mittleren Drittel
-323,9764,Memmingen,Bayern,206.6846834361213,206.85302073940488,60.0,oberen Drittel
-324,9771,Aichach-Friedberg,Bayern,204.4079483101089,208.8147292333215,57.0,oberen Drittel
-325,9772,Augsburg,Bayern,218.914999252643,200.14849550605703,67.0,oberen Drittel
-326,9773,Dillingen an der Donau,Bayern,173.4527687296417,183.6331453505125,104.0,oberen Drittel
-327,9774,Günzburg,Bayern,189.7682553563621,253.39636569238743,21.0,oberen Drittel
-328,9775,Neu-Ulm,Bayern,167.73190028711605,181.5860268565546,110.0,oberen Drittel
+323,9764,Memmingen,Bayern,206.6846834361213,206.85302073940488,60.0,besten Drittel
+324,9771,Aichach-Friedberg,Bayern,204.4079483101089,208.8147292333215,57.0,besten Drittel
+325,9772,Augsburg,Bayern,218.914999252643,200.14849550605703,67.0,besten Drittel
+326,9773,Dillingen an der Donau,Bayern,173.4527687296417,183.6331453505125,104.0,besten Drittel
+327,9774,Günzburg,Bayern,189.7682553563621,253.39636569238743,21.0,besten Drittel
+328,9775,Neu-Ulm,Bayern,167.73190028711605,181.5860268565546,110.0,besten Drittel
 329,9776,Lindau (Bodensee),Bayern,169.66193599387358,164.39057074983248,141.0,mittleren Drittel
 330,9777,Ostallgäu,Bayern,159.62825009944672,148.428195931138,177.0,mittleren Drittel
-331,9778,Unterallgäu,Bayern,162.7103035454964,168.8240606442079,130.0,oberen Drittel
-332,9779,Donau-Ries,Bayern,172.9353429379129,184.34531431464225,98.0,oberen Drittel
+331,9778,Unterallgäu,Bayern,162.7103035454964,168.8240606442079,130.0,besten Drittel
+332,9779,Donau-Ries,Bayern,172.9353429379129,184.34531431464225,98.0,besten Drittel
 333,9780,Oberallgäu,Bayern,169.1998517159971,164.01591729150138,143.0,mittleren Drittel
 334,10041,Regionalverband Saarbrücken,Saarland,135.6372491473946,126.05603100028354,241.5,mittleren Drittel
 335,10042,Merzig-Wadern,Saarland,135.6372491473946,126.05603100028354,241.5,mittleren Drittel
@@ -339,79 +339,79 @@
 337,10044,Saarlouis,Saarland,135.6372491473946,126.05603100028354,241.5,mittleren Drittel
 338,10045,Saarpfalz-Kreis,Saarland,135.6372491473946,126.05603100028354,241.5,mittleren Drittel
 339,10046,Sankt Wendel,Saarland,135.6372491473946,126.05603100028354,241.5,mittleren Drittel
-340,12051,Brandenburg an der Havel,Brandenburg,93.70116097343156,182.9400333148251,106.0,oberen Drittel
-341,12052,Cottbus,Brandenburg,76.27270554493307,97.96034166556898,310.0,unteren Drittel
-342,12053,Frankfurt (Oder),Brandenburg,84.66654064921899,80.8208366219416,339.0,unteren Drittel
-343,12054,Potsdam,Brandenburg,79.88475641697224,86.32050606220348,332.0,unteren Drittel
-344,12060,Barnim,Brandenburg,133.79421849301704,237.94323780445487,33.0,oberen Drittel
-345,12061,Dahme-Spreewald,Brandenburg,73.06381492587643,72.98229822982299,348.0,unteren Drittel
-346,12062,Elbe-Elster,Brandenburg,73.05765491345537,72.9781866745808,349.0,unteren Drittel
-347,12063,Havelland,Brandenburg,7.245514606882299,29.19978384023608,395.0,unteren Drittel
-348,12064,Märkisch-Oderland,Brandenburg,21.488379372407856,60.483277973579455,370.0,unteren Drittel
-349,12065,Oberhavel,Brandenburg,40.10755419648292,40.54445139426982,390.0,unteren Drittel
-350,12066,Oberspreewald-Lausitz,Brandenburg,73.06050267054894,72.98239787446032,347.0,unteren Drittel
-351,12067,Oder-Spree,Brandenburg,30.12597218882968,46.31406323211138,386.0,unteren Drittel
-352,12068,Ostprignitz-Ruppin,Brandenburg,58.17088136479772,91.77394542951988,321.0,unteren Drittel
-353,12069,Potsdam-Mittelmark,Brandenburg,107.20193019080426,88.47279701221359,331.0,unteren Drittel
-354,12070,Prignitz,Brandenburg,7.068227674039043,39.59472245584525,391.0,unteren Drittel
-355,12071,Spree-Neiße,Brandenburg,46.924485987708216,61.44534602826274,368.0,unteren Drittel
-356,12072,Teltow-Fläming,Brandenburg,73.0589727561282,72.98576541497138,346.0,unteren Drittel
-357,12073,Uckermark,Brandenburg,125.63080130379392,193.1754756871036,77.0,oberen Drittel
-358,13003,Rostock,Mecklenburg-Vorpommern,90.76057885530064,101.04706281898584,303.0,unteren Drittel
-359,13004,Schwerin,Mecklenburg-Vorpommern,88.33674791988962,95.23162045414136,313.0,unteren Drittel
-360,13071,Mecklenburgische Seenplatte,Mecklenburg-Vorpommern,18.092859107159224,22.42915324908838,396.0,unteren Drittel
-361,13072,Rostock,Mecklenburg-Vorpommern,26.418004627357497,30.06375764723225,394.0,unteren Drittel
+340,12051,Brandenburg an der Havel,Brandenburg,93.70116097343156,182.9400333148251,106.0,besten Drittel
+341,12052,Cottbus,Brandenburg,76.27270554493307,97.96034166556898,310.0,schlechtesten Drittel
+342,12053,Frankfurt (Oder),Brandenburg,84.66654064921899,80.8208366219416,339.0,schlechtesten Drittel
+343,12054,Potsdam,Brandenburg,79.88475641697224,86.32050606220348,332.0,schlechtesten Drittel
+344,12060,Barnim,Brandenburg,133.79421849301704,237.94323780445487,33.0,besten Drittel
+345,12061,Dahme-Spreewald,Brandenburg,73.06381492587643,72.98229822982299,348.0,schlechtesten Drittel
+346,12062,Elbe-Elster,Brandenburg,73.05765491345537,72.9781866745808,349.0,schlechtesten Drittel
+347,12063,Havelland,Brandenburg,7.245514606882299,29.19978384023608,395.0,schlechtesten Drittel
+348,12064,Märkisch-Oderland,Brandenburg,21.488379372407856,60.483277973579455,370.0,schlechtesten Drittel
+349,12065,Oberhavel,Brandenburg,40.10755419648292,40.54445139426982,390.0,schlechtesten Drittel
+350,12066,Oberspreewald-Lausitz,Brandenburg,73.06050267054894,72.98239787446032,347.0,schlechtesten Drittel
+351,12067,Oder-Spree,Brandenburg,30.12597218882968,46.31406323211138,386.0,schlechtesten Drittel
+352,12068,Ostprignitz-Ruppin,Brandenburg,58.17088136479772,91.77394542951988,321.0,schlechtesten Drittel
+353,12069,Potsdam-Mittelmark,Brandenburg,107.20193019080426,88.47279701221359,331.0,schlechtesten Drittel
+354,12070,Prignitz,Brandenburg,7.068227674039043,39.59472245584525,391.0,schlechtesten Drittel
+355,12071,Spree-Neiße,Brandenburg,46.924485987708216,61.44534602826274,368.0,schlechtesten Drittel
+356,12072,Teltow-Fläming,Brandenburg,73.0589727561282,72.98576541497138,346.0,schlechtesten Drittel
+357,12073,Uckermark,Brandenburg,125.63080130379392,193.1754756871036,77.0,besten Drittel
+358,13003,Rostock,Mecklenburg-Vorpommern,90.76057885530064,101.04706281898584,303.0,schlechtesten Drittel
+359,13004,Schwerin,Mecklenburg-Vorpommern,88.33674791988962,95.23162045414136,313.0,schlechtesten Drittel
+360,13071,Mecklenburgische Seenplatte,Mecklenburg-Vorpommern,18.092859107159224,22.42915324908838,396.0,schlechtesten Drittel
+361,13072,Rostock,Mecklenburg-Vorpommern,26.418004627357497,30.06375764723225,394.0,schlechtesten Drittel
 362,13073,Vorpommern-Rügen,Mecklenburg-Vorpommern,85.62881438052015,126.1408358216902,238.0,mittleren Drittel
 363,13074,Nordwestmecklenburg,Mecklenburg-Vorpommern,81.39646102343376,146.34594081341984,186.0,mittleren Drittel
-364,13075,Vorpommern-Greifswald,Mecklenburg-Vorpommern,78.12565824395259,92.16916271159124,320.0,unteren Drittel
-365,13076,Ludwigslust-Parchim,Mecklenburg-Vorpommern,150.06445178347963,169.54929098770793,129.0,oberen Drittel
-366,14511,Chemnitz,Sachsen,97.75809509119028,100.49467882700972,304.0,unteren Drittel
-367,14521,Erzgebirgskreis,Sachsen,47.90547922914197,59.9939141411859,371.0,unteren Drittel
-368,14522,Mittelsachsen,Sachsen,1.1819455403294632,64.6987799942947,365.0,unteren Drittel
-369,14523,Vogtlandkreis,Sachsen,44.18505005388421,43.371072553091714,387.0,unteren Drittel
-370,14524,Zwickau,Sachsen,6.609769046162826,32.66641669310618,393.0,unteren Drittel
-371,14612,Dresden,Sachsen,75.93224799514594,72.14140989200453,350.0,unteren Drittel
-372,14625,Bautzen,Sachsen,60.45140814792692,74.96057179289285,345.0,unteren Drittel
-373,14626,Görlitz,Sachsen,96.8308836906831,100.2801746501808,305.0,unteren Drittel
+364,13075,Vorpommern-Greifswald,Mecklenburg-Vorpommern,78.12565824395259,92.16916271159124,320.0,schlechtesten Drittel
+365,13076,Ludwigslust-Parchim,Mecklenburg-Vorpommern,150.06445178347963,169.54929098770793,129.0,besten Drittel
+366,14511,Chemnitz,Sachsen,97.75809509119028,100.49467882700972,304.0,schlechtesten Drittel
+367,14521,Erzgebirgskreis,Sachsen,47.90547922914197,59.9939141411859,371.0,schlechtesten Drittel
+368,14522,Mittelsachsen,Sachsen,1.1819455403294632,64.6987799942947,365.0,schlechtesten Drittel
+369,14523,Vogtlandkreis,Sachsen,44.18505005388421,43.371072553091714,387.0,schlechtesten Drittel
+370,14524,Zwickau,Sachsen,6.609769046162826,32.66641669310618,393.0,schlechtesten Drittel
+371,14612,Dresden,Sachsen,75.93224799514594,72.14140989200453,350.0,schlechtesten Drittel
+372,14625,Bautzen,Sachsen,60.45140814792692,74.96057179289285,345.0,schlechtesten Drittel
+373,14626,Görlitz,Sachsen,96.8308836906831,100.2801746501808,305.0,schlechtesten Drittel
 374,14627,Meißen,Sachsen,56.419108692888976,164.3251473763474,142.0,mittleren Drittel
 375,14628,Sächsische Schweiz-Osterzgebirge,Sachsen,87.45621093527753,146.83600166719788,182.0,mittleren Drittel
-376,14713,Leipzig,Sachsen,58.61968733365085,62.74717862803414,366.0,unteren Drittel
-377,14729,Leipzig,Sachsen,12.445177348615934,66.24971941204245,359.0,unteren Drittel
-378,14730,Nordsachsen,Sachsen,92.601848906661,112.3001965114159,277.0,unteren Drittel
+376,14713,Leipzig,Sachsen,58.61968733365085,62.74717862803414,366.0,schlechtesten Drittel
+377,14729,Leipzig,Sachsen,12.445177348615934,66.24971941204245,359.0,schlechtesten Drittel
+378,14730,Nordsachsen,Sachsen,92.601848906661,112.3001965114159,277.0,schlechtesten Drittel
 379,15001,Dessau-Rolau,Sachsen-Anhalt,154.96030543603416,162.3106585679361,149.0,mittleren Drittel
-380,15002,Halle (Saale),Sachsen-Anhalt,82.51507321274764,89.71055010194858,328.0,unteren Drittel
-381,15003,Magdeburg,Sachsen-Anhalt,104.38992844425034,101.75379069027674,302.0,unteren Drittel
-382,15081,Altmarkkreis Salzwedel,Sachsen-Anhalt,81.7494955183256,58.17117563825027,374.0,unteren Drittel
-383,15082,Anhalt-Bitterfeld,Sachsen-Anhalt,166.0698957694666,193.74495124573045,76.0,oberen Drittel
-384,15083,Börde,Sachsen-Anhalt,88.36776345839186,84.57673524186976,336.0,unteren Drittel
-385,15084,Burgenlandkreis,Sachsen-Anhalt,186.45659318462228,180.80973027760567,112.0,oberen Drittel
-386,15085,Harz,Sachsen-Anhalt,62.10532545995092,66.55290911245407,358.0,unteren Drittel
-387,15086,Jerichower Land,Sachsen-Anhalt,275.7020088674804,219.39979642741292,44.0,oberen Drittel
-388,15087,Mansfeld-Südharz,Sachsen-Anhalt,59.206902225624376,70.37923554491735,351.0,unteren Drittel
-389,15088,Saalekreis,Sachsen-Anhalt,79.47792698076375,112.16568357011242,279.0,unteren Drittel
+380,15002,Halle (Saale),Sachsen-Anhalt,82.51507321274764,89.71055010194858,328.0,schlechtesten Drittel
+381,15003,Magdeburg,Sachsen-Anhalt,104.38992844425034,101.75379069027674,302.0,schlechtesten Drittel
+382,15081,Altmarkkreis Salzwedel,Sachsen-Anhalt,81.7494955183256,58.17117563825027,374.0,schlechtesten Drittel
+383,15082,Anhalt-Bitterfeld,Sachsen-Anhalt,166.0698957694666,193.74495124573045,76.0,besten Drittel
+384,15083,Börde,Sachsen-Anhalt,88.36776345839186,84.57673524186976,336.0,schlechtesten Drittel
+385,15084,Burgenlandkreis,Sachsen-Anhalt,186.45659318462228,180.80973027760567,112.0,besten Drittel
+386,15085,Harz,Sachsen-Anhalt,62.10532545995092,66.55290911245407,358.0,schlechtesten Drittel
+387,15086,Jerichower Land,Sachsen-Anhalt,275.7020088674804,219.39979642741292,44.0,besten Drittel
+388,15087,Mansfeld-Südharz,Sachsen-Anhalt,59.206902225624376,70.37923554491735,351.0,schlechtesten Drittel
+389,15088,Saalekreis,Sachsen-Anhalt,79.47792698076375,112.16568357011242,279.0,schlechtesten Drittel
 390,15089,Salzlandkreis,Sachsen-Anhalt,192.77913401002183,163.37079970339866,145.0,mittleren Drittel
-391,15090,Stendal,Sachsen-Anhalt,165.77937461208293,181.9885052269539,107.0,oberen Drittel
-392,15091,Wittenberg,Sachsen-Anhalt,123.82992412651336,98.7800458992632,307.0,unteren Drittel
+391,15090,Stendal,Sachsen-Anhalt,165.77937461208293,181.9885052269539,107.0,besten Drittel
+392,15091,Wittenberg,Sachsen-Anhalt,123.82992412651336,98.7800458992632,307.0,schlechtesten Drittel
 393,16051,Erfurt,Thüringen,156.12491888230474,151.98042041817197,172.0,mittleren Drittel
 394,16052,Gera,Thüringen,168.39050131926123,128.81271302346786,232.0,mittleren Drittel
 395,16053,Jena,Thüringen,136.01218263068682,135.1834626256423,212.0,mittleren Drittel
-396,16054,Suhl,Thüringen,29.79667490451584,33.85080368182443,392.0,unteren Drittel
-397,16055,Weimar,Thüringen,110.58969777018105,109.80368060462688,284.0,unteren Drittel
-398,16056,Eisenach,Thüringen,60.650887573964496,80.15248987371933,341.0,unteren Drittel
+396,16054,Suhl,Thüringen,29.79667490451584,33.85080368182443,392.0,schlechtesten Drittel
+397,16055,Weimar,Thüringen,110.58969777018105,109.80368060462688,284.0,schlechtesten Drittel
+398,16056,Eisenach,Thüringen,60.650887573964496,80.15248987371933,341.0,schlechtesten Drittel
 399,16061,Eichsfeld,Thüringen,81.42884008195342,136.784532941898,207.0,mittleren Drittel
 400,16062,Nordhausen,Thüringen,99.82608286916262,145.04705539924322,188.0,mittleren Drittel
-401,16063,Wartburgkreis,Thüringen,60.86796174105461,80.14105639712801,342.0,unteren Drittel
-402,16064,Unstrut-Hainich-Kreis,Thüringen,92.04602301150577,101.8702432692875,301.0,unteren Drittel
-403,16065,Kyffhäuserkreis,Thüringen,125.8525135293734,166.91602513533363,133.0,oberen Drittel
-404,16066,Schmalkalden-Meiningen,Thüringen,100.40807734037212,116.24986920581772,272.0,unteren Drittel
-405,16067,Gotha,Thüringen,41.01749981540279,48.41598359132897,382.0,unteren Drittel
-406,16068,Sömmerda,Thüringen,43.08451467526171,55.6383579087502,376.0,unteren Drittel
-407,16069,Hildburghausen,Thüringen,112.01616664075858,69.23518896833504,354.0,unteren Drittel
-408,16070,Ilm-Kreis,Thüringen,96.3386371339324,113.44052421263945,275.0,unteren Drittel
-409,16071,Weimarer Land,Thüringen,32.01078769619515,104.11831184455166,296.0,unteren Drittel
+401,16063,Wartburgkreis,Thüringen,60.86796174105461,80.14105639712801,342.0,schlechtesten Drittel
+402,16064,Unstrut-Hainich-Kreis,Thüringen,92.04602301150577,101.8702432692875,301.0,schlechtesten Drittel
+403,16065,Kyffhäuserkreis,Thüringen,125.8525135293734,166.91602513533363,133.0,besten Drittel
+404,16066,Schmalkalden-Meiningen,Thüringen,100.40807734037212,116.24986920581772,272.0,schlechtesten Drittel
+405,16067,Gotha,Thüringen,41.01749981540279,48.41598359132897,382.0,schlechtesten Drittel
+406,16068,Sömmerda,Thüringen,43.08451467526171,55.6383579087502,376.0,schlechtesten Drittel
+407,16069,Hildburghausen,Thüringen,112.01616664075858,69.23518896833504,354.0,schlechtesten Drittel
+408,16070,Ilm-Kreis,Thüringen,96.3386371339324,113.44052421263945,275.0,schlechtesten Drittel
+409,16071,Weimarer Land,Thüringen,32.01078769619515,104.11831184455166,296.0,schlechtesten Drittel
 410,16072,Sonneberg,Thüringen,159.43157484913374,134.03688380898956,217.0,mittleren Drittel
-411,16073,Saalfeld-Rudolstadt,Thüringen,151.57642062502885,183.75938671809985,101.0,oberen Drittel
-412,16074,Saale-Holzland-Kreis,Thüringen,4.401064773735581,8.223048686244203,397.0,unteren Drittel
-413,16075,Saale-Orla-Kreis,Thüringen,151.42905708943445,183.75778581474785,102.0,oberen Drittel
+411,16073,Saalfeld-Rudolstadt,Thüringen,151.57642062502885,183.75938671809985,101.0,besten Drittel
+412,16074,Saale-Holzland-Kreis,Thüringen,4.401064773735581,8.223048686244203,397.0,schlechtesten Drittel
+413,16075,Saale-Orla-Kreis,Thüringen,151.42905708943445,183.75778581474785,102.0,besten Drittel
 414,16076,Greiz,Thüringen,169.69022333202966,128.81201638598088,233.0,mittleren Drittel
 415,16077,Altenburger Land,Thüringen,138.84310150970995,152.45144642129566,169.0,mittleren Drittel
