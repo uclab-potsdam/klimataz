@@ -1,4 +1,3 @@
-import { flip } from 'lodash';
 import React, { Component } from 'react';
 import closeCard from '../img/buttons/close.svg';
 import flipCard from '../img/buttons/flip.svg';
