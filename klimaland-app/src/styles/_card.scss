@@ -154,6 +154,7 @@
                     z-index: 5;
                     border:  2px solid gray;
                     border-radius: 5px;
+                    background-color: $light;
 
                     // padding: 0.5rem;
                     transform: rotate(5deg);
@@ -322,6 +323,261 @@
     .side-outer {
         width: 100%;
         height: 100%;
+    
+    .overlay-container {
+            display: none;
+        }
+
+    .side-inner {
+            background-color: $light;
+            width: 100%;
+            height: 100%;
+    
+            // back-side with explanation
+            .details-container {
+                height: 90%;
+    
+                .flex-container {
+                    display: flex;
+                    height: 100%;
+    
+                    .text-container {
+                        width: 60%;
+                        height: 100%;
+                        overflow: scroll;
+    
+                        border-right: 1px solid $default-text;
+    
+                        .text-inner-container {
+                            margin: 10px;
+                            height: 90%;
+    
+                            .section-title {
+                                text-align: left;
+                                margin: 2rem 1rem 0.5rem 1rem;
+                                border-bottom: 1px solid $mint-green;
+                                width: 85%;
+    
+                                h2 {
+                                    margin-bottom: 0.5rem;
+                                    font-size: 24px;
+                                }
+                            }
+    
+                            .section-text {
+                                margin: 20px;
+                                width: 85%;
+    
+                                p {
+                                    font-size: 14px;
+    
+                                    // line-height: 1.2rem;
+                                    span {
+                                        color: $taz-orange;
+    
+                                        &.mittleren {
+                                            color: $taz-orange;
+                                        }
+    
+                                        &.oberen,
+                                        &.energy-data-renewables,
+                                        &.mo-km-umweltfreundlich,
+                                        &.ab-data-co,
+                                        &.ab-data-bio,
+                                        &.land-data-unter,
+                                        &.land-data-oeko,
+                                        &.ge-data-erneuerbare {
+                                            color: $mint-green;
+                                        }
+    
+                                        &.unteren,
+                                        &.gerics-data,
+                                        &.energy-data-fossil,
+                                        &.autos,
+                                        &.land-data-tierzahl,
+                                        &.ge-data-heat {
+                                            color: $red;
+                                        }
+    
+                                        &.energy-data-geheim {
+                                            color: lighten($default-text, 20%);
+                                        }
+    
+                                        &.location-name {
+                                            color: $dust-blue;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+    
+                    .text-container::-webkit-scrollbar {
+                        display: none;
+                    }
+    
+                    /* Hide scrollbar for IE, Edge and Firefox */
+                    .text-container {
+                        -ms-overflow-style: none;
+                        /* IE and Edge */
+                        scrollbar-width: none;
+                        /* Firefox */
+                    }
+    
+                    .data-container {
+                        width: 40%;
+                        height: 100%;
+    
+                        .locator-map {
+                            border-bottom: 1px solid $default-text;
+                            position: relative;
+                            height: 40%;
+                        }
+    
+                        .lk-list {
+                            margin: 0px 0px 0px 0px;
+                            height: 60%;
+                            overflow: hidden;
+    
+                            .list-inner-container {
+    
+                                .list-similar-container {
+                                    // border-bottom: 1px solid $default-text;
+                                    // overflow-x: hidden;
+                                    -ms-overflow-style: none;
+                                    scrollbar-width: none;
+                                    height: 100%;
+    
+                                    &.mittleren {
+                                        h5 {
+                                            color: white;
+                                            background-color: $taz-orange;
+                                        }
+                                    }
+    
+                                    &.oberen {
+                                        h5 {
+                                            color: white;
+                                            background-color: $mint-green;
+                                        }
+                                    }
+    
+                                    &.unteren {
+                                        h5 {
+                                            color: white;
+                                            background-color: $red;
+                                        }
+                                    }
+    
+                                    ul {
+                                        overflow-y: scroll;
+                                    }
+    
+    
+                                    &::-webkit-scrollbar {
+                                        display: none;
+                                    }
+    
+    
+                                    h5 {
+                                        // padding-left: 0.5rem;
+                                        width: calc(100% - 0.5rem);
+                                        margin: 0;
+                                        padding: 0.45rem 0rem 0.45rem 0.5rem;
+                                        border-bottom: 1px solid $default-text;
+                                    }
+    
+                                    ul {
+                                        margin: 0.0rem 0rem 0rem 0rem;
+    
+    
+    
+                                    }
+    
+                                    ol {
+                                        padding-top: 0.5rem;
+                                        border-bottom: 1px solid $default-text;
+                                        padding-bottom: 0.5rem;
+    
+                                        &:hover {
+                                            background-color: $lighter-orange-full;
+                                            cursor: pointer;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    
+            .footer-container {
+                height: 10%;
+                border-top: 1px solid $default-text;
+    
+                .footer-inner-container {
+                    display: flex;
+    
+                    .logo-container {
+                        background-image: url(../img/taz/taz-logo.svg);
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        width: 20%;
+                        min-height: 1rem;
+                        margin: 10px;
+                    }
+    
+                    .info-backside {
+                        margin: 10px 0px 10px 0px;
+                        font-size: 12px;
+                        border: 1px solid $mint-green;
+                        border-radius: 20px;
+                        padding: 0.2rem 0.5rem 0rem 0.5rem;
+                        background: linear-gradient(to left, $mint-green, rgba($mint-green, 0.5));
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                }
+            }
+    
+            // CSS Transition classes
+            &.side-transition-enter {
+                opacity: 0;
+            }
+    
+            &.side-transition-enter-active,
+            &.side-transition-enter-done {
+                opacity: 1;
+                transition: opacity 20ms;
+                -webkit-transition: opacity 20ms;
+    
+            }
+    
+            &.side-transition-exit {
+                opacity: 1;
+                transition: opacity 20ms;
+                -webkit-transition: opacity 20ms;
+            }
+    
+            &.side-transition-exit-active {
+                opacity: 0;
+                transition: opacity 20ms;
+                -webkit-transition: opacity 20ms;
+            }
+    
+            .export {
+                background-color: $light;
+                width: 85%;
+                height: 85%;
+                transform: translate(7.5%, 6%);
+                border-style: solid;
+                border-color: $mint-green;
+                border-width: 0.5;
+                box-shadow: 4px 4px 0px rgba($mint-green, .8);
+            }
+    
+        }
     }
 
     .social-media-layout{
@@ -343,293 +599,35 @@
             left: 8px;
         }  
 
-        & .greetings{
-            position: absolute;
-            width: 44%;
-            bottom: 0;
-            height: 1.5rem;
-            left: 52%;
+        .word-art-title {
+            // background-color: blue;
+            @include wordart-style-1;
+            transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, -15px);
+            width: 100%;
+            height: 50px;
+            z-index: 2;
+            text-align: left;
 
-            & .gruss-thumb{
-                position: absolute;
-                font-size: 0.9rem;
-                right: 0;
-                bottom: 55px;
-                margin: 0;
-                color: $dark-pink;
-                transform: scale(0.8, 1.2) rotate(-1deg);
-                z-index: 2;
+            .gruss-thumb {
+                font-size: 0.8rem;
             }
 
-            & .wordart-1 {
-                position: absolute;
-                font-size: 1.9rem;
-                right: 0;
-                bottom: 20px;
-                margin: 0;
-                transform: scale(0.8, 1.0) rotate(-2deg);
-                font-family: Impact, sans-serif;
-                color: $blue;
-                -webkit-text-stroke: 1.25px $dark-blue;
-                text-shadow: 0.35rem -0.35rem 0 $dark-blue;
-                letter-spacing: -0.15vw;
-                z-index: 1;
+            .wordart {
+                width: 100%;
+                height: 100%;
+                font-size: 1.5rem;
+                padding: 0;
+                padding-top: 1rem;
+                padding-left: 0.2rem;
+                // margin-top: 0.5rem;
+                letter-spacing: -0.10vw;
+                line-height: 1rem;
+                -webkit-text-stroke: 0.1px $dark-blue;
+                background-image: linear-gradient(0deg, rgba(246, 161, 25, 1) 50%, $blue 70%);
             }
         }
+}
 
-    .overlay-container {
-        display: none;
-    }
-
-    .side-inner {
-        background-color: $light;
-        width: 100%;
-        height: 100%;
-
-        // back-side with explanation
-        .details-container {
-            height: 90%;
-
-            .flex-container {
-                display: flex;
-                height: 100%;    
-                
-                .text-container {
-                        width: 60%;
-                        height: 100%;
-                        overflow: scroll;
-                
-                        border-right: 1px solid $default-text;
-                
-                        .text-inner-container {
-                            margin: 10px;
-                            height: 90%;
-                
-                            .section-title {
-                                text-align: left;
-                                margin: 2rem 1rem 0.5rem 1rem;
-                                border-bottom: 1px solid $mint-green;
-                                width: 85%;
-                
-                                h2 {
-                                    margin-bottom: 0.5rem;
-                                    font-size: 24px;
-                                }
-                            }
-                
-                            .section-text {
-                                margin: 20px;
-                                width: 85%;
-                
-                                p {
-                                    font-size: 14px;
-                                    // line-height: 1.2rem;
-                                    span {
-                                        color: $taz-orange;
-                                    
-                                        &.mittleren {
-                                            color: $taz-orange;
-                                        }
-
-                                        &.oberen, 
-                                        &.energy-data-renewables, 
-                                        &.mo-km-umweltfreundlich,
-                                        &.ab-data-co,
-                                        &.ab-data-bio,
-                                        &.land-data-unter,
-                                        &.land-data-oeko,
-                                        &.ge-data-erneuerbare {
-                                            color: $mint-green;
-                                        }
-
-                                        &.unteren, 
-                                        &.gerics-data, 
-                                        &.energy-data-fossil, 
-                                        &.autos,
-                                        &.land-data-tierzahl,
-                                        &.ge-data-heat {
-                                            color: $red;
-                                        }
-
-                                        &.energy-data-geheim {
-                                            color: lighten($default-text, 20%);
-                                        }
-
-                                        &.location-name {
-                                            color: $dust-blue;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    .text-container::-webkit-scrollbar {
-                        display: none;
-                    }
-
-                    /* Hide scrollbar for IE, Edge and Firefox */
-                    .text-container {
-                        -ms-overflow-style: none;
-                        /* IE and Edge */
-                        scrollbar-width: none;
-                        /* Firefox */
-                    }
-
-                    .data-container {
-                        width: 40%;
-                        height: 100%;
-
-                        .locator-map {
-                            border-bottom: 1px solid $default-text;
-                            position: relative;
-                            height: 40%;
-                        }
-
-                        .lk-list {
-                            margin: 0px 0px 0px 0px;
-                            height: 60%;
-                            overflow: hidden;
-
-                            .list-inner-container {
-
-                                .list-similar-container {
-                                    // border-bottom: 1px solid $default-text;
-                                    // overflow-x: hidden;
-                                    -ms-overflow-style: none;
-                                    scrollbar-width: none;
-                                    height: 100%;
-
-                                    &.mittleren {
-                                        h5 {
-                                            color: white;
-                                            background-color: $taz-orange;                                     
-                                        }
-                                    }
-
-                                    &.oberen {
-                                        h5 {
-                                            color: white;
-                                            background-color: $mint-green;
-                                        }
-                                    }
-
-                                    &.unteren {
-                                        h5 {
-                                            color: white;
-                                            background-color: $red;
-                                        }
-                                    }
-
-                                    ul {
-                                        overflow-y: scroll;
-                                    }
-
-
-                                    &::-webkit-scrollbar {
-                                        display: none;
-                                    }
-
-
-                                    h5 {
-                                        // padding-left: 0.5rem;
-                                        width: calc(100% - 0.5rem);
-                                        margin: 0;
-                                        padding: 0.45rem 0rem 0.45rem 0.5rem;
-                                        border-bottom: 1px solid $default-text;
-                                    }
-
-                                    ul {
-                                        margin: 0.0rem 0rem 0rem 0rem;
-                                        
-
-                                        
-                                    }
-
-                                    ol {
-                                        padding-top: 0.5rem;
-                                        border-bottom: 1px solid $default-text;
-                                        padding-bottom: 0.5rem;
-
-                                        &:hover {
-                                            background-color: $lighter-orange-full;
-                                            cursor: pointer;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-            }
-        }
-
-        .footer-container {
-            height: 10%;
-            border-top: 1px solid $default-text;
-
-            .footer-inner-container {
-                display: flex;
-                
-                .logo-container {
-                    background-image: url(../img/taz/taz-logo.svg);
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                    width: 20%;
-                    min-height: 1rem;
-                    margin: 10px;
-                }
-                
-                .info-backside {
-                    margin: 10px 0px 10px 0px;
-                    font-size: 12px;
-                    border: 1px solid $mint-green;
-                    border-radius: 20px;
-                    padding: 0.2rem 0.5rem 0rem 0.5rem;
-                    background: linear-gradient(to left, $mint-green, rgba($mint-green, 0.5));
-                    -webkit-background-clip: text;
-                    background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-            }
-        }
-
-        // CSS Transition classes
-        &.side-transition-enter {
-            opacity: 0;
-        }
-
-        &.side-transition-enter-active, 
-        &.side-transition-enter-done {
-            opacity: 1;
-            transition: opacity 20ms;
-            -webkit-transition: opacity 20ms;
-
-        }
-
-        &.side-transition-exit {
-            opacity: 1;
-            transition: opacity 20ms;
-            -webkit-transition: opacity 20ms;
-        }
-
-        &.side-transition-exit-active {
-            opacity: 0;
-            transition: opacity 20ms;
-            -webkit-transition: opacity 20ms;
-        }
-
-        .export{
-            background-color: $light;
-            width: 85%;
-            height: 85%;
-            transform: translate(7.5%, 6%);
-            border-style: solid;
-            border-color: $mint-green;
-            border-width: 0.5;
-            box-shadow: 4px 4px 0px rgba($mint-green, .8);
-            }
-       
-    }
      
 
     button {
@@ -649,9 +647,6 @@
     }
 
 
-
-
-}
 
 
 }
