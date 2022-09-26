@@ -211,6 +211,7 @@ const Canvas = () => {
           try {
             getCheckedSectionLabel(sec);
           } catch (error) {
+            console.log(error);
             sections = defaultSections;
             //TODO (NICE TO HAVE): keep valid sections, remove sections that throw an error
           }
