@@ -208,7 +208,7 @@ const Buildings = ({
         </div>
         <div className={`${cleanKlassString(currentId).toLowerCase()} caption`}>
           <p>
-            Durchschnittlich werden in {locationLabel} pro Jahr{' '}
+            Durchschnittlich werden in <span>{locationLabel}</span> pro Jahr{' '}
             <span>{formatNumber(numberOfBuildings)}</span> neue Wohnungen oder Häuser
             fertiggestellt. Zu{' '}
             <span className="energy-number">{formatNumber(selectedEnergy)} %</span> wird davon mit{' '}

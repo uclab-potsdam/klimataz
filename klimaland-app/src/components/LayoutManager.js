@@ -5,6 +5,7 @@ import CardCollection from './CardCollection';
 import SelectionButtons from './SelectionButtons';
 import { getRandomElement, setStateAsync } from '../helpers/helperFunc';
 import Info from './Info.js';
+import TitleArt from './TitleArt.js'
 // import TitleCanvas from "./TitleCanvas";
 
 //images
@@ -393,12 +394,10 @@ export default class LayoutManager extends Component {
   render() {
     return (
       <div className="main-container">
-        {this.state.mode === 'lk' && this.state.postcardView === false && (
-          <div className="word-art-title">
-            <h4 className="gruss-thumb">Sonnige Grüße aus</h4>
-            <h2 className="wordart">{this.state.landkreisSelection[0].label}</h2>
-          </div>
-        )}
+        {(this.state.mode === 'lk' && this.state.postcardView === false)
+          && (
+            <TitleArt landkreisLabel={this.state.landkreisSelection[0].label} />
+         )}
         <SelectionButtons
           mode={this.state.mode}
           postcardView={this.state.postcardView}
@@ -443,18 +442,18 @@ export default class LayoutManager extends Component {
                   </button>
                 </div>
                 <div className="button-switch-container">
-                  <div className="inner-button button-left">
-                    <button className="button switch" onClick={this.handleSwitchBack}>
+                  <button className="inner-button button-left" onClick={this.handleSwitchBack}>
+                    <div className="button switch">
                       <img src={switchCardLeft} className="button img" alt="switch-button-img" />
                       <h6 className="switch-preview">{this.state.previewLeftCard}</h6>
-                    </button>
-                  </div>
-                  <div className="inner-button button-right">
-                    <button className="button switch" onClick={this.handleSwitchNext}>
+                    </div>
+                  </button>
+                  <button className="inner-button button-right">
+                    <div className="button switch" onClick={this.handleSwitchNext}>
                       <img src={switchCardRight} className="button img" alt="switch-button-img" />
                       <h6 className="switch-preview">{this.state.previewRightCard}</h6>
-                    </button>
-                  </div>
+                    </div>
+                  </button>
                 </div>
               </>
             )}
