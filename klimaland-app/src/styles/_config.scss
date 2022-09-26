@@ -15,8 +15,8 @@
     src: url('../fonts/chivo/Chivo-Light.otf');
 }
 
-@import url("https://fonts.googleapis.com/css?family=Modak");
 @import url('https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 // breakpoints for responsive devices
 $breakpoints: (
@@ -96,11 +96,12 @@ p, text {
 
 @mixin wordart-style-1 {
     @include wordart-style-setup;
-    transform: scale(0.8, 1.2) rotate(-2deg) translate(30px, 10px);
+    transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, 10px);
 
-    .gruss-thumb {
+    .gruss-thumb, .gruss-thumb:after {
         color: $dark-blue;
         margin-top: 0.5rem;
+        content: 'Sonnige Grüße aus';
     }
 
     .wordart {
@@ -114,28 +115,51 @@ p, text {
         font-family: 'Vampiro One', sans-serif;
         background-image: linear-gradient(0deg, rgba(246, 161, 25, 1) 0%, $blue 70%);
         -webkit-text-fill-color: transparent;
-        letter-spacing: -0.25vw;    
+        letter-spacing: -0.25vw; 
+        
+        &:not(.main) {
+            &[class*="additional-"] {
+                display: none;
+            }
+        }
     }
 }
 
 @mixin wordart-style-2 {
         @include wordart-style-setup;
+        transform: rotate(2deg);
 
-        .gruss-thumb {
-            color: $mint-green;
-            margin-top: 0.5rem;        
+        .gruss-thumb, .gruss-thumb:after {
+            color: $taz-pink;
+            margin-top: 0.5rem;
+            content: 'Herzliche Grüße aus';
         }
 
         .wordart {
-            background: $dark-blue;
             display: inline-block;
-            background: linear-gradient(to right, $dark-blue 0%, $dark-pink 70%);
+            position: absolute;
+            right: 0;
+            background: linear-gradient(to right, $dark-blue 0%, $dark-pink 90%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.15vw;
-            font-family: Impact, sans-serif;
-            z-index: 1;
+            font-family: 'Varela Round', sans-serif;
+            z-index: 5;
+            -webkit-text-stroke: 0.25px $blue;
+            transform: translate(-10px, 25px);
+
+            $i: 10;
+            @for $i from 0 to 40 {
+                &.additional-#{$i} {
+
+                    top: #{-$i}px;
+                    left: #{$i*2}px;
+                    // transform: translateX(#{$i*10}px)
+                }
+                
+                $i: $i + 1;
+            }
         }
 }
 
@@ -199,8 +223,7 @@ p, text {
             }
 
             span {
-                color: $dark-blue;
-                text-decoration: underline;
+                color: $dust-blue;
             }
         }
         
@@ -259,8 +282,7 @@ p, text {
             }
             
             span {
-                color: $dark-blue;
-                text-decoration: underline;
+                color: $dust-blue;
             }
         }
     }
@@ -292,8 +314,7 @@ p, text {
             }
 
             span {
-                color: $dark-blue;
-                text-decoration: underline;
+                color: $dust-blue;
             }
         }
     }

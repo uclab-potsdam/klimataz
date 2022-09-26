@@ -132,38 +132,75 @@
             width: 100%;
             height: 100%;
             position: absolute;
+
+            .overlay-inner {
+                width: 95%;
+                height: calc(100% - 0.5rem);
+                margin: 0 auto;
+                .postcard-title {
+                    h4 {
+                        color: darken($pale-olive, 20%);
+                        margin: 0.5rem;
+                    }
+                }
+            }
             .section-thumb {
-                display: inline-flex;
-                position: absolute;
                 width: 100%;
                 height: 100%;
 
-                h4.section-title {
-                    color: darken($pale-olive, 20%);
+                .indicator-ranking {
+                    position: absolute;
+                    bottom: 1rem;
+                    z-index: 5;
+                    border:  2px solid gray;
+                    border-radius: 5px;
 
-                    margin-left: 0.5rem;
-                    margin-top: 0.5rem;
-                }
-        
-                &.lk {
-                    h4 {
-                        margin-top: 0.5rem;
-                        margin-left: 0.5rem;
-                        display: inline-block;
+                    // padding: 0.5rem;
+                    transform: rotate(5deg);
+
+                    &.mittleren {
+                        border-color: $taz-orange;
+                        p {
+                            color: $taz-orange;                        
+                        }
+                    }
+
+                    &.unteren {
+                        border-color: $red;
+
+                        p {
+                            color: $red;
+                        }
+                    }
+
+                    &.oberen {
+                        border-color: $mint-green;
+
+                        p {
+                            color: $mint-green;
+                        }
+                    }
+
+                    p {
+                        color:gray;
+                        font-size: 12px;
+                        margin: 0.5rem;
+                        display: table-cell;
+                        vertical-align: middle;
+                        line-height: 14px;
+                        padding: 10px;
+                        height: 14px;
                     }
                 }
         
                 &.comparison {
-                    // display: grid;
-                    display: block;
 
                     .word-art-title {
+                        // background-color: blue;
+                        @include wordart-style-1;
+                        transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, -15px);
                         width: 100%;
                         height: 50px;
-                        right: 0.5rem;
-                        top: -0.5rem;
-                        margin-top: 1.5rem;
-                        left: -15%;
                         z-index: 2;
                         text-align: left;
         
@@ -176,57 +213,15 @@
                             height: 100%;
                             font-size: 1.5rem;
                             padding: 0;
-                            padding-top: 0.5rem;
+                            padding-top: 1rem;
                             padding-left: 0.2rem;
-                            margin-top: 0.5rem;
+                            // margin-top: 0.5rem;
                             letter-spacing: -0.10vw;
                             line-height: 1rem;
+                            -webkit-text-stroke: 0.1px $dark-blue;
+                            background-image: linear-gradient(0deg, rgba(246, 161, 25, 1) 50%, $blue 70%);
                         }
                     }
-                }
-            }
-
-            & .rating-thumb {
-                position: absolute;
-                top: 60%;
-                left: 3%;
-                z-index: 2;
-
-                circle {
-                    stroke-width: 0.5;
-
-                    &.inactive {
-                        fill: $light;
-
-                        &.lower {
-                            stroke: $red;
-                        }
-
-                        &.middle {
-                            stroke: $taz-orange;
-                        }
-
-                        &.upper {
-                            stroke: $mint-green;
-                        }
-                    }
-
-                    &.active {
-                        stroke: $pale-olive;
-
-                        &.lower {
-                            fill: $red;
-                        }
-
-                        &.middle {
-                            fill: $taz-orange;
-                        }
-
-                        &.upper {
-                            fill: $mint-green;
-                        }
-                    }
-
                 }
             }
         }
@@ -381,18 +376,15 @@
                 z-index: 1;
             }
         }
+
+    .overlay-container {
+        display: none;
     }
 
     .side-inner {
         background-color: $light;
         width: 100%;
         height: 100%;
-
-        // clip-path: circle(35% at 100% 50%); 
-        // animation: 1.5s ease-out 0.1s 1 increaseEllipse;
-    
-        // clip-path: circle(100%); 
-
 
         // back-side with explanation
         .details-container {
@@ -433,10 +425,8 @@
                                     font-size: 14px;
                                     // line-height: 1.2rem;
                                     span {
-                                        text-decoration: underline;
                                         color: $taz-orange;
                                     
-
                                         &.mittleren {
                                             color: $taz-orange;
                                         }
@@ -466,7 +456,7 @@
                                         }
 
                                         &.location-name {
-                                            color: $dark-blue;
+                                            color: $dust-blue;
                                         }
                                     }
                                 }
@@ -664,3 +654,4 @@
 }
 
 
+}
