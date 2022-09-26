@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 
-//img
-import shuffle from '../img/buttons/shuffle.png';
-
 export class SelectionButtons extends Component {
   constructor(props) {
     super(props);
@@ -28,11 +25,12 @@ export class SelectionButtons extends Component {
   render() {
     const orderedLandkreise = this.props.landkreise.sort((a, b) => {
       if (a.label > b.label) {
-        return 1
-      } if (a.label < b.label) {
-        return - 1
+        return 1;
       }
-    })
+      if (a.label < b.label) {
+        return -1;
+      }
+    });
 
     return (
       <div className="selection-buttons">

@@ -188,6 +188,8 @@ const MoCarDensity = ({
                         <rect width={rectWidth} height={rectHeight} fill="#FF7B7B" x="-3" y="-3" />
                       </g>
                     );
+                  } else {
+                    return null;
                   }
                 })}
               </g>
@@ -203,6 +205,8 @@ const MoCarDensity = ({
                         <rect width={rectWidth} height={rectHeight} fill="#FF7B7B" x="-6" y="-6" />
                       </g>
                     );
+                  } else {
+                    return null;
                   }
                 })}
               </g>
