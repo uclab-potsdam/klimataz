@@ -31,7 +31,7 @@ export default class Side extends Component {
         height: '200',
       },
       section: ['En', 'Mo', 'Ab', 'La', 'Ge'],
-      ranking: 'mittleren Drittel',
+      ranking: this.props.textData[0][this.props.thirdKey],
     };
 
     this.vis = this.vis.bind(this);
@@ -190,12 +190,11 @@ export default class Side extends Component {
   async componentDidMount() {
     await this.updateLayout();
     await this.updateChartSize();
-    await setStateAsync(this, { ranking: this.props.textData[0][this.props.thirdKey] });
+    // `await setStateAsync(this, { ranking: this.props.textData[0][this.props.thirdKey] });
   }
 
   render() {
     // TO DO: Solve issue of inconsistent activeSide during carousel switch
-
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
