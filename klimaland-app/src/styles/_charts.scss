@@ -31,6 +31,12 @@
         .visualization-container {
             cursor: crosshair;
         }
+
+        .is-thumbnail {
+            .visualization-container {
+                cursor: pointer;
+            }
+        }
         // Specific styling for sections' charts
         &.Mo-chart {
             .car-density {
