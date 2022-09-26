@@ -215,21 +215,20 @@ export default class Side extends Component {
             <div className="overlay-inner">
               <div className="postcard-title">
                 <h4 className="section-title">{this.props.sectionName}</h4>
-                {this.props.isThumbnail && (
-                  <div className={`section-thumb ${this.props.mode}`}>
-                    {this.props.mode === 'comparison' && (
-                      <TitleArt landkreisLabel={this.props.lk.label} />
-                    )}
-                    {this.state.ranking !== '' && (
-                      <div className={`indicator-ranking ${this.state.ranking}`}>
-                        <p>im {this.state.ranking}</p>
-                      </div>
-                    )}
-                  </div>
-                )}
+                <div className={`section-thumb ${this.props.mode === undefined ? 'postcard-miniature' : this.props.mode}`}>
+                  {(this.props.mode === 'comparison' || !this.props.isThumbnail) && (
+                    <TitleArt landkreisLabel={this.props.lk.label} />
+                  )}
+                  {(this.props.isThumbnail && this.state.ranking !== '') && (
+                    <div className={`indicator-ranking ${this.state.ranking}`}>
+                      <p>im {this.state.ranking}</p>
+                    </div>
+                  )}
+                </div>
               </div>
               {(!this.props.isThumbnail && this.props.toggleLabels !== undefined) && (
                 <div className="button-toggle-container">
+                  <div className="arrow-pointer" />
                   {this.props.toggleLabels.lk !== '' && (
                     <svg width="100%" height="100%">
                       <defs>
@@ -239,7 +238,7 @@ export default class Side extends Component {
                         </linearGradient>
                       </defs>
                       <g className="toggle" onClick={this.props.switchDataLevel}>
-                        <g transform={`translate(${this.props.toggleLabels.lk.length * 9 + 10}, 5)`}>
+                        <g transform={`translate(${this.props.toggleLabels.lk.length * 9 + 10}, 2)`}>
                           <rect className="controller-bg" x="0" y="0" width="40" height="20" rx="10" />
                           <rect
                             x={this.props.isLKData ? 0 : 20}
@@ -251,12 +250,12 @@ export default class Side extends Component {
                             stroke="#484848"
                           />
                         </g>
-                        <text x="0" y="20">
+                        <text x="0" y="18">
                           {this.props.toggleLabels.lk}
                         </text>
                         <text
                           x={this.props.toggleLabels.bl.length * 9 + 20}
-                          y="20"
+                          y="18"
                         >
                           {this.props.toggleLabels.bl}
                         </text>

@@ -191,7 +191,7 @@ const MoModalSplit = ({
                 {plotAvgData.map((trip, t) => {
                   return (
                     <g
-                      transform={`translate(0, ${(t + 0.5) * tabletThreshold})`}
+                      transform={`translate(0, ${(t + 0.7) * tabletThreshold})`}
                       key={t}
                       className={trip.mode}
                     >
@@ -238,7 +238,7 @@ const MoModalSplit = ({
           </g>
           <g
             className="bar-percentage-trip"
-            transform={`translate(${rightMarginWidth + marginWidth * 2}, 0)`}
+            transform={`translate(${rightMarginWidth + marginWidth * 2}, 10)`}
           >
             <text x="10" y={marginHeight + 15} textAnchor="middle">
               % der Trips
