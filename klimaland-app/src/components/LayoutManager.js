@@ -6,6 +6,7 @@ import SelectionButtons from './SelectionButtons';
 import { getRandomElement, setStateAsync } from '../helpers/helperFunc';
 import Info from './Info.js';
 import TitleArt from './TitleArt.js';
+// import TitleCanvas from "./TitleCanvas";
 
 //images
 //import switchCard from '../img/buttons/switch.svg';
@@ -460,6 +461,10 @@ export default class LayoutManager extends Component {
           viewVis={this.props.editorspick[0].view.value}
         />
 
+        {/* 
+        {this.state.landkreisSelection.length > 0 && (
+          <TitleCanvas landkreis={this.state.landkreisSelection} />
+        )} */}
         <CardCollection
           cardSelection={this.state.cardSelection}
           mode={this.state.mode}

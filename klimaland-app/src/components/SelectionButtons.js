@@ -34,11 +34,8 @@ export class SelectionButtons extends Component {
 
     return (
       <div className="selection-buttons">
-        {!this.props.postcardView && (
-          <div
-            className="selection-container"
-            style={{ visibility: this.props.uiVis ? 'visible' : 'hidden' }}
-          >
+        {!this.props.postcardView && this.props.uiVis && (
+          <div className="selection-container">
             {/* {this.props.viewVis !== 2 && ( */}
             <Select
               className="selector lk"
