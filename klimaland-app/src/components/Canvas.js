@@ -61,7 +61,7 @@ const Canvas = () => {
 
     //if landkreise are undefined (== no parameter), use default
     if (lk === undefined || lk.length === 0) {
-      ags = 0;
+      ags = [0];
       // return;
     } else {
       ags = lk.map(Number); // convert to number from string
@@ -96,29 +96,6 @@ const Canvas = () => {
     //first set to default to be safe, overwrite later if we have other valid options
     // -------- MAIN/DEFAULT VIEW -------
     setEditorsPick(defaultPick);
-
-    if (ags === 0 && sections.length === 0) {
-      console.log('MAIN/DEFAULT VIEW');
-
-      let mainPick = [];
-      try {
-        mainPick = sectionsData.map((el) => ({
-          lk: { value: '0', label: 'Deutschland' },
-          section: { value: el.value, label: el.label },
-          ui: { value: uiVis },
-          view: { value: 0, label: 'mainView' },
-        }));
-        if (mainPick.length !== 0) {
-          setiframeLoaded(true);
-          setEditorsPick(mainPick);
-        }
-      } catch (error) {
-        console.log(error);
-        setiframeLoaded(true);
-        setEditorsPick(mainPick);
-        return; //if selected landkreis or section not valid in thumbnail view, set default Pick and stop function
-      }
-    }
 
     // -------- SINGLE POSTCARD VIEW -------
     if (ags.length === 1 && sections.length === 1) {
