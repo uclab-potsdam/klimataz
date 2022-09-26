@@ -211,7 +211,10 @@ export default class Side extends Component {
                     )}
                     {this.state.ranking !== '' && (
                       <div className={`indicator-ranking ${this.state.ranking}`}>
-                        <p>im {this.state.ranking}</p>
+                        <p>
+                          im{' '}
+                          {this.state.ranking.charAt(0).toUpperCase() + this.state.ranking.slice(1)}
+                        </p>
                       </div>
                     )}
                   </div>
