@@ -80,7 +80,7 @@ const LandDenisty = ({
       )
     );
     //add column for description
-    accDataOverTwoGV.map((data, d) => {
+    accDataOverTwoGV.forEach((data, d) => {
       data.column = 'ueber_2_GV_ha';
     });
 
@@ -113,11 +113,11 @@ const LandDenisty = ({
     let underTwoGV = [];
 
     // call function above for each animal group
-    dataUnderTwoGV.map((data, d) => {
+    dataUnderTwoGV.forEach((data, d) => {
       underTwoGV.push(mapBar(data, d));
     });
 
-    accDataOverTwoGV.map((data, d) => {
+    accDataOverTwoGV.forEach((data, d) => {
       overTwoGV.push(mapBar(data, d));
     });
 
@@ -185,7 +185,7 @@ const LandDenisty = ({
       <div className="visualization-container" ref={targetRef}>
         <svg className="chart" width="100%" height="100%">
           <defs>
-            // orange rectangle pattern
+            {/* orange rectangle pattern */}
             <pattern
               id="diagonalHatch1"
               width="10"
@@ -205,7 +205,8 @@ const LandDenisty = ({
             >
               <line x1="0" y1="0" x2="0" y2="10" stroke="black" />
             </pattern>
-            // red rectangle pattern
+
+            {/* red rectangle pattern */}
             <pattern
               id="diagonalHatch3"
               width="5"
