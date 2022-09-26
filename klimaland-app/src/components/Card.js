@@ -34,7 +34,7 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
     return React.Children.map(children, (child) => {
       if (React.isValidElement(child)) {
         return React.cloneElement(child, {
-          activeSide: mod(activeSide, sides.params.length),
+          activeSide: mod(activeSide, 2),
           style: rotation,
           flipping: flipping,
         });

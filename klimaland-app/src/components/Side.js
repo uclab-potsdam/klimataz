@@ -6,7 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 import Chart from './side-elements/Chart.js';
 //side elements
 import Details from './side-elements/Details.js';
-import TitleArt from './TitleArt.js'
+import TitleArt from './TitleArt.js';
 
 import { toPng } from 'html-to-image';
 import share from '../img/buttons/share.svg';
@@ -15,24 +15,23 @@ export default class Side extends Component {
   constructor(props) {
     super(props);
 
-    let layoutdata = this.props.layoutControls.params[this.props.activeSide][this.props.activeSide];
-
+    let layoutdata = this.props.layoutControls.params[0][0];
     // name	      value	type
     // order	      describes the order in which the layout should be shown ordering hiccups	Int
     // vis/text	   if true shows the visualization, if fals shows text	                     Bool
     // indicator	describes which data should be imported in the layout                      Int
     // locator map	if true shows the map	                                                   Bool
     this.state = {
-      order: layoutdata.combo[0],
+      // order: layoutdata.combo[0],
       showViz: layoutdata.combo[1],
-      indicatorInt: layoutdata.combo[2],
-      showLocator: layoutdata.combo[3],
+      indicator: layoutdata.components.indicator,
+      component: layoutdata.components.component,
       chartStyle: {
         width: '300',
         height: '200',
       },
       section: ['En', 'Mo', 'Ab', 'La', 'Ge'],
-      ranking: 'mittleren Drittel',
+      ranking: '',
     };
 
     this.vis = this.vis.bind(this);
@@ -63,6 +62,37 @@ export default class Side extends Component {
       });
   }
 
+  async updateLayout() {
+    //only for top card because of performance
+    //for thumbnails: always stay in landkreis mode
+    if (this.props.isTopCard || this.props.isThumbnail) {
+      let activeSideWithMode = this.props.activeSide;
+      //if not in landkreis mode
+      if (!this.props.dataLevelLK && this.props.section !== 'Ab') {
+        //side 0 --> side 2
+        if (activeSideWithMode === 0) activeSideWithMode = 2;
+        //side 1 --> side 1
+      }
+
+      let layoutdata = this.props.layoutControls.params[activeSideWithMode][activeSideWithMode];
+
+      if (layoutdata.components !== undefined) {
+        await setStateAsync(this, {
+          showViz: layoutdata.combo[1],
+          indicator: layoutdata.components.indicator,
+          component: layoutdata.components.component,
+        });
+      } else {
+        await setStateAsync(this, {
+          showViz: layoutdata.combo[1],
+          indicator: '',
+          component: '',
+          ranking: this.props.textData[this.props.section]['third'],
+        });
+      }
+    }
+  }
+
   /**
    * updates Size of the Chart for Thumbnail and Postcardview. The viewwidth should be equal to the css
    * variable "$postcardview-postcardwidth" and "$thumbnail-postcardwith" in config.scss.
@@ -91,12 +121,22 @@ export default class Side extends Component {
    */
   vis() {
     if (
+      this.props.localData !== undefined &&
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-      undefined &&
+        undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
-      return <Chart {...this.props} />;
+      return (
+        <Chart
+          section={this.props.section}
+          localData={this.props.localData}
+          indicator={this.state.indicator}
+          component={this.state.component}
+          isThumbnail={this.props.isThumbnail}
+          footnote={this.props.footnote}
+        />
+      );
     } else {
       //if not specified yet: return nothing
       return;
@@ -130,24 +170,18 @@ export default class Side extends Component {
       this.props.layoutControls !== prevProps.layoutControls ||
       this.props.isThumbnail !== prevProps.isThumbnail ||
       this.props.windowSize !== prevProps.windowSize ||
+      this.props.dataLevelLK !== prevProps.dataLevelLK ||
       this.props.textData !== prevProps.textData ||
       this.props.section !== prevProps.section
     ) {
       //update layout for top card
-      //only for top card because of performance
-      if (this.props.isTopCard || this.props.isThumbnail) {
-        let layoutdata =
-          this.props.layoutControls.params[this.props.activeSide][this.props.activeSide];
-        await setStateAsync(this, {
-          order: layoutdata.combo[0],
-          showViz: layoutdata.combo[1],
-          indicator: layoutdata.combo[2],
-          showLocator: layoutdata.combo[3],
-          ranking: this.props.textData[this.props.section]['third'],
-        });
-      }
-
+      await this.updateLayout();
+      //update chart size
       await this.updateChartSize();
+    }
+
+    if (this.props.textData !== prevProps.textData || this.props.section !== prevProps.section) {
+      await setStateAsync(this, { ranking: this.props.textData[this.props.section]['third'] });
     }
   }
 
@@ -156,13 +190,13 @@ export default class Side extends Component {
    * updates chart size
    */
   async componentDidMount() {
+    await this.updateLayout();
     await this.updateChartSize();
     await setStateAsync(this, { ranking: this.props.textData[this.props.section]['third'] });
   }
 
   render() {
     // TO DO: Solve issue of inconsistent activeSide during carousel switch
-
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
@@ -172,16 +206,14 @@ export default class Side extends Component {
                 <h4 className="section-title">{this.props.sectionName}</h4>
                 {this.props.isThumbnail && (
                   <div className={`section-thumb ${this.props.mode}`}>
-                    {this.props.mode === 'comparison'
-                      && (
-                        <TitleArt landkreisLabel={this.props.lk.label} />
-                      )}
+                    {this.props.mode === 'comparison' && (
+                      <TitleArt landkreisLabel={this.props.lk.label} />
+                    )}
                     {this.state.ranking !== '' && (
                       <div className={`indicator-ranking ${this.state.ranking}`}>
-                        <p>{this.state.ranking}</p>
+                        <p>im {this.state.ranking}</p>
                       </div>
-                    )
-                    }
+                    )}
                   </div>
                 )}
               </div>
