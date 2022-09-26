@@ -18,11 +18,7 @@ const Text = ({ sectionName, data, section }) => {
       <div className="section-title">
         <h2>{sectionName}</h2>
       </div>
-      {data.length !== 0 && (
-        <div className="section-text">
-          <p>{parse(data[section]['postcard'])}</p>
-        </div>
-      )}
+      {data.length !== 0 && <div className="section-text">{parse(data[section]['postcard'])}</div>}
     </div>
   );
 };
