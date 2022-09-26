@@ -330,19 +330,19 @@
     .overlay-container {
             height: calc(10% - 0.5rem);
             width: 100%;
-            background-color: $pink;
+            background-color: $light;
             margin: 0 auto;
             
             .overlay-inner {
+                background-color: $light;
                 width: calc(95% + 0.5rem);
                 height: 80%;
                 display: inline-flex;
-                margin: 0 0.5rem;
+                margin: 0.5rem 0.5rem;
                 border-bottom: 1px solid $default-text;
                 
                 .postcard-title {
                     margin-left: 0.5rem;
-                    background-color: aqua;
                     h4 {
                         margin: 0;
                         margin-top: 0.2rem;
@@ -350,8 +350,8 @@
                 }
 
                 .button-toggle-container {
+                    
                     margin-left: 0.5rem;
-                    background-color: bisque;
 
                     svg {
                         rect {
@@ -375,14 +375,13 @@
                     margin-left: auto;
                     width: 5%;
                     float: right;
-                    background-color: aquamarine;
                 }
 
             }
         }
 
     .side-inner {
-            background-color: azure;
+            background-color: $light;
             width: 100%;
             height: calc(90% + 0.5rem);
     
@@ -680,22 +679,4 @@
             }
         }
 }
-
-     
-
-    button {
-        @include button;
-        &.buttonDownload {
-            // position: absolute;
-            // bottom: 1vh;
-            // right: 9vh;
-    
-            img {
-                width: 65%;
-                max-width: 50px;
-                min-width: 25px;
-            }
-        }
-    
-    }
 }

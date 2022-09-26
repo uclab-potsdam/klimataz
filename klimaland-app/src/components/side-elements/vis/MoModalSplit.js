@@ -183,13 +183,6 @@ const MoModalSplit = ({
 
   return (
     <div className={`modal-split ${isThumbnail ? 'is-thumbnail' : ''}`}>
-      <div className="description">
-        <div className="title">
-          <h3>
-            Mit was und wie weit fahren Menschen in <span>{locationLabel}</span> zur Arbeit?
-          </h3>
-        </div>
-      </div>
       <div className="visualization-container" ref={targetRef}>
         <svg className="chart">
           <g className="paths-avg-trip">
@@ -263,6 +256,13 @@ const MoModalSplit = ({
             })}
           </g>
         </svg>
+      </div>
+      <div className="description">
+        <div className="title">
+          <h4>
+            Mit was und wie weit fahren Menschen in <span>{locationLabel}</span> zur Arbeit?
+          </h4>
+        </div>
       </div>
     </div>
   );
