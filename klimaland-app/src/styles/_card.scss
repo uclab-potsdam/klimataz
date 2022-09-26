@@ -143,6 +143,10 @@
                         margin: 0.5rem;
                     }
                 }
+
+                .button-download {
+                    display: none;
+                }
             }
             .section-thumb {
                 width: 100%;
@@ -322,16 +326,65 @@
 .card-active {
     .side-outer {
         width: 100%;
-        height: 100%;
     
     .overlay-container {
-            display: none;
+            height: calc(10% - 0.5rem);
+            width: 100%;
+            background-color: $pink;
+            margin: 0 auto;
+            
+            .overlay-inner {
+                width: calc(95% + 0.5rem);
+                height: 80%;
+                display: inline-flex;
+                margin: 0 0.5rem;
+                border-bottom: 1px solid $default-text;
+                
+                .postcard-title {
+                    margin-left: 0.5rem;
+                    background-color: aqua;
+                    h4 {
+                        margin: 0;
+                        margin-top: 0.2rem;
+                    }
+                }
+
+                .button-toggle-container {
+                    margin-left: 0.5rem;
+                    background-color: bisque;
+
+                    svg {
+                        rect {
+                            transition: x 0.2s;
+                        }
+                        
+                        text {
+                            // font-size: 12px;
+                            font-family: 'Chivo';
+                        }
+
+                        .controller-bg {
+                            fill: url(#MyGradient);
+                            stroke: $default-text;
+                        }
+                    }
+
+                }
+
+                .button-download {
+                    margin-left: auto;
+                    width: 5%;
+                    float: right;
+                    background-color: aquamarine;
+                }
+
+            }
         }
 
     .side-inner {
-            background-color: $light;
+            background-color: azure;
             width: 100%;
-            height: 100%;
+            height: calc(90% + 0.5rem);
     
             // back-side with explanation
             .details-container {
@@ -633,9 +686,9 @@
     button {
         @include button;
         &.buttonDownload {
-            position: absolute;
-            bottom: 1vh;
-            right: 9vh;
+            // position: absolute;
+            // bottom: 1vh;
+            // right: 9vh;
     
             img {
                 width: 65%;
@@ -645,8 +698,4 @@
         }
     
     }
-
-
-
-
 }

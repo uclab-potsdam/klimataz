@@ -37,10 +37,21 @@ export default class Side extends Component {
     this.vis = this.vis.bind(this);
     this.openUpCard = this.openUpCard.bind(this);
     this.handleClickOnList = this.handleClickOnList.bind(this);
+    // if (this.switchDataLevel !== undefined) {
+    //   this.switchDataLevel = this.switchDataLevel.bind(this);
+    // }
+    // this.switchDataLevel = this.switchDataLevel.bind(this);
 
     this.myRef = React.createRef();
     this.onShareButtonClick = this.onShareButtonClick.bind(this);
   }
+
+  // switchDataLevel() {
+  //   console.log('!')
+  //   // this.props.switchDataLevel(lk);
+  //   let levelUpdate = !this.props.isLKData;
+  //   this.props.isLKData = levelUpdate;
+  // }
 
   onShareButtonClick() {
     if (this.myRef.current === null) {
@@ -123,7 +134,7 @@ export default class Side extends Component {
     if (
       this.props.localData !== undefined &&
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-        undefined &&
+      undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -194,6 +205,8 @@ export default class Side extends Component {
   }
 
   render() {
+    // console.log(this.props.switchDataLevel)
+    // console.log('toggle labels in side', Object.keys(this.props.toggleLabels).length)
     // TO DO: Solve issue of inconsistent activeSide during carousel switch
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
@@ -215,6 +228,46 @@ export default class Side extends Component {
                   </div>
                 )}
               </div>
+              {(!this.props.isThumbnail && this.props.toggleLabels !== undefined) && (
+                <div className="button-toggle-container">
+                  {this.props.toggleLabels.lk !== '' && (
+                    <svg width="100%" height="100%">
+                      <defs>
+                        <linearGradient id="MyGradient">
+                          <stop offset="50%" stopColor="#e6c9a2" />
+                          <stop offset="100%" stopColor="#ffe8c9" />
+                        </linearGradient>
+                      </defs>
+                      <g className="toggle" onClick={this.props.switchDataLevel}>
+                        <g transform={`translate(${this.props.toggleLabels.lk.length * 9 + 10}, 5)`}>
+                          <rect className="controller-bg" x="0" y="0" width="40" height="20" rx="10" />
+                          <rect
+                            x={this.props.isLKData ? 0 : 20}
+                            y="0"
+                            width="20"
+                            height="20"
+                            rx="10"
+                            fill="#FFF9F1"
+                            stroke="#484848"
+                          />
+                        </g>
+                        <text x="0" y="20">
+                          {this.props.toggleLabels.lk}
+                        </text>
+                        <text
+                          x={this.props.toggleLabels.bl.length * 9 + 20}
+                          y="20"
+                        >
+                          {this.props.toggleLabels.bl}
+                        </text>
+                      </g>
+                    </svg>)
+                  }
+                </div>
+              )}
+              <button className="button-download" onClick={this.onShareButtonClick}>
+                <img src={share} className="button img" alt="flip-button-img" />
+              </button>
             </div>
           </div>
           <div className="side-inner">
@@ -255,10 +308,6 @@ export default class Side extends Component {
                 <TitleArt landkreisLabel={this.props.lk.label} />
                 <div className="logo-container"></div>
               </div>
-
-              <button className="buttonDownload" onClick={this.onShareButtonClick}>
-                <img src={share} className="button img" alt="flip-button-img" />
-              </button>
             </>
           )}
         </div>

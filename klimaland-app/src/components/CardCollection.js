@@ -9,7 +9,6 @@ import Side from './Side';
 
 //data (same for all cards, so imported here)
 import Data from '../data/data.json';
-//import Data from '../data/data.json';
 import LayoutControls from '../data/layout-controls-inprogress.json';
 import DynamicText from '../data/final_postcard_texts.csv';
 
@@ -42,26 +41,17 @@ export default class CardCollection extends Component {
     this.layoutControls = LayoutControls;
     // this.textData = DynamicTextData;
 
-    // console.log(DynamicTextData)
     //bind functions called by components
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     this.addCardToSelection = this.addCardToSelection.bind(this);
 
+    // if (this.switchDataLevel !== undefined) {
+    //   this.switchDataLevel = this.switchDataLevel.bind(this);
+    // }
+
     this.updateData = this.updateData.bind(this);
   }
-
-  // componentWillMount() {
-  //   readString(DynamicText, {
-  //     header: true,
-  //     download: true,
-  //     skipEmptyLines: true,
-  //     // Here this is also available. So we can call our custom class method
-  //     complete: (results, file) => {
-  //       this.updateData(results);
-  //     },
-  //   });
-  // }
 
   async updateData(result) {
     // console.log(result)
@@ -275,6 +265,8 @@ export default class CardCollection extends Component {
             similarAgs = randomSample;
           }
 
+          // console.log(this.props.switchDataLevel)
+
           return (
             <Card
               key={i}
@@ -299,6 +291,9 @@ export default class CardCollection extends Component {
                 layoutControls={this.layoutControls[section]}
                 handleClickOnList={this.addCardToSelection}
                 footnote={footnote}
+                toggleLabels={this.props.toggleLabels}
+                isLKData={this.props.dataLevelLK}
+                switchDataLevel={this.props.switchDataLevel}
               />
             </Card>
           );
@@ -306,8 +301,6 @@ export default class CardCollection extends Component {
           // console.log(e);
         }
       });
-
-      //   console.log("postcardview cards generated", list);
     }
 
     //if not in postcardview: use css class for overview / other modes
