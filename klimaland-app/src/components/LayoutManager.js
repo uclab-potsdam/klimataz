@@ -5,7 +5,7 @@ import CardCollection from './CardCollection';
 import SelectionButtons from './SelectionButtons';
 import { getRandomElement, setStateAsync } from '../helpers/helperFunc';
 import Info from './Info.js';
-import TitleArt from './TitleArt.js'
+import TitleArt from './TitleArt.js';
 // import TitleCanvas from "./TitleCanvas";
 
 //images
@@ -97,7 +97,7 @@ export default class LayoutManager extends Component {
       (x) => x.lk.value === lk.value && x.section.value === section
     );
 
-    if (chosenCard == -1) chosenCard = 0;
+    if (chosenCard === -1) chosenCard = 0;
 
     //set active card to this card id
     await setStateAsync(this, { activeCard: chosenCard }).then(() => {
@@ -156,7 +156,7 @@ export default class LayoutManager extends Component {
     //if going to the next card
     const rightCard = (this.state.activeCard + 1) % this.state.cardSelection.length;
     let sectionLabel = this.state.cardSelection[rightCard].section.label;
-    if (sectionLabel == 'Landwirtschaft') sectionLabel = 'Landw.';
+    if (sectionLabel === 'Landwirtschaft') sectionLabel = 'Landw.';
     const rightCardPreview = sectionLabel + ':\n' + this.state.cardSelection[rightCard].lk.label;
     this.setState({ previewRightCard: rightCardPreview });
     //if going back
@@ -165,7 +165,7 @@ export default class LayoutManager extends Component {
     //if new card -1: set last card of selection as new card
     if (leftCard < 0) leftCard = this.state.cardSelection.length - 1;
     sectionLabel = this.state.cardSelection[leftCard].section.label;
-    if (sectionLabel == 'Landwirtschaft') sectionLabel = 'Landw.';
+    if (sectionLabel === 'Landwirtschaft') sectionLabel = 'Landw.';
     const leftCardPreview = sectionLabel + '\n' + this.state.cardSelection[leftCard].lk.label;
     this.setState({ previewLeftCard: leftCardPreview });
   }
@@ -206,13 +206,13 @@ export default class LayoutManager extends Component {
    */
   async changeLandkreis(e) {
     //if everything is deselected, show editors pick
-    if (e.length == 0) {
+    if (e.length === 0) {
       this.setEditorsPick();
     }
     //otherwise, update cards to match selection
     else {
       let defaultLK = this.props.editorspick[0].lk.value;
-      if (this.state.mode == 'lk' && this.state.landkreisSelection[0].value == defaultLK) {
+      if (this.state.mode === 'lk' && this.state.landkreisSelection[0].value === defaultLK) {
         e = e.filter((d) => {
           return d.value !== defaultLK;
         });
@@ -293,7 +293,7 @@ export default class LayoutManager extends Component {
   async updateShuffleSelection() {
     //if we shuffle for the first time:
     //switch to shuffle mode and use editors pick as first shuffle option
-    if (!this.state.showEditorsPick & (this.state.mode != 'shuffle')) {
+    if (!this.state.showEditorsPick & (this.state.mode !== 'shuffle')) {
       await this.setEditorsPick();
     }
     //if reshuffling (means we are already in shuffle mode or in editors pick)
@@ -441,10 +441,9 @@ export default class LayoutManager extends Component {
   render() {
     return (
       <div className="main-container">
-        {(this.state.mode === 'lk' && this.state.postcardView === false)
-          && (
-            <TitleArt landkreisLabel={this.state.landkreisSelection[0].label} />
-         )}
+        {this.state.mode === 'lk' && this.state.postcardView === false && (
+          <TitleArt landkreisLabel={this.state.landkreisSelection[0].label} />
+        )}
         <SelectionButtons
           mode={this.state.mode}
           postcardView={this.state.postcardView}

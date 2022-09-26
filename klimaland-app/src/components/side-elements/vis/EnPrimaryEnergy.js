@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { stack, stackOffsetSilhouette, stackOrderAscending, curveCatmullRom, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
-import { max, extent, mean } from 'd3-array';
+import { max, extent } from 'd3-array';
 import { formatNumber } from '../../../helpers/helperFunc';
 
 const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {

@@ -36,7 +36,7 @@ export function setStateAsync(scope, state) {
  * @returns true if value is int, else false
  */
 export function isInt(value) {
-  return !isNaN(value) && parseInt(Number(value)) == value && !isNaN(parseInt(value, 10));
+  return !isNaN(value) && parseInt(Number(value)) === value && !isNaN(parseInt(value, 10));
 }
 
 /**

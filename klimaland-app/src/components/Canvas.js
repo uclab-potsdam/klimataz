@@ -131,7 +131,7 @@ const Canvas = () => {
         //only in single post card view
         let definedLevelLK = getParamValue('levelLK');
         let levelLK = true;
-        if (definedLevelLK == undefined) {
+        if (definedLevelLK === undefined) {
           levelLK = true;
         } else {
           if (definedLevelLK[0] === 'true') levelLK = true;

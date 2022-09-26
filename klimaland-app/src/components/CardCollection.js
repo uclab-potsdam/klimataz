@@ -179,7 +179,7 @@ export default class CardCollection extends Component {
     //TODO: show somewhere, that this data is not on Landkreis Level as indicated by regional:false
     for (const [key, value] of Object.entries(localData[section])) {
       //for industry data: get bundesland data for landkreise where energy is secret (stored in json under "regional")
-      if (key == '_industry_consumption_') {
+      if (key === '_industry_consumption_') {
         if (element.lk.value > 16 && !value.regional) {
           //get  bundesland data
           let BLdata = this.data[localData.bundesland][section][key];
@@ -188,7 +188,7 @@ export default class CardCollection extends Component {
         }
       }
       //if data not regional
-      if (!value.regional && value.data == undefined) {
+      if (!value.regional && value.data === undefined) {
         //get  bundesland data
         let BLdata = this.data[localData.bundesland][section][key];
         //store bundesland data at indicator of landkreis
