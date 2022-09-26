@@ -257,7 +257,7 @@ const EnIndustry = ({
                   <g className="label">
                     <foreignObject
                       className={label.threshold ? 'visible' : 'invisible'}
-                      x={label.xPos - label.width * 2}
+                      x={label.xPos - label.width * 2 > 0 ? label.xPos - label.width * 2 : 0}
                       y={label.yPos - 8}
                       width="1"
                       height="1"
@@ -307,7 +307,7 @@ const EnIndustry = ({
                               height="1"
                             >
                               <div xmlns="http://www.w3.org/1999/xhtml" className={stream.klass}>
-                                <p>{formatNumber(label.value)}</p>
+                                <p>{formatNumber(label.value)} TJ</p>
                               </div>
                             </foreignObject>
                           </g>
