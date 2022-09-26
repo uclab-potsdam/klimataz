@@ -1,7 +1,6 @@
 /* eslint-disable array-callback-return */
 import { Component } from 'react';
 import { mod, isInt, setStateAsync } from '../helpers/helperFunc';
-import { readString } from 'react-papaparse';
 
 //components
 import Card from './Card';
@@ -11,7 +10,8 @@ import Side from './Side';
 import Data from '../data/data.json';
 //import Data from '../data/data.json';
 import LayoutControls from '../data/layout-controls-inprogress.json';
-import DynamicText from '../data/final_postcard_texts.csv';
+import DynamicTextJson from '../data/textData.json';
+import { local } from 'd3';
 
 export default class CardCollection extends Component {
   constructor(props) {
@@ -24,52 +24,18 @@ export default class CardCollection extends Component {
         width: 0,
         height: 0,
       },
-      textLoaded: false,
     };
-
-    this.sectionFullName = {
-      La: { de: 'Landwirtschaft', en: 'agriculture' },
-      Mo: { de: 'Mobilität', en: 'mobility' },
-      Ge: { de: 'Gebäude', en: 'buildings' },
-      En: { de: 'Energie', en: 'energy' },
-      Ab: { de: 'Abfall', en: 'waste' },
-    };
-
-    // readString(DynamicText, papaConfig)
 
     //load all the data
     this.data = Data;
     this.layoutControls = LayoutControls;
-    // this.textData = DynamicTextData;
+    this.textData = DynamicTextJson;
 
     // console.log(DynamicTextData)
     //bind functions called by components
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     this.addCardToSelection = this.addCardToSelection.bind(this);
-
-    this.updateData = this.updateData.bind(this);
-  }
-
-  // componentWillMount() {
-  //   readString(DynamicText, {
-  //     header: true,
-  //     download: true,
-  //     skipEmptyLines: true,
-  //     // Here this is also available. So we can call our custom class method
-  //     complete: (results, file) => {
-  //       this.updateData(results);
-  //     },
-  //   });
-  // }
-
-  async updateData(result) {
-    // console.log(result)
-    const data = result.data;
-    // Here this is available and we can call this.setState (since it's binded in the constructor)
-    await setStateAsync(this, { textData: data, textLoaded: true }).then(() => {
-      this.generateCards();
-    }); // or shorter ES syntax: this.setState({ data });
   }
 
   /**
@@ -207,8 +173,6 @@ export default class CardCollection extends Component {
     let list;
     let classProp;
 
-    if (!this.state.textLoaded) return;
-
     //if in postcardview: use css class for carousel
     if (this.props.postcardView) {
       //for each item in cardSelection
@@ -244,28 +208,29 @@ export default class CardCollection extends Component {
           let localTextData = [];
           let similarAgs = [];
 
-          //get to get upper, middle or lower third (ranking) from text data
-          const thirdKey = this.sectionFullName[section].en + '_third';
-
-          if (this.state.textData !== undefined) {
+          if (this.textData !== undefined) {
             //get dynamic text data for current ags
-            localTextData = this.state.textData.filter((d) => {
-              return +d.AGS === element.lk.value;
-            });
+            localTextData = this.textData[element.lk.value];
 
             // pulling similar lks (within the bl)
-            similarAgs = this.state.textData
-              .filter((d) => {
+            similarAgs = Object.fromEntries(
+              Object.entries(this.textData).filter(([key, value]) => {
                 return element.lk.value !== 0
-                  ? d[thirdKey] === localTextData[0][thirdKey] && +d.AGS !== element.lk.value
-                  : +d.AGS !== element.lk.value;
+                  ? value[section]['third'] === localTextData[section]['third'] &&
+                      value.key !== element.lk.value
+                  : value.key !== element.lk.value;
               })
-              .map(function (d) {
-                return {
-                  value: +d.AGS,
-                  label: d.Name,
-                };
-              });
+            );
+
+            //convert to array for ags-name pairs
+            similarAgs = Object.keys(similarAgs).map((key) => [Number(key), similarAgs[key]]);
+
+            similarAgs = similarAgs.map(function (d) {
+              return {
+                value: d[1].key,
+                label: d[1].name,
+              };
+            });
 
             // shuffle the array
             const shuffled = similarAgs.sort(() => 0.5 - Math.random());
@@ -294,7 +259,6 @@ export default class CardCollection extends Component {
                 windowSize={this.state.windowSize}
                 localData={localData}
                 textData={localTextData}
-                thirdKey={thirdKey}
                 similarAgs={similarAgs}
                 layoutControls={this.layoutControls[section]}
                 handleClickOnList={this.addCardToSelection}
@@ -303,11 +267,9 @@ export default class CardCollection extends Component {
             </Card>
           );
         } catch (e) {
-          // console.log(e);
+          console.log(e); //catch errors appearing in checkData()
         }
       });
-
-      //   console.log("postcardview cards generated", list);
     }
 
     //if not in postcardview: use css class for overview / other modes
@@ -345,12 +307,11 @@ export default class CardCollection extends Component {
           this.checkIndicatorData(element);
 
           //get dynamic text data for current ags
-          let localTextData = this.state.textData.filter((d) => {
-            return +d.AGS === element.lk.value;
-          });
+          // let localTextData = this.state.textData.filter((d) => {
+          //   return +d.AGS === element.lk.value;
+          // });
 
-          //get to get upper, middle or lower third (ranking) from text data
-          const thirdKey = this.sectionFullName[section].en + '_third';
+          let localTextData = this.textData[element.lk.value];
 
           return (
             <Card
@@ -369,7 +330,6 @@ export default class CardCollection extends Component {
                 mode={this.props.mode}
                 dataLevelLK={true} //always true in thumbnail view
                 localData={localData}
-                thirdKey={thirdKey}
                 clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview
                 layoutControls={this.layoutControls[section]}
               />
@@ -388,22 +348,10 @@ export default class CardCollection extends Component {
   /**
    * React LifeCyle Hook
    * update window size on mount
-   * it is not recommended to use componentWillMount() anymore, which is why we read the dynamic text data here
    */
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
-
-    //read dynamic text file
-    readString(DynamicText, {
-      header: true,
-      download: true,
-      skipEmptyLines: true,
-      // Here this is also available. So we can call our custom class method
-      complete: (results, file) => {
-        this.updateData(results);
-      },
-    });
   }
 
   /**

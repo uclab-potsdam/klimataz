@@ -166,7 +166,7 @@
                         }
                     }
 
-                    &.unteren {
+                    &.schlechtesten {
                         border-color: $red;
 
                         p {
@@ -174,7 +174,7 @@
                         }
                     }
 
-                    &.oberen {
+                    &.besten {
                         border-color: $mint-green;
 
                         p {
@@ -379,7 +379,7 @@
                                             color: $taz-orange;
                                         }
     
-                                        &.oberen,
+                                        &.besten,
                                         &.energy-data-renewables,
                                         &.mo-km-umweltfreundlich,
                                         &.ab-data-co,
@@ -390,7 +390,7 @@
                                             color: $mint-green;
                                         }
     
-                                        &.unteren,
+                                        &.schlechtesten,
                                         &.gerics-data,
                                         &.energy-data-fossil,
                                         &.autos,
@@ -455,14 +455,14 @@
                                         }
                                     }
     
-                                    &.oberen {
+                                    &.besten {
                                         h5 {
                                             color: white;
                                             background-color: $mint-green;
                                         }
                                     }
     
-                                    &.unteren {
+                                    &.schlechtesten {
                                         h5 {
                                             color: white;
                                             background-color: $red;

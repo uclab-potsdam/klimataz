@@ -31,7 +31,7 @@ export default class Side extends Component {
         height: '200',
       },
       section: ['En', 'Mo', 'Ab', 'La', 'Ge'],
-      ranking: this.props.textData[0][this.props.thirdKey],
+      ranking: '',
     };
 
     this.vis = this.vis.bind(this);
@@ -87,7 +87,7 @@ export default class Side extends Component {
           showViz: layoutdata.combo[1],
           indicator: '',
           component: '',
-          ranking: this.props.textData[0][this.props.thirdKey],
+          ranking: this.props.textData[this.props.section]['third'],
         });
       }
     }
@@ -170,7 +170,9 @@ export default class Side extends Component {
       this.props.layoutControls !== prevProps.layoutControls ||
       this.props.isThumbnail !== prevProps.isThumbnail ||
       this.props.windowSize !== prevProps.windowSize ||
-      this.props.dataLevelLK !== prevProps.dataLevelLK
+      this.props.dataLevelLK !== prevProps.dataLevelLK ||
+      this.props.textData !== prevProps.textData ||
+      this.props.section !== prevProps.section
     ) {
       //update layout for top card
       await this.updateLayout();
@@ -178,8 +180,8 @@ export default class Side extends Component {
       await this.updateChartSize();
     }
 
-    if (this.props.textData !== prevProps.textData || this.props.thirdKey !== prevProps.thirdKey) {
-      await setStateAsync(this, { ranking: this.props.textData[0][this.props.thirdKey] });
+    if (this.props.textData !== prevProps.textData || this.props.section !== prevProps.section) {
+      await setStateAsync(this, { ranking: this.props.textData[this.props.section]['third'] });
     }
   }
 
@@ -190,7 +192,7 @@ export default class Side extends Component {
   async componentDidMount() {
     await this.updateLayout();
     await this.updateChartSize();
-    // `await setStateAsync(this, { ranking: this.props.textData[0][this.props.thirdKey] });
+    await setStateAsync(this, { ranking: this.props.textData[this.props.section]['third'] });
   }
 
   render() {
@@ -209,7 +211,10 @@ export default class Side extends Component {
                     )}
                     {this.state.ranking !== '' && (
                       <div className={`indicator-ranking ${this.state.ranking}`}>
-                        <p>im {this.state.ranking}</p>
+                        <p>
+                          im{' '}
+                          {this.state.ranking.charAt(0).toUpperCase() + this.state.ranking.slice(1)}
+                        </p>
                       </div>
                     )}
                   </div>
@@ -225,7 +230,6 @@ export default class Side extends Component {
                 sectionName={this.props.sectionName}
                 textData={this.props.textData}
                 similarAgs={this.props.similarAgs}
-                thirdKey={this.props.thirdKey}
                 activeSide={this.props.activeSide}
                 handleClickOnList={this.handleClickOnList}
               />
@@ -244,7 +248,6 @@ export default class Side extends Component {
                         sectionName={this.props.sectionName}
                         textData={this.props.textData}
                         similarAgs={this.props.similarAgs}
-                        thirdKey={this.props.thirdKey}
                         activeSide={this.props.activeSide}
                         handleClickOnList={this.handleClickOnList}
                       />
