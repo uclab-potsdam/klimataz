@@ -4,9 +4,9 @@ import LandkreiseOutline from '../../data/kreise-simpler.json';
 import bundeslaenderOutline from '../../data/bundeslaender.json';
 
 const Locator = ({ lk }) => {
-  let width = 100
-  let height = 100
-  const currentMap = +lk.value < 20 ? bundeslaenderOutline : LandkreiseOutline
+  let width = 100;
+  let height = 100;
+  const currentMap = +lk.value < 20 ? bundeslaenderOutline : LandkreiseOutline;
 
   // getting sizes of container for maps
   const targetRef = useRef();
@@ -16,15 +16,15 @@ const Locator = ({ lk }) => {
     if (targetRef.current) {
       setDimensions({
         width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight
+        height: targetRef.current.offsetHeight,
       });
     }
   }, []);
 
-  width = dimensions.width
-  height = dimensions.height
+  width = dimensions.width;
+  height = dimensions.height;
   // const zoomWidth = width / 2
-  const zoomHeight = width / 2
+  const zoomHeight = width / 2;
 
   // projection for main map
   const projection = geoMercator().fitSize([width, height], currentMap);
@@ -33,8 +33,11 @@ const Locator = ({ lk }) => {
   let currentPath;
 
   currentMap.features.forEach((f) => {
-    if ((+lk.value === +f.properties.ARS || lk.value === +f.properties.SN_L)
-      && !f.properties.GEN.includes('(Bodensee)') && f.properties.GF >= 9) {
+    if (
+      (+lk.value === +f.properties.ARS || lk.value === +f.properties.SN_L) &&
+      !f.properties.GEN.includes('(Bodensee)') &&
+      f.properties.GF >= 9
+    ) {
       currentFeature = f;
       currentPath = geoGenerator(f);
     }
@@ -52,11 +55,11 @@ const Locator = ({ lk }) => {
   translatedProj.translate(t).scale(s);
 
   // create arrow for pointer
-  const currentZoomCentroid = geoGenerator.centroid(currentFeature)
+  const currentZoomCentroid = geoGenerator.centroid(currentFeature);
   const zoomPointerPath = `M ${currentZoomCentroid[0]},${currentZoomCentroid[1] + 1}
     C ${currentZoomCentroid[0] + 10},${currentZoomCentroid[1] + 10} 
     ${currentZoomCentroid[0] + 1}, ${height / 2} 2,${height / 2}  
-    L 2, ${height / 2}`
+    L 2, ${height / 2}`;
 
   // prepare single shapes for background map
   const singleShapes = currentMap.features.map((d) => {
@@ -66,20 +69,21 @@ const Locator = ({ lk }) => {
       translatedPath: geoTranslated(d),
       lk: d.properties.ARS,
       bl: d.properties.SN_L,
-      visible: +lk.value === +d.properties.ARS
-        || +lk.value === +d.properties.SN_L
-        || +lk.value === 0
-        ? true
-        : false,
+      visible:
+        +lk.value === +d.properties.ARS || +lk.value === +d.properties.SN_L || +lk.value === 0
+          ? true
+          : false,
     };
   });
+
+  console.log('hello render');
 
   return (
     <div className="locator-container">
       <div className="locator-zoom" ref={targetRef}>
         <div className="locator-zoom-inner">
-          {
-            +lk.value !== 0 && <svg width={width} height={width}>
+          {+lk.value !== 0 && (
+            <svg width={width} height={width}>
               <clipPath id="myClip">
                 <circle cx="50%" cy="50%" r="50%" stroke="black" />
               </clipPath>
@@ -97,14 +101,20 @@ const Locator = ({ lk }) => {
                 <circle cx="50%" cy="50%" r="49.5%" stroke="#484848" fill="none"></circle>
               </g>
             </svg>
-          }
+          )}
         </div>
       </div>
       <div className="locator-background">
         <svg width={width} height={height}>
           <defs>
-            <marker id="arrowhead" markerWidth="10" markerHeight="7"
-              refX="0" refY="3.5" orient="auto">
+            <marker
+              id="arrowhead"
+              markerWidth="10"
+              markerHeight="7"
+              refX="0"
+              refY="3.5"
+              orient="auto"
+            >
               <path d="M 6,0 L 1,3.5 L 6,6" fill="none" stroke="black" />
             </marker>
           </defs>
@@ -121,9 +131,11 @@ const Locator = ({ lk }) => {
               );
             })}
           </g>
-          {+lk.value !== 0 && <g className="zoom-pointer">
-            <path d={zoomPointerPath} markerEnd="url(#arrowhead)" />
-          </g>}
+          {+lk.value !== 0 && (
+            <g className="zoom-pointer">
+              <path d={zoomPointerPath} markerEnd="url(#arrowhead)" />
+            </g>
+          )}
         </svg>
       </div>
     </div>
