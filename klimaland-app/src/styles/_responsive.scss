@@ -53,6 +53,7 @@
 
     .indicators-iframe {
         .main-container {
+
             .button-container {
                 .inner-button {
                     height: 42%;
@@ -101,12 +102,18 @@
 
     .indicators-iframe {
         max-width: 375px;
+
         .main-container {
             margin-top: 10px;
+
             .selection-buttons {
+
                 .selection-container {
                     display:block;
-                    margin-bottom: 0.5rem;
+                    margin-bottom: 0.5rem;          
+                    position: relative;
+                    width:100%;
+
                     .selector {
                         width: 90%;
                     }
@@ -123,9 +130,6 @@
                         margin-top: -10vh;                    
                     }
 
-                    &.stacked {
-                            align-content: baseline;
-                    }
                 }
             }
 
