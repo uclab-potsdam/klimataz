@@ -31,7 +31,8 @@ export default class Side extends Component {
         height: '200',
       },
       section: ['En', 'Mo', 'Ab', 'La', 'Ge'],
-      ranking: this.props.textData[0][this.props.thirdKey],
+      ranking: '',
+      exportActive: false,
     };
 
     this.vis = this.vis.bind(this);
@@ -46,27 +47,26 @@ export default class Side extends Component {
     this.onShareButtonClick = this.onShareButtonClick.bind(this);
   }
 
-  // switchDataLevel() {
-  //   console.log('!')
-  //   // this.props.switchDataLevel(lk);
-  //   let levelUpdate = !this.props.isLKData;
-  //   this.props.isLKData = levelUpdate;
-  // }
-
-  onShareButtonClick() {
+  async onShareButtonClick() {
     if (this.myRef.current === null) {
       return;
     }
 
-    toPng(this.myRef.current, {
-      cacheBust: true,
-      backgroundColor: '#fff',
-    })
+    await setStateAsync(this, { exportActive: true })
+      .then(() => {
+        return toPng(this.myRef.current, {
+          cacheBust: true,
+          backgroundColor: '#fff',
+        });
+      })
       .then((dataUrl) => {
         const link = document.createElement('a');
         link.download = 'klimaland_taz.png';
         link.href = dataUrl;
         link.click();
+      })
+      .then(() => {
+        setStateAsync(this, { exportActive: false });
       })
       .catch((err) => {
         console.log(err);
@@ -98,7 +98,7 @@ export default class Side extends Component {
           showViz: layoutdata.combo[1],
           indicator: '',
           component: '',
-          ranking: this.props.textData[0][this.props.thirdKey],
+          ranking: this.props.textData[this.props.section]['third'],
         });
       }
     }
@@ -134,7 +134,7 @@ export default class Side extends Component {
     if (
       this.props.localData !== undefined &&
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-      undefined &&
+        undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -181,7 +181,9 @@ export default class Side extends Component {
       this.props.layoutControls !== prevProps.layoutControls ||
       this.props.isThumbnail !== prevProps.isThumbnail ||
       this.props.windowSize !== prevProps.windowSize ||
-      this.props.dataLevelLK !== prevProps.dataLevelLK
+      this.props.dataLevelLK !== prevProps.dataLevelLK ||
+      this.props.textData !== prevProps.textData ||
+      this.props.section !== prevProps.section
     ) {
       //update layout for top card
       await this.updateLayout();
@@ -189,8 +191,8 @@ export default class Side extends Component {
       await this.updateChartSize();
     }
 
-    if (this.props.textData !== prevProps.textData || this.props.thirdKey !== prevProps.thirdKey) {
-      await setStateAsync(this, { ranking: this.props.textData[0][this.props.thirdKey] });
+    if (this.props.textData !== prevProps.textData || this.props.section !== prevProps.section) {
+      await setStateAsync(this, { ranking: this.props.textData[this.props.section]['third'] });
     }
   }
 
@@ -201,7 +203,9 @@ export default class Side extends Component {
   async componentDidMount() {
     await this.updateLayout();
     await this.updateChartSize();
-    // `await setStateAsync(this, { ranking: this.props.textData[0][this.props.thirdKey] });
+    if (this.props.isTopCard || this.props.isThumbnail) {
+      await setStateAsync(this, { ranking: this.props.textData[this.props.section]['third'] });
+    }
   }
 
   render() {
@@ -215,18 +219,22 @@ export default class Side extends Component {
             <div className="overlay-inner">
               <div className="postcard-title">
                 <h4 className="section-title">{this.props.sectionName}</h4>
-                <div className={`section-thumb ${this.props.mode === undefined ? 'postcard-miniature' : this.props.mode}`}>
+                <div
+                  className={`section-thumb ${
+                    this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
+                  }`}
+                >
                   {(this.props.mode === 'comparison' || !this.props.isThumbnail) && (
                     <TitleArt landkreisLabel={this.props.lk.label} />
                   )}
-                  {(this.props.isThumbnail && this.state.ranking !== '') && (
+                  {this.props.isThumbnail && this.state.ranking !== '' && (
                     <div className={`indicator-ranking ${this.state.ranking}`}>
                       <p>im {this.state.ranking}</p>
                     </div>
                   )}
                 </div>
               </div>
-              {(!this.props.isThumbnail && this.props.toggleLabels.lk !== '') && (
+              {!this.props.isThumbnail && this.props.toggleLabels.lk !== '' && (
                 <div className="button-toggle-container">
                   <div className="arrow-pointer" />
                   <svg width="100%" height="100%">
@@ -238,7 +246,14 @@ export default class Side extends Component {
                     </defs>
                     <g className="toggle" onClick={this.props.switchDataLevel}>
                       <g transform={`translate(${this.props.toggleLabels.lk.length * 9 + 10}, 2)`}>
-                        <rect className="controller-bg" x="0" y="0" width="40" height="20" rx="10" />
+                        <rect
+                          className="controller-bg"
+                          x="0"
+                          y="0"
+                          width="40"
+                          height="20"
+                          rx="10"
+                        />
                         <rect
                           x={this.props.isLKData ? 0 : 20}
                           y="0"
@@ -252,10 +267,7 @@ export default class Side extends Component {
                       <text x="0" y="18">
                         {this.props.toggleLabels.lk}
                       </text>
-                      <text
-                        x={this.props.toggleLabels.bl.length * 9 + 20}
-                        y="18"
-                      >
+                      <text x={this.props.toggleLabels.bl.length * 9 + 20} y="18">
                         {this.props.toggleLabels.bl}
                       </text>
                       <text
@@ -275,39 +287,40 @@ export default class Side extends Component {
             </div>
           </div>
           <div className="side-inner">
-            {!this.state.showViz && ( //TEXT
+            {!this.state.showViz && this.props.isTopCard && (
+              //TEXT
               <Details
                 lk={this.props.lk}
                 section={this.props.section}
                 sectionName={this.props.sectionName}
                 textData={this.props.textData}
                 similarAgs={this.props.similarAgs}
-                thirdKey={this.props.thirdKey}
                 activeSide={this.props.activeSide}
                 handleClickOnList={this.handleClickOnList}
               />
             )}
             {this.state.showViz && this.vis()}
           </div>
-          {!this.props.isThumbnail && (
+          {!this.props.isThumbnail && this.props.isTopCard && (
             <>
               <div className="social-media-layout" ref={this.myRef}>
                 <div className="side-inner">
-                  <div className="side-inner export">
-                    {!this.state.showViz && ( //TEXT
-                      <Details
-                        lk={this.props.lk}
-                        section={this.props.section}
-                        sectionName={this.props.sectionName}
-                        textData={this.props.textData}
-                        similarAgs={this.props.similarAgs}
-                        thirdKey={this.props.thirdKey}
-                        activeSide={this.props.activeSide}
-                        handleClickOnList={this.handleClickOnList}
-                      />
-                    )}
-                    {this.state.showViz && this.vis()}
-                  </div>
+                  {this.state.exportActive && (
+                    <div className="side-inner export">
+                      {!this.state.showViz && ( //TEXT
+                        <Details
+                          lk={this.props.lk}
+                          section={this.props.section}
+                          sectionName={this.props.sectionName}
+                          textData={this.props.textData}
+                          similarAgs={this.props.similarAgs}
+                          activeSide={this.props.activeSide}
+                          handleClickOnList={this.handleClickOnList}
+                        />
+                      )}
+                      {this.state.showViz && this.vis()}
+                    </div>
+                  )}
                 </div>
                 <TitleArt landkreisLabel={this.props.lk.label} />
                 <div className="logo-container"></div>

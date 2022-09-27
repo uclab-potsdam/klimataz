@@ -25,7 +25,7 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
     'Erneuerbare Energien',
     'Stromaustauschsaldo',
     'Kernenergie',
-    'Sonstige',
+    'Sonstige Energieträger',
   ];
 
   // , 'Kernenergie', 'Andere Energieträger']
@@ -61,7 +61,6 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
 
   let switchHighlightedStream = function (id) {
     if (currentData !== undefined) {
-      // console.log(id)
       setHighlightedStream(id);
     }
   };
@@ -83,7 +82,6 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
 
     // get all energy sources and filter out "insgesamt" and "Anteil_Erneuerbar"
     const uniqueEnergySourceAll = uniq(currentData.data.map((d) => d.column));
-
     const uniqueEnergySourceFiltered = uniqueEnergySourceAll.filter((category) => {
       return (
         category !== 'Insgesamt' &&
@@ -178,9 +176,11 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
       });
 
       const labelRects = [];
+      const labelID = mapLabel(stream.key);
+
       for (let index = 0; index < stream['length']; index++) {
         // const next = index > stream['length'] ? stream['length'] - 1 : index + 1
-        // console.log(next)
+
         const scaledFloor = yScale(stream[index][0]);
         const scaledCeil = yScale(stream[index][1]);
         const year = stackData[index].year;
@@ -202,16 +202,16 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
 
       return {
         klass: stream.key.substring(0, 3) + '-stream',
-        id: stream.key,
+        id: labelID,
         fill: scaleCategory(stream.key),
         path: areaGen(stream),
         xPos: xScale(yearOfMax),
         labels: labelRects,
         yPos: yScale(stream[indexOfMax][0] - (stream[indexOfMax][0] - stream[indexOfMax][1]) / 2),
         height: yScale(stream[indexOfMax][0] - stream[indexOfMax][1]),
-        width: stream.key.length,
+        width: labelID.length,
         threshold:
-          highlighedStream === stream.key || (maxStreamValue > 50000 && highlighedStream === ''), //Fixed value for now, maybe make it dynamic?
+          highlighedStream === labelID || (maxStreamValue > 50000 && highlighedStream === ''), //Fixed value for now, maybe make it dynamic?
         maxStreamValue,
       };
     });
@@ -272,7 +272,7 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
                   <g className="label">
                     <foreignObject
                       className={label.threshold ? 'visible' : 'invisible'}
-                      x={label.xPos - label.width * 2}
+                      x={label.xPos - label.width * 2 > 0 ? label.xPos - label.width * 2 : 0}
                       y={label.yPos - 8}
                       width="1"
                       height="1"
@@ -321,7 +321,7 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
                               height="1"
                             >
                               <div xmlns="http://www.w3.org/1999/xhtml" className={stream.klass}>
-                                <p>{formatNumber(label.value)}</p>
+                                <p>{formatNumber(label.value)} TJ</p>
                               </div>
                             </foreignObject>
                           </g>

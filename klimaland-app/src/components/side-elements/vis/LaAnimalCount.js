@@ -163,13 +163,13 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
     };
 
     // call function above for each animal group
-    dataSchweine.map((data, d) => {
+    dataSchweine.forEach((data, d) => {
       arcSchweine.push(dataAnimal(data, d, dataSchweine));
     });
-    dataRinder.map((data, d) => {
+    dataRinder.forEach((data, d) => {
       arcRinder.push(dataAnimal(data, d, dataRinder));
     });
-    dataSchafe.map((data, d) => {
+    dataSchafe.forEach((data, d) => {
       arcSchafe.push(dataAnimal(data, d, dataSchafe));
     });
   }

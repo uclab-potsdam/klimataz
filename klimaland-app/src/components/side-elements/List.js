@@ -1,7 +1,7 @@
 import React from 'react';
 
-const List = ({ lk, data, similarAgs, thirdKey, handleClickOnList }) => {
-  const agsRanking = data[0][thirdKey].substring(0, data[0][thirdKey].indexOf(' '));
+const List = ({ lk, data, similarAgs, section, handleClickOnList }) => {
+  const agsRanking = data[section]['third'].substring(0, data[section]['third'].indexOf(' '));
 
   /**
    * when someone clicked on a list item, pass this to parent
@@ -15,9 +15,7 @@ const List = ({ lk, data, similarAgs, thirdKey, handleClickOnList }) => {
   return (
     <div className="list-inner-container">
       <div className={`list-similar-container ${agsRanking}`}>
-        {lk.value !== 0 && (
-          <h5>Im {data[0][thirdKey].charAt(0).toUpperCase() + data[0][thirdKey].slice(1)} wie:</h5>
-        )}
+        {lk.value !== 0 && <h5>Im {data[section]['third']} wie:</h5>}
         {lk.value === 0 && <h5>Check out also:</h5>}
         <ul>
           {similarAgs.map((ags, a) => {
