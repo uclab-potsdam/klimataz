@@ -13,41 +13,44 @@ export default class Locator extends Component {
 
     this.state = {
       dimensions: {
-        width: 0,
-        height: 0,
+        width: 100,
+        height: 100,
       },
       loading: false,
       singleShapes: [],
       zoomPointerPath: [],
+      currentMap: [],
+      geoGenerator: [],
+      zoomHeight: 0,
     };
   }
 
-  async componentDidMount() {
-    let width = 100;
-    let height = 100;
+  async changeCurrentMap() {
     const currentMap = +this.props.lk.value < 20 ? bundeslaenderOutline : LandkreiseOutline;
 
-    if (this.targetRef.current) {
-      await setStateAsync(this, {
-        dimensions: {
-          width: this.targetRef.current.offsetWidth,
-          height: this.targetRef.current.offsetHeight,
-        },
-      });
-    }
-
-    width = this.state.dimensions.width;
-    height = this.state.dimensions.height;
+    const width = this.state.dimensions.width;
+    const height = this.state.dimensions.height;
     // const zoomWidth = width / 2
     const zoomHeight = width / 2;
 
     // projection for main map
     const projection = geoMercator().fitSize([width, height], currentMap);
     const geoGenerator = geoPath().projection(projection);
+
+    return setStateAsync(this, {
+      currentMap: currentMap,
+      zoomHeight: zoomHeight,
+      geoGenerator: geoGenerator,
+    });
+  }
+
+  async generateMap() {
     let currentFeature;
     let currentPath;
 
-    currentMap.features.forEach((f) => {
+    const height = this.state.dimensions.height;
+
+    this.state.currentMap.features.forEach((f) => {
       if (
         (+this.props.lk.value === +f.properties.ARS ||
           this.props.lk.value === +f.properties.SN_L) &&
@@ -55,33 +58,38 @@ export default class Locator extends Component {
         f.properties.GF >= 9
       ) {
         currentFeature = f;
-        currentPath = geoGenerator(f);
+        currentPath = this.state.geoGenerator(f);
       }
     });
 
     // translate and rescale for zoom map
     const translatedProj = geoMercator()
-      .fitSize([zoomHeight, zoomHeight], currentMap)
+      .fitSize([this.state.zoomHeight, this.state.zoomHeight], this.state.currentMap)
       .scale(1)
       .translate([0, 0]);
     const geoTranslated = geoPath().projection(translatedProj);
     const b = geoTranslated.bounds(currentFeature);
-    const s = 0.95 / Math.max((b[1][0] - b[0][0]) / zoomHeight, (b[1][1] - b[0][1]) / zoomHeight);
+    const s =
+      0.95 /
+      Math.max(
+        (b[1][0] - b[0][0]) / this.state.zoomHeight,
+        (b[1][1] - b[0][1]) / this.state.zoomHeight
+      );
     const t = [(height - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
     translatedProj.translate(t).scale(s);
 
     // create arrow for pointer
-    const currentZoomCentroid = geoGenerator.centroid(currentFeature);
+    const currentZoomCentroid = this.state.geoGenerator.centroid(currentFeature);
     const zoomPointerPathTemp = `M ${currentZoomCentroid[0]},${currentZoomCentroid[1] + 1}
     C ${currentZoomCentroid[0] + 10},${currentZoomCentroid[1] + 10} 
     ${currentZoomCentroid[0] + 1}, ${height / 2} 2,${height / 2}  
     L 2, ${height / 2}`;
 
     // prepare single shapes for background map
-    const singleShapesTemp = currentMap.features.map((d) => {
+    const singleShapesTemp = this.state.currentMap.features.map((d) => {
       // every transformation is made in here, an array of prepared data is returned
       return {
-        path: geoGenerator(d),
+        path: this.state.geoGenerator(d),
         translatedPath: geoTranslated(d),
         lk: d.properties.ARS,
         bl: d.properties.SN_L,
@@ -95,6 +103,47 @@ export default class Locator extends Component {
     });
 
     this.setState({ singleShapes: singleShapesTemp, zoomPointerPath: zoomPointerPathTemp });
+  }
+
+  async componentDidMount() {
+    console.log('mount', this.props.lk);
+    if (this.targetRef.current) {
+      await setStateAsync(this, {
+        dimensions: {
+          width: this.targetRef.current.offsetWidth,
+          height: this.targetRef.current.offsetHeight,
+        },
+      });
+    }
+    await this.changeCurrentMap().then(() => {
+      this.generateMap();
+    });
+  }
+
+  async componentDidUpdate(prevProps) {
+    if (this.props.lk !== prevProps.lk) {
+      //update dimensions
+      if (this.targetRef.current) {
+        await setStateAsync(this, {
+          dimensions: {
+            width: this.targetRef.current.offsetWidth,
+            height: this.targetRef.current.offsetHeight,
+          },
+        });
+      }
+      if (this.props.lk < 18 && prevProps.lk < 18) {
+        //stay on BL map
+        this.generateMap();
+      } else if (this.props.lk > 18 && prevProps.lk > 18) {
+        //stay on LK map
+        this.generateMap();
+      } else {
+        //change from LK map to BL map (and the other way around)
+        await this.changeCurrentMap().then(() => {
+          this.generateMap();
+        });
+      }
+    }
   }
 
   render() {
