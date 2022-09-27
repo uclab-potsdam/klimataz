@@ -150,10 +150,11 @@
                     justify-content: left;
                     padding-left: 0.5rem;
 
-                    &.messy {
-                        //margin-top: -10vh;                    
+                    &.carousel {
+                        align-content: center;
+                        justify-content: space-around;
+                        padding-left: 0;
                     }
-
                 }
             }
 
@@ -286,7 +287,6 @@
 
                                     p {
                                         margin-top: 0.5rem;
-                                        height: 100%;
                                     }
                                 }
                             }

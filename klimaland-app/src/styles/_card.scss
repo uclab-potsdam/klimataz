@@ -41,6 +41,11 @@
         flex-direction: unset;
         flex-wrap: nowrap;
         padding: 0;
+        &.card-front {
+            &.side-odd {
+                display: none;
+            }
+        }
     }
 }
 
@@ -374,7 +379,6 @@
                         background-repeat: no-repeat;
                         background-size: contain;
                         margin-top: 0.3rem;
-                        // width: 5%;
                         width: 1rem;
                         height: calc(100% - 0.3rem);
                     }
@@ -386,7 +390,6 @@
                         }
                         
                         text {
-                            // font-size: 12px;
                             font-family: 'Chivo';
                         }
 
@@ -415,53 +418,54 @@
             background-color: $light;
             width: 100%;
             height: calc(90% + 0.5rem);
+            position: relative;
+            top: 0;
     
             // back-side with explanation
             .details-container {
                 height: 100%;
-    
+                background-color: pink;
+                
                 .flex-container {
-                    display: flex;
+                    display: inline-flex;
+                    width: 100%;
                     height: 90%;
-    
+                    background-color: aquamarine;
+                    
                     .text-container {
                         width: 60%;
                         height: 100%;
-                        overflow: scroll;
-    
-                        border-right: 1px solid $default-text;
-    
+                        overflow: hidden;
+                        
                         .text-inner-container {
-                            margin: 10px;
-                            height: 90%;
-    
+                            position: relative;
+                            margin: 0 auto;
+                            width: 80%;
+                            height: 100%;
+                            
                             .section-title {
-                                text-align: left;
-                                margin: 2rem 1rem 0.5rem 1rem;
-                                border-bottom: 1px solid $mint-green;
-                                width: 85%;
-    
                                 h2 {
+                                    margin-top: 0;
+                                    padding-top: 2rem;
                                     margin-bottom: 0.5rem;
-                                    font-size: 24px;
                                 }
                             }
-    
+
                             .section-text {
-                                margin: 20px;
-                                width: 85%;
-    
+                                height: 90%;
+                                position: relative;
+                                overflow: auto;
+                                background-color: azure;
+
                                 p {
                                     font-size: 14px;
-    
-                                    // line-height: 1.2rem;
                                     span {
                                         color: $taz-orange;
-    
+                            
                                         &.mittleren {
                                             color: $taz-orange;
                                         }
-    
+                            
                                         &.besten,
                                         &.energy-data-renewables,
                                         &.mo-km-umweltfreundlich,
@@ -472,7 +476,7 @@
                                         &.ge-data-erneuerbare {
                                             color: $mint-green;
                                         }
-    
+                            
                                         &.schlechtesten,
                                         &.gerics-data,
                                         &.energy-data-fossil,
@@ -481,11 +485,11 @@
                                         &.ge-data-heat {
                                             color: $red;
                                         }
-    
+                            
                                         &.energy-data-geheim {
                                             color: lighten($default-text, 20%);
                                         }
-    
+                            
                                         &.location-name {
                                             color: $dust-blue;
                                         }
@@ -494,142 +498,195 @@
                             }
                         }
                     }
-    
-                    .text-container::-webkit-scrollbar {
-                        display: none;
-                    }
-    
-                    /* Hide scrollbar for IE, Edge and Firefox */
-                    .text-container {
-                        -ms-overflow-style: none;
-                        /* IE and Edge */
-                        scrollbar-width: none;
-                        /* Firefox */
-                    }
-    
+
                     .data-container {
                         width: 40%;
                         height: 100%;
-    
+                        background-color: aliceblue;
+                        border-left: 1px solid $default-text;
+
                         .locator-map {
                             border-bottom: 1px solid $default-text;
                             position: relative;
                             height: 40%;
                         }
-    
+
                         .lk-list {
                             margin: 0px 0px 0px 0px;
+                            width: 100%;
                             height: 60%;
                             overflow: hidden;
                             position: relative;
-    
-                            .list-inner-container {
-                                height: 100%;
-                                position: relative;
-                                overflow: scroll;
-    
-                                .list-similar-container {
-                                    // border-bottom: 1px solid $default-text;
-                                    // overflow-x: hidden;
-                                    // -ms-overflow-style: none;
-                                    // scrollbar-width: none;
-                                    height: 100%;
 
-                                    h5 {
-                                        position: absolute;
-                                    }
-    
-                                    &.mittleren {
-                                        h5 {
-                                            color: white;
-                                            background-color: $taz-orange;
-                                        }
-                                    }
-    
-                                    &.besten {
-                                        h5 {
-                                            color: white;
-                                            background-color: $mint-green;
-                                        }
-                                    }
-    
-                                    &.schlechtesten {
-                                        h5 {
-                                            color: white;
-                                            background-color: $red;
-                                        }
-                                    }
-    
-                                    ul {
-                                        overflow-y: scroll;
-                                    }
-    
-    
-                                    &::-webkit-scrollbar {
-                                        display: none;
-                                    }
-    
-    
-                                    h5 {
-                                        // padding-left: 0.5rem;
-                                        width: calc(100% - 0.5rem);
-                                        margin: 0;
-                                        padding: 0.45rem 0rem 0.45rem 0.5rem;
+                            .list-inner-container {
+                                overflow: scroll;
+                                position: relative;
+                                height: 100%;
+                                
+                                .list-similar-container {
                                         border-bottom: 1px solid $default-text;
-                                    }
-    
-                                    ul {
-                                        margin: 0.0rem 0rem 0rem 0rem;
-    
-    
-    
-                                    }
-    
-                                    ol {
-                                        padding-top: 0.5rem;
-                                        border-bottom: 1px solid $default-text;
-                                        padding-bottom: 0.5rem;
-    
-                                        &:hover {
-                                            background-color: $lighter-orange-full;
-                                            cursor: pointer;
+                                        width: 100%;
+                                        height: 100%;
+                                
+                                        h5 {
+                                            width: calc(100% - 0.5rem);
+                                            margin: 0;
+                                            padding: 0.45rem 0rem 0.45rem 0.5rem;
+                                            border-bottom: 1px solid $default-text;
+                                        }
+                                
+                                        ul {
+                                            margin: 0.0rem 0rem 0rem 0rem;
+                                        }
+                                
+                                        ol {
+                                            padding-top: 0.5rem;
+                                            border-bottom: 1px solid $default-text;
+                                            padding-bottom: 0.5rem;
+                                
+                                            &:hover {
+                                                background-color: $lighter-orange-full;
+                                                cursor: pointer;
+                                            }
+                                        }
+                                
+                                        &.mittleren {
+                                            h5 {
+                                                color: white;
+                                                background-color: $taz-orange;
+                                            }
+                                        }
+                                
+                                        &.besten {
+                                            h5 {
+                                                color: white;
+                                                background-color: $mint-green;
+                                            }
+                                        }
+                                
+                                        &.schlechtesten {
+                                            h5 {
+                                                color: white;
+                                                background-color: $red;
+                                            }
                                         }
                                     }
-                                }
                             }
                         }
                     }
                 }
-            }
-    
-            .footer-container {
-                height: 10%;
-                border-top: 1px solid $default-text;
-    
-                .footer-inner-container {
-                    display: flex;
-    
-                    .logo-container {
-                        background-image: url(../img/taz/taz-logo.svg);
-                        background-repeat: no-repeat;
-                        background-size: contain;
-                        width: 20%;
-                        min-height: 1rem;
-                        margin: 10px;
-                    }
-    
-                    .info-backside {
-                        margin: 10px 0px 10px 0px;
-                        font-size: 12px;
-                        border: 1px solid $mint-green;
-                        border-radius: 20px;
-                        padding: 0.2rem 0.5rem;
-                        background: linear-gradient(to left, $mint-green, rgba($mint-green, 0.5));
-                        -webkit-background-clip: text;
-                        background-clip: text;
-                        -webkit-text-fill-color: transparent;
+
+                .footer-container {
+                    height: 10%;
+                    border-top: 1px solid $default-text;
+                    background-color: aqua;
+
+                    .footer-inner-container {
+                        display: flex;
+
+                        .logo-container {
+                            background-image: url(../img/taz/taz-logo.svg);
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                            width: 20%;
+                            min-height: 1rem;
+                            margin: 10px;
+                        }
+
+                        .info-backside {
+                            margin: 10px 0px 10px 0px;
+                            font-size: 12px;
+                            border: 1px solid $mint-green;
+                            border-radius: 20px;
+                            padding: 0.2rem 0.5rem;
+                            background: linear-gradient(to left, $mint-green, rgba($mint-green, 0.5));
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
                     }
                 }
+                // .flex-container {
+                //     display: flex;
+                //     height: 90%;
+    
+                //     .text-container {
+                //         width: 60%;
+                //         height: 100%;
+                //         overflow: scroll;
+    
+                //         border-right: 1px solid $default-text;
+    
+                //         .text-inner-container {
+                //             margin: 10px;
+                //             height: 90%;
+    
+                //             .section-title {
+                //                 text-align: left;
+                //                 margin: 2rem 1rem 0.5rem 1rem;
+                //                 border-bottom: 1px solid $mint-green;
+                //                 width: 85%;
+    
+                //                 h2 {
+                //                     margin-bottom: 0.5rem;
+                //                     font-size: 24px;
+                //                 }
+                //             }
+    
+                //             .section-text {
+                //                 margin: 20px;
+                //                 width: 85%;
+                //                 // pointer-events: none;
+    
+                //                 }
+                //             }
+                //         }
+                //     }
+    
+                //     .text-container::-webkit-scrollbar {
+                //         display: none;
+                //     }
+    
+                //     /* Hide scrollbar for IE, Edge and Firefox */
+                //     .text-container {
+                //         -ms-overflow-style: none;
+                //         /* IE and Edge */
+                //         scrollbar-width: none;
+                //         /* Firefox */
+                //     }
+    
+                //     .data-container {
+    
+                //         .lk-list {
+                //             margin: 0px 0px 0px 0px;
+                //             height: 60%;
+                //             overflow: hidden;
+                //             position: relative;
+    
+                //             .list-inner-container {
+                //                 height: 100%;
+                //                 position: relative;
+                //                 overflow: scroll;
+    
+                //                 .list-similar-container {
+                //                     // border-bottom: 1px solid $default-text;
+                //                     // overflow-x: hidden;
+                //                     // -ms-overflow-style: none;
+                //                     // scrollbar-width: none;
+                //                     height: 100%;
+
+    
+                //                     &::-webkit-scrollbar {
+                //                         display: none;
+                //                     }
+    
+
+    
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
             }
     
             // CSS Transition classes
