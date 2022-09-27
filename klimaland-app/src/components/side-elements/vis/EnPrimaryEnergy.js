@@ -3,7 +3,7 @@ import { stack, stackOffsetSilhouette, stackOrderAscending, curveCatmullRom, are
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
-import { formatNumber } from '../../../helpers/helperFunc';
+import { formatNumber, useCardSize } from '../../../helpers/helperFunc';
 
 const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
   const colorArray = [
@@ -31,18 +31,10 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
   // , 'Kernenergie', 'Andere Energieträger']
   // getting sizes of container for maps
   const targetRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const dimensions = useCardSize(targetRef);
+
   const [highlighedStream, setHighlightedStream] = useState('');
   const [activeLabel, setactiveLabel] = useState('');
-
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight,
-      });
-    }
-  }, []);
 
   // inital variables
   const marginWidth = 0;

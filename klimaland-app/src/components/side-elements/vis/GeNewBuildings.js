@@ -3,7 +3,7 @@ import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { line } from 'd3-shape';
-import { firstToUppercase, formatNumber } from './../../../helpers/helperFunc';
+import { firstToUppercase, formatNumber, useCardSize } from './../../../helpers/helperFunc';
 
 const Buildings = ({
   currentData,
@@ -14,17 +14,9 @@ const Buildings = ({
 }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [currentId, setCurrentId] = useState('');
+  const dimensions = useCardSize(targetRef);
 
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight,
-      });
-    }
-  }, []);
+  const [currentId, setCurrentId] = useState('');
 
   window.mobileCheck = function () {
     let check = false;

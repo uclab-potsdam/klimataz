@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { extent, max, min } from 'd3-array';
 import { pie, arc } from 'd3';
-import { formatNumber } from '../../../helpers/helperFunc';
+import { formatNumber, useCardSize } from '../../../helpers/helperFunc';
 
 const Waste = ({
   currentData,
@@ -13,17 +13,19 @@ const Waste = ({
   footnote,
 }) => {
   const targetRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  //const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [piesAreActive, setPies] = useState(false);
 
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight,
-      });
-    }
-  }, []);
+  const dimensions = useCardSize(targetRef);
+
+  // useLayoutEffect(() => {
+  //   if (targetRef.current) {
+  //     setDimensions({
+  //       width: targetRef.current.offsetWidth,
+  //       height: targetRef.current.offsetHeight,
+  //     });
+  //   }
+  // }, []);
 
   //handle click events on controller to show pie
   let activatePies = function (e) {

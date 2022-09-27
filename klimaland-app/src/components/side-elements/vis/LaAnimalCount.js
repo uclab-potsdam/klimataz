@@ -3,7 +3,7 @@ import { arc } from 'd3';
 import { max } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
-import { formatNumber } from '../../../helpers/helperFunc';
+import { formatNumber, useCardSize } from '../../../helpers/helperFunc';
 
 const Land = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
   const colorArray = [
@@ -14,16 +14,7 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
 
   // getting sizes of container for maps
   const targetRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight,
-      });
-    }
-  }, []);
+  const dimensions = useCardSize(targetRef);
 
   window.mobileCheck = function () {
     let check = false;
