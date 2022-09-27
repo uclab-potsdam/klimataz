@@ -66,6 +66,7 @@
             }
 
             .card-active {
+
                 .side-inner {
                     .details-container {
                         height: calc(90% - 10px);
@@ -102,6 +103,18 @@
     .indicators-iframe {
         max-width: 375px;
         .main-container {
+            .word-art-title {
+                width: 100%;
+                bottom: 1rem;
+                transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
+
+                .wordart {
+                    font-size: 2rem;
+                    line-height: 2rem;
+                    padding-top: 10px;
+                }
+            }
+
             margin-top: 10px;
             .selection-buttons {
                 .selection-container {
@@ -116,8 +129,12 @@
             .card-collection {
                 margin-top: -10px;
                 height: 100vh;
+                width: 95%;
+                margin: 0 auto;
                 .card-container {
                     height: 100vh;
+                    justify-content: left;
+                    padding-left: 0.5rem;
 
                     &.messy {
                         margin-top: -10vh;                    
@@ -130,9 +147,13 @@
             }
 
             .info-container {
+                width: 25%;
+                position: absolute;
+                right: -3rem;
+                bottom: 25%;
                 .help {
-                    width: 50px;
-                    height: 50px;
+                    width: 30px;
+                    height: 30px;
 
                     h2.mobile-title {
                         display: block;
@@ -183,10 +204,43 @@
             width: calc($portait-postcardwidth/2.3);
             height: calc($portait-postcardwidth/1.8);
             z-index: 0;
-            margin: -6px 0px -15px 0px;
+            margin: -10px 0.5rem -3px 1rem;
         }
 
         &.card-active {
+            .overlay-container {
+                    .overlay-inner {
+                        .postcard-title {
+                            .postcard-miniature {
+                                display: none;
+                            }
+
+                        }
+
+                        .button-toggle-container {
+                            svg {
+                                .toggle {
+                                    g {
+                                        transform: translate(5px, 2px);
+                                    }   
+                                }
+                                text:not(.mobile-toggle-label) {
+                                    display: none;
+                                }
+
+                                .mobile-toggle-label {
+                                    transform: translate(-100px, 0px);
+                                }
+                            }
+                        }
+
+                        .button-download {
+                            width: 20%;
+                        }
+
+                    }
+                }
+
             .side-inner {
                 .details-container {
                     height: 90%;
@@ -274,12 +328,39 @@
                     }
                 }
             }
+
+            .flip {
+                right: 0rem;
+            }
         }
     }
 
     .card-preview {
+        .overlay-container {
+            .overlay-inner {
+                .postcard-title {
+                .section-thumb {
+                    overflow: visible;
+                        .word-art-title {
+                            top: 2rem;
+                            .gruss-thumb {
+                                font-size: 0.5rem;
+                            }
+                            .wordart {
+                                font-size: 0.9rem;
+                                line-height: 0.9rem;
+                                padding-top: 0.9rem;
+                                background-image: linear-gradient(0deg, $taz-pink 0%, $blue 90%);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
         .side-inner {
-            clip-path: circle(40%);
+            clip-path: circle(50%);
+            transform: translateY(3rem);
         }
     }
 
@@ -290,10 +371,24 @@
 
     .chart-container {
         .svg-container {
+
+            .description {
+                .title {
+                    margin: 0 auto !important;
+            
+                    h4 {
+                        padding-bottom: 0.5rem !important;
+                    }
+                }
+            }
+
             &.En-chart {
                 .energy-industry, .primary-energy {
+                    .description {
+                        height: 15%;
+                    }
                     .visualization-container {
-                        height: 75%;
+                        height: 77%;
                     }
                 }
             }
@@ -301,11 +396,11 @@
             &.La-chart {
                 .animal-count {
                     .description {
-                        height: 25%;
+                        height: 20%;
                     }
 
                     .visualization-container {
-                        height: 75%;
+                        height: 80%;
                         .label-container {
                             transform: translateY(28px);
                             -webkit-transform: translateY(28px);
@@ -348,14 +443,19 @@
 
                 .animal-density {
                     .description {
+                        height: 40%;    
+                        position: absolute;
+                        bottom: 0;
                         .caption {
                             font-size: 12px;
                             margin-right: 1rem;
+                            transform: translateY(-10px);
+                            -webkit-transform: translateY(-10px);
                         }
 
                         .legend {
-                            transform: translateY(-20px);
-                            -webkit-transform:translateY(-20px);
+                            transform: translateY(-30px);
+                            -webkit-transform:translateY(-30px);
 
                             .legend-item {
                                 font-size: 10px;
@@ -368,10 +468,10 @@
                     }
 
                     .visualization-container {
-
+                        height: 60%;
                         .chart {
-                            transform: translateY(20px);
-                            -webkit-transform:translateY(20px);
+                            transform: translateY(-30px);
+                            -webkit-transform:translateY(-30px);
                             .bars {
                                 .year-label {
                                         font-size: 14px;
@@ -389,11 +489,19 @@
             &.Mo-chart {
                 .car-density {
                     .description {
+                        height: 20%;
+                        position: absolute;
+                        bottom: 0;
+
+                        .title {
+                            margin: 0 auto;
+                            h4 {
+                                padding-bottom: 0.5rem;
+                            }
+                        }
+                        
                         .legend {
-                            background-image: url('../img/legends/MoCarDensity-mobile.svg');
-                            transform: scale(0.9);
-                            -webkit-transform:scale(0.9);
-                            margin-top: 0;
+                            display: none;
                         }
                     }
     
@@ -403,8 +511,8 @@
     
                         .chart {
                             &.active-chart {
-                                transform: skew(0deg, 0deg);
-                                -webkit-transform:skew(0deg, 0deg);
+                                transform: skew(0deg, 0deg) translate(10px, -15px);
+                                -webkit-transform:skew(0deg, 0deg) translate(10px, -15px);
                             }
     
                             &.thumbnail-chart {
@@ -430,7 +538,11 @@
                 }
 
                 .modal-split {
+                    .description {
+                        height: 20%;
+                    }
                     .visualization-container {
+                        height: 80%;
                         .chart {
                             .bar-percentage-trip {
                                 display: none;
@@ -442,8 +554,11 @@
     
             &.Ab-chart {
                 .biotonne-weight {
+                    .description {
+                        height: 15%;
+                    }
                     .visualization-container {
-                        height: 60%;
+                        height: 70%;
 
                         .chart {
                             text {
@@ -471,20 +586,30 @@
             &.Ge-chart {
                 .newbuildings-energy {
                     .description {
-                        height: 19%;
+                        .title {
+                            margin: 0 auto;
+                            h4 {
+                                padding-bottom: 0.5rem;
+                            }
+                        }
+
+                        height: 25%;
+                        position: absolute;
+                        bottom: 0;
+                        
                         .caption {
                             display: none;
                         }
 
                         .legend {
-                            position: absolute;
-                            bottom: 0;
+                            // position: absolute;
+                            // bottom: 0;
                             height: 19%;
-                            width: 100%;
+                            width: 95%;
                             
                             .legend-inner {
                                 font-size: 12px;
-                                position: absolute;
+                                // position: absolute;
                                 width: 100%;
                                 bottom: 1rem;
                         
@@ -497,6 +622,10 @@
                                         display: flex;
                                         flex: 0 1 auto;
                                         margin-left: 10px;
+
+                                        .element-color {
+                                            align-self: center;
+                                        }
                                     }
                                 }
                             }
@@ -505,6 +634,9 @@
 
                     .visualization-container {
                         height: 70%;
+                        .chart {
+                            transform: translate(0, 10px);
+                        }
                     }
                     &.is-thumbnail {
                         .description {
@@ -514,17 +646,23 @@
                 }
 
                 .avg-heating {
+                    .description {
+                        height: 15%;
+                    }
                     .visualization-container {
-                        transform: translateY(-10px);
-                        -webkit-transform:translateY(-10px);
+                        height: 85%;
+                        transform: translateY(-15px);
+                        -webkit-transform:translateY(-15px);
 
-                        // .non-clipped-elements {
-                        //     g {
-                        //         text {
-                        //         transform-origin: center;
-                        //         transform: rotate(45deg);                                }
-                        //     }
-                        // }
+                        .chart {
+                            .non-clipped-elements {
+                                transform: translate(-28px, 0);
+
+                                .measure-label {
+                                    transform: translate(-75%, 0);
+                                }
+                            }
+                        }
                     }
                 }
             }

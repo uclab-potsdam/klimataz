@@ -58,8 +58,8 @@
     }
 
     &-left{
-        transform: rotate(-5deg) scale(1);
-        -webkit-transform:rotate(-5deg) scale(1);
+        transform: rotate(-4deg) scale(1);
+        -webkit-transform:rotate(-4deg) scale(1);
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
         z-index: -2;
@@ -72,8 +72,8 @@
     }
     
     &-right{
-        transform: rotate(5deg) scale(1);
-        -webkit-transform:rotate(5deg) scale(1);
+        transform: rotate(4deg) scale(1);
+        -webkit-transform:rotate(4deg) scale(1);
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
         z-index: -1;
@@ -222,9 +222,9 @@
                             padding-left: 0.2rem;
                             // margin-top: 0.5rem;
                             letter-spacing: -0.10vw;
-                            line-height: 1rem;
-                            -webkit-text-stroke: 0.1px $dark-blue;
-                            background-image: linear-gradient(0deg, rgba(246, 161, 25, 1) 50%, $blue 70%);
+                            line-height: 1.5rem;
+                            // -webkit-text-stroke: 0.1px $dark-blue;
+                            background-image: linear-gradient(0deg, $taz-pink 50%, $blue 70%);
                         }
                     }
                 }

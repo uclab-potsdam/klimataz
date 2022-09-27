@@ -253,7 +253,12 @@ const GeAvgHEating = ({
               );
             })}
 
-            <text x={width - marginWidth + 10} y={height - marginHeight + 15} textAnchor="end">
+            <text
+              className="measure-label"
+              x={width - marginWidth + 10}
+              y={height - marginHeight + 15}
+              textAnchor="end"
+            >
               kWh/m²a
             </text>
           </g>
