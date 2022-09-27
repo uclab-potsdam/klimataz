@@ -66,6 +66,10 @@
                 }
             }
 
+            .card-collection {
+                align-content: center;
+            }
+
             .card-active {
                 .side-inner {
                     .details-container {
@@ -128,9 +132,9 @@
                 height: 100vh;
                 .card-container {
                     height: 100vh;
-
+                    align-content: flex-start;
                     &.messy {
-                        margin-top: -10vh;                    
+                        //margin-top: -10vh;                    
                     }
 
                 }
