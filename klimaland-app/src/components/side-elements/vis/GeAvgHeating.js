@@ -191,9 +191,8 @@ const GeAvgHEating = ({
                 return (
                   <g
                     key={b}
-                    className={`single-bar ${
-                      higlightedBar === b || higlightedBar === '' ? 'in-focus' : 'no-focus'
-                    }`}
+                    className={`single-bar ${higlightedBar === b || higlightedBar === '' ? 'in-focus' : 'no-focus'
+                      }`}
                     transform={`translate(${bar.year}, 0)`}
                     onMouseEnter={() => switchHighlightedBar(b)}
                     onMouseLeave={() => switchHighlightedBar('')}
@@ -254,7 +253,12 @@ const GeAvgHEating = ({
               );
             })}
 
-            <text x={width - marginWidth + 10} y={height - marginHeight + 15} textAnchor="end">
+            <text
+              className="measure-label"
+              x={width - marginWidth + 10}
+              y={height - marginHeight + 15}
+              textAnchor="end"
+            >
               kWh/m²a
             </text>
           </g>
@@ -262,9 +266,9 @@ const GeAvgHEating = ({
       </div>
       <div className="description">
         <div className="title">
-          <h3>
+          <h4>
             Wie hoch ist der Energieverbrauch beim Heizen in <span>{locationLabel}</span>?
-          </h3>
+          </h4>
         </div>
       </div>
     </div>

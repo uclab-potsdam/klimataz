@@ -15,12 +15,12 @@ button {
     @include button;
     &.flip {
         position: absolute;
-        bottom: 1vh;
-        right: 1vh;
+        bottom: 0.5rem;
+        right: 1rem;
         z-index:4;
 
         img {
-            width: 65%;
+            width: 55%;
             max-width: 50px;
             min-width: 20px;
         }

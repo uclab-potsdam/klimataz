@@ -129,17 +129,16 @@ const MoCarDensity = ({
 
   return (
     <div
-      className={`car-density vertical-layout ${isThumbnail ? 'is-thumbnail' : ''} ${
-        isMobile ? 'is-mobile' : ''
-      }`}
+      className={`car-density vertical-layout ${isThumbnail ? 'is-thumbnail' : ''} ${isMobile ? 'is-mobile' : ''
+        }`}
     >
       <div className="description">
         <div className="title">
-          <h3>
+          <h4>
             <span>{locationLabel}</span>: Auf 100 Einwohner*innen kommen{' '}
             <span className="first-value">{totalCars}</span> Autos. Davon haben{' '}
             <span className="second-value">{hybridCars}</span> Hybrid- oder Elektroantrieb.
-          </h3>
+          </h4>
         </div>
         <div className="legend"></div>
       </div>
