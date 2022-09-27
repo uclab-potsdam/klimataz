@@ -439,12 +439,12 @@ export default class LayoutManager extends Component {
   }
 
   render() {
-    const currentSection = this.state.postcardView ? this.getActiveCardSection() : ''
-    const currentToggleLabels = currentSection !== '' ? this.toggleLabels[currentSection] : {}
+    const currentSection = this.state.postcardView ? this.getActiveCardSection() : '';
+    const currentToggleLabels = currentSection !== '' ? this.toggleLabels[currentSection] : {};
 
     return (
       <div className="main-container">
-        {(this.state.mode === 'lk' && !this.state.postcardView) && (
+        {this.state.mode === 'lk' && !this.state.postcardView && (
           <TitleArt landkreisLabel={this.state.landkreisSelection[0].label} />
         )}
         <SelectionButtons
