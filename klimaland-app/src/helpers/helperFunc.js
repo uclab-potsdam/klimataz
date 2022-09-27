@@ -1,3 +1,6 @@
+import { update } from 'lodash';
+import React, { useLayoutEffect, useState } from 'react';
+
 /**
  * modulo helper function
  * @param {*} n
@@ -83,4 +86,22 @@ export function formatNumber(numberValue) {
         .toString()
         .replace('.', ',') // replaces . with comma for decimal separator
         .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'); // adds dot . after 3 digits -> 1.000
+}
+
+export function useCardSize(target) {
+  const [dimension, setDimensions] = useState({ width: 0, height: 0 });
+  useLayoutEffect(() => {
+    function updateSize() {
+      if (target.current) {
+        setDimensions({
+          width: target.current.offsetWidth,
+          height: target.current.offsetHeight,
+        });
+      }
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return dimension;
 }

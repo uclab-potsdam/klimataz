@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { line, stack } from 'd3-shape';
-import { formatNumber } from '../../../helpers/helperFunc';
+import { formatNumber, useCardSize } from '../../../helpers/helperFunc';
 
 const MoModalSplit = ({
   currentData,
@@ -11,16 +11,7 @@ const MoModalSplit = ({
   isThumbnail,
 }) => {
   const targetRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight,
-      });
-    }
-  }, []);
+  const dimensions = useCardSize(targetRef);
 
   window.mobileCheck = function () {
     let check = false;
