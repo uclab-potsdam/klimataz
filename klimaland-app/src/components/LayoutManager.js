@@ -6,12 +6,12 @@ import SelectionButtons from './SelectionButtons';
 import { getRandomElement, setStateAsync } from '../helpers/helperFunc';
 import Info from './Info.js';
 import TitleArt from './TitleArt.js';
-import Sources from './Sources';
 
 //images
 import switchCardLeft from '../img/buttons/caret-left.svg';
 import switchCardRight from '../img/buttons/caret-right.svg';
 import closeCard from '../img/buttons/close.svg';
+import Sources from './Sources';
 
 export default class LayoutManager extends Component {
   constructor(props) {
@@ -551,7 +551,7 @@ export default class LayoutManager extends Component {
           </div>
         )}
 
-        {!this.state.postcardView && <Info />}
+        <Info />
         <Sources />
       </div>
     );
