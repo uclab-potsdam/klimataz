@@ -6,13 +6,12 @@ import SelectionButtons from './SelectionButtons';
 import { getRandomElement, setStateAsync } from '../helpers/helperFunc';
 import Info from './Info.js';
 import TitleArt from './TitleArt.js';
-// import TitleCanvas from "./TitleCanvas";
 
 //images
-//import switchCard from '../img/buttons/switch.svg';
 import switchCardLeft from '../img/buttons/caret-left.svg';
 import switchCardRight from '../img/buttons/caret-right.svg';
 import closeCard from '../img/buttons/close.svg';
+import Sources from './Sources';
 
 export default class LayoutManager extends Component {
   constructor(props) {
@@ -440,12 +439,12 @@ export default class LayoutManager extends Component {
   }
 
   render() {
-    const currentSection = this.state.postcardView ? this.getActiveCardSection() : ''
-    const currentToggleLabels = currentSection !== '' ? this.toggleLabels[currentSection] : {}
+    const currentSection = this.state.postcardView ? this.getActiveCardSection() : '';
+    const currentToggleLabels = currentSection !== '' ? this.toggleLabels[currentSection] : {};
 
     return (
       <div className="main-container">
-        {(this.state.mode === 'lk' && !this.state.postcardView) && (
+        {this.state.mode === 'lk' && !this.state.postcardView && (
           <TitleArt landkreisLabel={this.state.landkreisSelection[0].label} />
         )}
         <SelectionButtons
@@ -514,7 +513,8 @@ export default class LayoutManager extends Component {
           </div>
         )}
 
-        {!this.state.postcardView && <Info />}
+        <Info />
+        <Sources />
       </div>
     );
   }
