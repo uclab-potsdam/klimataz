@@ -92,6 +92,7 @@
                         cursor: pointer;
                         transform: translate(-20px, -10px) skew(-17deg, 0deg);
                         -webkit-transform:translate(-20px, -10px) skew(-17deg, 0deg);
+                        overflow: visible;
                     }
 
                     &.thumbnail-chart {
@@ -564,6 +565,8 @@
                 }
 
                 .chart {
+
+                    overflow: visible;
                     
                     text {
                         font-size: 12px;  
@@ -1067,6 +1070,7 @@
                 @include responsive-layout;
 
                 .chart{
+                    overflow: visible;
                     .bars {
                         .labelText {
                             font-size: 12px;
