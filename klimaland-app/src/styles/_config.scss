@@ -350,3 +350,15 @@ p, text {
         @include vertical-layout
     }
 }
+
+@keyframes bounce {
+    from {
+        transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, -0.5rem, 0);
+        -webkit-transform: translate3d(0, -0.5rem, 0);
+    }
+}

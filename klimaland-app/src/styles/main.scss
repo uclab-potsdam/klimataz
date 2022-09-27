@@ -15,14 +15,58 @@ button {
     @include button;
     &.flip {
         position: absolute;
-        bottom: 0.5rem;
-        right: 1rem;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        right: 0rem;
         z-index:4;
+        display: inline-flex;
+        margin-left: auto;
+        // background-color: pink;
+        height: 10%;
+        
+        &:hover {
+            opacity: 1;
+            .flip-label {
+                transition: all 0.2s;
+                opacity: 1;
+                left: 0rem;
+            }
+        }
+
+        .flip-label {
+            pointer-events: none;
+            transition: all 0.2s;
+            background-color: $light;
+            border: 1px solid $pale-olive;
+
+            padding: 0.5rem;
+            line-height: 12px;
+            font-size: 12px;
+            margin: auto 0.5rem;
+            position: relative;
+            left: -1rem;
+            opacity: 0;
+        }
 
         img {
-            width: 55%;
+            &:hover {
+                opacity: 0.8;
+            }
+            // background-color: aquamarine;
+            width: 20%;
             max-width: 50px;
             min-width: 20px;
+            animation: bounce 0.5s;
+            animation-iteration-count: 5;
+            animation-timing-function: cubic-bezier(0, 0.5, 0.05, 0.5, 1, 0.5);
+            animation-delay: 1s;
+            animation-direction: alternate-reverse;
+            -webkit-animation-name: bounce;
+            -webkit-animation-duration: 0.5s;
+            -webkit-animation-iteration-count: 5;
+            -webkit-animation-timing-function: cubic-bezier(0, 0.5, 0.05, 0.5, 1, 0.5);
+            -webkit-animation-delay: 1s;
+            -webkit-animation-direction: alternate-reverse;
         }
     }
 }
