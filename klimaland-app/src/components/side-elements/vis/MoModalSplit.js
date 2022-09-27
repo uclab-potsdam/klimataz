@@ -11,16 +11,7 @@ const MoModalSplit = ({
   isThumbnail,
 }) => {
   const targetRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight,
-      });
-    }
-  }, []);
+  const dimensions = useCardSize(targetRef);
 
   window.mobileCheck = function () {
     let check = false;
