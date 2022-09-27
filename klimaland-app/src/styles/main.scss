@@ -100,7 +100,8 @@ code {
 
         //container of location selector
         .selection-container {
-                width: 100%;
+                position: absolute;
+                width: 100vw;
                 margin-bottom: 2rem;
                 display: flex;
                 flex-direction: row;
