@@ -141,7 +141,7 @@
                     }
 
                     &.stacked {
-                            align-content: baseline;
+                        align-content: baseline;
                     }
                 }
             }
@@ -210,6 +210,10 @@
         &.card-active {
             .overlay-container {
                     .overlay-inner {
+                        text-align: center;
+                        width: 95%;
+                        position: relative;
+                        z-index: 1;
                         .postcard-title {
                             .postcard-miniature {
                                 display: none;
@@ -224,12 +228,14 @@
                                         transform: translate(5px, 2px);
                                     }   
                                 }
-                                text:not(.mobile-toggle-label) {
+                                
+                                text {
                                     display: none;
                                 }
 
                                 .mobile-toggle-label {
                                     transform: translate(-100px, 0px);
+                                    display: block;
                                 }
                             }
                         }
@@ -243,7 +249,7 @@
 
             .side-inner {
                 .details-container {
-                    height: 90%;
+                    height: 100%;
 
                     .flex-container {
                         display: block;
@@ -251,13 +257,14 @@
 
                         .text-container {
                             width: 100%;
+                            overflow: hidden;
                             position: absolute;
                             border: none;
                             z-index: 1;
-                            overflow: hidden;
 
                             .text-inner-container {
-                                margin-top: 25%;
+                                margin-top: 5rem;
+                                height: 80%;
 
                                 .section-title {
                                     margin-bottom: 0;
@@ -265,25 +272,28 @@
 
                                 .section-text {
                                     margin-top: 0;
+                                    height: 80%;
+                                    position: relative;
+                                    overflow: scroll;
 
                                     p {
-                                        margin-top: 5px;
+                                        margin-top: 0.5rem;
+                                        height: 100%;
                                     }
                                 }
                             }
                         }
 
                         .data-container {
+                            background-color: $light;
                             position: absolute;
-                            width: 90%;
-                            height: 20%;
+                            width: 100%;
+                            height: 30%;
                             top: 0;
-                            right: 0;
-                            z-index: 0;
 
                             .locator-map {
                                 border: none;
-                                height: 100%;
+                                height: 70%;
                                 margin-top: 1rem;
 
                                 .locator-container {
@@ -296,11 +306,11 @@
                                         text-align: right;
                                         display: flex;
                                         justify-content: right;
-                                        width: 30%;
+                                        width: 25%;
                                     }
 
                                     .locator-background {
-                                        width: 30%;
+                                        width: 25%;
                                     }
                                 }
                             }
@@ -317,12 +327,9 @@
                             height: 100%;
                             display: inline-block;
                             margin: 0rem 0rem 0rem 1rem;
+                            
                             .logo-container {
                                 display: none;
-                            }
-
-                            .info-backside {
-                                padding-bottom: 0;
                             }
                         }
                     }
@@ -337,6 +344,8 @@
 
     .card-preview {
         .overlay-container {
+            position: relative;
+            z-index: 1;
             .overlay-inner {
                 .postcard-title {
                 .section-thumb {

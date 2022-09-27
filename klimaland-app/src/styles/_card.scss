@@ -390,6 +390,10 @@
                             font-family: 'Chivo';
                         }
 
+                        .mobile-toggle-label {
+                            display: none;
+                        }
+
                         .controller-bg {
                             fill: url(#MyGradient);
                             stroke: $default-text;
@@ -414,11 +418,11 @@
     
             // back-side with explanation
             .details-container {
-                height: 90%;
+                height: 100%;
     
                 .flex-container {
                     display: flex;
-                    height: 100%;
+                    height: 90%;
     
                     .text-container {
                         width: 60%;
@@ -517,15 +521,23 @@
                             margin: 0px 0px 0px 0px;
                             height: 60%;
                             overflow: hidden;
+                            position: relative;
     
                             .list-inner-container {
+                                height: 100%;
+                                position: relative;
+                                overflow: scroll;
     
                                 .list-similar-container {
                                     // border-bottom: 1px solid $default-text;
                                     // overflow-x: hidden;
-                                    -ms-overflow-style: none;
-                                    scrollbar-width: none;
+                                    // -ms-overflow-style: none;
+                                    // scrollbar-width: none;
                                     height: 100%;
+
+                                    h5 {
+                                        position: absolute;
+                                    }
     
                                     &.mittleren {
                                         h5 {
@@ -611,7 +623,7 @@
                         font-size: 12px;
                         border: 1px solid $mint-green;
                         border-radius: 20px;
-                        padding: 0.2rem 0.5rem 0rem 0.5rem;
+                        padding: 0.2rem 0.5rem;
                         background: linear-gradient(to left, $mint-green, rgba($mint-green, 0.5));
                         -webkit-background-clip: text;
                         background-clip: text;
