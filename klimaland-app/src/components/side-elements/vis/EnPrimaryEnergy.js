@@ -309,9 +309,8 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
                         />
                         {label.value !== 0 && (
                           <g
-                            className={`interactive-labels ${
-                              activeLabel === l ? 'active-label' : ''
-                            }`}
+                            className={`interactive-labels ${activeLabel === l ? 'active-label' : ''
+                              }`}
                             transform={`translate(${label.x}, ${label.yValue})`}
                           >
                             <foreignObject
@@ -338,12 +337,12 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
       </div>
       <div className="description">
         <div className="title">
-          <h3>
+          <h4>
             Der Energieverbrauch in <span>{locationLabel}</span> basiert im Jahr{' '}
             <span>{lastYear}</span> zu{' '}
             <span className="second-value"> {formatNumber(percRenewables)}</span> % auf{' '}
             <span className="second-value"> erneuerbaren Energien</span>
-          </h3>
+          </h4>
         </div>
       </div>
     </div>

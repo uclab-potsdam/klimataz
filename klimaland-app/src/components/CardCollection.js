@@ -8,7 +8,6 @@ import Side from './Side';
 
 //data (same for all cards, so imported here)
 import Data from '../data/data.json';
-//import Data from '../data/data.json';
 import LayoutControls from '../data/layout-controls-inprogress.json';
 import DynamicTextJson from '../data/textData.json';
 import { local } from 'd3';
@@ -31,11 +30,25 @@ export default class CardCollection extends Component {
     this.layoutControls = LayoutControls;
     this.textData = DynamicTextJson;
 
-    // console.log(DynamicTextData)
     //bind functions called by components
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     this.addCardToSelection = this.addCardToSelection.bind(this);
+
+    // if (this.switchDataLevel !== undefined) {
+    //   this.switchDataLevel = this.switchDataLevel.bind(this);
+    // }
+
+    this.updateData = this.updateData.bind(this);
+  }
+
+  async updateData(result) {
+    // console.log(result)
+    const data = result.data;
+    // Here this is available and we can call this.setState (since it's binded in the constructor)
+    await setStateAsync(this, { textData: data, textLoaded: true }).then(() => {
+      this.generateCards();
+    }); // or shorter ES syntax: this.setState({ data });
   }
 
   /**
@@ -240,6 +253,8 @@ export default class CardCollection extends Component {
             similarAgs = randomSample;
           }
 
+          // console.log(this.props.switchDataLevel)
+
           return (
             <Card
               key={i}
@@ -263,6 +278,9 @@ export default class CardCollection extends Component {
                 layoutControls={this.layoutControls[section]}
                 handleClickOnList={this.addCardToSelection}
                 footnote={footnote}
+                toggleLabels={this.props.toggleLabels}
+                isLKData={this.props.dataLevelLK}
+                switchDataLevel={this.props.switchDataLevel}
               />
             </Card>
           );

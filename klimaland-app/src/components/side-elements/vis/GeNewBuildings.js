@@ -204,7 +204,7 @@ const Buildings = ({
     <div className={`newbuildings-energy ${isThumbnail ? 'is-thumbnail' : ''}`}>
       <div className="description">
         <div className="title">
-          <h3>Wie wird in Neubauten geheizt?</h3>
+          <h4>Wie wird in Neubauten geheizt?</h4>
         </div>
         <div className={`${cleanKlassString(currentId).toLowerCase()} caption`}>
           <p>
@@ -276,9 +276,8 @@ const Buildings = ({
                         <g
                           key={e}
                           transform={`translate(0, ${en.y})`}
-                          className={`year-marker ${en.klassName} ${
-                            en.id === currentId ? 'default' : 'optional'
-                          }`}
+                          className={`year-marker ${en.klassName} ${en.id === currentId ? 'default' : 'optional'
+                            }`}
                         >
                           <circle cx="0" cy="0" r="3" />
                           <g transform="translate(5, 0)">
