@@ -5,7 +5,7 @@
 
 // variables method based on github.com/eduardoboucas/include-media
 
-/*Tablet*/
+/*Tablet - Desktop*/
 @include media(">=tablet", "<desktop") {
 
     .chart-container {
@@ -91,7 +91,7 @@
     }
 }
 
-/* Phones */
+/* Phones - Tablet */
 @include media(">phone", "<=tablet") {
     body {
         h3 {
@@ -100,7 +100,11 @@
     }
 
     .indicators-iframe {
-        max-width: 375px;
+        //max-width: 375px;
+        margin-right:5.55%;
+        margin-left:5.55%;
+        width:89%; //100-5.55*2
+
         .main-container {
             margin-top: 10px;
             .selection-buttons {
@@ -179,9 +183,6 @@
 
     .card {
         &-ordered {
-            //original ratio changed for styling
-            width: calc($portait-postcardwidth/2.3);
-            height: calc($portait-postcardwidth/1.8);
             z-index: 0;
             margin: -6px 0px -15px 0px;
         }
@@ -532,3 +533,26 @@
 
     }
 }
+
+
+/*Mini Tablet - Tablet*/
+@include media(">=minitablet","<tablet"){
+    .card {
+        &-ordered {
+            //original ratio changed for styling
+            width: calc($portrait-minitablet-postcardwidth/2.3);
+            height: calc($portrait-minitablet-postcardwidth/1.8);
+        }
+    }
+}
+
+/* Phone - Mini Tablet*/
+ @include media(">=phone", "<minitablet"){
+    .card {
+        &-ordered {
+            //original ratio changed for styling
+            width: calc($portait-postcardwidth/2.3);
+            height: calc($portait-postcardwidth/1.8);
+        }
+    }
+ }
