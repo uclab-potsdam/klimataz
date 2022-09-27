@@ -3,7 +3,7 @@ import { stack, stackOffsetSilhouette, stackOrderAscending, curveMonotoneX, area
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
-import { formatNumber } from './../../../helpers/helperFunc';
+import { formatNumber, useCardSize } from './../../../helpers/helperFunc';
 
 const EnIndustry = ({
   currentData,
@@ -26,20 +26,12 @@ const EnIndustry = ({
 
   // getting sizes of container for maps
   const targetRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const dimensions = useCardSize(targetRef);
+
   const [highlighedStream, setHighlightedStream] = useState('');
   const [activeLabel, setactiveLabel] = useState('');
 
   //   const [currentId, setCurrentId] = useState('');
-
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight,
-      });
-    }
-  }, []);
 
   // inital variables
   const marginWidth = 0;

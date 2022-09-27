@@ -2,6 +2,7 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { extent } from 'd3-array';
 import { stack } from 'd3-shape';
+import { useCardSize } from '../../../helpers/helperFunc';
 
 const GeAvgHEating = ({
   currentData,
@@ -12,17 +13,9 @@ const GeAvgHEating = ({
 }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [higlightedBar, setHiglightedBar] = useState('');
+  const dimensions = useCardSize(targetRef);
 
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight,
-      });
-    }
-  }, []);
+  const [higlightedBar, setHiglightedBar] = useState('');
 
   window.mobileCheck = function () {
     let check = false;

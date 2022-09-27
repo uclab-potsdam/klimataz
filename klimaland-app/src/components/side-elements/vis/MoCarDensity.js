@@ -1,6 +1,7 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import { max } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
+import { useCardSize } from '../../../helpers/helperFunc';
 
 const MoCarDensity = ({
   currentData,
@@ -11,16 +12,8 @@ const MoCarDensity = ({
 }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight,
-      });
-    }
-  }, []);
+  const dimensions = useCardSize(targetRef);
 
   window.mobileCheck = function () {
     let check = false;

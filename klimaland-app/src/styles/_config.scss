@@ -21,6 +21,7 @@
 // breakpoints for responsive devices
 $breakpoints: (
     phone: 320px,
+    minitablet:576px,
     tablet: 768px,
     desktop: 940px
 );
@@ -56,6 +57,7 @@ $default-text: #484848;
 $postcardview-postcardwidth: 80vw;
 $thumbnail-postcardwidth:30vw;
 $portait-postcardwidth:85vw;
+$portrait-minitablet-postcardwidth:65vw;
 
 //effects
 $boxshadow: (
