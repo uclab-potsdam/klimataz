@@ -19,7 +19,6 @@ const Sources = () => {
         </button>
         {showSources && (
           <div className="sources-text">
-            {console.log(showSources)}
             <h4>Quellen und Methodik</h4>
             <p>
               Single iFrames are sized based on the use case. The size of the container determines
