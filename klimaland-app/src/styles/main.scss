@@ -267,82 +267,95 @@ code {
             }
         }
         
+        // sources box with info about data
         .sources-container { 
             position: absolute;
             bottom: 0;
             right: 0;
             width: 50%; 
-            height: 15%;
+            height: 10%;
             z-index: 999; 
 
-            .sources {
-                .sources-button {
-                    height: 30px;
-                    width: 30px;
-                    line-height: 0px;
-                    position: absolute;
-                    right: 0.5rem;
-                    bottom: 0.5rem;
 
-                    background-color: $light;
-                    border-color: darken($pale-olive, 20%);
-                    border-width: 0.5px;
-                    border-radius: 100%;
-                    border-style: solid;
-        
-                    .info-i {
-                        font-size: 1rem;
-                        color: darken($pale-olive, 20%);
+            .sources-button {
+                height: 30px;
+                width: 30px;
+                line-height: 0px;
+                position: absolute;
+                right: 0.5rem;
+                bottom: 1.75rem;
+
+                background-color: $light;
+                border-color: darken($pale-olive, 20%);
+                border-width: 0.5px;
+                border-radius: 100%;
+                border-style: solid;
+    
+                .info-i {
+                    font-size: 1rem;
+                    color: darken($pale-olive, 20%);
+                }
+            }
+
+            .info-text-label{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 4rem;
+                
+                h6{
+                    margin: 0;
+                    text-align: right;
+                    color: rgba($default-text, 0.5);
+                }
+            }
+
+            .sources-text{
+                position: absolute;
+                width: 100%;
+                height: 400px;
+                transform: translate(-50%, -105%);
+                -webkit-transform:translate(-50%, -105%);
+
+                background-color: #fff;
+                padding: 1rem;
+                overflow: scroll;
+
+                border-color: $mint-green;
+                border-style: solid;
+                border-width: 1px;
+                box-shadow: 4px 4px 0px rgba($mint-green, 0.44);
+
+                & h4 {
+                    margin: 0.5rem 0rem;
+                }
+
+                & h5 {
+                    margin: 1.5rem 0rem .5rem 0rem;
+                }
+
+                & p{
+                    font-size: 0.75rem;
+                    margin: 0.75rem 0rem;
+                }
+
+                & a{
+                    color: $mint-green;
+                }
+
+                .close {
+                    @include button;
+                    position: absolute;
+                    right: 0rem;
+                    top: 0.25rem;
+                    height: 10%;
+
+                    img {
+                        width: 70%;
                     }
                 }
 
-                .sources-text{
-                    position: absolute;
-                    width: 100%;
-                    height: 400px;
-                    transform: translate(-50%, 50px);
-                    -webkit-transform:translate(-50%, -100%);
-
-                    background-color: #fff;
-                    padding: 1rem;
-                    overflow: scroll;
-
-                    border-color: $mint-green;
-                    border-style: solid;
-                    border-width: 1px;
-                    box-shadow: 4px 4px 0px rgba($mint-green, 0.44);
-
-                    & h4 {
-                        margin: 0.5rem 0rem;
-                    }
-
-                    & h5 {
-                        margin: 1.5rem 0rem .5rem 0rem;
-                    }
-
-                    & p{
-                        font-size: 0.75rem;
-                        margin: 0.75rem 0rem;
-                    }
-
-                    & a{
-                        color: $mint-green;
-                    }
-
-                    .close {
-                        @include button;
-                        position: absolute;
-
-                        right: 0rem;
-                        top: 0.25rem;
-                        height: 10%;
-
-                        img {
-                            width: 70%;
-                        }
-                    }
-
-                }
+                
             }
         }
 
@@ -360,7 +373,7 @@ code {
                 border-color: $red;
                 border-style: solid;
                 border-width: 1px;
-                width: 250px;
+                width: 270px;
                 height: $thumbnail-postcardwidth;
                 padding: 0.75rem;
                 transform: translate(-3px, 11px) rotate(-3deg);
