@@ -120,9 +120,9 @@ const LandDenisty = ({
     <div className="animal-density vertical-layout">
       <div className="description">
         <div className="title">
-          <h3>
+          <h4>
             Wie viele Tiere pro Fläche leben im Durchschnitt in <span>{locationLabel}</span>?
-          </h3>
+          </h4>
         </div>
         <div className="caption">
           <p>
@@ -284,9 +284,8 @@ const LandDenisty = ({
                     fill="url(#diagonalHatch4)"
                   />
                   <g
-                    transform={`translate(${-barWidth / 2}, ${
-                      -bar.value - max([16, barElements[0][a].value])
-                    })`}
+                    transform={`translate(${-barWidth / 2}, ${-bar.value - max([16, barElements[0][a].value])
+                      })`}
                   >
                     <rect
                       className="labelCount"

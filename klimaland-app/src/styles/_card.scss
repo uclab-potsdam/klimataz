@@ -58,8 +58,8 @@
     }
 
     &-left{
-        transform: rotate(-5deg) scale(1);
-        -webkit-transform:rotate(-5deg) scale(1);
+        transform: rotate(-4deg) scale(1);
+        -webkit-transform:rotate(-4deg) scale(1);
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
         z-index: -2;
@@ -72,8 +72,8 @@
     }
     
     &-right{
-        transform: rotate(5deg) scale(1);
-        -webkit-transform:rotate(5deg) scale(1);
+        transform: rotate(4deg) scale(1);
+        -webkit-transform:rotate(4deg) scale(1);
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
         z-index: -1;
@@ -142,6 +142,10 @@
                         color: darken($pale-olive, 20%);
                         margin: 0.5rem;
                     }
+                }
+
+                .button-download {
+                    display: none;
                 }
             }
             .section-thumb {
@@ -218,9 +222,9 @@
                             padding-left: 0.2rem;
                             // margin-top: 0.5rem;
                             letter-spacing: -0.10vw;
-                            line-height: 1rem;
-                            -webkit-text-stroke: 0.1px $dark-blue;
-                            background-image: linear-gradient(0deg, rgba(246, 161, 25, 1) 50%, $blue 70%);
+                            line-height: 1.5rem;
+                            // -webkit-text-stroke: 0.1px $dark-blue;
+                            background-image: linear-gradient(0deg, $taz-pink 50%, $blue 70%);
                         }
                     }
                 }
@@ -322,24 +326,103 @@
 .card-active {
     .side-outer {
         width: 100%;
-        height: 100%;
     
     .overlay-container {
-            display: none;
+            height: calc(10% - 0.5rem);
+            width: 100%;
+            background-color: $light;
+            margin: 0 auto;
+            
+            .overlay-inner {
+                background-color: $light;
+                width: calc(95% + 0.5rem);
+                height: 80%;
+                display: inline-flex;
+                margin: 0.5rem 0.45rem;
+                border-bottom: 1px solid $default-text;
+                
+                .postcard-title {
+                    margin-left: 0.5rem;
+                    h4 {
+                        margin: 0;
+                        margin-top: 0.2rem;
+                    }
+
+                    .postcard-miniature {
+                        .word-art-title {
+                            transform: scale(0.9, 1.2) rotate(-0.2deg) translate(0px, 0px);
+                            margin-top: 0;
+                            top: 0.5rem;
+                            right: 6%;
+                            .gruss-thumb {
+                                display: none;
+                            }
+
+                            .wordart {
+                                font-size: 1.5rem;
+                            }
+                        }
+                    }
+                }
+
+                .button-toggle-container {
+                    margin-left: 0.5rem;
+                    display: inline-flex;
+
+                    .arrow-pointer {
+                        background-image: url('../img/buttons/caret-right.svg');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        margin-top: 0.3rem;
+                        // width: 5%;
+                        width: 1rem;
+                        height: calc(100% - 0.3rem);
+                    }
+
+                    svg {
+                        margin-left: 0.5rem;
+                        rect {
+                            transition: x 0.2s;
+                        }
+                        
+                        text {
+                            // font-size: 12px;
+                            font-family: 'Chivo';
+                        }
+
+                        .mobile-toggle-label {
+                            display: none;
+                        }
+
+                        .controller-bg {
+                            fill: url(#MyGradient);
+                            stroke: $default-text;
+                        }
+                    }
+
+                }
+
+                .button-download {
+                    margin-left: auto;
+                    width: 5%;
+                    float: right;
+                }
+
+            }
         }
 
     .side-inner {
             background-color: $light;
             width: 100%;
-            height: 100%;
+            height: calc(90% + 0.5rem);
     
             // back-side with explanation
             .details-container {
-                height: 90%;
+                height: 100%;
     
                 .flex-container {
                     display: flex;
-                    height: 100%;
+                    height: 90%;
     
                     .text-container {
                         width: 60%;
@@ -438,15 +521,23 @@
                             margin: 0px 0px 0px 0px;
                             height: 60%;
                             overflow: hidden;
+                            position: relative;
     
                             .list-inner-container {
+                                height: 100%;
+                                position: relative;
+                                overflow: scroll;
     
                                 .list-similar-container {
                                     // border-bottom: 1px solid $default-text;
                                     // overflow-x: hidden;
-                                    -ms-overflow-style: none;
-                                    scrollbar-width: none;
+                                    // -ms-overflow-style: none;
+                                    // scrollbar-width: none;
                                     height: 100%;
+
+                                    h5 {
+                                        position: absolute;
+                                    }
     
                                     &.mittleren {
                                         h5 {
@@ -532,7 +623,7 @@
                         font-size: 12px;
                         border: 1px solid $mint-green;
                         border-radius: 20px;
-                        padding: 0.2rem 0.5rem 0rem 0.5rem;
+                        padding: 0.2rem 0.5rem;
                         background: linear-gradient(to left, $mint-green, rgba($mint-green, 0.5));
                         -webkit-background-clip: text;
                         background-clip: text;
@@ -607,6 +698,7 @@
             height: 50px;
             z-index: 2;
             text-align: left;
+            top: 0;
 
             .gruss-thumb {
                 font-size: 0.8rem;
@@ -622,31 +714,9 @@
                 // margin-top: 0.5rem;
                 letter-spacing: -0.10vw;
                 line-height: 1rem;
-                -webkit-text-stroke: 0.1px $dark-blue;
+                // -webkit-text-stroke: 0.1px $dark-blue;
                 background-image: linear-gradient(0deg, rgba(246, 161, 25, 1) 50%, $blue 70%);
             }
         }
 }
-
-     
-
-    button {
-        @include button;
-        &.buttonDownload {
-            position: absolute;
-            bottom: 1vh;
-            right: 9vh;
-    
-            img {
-                width: 65%;
-                max-width: 50px;
-                min-width: 25px;
-            }
-        }
-    
-    }
-
-
-
-
 }

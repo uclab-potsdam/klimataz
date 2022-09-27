@@ -74,6 +74,7 @@ export default class LayoutManager extends Component {
       activeCard: 0,
       //true when currently editors pick is displayed
       showEditorsPick: true,
+      // logic for toggle true lk
       dataLevelLK: true,
       previewLeftCard: '',
       previewRightCard: '',
@@ -439,9 +440,12 @@ export default class LayoutManager extends Component {
   }
 
   render() {
+    const currentSection = this.state.postcardView ? this.getActiveCardSection() : ''
+    const currentToggleLabels = currentSection !== '' ? this.toggleLabels[currentSection] : {}
+
     return (
       <div className="main-container">
-        {this.state.mode === 'lk' && this.state.postcardView === false && (
+        {(this.state.mode === 'lk' && !this.state.postcardView) && (
           <TitleArt landkreisLabel={this.state.landkreisSelection[0].label} />
         )}
         <SelectionButtons
@@ -475,57 +479,15 @@ export default class LayoutManager extends Component {
           handleSwitchBack={this.handleSwitchBack}
           switchToPostcardView={this.switchToPostcardView}
           addCardToSelection={this.addCardToSelection}
+          toggleLabels={currentToggleLabels}
+          isLKData={this.state.dataLevelLK}
+          switchDataLevel={this.switchDataLevel}
         />
         {/* we could also put the code below into "SelectionButtons.js" or a more general
         buttons component and switch between the selection and shuffle or zoomed
         view buttons*/}
         {this.state.postcardView && (
           <div className="button-container">
-            {this.getActiveCardSection() !== 'Ab' && (
-              <div className="button-toggle-container">
-                <svg>
-                  <defs>
-                    <linearGradient id="MyGradient">
-                      <stop offset="50%" stopColor="#e6c9a2" />
-                      <stop offset="100%" stopColor="#ffe8c9" />
-                    </linearGradient>
-                  </defs>
-                  <g className="toggle" onClick={this.switchDataLevel}>
-                    <g
-                      transform={
-                        'translate(' +
-                        this.toggleLabels[this.getActiveCardSection()].lk.length * 9 +
-                        ', 10)'
-                      }
-                    >
-                      <rect className="controller-bg" x="0" y="0" width="40" height="20" rx="10" />
-                      <rect
-                        x={this.state.dataLevelLK ? 0 : 20}
-                        y="0"
-                        width="20"
-                        height="20"
-                        rx="10"
-                        fill="#FFF9F1"
-                        stroke="#484848"
-                      />
-                    </g>
-                    {/* {this.state.dataLevelLK && ( */}
-                    <text x="0" y="25">
-                      {this.toggleLabels[this.getActiveCardSection()].lk}
-                    </text>
-                    {/* )} */}
-                    {/* {!this.state.dataLevelLK && ( */}
-                    <text
-                      x={this.toggleLabels[this.getActiveCardSection()].lk.length * 9 + 50}
-                      y="25"
-                    >
-                      {this.toggleLabels[this.getActiveCardSection()].bl}
-                    </text>
-                    {/* )} */}
-                  </g>
-                </svg>
-              </div>
-            )}
             {this.props.editorspick[0].view.value !== 3 && (
               <>
                 <div className="inner-button">

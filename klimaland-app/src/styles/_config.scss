@@ -115,7 +115,7 @@ p, text {
         padding-top: 7px;
         background-clip: text;
         font-family: 'Vampiro One', sans-serif;
-        background-image: linear-gradient(0deg, rgba(246, 161, 25, 1) 0%, $blue 70%);
+        background-image: linear-gradient(0deg, $taz-pink 0%, $blue 70%);
         -webkit-text-fill-color: transparent;
         letter-spacing: -0.25vw; 
         
@@ -215,17 +215,24 @@ p, text {
     .description {
         width: 35%;
         height: 100%;
+        margin-left: 0.5rem;
     
     
         .title {
             border-bottom: 1px solid $default-text;
     
-            h3 {
+            h4 {
                 padding: 0rem 0.5rem 0rem 1rem;
             }
 
             span {
                 color: $dust-blue;
+            }
+        }
+
+        .caption {
+            p {
+                font-size: 12px;
             }
         }
         
@@ -267,37 +274,38 @@ p, text {
     }
 }
 
-@mixin horizontal-top-layout{
+// @mixin horizontal-top-layout{
 
-    .description {
-        width: 100%;
-        height: 20%;
+//     .description {
+//         width: 100%;
+//         height: 20%;
+//         margin-left: 0.5rem;
 
-        .title {
-            border-bottom: 1px solid $default-text;
-            margin: 0rem 1rem 0.5rem 1rem;
+//         .title {
+//             border-bottom: 1px solid $default-text;
+//             margin: 0.5rem 0.5rem 0.5rem 1rem;
             
-            h3 {
-                margin: 0;
-                padding-top: 1rem;
-                padding-bottom: 1rem; 
-            }
+//             h4 {
+//                 margin: 0;
+//                 padding-top: 0.5rem;
+//                 padding-bottom: 1rem; 
+//             }
             
-            span {
-                color: $dust-blue;
-            }
-        }
-    }
+//             span {
+//                 color: $dust-blue;
+//             }
+//         }
+//     }
 
-    .chart {
-        width: 100%;
-        height: 100%;
-    }
+//     .chart {
+//         width: 100%;
+//         height: 100%;
+//     }
 
-    .visualization-container {
-        height: 80%;
-    }
-}
+//     .visualization-container {
+//         height: 80%;
+//     }
+// }
 
 @mixin horizontal-bottom-layout {
 
@@ -306,12 +314,13 @@ p, text {
         height: 20%;
 
         .title {
+            width: 95%;
             border-top: 1px solid $default-text;
             margin: 0rem 1rem 0.5rem 1rem;
 
-            h3 {
+            h4 {
                 margin: 0;
-                padding-top: 1rem;
+                padding-top: 0.5rem;
                 padding-bottom: 1rem;
             }
 
@@ -334,10 +343,10 @@ p, text {
 
 @mixin responsive-layout {
     @include media(">phone", "<=tablet") {
-        @include horizontal-top-layout
+        @include horizontal-bottom-layout
     }
     
     @include media(">=tablet") {
-        @include vertical-layout()
+        @include vertical-layout
     }
 }

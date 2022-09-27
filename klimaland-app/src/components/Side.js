@@ -38,6 +38,10 @@ export default class Side extends Component {
     this.vis = this.vis.bind(this);
     this.openUpCard = this.openUpCard.bind(this);
     this.handleClickOnList = this.handleClickOnList.bind(this);
+    // if (this.switchDataLevel !== undefined) {
+    //   this.switchDataLevel = this.switchDataLevel.bind(this);
+    // }
+    // this.switchDataLevel = this.switchDataLevel.bind(this);
 
     this.myRef = React.createRef();
     this.onShareButtonClick = this.onShareButtonClick.bind(this);
@@ -205,6 +209,8 @@ export default class Side extends Component {
   }
 
   render() {
+    // console.log(this.props.switchDataLevel)
+    // console.log('toggle labels in side', Object.keys(this.props.toggleLabels).length)
     // TO DO: Solve issue of inconsistent activeSide during carousel switch
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
@@ -213,19 +219,71 @@ export default class Side extends Component {
             <div className="overlay-inner">
               <div className="postcard-title">
                 <h4 className="section-title">{this.props.sectionName}</h4>
-                {this.props.isThumbnail && (
-                  <div className={`section-thumb ${this.props.mode}`}>
-                    {this.props.mode === 'comparison' && (
-                      <TitleArt landkreisLabel={this.props.lk.label} />
-                    )}
-                    {this.state.ranking !== '' && (
-                      <div className={`indicator-ranking ${this.state.ranking}`}>
-                        <p>im {this.state.ranking}</p>
-                      </div>
-                    )}
-                  </div>
-                )}
+                <div
+                  className={`section-thumb ${
+                    this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
+                  }`}
+                >
+                  {(this.props.mode === 'comparison' || !this.props.isThumbnail) && (
+                    <TitleArt landkreisLabel={this.props.lk.label} />
+                  )}
+                  {this.props.isThumbnail && this.state.ranking !== '' && (
+                    <div className={`indicator-ranking ${this.state.ranking}`}>
+                      <p>im {this.state.ranking}</p>
+                    </div>
+                  )}
+                </div>
               </div>
+              {!this.props.isThumbnail && this.props.toggleLabels.lk !== '' && (
+                <div className="button-toggle-container">
+                  <div className="arrow-pointer" />
+                  <svg width="100%" height="100%">
+                    <defs>
+                      <linearGradient id="MyGradient">
+                        <stop offset="50%" stopColor="#e6c9a2" />
+                        <stop offset="100%" stopColor="#ffe8c9" />
+                      </linearGradient>
+                    </defs>
+                    <g className="toggle" onClick={this.props.switchDataLevel}>
+                      <g transform={`translate(${this.props.toggleLabels.lk.length * 9 + 10}, 2)`}>
+                        <rect
+                          className="controller-bg"
+                          x="0"
+                          y="0"
+                          width="40"
+                          height="20"
+                          rx="10"
+                        />
+                        <rect
+                          x={this.props.isLKData ? 0 : 20}
+                          y="0"
+                          width="20"
+                          height="20"
+                          rx="10"
+                          fill="#FFF9F1"
+                          stroke="#484848"
+                        />
+                      </g>
+                      <text x="0" y="18">
+                        {this.props.toggleLabels.lk}
+                      </text>
+                      <text x={this.props.toggleLabels.bl.length * 9 + 20} y="18">
+                        {this.props.toggleLabels.bl}
+                      </text>
+                      <text
+                        className="mobile-toggle-label"
+                        x={this.props.toggleLabels.bl.length * 9 + 20}
+                        y="18"
+                      >
+                        Switch data
+                      </text>
+                    </g>
+                  </svg>
+                </div>
+              )}
+              <button className="button-download" onClick={this.onShareButtonClick}>
+                <img src={share} className="button img" alt="flip-button-img" />
+              </button>
             </div>
           </div>
           <div className="side-inner">
@@ -267,10 +325,6 @@ export default class Side extends Component {
                 <TitleArt landkreisLabel={this.props.lk.label} />
                 <div className="logo-container"></div>
               </div>
-
-              <button className="buttonDownload" onClick={this.onShareButtonClick}>
-                <img src={share} className="button img" alt="flip-button-img" />
-              </button>
             </>
           )}
         </div>
