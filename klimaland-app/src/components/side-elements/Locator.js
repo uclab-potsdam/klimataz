@@ -28,8 +28,8 @@ export default class Locator extends Component {
   async changeCurrentMap() {
     const currentMap = +this.props.lk.value < 20 ? bundeslaenderOutline : LandkreiseOutline;
 
-    const width = this.state.dimensions.width;
-    const height = this.state.dimensions.height;
+    const width = this.state.dimensions.width - 5;
+    const height = this.state.dimensions.height - 5;
     // const zoomWidth = width / 2
     const zoomHeight = width / 2;
 
@@ -95,8 +95,8 @@ export default class Locator extends Component {
         bl: d.properties.SN_L,
         visible:
           +this.props.lk.value === +d.properties.ARS ||
-          +this.props.lk.value === +d.properties.SN_L ||
-          +this.props.lk.value === 0
+            +this.props.lk.value === +d.properties.SN_L ||
+            +this.props.lk.value === 0
             ? true
             : false,
       };
@@ -164,9 +164,8 @@ export default class Locator extends Component {
                           d={el.translatedPath}
                           key={e}
                           id="map"
-                          className={`landkreis ${el.lk} ${el.bl} ${
-                            el.visible ? 'visible' : 'hidden'
-                          }`}
+                          className={`landkreis ${el.lk} ${el.bl} ${el.visible ? 'visible' : 'hidden'
+                            }`}
                         />
                       );
                     })}
