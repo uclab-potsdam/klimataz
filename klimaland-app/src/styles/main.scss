@@ -15,14 +15,49 @@ button {
     @include button;
     &.flip {
         position: absolute;
-        bottom: 0.5rem;
-        right: 1rem;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        right: 0rem;
         z-index:4;
+        display: inline-flex;
+        margin-left: auto;
+        // background-color: pink;
+        height: 6%;
+        
+        &:hover {
+            opacity: 1;
+            .flip-label {
+                transition: all 0.2s;
+                opacity: 1;
+                left: 0rem;
+            }
+        }
+
+        .flip-label {
+            pointer-events: none;
+            transition: all 0.2s;
+            background-color: $light;
+            border: 1px solid $pale-olive;
+
+            padding: 0.5rem;
+            line-height: 12px;
+            font-size: 12px;
+            margin: auto 0.5rem;
+            position: relative;
+            left: -1rem;
+            opacity: 0;
+        }
 
         img {
-            width: 55%;
+            &:hover {
+                opacity: 0.8;
+            }
+            // background-color: aquamarine;
+            width: 20%;
             max-width: 50px;
             min-width: 20px;
+            -webkit-animation: bounce 1.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
+            animation: bounce 1.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
         }
     }
 }
@@ -262,28 +297,122 @@ code {
                     }
 
                 }
+
+               
             }
         }
         
+        // sources box with info about data
+        .sources-container { 
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50%; 
+            height: 10%;
+            z-index: 999; 
+
+
+            .sources-button {
+                height: 30px;
+                width: 30px;
+                line-height: 0px;
+                position: absolute;
+                right: 0.5rem;
+                bottom: 1.75rem;
+
+                background-color: $light;
+                border-color: darken($pale-olive, 20%);
+                border-width: 0.5px;
+                border-radius: 100%;
+                border-style: solid;
+    
+                .info-i {
+                    font-size: 1rem;
+                    color: darken($pale-olive, 20%);
+                }
+            }
+
+            .info-text-label{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 4rem;
+                
+                h6{
+                    margin: 0;
+                    text-align: right;
+                    color: rgba($default-text, 0.5);
+                }
+            }
+
+            .sources-text{
+                position: absolute;
+                width: 100%;
+                height: 400px;
+                transform: translate(-50%, -105%);
+                -webkit-transform:translate(-50%, -105%);
+
+                background-color: #fff;
+                padding: 1rem;
+                overflow: scroll;
+
+                border-color: $mint-green;
+                border-style: solid;
+                border-width: 1px;
+                box-shadow: 4px 4px 0px rgba($mint-green, 0.44);
+
+                & h4 {
+                    margin: 0.5rem 0rem;
+                }
+
+                & h5 {
+                    margin: 1.5rem 0rem .5rem 0rem;
+                }
+
+                & p{
+                    font-size: 0.75rem;
+                    margin: 0.75rem 0rem;
+                }
+
+                & a{
+                    color: $mint-green;
+                }
+
+                .close {
+                    @include button;
+                    position: absolute;
+                    right: 0rem;
+                    top: 0.25rem;
+                    height: 10%;
+
+                    img {
+                        width: 70%;
+                    }
+                }
+
+                
+            }
+        }
+
         // Info box explaining the project
         .info-container {
             position: absolute;
             bottom: 2%;
             width: 100%;
             height: 10%;
-            z-index: 9999;
-    
+            z-index: 999;
+
             .help {
                 background-color: #fff;
                 color: $red;
                 border-color: $red;
                 border-style: solid;
                 border-width: 1px;
-                width: 250px;
+                width: 270px;
                 height: $thumbnail-postcardwidth;
-                padding: 1rem;
-                transform: translate(-5px, 15px) rotate(-3deg);
-                -webkit-transform:translate(-5px, 15px) rotate(-3deg);
+                padding: 0.75rem;
+                transform: translate(-3px, 11px) rotate(-3deg);
+                -webkit-transform:translate(-3px, 23px) rotate(-3deg);
                 transition: 0.2s;
                 -webkit-transition: 0.2s;
                 box-shadow: 4px 4px 0px rgba($red, 0.44);
