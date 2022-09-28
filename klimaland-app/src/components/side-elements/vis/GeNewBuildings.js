@@ -203,7 +203,7 @@ const Buildings = ({
             Durchschnittlich werden in <span>{locationLabel}</span> pro Jahr{' '}
             <span>{formatNumber(numberOfBuildings)}</span> neue Wohnungen oder Häuser
             fertiggestellt. Zu{' '}
-            <span className="energy-number">{formatNumber(selectedEnergy)} %</span> wird davon mit{' '}
+            <span className="energy-number">{formatNumber(selectedEnergy)} %</span> wird davon mit{' '}
             <span className="energy-number">{firstToUppercase(currentId)}</span> geheizt.
           </p>
         </div>
@@ -238,7 +238,7 @@ const Buildings = ({
                         y={isMobile && yAxisValues[ya] !== 100 ? '-10' : '15'}
                         textAnchor="start"
                       >
-                        {yAxisValues[ya]}%
+                        {yAxisValues[ya]} %
                       </text>
                     </g>
                   );
@@ -268,8 +268,9 @@ const Buildings = ({
                         <g
                           key={e}
                           transform={`translate(0, ${en.y})`}
-                          className={`year-marker ${en.klassName} ${en.id === currentId ? 'default' : 'optional'
-                            }`}
+                          className={`year-marker ${en.klassName} ${
+                            en.id === currentId ? 'default' : 'optional'
+                          }`}
                         >
                           <circle cx="0" cy="0" r="3" />
                           <g transform="translate(5, 0)">
