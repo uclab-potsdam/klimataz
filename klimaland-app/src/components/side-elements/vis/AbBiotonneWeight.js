@@ -191,8 +191,9 @@ const Waste = ({
           })}
           <g className="controls-container">
             <g
-              transform={`translate(${width / 2 + (marginWidth - tabletThreshold)}, ${marginHeight / 2
-                })`}
+              transform={`translate(${width / 2 + (marginWidth - tabletThreshold)}, ${
+                marginHeight / 2
+              })`}
             >
               <g className={`legend ${piesAreActive ? 'show-legend' : ''}`}>
                 <circle className="biotonne" cx="0" cy="0" r={radius} />
@@ -243,7 +244,7 @@ const Waste = ({
         <div className="title">
           <h4>
             Im Jahr <span>{lastYear}</span> wurden in <span>{locationLabel}</span> pro Kopf{' '}
-            <span>{formatNumber(lastValue)} kg</span> organische Abfälle korrekt in der Biotonne
+            <span>{formatNumber(lastValue)} kg</span> organische Abfälle korrekt in der Biotonne
             oder als Gartenabfälle entsorgt und damit Co2-Emissionen verringert. {footnote}
             {footnote !== '' && '.'}
           </h4>
