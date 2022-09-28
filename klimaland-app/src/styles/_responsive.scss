@@ -67,7 +67,30 @@
     }
 
     .indicators-iframe {
+
         .main-container {
+
+            .selection-container{
+                .selector {
+                    width: 30%;
+                    margin: 1rem;
+    
+                    &.section{
+                        &.mode-comparison{
+                            width:25%
+                        }
+                    }
+    
+                    &.lk {
+                        &.mode-comparison{
+                            width:75%
+                        }
+                        &.mode-lk{
+                            width: 40%;
+                        }
+                    }
+                }
+            }
 
             .button-container {
                 .inner-button {

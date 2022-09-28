@@ -38,7 +38,7 @@ export class SelectionButtons extends Component {
           <div className="selection-container">
             {/* {this.props.viewVis !== 2 && ( */}
             <Select
-              className="selector lk"
+              className={`selector lk mode-${this.props.mode}`}
               isMulti
               //handle clearing when in shuffle mode
               //https://stackoverflow.com/questions/50412843/how-to-programmatically-clear-reset-react-select
@@ -51,12 +51,12 @@ export class SelectionButtons extends Component {
               getOptionLabel={(options) =>
                 `${options.label} ${options.nameAddition ? options.nameAddition : ''}`
               }
-              isOptionDisabled={() => this.props.landkreisSelection.length >= 5} //max selection number: 3
+              isOptionDisabled={() => this.props.landkreisSelection.length >= 5} //max selection number: 5
             />
             {/* )} */}
             {this.props.mode === 'comparison' && this.props.sections.length > 1 && (
               <Select
-                className="selector section"
+                className={`selector section mode-${this.props.mode}`}
                 defaultValue={this.props.sections[0]}
                 onChange={this.changeSection}
                 options={this.props.sections}
