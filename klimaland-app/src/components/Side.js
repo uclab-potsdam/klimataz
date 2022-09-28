@@ -247,9 +247,7 @@ export default class Side extends Component {
                         </linearGradient>
                       </defs>
                       <g className="toggle" onClick={this.props.switchDataLevel}>
-                        <g
-                          transform={`translate(${this.props.toggleLabels.lk.length * 8 + 10}, 2)`}
-                        >
+                        <g transform={`translate(${this.props.toggleLabels.lk.length * 8 + 10}, 2)`}>
                           <rect
                             className="controller-bg"
                             x="0"
@@ -276,29 +274,15 @@ export default class Side extends Component {
                         </text>
                         <text
                           className="mobile-toggle-label"
-                          x={this.props.toggleLabels.bl.length * 9 + 20}
-                          y="18"
+                          x={this.props.toggleLabels.bl.length * 9 + 10}
+                          y="17"
                         >
                           Switch data
                         </text>
                       </g>
-                      <text x="0" y="18">
-                        {this.props.toggleLabels.lk}
-                      </text>
-                      <text x={this.props.toggleLabels.bl.length * 8 + 20} y="18">
-                        {this.props.toggleLabels.bl}
-                      </text>
-                      <text
-                        className="mobile-toggle-label"
-                        x={this.props.toggleLabels.bl.length * 9 + 10}
-                        y="17"
-                      >
-                        Switch data
-                      </text>
-                    </g>
-                  </svg>
-                </div>
-              )}
+                    </svg>
+                  </div>
+                )}
               <button className="button-download" onClick={this.onShareButtonClick}>
                 <img src={share} className="button img" alt="flip-button-img" />
               </button>
