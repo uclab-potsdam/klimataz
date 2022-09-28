@@ -68,6 +68,15 @@
                 .biotonne-weight {
                     .visualization-container {
                         height: 75%;
+
+                        .chart {
+                            .controls-container {
+                                .pie-controller {
+                                    transform: scale(0.8) translateX(80px);
+                                }
+                            }
+                        }
+
                     }
                     .description {
                             .title {

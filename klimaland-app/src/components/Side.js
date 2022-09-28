@@ -272,8 +272,8 @@ export default class Side extends Component {
                       </text>
                       <text
                         className="mobile-toggle-label"
-                        x={this.props.toggleLabels.bl.length * 9 + 20}
-                        y="18"
+                        x={this.props.toggleLabels.bl.length * 9 + 10}
+                        y="17"
                       >
                         Switch data
                       </text>
