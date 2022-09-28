@@ -48,6 +48,21 @@
                     }
                 }
             }
+            &.Ge-chart{
+                .avg-heating{
+                    .visualization-container {
+                        svg{
+                            .non-clipped-elements {
+                                text {
+                                    transform: translateY(-5px);
+                                    font-size: 9.5px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
         }
     }
 
@@ -735,6 +750,7 @@
                     }
                 }
             }
+    
         }
     }
 }
