@@ -22,7 +22,7 @@ button {
         display: inline-flex;
         margin-left: auto;
         // background-color: pink;
-        height: 10%;
+        height: 6%;
         
         &:hover {
             opacity: 1;
@@ -56,17 +56,8 @@ button {
             width: 20%;
             max-width: 50px;
             min-width: 20px;
-            animation: bounce 0.5s;
-            animation-iteration-count: 5;
-            animation-timing-function: cubic-bezier(0, 0.5, 0.05, 0.5, 1, 0.5);
-            animation-delay: 1s;
-            animation-direction: alternate-reverse;
-            -webkit-animation-name: bounce;
-            -webkit-animation-duration: 0.5s;
-            -webkit-animation-iteration-count: 5;
-            -webkit-animation-timing-function: cubic-bezier(0, 0.5, 0.05, 0.5, 1, 0.5);
-            -webkit-animation-delay: 1s;
-            -webkit-animation-direction: alternate-reverse;
+            -webkit-animation: bounce 1.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
+            animation: bounce 1.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
         }
     }
 }
