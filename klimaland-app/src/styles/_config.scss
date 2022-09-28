@@ -21,8 +21,9 @@
 // breakpoints for responsive devices
 $breakpoints: (
     phone: 320px,
-    minitablet:576px,
-    tablet: 768px,
+    largephone: 400px, /* iPhone 13 Pro, Galaxy S20, etc.*/
+    minitablet:576px, /* iPad Mini and small tablets on portrait*/
+    tablet: 768px, /* iPad Pro and small tablets on landscape*/
     desktop: 940px
 );
 
@@ -115,7 +116,7 @@ p, text {
         padding-top: 7px;
         background-clip: text;
         font-family: 'Vampiro One', sans-serif;
-        background-image: linear-gradient(0deg, $taz-pink 0%, $blue 70%);
+        background-image: linear-gradient(0deg, $taz-pink 0%, $blue 80%);
         -webkit-text-fill-color: transparent;
         letter-spacing: -0.25vw; 
         

@@ -134,7 +134,7 @@ export default class Side extends Component {
     if (
       this.props.localData !== undefined &&
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-        undefined &&
+      undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -212,17 +212,17 @@ export default class Side extends Component {
     // console.log(this.props.switchDataLevel)
     // console.log('toggle labels in side', Object.keys(this.props.toggleLabels).length)
     // TO DO: Solve issue of inconsistent activeSide during carousel switch
+    // console.log(Boolean(this.props.flipping))
     return (
-      <CSSTransition in={Boolean(this.props.flipping)} timeout={200} classNames="side-transition">
+      <CSSTransition in={Boolean(this.props.flipping)} timeout={100} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
           <div className="overlay-container">
             <div className="overlay-inner">
               <div className="postcard-title">
                 <h4 className="section-title">{this.props.sectionName}</h4>
                 <div
-                  className={`section-thumb ${
-                    this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
-                  }`}
+                  className={`section-thumb ${this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
+                    }`}
                 >
                   {(this.props.mode === 'comparison' || !this.props.isThumbnail) && (
                     <TitleArt landkreisLabel={this.props.lk.label} />
