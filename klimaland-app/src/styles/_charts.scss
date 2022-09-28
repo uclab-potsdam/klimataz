@@ -135,6 +135,7 @@
                 .visualization-container {
                     height: 85%;
                     .chart {
+                        overflow:visible;
                         text {
                             font-size: 12px;
                             filter: brightness(0.75);
@@ -174,6 +175,7 @@
                 }
 
                 .chart {
+                    overflow:visible;
                     .axis {
                         line {
                             stroke: $default-text;
@@ -409,6 +411,7 @@
                 }
 
                 .chart {
+                    overflow:visible;
                     circle {
                         stroke: $default-text;
                     }
@@ -939,6 +942,10 @@
                 height: 100%;
                 @include horizontal-bottom-layout;
 
+                .chart{
+                    overflow:visible;
+                }
+
                 .description {
                     height: 10%;
                 }
@@ -998,7 +1005,7 @@
             
 
                 .chart{
-
+                    overflow:visible;
                     .legend {
                         circle {
                             // fill: white;
