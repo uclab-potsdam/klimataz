@@ -227,23 +227,25 @@
                         height: 50px;
                         z-index: 2;
                         text-align: left;
+                        margin-top: 0.5rem;
         
                         .gruss-thumb {
-                            font-size: 0.8rem;
+                            font-size: 0.5rem;
+                            // display: none;
                         }
         
                         .wordart {
                             width: 100%;
                             height: 100%;
-                            font-size: 1.5rem;
+                            font-size: 1.2rem;
                             padding: 0;
-                            padding-top: 1rem;
+                            padding-top: 0.8rem;
                             padding-left: 0.2rem;
                             // margin-top: 0.5rem;
                             letter-spacing: -0.10vw;
-                            line-height: 1.5rem;
+                            line-height: 1rem;
                             // -webkit-text-stroke: 0.1px $dark-blue;
-                            background-image: linear-gradient(0deg, $taz-pink 50%, $blue 70%);
+                            background-image: linear-gradient(0deg, $taz-pink 0%, $blue 100%);
                         }
                     }
                 }
