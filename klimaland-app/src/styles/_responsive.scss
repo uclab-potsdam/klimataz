@@ -8,8 +8,52 @@
 /*Tablet - Desktop*/
 @include media(">=tablet", "<desktop") {
 
+    .card-active {
+        .side-outer {
+            .overlay-container {
+                height: 10%;
+            }
+        
+            .side-inner {
+                height: 90%;
+
+                .details-container {
+                    height: 100%;
+                }
+            }
+        }
+    }
+
     .chart-container {
         .svg-container {
+
+        &.En-chart {
+            .energy-industry, .primary-energy {
+                .visualization-container {
+                    height: 80%;
+                }
+            }
+        }
+
+        &.Mo-chart {
+                .car-density {
+                    .legend {
+                        background-image: url('../img/legends/MoCarDensity-tablet.svg');
+                        background-repeat: no-repeat;
+                        position: relative;
+                        width: 50%;
+                        margin: 1rem;
+                    }
+        
+                    .visualization-container {
+                        .active-chart {
+                            transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+                            -webkit-transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+                        }
+                    }
+                }
+            }
+
             &.Ge-chart {
                 .description {
                     .caption {
@@ -22,6 +66,9 @@
 
             &.Ab-chart {
                 .biotonne-weight {
+                    .visualization-container {
+                        height: 75%;
+                    }
                     .description {
                             .title {
                                 h3 {
@@ -48,6 +95,7 @@
                     }
                 }
             }
+
             &.Ge-chart{
                 .avg-heating{
                     .visualization-container {
@@ -89,10 +137,19 @@
 
                 .side-inner {
                     .details-container {
-                        height: calc(90% - 10px);
+                        height: 100%;
 
-                        .locator-map {
-                            height: 45%;
+                        .flex-container {
+                            height: calc(90% - 0.5rem);
+
+                            .data-container {
+                                .locator-map {
+                                    height: 40%;
+                                    .locator-container {
+                                        height: 95%;
+                                    }
+                                }
+                            }
                         }
 
                         .lk-list {
@@ -101,10 +158,7 @@
                     }
 
                     .footer-container {
-                        height: calc(10% + 10px);
-                        .info-backside {
-                            padding-bottom: 0rem;
-                        }
+                        height: calc(10% + 0.5rem);
                     }
                 }
 
@@ -126,10 +180,18 @@
                             .mobile-toggle-label {
                                 transform: translate(-100px, 0px);
                                 display: block;
+                                font-size: 12px;
                             }
                         }
                     }
                 }
+
+                button.flip {
+                    height: 7%;
+                }
+            }
+            .sources-container {
+                right: 1rem;
             }
         }
     }
@@ -759,6 +821,13 @@
                         position: relative;
                         width: 50%;
                         margin: 1rem;
+                    }
+
+                    .visualization-container {
+                        .active-chart {
+                                transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+                                -webkit-transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+                            }
                     }
                 }
             }

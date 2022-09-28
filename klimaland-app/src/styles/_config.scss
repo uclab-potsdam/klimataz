@@ -342,11 +342,11 @@ p, text {
 }
 
 @mixin responsive-layout {
-    @include media(">phone", "<=tablet") {
+    @include media(">phone", "<=minitablet") {
         @include horizontal-bottom-layout
     }
     
-    @include media(">=tablet") {
+    @include media(">=minitablet") {
         @include vertical-layout
     }
 }
