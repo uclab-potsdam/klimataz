@@ -10,7 +10,6 @@ import Side from './Side';
 import Data from '../data/data.json';
 import LayoutControls from '../data/layout-controls-inprogress.json';
 import DynamicTextJson from '../data/textData.json';
-import { local } from 'd3';
 
 export default class CardCollection extends Component {
   constructor(props) {
@@ -396,7 +395,13 @@ export default class CardCollection extends Component {
         </h5> */}
         {this.props.mode === 'comparison' && !this.props.postcardView && (
           <div>
-            <div className="card-container stacked"> {this.state.cards} </div>
+            <div
+              className={`card-container stacked ${
+                this.props.cardSelection.length == 2 ? 'twocards' : 'default'
+              }`}
+            >
+              {this.state.cards}
+            </div>
           </div>
         )}
         {this.props.mode === 'lk' && !this.props.postcardView && (

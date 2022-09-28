@@ -216,6 +216,18 @@
                         justify-content: space-around;
                         padding-left: 0;
                     }
+
+                    &.stacked{
+                        //comparison view
+                        &.twocards,&.default{
+                            .card{
+                                &-ordered{
+                                    width: calc($portait-postcardwidth/2.3);
+                                    height: calc($portait-postcardwidth/1.8);
+                                }
+                            }   
+                        }
+                    }
                 }
             }
 
@@ -791,7 +803,7 @@
 }
 
 /* Phone - Mini Tablet*/
- @include media(">=phone", "<minitablet"){
+ @include media(">phone", "<minitablet"){
     .card {
         &-ordered {
             //original ratio changed for styling
