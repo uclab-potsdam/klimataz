@@ -1,21 +1,21 @@
 @import "_config.scss";
 
-@media not all and (min-resolution:.001dpcm) {
-    @supports (-webkit-appearance:none) {
-        .card-active {
-            .side-container {
-                .card-front {&.side-odd {
-                    backface-visibility: visible;
-                    -webkit-backface-visibility: visible;
-                    transform: rotateY(0deg);
-                    -webkit-transform: rotateY(-180deg);
-                    // -moz-transform: rotateY(0deg);
-                }}
-            }
+// @media not all and (min-resolution:.001dpcm) {
+//     @supports (-webkit-appearance:none) {
+//         .card-active {
+//             .side-container {
+//                 .card-front {&.side-odd {
+//                     backface-visibility: visible;
+//                     -webkit-backface-visibility: visible;
+//                     transform: rotateY(0deg);
+//                     -webkit-transform: rotateY(-180deg);
+//                     // -moz-transform: rotateY(0deg);
+//                 }}
+//             }
 
-        }
-    }
-}
+//         }
+//     }
+// }
 
 .carousel-container{
     position: absolute;
@@ -60,6 +60,18 @@
         z-index: 1;
         opacity: 1;
         @include stacked-postcard;
+
+        .side-container {
+            .card-front {
+                &.side-odd {
+                    backface-visibility: visible;
+                    -webkit-backface-visibility: visible;
+                    transform: rotateY(0deg);
+                    -webkit-transform: rotateY(-180deg);
+                    // -moz-transform: rotateY(0deg);
+                }
+            }
+        }
     }
 
     &-left{
@@ -137,6 +149,7 @@
             width: 100%;
             height: 100%;
             position: absolute;
+            
 
             .overlay-inner {
                 width: 95%;
@@ -345,6 +358,8 @@
                 display: inline-flex;
                 margin: 0.5rem 0.45rem;
                 border-bottom: 1px solid $default-text;
+                position: relative;
+                z-index: 10;
                 
                 .postcard-title {
                     margin-left: 0.5rem;
@@ -424,13 +439,11 @@
             // back-side with explanation
             .details-container {
                 height: 100%;
-                background-color: pink;
                 
                 .flex-container {
                     display: inline-flex;
                     width: 100%;
                     height: 90%;
-                    background-color: aquamarine;
                     
                     .text-container {
                         width: 60%;
@@ -502,7 +515,7 @@
                     .data-container {
                         width: 40%;
                         height: 100%;
-                        background-color: aliceblue;
+                        // background-color: aliceblue;
                         border-left: 1px solid $default-text;
 
                         .locator-map {
@@ -524,7 +537,7 @@
                                 height: 100%;
                                 
                                 .list-similar-container {
-                                        border-bottom: 1px solid $default-text;
+                                        // border-bottom: 1px solid $default-text;
                                         width: 100%;
                                         height: 100%;
                                 
@@ -606,87 +619,6 @@
                         }
                     }
                 }
-                // .flex-container {
-                //     display: flex;
-                //     height: 90%;
-    
-                //     .text-container {
-                //         width: 60%;
-                //         height: 100%;
-                //         overflow: scroll;
-    
-                //         border-right: 1px solid $default-text;
-    
-                //         .text-inner-container {
-                //             margin: 10px;
-                //             height: 90%;
-    
-                //             .section-title {
-                //                 text-align: left;
-                //                 margin: 2rem 1rem 0.5rem 1rem;
-                //                 border-bottom: 1px solid $mint-green;
-                //                 width: 85%;
-    
-                //                 h2 {
-                //                     margin-bottom: 0.5rem;
-                //                     font-size: 24px;
-                //                 }
-                //             }
-    
-                //             .section-text {
-                //                 margin: 20px;
-                //                 width: 85%;
-                //                 // pointer-events: none;
-    
-                //                 }
-                //             }
-                //         }
-                //     }
-    
-                //     .text-container::-webkit-scrollbar {
-                //         display: none;
-                //     }
-    
-                //     /* Hide scrollbar for IE, Edge and Firefox */
-                //     .text-container {
-                //         -ms-overflow-style: none;
-                //         /* IE and Edge */
-                //         scrollbar-width: none;
-                //         /* Firefox */
-                //     }
-    
-                //     .data-container {
-    
-                //         .lk-list {
-                //             margin: 0px 0px 0px 0px;
-                //             height: 60%;
-                //             overflow: hidden;
-                //             position: relative;
-    
-                //             .list-inner-container {
-                //                 height: 100%;
-                //                 position: relative;
-                //                 overflow: scroll;
-    
-                //                 .list-similar-container {
-                //                     // border-bottom: 1px solid $default-text;
-                //                     // overflow-x: hidden;
-                //                     // -ms-overflow-style: none;
-                //                     // scrollbar-width: none;
-                //                     height: 100%;
-
-    
-                //                     &::-webkit-scrollbar {
-                //                         display: none;
-                //                     }
-    
-
-    
-                //                 }
-                //             }
-                //         }
-                //     }
-                // }
             }
     
             // CSS Transition classes
