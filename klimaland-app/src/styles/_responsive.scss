@@ -98,7 +98,7 @@
 }
 
 /* Phones - Tablet */
-@include media(">phone", "<=tablet") {
+@include media(">phone", "<=minitablet") {
     body {
         h3 {
             font-size: 16px;
@@ -224,6 +224,16 @@
                         position: relative;
                         z-index: 1;
                         .postcard-title {
+                            max-width: 50%;
+                            width: 50%;
+                            overflow: hidden;
+                            .section-title {
+                                text-align: left;
+                                max-width: 100%;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                white-space: nowrap;
+                            }
                             .postcard-miniature {
                                 display: none;
                             }
@@ -245,6 +255,7 @@
                                 .mobile-toggle-label {
                                     transform: translate(-100px, 0px);
                                     display: block;
+                                    font-size: 12px;
                                 }
                             }
                         }
@@ -272,7 +283,7 @@
                             z-index: 1;
 
                             .text-inner-container {
-                                margin-top: 5rem;
+                                margin-top: 3rem;
                                 height: 80%;
 
                                 .section-title {
@@ -302,7 +313,7 @@
                             .locator-map {
                                 border: none;
                                 height: 70%;
-                                margin-top: 1rem;
+                                margin-top: 0.5rem;
 
                                 .locator-container {
                                     height: 100%;
@@ -405,7 +416,7 @@
                         height: 15%;
                     }
                     .visualization-container {
-                        height: 77%;
+                        height: 75%;
                     }
                 }
             }

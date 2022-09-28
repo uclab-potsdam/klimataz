@@ -372,7 +372,7 @@
                         .word-art-title {
                             transform: scale(0.9, 1.2) rotate(-0.2deg) translate(0px, 0px);
                             margin-top: 0;
-                            top: 0.5rem;
+                            top: 0rem;
                             right: 6%;
                             .gruss-thumb {
                                 display: none;
@@ -453,10 +453,12 @@
                         .text-inner-container {
                             position: relative;
                             margin: 0 auto;
-                            width: 80%;
+                            width: 85%;
                             height: 100%;
                             
                             .section-title {
+                                width: 80%;
+                                border-bottom: 1px solid $pale-olive;
                                 h2 {
                                     margin-top: 0;
                                     padding-top: 2rem;
@@ -465,10 +467,9 @@
                             }
 
                             .section-text {
-                                height: 90%;
+                                height: 85%;
                                 position: relative;
                                 overflow: auto;
-                                background-color: azure;
 
                                 p {
                                     font-size: 14px;
@@ -592,8 +593,7 @@
                 .footer-container {
                     height: 10%;
                     border-top: 1px solid $default-text;
-                    background-color: aqua;
-
+                    
                     .footer-inner-container {
                         display: flex;
 
