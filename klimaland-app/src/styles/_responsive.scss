@@ -48,6 +48,21 @@
                     }
                 }
             }
+            &.Ge-chart{
+                .avg-heating{
+                    .visualization-container {
+                        svg{
+                            .non-clipped-elements {
+                                text {
+                                    transform: translateY(-5px);
+                                    font-size: 9.5px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
         }
     }
 
@@ -89,6 +104,29 @@
                         height: calc(10% + 10px);
                         .info-backside {
                             padding-bottom: 0rem;
+                        }
+                    }
+                }
+
+                .side-outer{
+                    .button-toggle-container {
+                        svg {
+                            margin-left:0;
+
+                            .toggle {
+                                g {
+                                    transform: translate(5px, 2px);
+                                }   
+                            }
+                            
+                            text {
+                                display: none;
+                            }
+
+                            .mobile-toggle-label {
+                                transform: translate(-100px, 0px);
+                                display: block;
+                            }
                         }
                     }
                 }
@@ -696,6 +734,23 @@
             //original ratio changed for styling
             width: calc($portrait-minitablet-postcardwidth/2.3);
             height: calc($portrait-minitablet-postcardwidth/1.8);
+        }
+    }
+
+    .chart-container{
+        .svg-container{
+            &.Mo-chart{
+                .car-density{
+                    .legend {
+                        background-image: url('../img/legends/MoCarDensity-tablet.svg');
+                        background-repeat: no-repeat;
+                        position: relative;
+                        width: 50%;
+                        margin: 1rem;
+                    }
+                }
+            }
+    
         }
     }
 }
