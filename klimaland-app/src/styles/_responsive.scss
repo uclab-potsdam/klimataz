@@ -48,6 +48,18 @@
                     }
                 }
             }
+
+            &.Mo-chart{
+                .car-density{
+                    .legend {
+                        background-image: url('../img/legends/MoCarDensity-tablet.svg');
+                        background-repeat: no-repeat;
+                        position: relative;
+                        width: 50%;
+                        margin: 1rem;
+                    }
+                }
+            }
         }
     }
 
@@ -89,6 +101,29 @@
                         height: calc(10% + 10px);
                         .info-backside {
                             padding-bottom: 0rem;
+                        }
+                    }
+                }
+
+                .side-outer{
+                    .button-toggle-container {
+                        svg {
+                            margin-left:0;
+
+                            .toggle {
+                                g {
+                                    transform: translate(5px, 2px);
+                                }   
+                            }
+                            
+                            text {
+                                display: none;
+                            }
+
+                            .mobile-toggle-label {
+                                transform: translate(-100px, 0px);
+                                display: block;
+                            }
                         }
                     }
                 }
