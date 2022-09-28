@@ -51,7 +51,7 @@ export class SelectionButtons extends Component {
               getOptionLabel={(options) =>
                 `${options.label} ${options.nameAddition ? options.nameAddition : ''}`
               }
-              isOptionDisabled={() => this.props.landkreisSelection.length >= 3} //max selection number: 3
+              isOptionDisabled={() => this.props.landkreisSelection.length >= 5} //max selection number: 3
             />
             {/* )} */}
             {this.props.mode === 'comparison' && this.props.sections.length > 1 && (
