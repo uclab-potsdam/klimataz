@@ -177,6 +177,7 @@
                     border:  2px solid gray;
                     border-radius: 5px;
                     background-color: $light;
+                    max-width: 80%;
 
                     // padding: 0.5rem;
                     transform: rotate(5deg);
@@ -596,26 +597,32 @@
                     
                     .footer-inner-container {
                         display: flex;
+                        height: 100%;
 
                         .logo-container {
-                            background-image: url(../img/taz/taz-logo.svg);
-                            background-repeat: no-repeat;
+                            background: url(../img/taz/taz-logo.svg) no-repeat left center;
+                            // background-repeat: no-repeat;
                             background-size: contain;
                             width: 20%;
                             min-height: 1rem;
-                            margin: 10px;
+                            margin: 0.5rem;
                         }
 
                         .info-backside {
                             margin: 10px 0px 10px 0px;
                             font-size: 12px;
+                            line-height: 24px;
                             border: 1px solid $mint-green;
                             border-radius: 20px;
-                            padding: 0.2rem 0.5rem;
+                            padding: 0rem 0.5rem;
                             background: linear-gradient(to left, $mint-green, rgba($mint-green, 0.5));
                             -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
+
+                            p {
+                                margin: 0 auto;
+                            }
                         }
                     }
                 }

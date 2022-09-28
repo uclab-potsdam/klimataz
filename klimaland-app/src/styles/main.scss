@@ -437,6 +437,8 @@ code {
                 &.help-postcard {
                     width: calc($thumbnail-postcardwidth/0.65);
                     height: $thumbnail-postcardwidth/0.95;
+
+                    overflow: scroll;
                     transform: translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
                     -webkit-transform:translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
                     transition: 0.2s;
