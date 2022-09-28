@@ -234,35 +234,53 @@ export default class Side extends Component {
                   )}
                 </div>
               </div>
-              {!this.props.isThumbnail && this.props.toggleLabels.lk !== '' && (
-                <div className="button-toggle-container">
-                  <div className="arrow-pointer" />
-                  <svg width="100%" height="100%">
-                    <defs>
-                      <linearGradient id="MyGradient">
-                        <stop offset="50%" stopColor="#e6c9a2" />
-                        <stop offset="100%" stopColor="#ffe8c9" />
-                      </linearGradient>
-                    </defs>
-                    <g className="toggle" onClick={this.props.switchDataLevel}>
-                      <g transform={`translate(${this.props.toggleLabels.lk.length * 8 + 10}, 2)`}>
-                        <rect
-                          className="controller-bg"
-                          x="0"
-                          y="0"
-                          width="40"
-                          height="20"
-                          rx="10"
-                        />
-                        <rect
-                          x={this.props.isLKData ? 0 : 20}
-                          y="0"
-                          width="20"
-                          height="20"
-                          rx="10"
-                          fill="#FFF9F1"
-                          stroke="#484848"
-                        />
+              {!this.props.isThumbnail &&
+                this.props.toggleLabels.lk !== '' &&
+                this.props.activeSide !== 1 && (
+                  <div className="button-toggle-container">
+                    <div className="arrow-pointer" />
+                    <svg width="100%" height="100%">
+                      <defs>
+                        <linearGradient id="MyGradient">
+                          <stop offset="50%" stopColor="#e6c9a2" />
+                          <stop offset="100%" stopColor="#ffe8c9" />
+                        </linearGradient>
+                      </defs>
+                      <g className="toggle" onClick={this.props.switchDataLevel}>
+                        <g
+                          transform={`translate(${this.props.toggleLabels.lk.length * 8 + 10}, 2)`}
+                        >
+                          <rect
+                            className="controller-bg"
+                            x="0"
+                            y="0"
+                            width="40"
+                            height="20"
+                            rx="10"
+                          />
+                          <rect
+                            x={this.props.isLKData ? 0 : 20}
+                            y="0"
+                            width="20"
+                            height="20"
+                            rx="10"
+                            fill="#FFF9F1"
+                            stroke="#484848"
+                          />
+                        </g>
+                        <text x="0" y="18">
+                          {this.props.toggleLabels.lk}
+                        </text>
+                        <text x={this.props.toggleLabels.bl.length * 8 + 20} y="18">
+                          {this.props.toggleLabels.bl}
+                        </text>
+                        <text
+                          className="mobile-toggle-label"
+                          x={this.props.toggleLabels.bl.length * 9 + 20}
+                          y="18"
+                        >
+                          Switch data
+                        </text>
                       </g>
                       <text x="0" y="18">
                         {this.props.toggleLabels.lk}
