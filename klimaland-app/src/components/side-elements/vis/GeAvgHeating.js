@@ -10,10 +10,11 @@ const GeAvgHEating = ({
   currentSection,
   locationLabel,
   isThumbnail,
+  cardNumber,
 }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
-  const dimensions = useCardSize(targetRef);
+  const dimensions = useCardSize(targetRef, cardNumber);
 
   const [higlightedBar, setHiglightedBar] = useState('');
 
@@ -184,8 +185,9 @@ const GeAvgHEating = ({
                 return (
                   <g
                     key={b}
-                    className={`single-bar ${higlightedBar === b || higlightedBar === '' ? 'in-focus' : 'no-focus'
-                      }`}
+                    className={`single-bar ${
+                      higlightedBar === b || higlightedBar === '' ? 'in-focus' : 'no-focus'
+                    }`}
                     transform={`translate(${bar.year}, 0)`}
                     onMouseEnter={() => switchHighlightedBar(b)}
                     onMouseLeave={() => switchHighlightedBar('')}

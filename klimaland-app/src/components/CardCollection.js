@@ -259,7 +259,6 @@ export default class CardCollection extends Component {
               key={i}
               classProp={classProp}
               isThumbnail={false} //this is always false in postcardView
-              sides={this.layoutControls[section]}
               handleSwitchNext={this.props.handleSwitchNext}
               handleSwitchBack={this.props.handleSwitchBack}
             >
@@ -349,6 +348,7 @@ export default class CardCollection extends Component {
                 localData={localData}
                 clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview
                 layoutControls={this.layoutControls[section]}
+                cardNumber={this.props.cardSelection.length} //for rerendering chart in comparison modde
               />
             </Card>
           );

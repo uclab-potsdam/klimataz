@@ -9,9 +9,10 @@ const MoModalSplit = ({
   currentSection,
   locationLabel,
   isThumbnail,
+  cardNumber,
 }) => {
   const targetRef = useRef();
-  const dimensions = useCardSize(targetRef);
+  const dimensions = useCardSize(targetRef, cardNumber);
 
   window.mobileCheck = function () {
     let check = false;

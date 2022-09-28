@@ -11,12 +11,13 @@ const Waste = ({
   locationLabel,
   isThumbnail,
   footnote,
+  cardNumber,
 }) => {
   const targetRef = useRef();
   //const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [piesAreActive, setPies] = useState(false);
 
-  const dimensions = useCardSize(targetRef);
+  const dimensions = useCardSize(targetRef, cardNumber);
 
   // useLayoutEffect(() => {
   //   if (targetRef.current) {
@@ -191,8 +192,9 @@ const Waste = ({
           })}
           <g className="controls-container">
             <g
-              transform={`translate(${width / 2 + (marginWidth - tabletThreshold)}, ${marginHeight / 2
-                })`}
+              transform={`translate(${width / 2 + (marginWidth - tabletThreshold)}, ${
+                marginHeight / 2
+              })`}
             >
               <g className={`legend ${piesAreActive ? 'show-legend' : ''}`}>
                 <circle className="biotonne" cx="0" cy="0" r={radius} />
