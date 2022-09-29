@@ -153,12 +153,17 @@ code {
                     }
 
                     &.lk {
+                        display:inline-block;
                         &.mode-comparison{
                             width:80%
                         }
                         &.mode-lk{
                             width: 40%;
                         }
+                    }
+
+                    &.lk-mobile{
+                        display:none;
                     }
 
                     svg {

@@ -270,7 +270,22 @@
 
                     .selector {
                         width: 90%;
+                        margin: 0.25rem 1rem;
+
+                        &.lk{
+                            display:none
+                        }
+                        &.lk-mobile{
+                            display:inline-block;
+
+
+                        }
+
+                        &.section{
+                            width:50%;
+                        }
                     }
+
                 }
             }
 
