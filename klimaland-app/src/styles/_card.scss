@@ -662,11 +662,11 @@
                 position: absolute;
                 right: 50%;
                 top: 50%;
-                border: 1px solid $pale-olive;
+                // border: 1px solid $pale-olive;
                 transform: translate(50%, -50%);
                 -webkit-transform: translate(50%, -50%);
                 background-color: $light;
-                box-shadow: 2px 2px 0px rgba($pale-olive, .5);
+                // box-shadow: 2px 2px 0px rgba($pale-olive, .5);
 
                 .details-container {
 
@@ -675,7 +675,6 @@
 
                         .text-container {
                             .text-inner-container {
-                                background-color: pink;
                                 .section-title {
                                     h2 {
                                         font-size: 1rem;                                    
