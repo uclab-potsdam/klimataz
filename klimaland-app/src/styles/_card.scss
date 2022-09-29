@@ -663,8 +663,8 @@
                 right: 50%;
                 top: 50%;
                 // border: 1px solid $pale-olive;
-                transform: translate(50%, -50%);
-                -webkit-transform: translate(50%, -50%);
+                transform: translate(50%, -55%);
+                -webkit-transform: translate(50%, -55%);
                 background-color: $light;
                 // box-shadow: 2px 2px 0px rgba($pale-olive, .5);
 
@@ -712,7 +712,7 @@
     
         .logo-container {
             position: absolute;
-            background-image: url(../img/taz/taz-logo.svg);
+            background-image: url(../img/taz/taz-logo.png);
             background-repeat: no-repeat;
             background-size: contain;
             width: 100%;
