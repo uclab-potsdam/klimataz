@@ -112,7 +112,7 @@ export default class Side extends Component {
     if (
       this.props.localData !== undefined &&
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-      undefined &&
+        undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -197,8 +197,9 @@ export default class Side extends Component {
               <div className="postcard-title">
                 <h4 className="section-title">{this.props.sectionName}</h4>
                 <div
-                  className={`section-thumb ${this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
-                    }`}
+                  className={`section-thumb ${
+                    this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
+                  }`}
                 >
                   {(this.props.mode === 'comparison' || !this.props.isThumbnail) && (
                     <TitleArt landkreisLabel={this.props.lk.label} />
@@ -223,7 +224,9 @@ export default class Side extends Component {
                         </linearGradient>
                       </defs>
                       <g className="toggle" onClick={this.props.switchDataLevel}>
-                        <g transform={`translate(${this.props.toggleLabels.lk.length * 8 + 10}, 2)`}>
+                        <g
+                          transform={`translate(${this.props.toggleLabels.lk.length * 8 + 10}, 2)`}
+                        >
                           <rect
                             className="controller-bg"
                             x="0"
@@ -253,7 +256,7 @@ export default class Side extends Component {
                           x={this.props.toggleLabels.bl.length * 9 + 10}
                           y="17"
                         >
-                          Switch data
+                          Daten wechseln
                         </text>
                       </g>
                     </svg>
