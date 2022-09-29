@@ -10,10 +10,11 @@ const LandDenisty = ({
   currentSection,
   locationLabel,
   isThumbnail,
+  cardNumber,
 }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
-  const dimensions = useCardSize(targetRef);
+  const dimensions = useCardSize(targetRef, cardNumber);
 
   window.mobileCheck = function () {
     let check = false;
@@ -284,8 +285,9 @@ const LandDenisty = ({
                     fill="url(#diagonalHatch4)"
                   />
                   <g
-                    transform={`translate(${-barWidth / 2}, ${-bar.value - max([16, barElements[0][a].value])
-                      })`}
+                    transform={`translate(${-barWidth / 2}, ${
+                      -bar.value - max([16, barElements[0][a].value])
+                    })`}
                   >
                     <rect
                       className="labelCount"

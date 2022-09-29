@@ -180,8 +180,24 @@ code {
                     width: 30%;
                     margin: 1rem;
 
+                    &.section{
+                        &.mode-comparison{
+                            width:20%
+                        }
+                    }
+
                     &.lk {
-                        width: 40%;
+                        display:inline-block;
+                        &.mode-comparison{
+                            width:80%
+                        }
+                        &.mode-lk{
+                            width: 40%;
+                        }
+                    }
+
+                    &.lk-mobile{
+                        display:none;
                     }
 
                     svg {
