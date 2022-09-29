@@ -154,19 +154,28 @@ const EnIndustry = ({
 
       const labelRects = [];
       for (let index = 0; index < stream['length']; index++) {
-        // const next = index > stream['length'] ? stream['length'] - 1 : index + 1
-        // console.log(next)
         const scaledFloor = yScale(stream[index][0]);
         const scaledCeil = yScale(stream[index][1]);
         const year = stackData[index].year;
         const value = stackData[index][stream.key];
+        let x = xScale(year);
+        if (x + 50 > dimensions.width - marginWidth) x -= 20;
+
         const y = Math.abs(scaledCeil);
         const yValue = Math.abs(scaledFloor - (scaledFloor - scaledCeil) / 2);
-        // const width = Math.abs(xScale(stackData[next].year) - xScale(year))
+
+        let xValue = xScale(year);
+        if (xValue + 40 > dimensions.width - marginWidth) {
+          xValue -= 65;
+        } else if (xValue + 50 > dimensions.width - marginWidth) {
+          xValue -= 30;
+        }
+
         const height = Math.abs(scaledCeil - scaledFloor);
         const labelEl = {
-          x: xScale(year),
+          x,
           y,
+          xValue,
           yValue,
           height,
           value,
@@ -289,7 +298,7 @@ const EnIndustry = ({
                             className={`interactive-labels ${
                               activeLabel === l ? 'active-label' : ''
                             }`}
-                            transform={`translate(${label.x}, ${label.yValue})`}
+                            transform={`translate(${label.xValue}, ${label.yValue})`}
                           >
                             <foreignObject
                               className={stream.threshold ? 'visible' : 'invisible'}
