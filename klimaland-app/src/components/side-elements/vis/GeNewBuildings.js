@@ -84,6 +84,11 @@ const Buildings = ({
     return cleanedKlassString;
   };
 
+  const getLegendName = function (name) {
+    if (name == 'Umweltthermie (Luft/Wasser)') return 'Umweltthermie (Wärmepumpe)';
+    return name;
+  };
+
   //handle click on legend to change label
   let changeId = function (id) {
     if (currentData !== undefined) {
@@ -216,7 +221,7 @@ const Buildings = ({
                   <div key={t} onClick={() => changeId(type)} className="legend-element">
                     <div className={`element-color ${cleanKlassString(type.toLowerCase())}`} />
                     <p x="15" y="10" className={type === currentId ? 'selected' : ''}>
-                      {firstToUppercase(type)}
+                      {getLegendName(firstToUppercase(type))}
                     </p>
                   </div>
                 );
