@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 
 /**
  * modulo helper function
@@ -90,7 +90,7 @@ export function formatNumber(numberValue) {
 export function useCardSize(target, cardNumber) {
   const [dimension, setDimensions] = useState({ width: 0, height: 0 });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     function updateSize() {
       if (target.current) {
         setDimensions({
