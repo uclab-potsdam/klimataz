@@ -12,6 +12,7 @@ const EnIndustry = ({
   locationLabel,
   isThumbnail,
   footnote,
+  cardNumber,
 }) => {
   const colorArray = [
     '#FFD5C8', // Erdgas
@@ -26,7 +27,7 @@ const EnIndustry = ({
 
   // getting sizes of container for maps
   const targetRef = useRef();
-  const dimensions = useCardSize(targetRef);
+  const dimensions = useCardSize(targetRef, cardNumber);
 
   const [highlighedStream, setHighlightedStream] = useState('');
   const [activeLabel, setactiveLabel] = useState('');

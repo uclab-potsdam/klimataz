@@ -10,7 +10,6 @@ import Side from './Side';
 import Data from '../data/data.json';
 import LayoutControls from '../data/layout-controls-inprogress.json';
 import DynamicTextJson from '../data/textData.json';
-import { local } from 'd3';
 
 export default class CardCollection extends Component {
   constructor(props) {
@@ -230,7 +229,7 @@ export default class CardCollection extends Component {
               Object.entries(this.textData).filter(([key, value]) => {
                 return element.lk.value !== 0
                   ? value[section]['third'] === localTextData[section]['third'] &&
-                  value.key !== element.lk.value
+                      value.key !== element.lk.value
                   : value.key !== element.lk.value;
               })
             );
@@ -260,7 +259,6 @@ export default class CardCollection extends Component {
               key={i}
               classProp={classProp}
               isThumbnail={false} //this is always false in postcardView
-              sides={this.layoutControls[section]}
               handleSwitchNext={this.props.handleSwitchNext}
               handleSwitchBack={this.props.handleSwitchBack}
             >
@@ -350,6 +348,7 @@ export default class CardCollection extends Component {
                 localData={localData}
                 clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview
                 layoutControls={this.layoutControls[section]}
+                cardNumber={this.props.cardSelection.length} //for rerendering chart in comparison modde
               />
             </Card>
           );
@@ -396,7 +395,13 @@ export default class CardCollection extends Component {
         </h5> */}
         {this.props.mode === 'comparison' && !this.props.postcardView && (
           <div className="inner-card-collection">
-            <div className="card-container stacked"> {this.state.cards} </div>
+            <div
+              className={`card-container stacked ${
+                this.props.cardSelection.length == 2 ? 'twocards' : 'default'
+              }`}
+            >
+              {this.state.cards}
+            </div>
           </div>
         )}
         {this.props.mode === 'lk' && !this.props.postcardView && (

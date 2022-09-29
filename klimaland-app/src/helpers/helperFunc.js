@@ -1,5 +1,4 @@
-import { update } from 'lodash';
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 /**
  * modulo helper function
@@ -88,9 +87,10 @@ export function formatNumber(numberValue) {
         .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'); // adds dot . after 3 digits -> 1.000
 }
 
-export function useCardSize(target) {
+export function useCardSize(target, cardNumber) {
   const [dimension, setDimensions] = useState({ width: 0, height: 0 });
-  useLayoutEffect(() => {
+
+  useEffect(() => {
     function updateSize() {
       if (target.current) {
         setDimensions({
@@ -102,6 +102,6 @@ export function useCardSize(target) {
     window.addEventListener('resize', updateSize);
     updateSize();
     return () => window.removeEventListener('resize', updateSize);
-  }, []);
+  }, [cardNumber]);
   return dimension;
 }
