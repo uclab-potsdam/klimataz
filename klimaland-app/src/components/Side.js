@@ -53,7 +53,9 @@ export default class Side extends Component {
     }
 
     await setStateAsync(this, { exportActive: true })
+    await new Promise(resolve => setTimeout(resolve, 1000))
       .then(() => {
+        console.log('!')
         return toPng(this.myRef.current, {
           cacheBust: true,
           backgroundColor: '#fff',

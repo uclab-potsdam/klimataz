@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
+import { mobileCheck } from '../helpers/helperFunc';
 
 export class SelectionButtons extends Component {
   constructor(props) {
@@ -57,6 +58,11 @@ export class SelectionButtons extends Component {
       }
     });
 
+    const lkSelectionMobile = this.props.landkreisSelection;
+    if (lkSelectionMobile.length >= 5 && mobileCheck(window)) {
+      lkSelectionMobile.pop();
+    }
+
     return (
       <div className="selection-buttons">
         {!this.props.postcardView && this.props.uiVis && (
@@ -95,12 +101,11 @@ export class SelectionButtons extends Component {
               getOptionLabel={(options) =>
                 `${options.label} ${options.nameAddition ? options.nameAddition : ''}`
               }
-              isOptionDisabled={() => this.props.landkreisSelection.length >= 5} //max selection number: 5
+              isOptionDisabled={() => this.props.landkreisSelection.length >= 4} //max selection number: 4
               // controlShouldRenderValue={false}
               hideSelectedOptions={false}
               noOptionsMessage={() => 'Landkreis wurde nicht gefunden.'}
             />
-            {/* )} */}
             {this.props.mode === 'comparison' && this.props.sections.length > 1 && (
               <Select
                 className={`selector section mode-${this.props.mode}`}

@@ -669,18 +669,46 @@
                 transition: opacity 20ms;
                 -webkit-transition: opacity 20ms;
             }
-    
+            
+            // Here edits for the export images
             .export {
                 width: 90%;
                 height: 90%;
                 position: absolute;
                 right: 50%;
                 top: 50%;
-                border: 1px solid $pale-olive;
-                transform: translate(50%, -50%);
-                -webkit-transform: translate(50%, -50%);
+                // border: 1px solid $pale-olive;
+                transform: translate(50%, -55%);
+                -webkit-transform: translate(50%, -55%);
                 background-color: $light;
-                box-shadow: 2px 2px 0px rgba($pale-olive, .5);
+                // box-shadow: 2px 2px 0px rgba($pale-olive, .5);
+
+                .details-container {
+
+                    .flex-container {
+                        height: 100%;
+
+                        .text-container {
+                            .text-inner-container {
+                                .section-title {
+                                    h2 {
+                                        font-size: 1rem;                                    
+                                    }
+                                }   
+
+                                .section-text {
+                                    p {
+                                        font-size: 12px;
+                                        margin: 0.5rem auto;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .footer-container {
+                        display: none;
+                    }
+                }
             }    
         }
     }
@@ -699,7 +727,7 @@
     
         .logo-container {
             position: absolute;
-            background-image: url(../img/taz/taz-logo.svg);
+            background-image: url(../img/taz/taz-logo.png);
             background-repeat: no-repeat;
             background-size: contain;
             width: 100%;

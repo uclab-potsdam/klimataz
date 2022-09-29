@@ -51,19 +51,19 @@ const Buildings = ({
   const marginWidth = Math.ceil(dimensions.height / 10);
 
   const customLegendOrder = [
-    'Solarthermie',
-    'Geothermie',
     'Umweltthermie (Luft/Wasser)',
-    'Fernwärme/Fernkälte',
-    'Sonstige Heizenergie',
-    'Keine Energie (einschl. Passivhaus)',
-    'Andere erneuerbare Energien',
-    'Gas',
-    'Öl',
+    'Geothermie',
+    'Solarthermie',
     'Holz',
     'Biogas/Biomethan',
     'Sonstige Biomasse',
+    'Keine Energie (einschl. Passivhaus)',
+    'Andere erneuerbare Energien',
+    'Gas',
+    'Fernwärme/Fernkälte',
+    'Öl',
     'Strom',
+    'Sonstige Heizenergie',
     'Andere fossile Energien',
   ];
 
@@ -82,6 +82,11 @@ const Buildings = ({
     }
 
     return cleanedKlassString;
+  };
+
+  const getLegendName = function (name) {
+    if (name == 'Umweltthermie (Luft/Wasser)') return 'Umweltthermie (Wärmepumpe)';
+    return name;
   };
 
   //handle click on legend to change label
@@ -216,7 +221,7 @@ const Buildings = ({
                   <div key={t} onClick={() => changeId(type)} className="legend-element">
                     <div className={`element-color ${cleanKlassString(type.toLowerCase())}`} />
                     <p x="15" y="10" className={type === currentId ? 'selected' : ''}>
-                      {firstToUppercase(type)}
+                      {getLegendName(firstToUppercase(type))}
                     </p>
                   </div>
                 );
