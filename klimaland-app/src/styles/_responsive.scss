@@ -342,8 +342,8 @@
                     &.help-postcard {
                         width:  calc($portait-postcardwidth/1.2);
                         height: calc($portait-postcardwidth*1.2);
-                        transform: translate(5%, -95%) rotate(2deg);
-                        -webkit-transform:translate(5%, -95%) rotate(2deg);
+                        transform: translate(-100%, -70%) rotate(-2deg);
+                        -webkit-transform:translate(-100%, -70%) rotate(-2deg);
 
                         h4.desktop-title {
                             display: block; 
