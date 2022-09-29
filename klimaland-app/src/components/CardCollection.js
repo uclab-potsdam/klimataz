@@ -394,7 +394,7 @@ export default class CardCollection extends Component {
           {this.props.cardSelection.map((elem) => elem.lk.label + ' ' + elem.section.label + ' | ')}
         </h5> */}
         {this.props.mode === 'comparison' && !this.props.postcardView && (
-          <div>
+          <div className="inner-card-collection">
             <div
               className={`card-container stacked ${
                 this.props.cardSelection.length == 2 ? 'twocards' : 'default'
@@ -405,12 +405,12 @@ export default class CardCollection extends Component {
           </div>
         )}
         {this.props.mode === 'lk' && !this.props.postcardView && (
-          <div>
+          <div className="inner-card-collection">
             <div className="card-container messy">{this.state.cards}</div>
           </div>
         )}
         {this.props.mode === 'shuffle' && !this.props.postcardView && (
-          <div>
+          <div className="inner-card-collection">
             <div className="card-container shuffle">{this.state.cards}</div>
           </div>
         )}

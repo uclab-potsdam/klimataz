@@ -245,7 +245,7 @@ const Waste = ({
         <div className="title">
           <h4>
             Im Jahr <span>{lastYear}</span> wurden in <span>{locationLabel}</span> pro Kopf{' '}
-            <span>{formatNumber(lastValue)} kg</span> organische Abfälle korrekt in der Biotonne
+            <span>{formatNumber(lastValue)} kg</span> organische Abfälle korrekt in der Biotonne
             oder als Gartenabfälle entsorgt und damit Co2-Emissionen verringert. {footnote}
             {footnote !== '' && '.'}
           </h4>

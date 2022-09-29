@@ -69,7 +69,7 @@ const MoModalSplit = ({
       const element = {};
       const nameOfMode = mode.column.split('_').pop();
       element.mode = nameOfMode.replace(/[{()}]/g, '');
-      element.label = formatNumber(mode.value.toFixed(2)) + 'km';
+      element.label = formatNumber(mode.value.toFixed(2)) + ' km';
 
       // depending on size of value start at zero (for > 10) or with value (< 10)
       const startValue = 0.1;
@@ -239,7 +239,7 @@ const MoModalSplit = ({
               return (
                 <g transform={`translate(0, ${trip.y1})`} key={t}>
                   <text x="35" y="5" fill={trip.fill}>
-                    {formatNumber(trip.label)}%
+                    {formatNumber(trip.label)} %
                   </text>
                   <rect width="10" height={trip.y2 - trip.y1} x="0" y="0" fill={trip.fill} />
                   <line x1="0" x2="30" y1="0" y2="0" />
