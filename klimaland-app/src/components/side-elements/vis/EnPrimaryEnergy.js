@@ -184,13 +184,25 @@ const Energy = ({
         const scaledCeil = yScale(stream[index][1]);
         const year = stackData[index].year;
         const value = stackData[index][stream.key];
+        let x = xScale(year);
+        if (x + 50 > dimensions.width - marginWidth) x -= 10;
+
         const y = Math.abs(scaledCeil);
         const yValue = Math.abs(scaledFloor - (scaledFloor - scaledCeil) / 2);
-        // const width = Math.abs(xScale(stackData[next].year) - xScale(year))
+
+        let xValue = xScale(year);
+        if (xValue + 20 > dimensions.width - marginWidth) {
+          xValue -= 65;
+        } else if (xValue + 40 > dimensions.width - marginWidth) {
+          xValue -= 40;
+        } else if (xValue + 60 > dimensions.width - marginWidth) {
+          xValue -= 10;
+        }
         const height = Math.abs(scaledCeil - scaledFloor);
         const labelEl = {
-          x: xScale(year),
+          x,
           y,
+          xValue,
           yValue,
           height,
           value,
@@ -311,7 +323,7 @@ const Energy = ({
                             className={`interactive-labels ${
                               activeLabel === l ? 'active-label' : ''
                             }`}
-                            transform={`translate(${label.x}, ${label.yValue})`}
+                            transform={`translate(${label.xValue}, ${label.yValue})`}
                           >
                             <foreignObject
                               className={stream.threshold ? 'visible' : 'invisible'}
