@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import closeCard from '../img/buttons/close.svg';
 import flipCard from '../img/buttons/flip.svg';
+import toggleCard from '../img/buttons/toggle.png';
 
 export default class Info extends Component {
   constructor(props) {
@@ -43,7 +44,10 @@ export default class Info extends Component {
           <p className="text">
             In der <span className="info-suchleiste"> Suchleiste</span> kann nach einem beliebigen
             Landkreis oder Bundesland gesucht werden. Hier können auch mehrere Regionen ausgewählt
-            und verglichen werden. Jede Postkarte beschäftigt sich mit einem anderen Bereich.{' '}
+            und verglichen werden.{' '}
+          </p>
+          <p className="text">
+            Jede Postkarte beschäftigt sich mit einem anderen Bereich.{' '}
             <span className="info-highlight">Energie</span>,{' '}
             <span className="info-highlight">Mobilität</span>,{' '}
             <span className="info-highlight">Abfall</span>,{' '}
@@ -52,9 +56,12 @@ export default class Info extends Component {
           </p>
           <p className="text">
             Mit einem Klick auf die Postkarte wird die vollständige Visualisierung sichtbar. Hier
-            kann auch zu einem zweiten Datenset gewechselt werden. Auf der Rückseite{' '}
-            <img src={flipCard} className="img-flip" alt="flip-button-img" /> der Postkarte befindet
-            sich eine kurze Erklärung und ein Klimaausblick deiner Region.
+            kann auch zu einem zweiten Datenset gewechselt{' '}
+            <img src={toggleCard} className="img-toggle" alt="flip-button-img" /> werden.{' '}
+          </p>
+          <p className="text">
+            Auf der Rückseite <img src={flipCard} className="img-flip" alt="flip-button-img" />
+            der Postkarte befindet sich eine kurze Erklärung und ein Klimaausblick deiner Region.
           </p>
           <p className="text">
             Wie gut schlägt sich deine Region in der Bekämpfung der Klimakrise?
