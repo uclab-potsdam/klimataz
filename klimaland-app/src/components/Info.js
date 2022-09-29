@@ -42,8 +42,9 @@ export default class Info extends Component {
           <h2 className="mobile-title">?</h2>
           <p className="text">
             In der <span className="info-suchleiste"> Suchleiste</span> kann nach einem beliebigen
-            Landkreis oder Bundesland gesucht werden. Jede Postkarte beschäftigt sich mit einem
-            anderen Bereich. <span className="info-highlight">Energie</span>,{' '}
+            Landkreis oder Bundesland gesucht werden. Hier können auch mehrere Regionen ausgewählt
+            und verglichen werden. Jede Postkarte beschäftigt sich mit einem anderen Bereich.{' '}
+            <span className="info-highlight">Energie</span>,{' '}
             <span className="info-highlight">Mobilität</span>,{' '}
             <span className="info-highlight">Abfall</span>,{' '}
             <span className="info-highlight">Landwirtschaft</span> oder{' '}
