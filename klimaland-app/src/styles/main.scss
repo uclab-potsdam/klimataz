@@ -498,18 +498,6 @@ code {
                         opacity: 1;
                     }
 
-                    svg {
-                        margin-left: 0.5rem;
-                        rect {
-                            transition: x 0.2s;
-                        }
-
-                        .controller-bg {
-                            fill: url(#MyGradient);
-                            stroke: $default-text;
-                        }
-                    }
-
                     .close {
                         @include button;
                         position: absolute;
