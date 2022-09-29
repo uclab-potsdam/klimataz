@@ -1,5 +1,6 @@
+/* eslint-disable array-callback-return */
 import { Component } from 'react';
-import { mod, isInt } from './helperFunc.js';
+import { mod, isInt, setStateAsync } from '../helpers/helperFunc';
 
 //components
 import Card from './Card';
@@ -8,6 +9,8 @@ import Side from './Side';
 //data (same for all cards, so imported here)
 import Data from '../data/data.json';
 import LayoutControls from '../data/layout-controls-inprogress.json';
+import DynamicTextJson from '../data/textData.json';
+import { local } from 'd3';
 
 export default class CardCollection extends Component {
   constructor(props) {
@@ -15,6 +18,7 @@ export default class CardCollection extends Component {
     this.state = {
       //cards includes all rendered cards
       cards: [],
+      textData: [],
       windowSize: {
         width: 0,
         height: 0,
@@ -24,10 +28,27 @@ export default class CardCollection extends Component {
     //load all the data
     this.data = Data;
     this.layoutControls = LayoutControls;
+    this.textData = DynamicTextJson;
 
     //bind functions called by components
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.addCardToSelection = this.addCardToSelection.bind(this);
+
+    // if (this.switchDataLevel !== undefined) {
+    //   this.switchDataLevel = this.switchDataLevel.bind(this);
+    // }
+
+    this.updateData = this.updateData.bind(this);
+  }
+
+  async updateData(result) {
+    // console.log(result)
+    const data = result.data;
+    // Here this is available and we can call this.setState (since it's binded in the constructor)
+    await setStateAsync(this, { textData: data, textLoaded: true }).then(() => {
+      this.generateCards();
+    }); // or shorter ES syntax: this.setState({ data });
   }
 
   /**
@@ -51,6 +72,14 @@ export default class CardCollection extends Component {
   }
 
   /**
+   * when someone clicked on a list item, pass this to parent
+   * @param {} lk AGS and name of location clicked on in the list as value-label pair
+   */
+  addCardToSelection(lk) {
+    this.props.addCardToSelection(lk);
+  }
+
+  /**
    * error handling: check the data before generating the cards
    * @param {*} element element in cardSelection (lk:{label:"",value:""},section:"")
    */
@@ -60,12 +89,12 @@ export default class CardCollection extends Component {
       typeof element !== 'object' ||
       Array.isArray(element) ||
       element == null ||
-      element == undefined
+      element === undefined
     ) {
       throw new Error('Selected Element is not an Object');
     }
     //check lk type
-    if (element.lk == undefined || element.lk.value == undefined || !isInt(element.lk.value)) {
+    if (element.lk === undefined || element.lk.value === undefined || !isInt(element.lk.value)) {
       throw new Error('Selected Landkreis is not valid');
     }
     if (typeof element.lk.label !== 'string' || !element.lk.label instanceof String) {
@@ -73,32 +102,79 @@ export default class CardCollection extends Component {
     }
     //check section type
     if (
-      element.section == undefined ||
-      element.section.value == undefined ||
+      element.section === undefined ||
+      element.section.value === undefined ||
       !['Ge', 'En', 'Ab', 'La', 'Mo'].includes(element.section.value)
     ) {
       throw new Error('Selected Section is not valid');
     }
     //check if data exists
     if (
-      this.data[element.lk.value] == undefined ||
-      this.layoutControls[element.section.value] == undefined
+      this.data[element.lk.value] === undefined ||
+      this.layoutControls[element.section.value] === undefined
     ) {
       throw new Error('No Data for Selected Element');
     }
     //check if lower level data exists
     if (
-      this.layoutControls[element.section.value].params == undefined ||
-      this.layoutControls[element.section.value].params[0] == undefined ||
-      this.layoutControls[element.section.value].params[0][0] == undefined ||
-      this.layoutControls[element.section.value].params[0][0].combo == undefined ||
+      this.layoutControls[element.section.value].params === undefined ||
+      this.layoutControls[element.section.value].params[0] === undefined ||
+      this.layoutControls[element.section.value].params[0][0] === undefined ||
+      this.layoutControls[element.section.value].params[0][0].combo === undefined ||
+      this.layoutControls[element.section.value].params[0][0].components.indicator === undefined ||
       this.props.activeCard > this.layoutControls[element.section.value].params
     ) {
       throw new Error('No Layout Data for Selected Element');
     }
-    if (this.data[element.lk.value][element.section.value] == undefined) {
+    if (this.data[element.lk.value][element.section.value] === undefined) {
       throw new Error('No Climate Protection Data for Selected Element');
     }
+  }
+
+  checkIndicatorData(element) {
+    let indicator0 = this.layoutControls[element.section.value].params[0][0].components.indicator;
+    if (
+      this.data[element.lk.value][element.section.value][indicator0] === undefined ||
+      this.data[element.lk.value][element.section.value][indicator0].data === undefined
+    ) {
+      throw new Error('No Climate Protection Data for Indicator of Selected Element');
+    }
+    if (this.layoutControls[element.section.value].params[2] !== undefined) {
+      let indicator2 = this.layoutControls[element.section.value].params[2][2].components.indicator;
+      if (
+        this.data[element.lk.value][element.section.value][indicator2] === undefined ||
+        this.data[element.lk.value][element.section.value][indicator2].data === undefined
+      ) {
+        throw new Error('No Climate Protection Data for Indicator of Selected Element');
+      }
+    }
+  }
+
+  getLocalData(element, section) {
+    //get local data
+    let localData = this.data[element.lk.value];
+
+    //use BL data for not regional data for each indicator
+    //TODO: show somewhere, that this data is not on Landkreis Level as indicated by regional:false
+    for (const [key, value] of Object.entries(localData[section])) {
+      //for industry data: get bundesland data for landkreise where energy is secret (stored in json under "regional")
+      if (key === '_industry_consumption_') {
+        if (element.lk.value > 16 && !value.regional) {
+          //get  bundesland data
+          let BLdata = this.data[localData.bundesland][section][key];
+          //store bundesland data at indicator of landkreis
+          localData[section][key] = BLdata;
+        }
+      }
+      //if data not regional
+      if (!value.regional && value.data === undefined) {
+        //get  bundesland data
+        let BLdata = this.data[localData.bundesland][section][key];
+        //store bundesland data at indicator of landkreis
+        localData[section][key] = BLdata;
+      }
+    }
+    return localData;
   }
 
   /**
@@ -138,6 +214,47 @@ export default class CardCollection extends Component {
             classProp = 'card card-back';
           }
 
+          const footnote = this.data[element.lk.value].footnote;
+
+          const localData = this.getLocalData(element, section);
+
+          let localTextData = [];
+          let similarAgs = [];
+
+          if (this.textData !== undefined) {
+            //get dynamic text data for current ags
+            localTextData = this.textData[element.lk.value];
+
+            // pulling similar lks (within the bl)
+            similarAgs = Object.fromEntries(
+              Object.entries(this.textData).filter(([key, value]) => {
+                return element.lk.value !== 0
+                  ? value[section]['third'] === localTextData[section]['third'] &&
+                  value.key !== element.lk.value
+                  : value.key !== element.lk.value;
+              })
+            );
+
+            //convert to array for ags-name pairs
+            similarAgs = Object.keys(similarAgs).map((key) => [Number(key), similarAgs[key]]);
+
+            similarAgs = similarAgs.map(function (d) {
+              return {
+                value: d[1].key,
+                label: d[1].name,
+              };
+            });
+
+            // shuffle the array
+            const shuffled = similarAgs.sort(() => 0.5 - Math.random());
+            // get 10 random location
+            const randomSample = shuffled.slice(0, 10);
+
+            similarAgs = randomSample;
+          }
+
+          // console.log(this.props.switchDataLevel)
+
           return (
             <Card
               key={i}
@@ -146,25 +263,31 @@ export default class CardCollection extends Component {
               sides={this.layoutControls[section]}
               handleSwitchNext={this.props.handleSwitchNext}
               handleSwitchBack={this.props.handleSwitchBack}
-              clickOnCard={this.handleClickOnCard}
             >
               <Side
                 lk={element.lk}
                 isThumbnail={false}
                 isTopCard={isTopCard} //this is true for the postcard on top
+                dataLevelLK={this.props.dataLevelLK}
                 section={section}
+                sectionName={element.section.label}
                 windowSize={this.state.windowSize}
-                localData={this.data[element.lk.value]}
+                localData={localData}
+                textData={localTextData}
+                similarAgs={similarAgs}
                 layoutControls={this.layoutControls[section]}
+                handleClickOnList={this.addCardToSelection}
+                footnote={footnote}
+                toggleLabels={this.props.toggleLabels}
+                isLKData={this.props.dataLevelLK}
+                switchDataLevel={this.props.switchDataLevel}
               />
             </Card>
           );
         } catch (e) {
-          // console.log(e);
+          console.log(e); //catch errors appearing in checkData()
         }
       });
-
-      //   console.log("postcardview cards generated", list);
     }
 
     //if not in postcardview: use css class for overview / other modes
@@ -186,19 +309,27 @@ export default class CardCollection extends Component {
           const section = element.section.value;
 
           //get local data
-          let localData = this.data[element.lk.value];
+          let localData = this.getLocalData(element, section);
 
           //use BL data for not regional data for each indicator
           //TODO: show somewhere, that this data is not on Landkreis Level as indicated by regional:false
           for (const [key, value] of Object.entries(localData[section])) {
             //if data not regional
-            if (!value.regional && value.data == undefined) {
+            if (!value.regional && value.data === undefined) {
               //get  bundesland data
               let BLdata = this.data[localData.bundesland][section][key];
               //store bundesland data at indicator of landkreis
               localData[section][key] = BLdata;
             }
           }
+          this.checkIndicatorData(element);
+
+          //get dynamic text data for current ags
+          // let localTextData = this.state.textData.filter((d) => {
+          //   return +d.AGS === element.lk.value;
+          // });
+
+          let localTextData = this.textData[element.lk.value];
 
           return (
             <Card
@@ -210,8 +341,12 @@ export default class CardCollection extends Component {
               <Side
                 lk={element.lk}
                 section={section}
+                sectionName={element.section.label}
                 windowSize={this.state.windowSize}
                 isThumbnail={true}
+                textData={localTextData}
+                mode={this.props.mode}
+                dataLevelLK={true} //always true in thumbnail view
                 localData={localData}
                 clickOnCard={this.handleClickOnCard} //this only is passed when not in postcardview
                 layoutControls={this.layoutControls[section]}
@@ -245,9 +380,9 @@ export default class CardCollection extends Component {
     if (
       this.props.cardSelection !== prevProps.cardSelection ||
       this.props.postcardView !== prevProps.postcardView ||
-      this.props.activeCard !== prevProps.activeCard
+      this.props.activeCard !== prevProps.activeCard ||
+      this.props.dataLevelLK !== prevProps.dataLevelLK
     ) {
-      //   console.log("props did update");
       this.generateCards();
     }
   }
@@ -260,17 +395,17 @@ export default class CardCollection extends Component {
           {this.props.cardSelection.map((elem) => elem.lk.label + ' ' + elem.section.label + ' | ')}
         </h5> */}
         {this.props.mode === 'comparison' && !this.props.postcardView && (
-          <div>
+          <div className="inner-card-collection">
             <div className="card-container stacked"> {this.state.cards} </div>
           </div>
         )}
         {this.props.mode === 'lk' && !this.props.postcardView && (
-          <div>
+          <div className="inner-card-collection">
             <div className="card-container messy">{this.state.cards}</div>
           </div>
         )}
         {this.props.mode === 'shuffle' && !this.props.postcardView && (
-          <div>
+          <div className="inner-card-collection">
             <div className="card-container shuffle">{this.state.cards}</div>
           </div>
         )}

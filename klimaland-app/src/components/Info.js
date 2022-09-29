@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import closeCard from '../img/buttons/close.svg';
+import flipCard from '../img/buttons/flip.svg';
 
 export default class Info extends Component {
   constructor(props) {
@@ -37,26 +38,30 @@ export default class Info extends Component {
           className={`help ${this.state.inFocus ? 'help-postcard' : ''}`}
           onClick={this.state.inFocus ? this.handleHelpNotFocus : this.handleHelpFocus}
         >
-          <h4 className="desktop-title">How to use the postcards</h4>
+          <h4 className="desktop-title">Wie bediene ich die Postkarten?</h4>
           <h2 className="mobile-title">?</h2>
           <p className="text">
-            Single iFrames are sized based on the use case.
-            The size of the container determines in which way
-            the visualization is shown to the user and prevent weird things
+            In der <span className="info-suchleiste"> Suchleiste</span> kann nach einem beliebigen
+            Landkreis oder Bundesland gesucht werden. Jede Postkarte beschäftigt sich mit einem
+            anderen Bereich. <span className="info-highlight">Energie</span>,{' '}
+            <span className="info-highlight">Mobilität</span>,{' '}
+            <span className="info-highlight">Abfall</span>,{' '}
+            <span className="info-highlight">Landwirtschaft</span> oder{' '}
+            <span className="info-highlight">Gebäude</span>.
           </p>
+          <p className="text">
+            Mit einem Klick auf die Postkarte wird die vollständige Visualisierung sichtbar. Hier
+            kann auch zu einem zweiten Datenset gewechselt werden. Auf der Rückseite{' '}
+            <img src={flipCard} className="img-flip" alt="flip-button-img" /> der Postkarte befindet
+            sich eine kurze Erklärung und ein Klimaausblick deiner Region.
+          </p>
+          <p className="text">
+            Wie gut schlägt sich deine Region in der Bekämpfung der Klimakrise?
+          </p>{' '}
+          <button className="button close" onClick={this.handleHelpNotFocus}>
+            <img src={closeCard} className="button img" alt="close-button-img" />
+          </button>
         </div>
-        {/* {!this.state.inFocus && (
-
-        )}
-        {this.state.inFocus && (
-          <div className="help help-postcard">
-            <h4>How to use the postcards</h4>
-            Hier ist eine Erklärung über die Postkarten und das gesamte Projekt
-            <button className="button close" onClick={this.handleHelpNotFocus}>
-              <img src={closeCard} className="button img" alt="close-button-img" />
-            </button>
-          </div>
-        )} */}
       </div>
     );
   }

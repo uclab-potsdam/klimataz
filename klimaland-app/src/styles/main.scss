@@ -15,13 +15,49 @@ button {
     @include button;
     &.flip {
         position: absolute;
-        bottom: 1vh;
-        right: 1vh;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        right: 0rem;
+        z-index:4;
+        display: inline-flex;
+        margin-left: auto;
+        // background-color: pink;
+        height: 6%;
+        
+        &:hover {
+            opacity: 1;
+            .flip-label {
+                transition: all 0.2s;
+                opacity: 1;
+                left: 0rem;
+            }
+        }
+
+        .flip-label {
+            pointer-events: none;
+            transition: all 0.2s;
+            background-color: $light;
+            border: 1px solid $pale-olive;
+
+            padding: 0.5rem;
+            line-height: 12px;
+            font-size: 12px;
+            margin: auto 0.5rem;
+            position: relative;
+            left: -1rem;
+            opacity: 0;
+        }
 
         img {
-            width: 65%;
+            &:hover {
+                opacity: 0.8;
+            }
+            // background-color: aquamarine;
+            width: 20%;
             max-width: 50px;
             min-width: 20px;
+            -webkit-animation: bounce 1.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
+            animation: bounce 1.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
         }
     }
 }
@@ -76,15 +112,31 @@ code {
     max-width: 948px;
     height: 100vh;
     width: 100%;
+    overflow: hidden;
 
     .main-container {
         width: 100%;
         height: 100%;
         position: relative;
 
+        .word-art-title {
+            @include wordart-style-1;
+            pointer-events: none;
+            text-align: right;
+            margin-top: 1rem;
+            width: 80%;
+            position: absolute;
+            right: 0;
+
+            .wordart {
+                font-size: 2.5rem;
+            }
+        }
+
         //container of location selector
         .selection-container {
-                width: 100%;
+                position: absolute;
+                width: 100vw;
                 margin-bottom: 2rem;
                 display: flex;
                 flex-direction: row;
@@ -93,6 +145,10 @@ code {
                 .selector {
                     width: 30%;
                     margin: 1rem;
+
+                    &.lk {
+                        width: 40%;
+                    }
 
                     svg {
                             path {
@@ -114,37 +170,111 @@ code {
         
         .button-container {
             position: absolute;
+            background-color: transparent;
             width: 100%;
             height: 100%;
             right: 0;
             top: 0;
 
-            .button-switch-container {
-                display: flex;
-
-                .button-left, .button-right {
-                    width: 50%;
-                    position: relative;
-                }
-
-                .button-left {
-                    .button {
-                        float: left;
-                        margin-left: 1rem;
+            .button-toggle-container{
+                position: absolute;
+                top:0;
+                left:0;
+                
+                .toggle{
+                    rect {
+                        transition: 0.5s;
+                        -webkit-transition: 0.5s;
+                        transition-timing-function: ease;
                     }
-                }
-
-                .button-right {
-                    .button {
-                        float: right;
-                        margin-right: 1rem;
+    
+                    .controller-bg {
+                        fill: url(#MyGradient);
+                        stroke: #484848;
                     }
                 }
             }
 
+            .button-switch-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                height:20%;
+
+                .inner-button{
+
+                    .switch-preview{
+                        white-space: pre-wrap;
+                        margin-top: 0.5rem;
+                        opacity: 0;
+                        transition: all 0.5s;
+                    }
+                }
+
+                .button-left {
+                    text-align: right;
+                    margin: 0;
+                    padding: 0;
+
+                    .switch {
+                        transition: all 0.5s;
+                        position: relative;
+                        right: 0rem;
+                        bottom: 0;
+                        text-align: right;
+                    }
+                    
+                    &:hover {
+                        .switch {
+                        transition: all 0.5s;
+                        right: 1rem;
+                        }
+
+                        .switch-preview {
+                            transition: all 0.5s;
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                .button-right {
+                    text-align: left;
+                    .switch {
+                        transition: all 0.5s;
+                        position: relative;
+                        bottom: 0;
+                        left: 0rem;
+                        text-align: left;
+                    }
+
+                    &:hover {
+                        .switch {
+                        transition: all 0.5s;
+                        left: 1rem;
+                        }
+
+                        .switch-preview {
+                            transition: all 0.5s;
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                .button-left, .button-right {
+                    width: 9%;
+                    img {
+                        position: relative;
+                    }
+                    .button {
+                        margin-bottom: auto;
+                    }
+                }
+
+            }
+
             .inner-button {
                 // width: 100%;
-                height: 55%;
+                height: 50%;
 
                 .close {
                     position:relative;
@@ -159,35 +289,132 @@ code {
 
                 .switch {
                     img {
-                            width: 50%;
+                            // width: 30%;
+                            width: 25px;    
                             height: auto;
                             // margin: 5px 0px 0px 50%;
                             top: 0;
                     }
 
                 }
+
+               
             }
         }
         
+        // sources box with info about data
+        .sources-container { 
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50%; 
+            height: 10%;
+            z-index: 999; 
+
+
+            .sources-button {
+                height: 30px;
+                width: 30px;
+                line-height: 0px;
+                position: absolute;
+                right: 0.5rem;
+                bottom: 1.75rem;
+
+                background-color: $light;
+                border-color: darken($pale-olive, 20%);
+                border-width: 0.5px;
+                border-radius: 100%;
+                border-style: solid;
+    
+                .info-i {
+                    font-size: 1rem;
+                    color: darken($pale-olive, 20%);
+                }
+            }
+
+            .info-text-label{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 4rem;
+                
+                h6{
+                    margin: 0;
+                    text-align: right;
+                    color: rgba($default-text, 0.5);
+                }
+            }
+
+            .sources-text{
+                position: absolute;
+                width: 100%;
+                height: 400px;
+                transform: translate(-50%, -105%);
+                -webkit-transform:translate(-50%, -105%);
+
+                background-color: #fff;
+                padding: 1rem;
+                overflow: scroll;
+
+                border-color: $mint-green;
+                border-style: solid;
+                border-width: 1px;
+                box-shadow: 4px 4px 0px rgba($mint-green, 0.44);
+
+                & h4 {
+                    margin: 0.5rem 0rem;
+                }
+
+                & h5 {
+                    margin: 1.5rem 0rem .5rem 0rem;
+                }
+
+                & p{
+                    font-size: 0.75rem;
+                    margin: 0.75rem 0rem;
+                }
+
+                & a{
+                    color: $mint-green;
+                }
+
+                .close {
+                    @include button;
+                    position: absolute;
+                    right: 0rem;
+                    top: 0.25rem;
+                    height: 10%;
+
+                    img {
+                        width: 70%;
+                    }
+                }
+
+                
+            }
+        }
+
         // Info box explaining the project
         .info-container {
             position: absolute;
-            bottom: 5%;
+            bottom: 2%;
             width: 100%;
             height: 10%;
-            z-index: 9999;
-    
+            z-index: 999;
+
             .help {
                 background-color: #fff;
                 color: $red;
                 border-color: $red;
                 border-style: solid;
                 border-width: 1px;
-                width: 250px;
-                height: 50px;
-                padding: 1rem;
-                transform: translate(-10px, 10px) rotate(-5deg);
+                width: 270px;
+                height: $thumbnail-postcardwidth;
+                padding: 0.75rem;
+                transform: translate(-3px, 11px) rotate(-3deg);
+                -webkit-transform:translate(-3px, 23px) rotate(-3deg);
                 transition: 0.2s;
+                -webkit-transition: 0.2s;
                 box-shadow: 4px 4px 0px rgba($red, 0.44);
 
                 &:hover {
@@ -195,7 +422,7 @@ code {
                 }
 
                 h4, h2 {
-                    margin: 1rem 0;
+                    margin: 0.5rem 0;
                     color: $red;
 
                     &.mobile-title {
@@ -208,10 +435,14 @@ code {
                 }
 
                 &.help-postcard {
-                    width: $thumbnail-postcardwidth;
-                    height: calc($thumbnail-postcardwidth/1.4);
-                    transform: translate(0, calc($thumbnail-postcardwidth/-1.4)) rotate(10deg);
+                    width: calc($thumbnail-postcardwidth/0.65);
+                    height: $thumbnail-postcardwidth/0.95;
+
+                    overflow: scroll;
+                    transform: translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
+                    -webkit-transform:translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
                     transition: 0.2s;
+                    -webkit-transition: 0.2s;
 
                     .text {
                         opacity: 1; 
@@ -220,6 +451,30 @@ code {
                     .close {
                         @include button;
                         position: absolute;
+
+                        right: 0rem;
+                        top: 0.5rem;
+                        height: 10%;
+
+                        img {
+                            width: 70%;
+                        }
+                    }
+
+                    .img-flip{
+                        width: 25%;
+                        max-width: 18px;
+                        min-width: 10px;
+                    }
+
+                    .info-highlight{
+                        color: darken($pale-olive, 20%);
+                    }
+
+                    .info-suchleiste{
+                        background-color: $lighter-orange;
+                        border-radius: 5%;
+                        border-width: 10px;
                     }
                 }
     

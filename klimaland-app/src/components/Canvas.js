@@ -3,7 +3,7 @@ import LayoutManager from './LayoutManager';
 
 //data
 import DropDownControls from '../data/selector-controls.json';
-import { isInt } from './helperFunc';
+import { isInt } from '../helpers/helperFunc';
 
 const Canvas = () => {
   //load data from selector json
@@ -12,6 +12,7 @@ const Canvas = () => {
   let sectionsData = DropDownControls.indicators;
 
   const [sectionOptions, setSectionOptions] = useState(sectionsData);
+  const [iframeLoaded, setiframeLoaded] = useState(false);
 
   let defaultSections = sectionsData.map((el) => {
     return el.value;
@@ -40,6 +41,7 @@ const Canvas = () => {
 
       if (splitKeyVal[0] === parameter) {
         splitKeyVal.shift(); // through out the parameter as first value in array
+
         return splitKeyVal; //return array of values
       }
     }
@@ -59,7 +61,7 @@ const Canvas = () => {
 
     //if landkreise are undefined (== no parameter), use default
     if (lk === undefined || lk.length === 0) {
-      ags = 0;
+      ags = [0];
       // return;
     } else {
       ags = lk.map(Number); // convert to number from string
@@ -85,6 +87,7 @@ const Canvas = () => {
     } else {
       if (definedUI[0] === 'true') uiVis = true;
       if (definedUI[0] === 'false') uiVis = false;
+      else uiVis = true;
     }
 
     // -------- SET EDITORS PICK FOR EACH VIEW -------
@@ -94,27 +97,6 @@ const Canvas = () => {
     // -------- MAIN/DEFAULT VIEW -------
     setEditorsPick(defaultPick);
 
-    if (ags === 0 && sections.length === 0) {
-      console.log('MAIN/DEFAULT VIEW');
-
-      let mainPick = [];
-      try {
-        mainPick = sectionsData.map((el) => ({
-          lk: { value: '0', label: 'Deutschland' },
-          section: { value: el.value, label: el.label },
-          ui: { value: uiVis },
-          view: { value: 0, label: 'mainView' },
-        }));
-        if (mainPick.length !== 0) {
-          setEditorsPick(mainPick);
-        }
-      } catch (error) {
-        console.log(error);
-        setEditorsPick(mainPick);
-        return; //if selected landkreis or section not valid in thumbnail view, set default Pick and stop function
-      }
-    }
-
     // -------- SINGLE POSTCARD VIEW -------
     if (ags.length === 1 && sections.length === 1) {
       console.log('SINGLE POSTCARD VIEW');
@@ -122,6 +104,18 @@ const Canvas = () => {
       uiVis = false;
 
       try {
+        //get DATALEVEL param
+        //only in single post card view
+        let definedLevelLK = getParamValue('levelLK');
+        let levelLK = true;
+        if (definedLevelLK === undefined) {
+          levelLK = true;
+        } else {
+          if (definedLevelLK[0] === 'true') levelLK = true;
+          if (definedLevelLK[0] === 'false') levelLK = false;
+          else levelLK = true;
+        }
+
         let name = getCheckedLandkreisLabel(ags[0]);
         let sectionLabel = getCheckedSectionLabel(sections[0]);
         checkedPick.push({
@@ -129,12 +123,15 @@ const Canvas = () => {
           section: { value: sections[0], label: sectionLabel },
           ui: { value: uiVis },
           view: { value: 3, label: 'singlePCview' },
+          levelLK: { value: levelLK },
         });
         if (checkedPick.length !== 0) {
+          setiframeLoaded(true);
           setEditorsPick(checkedPick);
         }
       } catch (error) {
         console.log(error);
+        setiframeLoaded(true);
         setEditorsPick(defaultPick);
         return; //if selected landkreis or section not valid in thumbnail view, set default Pick and stop function
       }
@@ -158,10 +155,12 @@ const Canvas = () => {
           });
         });
         if (checkedPick.length !== 0) {
+          setiframeLoaded(true);
           setEditorsPick(checkedPick);
         }
       } catch (error) {
         console.log(error);
+        setiframeLoaded(true);
         setEditorsPick(defaultPick);
         return; //if selected landkreis not valid in LK view, set default Pick and stop function
       }
@@ -189,6 +188,7 @@ const Canvas = () => {
           try {
             getCheckedSectionLabel(sec);
           } catch (error) {
+            console.log(error);
             sections = defaultSections;
             //TODO (NICE TO HAVE): keep valid sections, remove sections that throw an error
           }
@@ -223,6 +223,7 @@ const Canvas = () => {
       });
 
       if (checkedPick.length !== 0) {
+        setiframeLoaded(true);
         setEditorsPick(checkedPick);
         setSectionOptions(comparisonOptions);
       }
@@ -274,11 +275,13 @@ const Canvas = () => {
 
   return (
     <div className="indicators-iframe">
-      <LayoutManager
-        editorspick={editorsPick}
-        landkreiseData={landkreiseData}
-        sectionsData={sectionOptions}
-      />
+      {iframeLoaded && (
+        <LayoutManager
+          editorspick={editorsPick}
+          landkreiseData={landkreiseData}
+          sectionsData={sectionOptions}
+        />
+      )}
     </div>
   );
 };

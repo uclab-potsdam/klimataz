@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 
-//img
-import shuffle from '../img/buttons/shuffle.png';
-
 export class SelectionButtons extends Component {
   constructor(props) {
     super(props);
@@ -28,11 +25,12 @@ export class SelectionButtons extends Component {
   render() {
     const orderedLandkreise = this.props.landkreise.sort((a, b) => {
       if (a.label > b.label) {
-        return 1
-      } if (a.label < b.label) {
-        return - 1
+        return 1;
       }
-    })
+      if (a.label < b.label) {
+        return -1;
+      }
+    });
 
     return (
       <div className="selection-buttons">
@@ -40,7 +38,7 @@ export class SelectionButtons extends Component {
           <div className="selection-container">
             {/* {this.props.viewVis !== 2 && ( */}
             <Select
-              className="selector"
+              className="selector lk"
               isMulti
               //handle clearing when in shuffle mode
               //https://stackoverflow.com/questions/50412843/how-to-programmatically-clear-reset-react-select
@@ -58,7 +56,7 @@ export class SelectionButtons extends Component {
             {/* )} */}
             {this.props.mode === 'comparison' && this.props.sections.length > 1 && (
               <Select
-                className="selector"
+                className="selector section"
                 defaultValue={this.props.sections[0]}
                 onChange={this.changeSection}
                 options={this.props.sections}

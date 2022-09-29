@@ -5,11 +5,55 @@
 
 // variables method based on github.com/eduardoboucas/include-media
 
-/*Tablet*/
+/*Tablet - Desktop*/
 @include media(">=tablet", "<desktop") {
+
+    .card-active {
+        .side-outer {
+            .overlay-container {
+                height: 10%;
+            }
+        
+            .side-inner {
+                height: 90%;
+
+                .details-container {
+                    height: 100%;
+                }
+            }
+        }
+    }
 
     .chart-container {
         .svg-container {
+
+        &.En-chart {
+            .energy-industry, .primary-energy {
+                .visualization-container {
+                    height: 80%;
+                }
+            }
+        }
+
+        &.Mo-chart {
+                .car-density {
+                    .legend {
+                        background-image: url('../img/legends/MoCarDensity-tablet.svg');
+                        background-repeat: no-repeat;
+                        position: relative;
+                        width: 50%;
+                        margin: 1rem;
+                    }
+        
+                    .visualization-container {
+                        .active-chart {
+                            transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+                            -webkit-transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+                        }
+                    }
+                }
+            }
+
             &.Ge-chart {
                 .description {
                     .caption {
@@ -22,6 +66,18 @@
 
             &.Ab-chart {
                 .biotonne-weight {
+                    .visualization-container {
+                        height: 75%;
+
+                        .chart {
+                            .controls-container {
+                                .pie-controller {
+                                    transform: scale(0.8) translateX(80px);
+                                }
+                            }
+                        }
+
+                    }
                     .description {
                             .title {
                                 h3 {
@@ -48,24 +104,61 @@
                     }
                 }
             }
+
+            &.Ge-chart{
+                .avg-heating{
+                    .visualization-container {
+                        svg{
+                            .non-clipped-elements {
+                                text {
+                                    transform: translateY(-5px);
+                                    font-size: 9.5px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
         }
     }
 
     .indicators-iframe {
         .main-container {
+
             .button-container {
-                    .inner-button {
-                        height: 42%;
+                .inner-button {
+                    height: 42%;
+                }
+
+                .button-switch-container {
+                    .switch-preview {
+                        display: none;
+                    }
                 }
             }
 
+            .card-collection {
+                align-content: center;
+            }
+
             .card-active {
+
                 .side-inner {
                     .details-container {
-                        height: calc(90% - 10px);
+                        height: 100%;
 
-                        .locator-map {
-                            height: 45%;
+                        .flex-container {
+                            height: calc(90% - 0.5rem);
+
+                            .data-container {
+                                .locator-map {
+                                    height: 40%;
+                                    .locator-container {
+                                        height: 95%;
+                                    }
+                                }
+                            }
                         }
 
                         .lk-list {
@@ -74,19 +167,47 @@
                     }
 
                     .footer-container {
-                        height: calc(10% + 10px);
-                        .info-backside {
-                            padding-bottom: 0rem;
+                        height: calc(10% + 0.5rem);
+                    }
+                }
+
+                .side-outer{
+                    .button-toggle-container {
+                        svg {
+                            margin-left:0;
+
+                            .toggle {
+                                g {
+                                    transform: translate(5px, 2px);
+                                }   
+                            }
+                            
+                            text {
+                                display: none;
+                            }
+
+                            .mobile-toggle-label {
+                                transform: translate(-100px, 0px);
+                                display: block;
+                                font-size: 12px;
+                            }
                         }
                     }
                 }
+
+                button.flip {
+                    height: 7%;
+                }
+            }
+            .sources-container {
+                right: 1rem;
             }
         }
     }
 }
 
-/* Phones */
-@include media(">phone", "<=tablet") {
+/* Phones - Tablet */
+@include media(">phone", "<=minitablet") {
     body {
         h3 {
             font-size: 16px;
@@ -94,13 +215,36 @@
     }
 
     .indicators-iframe {
-        max-width: 375px;
+        //max-width: 375px;
+        margin-right:5.55%;
+        margin-left:5.55%;
+
         .main-container {
+            .word-art-title {
+                width: 100%;
+                bottom: 1rem;
+                right: -1rem;
+                transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
+
+                .wordart {
+                    font-size: 2rem;
+                    line-height: 1.5rem;
+                    overflow: visible;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+            }
+
             margin-top: 10px;
+
             .selection-buttons {
+
                 .selection-container {
                     display:block;
-                    margin-bottom: 0.5rem;
+                    margin-bottom: 0.5rem;          
+                    position: relative;
+                    width:100%;
+
                     .selector {
                         width: 90%;
                     }
@@ -110,23 +254,30 @@
             .card-collection {
                 margin-top: -10px;
                 height: 100vh;
+                width: 95%;
+                margin: 0 auto;
                 .card-container {
                     height: 100vh;
+                    align-content: flex-start;
+                    justify-content: left;
+                    padding-left: 0.5rem;
 
-                    &.messy {
-                        margin-top: -10vh;                    
-                    }
-
-                    &.stacked {
-                            align-content: baseline;
+                    &.carousel {
+                        align-content: center;
+                        justify-content: space-around;
+                        padding-left: 0;
                     }
                 }
             }
 
             .info-container {
+                width: 25%;
+                position: absolute;
+                right: -3rem;
+                bottom: 25%;
                 .help {
-                    width: 50px;
-                    height: 50px;
+                    width: 30px;
+                    height: 30px;
 
                     h2.mobile-title {
                         display: block;
@@ -139,9 +290,10 @@
                     }
 
                     &.help-postcard {
-                        width: $portait-postcardwidth;
-                        height: calc($portait-postcardwidth*1.5);
-                        transform: translate(0, -50%) rotate(5deg);
+                        width:  calc($portait-postcardwidth/1.2);
+                        height: calc($portait-postcardwidth*1.2);
+                        transform: translate(5%, -95%) rotate(2deg);
+                        -webkit-transform:translate(5%, -95%) rotate(2deg);
 
                         h4.desktop-title {
                             display: block; 
@@ -167,22 +319,95 @@
                     }                
                 }
             }
+
+            .sources-container {
+                .sources-button {
+                    width: 25px;
+                    height: 25px;
+                    right: 0.5rem;
+                    bottom: 1rem;
+                    .info-i {
+                        font-size: 0.75rem;
+                    }
+                }
+
+                .info-text-label {
+                    right: 3rem;
+                    bottom: 1.25rem;
+                    width: 7rem;
+                }
+            }
         }
     }
 
     .card {
         &-ordered {
-            //original ratio changed for styling
-            width: calc($portait-postcardwidth/2.3);
-            height: calc($portait-postcardwidth/1.8);
             z-index: 0;
-            margin: -6px 0px -15px 0px;
+            margin: -10px 0.5rem -3px 1rem;
         }
 
         &.card-active {
+            .overlay-container {
+                    .overlay-inner {
+                        text-align: center;
+                        width: 95%;
+                        position: relative;
+                        z-index: 1;
+
+                        .section-thumb {
+                            .indicator-ranking {
+                                p {
+                                    font-size: 0.5rem;
+                                }
+                            }
+                        }
+
+                        .postcard-title {
+                            max-width: 50%;
+                            width: 50%;
+                            overflow: hidden;
+                            .section-title {
+                                text-align: left;
+                                max-width: 100%;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                white-space: nowrap;
+                            }
+                            .postcard-miniature {
+                                display: none;
+                            }
+                        }
+
+                        .button-toggle-container {
+                            svg {
+                                .toggle {
+                                    g {
+                                        transform: translate(5px, 2px);
+                                    }   
+                                }
+                                
+                                text {
+                                    display: none;
+                                }
+
+                                .mobile-toggle-label {
+                                    transform: translate(-100px, 0px);
+                                    display: block;
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+
+                        .button-download {
+                            width: 20%;
+                        }
+
+                    }
+                }
+
             .side-inner {
                 .details-container {
-                    height: 90%;
+                    height: 100%;
 
                     .flex-container {
                         display: block;
@@ -190,13 +415,14 @@
 
                         .text-container {
                             width: 100%;
+                            overflow: hidden;
                             position: absolute;
                             border: none;
                             z-index: 1;
-                            overflow: hidden;
 
                             .text-inner-container {
-                                margin-top: 25%;
+                                margin-top: 3rem;
+                                height: 80%;
 
                                 .section-title {
                                     margin-bottom: 0;
@@ -204,26 +430,29 @@
 
                                 .section-text {
                                     margin-top: 0;
+                                    height: 80%;
+                                    position: relative;
+                                    overflow: scroll;
 
                                     p {
-                                        margin-top: 5px;
+                                        margin-top: 0.5rem;
                                     }
                                 }
                             }
                         }
 
                         .data-container {
+                            background-color: $light;
                             position: absolute;
-                            width: 90%;
-                            height: 20%;
+                            width: 100%;
+                            height: 30%;
                             top: 0;
-                            right: 0;
-                            z-index: 0;
+                            border: none;
 
                             .locator-map {
                                 border: none;
-                                height: 100%;
-                                margin-top: 1rem;
+                                height: 70%;
+                                margin-top: 0.5rem;
 
                                 .locator-container {
                                     height: 100%;
@@ -235,11 +464,11 @@
                                         text-align: right;
                                         display: flex;
                                         justify-content: right;
-                                        width: 30%;
+                                        width: 25%;
                                     }
 
                                     .locator-background {
-                                        width: 30%;
+                                        width: 25%;
                                     }
                                 }
                             }
@@ -256,23 +485,49 @@
                             height: 100%;
                             display: inline-block;
                             margin: 0rem 0rem 0rem 1rem;
+                            
                             .logo-container {
                                 display: none;
-                            }
-
-                            .info-backside {
-                                padding-bottom: 0;
                             }
                         }
                     }
                 }
             }
+
+            .flip {
+                right: 0rem;
+            }
         }
     }
 
     .card-preview {
+        .overlay-container {
+            position: relative;
+            z-index: 1;
+            .overlay-inner {
+                .postcard-title {
+                .section-thumb {
+                    overflow: visible;
+                        .word-art-title {
+                            top: 2rem;
+                            .gruss-thumb {
+                                font-size: 0.5rem;
+                            }
+                            .wordart {
+                                font-size: 0.9rem;
+                                line-height: 0.9rem;
+                                padding-top: 0.9rem;
+                                background-image: linear-gradient(0deg, $taz-pink 0%, $blue 90%);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
         .side-inner {
-            clip-path: circle(35%);
+            clip-path: circle(50%);
+            transform: translateY(3rem);
         }
     }
 
@@ -283,8 +538,22 @@
 
     .chart-container {
         .svg-container {
+
+            .description {
+                .title {
+                    margin: 0 auto !important;
+            
+                    h4 {
+                        padding-bottom: 0.5rem !important;
+                    }
+                }
+            }
+
             &.En-chart {
                 .energy-industry, .primary-energy {
+                    .description {
+                        height: 15%;
+                    }
                     .visualization-container {
                         height: 75%;
                     }
@@ -294,20 +563,23 @@
             &.La-chart {
                 .animal-count {
                     .description {
-                        height: 25%;
+                        height: 20%;
                     }
 
                     .visualization-container {
-                        height: 75%;
+                        height: 80%;
                         .label-container {
                             transform: translateY(28px);
+                            -webkit-transform: translateY(28px);
                         }
 
                         .arcs, .x-axis-container {
                             transform: translateY(-60px);
+                            -webkit-transform:translateY(-60px);
 
                             .animal-label {
                                 transform: translateY(20px);
+                                -webkit-transform:translateY(20px);
                                 font-size: 14px;
                             }
                         }
@@ -316,16 +588,20 @@
                             .year-label {
                                 font-size: 12px;
                                 transform: translateX(-20px);
+                                -webkit-transform:translateX(-20px);
                             }
                         }
                         
                         .legend {
                             transform: translateY(90%);
+                            -webkit-transform:translateY(90%);
                             .label-item {
                                 transform: translate(30px, -5px);
+                                -webkit-transform: translate(30px, -5px);
                         
                                 &.vorherigeZaehlung {
                                     transform: translate(-210px, 20px);
+                                    -webkit-transform:translate(-210px, 20px);
                                 }
                             }
                         }
@@ -334,27 +610,35 @@
 
                 .animal-density {
                     .description {
+                        height: 40%;    
+                        position: absolute;
+                        bottom: 0;
                         .caption {
                             font-size: 12px;
                             margin-right: 1rem;
+                            transform: translateY(-10px);
+                            -webkit-transform: translateY(-10px);
                         }
 
                         .legend {
-                            transform: translateY(-20px);
+                            transform: translateY(-30px);
+                            -webkit-transform:translateY(-30px);
 
                             .legend-item {
                                 font-size: 10px;
                                 &.unter-label {
                                     transform: translate(140px, 0px);
+                                    -webkit-transform:translate(140px, 0px);
                                 }
                             }
                         }
                     }
 
                     .visualization-container {
-
+                        height: 60%;
                         .chart {
-                            transform: translateY(20px);
+                            transform: translateY(-30px);
+                            -webkit-transform:translateY(-30px);
                             .bars {
                                 .year-label {
                                         font-size: 14px;
@@ -372,25 +656,38 @@
             &.Mo-chart {
                 .car-density {
                     .description {
+                        height: 20%;
+                        position: absolute;
+                        bottom: 0;
+
+                        .title {
+                            margin: 0 auto;
+                            h4 {
+                                padding-bottom: 0.5rem;
+                            }
+                        }
+                        
                         .legend {
-                            background-image: url('../img/legends/MoCarDensity-mobile.svg');
-                            transform: scale(0.9);
-                            margin-top: 0;
+                            display: none;
                         }
                     }
     
                     .visualization-container {
                         transform: scale(0.9);
+                        -webkit-transform:scale(0.9);
     
                         .chart {
                             &.active-chart {
-                                transform: skew(0deg, 0deg);
+                                transform: skew(0deg, 0deg) translate(10px, -15px);
+                                -webkit-transform:skew(0deg, 0deg) translate(10px, -15px);
                             }
     
                             &.thumbnail-chart {
                                 transform: skew(0deg, 0deg);
+                                -webkit-transform:skew(0deg, 0deg);
                                 .cars-container {
                                     transform: translate(20px, 0px);
+                                    -webkit-transform:translate(20px, 0px);
                                 }
                             }
                         }
@@ -408,7 +705,11 @@
                 }
 
                 .modal-split {
+                    .description {
+                        height: 20%;
+                    }
                     .visualization-container {
+                        height: 80%;
                         .chart {
                             .bar-percentage-trip {
                                 display: none;
@@ -420,8 +721,11 @@
     
             &.Ab-chart {
                 .biotonne-weight {
+                    .description {
+                        height: 15%;
+                    }
                     .visualization-container {
-                        height: 60%;
+                        height: 70%;
 
                         .chart {
                             text {
@@ -449,20 +753,30 @@
             &.Ge-chart {
                 .newbuildings-energy {
                     .description {
-                        height: 19%;
+                        .title {
+                            margin: 0 auto;
+                            h4 {
+                                padding-bottom: 0.5rem;
+                            }
+                        }
+
+                        height: 25%;
+                        position: absolute;
+                        bottom: 0;
+                        
                         .caption {
                             display: none;
                         }
 
                         .legend {
-                            position: absolute;
-                            bottom: 0;
+                            // position: absolute;
+                            // bottom: 0;
                             height: 19%;
-                            width: 100%;
+                            width: 95%;
                             
                             .legend-inner {
                                 font-size: 12px;
-                                position: absolute;
+                                // position: absolute;
                                 width: 100%;
                                 bottom: 1rem;
                         
@@ -475,6 +789,10 @@
                                         display: flex;
                                         flex: 0 1 auto;
                                         margin-left: 10px;
+
+                                        .element-color {
+                                            align-self: center;
+                                        }
                                     }
                                 }
                             }
@@ -483,6 +801,9 @@
 
                     .visualization-container {
                         height: 70%;
+                        .chart {
+                            transform: translate(0, 10px);
+                        }
                     }
                     &.is-thumbnail {
                         .description {
@@ -492,16 +813,23 @@
                 }
 
                 .avg-heating {
+                    .description {
+                        height: 15%;
+                    }
                     .visualization-container {
-                        transform: translateY(-10px);
+                        height: 85%;
+                        transform: translateY(-15px);
+                        -webkit-transform:translateY(-15px);
 
-                        // .non-clipped-elements {
-                        //     g {
-                        //         text {
-                        //         transform-origin: center;
-                        //         transform: rotate(45deg);                                }
-                        //     }
-                        // }
+                        .chart {
+                            .non-clipped-elements {
+                                transform: translate(-28px, 0);
+
+                                .measure-label {
+                                    transform: translate(-75%, 0);
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -509,3 +837,64 @@
 
     }
 }
+
+
+/*Mini Tablet - Tablet*/
+@include media(">=minitablet","<tablet"){
+    .card {
+        &-ordered {
+            //original ratio changed for styling
+            width: calc($portrait-minitablet-postcardwidth/2.3);
+            height: calc($portrait-minitablet-postcardwidth/1.8);
+        }
+    }
+
+    .chart-container{
+        .svg-container{
+            &.Mo-chart{
+                .car-density{
+                    .legend {
+                        background-image: url('../img/legends/MoCarDensity-tablet.svg');
+                        background-repeat: no-repeat;
+                        position: relative;
+                        width: 50%;
+                        margin: 1rem;
+                    }
+
+                    // .visualization-container {
+                    //     .active-chart {
+                    //             transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+                    //             -webkit-transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+                    //         }
+                    // }
+                }
+            }
+    
+        }
+    }
+}
+
+/* Phone - Mini Tablet*/
+ @include media(">=phone", "<largephone"){
+    // body {
+    //     background-color: pink;
+    // }
+    
+    .card {
+        &-ordered {
+            //original ratio changed for styling
+            width: calc($portait-postcardwidth/2.3);
+            height: calc($portait-postcardwidth/1.8);
+        }
+    }
+ }
+
+  @include media(">=largephone", "<minitablet") {
+      .card {
+          &-ordered {
+              //original ratio changed for styling
+              width: calc($portait-postcardwidth/2.5);
+              height: calc($portait-postcardwidth/1.9);
+          }
+      }
+  }

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
 import flipCard from '../img/buttons/flip.svg';
-import { mod } from './helperFunc';
+import { mod } from '../helpers/helperFunc';
 
 const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handleSwitchNext }) => {
   const [activeSide, setActiveSide] = useState(0);
@@ -34,7 +34,7 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
     return React.Children.map(children, (child) => {
       if (React.isValidElement(child)) {
         return React.cloneElement(child, {
-          activeSide: mod(activeSide, sides.params.length),
+          activeSide: mod(activeSide, 2),
           style: rotation,
           flipping: flipping,
         });
@@ -52,16 +52,22 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
   const renderSide = function (cardSide) {
     let rotation;
     if (cardSide === 'card-front') {
-      rotation = { transform: 'rotateY(' + activeSide * 180 - 180 + 'deg)' };
+      rotation = {
+        transform: 'rotateY(' + activeSide * 180 - 180 + 'deg)',
+        WebkitTransform: 'rotateY(' + activeSide * 180 - 180 + 'deg)',
+      };
     } else if (cardSide === 'card-back') {
-      rotation = { transform: 'rotateY(' + activeSide * 180 + 'deg)' };
+      rotation = {
+        transform: 'rotateY(' + activeSide * 180 + 'deg)',
+        WebkitTransform: 'rotateY(' + activeSide * 180 + 'deg)',
+      };
     } else {
       //card-preview
       console.log('card class for rotation is not set');
     }
 
     return (
-      <div className={cardSide}>
+      <div className={`${cardSide} side-${activeSide % 2 === 0 ? 'even' : 'odd'}`}>
         {sideWithProps(rotation)}
         <button
           className="button flip"
@@ -71,7 +77,8 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
             setFlipping(0);
           }}
         >
-          <img src={flipCard} className="button img" alt="flip-button-img" />
+          <p className="flip-label">Umdrehen!</p>
+          <img src={flipCard} className="button img" alt="click to flip card" />
         </button>
       </div>
     );
@@ -84,7 +91,10 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
   return (
     <div className={classProp}>
       {isThumbnail && (
-        <div className="card-preview" style={{ transform: previewRotation }}>
+        <div
+          className="card-preview"
+          style={{ transform: previewRotation, WebkitTransform: previewRotation }}
+        >
           {sideWithProps({})}
         </div>
       )}
@@ -93,6 +103,7 @@ const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handl
           className={`side-container ${flipped ? 'flip' : ''}`}
           style={{
             transform: 'rotateY(' + activeSide * 180 + 'deg)',
+            WebkitTransform: 'rotateY(' + activeSide * 180 + 'deg)',
           }}
           {...swipeHandler}
         >

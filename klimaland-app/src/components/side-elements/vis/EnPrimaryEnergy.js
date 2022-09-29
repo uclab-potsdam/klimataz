@@ -2,9 +2,10 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { stack, stackOffsetSilhouette, stackOrderAscending, curveCatmullRom, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
-import { max, extent, mean } from 'd3-array';
+import { max, extent } from 'd3-array';
+import { formatNumber, useCardSize } from '../../../helpers/helperFunc';
 
-const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumbnail }) => {
+const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
   const colorArray = [
     '#E14552', // Steinkohle
     '#732b20', // Braunkohle
@@ -24,23 +25,16 @@ const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumb
     'Erneuerbare Energien',
     'Stromaustauschsaldo',
     'Kernenergie',
-    'Sonstige',
+    'Sonstige Energieträger',
   ];
 
   // , 'Kernenergie', 'Andere Energieträger']
   // getting sizes of container for maps
   const targetRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [highlighedStream, setHighlightedStream] = useState('');
+  const dimensions = useCardSize(targetRef);
 
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight,
-      });
-    }
-  }, []);
+  const [highlighedStream, setHighlightedStream] = useState('');
+  const [activeLabel, setactiveLabel] = useState('');
 
   // inital variables
   const marginWidth = 0;
@@ -59,8 +53,13 @@ const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumb
 
   let switchHighlightedStream = function (id) {
     if (currentData !== undefined) {
-      // console.log(id)
-      setHighlightedStream(id)
+      setHighlightedStream(id);
+    }
+  };
+
+  let switchActiveLabel = function (index) {
+    if (currentData !== undefined && currentData.data !== undefined) {
+      setactiveLabel(index);
     }
   };
 
@@ -68,12 +67,13 @@ const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumb
     // parameters for description text
     const lastDataPoint = currentData.data.slice(-1);
     lastYear = lastDataPoint[0]['year'];
-    const lastRenValue = currentData.data.filter(d => { return d.column === 'Gesamt Erneuerbare Energieträger' && d.year === '2020' })
+    const lastRenValue = currentData.data.filter((d) => {
+      return d.column === 'Anteil Erneuerbar' && d.year === '2020';
+    });
     percRenewables = lastRenValue[0].value !== null ? lastRenValue[0].value.toFixed(1) : 0;
 
     // get all energy sources and filter out "insgesamt" and "Anteil_Erneuerbar"
     const uniqueEnergySourceAll = uniq(currentData.data.map((d) => d.column));
-
     const uniqueEnergySourceFiltered = uniqueEnergySourceAll.filter((category) => {
       return (
         category !== 'Insgesamt' &&
@@ -83,8 +83,8 @@ const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumb
         category !== 'Wasserkraft' &&
         category !== 'Windkraft' &&
         category !== 'Solarenergie' &&
-        category !== 'Biomasse 1)' &&
-        category !== 'Sonstige erneuerbare Energien 2)'
+        category !== 'Biomasse' &&
+        category !== 'Sonstige erneuerbare Energien'
       );
     });
 
@@ -151,31 +151,60 @@ const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumb
 
     // stream graph
     streamEle = stackedSeries.map((stream, s) => {
-      const maxStreamValue = max(stackData.map(d => {
-        // filtering first and last year to avoid labels overflow
-        return +d['year'] !== 1990 && +d['year'] !== 2020 ? d[stream.key] : 0
-      }))
+      const maxStreamValue = max(
+        stackData.map((d) => {
+          // filtering first and last year to avoid labels overflow
+          return +d['year'] !== 1990 && +d['year'] !== 2020 ? d[stream.key] : 0;
+        })
+      );
 
-      let yearOfMax = 0
-      let indexOfMax = 0
+      let yearOfMax = 0;
+      let indexOfMax = 0;
       stackData.forEach((d, i) => {
         if (d[stream.key] === maxStreamValue) {
           yearOfMax = d.year;
-          indexOfMax = i
+          indexOfMax = i;
         }
-      })
+      });
+
+      const labelRects = [];
+      const labelID = mapLabel(stream.key);
+
+      for (let index = 0; index < stream['length']; index++) {
+        // const next = index > stream['length'] ? stream['length'] - 1 : index + 1
+
+        const scaledFloor = yScale(stream[index][0]);
+        const scaledCeil = yScale(stream[index][1]);
+        const year = stackData[index].year;
+        const value = stackData[index][stream.key];
+        const y = Math.abs(scaledCeil);
+        const yValue = Math.abs(scaledFloor - (scaledFloor - scaledCeil) / 2);
+        // const width = Math.abs(xScale(stackData[next].year) - xScale(year))
+        const height = Math.abs(scaledCeil - scaledFloor);
+        const labelEl = {
+          x: xScale(year),
+          y,
+          yValue,
+          height,
+          value,
+        };
+
+        labelRects.push(labelEl);
+      }
 
       return {
         klass: stream.key.substring(0, 3) + '-stream',
-        id: stream.key,
+        id: labelID,
         fill: scaleCategory(stream.key),
         path: areaGen(stream),
         xPos: xScale(yearOfMax),
+        labels: labelRects,
         yPos: yScale(stream[indexOfMax][0] - (stream[indexOfMax][0] - stream[indexOfMax][1]) / 2),
         height: yScale(stream[indexOfMax][0] - stream[indexOfMax][1]),
-        width: stream.key.length,
-        threshold: highlighedStream === stream.key || (maxStreamValue > 50000 && highlighedStream === ''), //Fixed value for now, maybe make it dynamic?
-        maxStreamValue
+        width: labelID.length,
+        threshold:
+          highlighedStream === labelID || (maxStreamValue > 50000 && highlighedStream === ''), //Fixed value for now, maybe make it dynamic?
+        maxStreamValue,
       };
     });
   }
@@ -201,9 +230,9 @@ const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumb
                       x="-18"
                       y={marginHeight + 15}
                       textAnchor="middle"
-                      transform={dimensions.width <= 350
-                        ? `rotate(-90, -10, ${marginHeight + 10})`
-                        : ''}
+                      transform={
+                        dimensions.width <= 350 ? `rotate(-90, -10, ${marginHeight + 10})` : ''
+                      }
                     >
                       {axis.label}
                     </text>
@@ -231,11 +260,11 @@ const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumb
           <g className="streams-labels-container">
             {streamEle.map((label, l) => {
               return (
-                <g key={l} >
+                <g key={l}>
                   <g className="label">
                     <foreignObject
                       className={label.threshold ? 'visible' : 'invisible'}
-                      x={label.xPos - label.width * 2}
+                      x={label.xPos - label.width * 2 > 0 ? label.xPos - label.width * 2 : 0}
                       y={label.yPos - 8}
                       width="1"
                       height="1"
@@ -246,18 +275,66 @@ const Energy = ({ currentData, currentIndicator, currentSection, lkData, isThumb
                     </foreignObject>
                   </g>
                 </g>
-              )
+              );
+            })}
+          </g>
+          <g className="years-labels-container">
+            {streamEle.map((stream, s) => {
+              return (
+                <g
+                  key={s}
+                  className="stream-labels"
+                  onMouseEnter={() => switchHighlightedStream(stream.id)}
+                  onMouseLeave={() => switchHighlightedStream('')}
+                >
+                  {stream.labels.map((label, l) => {
+                    return (
+                      <g key={l}>
+                        <rect
+                          x={label.x}
+                          y={label.y}
+                          width="40"
+                          height={label.height}
+                          opacity="0"
+                          onMouseEnter={() => switchActiveLabel(l)}
+                          onMouseLeave={() => switchActiveLabel('')}
+                        />
+                        {label.value !== 0 && (
+                          <g
+                            className={`interactive-labels ${activeLabel === l ? 'active-label' : ''
+                              }`}
+                            transform={`translate(${label.x}, ${label.yValue})`}
+                          >
+                            <foreignObject
+                              className={stream.threshold ? 'visible' : 'invisible'}
+                              x="0"
+                              y="0"
+                              width="1"
+                              height="1"
+                            >
+                              <div xmlns="http://www.w3.org/1999/xhtml" className={stream.klass}>
+                                <p>{formatNumber(label.value)} TJ</p>
+                              </div>
+                            </foreignObject>
+                          </g>
+                        )}
+                      </g>
+                    );
+                  })}
+                </g>
+              );
             })}
           </g>
         </svg>
       </div>
       <div className="description">
         <div className="title">
-          <h3>
-            Der Energieverbrauch in {lkData} basiert im Jahr <span>{lastYear}</span> zu{' '}
-            <span> {percRenewables}%</span> auf{' '}
+          <h4>
+            Der Energieverbrauch in <span>{locationLabel}</span> basiert im Jahr{' '}
+            <span>{lastYear}</span> zu{' '}
+            <span className="second-value"> {formatNumber(percRenewables)}</span> % auf{' '}
             <span className="second-value"> erneuerbaren Energien</span>
-          </h3>
+          </h4>
         </div>
       </div>
     </div>
