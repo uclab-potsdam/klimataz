@@ -5,7 +5,14 @@ import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { formatNumber, useCardSize } from '../../../helpers/helperFunc';
 
-const Land = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
+const Land = ({
+  currentData,
+  currentIndicator,
+  currentSection,
+  locationLabel,
+  isThumbnail,
+  cardNumber,
+}) => {
   const colorArray = [
     '#FFF2DA', // erstes Jahr
     '#007F87', // Zunahme
@@ -14,7 +21,7 @@ const Land = ({ currentData, currentIndicator, currentSection, locationLabel, is
 
   // getting sizes of container for maps
   const targetRef = useRef();
-  const dimensions = useCardSize(targetRef);
+  const dimensions = useCardSize(targetRef, cardNumber);
 
   window.mobileCheck = function () {
     let check = false;

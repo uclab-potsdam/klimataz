@@ -105,28 +105,6 @@ export default class Side extends Component {
   }
 
   /**
-   * updates Size of the Chart for Thumbnail and Postcardview. The viewwidth should be equal to the css
-   * variable "$postcardview-postcardwidth" and "$thumbnail-postcardwith" in config.scss.
-   */
-  async updateChartSize() {
-    // if (this.props.isThumbnail) {
-    //   let cardwidth = (this.props.windowSize.width / 10) * 2; //20vw postcard size in thumbnail (config.scss)
-    //   let width = cardwidth - cardwidth / 3; //conditional margin of chart
-    //   let height = width * 0.7; //fixed ratio for postcard look
-    //   await setStateAsync(this, {
-    //     chartStyle: { width: String(width), height: String(height) },
-    //   });
-    // } else {
-    //   let cardwidth = (this.props.windowSize.width / 10) * 5; //50vw postcard size in fullscreen  (config.scss)
-    //   let width = cardwidth - cardwidth / 4; //conditional margin of chart
-    //   let height = width * 0.7; //fixed ratio for postcard look
-    //   await setStateAsync(this, {
-    //     chartStyle: { width: String(width), height: String(height) },
-    //   });
-    // }
-  }
-
-  /**
    * load vis component dynamically from vis index file depending on component stated in layoutcontrols from VisIndex.js
    * @returns React Component with the name in Layoutcontrols, nothing if this file does not exist
    */
@@ -146,6 +124,7 @@ export default class Side extends Component {
           component={this.state.component}
           isThumbnail={this.props.isThumbnail}
           footnote={this.props.footnote}
+          cardNumber={this.props.cardNumber}
         />
       );
     } else {
@@ -187,8 +166,6 @@ export default class Side extends Component {
     ) {
       //update layout for top card
       await this.updateLayout();
-      //update chart size
-      await this.updateChartSize();
     }
 
     if (this.props.textData !== prevProps.textData || this.props.section !== prevProps.section) {
@@ -202,7 +179,6 @@ export default class Side extends Component {
    */
   async componentDidMount() {
     await this.updateLayout();
-    await this.updateChartSize();
     if (this.props.isTopCard || this.props.isThumbnail) {
       await setStateAsync(this, { ranking: this.props.textData[this.props.section]['third'] });
     }

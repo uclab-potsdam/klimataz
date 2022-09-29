@@ -172,8 +172,8 @@ const Canvas = () => {
       //TODO: keep UI param
 
       //if more than 3 landkreise, only keep the first three
-      if (ags.length > 3) {
-        ags = ags.slice(0, 3);
+      if (ags.length > 5) {
+        ags = ags.slice(0, 5);
       }
 
       //if no section specified, use default sections

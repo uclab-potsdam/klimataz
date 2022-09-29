@@ -11,10 +11,11 @@ const Buildings = ({
   currentSection,
   locationLabel,
   isThumbnail,
+  cardNumber,
 }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
-  const dimensions = useCardSize(targetRef);
+  const dimensions = useCardSize(targetRef, cardNumber);
 
   const [currentId, setCurrentId] = useState('');
 

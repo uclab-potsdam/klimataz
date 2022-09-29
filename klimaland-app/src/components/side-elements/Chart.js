@@ -18,16 +18,6 @@ export default class Chart extends Component {
     //TODO: reusable code snippets like scales or axis
   }
 
-  // /**
-  //  * React Lifecycle Hook
-  //  * @param {*} prevProps
-  //  */
-  // async componentDidUpdate(prevProps) {
-  //   if (this.props.indicator !== prevProps.indicator) {
-  //     this.render();
-  //   }
-  // }
-
   //TODO: smarter way of drawing viz (from layout-controls!)
   render() {
     //import component
@@ -70,6 +60,7 @@ export default class Chart extends Component {
             locationLabel={locationLabel}
             isThumbnail={this.props.isThumbnail}
             footnote={this.props.footnote}
+            cardNumber={this.props.cardNumber}
           />
         </div>
       </div>

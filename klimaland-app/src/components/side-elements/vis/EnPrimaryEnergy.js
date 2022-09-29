@@ -1,11 +1,18 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React, { useRef, useLayoutEffect, createRef, useState, useEffect } from 'react';
 import { stack, stackOffsetSilhouette, stackOrderAscending, curveCatmullRom, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
 import { formatNumber, useCardSize } from '../../../helpers/helperFunc';
 
-const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, isThumbnail }) => {
+const Energy = ({
+  currentData,
+  currentIndicator,
+  currentSection,
+  locationLabel,
+  isThumbnail,
+  cardNumber,
+}) => {
   const colorArray = [
     '#E14552', // Steinkohle
     '#732b20', // Braunkohle
@@ -30,8 +37,8 @@ const Energy = ({ currentData, currentIndicator, currentSection, locationLabel, 
 
   // , 'Kernenergie', 'Andere Energieträger']
   // getting sizes of container for maps
-  const targetRef = useRef();
-  const dimensions = useCardSize(targetRef);
+  const targetRef = createRef();
+  const dimensions = useCardSize(targetRef, cardNumber);
 
   const [highlighedStream, setHighlightedStream] = useState('');
   const [activeLabel, setactiveLabel] = useState('');
