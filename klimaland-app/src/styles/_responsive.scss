@@ -323,7 +323,7 @@
             .info-container {
                 width: 25%;
                 position: absolute;
-                right: -3rem;
+                right: -3.5rem;
                 bottom: 25%;
                 .help {
                     width: 30px;
@@ -544,6 +544,20 @@
                 }
             }
 
+            .social-media-layout {
+                .logo-container {
+                    height: 0.8rem;
+                    min-height: 0.5rem;
+                    top: 8px;
+                    left: 8px;
+                }
+
+                .word-art-title {
+                    right: 0rem;
+                    bottom: 0rem;
+                }
+            }
+
             .flip {
                 right: 0rem;
             }
@@ -613,11 +627,11 @@
             &.La-chart {
                 .animal-count {
                     .description {
-                        height: 20%;
+                        height: 25%;
                     }
 
                     .visualization-container {
-                        height: 80%;
+                        height: 75%;
                         .label-container {
                             transform: translateY(28px);
                             -webkit-transform: translateY(28px);
@@ -644,14 +658,14 @@
                         
                         .legend {
                             transform: translateY(90%);
-                            -webkit-transform:translateY(90%);
+                            -webkit-transform:translateY(92%);
                             .label-item {
-                                transform: translate(30px, -5px);
-                                -webkit-transform: translate(30px, -5px);
+                                transform: translate(20px, -5px);
+                                -webkit-transform: translate(20px, -5px);
                         
                                 &.vorherigeZaehlung {
-                                    transform: translate(-210px, 20px);
-                                    -webkit-transform:translate(-210px, 20px);
+                                    transform: translate(-220px, 15px);
+                                    -webkit-transform:translate(-220px, 15px);
                                 }
                             }
                         }
@@ -660,19 +674,19 @@
 
                 .animal-density {
                     .description {
-                        height: 40%;    
+                        height: 45%;    
                         position: absolute;
                         bottom: 0;
                         .caption {
                             font-size: 12px;
                             margin-right: 1rem;
-                            transform: translateY(-10px);
-                            -webkit-transform: translateY(-10px);
+                            transform: translate(-5px,35px);
+                            -webkit-transform: translate(-5px,35px);
                         }
 
                         .legend {
-                            transform: translateY(-30px);
-                            -webkit-transform:translateY(-30px);
+                            transform: translate(-5px, -110px);
+                            -webkit-transform:translate(-5px, -110px);
 
                             .legend-item {
                                 font-size: 10px;
@@ -685,11 +699,12 @@
                     }
 
                     .visualization-container {
-                        height: 60%;
+                        height: 55%;
                         .chart {
                             transform: translateY(-30px);
                             -webkit-transform:translateY(-30px);
                             .bars {
+                                transform: translateY(10px);
                                 .year-label {
                                         font-size: 14px;
                                  }
@@ -708,7 +723,7 @@
                     .description {
                         height: 20%;
                         position: absolute;
-                        bottom: 0;
+                        bottom: 1rem;
 
                         .title {
                             margin: 0 auto;
