@@ -51,19 +51,19 @@ const Buildings = ({
   const marginWidth = Math.ceil(dimensions.height / 10);
 
   const customLegendOrder = [
-    'Solarthermie',
-    'Geothermie',
     'Umweltthermie (Luft/Wasser)',
-    'Fernwärme/Fernkälte',
-    'Sonstige Heizenergie',
-    'Keine Energie (einschl. Passivhaus)',
-    'Andere erneuerbare Energien',
-    'Gas',
-    'Öl',
+    'Geothermie',
+    'Solarthermie',
     'Holz',
     'Biogas/Biomethan',
     'Sonstige Biomasse',
+    'Keine Energie (einschl. Passivhaus)',
+    'Andere erneuerbare Energien',
+    'Gas',
+    'Fernwärme/Fernkälte',
+    'Öl',
     'Strom',
+    'Sonstige Heizenergie',
     'Andere fossile Energien',
   ];
 
