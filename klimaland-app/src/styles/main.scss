@@ -133,6 +133,40 @@ code {
             }
         }
 
+        .social-media-layout {
+            .word-art-title {
+                // background-color: blue;
+                @include wordart-style-1;
+                transform: scale(0.9, 1.2) rotate(-0.5deg) translate(0px, 0px);
+                // width: 40%;
+                height: 50px;
+                z-index: 2;
+                text-align: right;
+                bottom: 0.2rem;
+
+                .gruss-thumb {
+                    font-size: 0.6rem;
+                }
+
+                .gruss-thumb::after {
+                    background-color: $light;
+                    padding: 0px 5px;
+                    border: 1px solid $pale-olive;
+                    box-shadow: 2px 2px 0px rgba($pale-olive, .5);
+                }
+
+                .wordart {
+                    width: 100%;
+                    height: 100%;
+                    font-size: 1.2rem;
+                    padding: 0;
+                    padding-top: 0.5rem;
+                    padding-left: 0.2rem;
+                    letter-spacing: -0.10vw;
+                }
+            }
+        }
+
         //container of location selector
         .selection-container {
                 position: absolute;

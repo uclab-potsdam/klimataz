@@ -670,27 +670,33 @@
             }
     
             .export {
+                width: 90%;
+                height: 90%;
+                position: absolute;
+                right: 50%;
+                top: 50%;
+                border: 1px solid $pale-olive;
+                transform: translate(50%, -50%);
+                -webkit-transform: translate(50%, -50%);
                 background-color: $light;
-                width: 85%;
-                height: 85%;
-                transform: translate(7.5%, 6%);
-                border-style: solid;
-                border-color: $mint-green;
-                border-width: 0.5;
-                box-shadow: 4px 4px 0px rgba($mint-green, .8);
-            }
-    
+                box-shadow: 2px 2px 0px rgba($pale-olive, .5);
+            }    
         }
     }
 
-    .social-media-layout{
+    .social-media-layout {
         position: absolute;
         top: 0;
         width: 100%;
         height: 100%;
         z-index: -10;
     
-        & .logo-container {
+        .side-inner {
+            height: 100%;
+            // background-color: pink;
+        }
+    
+        .logo-container {
             position: absolute;
             background-image: url(../img/taz/taz-logo.svg);
             background-repeat: no-repeat;
@@ -700,35 +706,6 @@
             min-height: 1rem;
             bottom: 8px;
             left: 8px;
-        }  
-
-        .word-art-title {
-            // background-color: blue;
-            @include wordart-style-1;
-            transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, -15px);
-            width: 100%;
-            height: 50px;
-            z-index: 2;
-            text-align: left;
-            top: 0;
-
-            .gruss-thumb {
-                font-size: 0.8rem;
-            }
-
-            .wordart {
-                width: 100%;
-                height: 100%;
-                font-size: 1.5rem;
-                padding: 0;
-                padding-top: 1rem;
-                padding-left: 0.2rem;
-                // margin-top: 0.5rem;
-                letter-spacing: -0.10vw;
-                line-height: 1rem;
-                // -webkit-text-stroke: 0.1px $dark-blue;
-                background-image: linear-gradient(0deg, rgba(246, 161, 25, 1) 50%, $blue 70%);
-            }
         }
-}
+    }
 }
