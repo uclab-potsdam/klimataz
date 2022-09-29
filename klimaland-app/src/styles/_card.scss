@@ -654,7 +654,8 @@
                 transition: opacity 20ms;
                 -webkit-transition: opacity 20ms;
             }
-    
+            
+            // Here edits for the export images
             .export {
                 width: 90%;
                 height: 90%;
@@ -666,6 +667,34 @@
                 -webkit-transform: translate(50%, -50%);
                 background-color: $light;
                 box-shadow: 2px 2px 0px rgba($pale-olive, .5);
+
+                .details-container {
+
+                    .flex-container {
+                        height: 100%;
+
+                        .text-container {
+                            .text-inner-container {
+                                background-color: pink;
+                                .section-title {
+                                    h2 {
+                                        font-size: 1rem;                                    
+                                    }
+                                }   
+
+                                .section-text {
+                                    p {
+                                        font-size: 12px;
+                                        margin: 0.5rem auto;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .footer-container {
+                        display: none;
+                    }
+                }
             }    
         }
     }
