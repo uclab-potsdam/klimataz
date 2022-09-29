@@ -212,7 +212,11 @@ export default class LayoutManager extends Component {
     //otherwise, update cards to match selection
     else {
       let defaultLK = this.props.editorspick[0].lk.value;
-      if (this.state.mode === 'lk' && this.state.landkreisSelection[0].value === defaultLK) {
+      if (
+        this.state.mode === 'lk' &&
+        this.state.landkreisSelection[0].value === defaultLK &&
+        this.props.editorspick[0].view.label !== 'compview' //if iframe options were comparison view
+      ) {
         e = e.filter((d) => {
           return d.value !== defaultLK;
         });

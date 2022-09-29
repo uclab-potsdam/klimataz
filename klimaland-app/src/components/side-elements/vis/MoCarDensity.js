@@ -9,11 +9,12 @@ const MoCarDensity = ({
   currentSection,
   locationLabel,
   isThumbnail,
+  cardNumber,
 }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
 
-  const dimensions = useCardSize(targetRef);
+  const dimensions = useCardSize(targetRef, cardNumber);
 
   window.mobileCheck = function () {
     let check = false;
@@ -122,8 +123,9 @@ const MoCarDensity = ({
 
   return (
     <div
-      className={`car-density vertical-layout ${isThumbnail ? 'is-thumbnail' : ''} ${isMobile ? 'is-mobile' : ''
-        }`}
+      className={`car-density vertical-layout ${isThumbnail ? 'is-thumbnail' : ''} ${
+        isMobile ? 'is-mobile' : ''
+      }`}
     >
       <div className="description">
         <div className="title">

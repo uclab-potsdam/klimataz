@@ -5,7 +5,7 @@ import { useSwipeable } from 'react-swipeable';
 import flipCard from '../img/buttons/flip.svg';
 import { mod } from '../helpers/helperFunc';
 
-const Card = ({ classProp, sides, isThumbnail, children, handleSwitchBack, handleSwitchNext }) => {
+const Card = ({ classProp, isThumbnail, children, handleSwitchBack, handleSwitchNext }) => {
   const [activeSide, setActiveSide] = useState(0);
   const [flipped, setFlipped] = useState(0);
   const [flipping, setFlipping] = useState(0);

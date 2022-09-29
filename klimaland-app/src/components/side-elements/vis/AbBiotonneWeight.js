@@ -11,12 +11,13 @@ const Waste = ({
   locationLabel,
   isThumbnail,
   footnote,
+  cardNumber,
 }) => {
   const targetRef = useRef();
   //const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [piesAreActive, setPies] = useState(false);
 
-  const dimensions = useCardSize(targetRef);
+  const dimensions = useCardSize(targetRef, cardNumber);
 
   // useLayoutEffect(() => {
   //   if (targetRef.current) {

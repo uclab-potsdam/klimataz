@@ -47,6 +47,20 @@
             }
         }
     }
+
+    //comparison view
+    &.stacked{
+
+        &.twocards{
+            .card{
+                &-ordered{
+                    //original ratio changed for styling
+                    width: calc($thumbnail-postcardwidth + 15vw);
+                    height: calc(($thumbnail-postcardwidth + 15vw)/1.5);
+                }
+            }   
+        }
+    }
 }
 
 // flipping

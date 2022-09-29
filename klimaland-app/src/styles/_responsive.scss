@@ -124,7 +124,30 @@
     }
 
     .indicators-iframe {
+
         .main-container {
+
+            .selection-container{
+                .selector {
+                    width: 30%;
+                    margin: 1rem;
+    
+                    &.section{
+                        &.mode-comparison{
+                            width:25%
+                        }
+                    }
+    
+                    &.lk {
+                        &.mode-comparison{
+                            width:75%
+                        }
+                        &.mode-lk{
+                            width: 40%;
+                        }
+                    }
+                }
+            }
 
             .button-container {
                 .inner-button {
@@ -247,7 +270,22 @@
 
                     .selector {
                         width: 90%;
+                        margin: 0.25rem 1rem;
+
+                        &.lk{
+                            display:none
+                        }
+                        &.lk-mobile{
+                            display:inline-block;
+
+
+                        }
+
+                        &.section{
+                            width:50%;
+                        }
                     }
+
                 }
             }
 
@@ -266,6 +304,18 @@
                         align-content: center;
                         justify-content: space-around;
                         padding-left: 0;
+                    }
+
+                    &.stacked{
+                        //comparison view
+                        &.twocards,&.default{
+                            .card{
+                                &-ordered{
+                                    width: calc($portait-postcardwidth/2.3);
+                                    height: calc($portait-postcardwidth/1.8);
+                                }
+                            }   
+                        }
                     }
                 }
             }
@@ -292,8 +342,8 @@
                     &.help-postcard {
                         width:  calc($portait-postcardwidth/1.2);
                         height: calc($portait-postcardwidth*1.2);
-                        transform: translate(5%, -95%) rotate(2deg);
-                        -webkit-transform:translate(5%, -95%) rotate(2deg);
+                        transform: translate(-100%, -70%) rotate(-2deg);
+                        -webkit-transform:translate(-100%, -70%) rotate(-2deg);
 
                         h4.desktop-title {
                             display: block; 
@@ -824,6 +874,10 @@
                         .description {
                             display: none;
                         }
+                    }
+
+                    .erneuerbare, div.erneuerbare {
+                        margin-bottom: 0;
                     }
                 }
 
