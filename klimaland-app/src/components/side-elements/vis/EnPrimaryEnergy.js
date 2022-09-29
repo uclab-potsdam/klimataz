@@ -195,8 +195,9 @@ const Energy = ({
           xValue -= 65;
         } else if (xValue + 50 > dimensions.width - marginWidth) {
           xValue -= 30;
+        } else if (xValue + 50 > dimensions.width - marginWidth) {
+          xValue -= 10;
         }
-
         const height = Math.abs(scaledCeil - scaledFloor);
         const labelEl = {
           x,

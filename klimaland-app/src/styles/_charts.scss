@@ -297,7 +297,6 @@
                             }
 
                             .Ges-stream {
-                                width: 120px;
                                 transform: translateX(-100px);
                                 -webkit-transform:translateX(-100px);
                             }
@@ -312,7 +311,6 @@
                             }
 
                             .Min-stream {
-                                width: 120px;
                                 border: 1px solid darken($lighter-orange-full, 60%);
                                 box-shadow: 2px 2px 0px rgba(darken($lighter-orange-full, 60%), 0.7);
                             
@@ -346,7 +344,6 @@
                             white-space: nowrap;
 
                             .Ges-stream {
-                                    width: 20px;
                                     transform: translateX(0px);
                                     -webkit-transform: translateX(0px);
                             }
