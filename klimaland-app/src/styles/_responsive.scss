@@ -319,6 +319,15 @@
                 }
             }
 
+            .sources-container { 
+                width: 80%; 
+
+                .sources-text{
+                    transform: translate(-16%, -115%);
+                    -webkit-transform:translate(-16%, -115%);
+                }
+            }
+
             .info-container {
                 width: 25%;
                 position: absolute;
