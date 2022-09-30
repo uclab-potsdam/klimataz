@@ -6,7 +6,7 @@
 // variables method based on github.com/eduardoboucas/include-media
 
 /*Tablet - Desktop*/
-@include media(">=tablet", "<desktop") {
+@include media(">tablet", "<desktop") {
 
     .card-active {
         .side-outer {
@@ -615,9 +615,23 @@
             }
 
             &.En-chart {
-                .energy-industry, .primary-energy {
+                .primary-energy {
                     .description {
                         height: 15%;
+                    }
+                    .visualization-container {
+                        height: 75%;
+                    }
+                }
+            
+                .energy-industry{
+                    .description{
+                        height: 15%;
+                        .title{
+                            h4{
+                                font-size:0.9rem;
+                            }
+                        }
                     }
                     .visualization-container {
                         height: 75%;
@@ -910,7 +924,7 @@
 
 
 /*Mini Tablet - Tablet*/
-@include media(">=minitablet","<tablet"){
+@include media(">minitablet","<=tablet"){
     .card {
         &-ordered {
             //original ratio changed for styling
@@ -939,7 +953,17 @@
                     // }
                 }
             }
-    
+            &.En-chart{
+                .energy-industry{
+                    .description{
+                        .title{
+                            h4{
+                                font-size:0.9rem;
+                            }
+                        }
+                    }
+                }    
+            }
         }
     }
 }
