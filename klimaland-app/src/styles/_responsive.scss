@@ -71,6 +71,7 @@
 
                         .chart {
                             .controls-container {
+                                display: none;
                                 .pie-controller {
                                     transform: scale(0.8) translateX(80px);
                                 }

@@ -475,6 +475,19 @@ $gas:$taz-orange;
                         transition-timing-function: ease;
                     }
 
+                    .pie-controller {
+                        cursor: pointer;
+                    }
+
+                    .detail-label {
+                        cursor: pointer;
+                        transform: translate(120px, 5px);
+                        opacity: 1;
+                        &.show-legend {
+                            opacity: 0;
+                        }
+                    }
+
                     .pie, .legend {
                         transition: 0.5s;
                         -webkit-transition: 0.5s;
