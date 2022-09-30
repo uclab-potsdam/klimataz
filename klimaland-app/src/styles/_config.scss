@@ -76,6 +76,61 @@ p, text {
     color: $default-text;
 }
 
+//keyframed animation
+@keyframes bounce {
+    0% {
+        -webkit-transform: translateY(-30px);
+        transform: translateY(-30px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    40% {
+        -webkit-transform: translateY(-24px);
+        transform: translateY(-24px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    65% {
+        -webkit-transform: translateY(-18px);
+        transform: translateY(-18px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    82% {
+        -webkit-transform: translateY(-9px);
+        transform: translateY(-9px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    93% {
+        -webkit-transform: translateY(-6px);
+        transform: translateY(-6px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    25%,
+    55%,
+    75%,
+    87% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+
+    100% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+}
+
 //reusable code
 @mixin title{
     font-family: "Chivo";
@@ -131,44 +186,6 @@ p, text {
     }
 }
 
-// @mixin wordart-style-2 {
-//         @include wordart-style-setup;
-//         transform: rotate(2deg);
-
-//         .gruss-thumb, .gruss-thumb:after {
-//             color: $taz-pink;
-//             margin-top: 0.5rem;
-//             content: 'Herzliche Grüße aus';
-//         }
-
-//         .wordart {
-//             display: inline-block;
-//             position: absolute;
-//             right: 0;
-//             background: linear-gradient(to right, $dark-blue 0%, $dark-pink 90%);
-//             -webkit-background-clip: text;
-//             background-clip: text;
-//             -webkit-text-fill-color: transparent;
-//             letter-spacing: -0.15vw;
-//             font-family: 'Varela Round', sans-serif;
-//             z-index: 5;
-//             -webkit-text-stroke: 0.25px $blue;
-//             transform: translate(-10px, 25px);
-
-//             $i: 10;
-//             @for $i from 0 to 40 {
-//                 &.additional-#{$i} {
-
-//                     top: #{-$i}px;
-//                     left: #{$i*2}px;
-//                     // transform: translateX(#{$i*10}px)
-//                 }
-                
-//                 $i: $i + 1;
-//             }
-//         }
-// }
-
 @mixin button{
     border: none;
     background: none;
@@ -178,8 +195,10 @@ p, text {
     right: 0.5rem;
     bottom: 0.5rem;
 
-    &:hover{
-        opacity: 70%;
+    &:hover {
+        img, h2, .button, .img {
+            opacity: 70%;
+        }
     }
 
     &.img{
@@ -355,62 +374,4 @@ p, text {
     }
 }
 
-@keyframes bounce {
-    0% {
-        -webkit-transform: translateY(-30px);
-        transform: translateY(-30px);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-        opacity: 1;
-    }
 
-    24% {
-        opacity: 1;
-    }
-
-    40% {
-        -webkit-transform: translateY(-24px);
-        transform: translateY(-24px);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
-
-    65% {
-        -webkit-transform: translateY(-18px);
-        transform: translateY(-18px);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
-
-    82% {
-        -webkit-transform: translateY(-9px);
-        transform: translateY(-9px);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
-
-    93% {
-        -webkit-transform: translateY(-6px);
-        transform: translateY(-6px);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
-
-    25%,
-    55%,
-    75%,
-    87% {
-        -webkit-transform: translateY(0px);
-        transform: translateY(0px);
-        -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-    }
-
-    100% {
-        -webkit-transform: translateY(0px);
-        transform: translateY(0px);
-        -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-        opacity: 1;
-    }
-}

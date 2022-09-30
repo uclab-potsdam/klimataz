@@ -21,80 +21,83 @@ const Sources = () => {
       </div>
       {showSources && (
         <div className="sources-text">
-          <h4>Quellen und Methodik</h4>
+          <h3>Quellen und Methodik</h3>
           <p>
-            Single iFrames are sized based on the use case. The size of the container determines in
-            which way the visualization is shown to the user and prevent weird things (e.g.,
-            overlapping squares, misplaced labels and so on). The overall app is built with Nuxt so
-            it is possible to reference single pages automatically generated on build. Within the
-            iFrame it is possible to scroll horizontally and hover on single elements to explore its
-            content. Soon it will be also possible to proceed via click (as a fallback in case
-            scroll doesn't work). The general container size is already following taz specs.
-            <a href="https://github.com/uclab-potsdam/klimataz/">
-              Here's the github folder with the code
-            </a>
-            .
+            Die Daten stammen aus... Single iFrames are sized based on the use case. The size of the
+            container determines in which way the visualization is shown to the user and prevent
+            weird things (e.g., overlapping squares, misplaced labels and so on).
           </p>
-          <h5>Landwirtschaft</h5>
+          <h4>Energie</h4>
           <p>
-            Single iFrames are sized based on the use case. The size of the container determines in
-            which way the visualization is shown to the user and prevent weird things (e.g.,
-            overlapping squares, misplaced labels and so on). The overall app is built with Nuxt so
-            it is possible to reference single pages automatically generated on build.
-            <a href="https://github.com/uclab-potsdam/klimataz/">
-              Here's the github folder with the code
+            Industrie: 
+            <a href="https://www.destatis.de/DE/Presse/Pressemitteilungen/2020/04/PD20_152_435.html">
+              Statistisches Bundesamt (Destatis)
             </a>
-            .
+            , 2020.
           </p>
-          <h5>Mobilität</h5>
           <p>
-            Single iFrames are sized based on the use case. The size of the container determines in
-            which way the visualization is shown to the user and prevent weird things (e.g.,
-            overlapping squares, misplaced labels and so on).
-            <a href="https://github.com/uclab-potsdam/klimataz/">
-              Here's the github folder with the code
+            Primärenergie: 
+            <a href="https://www.lak-energiebilanzen.de">LAK Energiebilanzen</a>, 2019 und{' '}
+            <a
+              href="
+https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
+            >
+              AG Energiebilanzen
             </a>
-            .
+            , 2021.
           </p>
-          <h5>Abfall</h5>
+          <h4>Landwirtschaft</h4>
           <p>
-            Single iFrames are sized based on the use case. The size of the container determines in
-            which way the visualization is shown to the user and prevent weird things (e.g.,
-            overlapping squares, misplaced labels and so on). The overall app is built with Nuxt so
-            it is possible to reference single pages automatically generated on build. Within the
-            iFrame it is possible to scroll horizontally and hover on single elements to explore its
-            content. Soon it will be also possible to proceed via click (as a fallback in case
-            scroll doesn't work). The general container size is already following taz specs.
-            <a href="https://github.com/uclab-potsdam/klimataz/">
-              Here's the github folder with the code
+            Tierhaltung: 
+            <a href="https://www.regionalstatistik.de/genesis/online">
+              Statistische Ämter des Bundes und der Länder
             </a>
-            .
+            , 2020.
           </p>
-          <h5>Landwirtschaft</h5>
           <p>
-            Single iFrames are sized based on the use case. The size of the container determines in
-            which way the visualization is shown to the user and prevent weird things (e.g.,
-            overlapping squares, misplaced labels and so on).
-            <a href="https://github.com/uclab-potsdam/klimataz/">
-              Here's the github folder with the code
+            Tiere pro Fläche: 
+            <a href="https://www.regionalstatistik.de/genesis/online">
+              Statistische Ämter des Bundes und der Länder
             </a>
-            .
+            , 2020.
+            <br />
           </p>
-          <h5>Gebäude</h5>
+          <h4>Abfall</h4>
           <p>
-            Single iFrames are sized based on the use case. The size of the container determines in
-            which way the visualization is shown to the user and prevent weird things (e.g.,
-            overlapping squares, misplaced labels and so on). The overall app is built with Nuxt so
-            it is possible to reference single pages automatically generated on build. Within the
-            iFrame it is possible to scroll horizontally and hover on single elements to explore its
-            content. Soon it will be also possible to proceed via click (as a fallback in case
-            scroll doesn't work). The general container size is already following taz specs.
-            <a href="https://github.com/uclab-potsdam/klimataz/">
-              Here's the github folder with the code
+            Organische Abfälle: 
+            <a href="https://www.regionalstatistik.de/genesis/online">
+              Statistische Ämter des Bundes und der Länder
             </a>
-            .
+            , 2020.
           </p>
-          <h5>Weitere Links</h5>
+          <h4>Mobilität</h4>
+          <p>
+            PkW-Dichte: 
+            <a href="https://www.regionalstatistik.de/genesis/online">
+              Statistische Ämter des Bundes und der Länder - 46251-02-01 - KBA
+            </a>
+            , 2021.
+          </p>
+          <p>
+            Transportmittel: 
+            <a href="http://www.mobilitaet-in-deutschland.de/publikationen2017.html">
+              Mobilität in Deutschland (MiD)
+            </a>
+            , 2017.
+          </p>
+          <h4>Gebäude</h4>
+          <p>
+            Heizenergie: 
+            <a href="https://www.regionalstatistik.de/genesis/online">
+              Statistische Ämter des Bundes und der Länder
+            </a>
+            , 2020.
+          </p>
+          <p>
+            Energieeffizienz: 
+            <a href="https://www.co2online.de/">CO2-online</a>, 2022.
+          </p>
+          <h4>Weitere Links</h4>
           <p>
             <a href="https://uclab.fh-potsdam.de/">Urban Complexity Lab FH Potsdam</a>
             <br />
