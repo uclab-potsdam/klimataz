@@ -756,7 +756,20 @@
                         display: none;
                     }
                 }
-            }    
+
+                .data-container {
+                    .lk-list {
+                        .list-inner-container {                        
+                            .list-similar-container {
+                                h5 {
+                                    border-top:  0.15px solid $default-text;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+               
         }
     }
 
