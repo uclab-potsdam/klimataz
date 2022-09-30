@@ -956,6 +956,24 @@
             height: calc($portait-postcardwidth/1.8);
         }
     }
+
+    .chart-container {
+        .svg-container {
+
+
+            &.En-chart {
+                .energy-industry{
+                    .description{
+                        .title{
+                            h4{
+                                font-size:0.9rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
  }
 
   @include media(">=largephone", "<minitablet") {
