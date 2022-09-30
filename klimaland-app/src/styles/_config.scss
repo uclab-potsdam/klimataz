@@ -99,7 +99,6 @@ p, text {
 
 @mixin wordart-style-1 {
     @include wordart-style-setup;
-    -webkit-transform:scale(0.9, 1.2) rotate(-2deg) translate(0px, 10px);
     transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, 10px);
 
     .gruss-thumb, .gruss-thumb:after {
@@ -113,7 +112,6 @@ p, text {
         padding-left: 7px;
         padding-right: 7px;
         padding-top: 7px;
-        -webkit-transform:translateY(-10px);
         transform: translateY(-10px);
 
         font-family: 'Vampiro One', sans-serif;
