@@ -563,7 +563,7 @@
                         .section-thumb {
                             .indicator-ranking {
                                 p {
-                                    font-size: 0.5rem;
+                                    font-size: 10px;
                                 }
                             }
                         }
@@ -695,6 +695,10 @@
                             .logo-container {
                                 display: none;
                             }
+
+                            .info-backside {
+                                line-height: 20px;
+                            }
                         }
                     }
                 }
@@ -727,15 +731,24 @@
                 .postcard-title {
                 .section-thumb {
                     overflow: visible;
+                        .indicator-ranking {
+                            p {
+                                font-size: 10px;
+                                line-height: 10px;
+                            }
+                        }
                         .word-art-title {
                             top: 2rem;
+                            left: 7px;
                             .gruss-thumb {
                                 font-size: 0.5rem;
                             }
                             .wordart {
-                                font-size: 0.9rem;
+                                font-size: 0.8rem;
                                 line-height: 0.9rem;
                                 padding-top: 0.9rem;
+                                left: -5px;
+                                position: relative;
                                 background-image: linear-gradient(0deg, $taz-pink 0%, $blue 90%);
                             }
                         }
@@ -756,6 +769,10 @@
     body {
         h3 {
             font-size: 16px;
+        }
+
+        h4.section-title {
+            font-size: 14px;
         }
     }
 
@@ -846,7 +863,7 @@
             .info-container {
                 width: 25%;
                 position: absolute;
-                right: -3.5rem;
+                right: -2.5rem;
                 bottom: 25%;
                 .help {
                     width: 30px;
@@ -897,7 +914,7 @@
                 .sources-button {
                     width: 25px;
                     height: 25px;
-                    right: 0.5rem;
+                    right: 1rem;
                     bottom: 1rem;
                     .info-i {
                         font-size: 0.75rem;
@@ -905,9 +922,18 @@
                 }
 
                 .info-text-label {
+                    opacity: 0;
+                    transition: all 0.5s;
                     right: 3rem;
                     bottom: 1.25rem;
                     width: 7rem;
+                }
+
+                &:hover {
+                    .info-text-label {
+                        transition: all 0.5s;
+                        opacity: 1;
+                    }
                 }
             }
         }
@@ -955,6 +981,16 @@
                     }
                 }
             }
+
+            .sources-container {
+                .sources-button {
+                    right: 1.5rem;
+                }
+
+                .info-text-label {
+                    right: 1rem;
+                }
+            }
         }
     }
     .card {
@@ -983,6 +1019,7 @@
                             text-overflow: ellipsis;
                             overflow: hidden;
                             white-space: nowrap;
+                            
                         }
                         .postcard-miniature {
                             display: none;
@@ -1075,7 +1112,7 @@
     
     .card {
         &-ordered {
-            margin: -10px 0.5rem -3px 1rem;
+            margin: -40px 0.5rem 35px 1rem;
             //original ratio changed for styling
             width: calc($portait-postcardwidth/2.3);
             height: calc($portait-postcardwidth/1.8);
