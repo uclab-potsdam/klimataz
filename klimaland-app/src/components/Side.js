@@ -56,7 +56,6 @@ export default class Side extends Component {
     // adding timeout before resolve to make sure everything is loaded
     await new Promise((resolve) => setTimeout(resolve, 1000))
       .then(() => {
-        console.log('!');
         return toPng(this.myRef.current, {
           cacheBust: true,
           backgroundColor: '#fefaf6',
