@@ -59,6 +59,7 @@ $postcardview-postcardwidth: 80vw;
 $thumbnail-postcardwidth:30vw;
 $portait-postcardwidth:85vw;
 $portrait-minitablet-postcardwidth:65vw;
+$portait-postcardheight:85vh;
 
 //effects
 $boxshadow: (
@@ -108,20 +109,17 @@ p, text {
     }
 
     .wordart {
-        display: inline-block;
+        transform: translateY(-10px);
+        -webkit-background-clip: text;
+        display:inline-block;
         padding-left: 7px;
         padding-right: 7px;
         padding-top: 7px;
-        transform: translateY(-10px);
-
-        font-family: 'Vampiro One', sans-serif;
-        letter-spacing: -0.25vw;
-        background-image: linear-gradient(0deg, $taz-pink 0%, $blue 80%);
         background-clip: text;
-        -webkit-background-clip: text;
+        font-family: 'Vampiro One', sans-serif;
+        background-image: linear-gradient(0deg, $taz-pink 0%, $blue 80%);
         -webkit-text-fill-color: transparent;
-        color: transparent;
-
+        letter-spacing: -0.25vw; 
         
         &:not(.main) {
             &[class*="additional-"] {
@@ -131,43 +129,43 @@ p, text {
     }
 }
 
-// @mixin wordart-style-2 {
-//         @include wordart-style-setup;
-//         transform: rotate(2deg);
+@mixin wordart-style-2 {
+        @include wordart-style-setup;
+        transform: rotate(2deg);
 
-//         .gruss-thumb, .gruss-thumb:after {
-//             color: $taz-pink;
-//             margin-top: 0.5rem;
-//             content: 'Herzliche Grüße aus';
-//         }
+        .gruss-thumb, .gruss-thumb:after {
+            color: $taz-pink;
+            margin-top: 0.5rem;
+            content: 'Herzliche Grüße aus';
+        }
 
-//         .wordart {
-//             display: inline-block;
-//             position: absolute;
-//             right: 0;
-//             background: linear-gradient(to right, $dark-blue 0%, $dark-pink 90%);
-//             -webkit-background-clip: text;
-//             background-clip: text;
-//             -webkit-text-fill-color: transparent;
-//             letter-spacing: -0.15vw;
-//             font-family: 'Varela Round', sans-serif;
-//             z-index: 5;
-//             -webkit-text-stroke: 0.25px $blue;
-//             transform: translate(-10px, 25px);
+        .wordart {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            background: linear-gradient(to right, $dark-blue 0%, $dark-pink 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.15vw;
+            font-family: 'Varela Round', sans-serif;
+            z-index: 5;
+            -webkit-text-stroke: 0.25px $blue;
+            transform: translate(-10px, 25px);
 
-//             $i: 10;
-//             @for $i from 0 to 40 {
-//                 &.additional-#{$i} {
+            $i: 10;
+            @for $i from 0 to 40 {
+                &.additional-#{$i} {
 
-//                     top: #{-$i}px;
-//                     left: #{$i*2}px;
-//                     // transform: translateX(#{$i*10}px)
-//                 }
+                    top: #{-$i}px;
+                    left: #{$i*2}px;
+                    // transform: translateX(#{$i*10}px)
+                }
                 
-//                 $i: $i + 1;
-//             }
-//         }
-// }
+                $i: $i + 1;
+            }
+        }
+}
 
 @mixin button{
     border: none;
@@ -346,11 +344,11 @@ p, text {
 }
 
 @mixin responsive-layout {
-    @include media(">phone", "<=minitablet") {
+    @include media(">phone", "<=tablet") {
         @include horizontal-bottom-layout
     }
     
-    @include media(">=minitablet") {
+    @include media(">tablet") {
         @include vertical-layout
     }
 }

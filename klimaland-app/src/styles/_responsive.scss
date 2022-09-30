@@ -913,13 +913,92 @@
 /*Mini Tablet - Tablet*/
 @include media(">minitablet","<=tablet"){
     .indicators-iframe{
-        //background: blue;
+
+        .main-container{
+            .card-collection{
+                .carousel-container{
+                    margin-top:1rem;
+                }
+
+                .card-container{
+                    &.stacked{
+                        //comparison view
+                        &.twocards{
+                            .card{
+                                &-ordered{
+                                    width: calc($portait-postcardwidth/2.3);
+                                    height: calc($portait-postcardwidth/1.8);
+                                }
+                            }   
+                        }
+                        &.default{
+                            .card{
+                                &-ordered{
+                                    width: calc($portait-postcardwidth/2.3);
+                                    height: calc($portait-postcardwidth/1.8);
+                                }
+                            }   
+                        }
+                    }
+                }
+            }
+        }
     }
     .card {
         &-ordered {
             //original ratio changed for styling
             width: calc($portrait-minitablet-postcardwidth/2.3);
             height: calc($portrait-minitablet-postcardwidth/1.8);
+        }
+
+    }
+
+    .side-container {
+        width: calc($portait-postcardheight/1.5);
+        height: calc($portait-postcardheight);
+
+        .side-outer{
+            .overlay-container{
+                .overlay-inner{
+                    .postcard-title {
+                        max-width: 50%;
+                        width: 50%;
+                        overflow: hidden;
+                        .section-title {
+                            text-align: left;
+                            max-width: 100%;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                        }
+                        .postcard-miniature {
+                            display: none;
+                        }
+                    }
+                
+                    .button-toggle-container {
+                        svg {
+                            margin-left:0;
+        
+                            .toggle {
+                                g {
+                                    transform: translate(5px, 2px);
+                                }   
+                            }
+                            
+                            text {
+                                display: none;
+                            }
+        
+                            .mobile-toggle-label {
+                                transform: translate(-100px, 0px);
+                                display: block;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+            }
+            }
         }
     }
 
@@ -928,7 +1007,7 @@
             &.Mo-chart{
                 .car-density{
                     .legend {
-                        background-image: url('../img/legends/MoCarDensity-tablet.svg');
+                        background-image: url('../img/legends/MoCarDensity-mobile.svg');
                         background-repeat: no-repeat;
                         position: relative;
                         width: 50%;
@@ -997,7 +1076,6 @@
 
   @include media(">=largephone", "<minitablet") {
     .indicators-iframe{
-        //background:coral;
         .main-container{
             .card-collection{
                 .card-container{
