@@ -97,6 +97,7 @@ $gas:$taz-orange;
                 }
 
                 .chart {
+                    cursor: crosshair;
                     transform: skew(-17deg, 0deg);
                     -webkit-transform:skew(-17deg, 0deg);
 
@@ -106,7 +107,6 @@ $gas:$taz-orange;
                     }
 
                     .grid {
-                        cursor: crosshair;
                         stroke: $default-text;
                         fill: $light;
                     }
@@ -116,13 +116,13 @@ $gas:$taz-orange;
                     }
 
                     &.active-chart {
-                        cursor: pointer;
                         transform: translate(-20px, -10px) skew(-17deg, 0deg);
                         -webkit-transform:translate(-20px, -10px) skew(-17deg, 0deg);
                         overflow: visible;
                     }
 
                     &.thumbnail-chart {
+                        cursor: pointer;
                         .cars-container {
                             transform: translate(50px, 30px) scale(0.7);
                             -webkit-transform:translate(50px, 30px) scale(0.7);
