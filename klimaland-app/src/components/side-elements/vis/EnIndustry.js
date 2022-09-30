@@ -69,7 +69,8 @@ const EnIndustry = ({
     });
     percRenewables = lastRenValue[0].value !== null ? lastRenValue[0].value.toFixed(1) : 0;
 
-    showBundeslandForLK = !currentData.regional;
+    //if locationLabel[0] !== locationLabel[1] => this is a bundesland
+    showBundeslandForLK = !currentData.regional && locationLabel[0] !== locationLabel[1];
 
     // get all energy sources and filter out "insgesamt" and "Anteil_Erneuerbar"
     const uniqueEnergySourceAll = uniq(currentData.data.map((d) => d.column));

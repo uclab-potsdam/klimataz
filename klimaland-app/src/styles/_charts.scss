@@ -2,7 +2,7 @@
 
 //colors
 // renewables = ["Solarthermie","Geothermie","Umweltthermie (Luft/Wasser)","Holz","Biogas/Biomethan","Sonstige Biomasse","Keine Energie (einschl. Passivhaus)"]
-$solarthermie: lighten($taz-orange, 30%);
+$solarthermie: lighten($electric-blue, 30%);
 $geothermie: $marine-blue;
 $umweltthermie: $mint-green;
 $keine:darken($electric-blue, 20%);
