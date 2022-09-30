@@ -295,6 +295,10 @@
                 height: 100vh;
                 width: 95%;
                 margin: 0 auto;
+
+                .carousel-container {
+                    margin-top: 3.5rem;
+                }
                 .card-container {
                     height: 100vh;
                     align-content: flex-start;
@@ -620,7 +624,7 @@
                         height: 15%;
                     }
                     .visualization-container {
-                        height: 75%;
+                        height: 80%;
                     }
                 }
             
@@ -634,7 +638,7 @@
                         }
                     }
                     .visualization-container {
-                        height: 75%;
+                        height: 80%;
                     }
                 }
             }
