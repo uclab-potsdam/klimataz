@@ -419,8 +419,14 @@ code {
                     margin: 0.5rem 0rem;
                 }
 
-                & h4, h5{
-                    margin: 1.5rem 0rem .5rem 0rem;
+                & h4{
+                    margin-top: 2rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                & h5{
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
                 }
 
                 & p{

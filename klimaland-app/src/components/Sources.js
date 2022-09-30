@@ -23,21 +23,20 @@ const Sources = () => {
         <div className="sources-text">
           <h3>Quellen und Methodik</h3>
           <p>
-            Single iFrames are sized based on the use case. The size of the container determines in
-            which way the visualization is shown to the user and prevent weird things (e.g.,
-            overlapping squares, misplaced labels and so on). The overall app is built with Nuxt so
-            it is possible to reference single pages automatically generated on build.
+            Die Daten stammen aus... Single iFrames are sized based on the use case. The size of the
+            container determines in which way the visualization is shown to the user and prevent
+            weird things (e.g., overlapping squares, misplaced labels and so on).
           </p>
           <h4>Energie</h4>
-          <h5>Industrie</h5>
           <p>
+            Industrie: 
             <a href="https://www.destatis.de/DE/Presse/Pressemitteilungen/2020/04/PD20_152_435.html">
               Statistisches Bundesamt (Destatis)
             </a>
             , 2020.
           </p>
-          <h5>Primärenergie</h5>
           <p>
+            Primärenergie: 
             <a href="https://www.lak-energiebilanzen.de">LAK Energiebilanzen</a>, 2019 und{' '}
             <a
               href="
@@ -48,54 +47,54 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
             , 2021.
           </p>
           <h4>Landwirtschaft</h4>
-          <h5>Tierhaltung</h5>
           <p>
+            Tierhaltung: 
             <a href="https://www.regionalstatistik.de/genesis/online">
               Statistische Ämter des Bundes und der Länder
             </a>
             , 2020.
           </p>
-          <h5>Tiere pro Fläche</h5>
           <p>
+            Tiere pro Fläche: 
             <a href="https://www.regionalstatistik.de/genesis/online">
               Statistische Ämter des Bundes und der Länder
             </a>
             , 2020.
+            <br />
           </p>
           <h4>Abfall</h4>
-          <h5>Organische Abfälle</h5>
           <p>
+            Organische Abfälle: 
             <a href="https://www.regionalstatistik.de/genesis/online">
               Statistische Ämter des Bundes und der Länder
             </a>
             , 2020.
           </p>
           <h4>Mobilität</h4>
-          <h5>PkW-Dichte</h5>
           <p>
+            PkW-Dichte: 
             <a href="https://www.regionalstatistik.de/genesis/online">
               Statistische Ämter des Bundes und der Länder - 46251-02-01 - KBA
             </a>
             , 2021.
           </p>
-          <h5>Transportmittel</h5>
           <p>
+            Transportmittel: 
             <a href="http://www.mobilitaet-in-deutschland.de/publikationen2017.html">
               Mobilität in Deutschland (MiD)
             </a>
             , 2017.
           </p>
-
           <h4>Gebäude</h4>
-          <h5>Heizenergie</h5>
           <p>
+            Heizenergie: 
             <a href="https://www.regionalstatistik.de/genesis/online">
               Statistische Ämter des Bundes und der Länder
             </a>
             , 2020.
           </p>
-          <h5>Energieeffizienz</h5>
           <p>
+            Energieeffizienz: 
             <a href="https://www.co2online.de/">CO2-online</a>, 2022.
           </p>
           <h4>Weitere Links</h4>
