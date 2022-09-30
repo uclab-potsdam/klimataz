@@ -588,11 +588,6 @@
         }
     }
 
-    .side-container {
-        width: $portait-postcardwidth; //60vw
-        height: calc($portait-postcardwidth*1.5);
-    }
-
     .chart-container {
         .svg-container {
 
@@ -994,24 +989,38 @@
             height: calc($portait-postcardwidth/1.8);
         }
     }
+    .side-container {
+        width: $portait-postcardwidth;
+        height: calc($portait-postcardwidth*1.5);
+    }
  }
 
   @include media(">=largephone", "<minitablet") {
-        .indicators-iframe{
-            //background:coral;
-            .main-container{
-                .card-collection{
-                    .card-container{
-                        align-content: flex-start;
-                    }
+    .indicators-iframe{
+        //background:coral;
+        .main-container{
+            .card-collection{
+                .card-container{
+                    align-content: flex-start;
+                }
+                .carousel-container{
+                    margin-top:4rem;
                 }
             }
         }
-      .card {
-          &-ordered {
-              //original ratio changed for styling
-            width: calc($portrait-minitablet-postcardwidth/2.0);
-            height: calc($portrait-minitablet-postcardwidth/1.5);
-          }
-      }
+    }
+    .card {
+        //thumbnail
+        &-ordered {
+            //original ratio changed for styling
+        width: calc($portrait-minitablet-postcardwidth/2.0);
+        height: calc($portrait-minitablet-postcardwidth/1.5);
+        }
+    }
+
+    //postcardview
+    .side-container {
+        width: calc($portait-postcardheight/1.5);
+        height: calc($portait-postcardheight);
+    }
   }
