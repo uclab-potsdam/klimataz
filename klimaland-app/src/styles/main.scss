@@ -22,12 +22,11 @@ button {
         display: inline-flex;
         margin-left: auto;
         // background-color: pink;
-        height: 6%;
+        height: 10%;
         
         &:hover {
-            opacity: 1;
             .flip-label {
-                transition: all 0.2s;
+                transition: all 0.5s;
                 opacity: 1;
                 left: 0rem;
             }
@@ -35,12 +34,12 @@ button {
 
         .flip-label {
             pointer-events: none;
-            transition: all 0.2s;
+            transition: all 0.5s;
             background-color: $light;
             border: 1px solid $pale-olive;
 
-            padding: 0.5rem;
-            line-height: 12px;
+            padding: 1rem 0.5rem;
+            line-height: 0px;
             font-size: 12px;
             margin: auto 0.5rem;
             position: relative;
@@ -49,11 +48,8 @@ button {
         }
 
         img {
-            &:hover {
-                opacity: 0.8;
-            }
             // background-color: aquamarine;
-            width: 20%;
+            width: 18%;
             max-width: 50px;
             min-width: 20px;
             -webkit-animation: bounce 1.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
@@ -257,12 +253,15 @@ code {
                 height:20%;
 
                 .inner-button{
-
                     .switch-preview{
                         white-space: pre-wrap;
                         margin-top: 0.5rem;
                         opacity: 0;
                         transition: all 0.5s;
+                        font-size: 10px;
+                        width: 80%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                 }
 
@@ -277,12 +276,16 @@ code {
                         right: 0rem;
                         bottom: 0;
                         text-align: right;
+
+                        .switch-preview {
+                            float: right;
+                        }
                     }
                     
                     &:hover {
                         .switch {
                         transition: all 0.5s;
-                        right: 1rem;
+                        right: 0.5rem;
                         }
 
                         .switch-preview {
@@ -305,7 +308,7 @@ code {
                     &:hover {
                         .switch {
                         transition: all 0.5s;
-                        left: 1rem;
+                        left: 0.5rem;
                         }
 
                         .switch-preview {
@@ -396,7 +399,7 @@ code {
                 h6{
                     margin: 0;
                     text-align: right;
-                    color: rgba($default-text, 0.5);
+                    color: $default-text;
                 }
             }
 
@@ -525,7 +528,7 @@ code {
 
                     .img-flip, .img-toggle{
                         width: 25%;
-                        max-width: 18px;
+                        max-width: 21px;
                         min-width: 10px;
                     }
 

@@ -59,7 +59,7 @@ export default class Side extends Component {
         console.log('!')
         return toPng(this.myRef.current, {
           cacheBust: true,
-          backgroundColor: '#fff',
+          backgroundColor: '#fefaf6',
         });
       })
       .then((dataUrl) => {
@@ -198,10 +198,6 @@ export default class Side extends Component {
   }
 
   render() {
-    // console.log(this.props.switchDataLevel)
-    // console.log('toggle labels in side', Object.keys(this.props.toggleLabels).length)
-    // TO DO: Solve issue of inconsistent activeSide during carousel switch
-    // console.log(Boolean(this.props.flipping))
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={100} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
@@ -248,6 +244,7 @@ export default class Side extends Component {
                             rx="10"
                           />
                           <rect
+                            className="toggle-rect"
                             x={this.props.isLKData ? 0 : 20}
                             y="0"
                             width="20"
@@ -275,7 +272,10 @@ export default class Side extends Component {
                   </div>
                 )}
               <button className="button-download" onClick={this.onShareButtonClick}>
-                <img src={share} className="button img" alt="flip-button-img" />
+                <div className="inner-button">
+                  <p className="download-label">Download</p>
+                  <img src={share} className="button img" alt="click to download" />
+                </div>
               </button>
             </div>
           </div>
