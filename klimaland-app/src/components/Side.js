@@ -53,6 +53,7 @@ export default class Side extends Component {
     }
 
     await setStateAsync(this, { exportActive: true })
+    // adding timeout before resolve to make sure everything is loaded
     await new Promise(resolve => setTimeout(resolve, 1000))
       .then(() => {
         console.log('!')
@@ -62,10 +63,20 @@ export default class Side extends Component {
         });
       })
       .then((dataUrl) => {
-        const link = document.createElement('a');
-        link.download = 'klimaland_taz.png';
-        link.href = dataUrl;
-        link.click();
+        // const link = document.createElement('a');
+        // link.download = 'klimaland_taz.png';
+        // link.href = dataUrl;
+        // link.click();
+
+        // Returning it twice to prevent safari to export a blank canvas
+        toPng(this.myRef.current).then(function (dataURL2) {
+          const link = document.createElement("a");
+          link.download = `klimaland_taz.png`;
+          link.href = dataURL2;
+          link.click();
+
+          // resolve(dataURL2);
+        })
       })
       .then(() => {
         setStateAsync(this, { exportActive: false });
@@ -114,7 +125,7 @@ export default class Side extends Component {
     if (
       this.props.localData !== undefined &&
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-        undefined &&
+      undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -199,9 +210,8 @@ export default class Side extends Component {
               <div className="postcard-title">
                 <h4 className="section-title">{this.props.sectionName}</h4>
                 <div
-                  className={`section-thumb ${
-                    this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
-                  }`}
+                  className={`section-thumb ${this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
+                    }`}
                 >
                   {(this.props.mode === 'comparison' || !this.props.isThumbnail) && (
                     <TitleArt landkreisLabel={this.props.lk.label} />

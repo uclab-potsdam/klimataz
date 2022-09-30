@@ -2,7 +2,7 @@
 
 //colors
 // renewables = ["Solarthermie","Geothermie","Umweltthermie (Luft/Wasser)","Holz","Biogas/Biomethan","Sonstige Biomasse","Keine Energie (einschl. Passivhaus)"]
-$solarthermie: lighten($taz-orange, 30%);
+$solarthermie: lighten($electric-blue, 30%);
 $geothermie: $marine-blue;
 $umweltthermie: $mint-green;
 $keine:darken($electric-blue, 20%);
@@ -473,6 +473,19 @@ $gas:$taz-orange;
                         transition: 0.5s;
                         -webkit-transition: 0.5s;
                         transition-timing-function: ease;
+                    }
+
+                    .pie-controller {
+                        cursor: pointer;
+                    }
+
+                    .detail-label {
+                        cursor: pointer;
+                        transform: translate(120px, 5px);
+                        opacity: 1;
+                        &.show-legend {
+                            opacity: 0;
+                        }
                     }
 
                     .pie, .legend {
