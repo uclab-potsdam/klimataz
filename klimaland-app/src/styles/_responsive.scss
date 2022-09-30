@@ -462,6 +462,16 @@
 
                         .button-download {
                             width: 20%;
+
+                            .download-label{
+                                display:none;
+                            }
+
+                            &:hover {
+                                .download-label {
+                                    opacity:0
+                                }
+                            }
                         }
 
                     }
