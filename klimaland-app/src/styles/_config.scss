@@ -59,6 +59,7 @@ $postcardview-postcardwidth: 80vw;
 $thumbnail-postcardwidth:30vw;
 $portait-postcardwidth:85vw;
 $portrait-minitablet-postcardwidth:65vw;
+$portait-postcardheight:85vh;
 
 //effects
 $boxshadow: (
@@ -163,20 +164,17 @@ p, text {
     }
 
     .wordart {
-        display: inline-block;
+        transform: translateY(-10px);
+        -webkit-background-clip: text;
+        display:inline-block;
         padding-left: 7px;
         padding-right: 7px;
         padding-top: 7px;
-        transform: translateY(-10px);
-
-        font-family: 'Vampiro One', sans-serif;
-        letter-spacing: -0.25vw;
-        background-image: linear-gradient(0deg, $taz-pink 0%, $blue 80%);
         background-clip: text;
-        -webkit-background-clip: text;
+        font-family: 'Vampiro One', sans-serif;
+        background-image: linear-gradient(0deg, $taz-pink 0%, $blue 80%);
         -webkit-text-fill-color: transparent;
-        color: transparent;
-
+        letter-spacing: -0.25vw; 
         
         &:not(.main) {
             &[class*="additional-"] {
@@ -365,11 +363,11 @@ p, text {
 }
 
 @mixin responsive-layout {
-    @include media(">phone", "<=minitablet") {
+    @include media(">phone", "<=tablet") {
         @include horizontal-bottom-layout
     }
     
-    @include media(">=minitablet") {
+    @include media(">tablet") {
         @include vertical-layout
     }
 }

@@ -261,11 +261,7 @@ export default class Side extends Component {
                         <text x={this.props.toggleLabels.bl.length * 8 + 20} y="18">
                           {this.props.toggleLabels.bl}
                         </text>
-                        <text
-                          className="mobile-toggle-label"
-                          x={this.props.toggleLabels.bl.length * 9 + 10}
-                          y="17"
-                        >
+                        <text className="mobile-toggle-label" x="150" y="17">
                           Daten wechseln
                         </text>
                       </g>
