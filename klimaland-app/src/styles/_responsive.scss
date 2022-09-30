@@ -73,7 +73,9 @@
                             .controls-container {
                                 display: none;
                                 .pie-controller {
+                                    -webkit-transform:scale(0.8) translateX(80px);
                                     transform: scale(0.8) translateX(80px);
+
                                 }
                             }
                         }
@@ -112,6 +114,7 @@
                         svg{
                             .non-clipped-elements {
                                 text {
+                                    -webkit-transform: translateY(-5px);
                                     transform: translateY(-5px);
                                     font-size: 9.5px;
                                 }
@@ -202,6 +205,7 @@
 
                             .toggle {
                                 g {
+                                    -webkit-transform:translate(5px, 2px);
                                     transform: translate(5px, 2px);
                                 }   
                             }
@@ -211,6 +215,7 @@
                             }
 
                             .mobile-toggle-label {
+                                -webkit-transform:translate(-100px, 0px);
                                 transform: translate(-100px, 0px);
                                 display: block;
                                 font-size: 12px;
@@ -248,6 +253,7 @@
                 width: 100%;
                 bottom: 1rem;
                 right: -1rem;
+                -webkit-transform:scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
                 transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
 
                 .wordart {
@@ -433,6 +439,7 @@
                             svg {
                                 .toggle {
                                     g {
+                                        -webkit-transform:translate(5px, 2px);
                                         transform: translate(5px, 2px);
                                     }   
                                 }
@@ -442,6 +449,7 @@
                                 }
 
                                 .mobile-toggle-label {
+                                    -webkit-transform:translate(-100px, 0px);
                                     transform: translate(-100px, 0px);
                                     display: block;
                                     font-size: 12px;
@@ -592,6 +600,7 @@
         }
         .side-inner {
             clip-path: circle(50%);
+            -webkit-transform:translateY(3rem);
             transform: translateY(3rem);
         }
     }
@@ -719,6 +728,7 @@
                             transform: translateY(-30px);
                             -webkit-transform:translateY(-30px);
                             .bars {
+                                -webkit-transform:translateY(10px);
                                 transform: translateY(10px);
                                 .year-label {
                                         font-size: 14px;
@@ -882,6 +892,7 @@
                     .visualization-container {
                         height: 70%;
                         .chart {
+                            -webkit-transform: translate(0, 10px);
                             transform: translate(0, 10px);
                         }
                     }
@@ -897,19 +908,25 @@
                 }
 
                 .avg-heating {
+                    width:100%;
                     .description {
                         height: 15%;
                     }
                     .visualization-container {
                         height: 85%;
+                        width:100%;
                         transform: translateY(-15px);
                         -webkit-transform:translateY(-15px);
 
                         .chart {
+                            width:100%;
                             .non-clipped-elements {
+                                width:100%;
                                 transform: translate(-28px, 0);
+                                -webkit-transform:translate(-28px,0);
 
                                 .measure-label {
+                                    -webkit-transform:translate(-75%,0);
                                     transform: translate(-75%, 0);
                                 }
                             }
