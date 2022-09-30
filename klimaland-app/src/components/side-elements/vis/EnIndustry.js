@@ -77,7 +77,7 @@ const EnIndustry = ({
     showBundeslandForLK = !currentData.regional && locationLabel[0] !== locationLabel[1];
 
     // get all energy sources and filter out "insgesamt" and "Anteil_Erneuerbar"
-    const uniqueEnergySourceAll = uniq(filteredData.map((d) => d.column));
+    const uniqueEnergySourceAll = uniq(currentData.data.map((d) => d.column));
     const uniqueEnergySourceFiltered = uniqueEnergySourceAll.filter((category) => {
       return (
         category !== 'insgesamt' &&
@@ -88,13 +88,13 @@ const EnIndustry = ({
     });
 
     // setup domains for scaling
-    const domainX = extent(filteredData.map((d) => +d.year));
+    const domainX = extent(currentData.data.map((d) => +d.year));
     const xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth, dimensions.width - marginWidth]);
     const domainY = [
-      -max(filteredData.map((d) => d.value / 2)),
-      max(filteredData.map((d) => d.value / 2)),
+      -max(currentData.data.map((d) => d.value / 2)),
+      max(currentData.data.map((d) => d.value / 2)),
     ];
     const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
 
@@ -102,7 +102,7 @@ const EnIndustry = ({
     scaleCategory = scaleOrdinal().domain(uniqueEnergySourceFiltered).range(colorArray);
 
     // get unique years from data
-    const uniqueYears = uniq(filteredData.map((d) => +d.year));
+    const uniqueYears = uniq(currentData.data.map((d) => +d.year));
 
     // create elements for horizontal axis, plus labels
     xAxisElements = uniqueYears.map((year, a) => {
