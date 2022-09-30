@@ -414,7 +414,6 @@
                         }
                     }
                 }
-
                 .modal-split {
                     .description {
                         height: 20%;
@@ -832,6 +831,15 @@
                             }   
                         }
                     }
+                }
+            }
+
+            .sources-container { 
+                width: 80%; 
+
+                .sources-text{
+                    transform: translate(-16%, -115%);
+                    -webkit-transform:translate(-16%, -115%);
                 }
             }
 
