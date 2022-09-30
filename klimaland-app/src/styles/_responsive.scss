@@ -197,9 +197,9 @@
 
                 .side-outer{
                     .button-toggle-container {
+                        margin-left:0;
                         svg {
                             margin-left:0;
-
                             .toggle {
                                 g {
                                     transform: translate(5px, 2px);
@@ -437,7 +437,9 @@
                         }
 
                         .button-toggle-container {
+                            margin-left:0;
                             svg {
+                                margin-left:0;
                                 .toggle {
                                     g {
                                         transform: translate(5px, 2px);
@@ -452,6 +454,8 @@
                                     transform: translate(-100px, 0px);
                                     display: block;
                                     font-size: 12px;
+                                    margin-left:0.5rem;
+
                                 }
                             }
                         }
