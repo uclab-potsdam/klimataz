@@ -406,6 +406,7 @@
                 .button-toggle-container {
                     margin-left: 0.5rem;
                     display: inline-flex;
+                    width: 100%;
 
                     .arrow-pointer {
                         background-image: url('../img/buttons/caret-right.svg');
@@ -417,8 +418,10 @@
                     }
 
                     svg {
+                        
                         margin-left: 0.5rem;
                         rect {
+                            cursor: pointer;
                             transition: x 0.2s;
                         }
                         
@@ -431,6 +434,7 @@
                         }
 
                         .controller-bg {
+                            cursor: pointer;
                             fill: url(#MyGradient);
                             stroke: $default-text;
                         }
@@ -440,8 +444,15 @@
 
                 .button-download {
                     margin-left: auto;
-                    width: 5%;
-                    float: right;
+                    width: 10%;
+                    
+
+                    img {
+                        float: right;
+                        width: 70%;
+                        height: auto;
+                        max-width: 20px;
+                    }
                 }
 
             }
