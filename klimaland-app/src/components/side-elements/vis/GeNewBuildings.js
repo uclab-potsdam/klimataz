@@ -255,7 +255,11 @@ const Buildings = ({
             <g className="lines">
               {lineElements.map((line, l) => {
                 return (
-                  <g key={l} className={`${line.klassName} ${line.type} line`}>
+                  <g
+                    key={l}
+                    className={`${line.klassName} ${line.type} line`}
+                    onClick={() => changeId(line.id)}
+                  >
                     <path d={line.path} fill="none" />
                   </g>
                 );
