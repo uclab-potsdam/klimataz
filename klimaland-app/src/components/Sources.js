@@ -21,7 +21,7 @@ const Sources = () => {
       </div>
       {showSources && (
         <div className="sources-text">
-          <h4>Quellen und Methodik</h4>
+          <h3>Quellen und Methodik</h3>
           <p>
             Single iFrames are sized based on the use case. The size of the container determines in
             which way the visualization is shown to the user and prevent weird things (e.g.,
@@ -35,7 +35,7 @@ const Sources = () => {
             </a>
             .
           </p>
-          <h5>Landwirtschaft</h5>
+          <h4>Landwirtschaft</h4>
           <p>
             Single iFrames are sized based on the use case. The size of the container determines in
             which way the visualization is shown to the user and prevent weird things (e.g.,
@@ -46,7 +46,7 @@ const Sources = () => {
             </a>
             .
           </p>
-          <h5>Mobilität</h5>
+          <h4>Mobilität</h4>
           <p>
             Single iFrames are sized based on the use case. The size of the container determines in
             which way the visualization is shown to the user and prevent weird things (e.g.,
@@ -56,7 +56,7 @@ const Sources = () => {
             </a>
             .
           </p>
-          <h5>Abfall</h5>
+          <h4>Abfall</h4>
           <p>
             Single iFrames are sized based on the use case. The size of the container determines in
             which way the visualization is shown to the user and prevent weird things (e.g.,
@@ -70,7 +70,7 @@ const Sources = () => {
             </a>
             .
           </p>
-          <h5>Landwirtschaft</h5>
+          <h4>Landwirtschaft</h4>
           <p>
             Single iFrames are sized based on the use case. The size of the container determines in
             which way the visualization is shown to the user and prevent weird things (e.g.,
@@ -80,7 +80,7 @@ const Sources = () => {
             </a>
             .
           </p>
-          <h5>Gebäude</h5>
+          <h4>Gebäude</h4>
           <p>
             Single iFrames are sized based on the use case. The size of the container determines in
             which way the visualization is shown to the user and prevent weird things (e.g.,
@@ -94,7 +94,7 @@ const Sources = () => {
             </a>
             .
           </p>
-          <h5>Weitere Links</h5>
+          <h4>Weitere Links</h4>
           <p>
             <a href="https://uclab.fh-potsdam.de/">Urban Complexity Lab FH Potsdam</a>
             <br />

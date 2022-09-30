@@ -406,7 +406,6 @@ code {
                 height: 400px;
                 transform: translate(-50%, -105%);
                 -webkit-transform:translate(-50%, -105%);
-
                 background-color: #fff;
                 padding: 1rem;
                 overflow: scroll;
@@ -416,16 +415,16 @@ code {
                 border-width: 1px;
                 box-shadow: 4px 4px 0px rgba($mint-green, 0.44);
 
-                & h4 {
+                & h3 {
                     margin: 0.5rem 0rem;
                 }
 
-                & h5 {
+                & h4 {
                     margin: 1.5rem 0rem .5rem 0rem;
                 }
 
                 & p{
-                    font-size: 0.75rem;
+                    // font-size: 1rem;
                     margin: 0.75rem 0rem;
                 }
 
@@ -436,6 +435,8 @@ code {
                 .close {
                     @include button;
                     position: absolute;
+                    
+
                     right: 0rem;
                     top: 0.25rem;
                     height: 10%;
