@@ -98,6 +98,19 @@ const LandDenisty = ({
       currentBar.x = xScale(uniqueYears.indexOf(parseInt(data.year)));
       currentBar.color = colorValue;
 
+      // settings for labels on mobile
+      if (isMobile) {
+        currentBar.xLabel = 0;
+        currentBar.widthLabel = barWidth;
+        currentBar.heightLabel = 14;
+      } else {
+        currentBar.xLabel =
+          barWidth - (currentBar.valueTotal.length > 4 ? currentBar.valueTotal.length * 7 : 25);
+        currentBar.widthLabel =
+          currentBar.valueTotal.length > 4 ? currentBar.valueTotal.length * 7 : 25;
+        currentBar.heightLabel = 16;
+      }
+
       return currentBar;
     };
 
@@ -243,11 +256,10 @@ const LandDenisty = ({
                     <g transform={`translate(${-barWidth / 2}, ${marginBars - 5})`}>
                       <rect
                         className="labelCount"
-                        x={barWidth - (bar.valueTotal.length > 4 ? bar.valueTotal.length * 7 : 25)}
+                        x={bar.xLabel}
                         y={min([-20, -bar.value])}
-                        width={bar.valueTotal.length > 4 ? bar.valueTotal.length * 7 : 25}
-                        height="16"
-                        fill="white"
+                        width={bar.widthLabel}
+                        height={bar.heightLabel}
                       />
                       <text
                         className="labelText"
@@ -291,10 +303,10 @@ const LandDenisty = ({
                   >
                     <rect
                       className="labelCount"
-                      x={barWidth - (bar.valueTotal.length > 4 ? bar.valueTotal.length * 7 : 25)}
+                      x={bar.xLabel}
                       y={min([-5, bar.value - 30])}
-                      width={bar.valueTotal.length > 4 ? bar.valueTotal.length * 7 : 25}
-                      height="16"
+                      width={bar.widthLabel}
+                      height={bar.heightLabel}
                     />
                     <text
                       className="labelText"
