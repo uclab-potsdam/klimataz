@@ -19,10 +19,12 @@ button {
         -webkit-transform: translate3d(0, 0, 0);
         right: 0rem;
         z-index:4;
-        display: inline-flex;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
         margin-left: auto;
         // background-color: pink;
-        height: 10%;
+        //height: 10%;
         
         &:hover {
             .flip-label {

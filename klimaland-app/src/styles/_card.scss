@@ -447,11 +447,13 @@
                 .button-download {
                     margin-left: auto;
                     width: 15%;
-                    display: inline-flex;
 
                     .inner-button {
                         width: 100%;
-                        display: inline-flex;
+                        display: flex;
+                        height:100%;
+                        flex-direction: row;
+                        align-items: baseline;
                         &:hover {
                             .download-label {
                                 transition: all 0.5s;
@@ -479,10 +481,10 @@
                         }
                     
                         img {
-                            float: right;
-                            width: 70%;
                             height: auto;
-                            max-width: 20px;
+                            width: 18%;
+                            max-width: 50px;
+                            min-width: 20px;
                         }
                     }
                 }
