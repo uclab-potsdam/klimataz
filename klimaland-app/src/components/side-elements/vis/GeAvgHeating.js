@@ -24,7 +24,7 @@ const GeAvgHEating = ({
   const classesData = [];
   const width = dimensions.width;
   const height = dimensions.height;
-  const isMobile = width <= 350 && mobileCheck(window);
+  const isMobile = width <= 450 && mobileCheck(window);
   const barsSize = isMobile ? width / 50 : width / 40;
   const mobileThreshold = isMobile ? 25 : 0;
   const marginWidth = Math.round(width / 25);
