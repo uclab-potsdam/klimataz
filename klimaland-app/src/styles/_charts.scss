@@ -425,6 +425,13 @@ $gas:$taz-orange;
                         .interactive-labels {
                                 opacity: 0;
                                 pointer-events: none;
+
+                                div {
+                                    p {
+                                        margin: 0.2rem;
+                                        line-height: 10px;
+                                    }
+                                }
                         
                                 &.active-label {
                                     opacity: 1;
