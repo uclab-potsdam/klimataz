@@ -114,9 +114,11 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
               <h4>Weitere Links</h4>
               <p>
                 <a href="https://uclab.fh-potsdam.de/">Urban Complexity Lab FH Potsdam</a>
-                <br />
+              </p>
+              <p>
                 <a href="https://taz.de/klima">Klima taz</a>
-                <br />
+              </p>
+              <p>
                 <a href="https://github.com/uclab-potsdam/klimataz/">Zur Umfrage zu dem Projekt</a>
               </p>
             </div>
