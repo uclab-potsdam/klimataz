@@ -59,7 +59,7 @@ const Energy = ({
   let percRenewables = 0;
 
   let switchHighlightedStream = function (id) {
-    if (currentData !== undefined) {
+    if (currentData !== undefined && currentData.data !== undefined) {
       setHighlightedStream(id);
     }
   };
@@ -185,7 +185,7 @@ const Energy = ({
         const year = stackData[index].year;
         const value = stackData[index][stream.key];
         let x = xScale(year);
-        if (x + 50 > dimensions.width - marginWidth) x -= 10;
+        if (x + 50 > dimensions.width - marginWidth) x -= 20;
 
         const y = Math.abs(scaledCeil);
         const yValue = Math.abs(scaledFloor - (scaledFloor - scaledCeil) / 2);
@@ -308,7 +308,7 @@ const Energy = ({
                 >
                   {stream.labels.map((label, l) => {
                     return (
-                      <g key={l}>
+                      <g key={l} className={stream.klass}>
                         <rect
                           x={label.x}
                           y={label.y}
@@ -320,9 +320,8 @@ const Energy = ({
                         />
                         {label.value !== 0 && (
                           <g
-                            className={`interactive-labels ${
-                              activeLabel === l ? 'active-label' : ''
-                            }`}
+                            className={`interactive-labels ${activeLabel === l ? 'active-label' : ''
+                              }`}
                             transform={`translate(${label.xValue}, ${label.yValue})`}
                           >
                             <foreignObject
