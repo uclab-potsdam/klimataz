@@ -44,9 +44,6 @@ const Buildings = ({
   let numberOfBuildings = [{ value: 0 }];
   let selectedEnergy = 0;
   const isMobile = dimensions.width <= 350 && window.mobileCheck(window);
-  let scaleCategory = function () {
-    return undefined;
-  };
   const marginHeight = Math.ceil(dimensions.width / 10);
   const marginWidth = Math.ceil(dimensions.height / 10);
 
@@ -177,7 +174,7 @@ const Buildings = ({
         energyMarkers.push({
           y: yScale(d.value),
           klassName: cleanKlassString(d.column.toLowerCase()),
-          label: `${d.value.toFixed(0)} %`,
+          label: `${d.value.toFixed(0)} %`,
           id: d.column,
         });
       });
@@ -283,34 +280,21 @@ const Buildings = ({
                         >
                           <circle cx="0" cy="0" r="3" />
                           <g transform="translate(5, 0)">
-                            <rect
-                              className="marker-label"
-                              x={a === axis.length - 1 ? -40 : -2}
-                              y="-25"
-                              width="45"
-                              height="20"
-                              fill="white"
-                              rx="2"
-                            />
-                            <text
-                              className="marker-label"
-                              x="2"
-                              y="-10"
-                              fill={scaleCategory(en.id)}
-                              textAnchor={`${a === axis.length - 1 ? 'end' : 'start'}`}
-                            >
-                              {en.label}
-                            </text>
-                            {/* <foreignObject
+                            <foreignObject
                               x={a === axis.length - 1 ? -40 : -2}
                               y="-25"
                               width="1"
                               height="1"
                             >
-                              <div xmlns="http://www.w3.org/1999/xhtml">
+                              <div
+                                xmlns="http://www.w3.org/1999/xhtml"
+                                className={`label ${en.klassName} ${
+                                  en.id === currentId ? 'default' : 'optional'
+                                } `}
+                              >
                                 <p>{en.label}</p>
                               </div>
-                            </foreignObject> */}
+                            </foreignObject>
                           </g>
                         </g>
                       );
