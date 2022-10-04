@@ -844,6 +844,9 @@
 
             .card-collection {
                 .card-container {
+                    .carousel-container{
+                        margin-top:3.5rem;
+                    }
 
                     &.carousel {
                         align-content: center;
@@ -1116,7 +1119,7 @@
                     margin: 0 auto;
                     .card-container {
                         height: 100vh;
-                        //align-content: flex-start;
+                        align-content: flex-start;
                         justify-content: left;
                         padding-left: 0.5rem;
                 }
@@ -1126,7 +1129,7 @@
     
     .card {
         &-ordered {
-            margin: -40px 0.5rem 35px 1rem;
+            margin: 0.5rem 0.5rem 35px 1rem;
             //original ratio changed for styling
             width: calc($portait-postcardwidth/2.3);
             height: calc($portait-postcardwidth/1.8);
