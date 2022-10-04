@@ -1129,7 +1129,7 @@
     
     .card {
         &-ordered {
-            margin: 0.5rem 0.5rem 35px 1rem;
+            margin: 0.5rem 0.5rem -20px 1rem;
             //original ratio changed for styling
             width: calc($portait-postcardwidth/2.3);
             height: calc($portait-postcardwidth/1.8);
