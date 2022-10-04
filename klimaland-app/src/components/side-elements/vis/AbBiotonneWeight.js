@@ -195,6 +195,7 @@ const Waste = ({
               transform={`translate(${width - (marginWidth - tabletThreshold) * 3.5}, ${
                 marginHeight / 2
               })`}
+              onClick={activatePies}
             >
               <g className={`detail-label ${piesAreActive ? 'show-legend' : ''}`}>
                 <text>Show detail</text>
@@ -205,28 +206,12 @@ const Waste = ({
                   Biotonne
                 </text>
                 <circle className="gartenPark" cx="100" cy="0" r={radius} />
+
                 <text x={radius + 105} y={radius / 2}>
                   Gartenabfall
                 </text>
               </g>
               <g className="pie-controller" transform="translate(200, -10)" onClick={activatePies}>
-                {/* <rect
-                  className="controller-bg"
-                  x="205"
-                  y={-(20 / 2)}
-                  width="40"
-                  height="20"
-                  rx="10"
-                />
-                <rect
-                  x={piesAreActive ? 225 : 205}
-                  y={-(20 / 2)}
-                  width="20"
-                  height="20"
-                  rx="10"
-                  fill="#FFF9F1"
-                  stroke="#484848"
-                /> */}
                 <g>
                   <path
                     d="M18.5955 19.2306L18.95 19.5833L19.3027 19.2288C21.3505 17.1703 22.5 14.385 22.5 11.4812C22.5 5.41539 17.5836 0.499023 11.5178 0.499023V0.999023H11.0178V4.37493V4.87493H11.5178C13.2643 4.87493 14.9402 5.56693 16.1784 6.79878C18.7643 9.37216 18.7738 13.5557 16.2003 16.1418L15.8476 16.4962L16.202 16.8489L18.5955 19.2306Z"
@@ -238,6 +223,8 @@ const Waste = ({
                     fill={piesAreActive ? '#1A8579' : '#FFF9F1'}
                     stroke="#424242"
                   />
+
+                  <circle className="pie-button" cx="11" cy="11" r={radius + 3} />
                 </g>
               </g>
             </g>
