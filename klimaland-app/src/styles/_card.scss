@@ -55,8 +55,8 @@
             .card{
                 &-ordered{
                     //original ratio changed for styling
-                    width: calc($thumbnail-postcardwidth + 15vw);
-                    height: calc(($thumbnail-postcardwidth + 15vw)/1.5);
+                    width: calc($thumbnail-postcardwidth + 10vw);
+                    height: calc(($thumbnail-postcardwidth + 10vw)/1.5);
                 }
             }   
         }
