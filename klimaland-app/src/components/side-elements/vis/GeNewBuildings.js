@@ -268,23 +268,25 @@ const Buildings = ({
                           }`}
                         >
                           <circle cx="0" cy="0" r="3" />
-                          <g transform="translate(5, 0)">
-                            <foreignObject
-                              x={a === axis.length - 1 ? -40 : -2}
-                              y="-25"
-                              width="1"
-                              height="1"
-                            >
-                              <div
-                                xmlns="http://www.w3.org/1999/xhtml"
-                                className={`label ${en.klassName} ${
-                                  en.id === currentId ? 'default' : 'optional'
-                                } `}
+                          {!isThumbnail && (
+                            <g transform="translate(5, 0)">
+                              <foreignObject
+                                x={a === axis.length - 1 ? -40 : -2}
+                                y="-25"
+                                width="1"
+                                height="1"
                               >
-                                <p>{en.label}</p>
-                              </div>
-                            </foreignObject>
-                          </g>
+                                <div
+                                  xmlns="http://www.w3.org/1999/xhtml"
+                                  className={`label ${en.klassName} ${
+                                    en.id === currentId ? 'default' : 'optional'
+                                  } `}
+                                >
+                                  <p>{en.label}</p>
+                                </div>
+                              </foreignObject>
+                            </g>
+                          )}
                         </g>
                       );
                     })}
