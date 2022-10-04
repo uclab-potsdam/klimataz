@@ -1,1033 +1,1142 @@
-@import "_config.scss";
+@import '_config.scss';
 
 //colors
 // renewables = ["Solarthermie","Geothermie","Umweltthermie (Luft/Wasser)","Holz","Biogas/Biomethan","Sonstige Biomasse","Keine Energie (einschl. Passivhaus)"]
 $solarthermie: lighten($electric-blue, 30%);
 $geothermie: $marine-blue;
 $umweltthermie: $mint-green;
-$keine:darken($electric-blue, 20%);
-$erneuerbare:$electric-blue;
+$keine: darken($electric-blue, 20%);
+$erneuerbare: $electric-blue;
 $holz: $blue;
-$biomasse:  darken($marine-blue,10%);//lighten($dust-blue,20%);
+$biomasse: darken($marine-blue, 10%); //lighten($dust-blue,20%);
 $biomethan: $dust-blue;
+
 // fossils = ["Gas","Strom","Öl","Fernwärme/Fernkälte","Sonstige Heizenergie"]
-$fernkaelte:$pale-olive;
-$fossile:$red;
-$strom: #FFD5C8;
-$öl: lighten($dark-pink,5%);
+$fernkaelte: $pale-olive;
+$fossile: $red;
+$strom: #ffd5c8;
+$öl: lighten($dark-pink, 5%);
 $heizenergie: $pink;
-$gas:$taz-orange;
+$gas: $taz-orange;
 
+@mixin energy-buildings($color) {
+  background-color: $color;
 
-@mixin energy-buildings($color){
-    background-color: $color;
-
-    &.caption {
-        background-color: transparent;
-        .energy-number {
-            color: $color;
-            filter: brightness(0.75);
-        }
+  &.caption {
+    background-color: transparent;
+    .energy-number {
+      color: $color;
+      filter: brightness(0.75);
     }
+  }
 
-    path,
-    rect {
-        stroke: $color;
-    }
+  path,
+  rect {
+    stroke: $color;
+    cursor: pointer;
+  }
 
-    circle,
-    text {
-        fill: $color;
-    }
+  circle,
+  text {
+    fill: $color;
+  }
 }
 
-.card-collection{
-    height:100%;
-    display:flex;
-    justify-content: center;
+@mixin newbuildings-label($color) {
+  border-color: $color;
+  box-shadow: 2px 2px 0px darken($color, 10%);
+
+  p {
+    color: $color;
+  }
+}
+
+.card-collection {
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .inner-card-collection {
-    width:100%;
+  width: 100%;
 }
 
 .chart-outer-container {
-    height: 100%;
+  height: 100%;
 }
 
 .chart-container {
+  height: 100%;
+
+  .svg-container {
     height: 100%;
 
-    .svg-container {
+    .visualization-container {
+      cursor: crosshair;
+    }
+
+    .is-thumbnail {
+      .visualization-container {
+        cursor: pointer;
+      }
+    }
+    // Specific styling for sections' charts
+    &.Mo-chart {
+      .car-density {
         height: 100%;
+        @include responsive-layout;
+
+        .title {
+          span {
+            &.first-value {
+              color: $red;
+            }
+
+            &.second-value {
+              color: $taz-orange;
+            }
+          }
+        }
+
+        .legend {
+          background-image: url('../img/legends/MoCarDensity.svg');
+          background-repeat: no-repeat;
+          position: relative;
+          height: 100%;
+          margin: 1rem;
+        }
+
+        .chart {
+          cursor: crosshair;
+          transform: skew(-17deg, 0deg);
+          -webkit-transform: skew(-17deg, 0deg);
+
+          rect {
+            rx: 1px;
+            ry: 1px;
+          }
+
+          .grid {
+            stroke: $default-text;
+            fill: $light;
+          }
+
+          .gridded-data {
+            mix-blend-mode: multiply;
+          }
+
+          &.active-chart {
+            transform: translate(-20px, -10px) skew(-17deg, 0deg);
+            -webkit-transform: translate(-20px, -10px) skew(-17deg, 0deg);
+            overflow: visible;
+          }
+
+          &.thumbnail-chart {
+            cursor: pointer;
+            .cars-container {
+              transform: translate(50px, 30px) scale(0.7);
+              -webkit-transform: translate(50px, 30px) scale(0.7);
+            }
+          }
+        }
+
+        &.is-thumbnail {
+          .chart {
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            .grid {
+              stroke: $default-text;
+              stroke-width: 0.5;
+            }
+
+            .gridded-data {
+              mix-blend-mode: multiply;
+              stroke: $default-text;
+              stroke-width: 0.5;
+            }
+          }
+        }
+      }
+
+      .modal-split {
+        height: 100%;
+        @include horizontal-bottom-layout;
+
+        .description {
+          height: 15%;
+        }
 
         .visualization-container {
-            cursor: crosshair;
+          height: 85%;
+          .chart {
+            overflow: visible;
+            text {
+              font-size: 12px;
+              filter: brightness(0.75);
+              stroke: none;
+            }
+
+            .main-x-axis,
+            .axis,
+            .mapped-axis,
+            .avgkm-marker,
+            .bar-percentage-trip {
+              line {
+                stroke: $default-text;
+              }
+            }
+          }
         }
-
-        .is-thumbnail {
-            .visualization-container {
-                cursor: pointer;
-            }
-        }
-        // Specific styling for sections' charts
-        &.Mo-chart {
-            .car-density {
-                height: 100%;
-                @include responsive-layout;
-
-                .title {
-                    span {
-                        &.first-value {
-                            color: $red;
-                        }
-                        
-                        &.second-value {
-                            color: $taz-orange;
-                        }
-                    }
-                }
-
-                .legend {
-                    background-image: url('../img/legends/MoCarDensity.svg');
-                    background-repeat: no-repeat;
-                    position: relative;
-                    height: 100%;
-                    margin: 1rem;
-                }
-
-                .chart {
-                    cursor: crosshair;
-                    transform: skew(-17deg, 0deg);
-                    -webkit-transform:skew(-17deg, 0deg);
-
-                    rect {
-                        rx: 1px;
-                        ry: 1px;
-                    }
-
-                    .grid {
-                        stroke: $default-text;
-                        fill: $light;
-                    }
-
-                    .gridded-data {
-                        mix-blend-mode: multiply;
-                    }
-
-                    &.active-chart {
-                        transform: translate(-20px, -10px) skew(-17deg, 0deg);
-                        -webkit-transform:translate(-20px, -10px) skew(-17deg, 0deg);
-                        overflow: visible;
-                    }
-
-                    &.thumbnail-chart {
-                        cursor: pointer;
-                        .cars-container {
-                            transform: translate(50px, 30px) scale(0.7);
-                            -webkit-transform:translate(50px, 30px) scale(0.7);
-                        }
-                    }
-                }
-
-                &.is-thumbnail {
-
-                    .chart {
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-
-                        .grid {
-                            stroke: $default-text;
-                            stroke-width: 0.5;
-                        }
-
-                        .gridded-data {
-                            mix-blend-mode: multiply;
-                            stroke: $default-text;
-                            stroke-width: 0.5;
-                        }
-                    }
-                }
-            }
-
-            .modal-split {
-                height: 100%;
-                @include horizontal-bottom-layout;
-
-                .description {
-                    height: 15%;
-                }
-
-                .visualization-container {
-                    height: 85%;
-                    .chart {
-                        overflow:visible;
-                        text {
-                            font-size: 12px;
-                            filter: brightness(0.75);
-                            stroke: none;
-                        }
-
-                        .main-x-axis, .axis, .mapped-axis, .avgkm-marker, .bar-percentage-trip {
-                            line {
-                             stroke: $default-text;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        &.En-chart {
-            .energy-industry, .primary-energy {
-                height: 100%;
-                @include horizontal-bottom-layout; 
-                
-                .visualization-container {
-                    height: 85%;
-                }
-
-                .description {
-                    height: 15%;
-                }
-
-                .title {
-                    span {
-                
-                        &.second-value {
-                            color: $mint-green;
-                        }
-                    }               
-                }
-
-                .chart {
-                    overflow:visible;
-                    .axis {
-                        line {
-                            stroke: $pale-olive;
-                        }
-
-                        text {
-                            fill: $default-text;
-                            font-size: 12px;
-                        }
-                    }
-
-                    .streams-container {
-                        cursor: crosshair;
-                        .stream {
-                            path {
-                                // stroke: $default-text;
-                                stroke-width: 0.75;
-                            }
-
-                            &.Geh-stream {
-                                path {
-                                    mix-blend-mode: color;
-                                    fill: #FFDAB9;
-                                    stroke: darken(#FFDAB9, 20%);
-                                    stroke-dasharray: 2 2;
-                                }
-                            }
-
-                            &.Str-stream {
-                                path {
-                                    // mix-blend-mode: color;
-                                    fill: #2A4D9C;
-                                }
-                            }
-
-                            &.Erd-stream {
-                                path {
-                                    fill: #FFD5C8;
-                                }
-                            }
-
-                            &.Ern-stream {
-                                path {
-                                    fill: #007F87;
-                                }
-                            }
-
-                            &.Hei-stream {
-                                path {
-                                    fill: #FF9B7B;
-                                }
-                            }
-
-                            &.Son-stream {
-                                path {
-                                    fill: $red;
-                                }
-                            }
-
-                            &.Wär-stream {
-                                path {
-                                    fill: #5F88C6;
-                                }
-                            }
-                        }
-
-                    }
-
-                    .streams-labels-container, .years-labels-container {
-                        foreignObject {
-                            pointer-events: none;
-                            overflow: visible;
-                            transform: translateY(-10px);
-                            -webkit-transform:translateY(-10px);
-
-                            &.invisible {
-                                opacity: 0;
-                                transition: opacity 200ms;
-                                -webkit-transition: opacity 200ms;
-                            }
-
-                            &.visible {
-                                opacity: 1;
-                                transition: opacity 200ms;
-                                -webkit-transition: opacity 200ms;
-                            }
-
-                            .Str-stream {
-                                border: 1px solid darken($dark-blue, 10%);
-                                box-shadow: 2px 2px 0px darken($dark-blue, 10%);
-                                p {
-                                    color: darken($dark-blue, 10%);                                
-                                }
-                            }
-
-                            .Bra-stream {
-                                border: 1px solid $brown;
-                                box-shadow: 2px 2px 0px rgba($brown, 0.7);
-
-                                p {
-                                    color: $brown;
-                                }
-                            }
-
-                            .Erd-stream, .Gas-stream {
-                                border: 1px solid darken($pale-pink, 10%);
-                                box-shadow: 2px 2px 0px rgba(darken($pale-pink, 10%), 0.7);
-                            
-                                p {
-                                    color: darken($pale-pink, 20%);
-                                }
-                            }
-
-                            .Son-stream, .And-stream {
-                                border: 1px solid darken($red, 10%);
-                                box-shadow: 2px 2px 0px darken($red, 10%);
-
-                                p {
-                                    color:$red;
-                                }
-                            }
-
-                            .Koh-stream, .Ste-stream {
-                                border: 1px solid darken($red, 40%);
-                                box-shadow: 2px 2px 0px darken($red, 40%);
-
-                                p {
-                                    color: darken($red, 40%);
-                                }
-                            }
-
-                            .Ker-stream {
-                                border: 1px solid darken($taz-orange, 10%);
-                                box-shadow: 2px 2px 0px darken($taz-orange, 10%);
-                            
-                                p {
-                                    color: darken($taz-orange, 10%);
-                                }
-                            }
-
-                            .Hei-stream {
-                                border: 1px solid darken($taz-orange, 10%);
-                                box-shadow: 2px 2px 0px rgba(darken($taz-orange, 20%), 0.7);
-
-                                p {
-                                    color: darken($taz-orange, 20%);
-                                }
-                            }
-
-                            .Ern-stream, .Ges-stream {
-                                border: 1px solid darken($mint-green, 10%);
-                                box-shadow: 2px 2px 0px rgba(darken($mint-green, 10%), 0.7);
-
-                                path {
-                                    stroke: darken($mint-green, 10%);
-                                }
-                            
-                                p {
-                                    color: darken($mint-green, 10%);
-                                }
-                            }
-
-                            .Ges-stream {
-                                transform: translateX(-100px);
-                                -webkit-transform:translateX(-100px);
-                            }
-
-                            .Wär-stream {
-                                border: 1px solid darken($dust-blue, 10%);
-                                box-shadow: 2px 2px 0px rgba(darken($dust-blue, 10%), 0.7);
-                                
-                                p {
-                                    color: darken($dust-blue, 10%);
-                                }
-                            }
-
-                            .Min-stream {
-                                border: 1px solid darken($lighter-orange-full, 60%);
-                                box-shadow: 2px 2px 0px rgba(darken($lighter-orange-full, 60%), 0.7);
-                            
-                                p {
-                                    color: darken($lighter-orange-full, 60%);
-                                }
-                            }
-                            // display: inline-flex;
-                            div { 
-                                // width: 100%;  
-                                // height: 100%;
-                                border-radius: 1px;
-                                background-color: white;
-                                border: 1px solid $default-text;
-                                display: inline-flex;
-                                
-
-                                p {
-                                    font-size: 10px;
-                                    margin: 0.2rem;
-                                    margin-bottom: 0;
-                                    text-align: left;
-                                    display: inline-table;
-                                }
-                            }
-                        }
-                    }
-
-                    .years-labels-container {
-                        foreignObject {
-                            white-space: nowrap;
-
-                            .Ges-stream {
-                                    transform: translateX(0px);
-                                    -webkit-transform: translateX(0px);
-                            }
-                        }
-                        div {
-                            min-width: 40px;
-                            
-                        }
-                        
-                        .interactive-labels {
-                                opacity: 0;
-                                pointer-events: none;
-                        
-                                &.active-label {
-                                    opacity: 1;
-                                }
-                        
-                        }
-                    }
-                 }
-
-                 &.is-thumbnail {
-                
-                    .visualization-container {
-                        height: 100%;
-                        width: 100%;
-    
-                        .axis, .label, .interactive-labels {
-                            display: none;
-                        }
-    
-                    }
-    
-                    .description {
-                        display: none;
-                    }
-                }
-            }
-
-
-        }
-
-        &.Ab-chart {
-            .biotonne-weight {
-                height: 100%;
-                @include horizontal-bottom-layout;
-
-                .description {
-                    height: 17%;
-                }
-
-                .visualization-container {
-                    height: 82%;
-                }
-
-                .title {
-                    span {
-                        &.first-value {
-                            color: $mint-green;
-                        }
-                
-                        &.second-value {
-                            color: $taz-orange;
-                        }
-                    }                
-                }
-
-                .chart {
-                    overflow:visible;
-                    circle {
-                        stroke: $default-text;
-                    }
-
-                    .year-el {
-                        transition: fill opacity stroke-dasharray 0.5s;
-                        circle {
-                            fill: $lighter-orange-full;
-                        }
-
-                        .interactive-labels {
-                            opacity: 0;
-                           rect {
-                            stroke: $pale-olive;
-                           }
-                        }
-                    }
-
-                    .year-el:hover {
-                        transition: fill opacity stroke-dasharray 0.5s;
-                        
-                        line {
-                            stroke-dasharray: none;
-                        }
-                        circle {
-                            fill: $pale-olive;
-                        }
-                        .interactive-labels {
-                            opacity: 1;
-                            
-                        }
-                    }
-
-                    rect {
-                        transition: 0.5s;
-                        -webkit-transition: 0.5s;
-                        transition-timing-function: ease;
-                    }
-
-                    .pie-controller {
-                        cursor: pointer;
-                    }
-
-                    .detail-label {
-                        cursor: pointer;
-                        transform: translate(120px, 5px);
-                        opacity: 1;
-                        &.show-legend {
-                            opacity: 0;
-                        }
-                    }
-
-                    .pie, .legend {
-                        transition: 0.5s;
-                        -webkit-transition: 0.5s;
-                        transition-timing-function: ease;
-                        opacity: 0;
-
-                        &.show-pies, &.show-legend {
-                            opacity: 1;
-                        }
-                    }
-
-                    .controller-bg {
-                        fill: url(#MyGradient);
-                        stroke: #484848;
-                    }
-
-                    line {
-                        stroke-dasharray: 2px 2px;
-                        stroke: $default-text;
-                    }
-
-                    path, circle {
-                        // fill: white;
-                        stroke: $default-text;
-
-                        &.biotonne {
-                            fill: $mint-green;
-                        }
-
-                        &.gartenPark {
-                            fill: $taz-orange;
-                        }
-                    }
-
-                    text {
-                        font-size: 12px;
-                    }
-
-                    .max {
-                        circle, text {
-                            fill: $red;
-                        }
-
-                        line {
-                            stroke: $red;
-                        }
-                    }
-
-                    .y-axis {
-                        line {
-                            stroke-dasharray: none;
-                            stroke-width: 0.5;
-                        }
-                    }
-                }
-
-                &.is-thumbnail {
-                    .visualization-container {
-                        height: 100%;
-
-                        .y-axis {
-                            display: none;
-                        }
-
-                        .year-el {
-                            pointer-events: none;
-                            text, .interactive-labels {
-                                display: none;
-                            }
-                        }
-                    }
-
-                    .description {
-                        display: none;
-                    }
-                }
-            }
-        }
-
-        &.Ge-chart {
-            .newbuildings-energy {
-                height: 100%;
-                @include responsive-layout;
-
-                .legend {
-                        position: relative;
-                        .legend-inner {
-                            font-size: 12px;
-                            width: 100%;
-                            
-                            .legend-elements-container {
-                                display: flex;
-                                flex-direction: column;
-                                
-                                .legend-element {
-                                    cursor: pointer;
-                                    display: flex;
-                                    margin-left: 1rem;
-                                    
-                                    .element-color {
-                                        min-width: 10px;
-                                        height: 10px;
-                                        border-radius: 100%;    
-                                    }
-
-                                    p {
-                                        margin: 0;
-                                        margin-left: 5px;
-
-                                        &.selected {
-                                            font-weight: 800;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                .caption {
-                    margin-left: 1rem;
-                    span {
-                        color: $dust-blue;
-                    }
-                }
-
-                .chart {
-
-                    overflow: visible;
-                    
-                    text {
-                        font-size: 12px;  
-                    }
-
-                    path {
-                        stroke-width: 3px;
-                    }
-
-                    .axis {
-                        line {
-                            stroke: $default-text;
-                            stroke-dasharray: 2px 2px;
-                        }
-
-                        .x-axis line {
-                            stroke-dasharray: none;
-                        }
-
-                        .year-marker {
-                            circle {
-                                filter: brightness(0.75);
-                            }
-
-                            .marker-label {
-                                opacity: 0;
-                                cursor: pointer;
-                            }
-
-                            &.default, &.optional:hover {
-                                .marker-label {
-                                    opacity: 1;
-                                }
-                            }
-                            
-                        }
-                    }
-                }
-
-                .fossile, div.fossile {
-                    @include energy-buildings($fossile)
-
-                }
-
-                .gas, div.gas {
-                    @include energy-buildings($gas)
-                }
-
-                .geothermie, div.geothermie {
-                    @include energy-buildings($geothermie)
-                }
-
-                .erneuerbare, div.erneuerbare {
-                    @include energy-buildings($erneuerbare);
-                    margin-bottom:1rem;
-                }
-
-                .umweltthermie, div.umweltthermie {
-                    @include energy-buildings($umweltthermie)
-                }
-
-                .fernkälte, div.fernkälte {
-                    @include energy-buildings($fernkaelte)
-                }
-
-                .holz, div.holz {
-                    @include energy-buildings($holz)
-                }
-
-                .solarthermie, div.solarthermie {
-                    @include energy-buildings($solarthermie)
-                }
-
-                .biomethan, div.biomethan {
-                    @include energy-buildings($biomethan)
-                }
-
-                .biomasse, div.biomasse {
-                    background-color: $biomasse;
-                
-                    path,
-                    rect {
-                        stroke: $biomasse;
-                    }
-                
-                    circle,
-                    text {
-                        fill:  $biomasse;
-                    }
-                }
-
-                .keine, div.keine {
-                    @include energy-buildings($keine)
-                }
-                .öl, div.öl {
-                    @include energy-buildings($öl)
-                }
-                .heizenergie, div.heizenergie {
-                    @include energy-buildings($heizenergie)
-                }
-
-                .strom, div.strom {
-                    @include energy-buildings($strom)
-                }
-
-                &.is-thumbnail {
-
-                    .visualization-container {
-                        .chart {
-                            width: 100%;
-                            left: 0;
-
-                            .streams-container {
-                                cursor: default;
-                            }
-                    
-                            .axis {
-                                .x-axis, text, rect, line {
-                                    display: none;
-                                }
-                            }
-                        
-                        }
-                    }
-                }
-            }
-
-            .avg-heating {
-                height: 100%;
-                @include horizontal-bottom-layout;
-
-                .chart{
-                    overflow:visible;
-                }
-
-                .description {
-                    height: 10%;
-                }
-
-                .visualization-container {
-                    height: 87%;
-                    svg {
-                        .non-clipped-elements {
-                            text {
-                                font-size: 10px;
-                            }
-                        }
-
-                        .clipped-container {
-                            .single-bar {
-                                transition: opacity 0.5s;
-                                .interactive-labels {
-                                    opacity: 0;
-                                    text {
-                                        font-size: 12px;
-                                        fill: $default-text;
-                                    }
-
-                                    rect {
-                                        fill: white;
-                                    }
-                                }
-
-                                &.no-focus {
-                                    opacity: 0.5;
-                                }
-                                
-                            }
-
-                           .single-bar:hover {
-                                transition: opacity 0.5s;
-                                .interactive-labels {
-                                    opacity: 1;
-                                }
-                            }
-
-                            .chart-axis {
-                                text {
-                                    font-size: 12px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        &.La-chart {
-            .animal-count {
-                height: 100%;
-                @include horizontal-bottom-layout;
-            
-
-                .chart{
-                    overflow:visible;
-                    .legend {
-                        circle {
-                            // fill: white;
-                            stroke: $default-text;
-    
-                            &.mehrTiere {
-                                fill: $taz-orange;
-                            }
-    
-                            &.wenigerTiere {
-                                fill: $mint-green;
-                            }
-
-                            &.vorherigeZaehlung {
-                                stroke-dasharray: 2px 2px;
-                                fill: none;
-                            }
-                        }
-
-                        text {
-                            font-size: 12px;
-                        }
-                    }
-
-                    .arcs {
-
-                        text {
-                            font-size: 12px;
-                        }
-
-                        .labelCount{
-                            fill: white;
-                            stroke: #484848;
-                            stroke-width: "0.5";
-
-                        }
-                        
-                        path{
-                            stroke-width: 0.75;
-                            stroke: #484848;
-
-                            &.previousYear{
-                                stroke-dasharray: 4px 4px;
-                                stroke-width: 1;
-                                fill: none;
-                            }
-                        }
-                    }
-
-                    
-                    
-                }
-                &.is-thumbnail {
-                
-                    .visualization-container {
-                        height: 100%;
-                        width: 100%;
-                        transform: translateY(-10%);
-                        -webkit-transform:translateY(-10%);
-    
-                        .axis, text, .legend {
-                            display: none;
-                        }
-
-    
-                    }
-    
-                    .description {
-                        display: none;
-                    }
-
-
-                }
-            }
-
-            .animal-density {
-                height: 100%;
-                @include responsive-layout;
-
-                .chart{
-                    overflow: visible;
-                    .bars {
-                        .labelText {
-                            font-size: 12px;
-                            fill:  #484848;
-                        }
-
-                        .labelCount{
-                            fill: white;
-                            stroke: #484848;
-                            stroke-width: "0.5";
-                        }
-                        
-                        rect{
-                            stroke-width: 1;
-                            stroke: #484848;
-                        }
-                    }
-                }
-                
-                .legend {
-                    margin-left: 1rem;
-                    margin-top: 2rem;
-                    svg {
-                        font-size: 12px;
-                    }
-                }
-
-                .caption {
-                    margin-left: 1rem;
-
-                    span {
-                        color: $dark-blue;
-                    }
-                }
-            }
-        }
-                                
+      }
     }
+
+    &.En-chart {
+      .energy-industry,
+      .primary-energy {
+        height: 100%;
+        @include horizontal-bottom-layout;
+
+        .visualization-container {
+          height: 85%;
+        }
+
+        .description {
+          height: 15%;
+        }
+
+        .title {
+          span {
+            &.second-value {
+              color: $mint-green;
+            }
+          }
+        }
+
+        .chart {
+          overflow: visible;
+          .axis {
+            line {
+              stroke: $pale-olive;
+            }
+
+            text {
+              fill: $default-text;
+              font-size: 12px;
+            }
+          }
+
+          .streams-container {
+            cursor: crosshair;
+            .stream {
+              path {
+                // stroke: $default-text;
+                stroke-width: 0.75;
+              }
+
+              &.Geh-stream {
+                path {
+                  mix-blend-mode: color;
+                  fill: #ffdab9;
+                  stroke: darken(#ffdab9, 20%);
+                  stroke-dasharray: 2 2;
+                }
+              }
+
+              &.Str-stream {
+                path {
+                  // mix-blend-mode: color;
+                  fill: #2a4d9c;
+                }
+              }
+
+              &.Erd-stream {
+                path {
+                  fill: #ffd5c8;
+                }
+              }
+
+              &.Ern-stream {
+                path {
+                  fill: #007f87;
+                }
+              }
+
+              &.Hei-stream {
+                path {
+                  fill: #ff9b7b;
+                }
+              }
+
+              &.Son-stream {
+                path {
+                  fill: $red;
+                }
+              }
+
+              &.Wär-stream {
+                path {
+                  fill: #5f88c6;
+                }
+              }
+            }
+          }
+
+          .streams-labels-container,
+          .years-labels-container {
+            foreignObject {
+              pointer-events: none;
+              overflow: visible;
+              transform: translateY(-10px);
+              -webkit-transform: translateY(-10px);
+
+              &.invisible {
+                opacity: 0;
+                transition: opacity 200ms;
+                -webkit-transition: opacity 200ms;
+              }
+
+              &.visible {
+                opacity: 1;
+                transition: opacity 200ms;
+                -webkit-transition: opacity 200ms;
+              }
+
+              .Str-stream {
+                border: 1px solid darken($dark-blue, 10%);
+                box-shadow: 2px 2px 0px darken($dark-blue, 10%);
+                p {
+                  color: darken($dark-blue, 10%);
+                }
+              }
+
+              .Bra-stream {
+                border: 1px solid $brown;
+                box-shadow: 2px 2px 0px rgba($brown, 0.7);
+
+                p {
+                  color: $brown;
+                }
+              }
+
+              .Erd-stream,
+              .Gas-stream {
+                border: 1px solid darken($pale-pink, 10%);
+                box-shadow: 2px 2px 0px rgba(darken($pale-pink, 10%), 0.7);
+
+                p {
+                  color: darken($pale-pink, 20%);
+                }
+              }
+
+              .Son-stream,
+              .And-stream {
+                border: 1px solid darken($red, 10%);
+                box-shadow: 2px 2px 0px darken($red, 10%);
+
+                p {
+                  color: $red;
+                }
+              }
+
+              .Koh-stream,
+              .Ste-stream {
+                border: 1px solid darken($red, 40%);
+                box-shadow: 2px 2px 0px darken($red, 40%);
+
+                p {
+                  color: darken($red, 40%);
+                }
+              }
+
+              .Ker-stream {
+                border: 1px solid darken($taz-orange, 10%);
+                box-shadow: 2px 2px 0px darken($taz-orange, 10%);
+
+                p {
+                  color: darken($taz-orange, 10%);
+                }
+              }
+
+              .Hei-stream {
+                border: 1px solid darken($taz-orange, 10%);
+                box-shadow: 2px 2px 0px rgba(darken($taz-orange, 20%), 0.7);
+
+                p {
+                  color: darken($taz-orange, 20%);
+                }
+              }
+
+              .Ern-stream,
+              .Ges-stream {
+                border: 1px solid darken($mint-green, 10%);
+                box-shadow: 2px 2px 0px rgba(darken($mint-green, 10%), 0.7);
+
+                path {
+                  stroke: darken($mint-green, 10%);
+                }
+
+                p {
+                  color: darken($mint-green, 10%);
+                }
+              }
+
+              .Ges-stream {
+                transform: translateX(-100px);
+                -webkit-transform: translateX(-100px);
+              }
+
+              .Wär-stream {
+                border: 1px solid darken($dust-blue, 10%);
+                box-shadow: 2px 2px 0px rgba(darken($dust-blue, 10%), 0.7);
+
+                p {
+                  color: darken($dust-blue, 10%);
+                }
+              }
+
+              .Min-stream {
+                border: 1px solid darken($lighter-orange-full, 60%);
+                box-shadow: 2px 2px 0px rgba(darken($lighter-orange-full, 60%), 0.7);
+
+                p {
+                  color: darken($lighter-orange-full, 60%);
+                }
+              }
+              // display: inline-flex;
+              div {
+                // width: 100%;
+                // height: 100%;
+                border-radius: 1px;
+                background-color: white;
+                border: 1px solid $default-text;
+                display: inline-flex;
+
+                p {
+                  font-size: 10px;
+                  margin: 0.2rem;
+                  margin-bottom: 0;
+                  text-align: left;
+                  display: inline-table;
+                }
+              }
+            }
+          }
+
+          .years-labels-container {
+            foreignObject {
+              white-space: nowrap;
+
+              .Ges-stream {
+                transform: translateX(0px);
+                -webkit-transform: translateX(0px);
+              }
+            }
+            div {
+              min-width: 40px;
+            }
+
+            .interactive-labels {
+              opacity: 0;
+              pointer-events: none;
+
+              &.active-label {
+                opacity: 1;
+              }
+            }
+          }
+        }
+
+        &.is-thumbnail {
+          .visualization-container {
+            height: 100%;
+            width: 100%;
+
+            .axis,
+            .label,
+            .interactive-labels {
+              display: none;
+            }
+          }
+
+          .description {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &.Ab-chart {
+      .biotonne-weight {
+        height: 100%;
+        @include horizontal-bottom-layout;
+
+        .description {
+          height: 17%;
+        }
+
+        .visualization-container {
+          height: 82%;
+        }
+
+        .title {
+          span {
+            &.first-value {
+              color: $mint-green;
+            }
+
+            &.second-value {
+              color: $taz-orange;
+            }
+          }
+        }
+
+        .chart {
+          overflow: visible;
+          circle {
+            stroke: $default-text;
+          }
+
+          .year-el {
+            transition: fill opacity stroke-dasharray 0.5s;
+            circle {
+              fill: $lighter-orange-full;
+            }
+
+            .interactive-labels {
+              opacity: 0;
+              rect {
+                stroke: $pale-olive;
+              }
+            }
+          }
+
+          .year-el:hover {
+            transition: fill opacity stroke-dasharray 0.5s;
+
+            line {
+              stroke-dasharray: none;
+            }
+            circle {
+              fill: $pale-olive;
+            }
+            .interactive-labels {
+              opacity: 1;
+            }
+          }
+
+          rect {
+            transition: 0.5s;
+            -webkit-transition: 0.5s;
+            transition-timing-function: ease;
+          }
+
+          .pie-controller {
+            cursor: pointer;
+          }
+
+          .detail-label {
+            cursor: pointer;
+            transform: translate(120px, 5px);
+            opacity: 1;
+            &.show-legend {
+              opacity: 0;
+            }
+          }
+
+          .pie,
+          .legend {
+            transition: 0.5s;
+            -webkit-transition: 0.5s;
+            transition-timing-function: ease;
+            opacity: 0;
+
+            &.show-pies,
+            &.show-legend {
+              opacity: 1;
+            }
+          }
+
+          .controller-bg {
+            fill: url(#MyGradient);
+            stroke: #484848;
+          }
+
+          line {
+            stroke-dasharray: 2px 2px;
+            stroke: $default-text;
+          }
+
+          path,
+          circle {
+            // fill: white;
+            stroke: $default-text;
+
+            &.biotonne {
+              fill: $mint-green;
+            }
+
+            &.gartenPark {
+              fill: $taz-orange;
+            }
+          }
+
+          text {
+            font-size: 12px;
+          }
+
+          .max {
+            circle,
+            text {
+              fill: $red;
+            }
+
+            line {
+              stroke: $red;
+            }
+          }
+
+          .y-axis {
+            line {
+              stroke-dasharray: none;
+              stroke-width: 0.5;
+            }
+          }
+        }
+
+        &.is-thumbnail {
+          .visualization-container {
+            height: 100%;
+
+            .y-axis {
+              display: none;
+            }
+
+            .year-el {
+              pointer-events: none;
+              text,
+              .interactive-labels {
+                display: none;
+              }
+            }
+          }
+
+          .description {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &.Ge-chart {
+      .newbuildings-energy {
+        height: 100%;
+        @include responsive-layout;
+
+        .legend {
+          position: relative;
+          .legend-inner {
+            font-size: 12px;
+            width: 100%;
+
+            .legend-elements-container {
+              display: flex;
+              flex-direction: column;
+
+              .legend-element {
+                cursor: pointer;
+                display: flex;
+                margin-left: 1rem;
+
+                .element-color {
+                  min-width: 10px;
+                  height: 10px;
+                  border-radius: 100%;
+                }
+
+                p {
+                  margin: 0;
+                  margin-left: 5px;
+
+                  &.selected {
+                    font-weight: 800;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .caption {
+          margin-left: 1rem;
+          span {
+            color: $dust-blue;
+          }
+        }
+
+        .chart {
+          foreignObject {
+            overflow: visible;
+
+            div {
+              border-radius: 2px;
+              background-color: white;
+              border: 1px solid $default-text;
+              box-shadow: 2px 2px 0px $default-text;
+              display: inline-flex;
+              cursor: pointer;
+
+              opacity: 0;
+              &.default,
+              &.optional:hover {
+                opacity: 1;
+              }
+
+              p {
+                font-size: 11px;
+                margin: 0.1rem;
+              }
+            }
+
+            .fossile,
+            div.fossile {
+              @include newbuildings-label($fossile);
+            }
+
+            .gas,
+            div.gas {
+              @include newbuildings-label($gas);
+            }
+
+            .geothermie,
+            div.geothermie {
+              @include newbuildings-label($geothermie);
+            }
+
+            .erneuerbare,
+            div.erneuerbare {
+              @include newbuildings-label($erneuerbare);
+              margin-bottom: 1rem;
+            }
+
+            .umweltthermie,
+            div.umweltthermie {
+              @include newbuildings-label($umweltthermie);
+            }
+
+            .fernkälte,
+            div.fernkälte {
+              @include newbuildings-label($fernkaelte);
+            }
+
+            .holz,
+            div.holz {
+              @include newbuildings-label($holz);
+            }
+
+            .solarthermie,
+            div.solarthermie {
+              @include newbuildings-label($solarthermie);
+            }
+
+            .biomethan,
+            div.biomethan {
+              @include newbuildings-label($biomethan);
+            }
+
+            .biomasse,
+            div.biomasse {
+              @include newbuildings-label($biomasse);
+            }
+
+            .keine,
+            div.keine {
+              @include newbuildings-label($keine);
+            }
+            .öl,
+            div.öl {
+              @include newbuildings-label($öl);
+            }
+            .heizenergie,
+            div.heizenergie {
+              @include newbuildings-label($heizenergie);
+            }
+
+            .strom,
+            div.strom {
+              @include newbuildings-label($strom);
+            }
+          }
+
+          overflow: visible;
+
+          text {
+            font-size: 12px;
+          }
+
+          path {
+            stroke-width: 3px;
+          }
+
+          .axis {
+            line {
+              stroke: $default-text;
+              stroke-dasharray: 2px 2px;
+            }
+
+            .x-axis line {
+              stroke-dasharray: none;
+            }
+
+            .year-marker {
+              circle {
+                filter: brightness(0.75);
+              }
+
+              .marker-label {
+                opacity: 0;
+                cursor: pointer;
+              }
+
+              &.default,
+              &.optional:hover {
+                .marker-label {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+
+        .fossile,
+        div.fossile {
+          @include energy-buildings($fossile);
+        }
+
+        .gas,
+        div.gas {
+          @include energy-buildings($gas);
+        }
+
+        .geothermie,
+        div.geothermie {
+          @include energy-buildings($geothermie);
+        }
+
+        .erneuerbare,
+        div.erneuerbare {
+          @include energy-buildings($erneuerbare);
+          margin-bottom: 1rem;
+        }
+
+        .umweltthermie,
+        div.umweltthermie {
+          @include energy-buildings($umweltthermie);
+        }
+
+        .fernkälte,
+        div.fernkälte {
+          @include energy-buildings($fernkaelte);
+        }
+
+        .holz,
+        div.holz {
+          @include energy-buildings($holz);
+        }
+
+        .solarthermie,
+        div.solarthermie {
+          @include energy-buildings($solarthermie);
+        }
+
+        .biomethan,
+        div.biomethan {
+          @include energy-buildings($biomethan);
+        }
+
+        .biomasse,
+        div.biomasse {
+          background-color: $biomasse;
+
+          path,
+          rect {
+            stroke: $biomasse;
+          }
+
+          circle,
+          text {
+            fill: $biomasse;
+          }
+        }
+
+        .keine,
+        div.keine {
+          @include energy-buildings($keine);
+        }
+        .öl,
+        div.öl {
+          @include energy-buildings($öl);
+        }
+        .heizenergie,
+        div.heizenergie {
+          @include energy-buildings($heizenergie);
+        }
+
+        .strom,
+        div.strom {
+          @include energy-buildings($strom);
+        }
+
+        &.is-thumbnail {
+          .visualization-container {
+            .chart {
+              width: 100%;
+              left: 0;
+
+              .streams-container {
+                cursor: default;
+              }
+
+              .axis {
+                .x-axis,
+                text,
+                rect,
+                line {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .avg-heating {
+        height: 100%;
+        @include horizontal-bottom-layout;
+
+        .chart {
+          overflow: visible;
+        }
+
+        .description {
+          height: 10%;
+        }
+
+        .visualization-container {
+          height: 87%;
+          svg {
+            .non-clipped-elements {
+              text {
+                font-size: 10px;
+              }
+            }
+
+            .clipped-container {
+              .single-bar {
+                transition: opacity 0.5s;
+                .interactive-labels {
+                  opacity: 0;
+                  text {
+                    font-size: 12px;
+                    fill: $default-text;
+                  }
+
+                  rect {
+                    fill: white;
+                  }
+                }
+
+                &.no-focus {
+                  opacity: 0.5;
+                }
+              }
+
+              .single-bar:hover {
+                transition: opacity 0.5s;
+                .interactive-labels {
+                  opacity: 1;
+                }
+              }
+
+              .chart-axis {
+                text {
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.La-chart {
+      .animal-count {
+        height: 100%;
+        @include horizontal-bottom-layout;
+
+        .chart {
+          overflow: visible;
+          .legend {
+            circle {
+              // fill: white;
+              stroke: $default-text;
+
+              &.mehrTiere {
+                fill: $taz-orange;
+              }
+
+              &.wenigerTiere {
+                fill: $mint-green;
+              }
+
+              &.vorherigeZaehlung {
+                stroke-dasharray: 2px 2px;
+                fill: none;
+              }
+            }
+
+            text {
+              font-size: 12px;
+            }
+          }
+
+          .arcs {
+            text {
+              font-size: 12px;
+            }
+
+            .labelCount {
+              fill: white;
+              stroke: #484848;
+              stroke-width: '0.5';
+            }
+
+            path {
+              stroke-width: 0.75;
+              stroke: #484848;
+
+              &.previousYear {
+                stroke-dasharray: 4px 4px;
+                stroke-width: 1;
+                fill: none;
+              }
+            }
+          }
+        }
+        &.is-thumbnail {
+          .visualization-container {
+            height: 100%;
+            width: 100%;
+            transform: translateY(-10%);
+            -webkit-transform: translateY(-10%);
+
+            .axis,
+            text,
+            .legend {
+              display: none;
+            }
+          }
+
+          .description {
+            display: none;
+          }
+        }
+      }
+
+      .animal-density {
+        height: 100%;
+        @include responsive-layout;
+
+        .chart {
+          overflow: visible;
+          .bars {
+            .labelText {
+              font-size: 12px;
+              fill: #484848;
+            }
+
+            .labelCount {
+              fill: white;
+              stroke: #484848;
+              stroke-width: '0.5';
+            }
+
+            rect {
+              stroke-width: 1;
+              stroke: #484848;
+            }
+          }
+        }
+
+        .legend {
+          margin-left: 1rem;
+          margin-top: 2rem;
+          svg {
+            font-size: 12px;
+          }
+        }
+
+        .caption {
+          margin-left: 1rem;
+
+          span {
+            color: $dark-blue;
+          }
+        }
+      }
+    }
+  }
 }
 
 .locator-map {
-    .locator-container {
-        width: 100%;
-        height: 150px;
-        display:flex;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-        position: absolute;
+  .locator-container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    position: absolute;
+    float: right;
+
+    .locator-background {
+      width: 50%;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+
+      svg {
         float: right;
-
-        .locator-background {
-            width: 50%;
-            margin-right: 0.5rem;
-            margin-left: 0.5rem;
-
-            svg {
-                float: right;
-                .zoom-pointer {
-                    path {
-                        fill: none;
-                        stroke: black;
-                    }
-                }
-            }
+        .zoom-pointer {
+          path {
+            fill: none;
+            stroke: black;
+          }
         }
-
-        .locator-zoom {
-            width: 50%;
-            margin-left: 0.5rem;
-
-            .locator-zoom-inner {
-                position: absolute;
-                top: 45%;
-                transform: translateY(-45%);
-                -webkit-transform:translateY(-45%);
-            }
-        }
+      }
     }
-}
 
+    .locator-zoom {
+      width: 50%;
+      margin-left: 0.5rem;
+
+      .locator-zoom-inner {
+        position: absolute;
+        top: 45%;
+        transform: translateY(-45%);
+        -webkit-transform: translateY(-45%);
+      }
+    }
+  }
+}
 
 .landkreis {
-    stroke: $default-text;
-    stroke-width: 0.5;
-    fill: white;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+  stroke: $default-text;
+  stroke-width: 0.5;
+  fill: white;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 
-    &.visible {
-        fill: $lighter-orange;
-    }
+  &.visible {
+    fill: $lighter-orange;
+  }
 }
-
