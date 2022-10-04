@@ -185,7 +185,7 @@ const Energy = ({
         const year = stackData[index].year;
         const value = stackData[index][stream.key];
         let x = xScale(year);
-        if (x + 50 > dimensions.width - marginWidth) x -= 10;
+        if (x + 50 > dimensions.width - marginWidth) x -= 20;
 
         const y = Math.abs(scaledCeil);
         const yValue = Math.abs(scaledFloor - (scaledFloor - scaledCeil) / 2);
