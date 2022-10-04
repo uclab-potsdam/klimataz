@@ -494,12 +494,11 @@ code {
             height: 10%;
             z-index: 999;
 
-            .help {
-                background-color: #fff;
-                color: $red;
+            .info-container-content{
                 border-color: $red;
                 border-style: solid;
                 border-width: 1px;
+                background-color: #fff;
                 width: 270px;
                 height: $thumbnail-postcardwidth;
                 padding: 0.75rem;
@@ -509,48 +508,58 @@ code {
                 -webkit-transition: 0.2s;
                 box-shadow: 4px 4px 0px rgba($red, 0.44);
 
+                .close {
+                    @include button;
+                    position: fixed;
+
+                    right: 0rem;
+                    top: 0.5rem;
+                    height: 10%;
+
+                    img {
+                        width: 70%;
+                    } 
+                }
+
                 &:hover {
                     box-shadow: 6px 6px 0px rgba($red, 0.44);
                 }
 
-                h4, h2 {
-                    margin: 0.5rem 0;
-                    color: $red;
-
-                    &.mobile-title {
-                        display: none;
-                    }
-                }
-
-                .text {
-                    opacity: 0;
-                }
-
-                &.help-postcard {
+                &.open {
                     width: calc($thumbnail-postcardwidth/0.65);
                     height: $thumbnail-postcardwidth/0.95;
 
-                    overflow: scroll;
                     transform: translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
                     -webkit-transform:translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
                     transition: 0.2s;
                     -webkit-transition: 0.2s;
 
-                    .text {
-                        opacity: 1;
+                    .help{
+                        overflow-y: scroll;
+                        overflow-x:hidden;
+                        height: $thumbnail-postcardwidth/0.95;
+                        
+                        .text {
+                            opacity: 1;
+                        }
                     }
 
-                    .close {
-                        @include button;
-                        position: absolute;
+                }
 
-                        right: 0rem;
-                        top: 0.5rem;
-                        height: 10%;
+                .help {
+                    color: $red;
 
-                        img {
-                            width: 70%;
+                    h4, h2 {
+                        margin: 0.5rem 0;
+                        color: $red;
+    
+                        &.mobile-title {
+                            display: none;
                         }
+                    }
+    
+                    .text {
+                        opacity: 0;
                     }
 
                     .img-flip, .img-toggle{
@@ -568,9 +577,10 @@ code {
                         border-radius: 5%;
                         border-width: 10px;
                     }
+        
                 }
-    
             }
+
     
         }
     }
