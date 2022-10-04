@@ -376,10 +376,9 @@ code {
                 height: 30px;
                 width: 30px;
                 line-height: 0px;
-                position: absolute;
                 right: 0.5rem;
                 bottom: 1.75rem;
-
+                position: absolute;
                 background-color: $light;
                 border-color: darken($pale-olive, 20%);
                 border-width: 0.5px;
@@ -405,60 +404,83 @@ code {
                 }
             }
 
-            .sources-text{
+            .sources-text-container{
                 position: absolute;
                 width: 100%;
                 height: 400px;
                 transform: translate(-50%, -105%);
                 -webkit-transform:translate(-50%, -105%);
                 background-color: #fff;
-                padding: 1rem;
-                overflow: scroll;
-
+                    
                 border-color: $mint-green;
                 border-style: solid;
                 border-width: 1px;
                 box-shadow: 4px 4px 0px rgba($mint-green, 0.44);
+                padding: 1rem;
+                z-index: 10;
 
-                .sources-linklist{
-                    & p{
-                        font-size: 0.75rem;
-                        margin: 0.25rem 0rem;
+                .button {
+                    &.close{
+                        position: fixed;
+                        top: 1.75rem;
+                        right: 0.5rem;
+                        bottom:unset;
+                        z-index:11;
+                        height:10%;
+
+                        img {
+                            width: 70%;
+                        }
                     }
+
                 }
 
-                & h3 {
-                    margin: 0.5rem 0rem;
-                }
-
-                & h4{
-                    margin-top: 2rem;
-                    margin-bottom: 0.5rem;
-                }
-
-                & p{
-                    margin: 0.75rem 0rem;
-                }
-
-                & a{
-                    color: $mint-green;
-                }
-
-                .close {
-                    @include button;
+                .sources-text{
                     position: absolute;
-                    
-
-                    right: 0rem;
-                    top: 0.25rem;
-                    height: 10%;
-
-                    img {
-                        width: 70%;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    height: 400px;
+    
+                    .sources-linklist{
+                        & p{
+                            font-size: 0.75rem;
+                            margin: 0.25rem 0rem;
+                        }
                     }
+    
+                    & h3 {
+                        margin: 0.5rem 0rem;
+                    }
+    
+                    & h4{
+                        margin-top: 2rem;
+                        margin-bottom: 0.5rem;
+                    }
+    
+                    & p{
+                        margin: 0.75rem 0rem;
+                    }
+    
+                    & a{
+                        color: $mint-green;
+                    }
+    
+                    .close {
+                        @include button;
+                        position: absolute;
+                        
+    
+                        right: 0rem;
+                        top: 0.25rem;
+                        height: 10%;
+    
+                        img {
+                            width: 70%;
+                        }
+                    }
+    
+                    
                 }
-
-                
             }
         }
 
