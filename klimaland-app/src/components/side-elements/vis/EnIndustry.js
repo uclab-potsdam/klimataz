@@ -19,10 +19,10 @@ const EnIndustry = ({
     '#007F87', // Erneuerbare Energien
     '#FF9B7B', // Heizöl
     '#E14552', // Kohle
-    '#a8a8a8', // Sonstige Energieträger
+    '#DDA0DD', // Sonstige Energieträger
     '#2A4D9C', // Strom
     '#5F88C6', // Wärme
-    '#757575', // Geheim
+    '#778899', // Geheim
   ];
 
   // getting sizes of container for maps
@@ -67,8 +67,12 @@ const EnIndustry = ({
     const lastRenValue = currentData.data.filter((d) => {
       return d.column === 'Anteil_Erneuerbar' && d.year === '2020';
     });
-    percRenewables = lastRenValue[0].value !== null ? lastRenValue[0].value.toFixed(1) : 0;
 
+    // filteredData is used exclusively to generate domains and for iterating over years,
+    // removes all null values and keep only valid years (so streams do not start from 0)
+    const filteredData = currentData.data.filter((d) => d.value !== null)
+
+    percRenewables = lastRenValue[0].value !== null ? lastRenValue[0].value.toFixed(1) : 0;
     //if locationLabel[0] !== locationLabel[1] => this is a bundesland
     showBundeslandForLK = !currentData.regional && locationLabel[0] !== locationLabel[1];
 
@@ -297,9 +301,8 @@ const EnIndustry = ({
                         />
                         {label.value !== 0 && (
                           <g
-                            className={`interactive-labels ${
-                              activeLabel === l ? 'active-label' : ''
-                            }`}
+                            className={`interactive-labels ${activeLabel === l ? 'active-label' : ''
+                              }`}
                             transform={`translate(${label.xValue}, ${label.yValue})`}
                           >
                             <foreignObject

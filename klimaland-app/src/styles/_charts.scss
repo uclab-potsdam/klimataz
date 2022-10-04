@@ -97,6 +97,7 @@ $gas:$taz-orange;
                 }
 
                 .chart {
+                    cursor: crosshair;
                     transform: skew(-17deg, 0deg);
                     -webkit-transform:skew(-17deg, 0deg);
 
@@ -106,7 +107,6 @@ $gas:$taz-orange;
                     }
 
                     .grid {
-                        cursor: crosshair;
                         stroke: $default-text;
                         fill: $light;
                     }
@@ -116,13 +116,13 @@ $gas:$taz-orange;
                     }
 
                     &.active-chart {
-                        cursor: pointer;
                         transform: translate(-20px, -10px) skew(-17deg, 0deg);
                         -webkit-transform:translate(-20px, -10px) skew(-17deg, 0deg);
                         overflow: visible;
                     }
 
                     &.thumbnail-chart {
+                        cursor: pointer;
                         .cars-container {
                             transform: translate(50px, 30px) scale(0.7);
                             -webkit-transform:translate(50px, 30px) scale(0.7);
@@ -221,6 +221,52 @@ $gas:$taz-orange;
                                 // stroke: $default-text;
                                 stroke-width: 0.75;
                             }
+
+                            &.Geh-stream {
+                                path {
+                                    mix-blend-mode: color;
+                                    fill: #FFDAB9;
+                                    stroke: darken(#FFDAB9, 20%);
+                                    stroke-dasharray: 2 2;
+                                }
+                            }
+
+                            &.Str-stream {
+                                path {
+                                    // mix-blend-mode: color;
+                                    fill: #2A4D9C;
+                                }
+                            }
+
+                            &.Erd-stream {
+                                path {
+                                    fill: #FFD5C8;
+                                }
+                            }
+
+                            &.Ern-stream {
+                                path {
+                                    fill: #007F87;
+                                }
+                            }
+
+                            &.Hei-stream {
+                                path {
+                                    fill: #FF9B7B;
+                                }
+                            }
+
+                            &.Son-stream {
+                                path {
+                                    fill: $red;
+                                }
+                            }
+
+                            &.Wär-stream {
+                                path {
+                                    fill: #5F88C6;
+                                }
+                            }
                         }
 
                     }
@@ -271,11 +317,11 @@ $gas:$taz-orange;
                             }
 
                             .Son-stream, .And-stream {
-                                border: 1px solid lighten($default-text, 10%);
-                                box-shadow: 2px 2px 0px lighten($default-text, 10%);
+                                border: 1px solid darken($red, 10%);
+                                box-shadow: 2px 2px 0px darken($red, 10%);
 
                                 p {
-                                    color: $default-text;
+                                    color:$red;
                                 }
                             }
 

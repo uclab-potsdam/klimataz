@@ -251,11 +251,14 @@ const Buildings = ({
                 })}
               </g>
             </g>
-
             <g className="lines">
               {lineElements.map((line, l) => {
                 return (
-                  <g key={l} className={`${line.klassName} ${line.type} line`}>
+                  <g
+                    key={l}
+                    className={`${line.klassName} ${line.type} line`}
+                    onClick={() => changeId(line.id)}
+                  >
                     <path d={line.path} fill="none" />
                   </g>
                 );
@@ -298,6 +301,16 @@ const Buildings = ({
                             >
                               {en.label}
                             </text>
+                            {/* <foreignObject
+                              x={a === axis.length - 1 ? -40 : -2}
+                              y="-25"
+                              width="1"
+                              height="1"
+                            >
+                              <div xmlns="http://www.w3.org/1999/xhtml">
+                                <p>{en.label}</p>
+                              </div>
+                            </foreignObject> */}
                           </g>
                         </g>
                       );

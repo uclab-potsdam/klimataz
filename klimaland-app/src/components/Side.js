@@ -52,14 +52,13 @@ export default class Side extends Component {
       return;
     }
 
-    await setStateAsync(this, { exportActive: true })
+    await setStateAsync(this, { exportActive: true });
     // adding timeout before resolve to make sure everything is loaded
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000))
       .then(() => {
-        console.log('!')
         return toPng(this.myRef.current, {
           cacheBust: true,
-          backgroundColor: '#fff',
+          backgroundColor: '#fefaf6',
         });
       })
       .then((dataUrl) => {
@@ -70,13 +69,13 @@ export default class Side extends Component {
 
         // Returning it twice to prevent safari to export a blank canvas
         toPng(this.myRef.current).then(function (dataURL2) {
-          const link = document.createElement("a");
+          const link = document.createElement('a');
           link.download = `klimaland_taz.png`;
           link.href = dataURL2;
           link.click();
 
           // resolve(dataURL2);
-        })
+        });
       })
       .then(() => {
         setStateAsync(this, { exportActive: false });
@@ -125,7 +124,7 @@ export default class Side extends Component {
     if (
       this.props.localData !== undefined &&
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-      undefined &&
+        undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -198,10 +197,6 @@ export default class Side extends Component {
   }
 
   render() {
-    // console.log(this.props.switchDataLevel)
-    // console.log('toggle labels in side', Object.keys(this.props.toggleLabels).length)
-    // TO DO: Solve issue of inconsistent activeSide during carousel switch
-    // console.log(Boolean(this.props.flipping))
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={100} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
@@ -210,8 +205,9 @@ export default class Side extends Component {
               <div className="postcard-title">
                 <h4 className="section-title">{this.props.sectionName}</h4>
                 <div
-                  className={`section-thumb ${this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
-                    }`}
+                  className={`section-thumb ${
+                    this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
+                  }`}
                 >
                   {(this.props.mode === 'comparison' || !this.props.isThumbnail) && (
                     <TitleArt landkreisLabel={this.props.lk.label} />
@@ -248,6 +244,7 @@ export default class Side extends Component {
                             rx="10"
                           />
                           <rect
+                            className="toggle-rect"
                             x={this.props.isLKData ? 0 : 20}
                             y="0"
                             width="20"
@@ -263,11 +260,7 @@ export default class Side extends Component {
                         <text x={this.props.toggleLabels.bl.length * 8 + 20} y="18">
                           {this.props.toggleLabels.bl}
                         </text>
-                        <text
-                          className="mobile-toggle-label"
-                          x={this.props.toggleLabels.bl.length * 9 + 10}
-                          y="17"
-                        >
+                        <text className="mobile-toggle-label" x="150" y="17">
                           Daten wechseln
                         </text>
                       </g>
@@ -275,7 +268,10 @@ export default class Side extends Component {
                   </div>
                 )}
               <button className="button-download" onClick={this.onShareButtonClick}>
-                <img src={share} className="button img" alt="flip-button-img" />
+                <div className="inner-button">
+                  <p className="download-label">Download</p>
+                  <img src={share} className="button img" alt="click to download" />
+                </div>
               </button>
             </div>
           </div>
