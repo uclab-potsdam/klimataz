@@ -35,8 +35,8 @@ const Sources = () => {
             <h4>Energie</h4>
             <p>
               Industrie: 
-              <a href="https://www.destatis.de/DE/Presse/Pressemitteilungen/2020/04/PD20_152_435.html">
-                Statistisches Bundesamt (Destatis)
+              <a href="https://www.regionalstatistik.de/genesis/online">
+                Statistische Ämter des Bundes und der Länder - 43531-01-02-4
               </a>
               , 2020.
             </p>
@@ -94,7 +94,7 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
             <p>
               Heizenergie: 
               <a href="https://www.regionalstatistik.de/genesis/online">
-                Statistische Ämter des Bundes und der Länder
+                Statistische Ämter des Bundes und der Länder - 31121-06-01-4
               </a>
               , 2020.
             </p>
