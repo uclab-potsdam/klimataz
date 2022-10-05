@@ -198,7 +198,7 @@ const Waste = ({
               onClick={activatePies}
             >
               <g className={`detail-label ${piesAreActive ? 'show-legend' : ''}`}>
-                <text>Show detail</text>
+                <text>Detailansicht</text>
               </g>
               <g className={`legend ${piesAreActive ? 'show-legend' : ''}`} onClick={activatePies}>
                 <circle className="biotonne" cx="0" cy="0" r={radius} />
