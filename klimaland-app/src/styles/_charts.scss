@@ -537,7 +537,6 @@ $gas: $taz-orange;
             -webkit-transition: 0.5s;
             transition-timing-function: ease;
           }
-
           .pie-controller {
             cursor: pointer;
           }
@@ -585,6 +584,12 @@ $gas: $taz-orange;
 
             &.gartenPark {
               fill: $taz-orange;
+            }
+
+            &.pie-button {
+              fill: $light;
+              stroke: none;
+              opacity: 0;
             }
           }
 

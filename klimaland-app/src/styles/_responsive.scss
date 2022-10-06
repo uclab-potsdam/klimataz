@@ -871,7 +871,7 @@
             .sources-container { 
                 width: 80%; 
 
-                .sources-text{
+                .sources-text-container{
                     transform: translate(-16%, -115%);
                     -webkit-transform:translate(-16%, -115%);
                 }
@@ -882,25 +882,31 @@
                 position: absolute;
                 right: -2.5rem;
                 bottom: 25%;
-                .help {
+                .info-container-content {
                     width: 30px;
                     height: 30px;
 
-                    h2.mobile-title {
-                        display: block;
-                        text-align: center;
-                        margin: 0;
+                    .help{
+                        h2.mobile-title {
+                            display: block;
+                            text-align: center;
+                            margin: 0;
+                        }
+    
+                        h4.desktop-title {
+                            display: none;
+                        }
                     }
 
-                    h4.desktop-title {
-                        display: none;
-                    }
-
-                    &.help-postcard {
+                    &.open {
                         width:  calc($portait-postcardwidth/1.2);
                         height: calc($portait-postcardwidth*1.2);
                         transform: translate(-100%, -70%) rotate(-2deg);
                         -webkit-transform:translate(-100%, -70%) rotate(-2deg);
+
+                        .help{
+                            height: calc($portait-postcardwidth*1.2);
+                        }
 
                         h4.desktop-title {
                             display: block; 

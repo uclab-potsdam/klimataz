@@ -376,10 +376,9 @@ code {
                 height: 30px;
                 width: 30px;
                 line-height: 0px;
-                position: absolute;
                 right: 0.5rem;
                 bottom: 1.75rem;
-
+                position: absolute;
                 background-color: $light;
                 border-color: darken($pale-olive, 20%);
                 border-width: 0.5px;
@@ -405,60 +404,85 @@ code {
                 }
             }
 
-            .sources-text{
+            .sources-text-container{
                 position: absolute;
                 width: 100%;
                 height: 400px;
                 transform: translate(-50%, -105%);
                 -webkit-transform:translate(-50%, -105%);
                 background-color: #fff;
-                padding: 1rem;
-                overflow: scroll;
-
+                    
                 border-color: $mint-green;
                 border-style: solid;
                 border-width: 1px;
                 box-shadow: 4px 4px 0px rgba($mint-green, 0.44);
+                padding: 1rem;
+                z-index: 10;
 
-                .sources-linklist{
-                    & p{
-                        font-size: 0.75rem;
-                        margin: 0.25rem 0rem;
+                .button {
+                    &.close{
+                        position: fixed;
+                        top: 0.5rem;
+                        right: 0.5rem;
+                        bottom:unset;
+                        z-index:11;
+                        height:10%;
+
+                        img {
+                            width: 70%;
+                        }
                     }
+
                 }
 
-                & h3 {
-                    margin: 0.5rem 0rem;
-                }
-
-                & h4{
-                    margin-top: 2rem;
-                    margin-bottom: 0.5rem;
-                }
-
-                & p{
-                    margin: 0.75rem 0rem;
-                }
-
-                & a{
-                    color: $mint-green;
-                }
-
-                .close {
-                    @include button;
+                .sources-text{
                     position: absolute;
-                    
-
-                    right: 0rem;
-                    top: 0.25rem;
-                    height: 10%;
-
-                    img {
-                        width: 70%;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    height: 400px;
+    
+                    .sources-linklist{
+                        & p{
+                            font-size: 0.75rem;
+                            margin: 0.25rem 0rem;
+                            text-indent: -12px;
+                            padding-left:12px;
+                        }
                     }
+    
+                    & h3 {
+                        margin: 0.5rem 0rem;
+                    }
+    
+                    & h4{
+                        margin-top: 2rem;
+                        margin-bottom: 0.5rem;
+                    }
+    
+                    & p{
+                        margin: 0.75rem 0rem;
+                    }
+    
+                    & a{
+                        color: $mint-green;
+                    }
+    
+                    .close {
+                        @include button;
+                        position: absolute;
+                        
+    
+                        right: 0rem;
+                        top: 0.25rem;
+                        height: 10%;
+    
+                        img {
+                            width: 70%;
+                        }
+                    }
+    
+                    
                 }
-
-                
             }
         }
 
@@ -470,12 +494,11 @@ code {
             height: 10%;
             z-index: 999;
 
-            .help {
-                background-color: #fff;
-                color: $red;
+            .info-container-content{
                 border-color: $red;
                 border-style: solid;
                 border-width: 1px;
+                background-color: #fff;
                 width: 270px;
                 height: $thumbnail-postcardwidth;
                 padding: 0.75rem;
@@ -485,48 +508,58 @@ code {
                 -webkit-transition: 0.2s;
                 box-shadow: 4px 4px 0px rgba($red, 0.44);
 
+                .close {
+                    @include button;
+                    position: fixed;
+
+                    right: 0rem;
+                    top: 0.5rem;
+                    height: 10%;
+
+                    img {
+                        width: 70%;
+                    } 
+                }
+
                 &:hover {
                     box-shadow: 6px 6px 0px rgba($red, 0.44);
                 }
 
-                h4, h2 {
-                    margin: 0.5rem 0;
-                    color: $red;
-
-                    &.mobile-title {
-                        display: none;
-                    }
-                }
-
-                .text {
-                    opacity: 0;
-                }
-
-                &.help-postcard {
+                &.open {
                     width: calc($thumbnail-postcardwidth/0.65);
                     height: $thumbnail-postcardwidth/0.95;
 
-                    overflow: scroll;
                     transform: translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
                     -webkit-transform:translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
                     transition: 0.2s;
                     -webkit-transition: 0.2s;
 
-                    .text {
-                        opacity: 1;
+                    .help{
+                        overflow-y: scroll;
+                        overflow-x:hidden;
+                        height: $thumbnail-postcardwidth/0.95;
+                        
+                        .text {
+                            opacity: 1;
+                        }
                     }
 
-                    .close {
-                        @include button;
-                        position: absolute;
+                }
 
-                        right: 0rem;
-                        top: 0.5rem;
-                        height: 10%;
+                .help {
+                    color: $red;
 
-                        img {
-                            width: 70%;
+                    h4, h2 {
+                        margin: 0.5rem 0;
+                        color: $red;
+    
+                        &.mobile-title {
+                            display: none;
                         }
+                    }
+    
+                    .text {
+                        opacity: 0;
                     }
 
                     .img-flip, .img-toggle{
@@ -544,9 +577,10 @@ code {
                         border-radius: 5%;
                         border-width: 10px;
                     }
+        
                 }
-    
             }
+
     
         }
     }

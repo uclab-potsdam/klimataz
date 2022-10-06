@@ -36,37 +36,41 @@ export default class Info extends Component {
     return (
       <div className="info-container">
         <div
-          className={`help ${this.state.inFocus ? 'help-postcard' : ''}`}
+          className={`info-container-content ${this.state.inFocus ? 'open' : ''}`}
           onClick={this.state.inFocus ? this.handleHelpNotFocus : this.handleHelpFocus}
         >
-          <h4 className="desktop-title">Wie bediene ich die Postkarten?</h4>
-          <h2 className="mobile-title">?</h2>
-          <p className="text">
-            In der <span className="info-suchleiste"> Suchleiste </span> kann nach einem beliebigen
-            Landkreis oder Bundesland gesucht werden. Hier können auch mehrere Regionen ausgewählt
-            und verglichen werden.{' '}
-          </p>
-          <p className="text">
-            Jede Postkarte beschäftigt sich mit einem anderen Bereich.{' '}
-            <span className="info-highlight">Energie</span>,{' '}
-            <span className="info-highlight">Mobilität</span>,{' '}
-            <span className="info-highlight">Abfall</span>,{' '}
-            <span className="info-highlight">Landwirtschaft</span> oder{' '}
-            <span className="info-highlight">Gebäude</span>.
-          </p>
-          <p className="text">
-            Mit einem Klick auf die Postkarte wird die vollständige Visualisierung sichtbar. Hier
-            kann auch zu einem zweiten Datenset gewechselt{' '}
-            <img src={toggleCard} className="img-toggle" alt="flip-button-img" /> werden. Auf der
-            Rückseite <img src={flipCard} className="img-flip" alt="flip-button-img" />
-            der Postkarte befindet sich eine kurze Erklärung und ein Klimaausblick der Region.
-          </p>
-          <p className="text">
-            Wie gut schlägt sich deine Region in der Bekämpfung der Klimakrise?
-          </p>{' '}
-          <button className="button close" onClick={this.handleHelpNotFocus}>
-            <img src={closeCard} className="button img" alt="close-button-img" />
-          </button>
+          {this.state.inFocus && (
+            <button className="button close" onClick={this.handleHelpNotFocus}>
+              <img src={closeCard} className="button img" alt="close-button-img" />
+            </button>
+          )}
+          <div className="help">
+            <h4 className="desktop-title">Wie bediene ich die Postkarten?</h4>
+            <h2 className="mobile-title">?</h2>
+            <p className="text">
+              In der <span className="info-suchleiste"> Suchleiste </span> kann nach einem
+              beliebigen Landkreis oder Bundesland gesucht werden. Hier können auch mehrere Regionen
+              ausgewählt und verglichen werden.{' '}
+            </p>
+            <p className="text">
+              Jede Postkarte beschäftigt sich mit einem anderen Bereich.{' '}
+              <span className="info-highlight">Energie</span>,{' '}
+              <span className="info-highlight">Mobilität</span>,{' '}
+              <span className="info-highlight">Abfall</span>,{' '}
+              <span className="info-highlight">Landwirtschaft</span> oder{' '}
+              <span className="info-highlight">Gebäude</span>.
+            </p>
+            <p className="text">
+              Mit einem Klick auf die Postkarte wird die vollständige Visualisierung sichtbar. Hier
+              kann auch zu einem zweiten Datenset gewechselt{' '}
+              <img src={toggleCard} className="img-toggle" alt="flip-button-img" /> werden. Auf der
+              Rückseite <img src={flipCard} className="img-flip" alt="flip-button-img" />
+              der Postkarte befindet sich eine kurze Erklärung und ein Klimaausblick der Region.
+            </p>
+            <p className="text">
+              Wie gut schlägt sich deine Region in der Bekämpfung der Klimakrise?
+            </p>{' '}
+          </div>
         </div>
       </div>
     );
