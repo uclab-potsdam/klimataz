@@ -10,6 +10,7 @@ import Side from './Side';
 import Data from '../data/data.json';
 import LayoutControls from '../data/layout-controls-inprogress.json';
 import DynamicTextJson from '../data/textData.json';
+import { image } from 'd3';
 
 export default class CardCollection extends Component {
   constructor(props) {
@@ -250,6 +251,22 @@ export default class CardCollection extends Component {
             const randomSample = shuffled.slice(0, 10);
 
             similarAgs = randomSample;
+
+            if (
+              this.props.lastActiveCardLK !== undefined &&
+              this.props.lastActiveCardLK.value !== undefined &&
+              this.props.lastActiveCardLK.value !== element.lk.value &&
+              isInt(this.props.lastActiveCardLK.value)
+            ) {
+              //add last active LK to the beginning
+              similarAgs.unshift(this.props.lastActiveCardLK);
+              //remove duplicates
+              similarAgs = similarAgs.filter(
+                (value, index, self) => index === self.findIndex((t) => t.value === value.value)
+              );
+              //if length more than 10, remove last item
+              if (similarAgs.length > 10) similarAgs.splice(-1);
+            }
           }
 
           // console.log(this.props.switchDataLevel)
