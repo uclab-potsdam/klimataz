@@ -225,7 +225,11 @@ export default class LayoutManager extends Component {
           return d.value !== defaultLK;
         });
       }
-      setStateAsync(this, { landkreisSelection: e, showEditorsPick: false }).then(() => {
+      setStateAsync(this, {
+        landkreisSelection: e,
+        showEditorsPick: false,
+        lastActiveCardLK: '',
+      }).then(() => {
         this.updateCardSelection();
       });
     }
@@ -237,7 +241,7 @@ export default class LayoutManager extends Component {
    * @param e selected section
    */
   async changeSection(e) {
-    await setStateAsync(this, { sectionSelection: e }).then(() => {
+    await setStateAsync(this, { sectionSelection: e, lastActiveCardLK: '' }).then(() => {
       this.updateCardSelection();
     });
   }
