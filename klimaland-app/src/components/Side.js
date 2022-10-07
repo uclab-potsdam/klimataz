@@ -257,7 +257,7 @@ export default class Side extends Component {
                         <text x="0" y="18">
                           {this.props.toggleLabels.lk}
                         </text>
-                        <text x={this.props.toggleLabels.bl.length * 8 + 20} y="18">
+                        <text x={this.props.toggleLabels.lk.length * 8 + 60} y="18">
                           {this.props.toggleLabels.bl}
                         </text>
                         <text className="mobile-toggle-label" x="150" y="17">
