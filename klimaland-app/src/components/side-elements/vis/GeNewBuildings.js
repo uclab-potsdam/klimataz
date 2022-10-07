@@ -70,16 +70,40 @@ const Buildings = ({
     return cleanedKlassString;
   };
 
+  const noSpecificRenewables = function () {
+    let renewables = [
+      'Umweltthermie (Luft/Wasser)',
+      'Geothermie',
+      'Solarthermie',
+      'Holz',
+      'Biogas/Biomethan',
+      'Sonstige Biomasse',
+      'Keine Energie (einschl. Passivhaus)',
+    ];
+    if (uniqueEnergyTypes.some((elem) => renewables.includes(elem))) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const getLegendName = function (name) {
     if (name == 'Umweltthermie (Luft/Wasser)') return 'Umweltthermie (Wärmepumpe)';
-    if (name == 'Andere erneuerbare Energien') return 'andere erneuerbare Energien';
-    if (name == 'Andere fossile Energien') return 'andere fossile Energien';
+    if (name == 'Andere erneuerbare Energien' && noSpecificRenewables()) {
+      return 'Erneuerbare Energien';
+    }
     return name;
   };
 
   const getDescriptionName = function (name) {
     if (name == 'Umweltthermie (Luft/Wasser)') return 'Umweltthermie (Wärmepumpe)';
-    if (name == 'Andere erneuerbare Energien') return 'anderen erneuerbaren Energien';
+    if (name == 'Andere erneuerbare Energien' && noSpecificRenewables()) {
+      if (noSpecificRenewables()) {
+        return 'erneuerbaren Energien';
+      } else {
+        return 'anderen erneuerbaren Energien';
+      }
+    }
     if (name == 'Andere fossile Energien') return 'anderen fossilen Energien';
     return name;
   };
