@@ -34,7 +34,7 @@ export default class Chart extends Component {
     const locationLabels = {};
     selectorControls.landkreise.forEach((d) => {
       if (d.value === this.props.localData.ags) {
-        locationLabels['lk'] = d.label;
+        locationLabels['lk'] = d.label + ' ' + d.nameAddition;
       }
 
       if (d.value === this.props.localData.bundesland) {

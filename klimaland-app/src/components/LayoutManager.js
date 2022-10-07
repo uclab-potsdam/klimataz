@@ -219,6 +219,7 @@ export default class LayoutManager extends Component {
     }
     //otherwise, update cards to match selection
     else {
+      //if default lk: immediately switch
       let defaultLK = this.props.editorspick[0].lk.value;
       if (
         this.state.mode === 'lk' &&
@@ -229,6 +230,8 @@ export default class LayoutManager extends Component {
           return d.value !== defaultLK;
         });
       }
+      console.log(e);
+      //else: set new selection
       setStateAsync(this, {
         landkreisSelection: e,
         showEditorsPick: false,
@@ -352,6 +355,19 @@ export default class LayoutManager extends Component {
   }
 
   /**
+   * get LK name with name addition from LK Seleciton Element
+   * @param {} element in landkreisSelection
+   * @returns
+   */
+  getTotalLKName(element) {
+    let name = element.label;
+    if (element.nameAddition !== undefined) {
+      name = element.label + ' ' + element.nameAddition;
+    }
+    return name;
+  }
+
+  /**
    * update card selection after shuffling or selecting a landkreis
    * always calles "updateMode" first and adds cards to the cardSelection List depending on the mode
    */
@@ -376,7 +392,7 @@ export default class LayoutManager extends Component {
           } else {
             selectedLK = {
               value: this.state.landkreisSelection[0].value,
-              label: this.state.landkreisSelection[0].label,
+              label: this.getTotalLKName(this.state.landkreisSelection[0]),
             };
           } //set selected value for landkreisSelection
 
@@ -403,7 +419,7 @@ export default class LayoutManager extends Component {
           //add one card per landkreisSelection
           this.state.landkreisSelection.forEach((element) => {
             list.push({
-              lk: { value: element.value, label: element.label },
+              lk: { value: element.value, label: this.getTotalLKName(element) },
               section: selectedSection,
             });
           });
@@ -414,7 +430,7 @@ export default class LayoutManager extends Component {
           let selectedLK;
           selectedLK = {
             value: this.state.landkreisSelection[0].value,
-            label: this.state.landkreisSelection[0].label,
+            label: this.getTotalLKName(this.state.landkreisSelection[0]),
           };
 
           let selectedSection;
