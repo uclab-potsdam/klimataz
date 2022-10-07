@@ -2,6 +2,11 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { line, stack } from 'd3-shape';
 import { formatNumber, useCardSize, mobileCheck } from '../../../helpers/helperFunc';
+import { ReactComponent as Fahrer } from '../../../img/legends/modalsplit/fahrer.svg';
+import { ReactComponent as Mitfahrer } from '../../../img/legends/modalsplit/mitfahrer.svg';
+import { ReactComponent as Fuß } from '../../../img/legends/modalsplit/fuss.svg';
+import { ReactComponent as Fahrrad } from '../../../img/legends/modalsplit/fahrrad.svg';
+import { ReactComponent as ÖPV } from '../../../img/legends/modalsplit/oepv.svg';
 
 const MoModalSplit = ({
   currentData,
@@ -35,6 +40,30 @@ const MoModalSplit = ({
   let xScale;
   let xScaleReverse;
   let yBarScale;
+
+  const icons = {
+    Fahrer: Fahrer,
+    Fuß: Fuß,
+    ÖPV: ÖPV,
+    Mitfahrer: Mitfahrer,
+    Fahrrad: Fahrrad,
+  };
+
+  const getLegendName = function (name) {
+    if (name === 'Fuß') return 'Zu Fuß';
+    if (name === 'Fahrer') return 'Auto (Fahrer:in)';
+    else if (name === 'Mitfahrer') return 'Auto (Mitfahrer:in)';
+    return name;
+  };
+
+  const getIconWidth = function (name) {
+    if (name === 'Fuß') return 15;
+    if (name === 'Fahrrad') return 20;
+    if (name === 'ÖPV') return 20;
+    if (name === 'Fahrer') return 36;
+    if (name === 'Mitfahrer') return 36;
+    return 30;
+  };
 
   if (currentData.data !== undefined) {
     averageKmDistance = currentData.data.filter(
@@ -165,6 +194,7 @@ const MoModalSplit = ({
             {
               <g className="paths">
                 {plotAvgData.map((trip, t) => {
+                  const ModeIcon = icons[trip.mode];
                   return (
                     <g
                       transform={`translate(0, ${(t + 0.7) * tabletThreshold})`}
@@ -172,8 +202,13 @@ const MoModalSplit = ({
                       className={trip.mode}
                     >
                       <g className="axis">
-                        <text x={marginWidth} y="-18" fill={colors[t]}>
-                          {trip.mode}
+                        <ModeIcon x={marginWidth} stroke={colors[t]} />
+                        <text
+                          x={marginWidth + getIconWidth(trip.mode) + 10}
+                          y="-18"
+                          fill={colors[t]}
+                        >
+                          {getLegendName(trip.mode)}
                         </text>
                         {referenceXTicks.map((tick, t) => {
                           return (
