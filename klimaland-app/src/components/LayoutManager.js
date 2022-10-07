@@ -25,7 +25,7 @@ export default class LayoutManager extends Component {
       },
       En: {
         lk: 'Industrie',
-        bl: 'Energieverbrauch',
+        bl: 'Gesamt',
       },
       Mo: {
         lk: 'PkW-Dichte',
