@@ -10,6 +10,7 @@ import Side from './Side';
 import Data from '../data/data.json';
 import LayoutControls from '../data/layout-controls-inprogress.json';
 import DynamicTextJson from '../data/textData.json';
+import { image } from 'd3';
 
 export default class CardCollection extends Component {
   constructor(props) {
@@ -224,32 +225,54 @@ export default class CardCollection extends Component {
             //get dynamic text data for current ags
             localTextData = this.textData[element.lk.value];
 
-            // pulling similar lks (within the bl)
-            similarAgs = Object.fromEntries(
-              Object.entries(this.textData).filter(([key, value]) => {
-                return element.lk.value !== 0
-                  ? value[section]['third'] === localTextData[section]['third'] &&
-                      value.key !== element.lk.value
-                  : value.key !== element.lk.value;
-              })
-            );
+            //if is top card
+            if (isTopCard) {
+              // pulling similar lks (within the bl)
+              similarAgs = Object.fromEntries(
+                Object.entries(this.textData).filter(([key, value]) => {
+                  return element.lk.value !== 0
+                    ? value[section]['third'] === localTextData[section]['third'] &&
+                        value.key !== element.lk.value
+                    : value.key !== element.lk.value;
+                })
+              );
 
-            //convert to array for ags-name pairs
-            similarAgs = Object.keys(similarAgs).map((key) => [Number(key), similarAgs[key]]);
+              //convert to array for ags-name pairs
+              similarAgs = Object.keys(similarAgs).map((key) => [Number(key), similarAgs[key]]);
 
-            similarAgs = similarAgs.map(function (d) {
-              return {
-                value: d[1].key,
-                label: d[1].name,
-              };
-            });
+              similarAgs = similarAgs.map(function (d) {
+                return {
+                  value: d[1].key,
+                  label: d[1].name,
+                };
+              });
 
-            // shuffle the array
-            const shuffled = similarAgs.sort(() => 0.5 - Math.random());
-            // get 10 random location
-            const randomSample = shuffled.slice(0, 10);
+              // shuffle the array
+              const shuffled = similarAgs.sort(() => 0.5 - Math.random());
+              // get 10 random location
+              const randomSample = shuffled.slice(0, 10);
 
-            similarAgs = randomSample;
+              similarAgs = randomSample;
+
+              if (
+                this.props.lastActiveCardLK !== undefined &&
+                this.props.lastActiveCardLK.value !== undefined &&
+                this.props.lastActiveCardLK.value !== element.lk.value &&
+                isInt(this.props.lastActiveCardLK.value) &&
+                //same third
+                this.textData[this.props.lastActiveCardLK.value][section]['third'] ===
+                  localTextData[section]['third']
+              ) {
+                //add last active LK to the beginning
+                similarAgs.unshift(this.props.lastActiveCardLK);
+                //remove duplicates
+                similarAgs = similarAgs.filter(
+                  (value, index, self) => index === self.findIndex((t) => t.value === value.value)
+                );
+                //if length more than 10, remove last item
+                if (similarAgs.length > 10) similarAgs.splice(-1);
+              }
+            }
           }
 
           // console.log(this.props.switchDataLevel)
