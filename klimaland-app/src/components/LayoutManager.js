@@ -138,9 +138,13 @@ export default class LayoutManager extends Component {
     setStateAsync(this, {
       landkreisSelection: [lk],
       showEditorsPick: false,
-    }).then(() => {
-      this.updateCardSelection();
-    });
+    })
+      .then(() => {
+        return this.updateCardSelection();
+      })
+      .then(() => {
+        this.setNextCardPreviews();
+      });
   }
 
   /**
