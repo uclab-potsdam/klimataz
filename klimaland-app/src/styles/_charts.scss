@@ -11,12 +11,12 @@ $holz: $blue;
 $biomasse: darken($marine-blue, 10%); //lighten($dust-blue,20%);
 $biomethan: $dust-blue;
 // fossils = ["Gas","Strom","Öl","Fernwärme/Fernkälte","Sonstige Heizenergie"]
-$fernkaelte: $pale-olive;
+$fernkaelte: $taz-orange;
 $fossile: $red;
 $strom: #ffd5c8;
-$öl: lighten($dark-pink, 5%);
-$heizenergie: $pink;
-$gas: $taz-orange;
+$öl: $pink;
+$heizenergie: $pale-olive;
+$gas: lighten($dark-pink, 5%);
 
 @mixin energy-buildings($color) {
   background-color: $color;
