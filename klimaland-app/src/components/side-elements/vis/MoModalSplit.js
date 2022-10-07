@@ -131,7 +131,15 @@ const MoModalSplit = ({
       element.labelX = checkDataPosition(lastCoor[0])
         ? xScaleReverse(lastCoor[0])
         : xScale(lastCoor[0]);
+      element.markerX = element.labelX;
       element.labelY = yScale(lastCoor[1]);
+
+      //solve overlaps with legend title
+      const legendWidth =
+        marginWidth + getIconWidth(element.mode) + getLegendName(element.mode).length * 5 + 10;
+      if (element.labelX < legendWidth) {
+        element.labelX += legendWidth - element.labelX + 10;
+      }
 
       const ticksIterations = [...Array.from(Array(rowIndex + 1)).keys()];
       const ticks = [...Array.from(Array(10)).keys()];
@@ -227,6 +235,11 @@ const MoModalSplit = ({
                           <text x="5" y={-(trip.labelY + 2 * 10)} fill={colors[t]}>
                             {trip.label}
                           </text>
+                        </g>
+                        <g
+                          className="avgkm-marker"
+                          transform={`translate(${trip.markerX}, ${trip.labelY + 5})`}
+                        >
                           <line x1="0" x2="0" y1="0" y2={-(trip.labelY + 2 * 10)} />
                         </g>
                         <g className="mapped-axis">
