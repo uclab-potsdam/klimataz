@@ -71,6 +71,8 @@ export default class LayoutManager extends Component {
       cardSelection: [],
       //card that is on top in postcardview, index of this card in cardSelection
       activeCard: 0,
+      //Lk of card that was on top in postcardview before cardSelection changes
+      lastActiveCardLK: '',
       //true when currently editors pick is displayed
       showEditorsPick: true,
       // logic for toggle true lk
@@ -135,9 +137,11 @@ export default class LayoutManager extends Component {
    * @param {} lk AGS and name of location clicked on in the list as value-label pair
    */
   addCardToSelection(lk) {
+    const lastActiveLK = this.state.cardSelection[this.state.activeCard].lk;
     setStateAsync(this, {
       landkreisSelection: [lk],
       showEditorsPick: false,
+      lastActiveCardLK: { value: lastActiveLK.value, label: lastActiveLK.label },
     })
       .then(() => {
         return this.updateCardSelection();
@@ -225,7 +229,11 @@ export default class LayoutManager extends Component {
           return d.value !== defaultLK;
         });
       }
-      setStateAsync(this, { landkreisSelection: e, showEditorsPick: false }).then(() => {
+      setStateAsync(this, {
+        landkreisSelection: e,
+        showEditorsPick: false,
+        lastActiveCardLK: '',
+      }).then(() => {
         this.updateCardSelection();
       });
     }
@@ -237,7 +245,7 @@ export default class LayoutManager extends Component {
    * @param e selected section
    */
   async changeSection(e) {
-    await setStateAsync(this, { sectionSelection: e }).then(() => {
+    await setStateAsync(this, { sectionSelection: e, lastActiveCardLK: '' }).then(() => {
       this.updateCardSelection();
     });
   }
@@ -481,6 +489,7 @@ export default class LayoutManager extends Component {
           mode={this.state.mode}
           postcardView={this.state.postcardView}
           activeCard={this.state.activeCard}
+          lastActiveCardLK={this.state.lastActiveCardLK}
           dataLevelLK={this.state.dataLevelLK}
           handleSwitchNext={this.handleSwitchNext}
           handleSwitchBack={this.handleSwitchBack}
