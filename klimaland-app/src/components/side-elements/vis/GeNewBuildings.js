@@ -72,6 +72,15 @@ const Buildings = ({
 
   const getLegendName = function (name) {
     if (name == 'Umweltthermie (Luft/Wasser)') return 'Umweltthermie (Wärmepumpe)';
+    if (name == 'Andere erneuerbare Energien') return 'andere erneuerbare Energien';
+    if (name == 'Andere fossile Energien') return 'andere fossile Energien';
+    return name;
+  };
+
+  const getDescriptionName = function (name) {
+    if (name == 'Umweltthermie (Luft/Wasser)') return 'Umweltthermie (Wärmepumpe)';
+    if (name == 'Andere erneuerbare Energien') return 'anderen erneuerbaren Energien';
+    if (name == 'Andere fossile Energien') return 'anderen fossilen Energien';
     return name;
   };
 
@@ -196,7 +205,8 @@ const Buildings = ({
             <span>{formatNumber(numberOfBuildings)}</span> neue Wohnungen oder Häuser
             fertiggestellt. Zu{' '}
             <span className="energy-number">{formatNumber(selectedEnergy)} %</span> wird davon mit{' '}
-            <span className="energy-number">{firstToUppercase(currentId)}</span> geheizt.
+            <span className="energy-number">{getDescriptionName(firstToUppercase(currentId))}</span>{' '}
+            geheizt.
           </p>
         </div>
         <div className="legend">

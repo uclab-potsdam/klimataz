@@ -660,6 +660,12 @@ $gas: $taz-orange;
                 display: flex;
                 margin-left: 1rem;
 
+                &:hover{
+                  p{
+                    font-weight: 600;
+                  }
+                }
+
                 .element-color {
                   min-width: 10px;
                   height: 10px;
