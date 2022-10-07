@@ -141,7 +141,6 @@ export default class LayoutManager extends Component {
     setStateAsync(this, {
       landkreisSelection: [lk],
       showEditorsPick: false,
-
       lastActiveCardLK: { value: lastActiveLK.value, label: lastActiveLK.label },
     })
       .then(() => {
