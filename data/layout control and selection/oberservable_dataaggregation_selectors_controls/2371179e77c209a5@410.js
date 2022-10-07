@@ -114,6 +114,8 @@ function _landkreise(PopGermany, PopBundeslaender, names, wordInString, germanyC
     });
 
     name = name.replace('�', 'ü');
+    if (name == 'Bayern (Bodensee)') name = 'Bayern';
+    if (name == 'Baden-Württemberg (Bodensee)') name = 'Baden-Württemberg';
 
     console.log(name);
 
