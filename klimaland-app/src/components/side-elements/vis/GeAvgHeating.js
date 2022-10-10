@@ -197,9 +197,9 @@ const GeAvgHEating = ({
                       transform={`translate(-25, ${height - bar.kwh - 30})`}
                       className="interactive-labels"
                     >
-                      <rect x="-1" y="-11" width="80" height="15" rx="1" stroke={bar.fill} />
+                      <rect x="-1" y="-11" width="70" height="15" rx="1" stroke={bar.fill} />
                       <text x="0" y="0">
-                        {Math.round(bar.valueLabel)} kWh/m²a
+                        {Math.round(bar.valueLabel)} kWh/m²
                       </text>
                     </g>
                   </g>
@@ -238,7 +238,7 @@ const GeAvgHEating = ({
               y={height - marginHeight + 15}
               textAnchor="end"
             >
-              kWh/m²a
+              kWh/m²
             </text>
           </g>
         </svg>
