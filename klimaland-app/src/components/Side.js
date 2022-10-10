@@ -130,6 +130,7 @@ export default class Side extends Component {
     ) {
       return (
         <Chart
+          lk={this.props.lk}
           section={this.props.section}
           localData={this.props.localData}
           indicator={this.state.indicator}

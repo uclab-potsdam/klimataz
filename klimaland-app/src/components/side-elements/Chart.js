@@ -30,17 +30,14 @@ export default class Chart extends Component {
     const localData = this.props.localData[this.props.section];
     const currentSnippet = localData[this.props.indicator];
 
+    //get label of location (lk and bundesland)
     let locationLabel = '';
     const locationLabels = {};
-    selectorControls.landkreise.forEach((d) => {
-      if (d.value === this.props.localData.ags) {
-        locationLabels['lk'] = d.label + ' ' + d.nameAddition;
-      }
-
-      if (d.value === this.props.localData.bundesland) {
-        locationLabels['bundesland'] = d.label;
-      }
-    });
+    locationLabels['lk'] = this.props.lk.label;
+    let bl = selectorControls.landkreise.find((d) => d.value === this.props.localData.bundesland);
+    if (bl !== undefined) {
+      locationLabels['bundesland'] = bl.label;
+    }
 
     if (currentSnippet !== undefined) {
       locationLabel = currentSnippet.regional ? locationLabels['lk'] : locationLabels['bundesland'];

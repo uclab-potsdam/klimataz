@@ -230,7 +230,6 @@ export default class LayoutManager extends Component {
           return d.value !== defaultLK;
         });
       }
-      console.log(e);
       //else: set new selection
       setStateAsync(this, {
         landkreisSelection: e,
@@ -362,7 +361,14 @@ export default class LayoutManager extends Component {
   getTotalLKName(element) {
     let name = element.label;
     if (element.nameAddition !== undefined) {
-      name = element.label + ' ' + element.nameAddition;
+      //special case: Bremen Stadt
+      if (element.value === 4011) {
+        name = element.label + ' (Stadt)';
+      }
+      //only label landkreise, no kreisfreie städte
+      if (element.nameAddition === '(Landkreis)') {
+        name = 'Landkreis ' + element.label;
+      }
     }
     return name;
   }
