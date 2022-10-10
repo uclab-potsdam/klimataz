@@ -1,27 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { UIContext } from '../UIContext';
 
 const List = ({ lk, data, similarAgs, section, handleClickOnList }) => {
-  const [active, setActive] = useState(true);
-
   const agsRanking = data[section]['third'].substring(0, data[section]['third'].indexOf(' '));
 
   const uiVis = useContext(UIContext);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setActive(true), 500);
-    return () => clearTimeout(timer);
-  }, similarAgs);
 
   /**
    * when someone clicked on a list item, pass this to parent
    * @param {} ags AGS of name in the list
    */
   function clickOnList(ags, name) {
-    if (!active) {
-      return;
-    }
-    setActive(false);
     lk = { value: parseInt(ags), label: name };
     handleClickOnList(lk);
   }
@@ -37,9 +26,8 @@ const List = ({ lk, data, similarAgs, section, handleClickOnList }) => {
               <ol
                 className={`ui-${uiVis}`}
                 key={a}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (!uiVis || !active) return;
+                onClick={() => {
+                  if (!uiVis) return;
                   clickOnList(ags.value, ags.label);
                 }}
               >
