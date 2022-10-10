@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UIContext } from '../UIContext';
 
 const List = ({ lk, data, similarAgs, section, handleClickOnList }) => {
   const agsRanking = data[section]['third'].substring(0, data[section]['third'].indexOf(' '));
+
+  const uiVis = useContext(UIContext);
 
   /**
    * when someone clicked on a list item, pass this to parent
@@ -21,8 +24,10 @@ const List = ({ lk, data, similarAgs, section, handleClickOnList }) => {
           {similarAgs.map((ags, a) => {
             return (
               <ol
+                className={`ui-${uiVis}`}
                 key={a}
                 onClick={() => {
+                  if (!uiVis) return;
                   clickOnList(ags.value, ags.label);
                 }}
               >
