@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import { Component } from 'react';
-import { mod, isInt, setStateAsync } from '../helpers/helperFunc';
+import { mod, isInt } from '../helpers/helperFunc';
 
 //components
 import Card from './Card';
@@ -10,7 +10,6 @@ import Side from './Side';
 import Data from '../data/data.json';
 import LayoutControls from '../data/layout-controls-inprogress.json';
 import DynamicTextJson from '../data/textData.json';
-import { image } from 'd3';
 
 export default class CardCollection extends Component {
   constructor(props) {
@@ -34,21 +33,6 @@ export default class CardCollection extends Component {
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     this.addCardToSelection = this.addCardToSelection.bind(this);
-
-    // if (this.switchDataLevel !== undefined) {
-    //   this.switchDataLevel = this.switchDataLevel.bind(this);
-    // }
-
-    this.updateData = this.updateData.bind(this);
-  }
-
-  async updateData(result) {
-    // console.log(result)
-    const data = result.data;
-    // Here this is available and we can call this.setState (since it's binded in the constructor)
-    await setStateAsync(this, { textData: data, textLoaded: true }).then(() => {
-      this.generateCards();
-    }); // or shorter ES syntax: this.setState({ data });
   }
 
   /**
@@ -275,8 +259,6 @@ export default class CardCollection extends Component {
             }
           }
 
-          // console.log(this.props.switchDataLevel)
-
           return (
             <Card
               key={i}
@@ -345,11 +327,6 @@ export default class CardCollection extends Component {
           }
           this.checkIndicatorData(element);
 
-          //get dynamic text data for current ags
-          // let localTextData = this.state.textData.filter((d) => {
-          //   return +d.AGS === element.lk.value;
-          // });
-
           let localTextData = this.textData[element.lk.value];
 
           return (
@@ -412,10 +389,6 @@ export default class CardCollection extends Component {
   render() {
     return (
       <div className="card-collection">
-        {/* <h5 className="debug">
-          Debug: {this.props.mode}, LK:{' '}
-          {this.props.cardSelection.map((elem) => elem.lk.label + ' ' + elem.section.label + ' | ')}
-        </h5> */}
         {this.props.mode === 'comparison' && !this.props.postcardView && (
           <div className="inner-card-collection">
             <div

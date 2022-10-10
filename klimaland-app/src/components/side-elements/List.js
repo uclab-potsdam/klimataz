@@ -16,7 +16,7 @@ const List = ({ lk, data, similarAgs, section, handleClickOnList }) => {
     <div className="list-inner-container">
       <div className={`list-similar-container ${agsRanking}`}>
         {lk.value !== 0 && <h5>Im {data[section]['third']} wie:</h5>}
-        {lk.value === 0 && <h5>Check out also:</h5>}
+        {lk.value === 0 && <h5>Schaue dir auch an:</h5>}
         <ul>
           {similarAgs.map((ags, a) => {
             return (

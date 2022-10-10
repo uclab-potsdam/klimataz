@@ -130,6 +130,7 @@ export default class Side extends Component {
     ) {
       return (
         <Chart
+          lk={this.props.lk}
           section={this.props.section}
           localData={this.props.localData}
           indicator={this.state.indicator}
@@ -209,7 +210,8 @@ export default class Side extends Component {
                     this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
                   }`}
                 >
-                  {(this.props.mode === 'comparison' || !this.props.isThumbnail) && (
+                  {(this.props.mode === 'comparison' ||
+                    (!this.props.isThumbnail && this.props.isTopCard)) && (
                     <TitleArt landkreisLabel={this.props.lk.label} />
                   )}
                   {this.props.isThumbnail && this.state.ranking !== '' && (
