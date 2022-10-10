@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import { mobileCheck } from '../helpers/helperFunc';
+import { UIContext } from './UIContext';
+export default class SelectionButtons extends Component {
+  static contextType = UIContext;
 
-export class SelectionButtons extends Component {
   constructor(props) {
     super(props);
 
@@ -65,9 +67,8 @@ export class SelectionButtons extends Component {
 
     return (
       <div className="selection-buttons">
-        {!this.props.postcardView && this.props.uiVis && (
+        {!this.props.postcardView && this.context && (
           <div className="selection-container">
-            {/* {this.props.viewVis !== 2 && ( */}
             <Select
               className={`selector lk mode-${this.props.mode}`}
               isMulti
@@ -124,5 +125,3 @@ export class SelectionButtons extends Component {
     );
   }
 }
-
-export default SelectionButtons;
