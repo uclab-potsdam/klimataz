@@ -483,7 +483,7 @@ export default class LayoutManager extends Component {
     return (
       <div className="main-container">
         {this.state.mode === 'lk' && !this.state.postcardView && (
-          <TitleArt landkreisLabel={this.state.landkreisSelection[0].label} />
+          <TitleArt landkreisLabel={this.getTotalLKName(this.state.landkreisSelection[0])} />
         )}
         <SelectionButtons
           mode={this.state.mode}
