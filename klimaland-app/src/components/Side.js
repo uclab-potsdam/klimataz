@@ -210,7 +210,8 @@ export default class Side extends Component {
                     this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
                   }`}
                 >
-                  {(this.props.mode === 'comparison' || !this.props.isThumbnail) && (
+                  {(this.props.mode === 'comparison' ||
+                    (!this.props.isThumbnail && this.props.isTopCard)) && (
                     <TitleArt landkreisLabel={this.props.lk.label} />
                   )}
                   {this.props.isThumbnail && this.state.ranking !== '' && (
