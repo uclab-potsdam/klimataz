@@ -623,9 +623,11 @@
                                             border-bottom: 1px solid $default-text;
                                             padding-bottom: 0.5rem;
                                 
-                                            &:hover {
-                                                background-color: $lighter-orange-full;
-                                                cursor: pointer;
+                                            &.ui-true{
+                                                &:hover {
+                                                    background-color: $lighter-orange-full;
+                                                    cursor: pointer;
+                                                }
                                             }
                                         }
                                 

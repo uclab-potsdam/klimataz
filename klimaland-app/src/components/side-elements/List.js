@@ -24,6 +24,7 @@ const List = ({ lk, data, similarAgs, section, handleClickOnList }) => {
           {similarAgs.map((ags, a) => {
             return (
               <ol
+                className={`ui-${uiVis}`}
                 key={a}
                 onClick={() => {
                   if (!uiVis) return;
