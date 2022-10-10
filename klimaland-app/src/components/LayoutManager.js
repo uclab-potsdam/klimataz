@@ -6,12 +6,13 @@ import SelectionButtons from './SelectionButtons';
 import { getRandomElement, setStateAsync } from '../helpers/helperFunc';
 import Info from './Info.js';
 import TitleArt from './TitleArt.js';
+import Sources from './Sources.js';
+import { UIContext } from './UIContext.js';
 
 //images
 import switchCardLeft from '../img/buttons/caret-left.svg';
 import switchCardRight from '../img/buttons/caret-right.svg';
 import closeCard from '../img/buttons/close.svg';
-import Sources from './Sources';
 
 export default class LayoutManager extends Component {
   constructor(props) {
@@ -481,80 +482,80 @@ export default class LayoutManager extends Component {
     const currentToggleLabels = currentSection !== '' ? this.toggleLabels[currentSection] : {};
 
     return (
-      <div className="main-container">
-        {this.state.mode === 'lk' && !this.state.postcardView && (
-          <TitleArt landkreisLabel={this.getTotalLKName(this.state.landkreisSelection[0])} />
-        )}
-        <SelectionButtons
-          mode={this.state.mode}
-          postcardView={this.state.postcardView}
-          landkreise={this.props.landkreiseData}
-          sections={this.props.sectionsData}
-          landkreisSelection={this.state.landkreisSelection}
-          sectionSelection={this.state.sectionSelection}
-          defaultLK={this.props.editorspick.map(function (el) {
-            return el.lk;
-          })}
-          changeLandkreis={this.changeLandkreis}
-          changeSection={this.changeSection}
-          shuffle={this.updateShuffleSelection}
-          uiVis={this.props.editorspick[0].ui.value}
-          viewVis={this.props.editorspick[0].view.value}
-        />
+      <UIContext.Provider value={this.props.editorspick[0].ui.value}>
+        <div className="main-container">
+          {this.state.mode === 'lk' && !this.state.postcardView && (
+            <TitleArt landkreisLabel={this.getTotalLKName(this.state.landkreisSelection[0])} />
+          )}
+          <SelectionButtons
+            mode={this.state.mode}
+            postcardView={this.state.postcardView}
+            landkreise={this.props.landkreiseData}
+            sections={this.props.sectionsData}
+            landkreisSelection={this.state.landkreisSelection}
+            sectionSelection={this.state.sectionSelection}
+            defaultLK={this.props.editorspick.map(function (el) {
+              return el.lk;
+            })}
+            changeLandkreis={this.changeLandkreis}
+            changeSection={this.changeSection}
+            shuffle={this.updateShuffleSelection}
+          />
 
-        {/* 
+          {/* 
         {this.state.landkreisSelection.length > 0 && (
           <TitleCanvas landkreis={this.state.landkreisSelection} />
         )} */}
-        <CardCollection
-          cardSelection={this.state.cardSelection}
-          mode={this.state.mode}
-          postcardView={this.state.postcardView}
-          activeCard={this.state.activeCard}
-          lastActiveCardLK={this.state.lastActiveCardLK}
-          dataLevelLK={this.state.dataLevelLK}
-          handleSwitchNext={this.handleSwitchNext}
-          handleSwitchBack={this.handleSwitchBack}
-          switchToPostcardView={this.switchToPostcardView}
-          addCardToSelection={this.addCardToSelection}
-          toggleLabels={currentToggleLabels}
-          isLKData={this.state.dataLevelLK}
-          switchDataLevel={this.switchDataLevel}
-        />
-        {/* we could also put the code below into "SelectionButtons.js" or a more general
+          <CardCollection
+            cardSelection={this.state.cardSelection}
+            mode={this.state.mode}
+            postcardView={this.state.postcardView}
+            activeCard={this.state.activeCard}
+            lastActiveCardLK={this.state.lastActiveCardLK}
+            dataLevelLK={this.state.dataLevelLK}
+            handleSwitchNext={this.handleSwitchNext}
+            handleSwitchBack={this.handleSwitchBack}
+            switchToPostcardView={this.switchToPostcardView}
+            addCardToSelection={this.addCardToSelection}
+            toggleLabels={currentToggleLabels}
+            isLKData={this.state.dataLevelLK}
+            switchDataLevel={this.switchDataLevel}
+          />
+          {/* we could also put the code below into "SelectionButtons.js" or a more general
         buttons component and switch between the selection and shuffle or zoomed
         view buttons*/}
-        {this.state.postcardView && (
-          <div className="button-container">
-            {this.props.editorspick[0].view.value !== 3 && (
-              <>
-                <div className="inner-button">
-                  <button className="button close" onClick={this.closePostcardView}>
-                    <img src={closeCard} className="button img" alt="close-button-img" />
-                  </button>
-                </div>
-                <div className="button-switch-container">
-                  <button className="inner-button button-left" onClick={this.handleSwitchBack}>
-                    <div className="button switch">
-                      <img src={switchCardLeft} className="button img" alt="switch-button-img" />
-                      <h6 className="switch-preview">{this.state.previewLeftCard}</h6>
-                    </div>
-                  </button>
-                  <button className="inner-button button-right">
-                    <div className="button switch" onClick={this.handleSwitchNext}>
-                      <img src={switchCardRight} className="button img" alt="switch-button-img" />
-                      <h6 className="switch-preview">{this.state.previewRightCard}</h6>
-                    </div>
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        )}
+          {this.state.postcardView && (
+            <div className="button-container">
+              {this.props.editorspick[0].view.value !== 3 && (
+                <>
+                  <div className="inner-button">
+                    <button className="button close" onClick={this.closePostcardView}>
+                      <img src={closeCard} className="button img" alt="close-button-img" />
+                    </button>
+                  </div>
+                  <div className="button-switch-container">
+                    <button className="inner-button button-left" onClick={this.handleSwitchBack}>
+                      <div className="button switch">
+                        <img src={switchCardLeft} className="button img" alt="switch-button-img" />
+                        <h6 className="switch-preview">{this.state.previewLeftCard}</h6>
+                      </div>
+                    </button>
+                    <button className="inner-button button-right">
+                      <div className="button switch" onClick={this.handleSwitchNext}>
+                        <img src={switchCardRight} className="button img" alt="switch-button-img" />
+                        <h6 className="switch-preview">{this.state.previewRightCard}</h6>
+                      </div>
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
 
-        <Info />
-        <Sources />
-      </div>
+          <Info />
+          <Sources />
+        </div>
+      </UIContext.Provider>
     );
   }
 }

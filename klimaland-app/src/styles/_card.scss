@@ -622,10 +622,15 @@
                                             padding-top: 0.5rem;
                                             border-bottom: 1px solid $default-text;
                                             padding-bottom: 0.5rem;
+
+                                            -webkit-user-select:none;
+                                            user-select: none;
                                 
-                                            &:hover {
-                                                background-color: $lighter-orange-full;
-                                                cursor: pointer;
+                                            &.ui-true{
+                                                &:hover {
+                                                    background-color: $lighter-orange-full;
+                                                    cursor: pointer;
+                                                }
                                             }
                                         }
                                 
