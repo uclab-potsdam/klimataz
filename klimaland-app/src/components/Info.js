@@ -14,6 +14,9 @@ export default class Info extends Component {
     //render function. Without this bind, the App would just crash in an endless loop
     this.handleHelpFocus = this.updateFocus.bind(this, true);
     this.handleHelpNotFocus = this.updateFocus.bind(this, false);
+
+    this.wrapperRef = React.createRef();
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   /**
@@ -22,6 +25,21 @@ export default class Info extends Component {
    */
   componentDidMount() {
     this.setState({ inFocus: false });
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  /**
+   * Alert if clicked on outside of element
+   */
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+      event.preventDefault();
+      this.updateFocus(false);
+    }
   }
 
   /**
@@ -34,7 +52,7 @@ export default class Info extends Component {
 
   render() {
     return (
-      <div className="info-container">
+      <div className="info-container" ref={this.wrapperRef}>
         <div
           className={`info-container-content ${this.state.inFocus ? 'open' : ''}`}
           onClick={this.state.inFocus ? this.handleHelpNotFocus : this.handleHelpFocus}
