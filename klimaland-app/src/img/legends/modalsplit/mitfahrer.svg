@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="mitfahrer" data-name="Ebene 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.2 7.3" width="37" y="-39.5" height="30">
+  <g id="Layer_1" data-name="Layer 1">
+    <g>
+      <path class="cls-2" d="M0,3.2H9.3"/>
+      <path class="cls-2" d="M8.7,5.8v1c0,.2-.2,.3-.3,.3h-1c-.2,0-.3-.2-.3-.3v-1"/>
+      <path class="cls-2" d="M2.3,5.8v1c0,.2-.2,.3-.3,.3h-1c-.2,0-.3-.2-.3-.3v-1"/>
+      <path class="cls-2" d="M2,4.5h.7"/>
+      <path class="cls-2" d="M6.7,4.5h.7"/>
+      <path class="cls-2" d="M8.7,3.2L7.4,.4c0-.1-.2-.2-.3-.2H2.2c-.1,0-.2,0-.3,.2L.7,3.2v2.7h8V3.2h0Z"/>
+      <path class="cls-1" d="M11.1,7.1l.5-1.6c0-.3,.4-.5,.7-.5h3.7"/>
+      <path class="cls-1" d="M14.5,7.1l.5-1.6c0-.3,.4-.5,.7-.5h3.2c.3,0,.6,.2,.7,.5l.5,1.6"/>
+      <circle class="cls-1" cx="13.8" cy="2.9" r="1.2"/>
+      <circle class="cls-1" cx="17.3" cy="2.9" r="1.2"/>
+    </g>
+  </g>
+</svg>
