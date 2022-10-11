@@ -209,12 +209,14 @@ code {
                             }
                     }
 
-                    .css-1s2u09g-control{
-                        border-color: $pale-olive; 
-                        border-radius: 0;
-                        box-shadow: 4px 4px 0px rgba($pale-olive, 0.20);
-                        .css-1rhbuit-multiValue {
-                            background-color: $lighter-orange;
+                    .css-1s2u09g-control,.css-1pahdxg-control{
+                        border: 1px solid $pale-olive;
+                        border-radius: 0px;
+                        box-shadow: map-get($map: $boxshadow, $key: default);
+                    
+                        &:hover {
+                            transition: 0.2s;
+                            box-shadow: map-get($map: $boxshadow, $key: hover);
                         }
                     }
                 }

@@ -29,24 +29,58 @@ export default class SelectionButtons extends Component {
     this.props.shuffle(e);
   }
 
+  getOptionsWithCheckedDefault(data) {
+    return data.map((d) => {
+      let isDefault = false;
+      //if default
+      if (this.props.defaultLK.some((def) => def.value === d.value)) {
+        isDefault = true;
+      }
+      return {
+        value: d.value,
+        label: d.label,
+        nameAddition: d.nameAddition,
+        isDefault: isDefault,
+      };
+    });
+  }
+
+  //rgba(255, 232, 201, 0.7)
+
   customDesktopStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      backgroundColor: state.isFocused ? '#fff4e5' : 'white',
+    option: (styles, { isFocused }) => ({
+      ...styles,
+      backgroundColor: isFocused ? '#fff4e5' : 'white',
       color: 'black',
+    }),
+    multiValue: (styles, { data }) => ({
+      ...styles,
+      backgroundColor: data.isDefault ? 'rgb(230,230,230)' : '#fff4e5',
+    }),
+    multiValueRemove: (styles, { data }) => ({
+      ...styles,
+      visibility: data.isDefault ? 'hidden' : 'visible',
     }),
   };
 
   customMobileStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      backgroundColor: state.isSelected ? '#fff4e5' : 'white',
+    option: (styles, { isFocused }) => ({
+      ...styles,
+      backgroundColor: isFocused ? '#fff4e5' : 'white',
       color: 'black',
     }),
-    valueContainer: (provided) => ({
-      ...provided,
+    multiValue: (styles, { data }) => ({
+      ...styles,
+      backgroundColor: data.isDefault ? 'rgb(230,230,230)' : '#fff4e5',
+    }),
+    valueContainer: (styles) => ({
+      ...styles,
       maxHeight: '7vh',
       overflow: 'scroll',
+    }),
+    multiValueRemove: (styles, { data }) => ({
+      ...styles,
+      visibility: data.isDefault ? 'hidden' : 'visible',
     }),
   };
 
@@ -59,6 +93,9 @@ export default class SelectionButtons extends Component {
         return -1;
       }
     });
+    // .map((d) => {
+    //   return this.getOptionWithCheckedDefault(d);
+    // });
 
     const lkSelectionMobile = this.props.landkreisSelection;
     if (lkSelectionMobile.length >= 5 && mobileCheck(window)) {
@@ -72,10 +109,12 @@ export default class SelectionButtons extends Component {
             <Select
               className={`selector lk mode-${this.props.mode}`}
               isMulti
+              isClearable={false}
               //handle clearing when in shuffle mode
               //https://stackoverflow.com/questions/50412843/how-to-programmatically-clear-reset-react-select
               key={`my_unique_select_key__${this.props.landkreisSelection}`}
-              value={this.props.landkreisSelection || ''}
+              defaultValue={this.getOptionsWithCheckedDefault(this.props.defaultLK)}
+              value={this.getOptionsWithCheckedDefault(this.props.landkreisSelection) || ''}
               styles={this.customDesktopStyles}
               onChange={this.changeLandkreis}
               options={orderedLandkreise}
@@ -90,10 +129,12 @@ export default class SelectionButtons extends Component {
             <Select
               className={`selector lk-mobile mode-${this.props.mode}`}
               isMulti
+              isClearable={false}
               //handle clearing when in shuffle mode
               //https://stackoverflow.com/questions/50412843/how-to-programmatically-clear-reset-react-select
               key={`my_unique_select_key_mobile__${this.props.landkreisSelection}`}
-              value={this.props.landkreisSelection || ''}
+              defaultValue={this.getOptionsWithCheckedDefault(this.props.defaultLK)}
+              value={this.getOptionsWithCheckedDefault(this.props.landkreisSelection) || ''}
               styles={this.customMobileStyles}
               onChange={this.changeLandkreis}
               options={orderedLandkreise}
