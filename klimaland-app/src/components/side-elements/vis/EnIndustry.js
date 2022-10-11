@@ -1,5 +1,12 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { stack, stackOffsetSilhouette, stackOrderAscending, curveMonotoneX, area } from 'd3-shape';
+import {
+  stack,
+  stackOffsetSilhouette,
+  stackOffsetNone,
+  stackOrderAscending,
+  curveMonotoneX,
+  area,
+} from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
@@ -70,7 +77,7 @@ const EnIndustry = ({
 
     // filteredData is used exclusively to generate domains and for iterating over years,
     // removes all null values and keep only valid years (so streams do not start from 0)
-    const filteredData = currentData.data.filter((d) => d.value !== null)
+    const filteredData = currentData.data.filter((d) => d.value !== null);
 
     percRenewables = lastRenValue[0].value !== null ? lastRenValue[0].value.toFixed(1) : 0;
     //if locationLabel[0] !== locationLabel[1] => this is a bundesland
@@ -92,10 +99,7 @@ const EnIndustry = ({
     const xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth, dimensions.width - marginWidth]);
-    const domainY = [
-      -max(currentData.data.map((d) => d.value / 2)),
-      max(currentData.data.map((d) => d.value / 2)),
-    ];
+    const domainY = [0, max(currentData.data.map((d) => d.value))];
     const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
 
     // map source to color
@@ -137,7 +141,7 @@ const EnIndustry = ({
     const stacks = stack()
       .keys(uniqueEnergySourceFiltered)
       .order(stackOrderAscending)
-      .offset(stackOffsetSilhouette);
+      .offset(stackOffsetNone);
     const stackedSeries = stacks(stackData);
 
     // stream graph
@@ -301,8 +305,9 @@ const EnIndustry = ({
                         />
                         {label.value !== 0 && (
                           <g
-                            className={`interactive-labels ${activeLabel === l ? 'active-label' : ''
-                              }`}
+                            className={`interactive-labels ${
+                              activeLabel === l ? 'active-label' : ''
+                            }`}
                             transform={`translate(${label.xValue}, ${label.yValue})`}
                           >
                             <foreignObject
