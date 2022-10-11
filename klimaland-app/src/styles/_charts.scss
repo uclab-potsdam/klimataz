@@ -186,6 +186,15 @@ $gas: lighten($dark-pink, 5%);
                 stroke: $default-text;
               }
             }
+
+            .axis{
+              svg{
+                stroke-miterlimit: 10;
+                stroke-width: .3px;
+                fill:none;
+                filter:brightness(0.75);
+              }
+            }
           }
         }
       }
