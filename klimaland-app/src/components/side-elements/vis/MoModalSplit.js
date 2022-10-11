@@ -2,6 +2,11 @@ import React, { useRef, useLayoutEffect, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { line, stack } from 'd3-shape';
 import { formatNumber, useCardSize, mobileCheck } from '../../../helpers/helperFunc';
+import { ReactComponent as Fahrer } from '../../../img/legends/modalsplit/fahrer.svg';
+import { ReactComponent as Mitfahrer } from '../../../img/legends/modalsplit/mitfahrer.svg';
+import { ReactComponent as Fuß } from '../../../img/legends/modalsplit/fuss.svg';
+import { ReactComponent as Fahrrad } from '../../../img/legends/modalsplit/fahrrad.svg';
+import { ReactComponent as ÖPV } from '../../../img/legends/modalsplit/oepv.svg';
 
 const MoModalSplit = ({
   currentData,
@@ -35,6 +40,30 @@ const MoModalSplit = ({
   let xScale;
   let xScaleReverse;
   let yBarScale;
+
+  const icons = {
+    Fahrer: Fahrer,
+    Fuß: Fuß,
+    ÖPV: ÖPV,
+    Mitfahrer: Mitfahrer,
+    Fahrrad: Fahrrad,
+  };
+
+  const getLegendName = function (name) {
+    if (name === 'Fuß') return 'Zu Fuß';
+    if (name === 'Fahrer') return 'Auto (Fahrer:in)';
+    else if (name === 'Mitfahrer') return 'Auto (Mitfahrer:in)';
+    return name;
+  };
+
+  const getIconWidth = function (name) {
+    if (name === 'Fuß') return 15;
+    if (name === 'Fahrrad') return 20;
+    if (name === 'ÖPV') return 20;
+    if (name === 'Fahrer') return 36;
+    if (name === 'Mitfahrer') return 36;
+    return 30;
+  };
 
   if (currentData.data !== undefined) {
     averageKmDistance = currentData.data.filter(
@@ -102,7 +131,15 @@ const MoModalSplit = ({
       element.labelX = checkDataPosition(lastCoor[0])
         ? xScaleReverse(lastCoor[0])
         : xScale(lastCoor[0]);
+      element.markerX = element.labelX;
       element.labelY = yScale(lastCoor[1]);
+
+      //solve overlaps with legend title
+      const legendWidth =
+        marginWidth + getIconWidth(element.mode) + getLegendName(element.mode).length * 5 + 10;
+      if (element.labelX < legendWidth) {
+        element.labelX += legendWidth - element.labelX + 10;
+      }
 
       const ticksIterations = [...Array.from(Array(rowIndex + 1)).keys()];
       const ticks = [...Array.from(Array(10)).keys()];
@@ -165,6 +202,7 @@ const MoModalSplit = ({
             {
               <g className="paths">
                 {plotAvgData.map((trip, t) => {
+                  const ModeIcon = icons[trip.mode];
                   return (
                     <g
                       transform={`translate(0, ${(t + 0.7) * tabletThreshold})`}
@@ -172,8 +210,13 @@ const MoModalSplit = ({
                       className={trip.mode}
                     >
                       <g className="axis">
-                        <text x={marginWidth} y="-18" fill={colors[t]}>
-                          {trip.mode}
+                        <ModeIcon x={marginWidth} stroke={colors[t]} />
+                        <text
+                          x={marginWidth + getIconWidth(trip.mode) + 10}
+                          y="-18"
+                          fill={colors[t]}
+                        >
+                          {getLegendName(trip.mode)}
                         </text>
                         {referenceXTicks.map((tick, t) => {
                           return (
@@ -192,6 +235,11 @@ const MoModalSplit = ({
                           <text x="5" y={-(trip.labelY + 2 * 10)} fill={colors[t]}>
                             {trip.label}
                           </text>
+                        </g>
+                        <g
+                          className="avgkm-marker"
+                          transform={`translate(${trip.markerX}, ${trip.labelY + 5})`}
+                        >
                           <line x1="0" x2="0" y1="0" y2={-(trip.labelY + 2 * 10)} />
                         </g>
                         <g className="mapped-axis">
