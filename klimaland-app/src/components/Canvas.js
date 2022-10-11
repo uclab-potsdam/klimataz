@@ -19,7 +19,7 @@ const Canvas = () => {
   });
 
   let defaultPick = sectionsData.map((el) => ({
-    lk: { value: landkreiseData[413].value, label: landkreiseData[413].label },
+    lk: { value: 0, label: 'Deutschland' },
     section: { value: el.value, label: el.label },
     ui: { value: true },
     view: { value: 0, label: 'default' },
