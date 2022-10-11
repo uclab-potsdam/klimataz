@@ -63,7 +63,7 @@ const MoCarDensity = ({
         columnNum = 0;
       }
 
-      if (index <= totalCars) {
+      if (index < totalCars) {
         currentSquare.ownsCar = true;
       }
 
@@ -80,7 +80,7 @@ const MoCarDensity = ({
         d.isExcess = true;
       }
 
-      if (i > totalCars - hybridCars && i <= totalCars) {
+      if (i >= totalCars - hybridCars && i < totalCars) {
         d.isHybrid = true;
       } else if (
         carsInExcess !== 0 &&
