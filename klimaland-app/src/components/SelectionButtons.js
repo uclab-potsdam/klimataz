@@ -155,6 +155,7 @@ export default class SelectionButtons extends Component {
                 onChange={this.changeSection}
                 options={this.props.sections}
                 value={this.props.sectionSelection || ''}
+                styles={this.customDesktopStyles}
               />
             )}
             {/* <button className="button shuffle" onClick={this.shuffle}>
