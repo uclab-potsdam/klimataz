@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="fuss" data-name="Ebene 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 7.9" width="12" height="30" y="-41">
+  <g id="Layer_1" data-name="Layer 1">
+    <g>
+      <path class="cls-1" d="M4,1.9c.5,0,.9-.4,.9-.9s-.4-.9-.9-.9-.9,.4-.9,.9,.4,.9,.9,.9Z"/>
+      <path class="cls-1" d="M.1,4s2.1-2.1,3.2-1c.7,.6,1.2,1.6,2.7,1.6"/>
+      <path class="cls-1" d="M3.2,2.9L1,7.8"/>
+      <path class="cls-1" d="M4,7.8v-2.1l-1.6-1.1"/>
+    </g>
+  </g>
+</svg>

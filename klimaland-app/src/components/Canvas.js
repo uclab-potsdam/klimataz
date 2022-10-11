@@ -19,7 +19,7 @@ const Canvas = () => {
   });
 
   let defaultPick = sectionsData.map((el) => ({
-    lk: { value: landkreiseData[413].value, label: landkreiseData[413].label },
+    lk: { value: 0, label: 'Deutschland' },
     section: { value: el.value, label: el.label },
     ui: { value: true },
     view: { value: 0, label: 'default' },
@@ -181,22 +181,22 @@ const Canvas = () => {
         sections = defaultSections;
       }
 
-      //if one of the sections is not valid, use default sections
-
-      if (sections.length >= 1) {
-        sections.forEach((sec) => {
-          try {
-            getCheckedSectionLabel(sec);
-          } catch (error) {
-            console.log(error);
-            sections = defaultSections;
-            //TODO (NICE TO HAVE): keep valid sections, remove sections that throw an error
-          }
-        });
+      //if section specified, but first specified section on top
+      else if (sections[0] !== undefined) {
+        //find custom first item
+        const firstItem = sections[0];
+        //use default sections
+        sections = defaultSections;
+        //move custom first item to beginning
+        const index = sections.indexOf(firstItem);
+        if (index > -1) {
+          sections.splice(index, 1);
+          sections.unshift(firstItem);
+        }
       }
 
-      //if section list empty (or empty now after checking), use default sections
-      if (sections.length === 0) {
+      //if section list below five, use default sections
+      if (sections.length < 5) {
         sections = defaultSections;
       }
 
