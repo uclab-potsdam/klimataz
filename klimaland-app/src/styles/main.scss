@@ -562,10 +562,14 @@ code {
                         opacity: 0;
                     }
 
-                    .img-flip, .img-toggle{
+                    .img-flip, .img-toggle, .img-download{
                         width: 25%;
                         max-width: 21px;
                         min-width: 10px;
+                    }
+
+                    .img-download{
+                        padding:0 4px;
                     }
 
                     .info-highlight{
