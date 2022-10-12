@@ -279,6 +279,7 @@ const Buildings = ({
                     className={`${line.klassName} ${line.type} line`}
                     onClick={() => changeId(line.id)}
                   >
+                    <path d={line.path} className="hitbox" fill="none" />
                     <path d={line.path} fill="none" />
                   </g>
                 );
@@ -300,6 +301,7 @@ const Buildings = ({
                           className={`year-marker ${en.klassName} ${
                             en.id === currentId ? 'default' : 'optional'
                           }`}
+                          onClick={() => changeId(en.id)}
                         >
                           <circle cx="0" cy="0" r="3" />
                           {!isThumbnail && (
