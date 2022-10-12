@@ -198,6 +198,7 @@ const Buildings = ({
           klassName: cleanKlassString(d.column.toLowerCase()),
           label: `${d.value.toFixed(0)} %`,
           id: d.column,
+          value: d.value.toFixed(0),
         });
       });
 
@@ -307,8 +308,9 @@ const Buildings = ({
                           {!isThumbnail && (
                             <g transform="translate(5, 0)">
                               <foreignObject
-                                x={a === axis.length - 1 ? -40 : -2}
-                                y="-25"
+                                //x={a === axis.length - 1 ? -40 : -2}
+                                x={en.value > 9 ? -21 : -18}
+                                y="-12.5"
                                 width="1"
                                 height="1"
                               >
