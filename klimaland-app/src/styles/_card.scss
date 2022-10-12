@@ -76,6 +76,7 @@
         @include stacked-postcard;
 
         .side-container {
+            background: transparent;
             .card-front {
                 &.side-odd {
                     backface-visibility: visible;
