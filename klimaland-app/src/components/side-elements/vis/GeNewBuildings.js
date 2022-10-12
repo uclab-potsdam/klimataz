@@ -305,7 +305,20 @@ const Buildings = ({
                           onClick={() => changeId(en.id)}
                         >
                           <circle cx="0" cy="0" r="3" />
-                          {!isThumbnail && (
+                        </g>
+                      );
+                    })}
+                    {!isThumbnail &&
+                      axis.energyMarkers.map((en, e) => {
+                        return (
+                          <g
+                            key={e}
+                            transform={`translate(0, ${en.y})`}
+                            className={`year-marker ${en.klassName} ${
+                              en.id === currentId ? 'default' : 'optional'
+                            }`}
+                            onClick={() => changeId(en.id)}
+                          >
                             <g transform="translate(5, 0)">
                               <foreignObject
                                 //x={a === axis.length - 1 ? -40 : -2}
@@ -324,10 +337,9 @@ const Buildings = ({
                                 </div>
                               </foreignObject>
                             </g>
-                          )}
-                        </g>
-                      );
-                    })}
+                          </g>
+                        );
+                      })}
                   </g>
                 );
               })}
