@@ -59,6 +59,7 @@ export default class Details extends Component {
                 section={this.props.section}
                 similarAgs={this.props.similarAgs}
                 handleClickOnList={this.handleClickOnList}
+                ranking={this.props.ranking}
               />
             </div>
           </div>

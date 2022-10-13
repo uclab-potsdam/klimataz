@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { UIContext } from '../UIContext';
 
-const List = ({ lk, data, similarAgs, section, handleClickOnList }) => {
+const List = ({ lk, data, similarAgs, section, handleClickOnList, ranking }) => {
   const agsRanking = data[section]['third'].substring(0, data[section]['third'].indexOf(' '));
 
   const uiVis = useContext(UIContext);
@@ -18,8 +18,8 @@ const List = ({ lk, data, similarAgs, section, handleClickOnList }) => {
   return (
     <div className="list-inner-container">
       <div className={`list-similar-container ${agsRanking}`}>
-        {lk.value !== 0 && <h5>Im {data[section]['third']} wie:</h5>}
-        {lk.value === 0 && <h5>Schaue dir auch an:</h5>}
+        {lk.value !== 0 && ranking !== '' && <h5>Im {data[section]['third']} wie:</h5>}
+        {(lk.value === 0 || ranking == '') && <h5>Schaue dir auch an:</h5>}
         <ul>
           {similarAgs.map((ags, a) => {
             return (
