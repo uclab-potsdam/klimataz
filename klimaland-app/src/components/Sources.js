@@ -1,13 +1,20 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useOutsideAlerter } from '../helpers/helperFunc';
 
 import closeCard from '../img/buttons/close.svg';
 
 const Sources = () => {
   const [showSources, setshowSources] = useState(false);
 
+  const close = function () {
+    setshowSources(false);
+  };
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef, close);
+
   return (
-    <div className="sources-container">
+    <div ref={wrapperRef} className={`sources-container ${showSources ? 'open' : ''}`}>
       <button
         className="sources-button"
         onClick={() => {
@@ -21,12 +28,7 @@ const Sources = () => {
       </div>
       {showSources && (
         <div className="sources-text-container">
-          <button
-            className="button close"
-            onClick={() => {
-              showSources ? setshowSources(false) : setshowSources(true);
-            }}
-          >
+          <button className="button close" onClick={close}>
             <img src={closeCard} className="button img" alt="close-button-img" />
           </button>
           <div className="sources-text">
