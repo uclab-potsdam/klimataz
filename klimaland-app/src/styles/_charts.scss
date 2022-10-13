@@ -803,6 +803,12 @@ $gas: lighten($dark-pink, 5%);
 
           path {
             stroke-width: 3px;
+            cursor: pointer;
+
+            &.hitbox{
+              stroke-width:10;
+              stroke-opacity: 0;
+            }
           }
 
           .axis {
@@ -816,6 +822,7 @@ $gas: lighten($dark-pink, 5%);
             }
 
             .year-marker {
+              cursor: pointer;
               circle {
                 filter: brightness(0.75);
               }
