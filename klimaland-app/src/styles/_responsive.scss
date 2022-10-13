@@ -869,7 +869,10 @@
             }
 
             .sources-container { 
-                width: 80%; 
+
+                &.open{
+                    width: 80%; 
+                }
 
                 .sources-text-container{
                     transform: translate(-16%, -115%);
@@ -934,6 +937,7 @@
             }
 
             .sources-container {
+                width:80%;
                 .sources-button {
                     width: 25px;
                     height: 25px;
@@ -945,18 +949,7 @@
                 }
 
                 .info-text-label {
-                    opacity: 0;
-                    transition: all 0.5s;
-                    right: 3rem;
-                    bottom: 1.25rem;
-                    width: 7rem;
-                }
-
-                &:hover {
-                    .info-text-label {
-                        transition: all 0.5s;
-                        opacity: 1;
-                    }
+                    display:none
                 }
             }
         }
@@ -1006,6 +999,12 @@
             }
 
             .sources-container {
+
+                &.open{
+                    width: 80%; 
+                    transform: translate(37%, 50%);
+                    -webkit-transform:translate(37%, 50%);
+                }
                 .sources-button {
                     right: 1.5rem;
                 }
