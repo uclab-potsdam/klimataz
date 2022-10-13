@@ -1,4 +1,4 @@
-@import "_config.scss";
+@import '_config.scss';
 
 // @media not all and (min-resolution:.001dpcm) {
 //     @supports (-webkit-appearance:none) {
@@ -17,787 +17,765 @@
 //     }
 // }
 
-.carousel-container{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    margin-top: 5rem;
+.carousel-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin-top: 5rem;
 }
 
-.card-container{
-    width: 100%;
-    height: 100%;
-    padding: 15px 10px 20px 0px;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    overflow: hidden;
-    
-    &.carousel{
-        // if carousel removes flex specs
-        flex-direction: unset;
-        flex-wrap: nowrap;
-        padding: 0;
-        &.card-front {
-            &.side-odd {
-                display: none;
-            }
-        }
-    }
+.card-container {
+  width: 100%;
+  height: 100%;
+  padding: 15px 10px 20px 0px;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
 
-    //comparison view
-    &.stacked{
-
-        &.twocards{
-            .card{
-                &-ordered{
-                    //original ratio changed for styling
-                    width: calc($thumbnail-postcardwidth + 10vw);
-                    height: calc(($thumbnail-postcardwidth + 10vw)/1.5);
-                }
-            }   
-        }
+  &.carousel {
+    // if carousel removes flex specs
+    flex-direction: unset;
+    flex-wrap: nowrap;
+    padding: 0;
+    &.card-front {
+      &.side-odd {
+        display: none;
+      }
     }
+  }
+
+  //comparison view
+  &.stacked {
+    &.twocards {
+      .card {
+        &-ordered {
+          //original ratio changed for styling
+          width: calc($thumbnail-postcardwidth + 10vw);
+          height: calc(($thumbnail-postcardwidth + 10vw) / 1.5);
+        }
+      }
+    }
+  }
 }
 
 // flipping
-.card{
-    position: absolute;
+.card {
+  position: absolute;
 
-    &-active{
-        // scaling to avoid overflow
-        transform: translateY(0px);
-        -webkit-transform: translateY(0px);
-        z-index: 1;
-        opacity: 1;
-        @include stacked-postcard;
+  &-active {
+    // scaling to avoid overflow
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    z-index: 1;
+    opacity: 1;
+    @include stacked-postcard;
 
-        .side-container {
-            background: transparent;
-            .card-front {
-                &.side-odd {
-                    backface-visibility: visible;
-                    -webkit-backface-visibility: visible;
-                    transform: rotateY(0deg);
-                    -webkit-transform: rotateY(-180deg);
-                    // -moz-transform: rotateY(0deg);
-                }
-            }
+    .side-container {
+      background: transparent;
+      .card-front {
+        &.side-odd {
+          backface-visibility: visible;
+          -webkit-backface-visibility: visible;
+          transform: rotateY(0deg);
+          -webkit-transform: rotateY(-180deg);
+          // -moz-transform: rotateY(0deg);
         }
+      }
     }
+  }
 
-    &-left{
-        transform: rotate(-4deg) scale(1);
-        -webkit-transform:rotate(-4deg) scale(1);
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        z-index: -2;
-        @include stacked-postcard;
+  &-left {
+    transform: rotate(-4deg) scale(1);
+    -webkit-transform: rotate(-4deg) scale(1);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    z-index: -2;
+    @include stacked-postcard;
 
-        .card-front, 
-        .card-back {
-            opacity: 0;
-        }
+    .card-front,
+    .card-back {
+      opacity: 0;
     }
-    
-    &-right{
-        transform: rotate(4deg) scale(1);
-        -webkit-transform:rotate(4deg) scale(1);
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        z-index: -1;
-        @include stacked-postcard;
+  }
 
-        .card-front, 
-        .card-back {
-            opacity: 0;
-        }
+  &-right {
+    transform: rotate(4deg) scale(1);
+    -webkit-transform: rotate(4deg) scale(1);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    z-index: -1;
+    @include stacked-postcard;
+
+    .card-front,
+    .card-back {
+      opacity: 0;
     }
+  }
 
-    &-back{
-        transform: rotate(-2deg)  translate(-2px, -5px) scale(1);
-        -webkit-transform:rotate(-2deg)  translate(-2px, -5px) scale(1);
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        z-index: -3;
-        @include stacked-postcard;
+  &-back {
+    transform: rotate(-2deg) translate(-2px, -5px) scale(1);
+    -webkit-transform: rotate(-2deg) translate(-2px, -5px) scale(1);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    z-index: -3;
+    @include stacked-postcard;
 
-        .card-front,
-        .card-back {
-                opacity: 0;
-        }
+    .card-front,
+    .card-back {
+      opacity: 0;
     }
+  }
 
-    &-ordered{
-        //original ratio changed for styling
-        width: $thumbnail-postcardwidth;
-        height: calc($thumbnail-postcardwidth/1.5);
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        position: relative;
-        z-index: 0;
+  &-ordered {
+    //original ratio changed for styling
+    width: $thumbnail-postcardwidth;
+    height: calc($thumbnail-postcardwidth/1.5);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    position: relative;
+    z-index: 0;
 
-        &:hover {
-            z-index: 999;
-        }
+    &:hover {
+      z-index: 999;
     }
-
+  }
 }
 
 .card-preview {
+  @include postcard;
 
-    @include postcard;
+  height: 100%;
+  width: 100%;
+  display: flex; //for using flex stretch below
 
-    height: 100%;
+  .side-outer {
     width: 100%;
-    display:flex; //for using flex stretch below
+    height: 100%;
+    overflow: hidden;
 
-    .side-outer {
+    .overlay-container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+
+      .overlay-inner {
+        width: 95%;
+        height: calc(100% - 0.5rem);
+        margin: 0 auto;
+        .postcard-title {
+          h4 {
+            color: darken($pale-olive, 20%);
+            margin: 0.5rem;
+          }
+        }
+
+        .button-download {
+          display: none;
+        }
+      }
+      .section-thumb {
         width: 100%;
         height: 100%;
-        overflow: hidden;
 
-        .overlay-container {
+        .indicator-ranking {
+          position: absolute;
+          bottom: 1rem;
+          z-index: 5;
+          border: 2px solid gray;
+          border-radius: 5px;
+          background-color: $light;
+          max-width: 75%;
+
+          p {
+            font-family: 'Chivo';
+          }
+
+          transform: rotate(5deg);
+
+          &.mittleren {
+            border-color: $taz-orange;
+            p {
+              color: $taz-orange;
+            }
+          }
+
+          &.schlechtesten {
+            border-color: $red;
+
+            p {
+              color: $red;
+            }
+          }
+
+          &.besten {
+            border-color: $mint-green;
+
+            p {
+              color: $mint-green;
+            }
+          }
+
+          p {
+            color: gray;
+            font-size: 12px;
+            margin: 0.5rem;
+            display: table-cell;
+            vertical-align: middle;
+            line-height: 14px;
+            padding: 10px;
+            height: 14px;
+          }
+        }
+
+        &.comparison {
+          .word-art-title {
+            @include wordart-style-1;
+            transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, -15px);
             width: 100%;
-            height: 100%;
-            position: absolute;
-            
+            height: 50px;
+            z-index: 2;
+            text-align: left;
+            margin-top: 0.5rem;
 
-            .overlay-inner {
-                width: 95%;
-                height: calc(100% - 0.5rem);
-                margin: 0 auto;
-                .postcard-title {
-                    h4 {
-                        color: darken($pale-olive, 20%);
-                        margin: 0.5rem;
-                    }
-                }
-
-                .button-download {
-                    display: none;
-                }
+            .gruss-thumb {
+              font-size: 0.5rem;
             }
-            .section-thumb {
-                width: 100%;
-                height: 100%;
 
-                .indicator-ranking {
-                    position: absolute;
-                    bottom: 1rem;
-                    z-index: 5;
-                    border:  2px solid gray;
-                    border-radius: 5px;
-                    background-color: $light;
-                    max-width: 75%;
-
-                    p {
-                        font-family: 'Chivo';
-                    }
-
-                    transform: rotate(5deg);
-
-                    &.mittleren {
-                        border-color: $taz-orange;
-                        p {
-                            color: $taz-orange;                        
-                        }
-                    }
-
-                    &.schlechtesten {
-                        border-color: $red;
-
-                        p {
-                            color: $red;
-                        }
-                    }
-
-                    &.besten {
-                        border-color: $mint-green;
-
-                        p {
-                            color: $mint-green;
-                        }
-                    }
-
-                    p {
-                        color:gray;
-                        font-size: 12px;
-                        margin: 0.5rem;
-                        display: table-cell;
-                        vertical-align: middle;
-                        line-height: 14px;
-                        padding: 10px;
-                        height: 14px;
-                    }
-                }
-        
-                &.comparison {
-
-                    .word-art-title {
-                        @include wordart-style-1;
-                        transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, -15px);
-                        width: 100%;
-                        height: 50px;
-                        z-index: 2;
-                        text-align: left;
-                        margin-top: 0.5rem;
-        
-                        .gruss-thumb {
-                            font-size: 0.5rem;
-                        }
-        
-                        .wordart {
-                            width: 100%;
-                            height: 100%;
-                            font-size: 1.2rem;
-                            padding: 0;
-                            padding-top: 0.8rem;
-                            padding-left: 0.2rem;
-                            letter-spacing: -0.10vw;
-                            line-height: 1rem;
-                            background-image: linear-gradient(0deg, $taz-pink 0%, $blue 100%);
-                        }
-                    }
-                }
+            .wordart {
+              width: 100%;
+              height: 100%;
+              font-size: 1.2rem;
+              padding: 0;
+              padding-top: 0.8rem;
+              padding-left: 0.2rem;
+              letter-spacing: -0.1vw;
+              line-height: 1rem;
+              background-image: linear-gradient(0deg, $taz-pink 0%, $blue 100%);
             }
+          }
         }
-
-
+      }
     }
+  }
 
+  .side-inner {
+    width: 100%;
+    height: 100%;
+    // transform: translateX(40%);
+    // -webkit-transform:translateX(40%);
+    background: linear-gradient(rgba($light, 0.2), $lighter-orange);
+    clip-path: circle(55% at 90% 50%);
+    transition: clip-path 1000ms;
+  }
+
+  &:hover,
+  &:active {
     .side-inner {
-        width: 100%;
-        height: 100%;
-        // transform: translateX(40%);
-        // -webkit-transform:translateX(40%);
-        background: linear-gradient(rgba($light, 0.2), $lighter-orange);
-        clip-path: circle(55%  at 90% 50%);   
-        transition: clip-path 1000ms;        
+      clip-path: circle(115% at 90% 50%);
+      background-color: $light;
     }
+  }
 
-
-    &:hover, &:active {
-        .side-inner {
-            clip-path: circle(115% at 90% 50%); 
-            background-color: $light;
-
-        }
-
-        }
-
-    &:active{
-        scale: 1.25;
-        transition: scale ease 500ms;
-    }
-      
+  &:active {
+    scale: 1.25;
+    transition: scale ease 500ms;
+  }
 }
 
 .side {
-    padding-left: 0.5em;
+  padding-left: 0.5em;
 }
 
-.side-container{
+.side-container {
+  @include postcard;
 
-    @include postcard;
+  //148mm x 105mm (ratio 1.4)
+  width: $postcardview-postcardwidth; //60vw
+  height: calc($postcardview-postcardwidth/1.6);
 
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 
-    //148mm x 105mm (ratio 1.4)
-    width: $postcardview-postcardwidth; //60vw
-    height: calc($postcardview-postcardwidth/1.6);
-    
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    
-    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
-    -webkit-transform: perspective(1000px) rotateY(var(--rotate-y, 0)) ;
-    
-    transition: transform ease 500ms;
-    transition: -webkit-transform ease 500ms;
-    
+  transform: perspective(1000px) rotateY(var(--rotate-y, 0));
+  -webkit-transform: perspective(1000px) rotateY(var(--rotate-y, 0));
+
+  transition: transform ease 500ms;
+  transition: -webkit-transform ease 500ms;
+
+  box-shadow: -4px 4px 0px rgba($pale-olive, 0.4);
+
+  &:hover {
     box-shadow: -4px 4px 0px rgba($pale-olive, 0.4);
 
-    &:hover {
-        box-shadow: -4px 4px 0px rgba($pale-olive, 0.4);
+    // scale: 2;
+  }
 
-        // scale: 2;
-    }
+  &.flip {
+    //flipped boxshader, no shader on hover
+    box-shadow: map-get($map: $boxshadow, $key: default);
+  }
 
+  & .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex; //for using flex stretch below
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: rotateX(0deg); //fix backface visibility firefox
+    -webkit-transform: rotateX(0deg);
+  }
 
-    &.flip{
-        //flipped boxshader, no shader on hover
-        box-shadow: map-get($map: $boxshadow, $key: default);
+  & .card-back {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+  }
 
-    }
-
-    & .card-front, .card-back{
-        position: absolute; 
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        display:flex; //for using flex stretch below
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        transform: rotateX(0deg);  //fix backface visibility firefox
-        -webkit-transform:rotateX(0deg);
-    }
-
-    & .card-back{
-        transform: rotateY(180deg);
-        -webkit-transform:rotateY(180deg);
-    }
-
-    &-ordered{
-        margin:1rem;
-    }
-
+  &-ordered {
+    margin: 1rem;
+  }
 }
 
-
-
 .card-active {
-    .side-outer {
-        width: 100%;
-        height:100%;
-    
+  .side-outer {
+    width: 100%;
+    height: 100%;
+
     .overlay-container {
-            height: calc(10% - 0.5rem);
-            width: 100%;
-            background-color: $light;
-            margin: 0 auto;
-            
-            .overlay-inner {
-                background-color: $light;
-                width: calc(95% + 0.5rem);
-                height: 80%;
-                display: inline-flex;
-                margin: 0.5rem 0.45rem;
-                border-bottom: 1px solid $default-text;
-                position: relative;
-                z-index: 10;
-                
-                .postcard-title {
-                    margin-left: 0.5rem;
-                    h4 {
-                        margin: 0;
-                        margin-top: 0.2rem;
-                    }
+      height: calc(10% - 0.5rem);
+      width: 100%;
+      background-color: $light;
+      margin: 0 auto;
 
-                    .postcard-miniature {
-                        .word-art-title {
-                            transform: scale(0.9, 1.2) rotate(-0.2deg) translate(0px, 0px);
-                            margin-top: 0;
-                            top: 0rem;
-                            right: 6%;
-                            .gruss-thumb {
-                                display: none;
-                            }
+      .overlay-inner {
+        background-color: $light;
+        width: calc(95% + 0.5rem);
+        height: 80%;
+        display: inline-flex;
+        margin: 0.5rem 0.45rem;
+        border-bottom: 1px solid $default-text;
+        position: relative;
+        z-index: 10;
 
-                            .wordart {
-                                font-size: 1.5rem;
-                            }
-                        }
-                    }
-                }
+        .postcard-title {
+          margin-left: 0.5rem;
+          h4 {
+            margin: 0;
+            margin-top: 0.2rem;
+          }
 
-                .button-toggle-container {
-                    margin-left: 0.5rem;
-                    display: inline-flex;
-                    width: 100%;
+          .postcard-miniature {
+            .word-art-title {
+              transform: scale(0.9, 1.2) rotate(-0.2deg) translate(0px, 0px);
+              margin-top: 0;
+              top: 0rem;
+              right: 6%;
+              .gruss-thumb {
+                display: none;
+              }
 
-                    .arrow-pointer {
-                        background-image: url('../img/buttons/caret-right.svg');
-                        background-repeat: no-repeat;
-                        background-size: contain;
-                        margin-top: 0.3rem;
-                        width: 1rem;
-                        height: calc(100% - 0.3rem);
-                    }
-
-                    svg {
-                        
-                        margin-left: 0.5rem;
-                        .toggle-rect {
-                            cursor: pointer;
-                            transition: all 0.2s;
-
-                            &:hover {
-                                transition: all 0.2s;
-                                fill: lighten($taz-orange, 20%);
-                            }
-                        }
-                        
-                        text {
-                            font-family: 'Chivo';
-                        }
-
-                        .mobile-toggle-label {
-                            display: none;
-                        }
-
-                        .controller-bg {
-                            cursor: pointer;
-                            fill: url(#MyGradient);
-                            stroke: $default-text;
-                        }
-                    }
-
-                }
-
-                .button-download {
-                    margin-left: auto;
-                    width: 15%;
-
-                    .inner-button {
-                        width: 100%;
-                        display: flex;
-                        height:100%;
-                        flex-direction: row;
-                        align-items: baseline;
-                        &:hover {
-                            .download-label {
-                                transition: all 0.5s;
-                                opacity: 1;
-                                left: 0rem;
-                            }
-                        }
-                    
-                        .download-label {
-                            pointer-events: none;
-                            transition: all 0.5s;
-                            background-color: $light;
-                            border: 1px solid $pale-olive;
-                    
-                            padding: 1rem 0.5rem;
-                            line-height: 0px;
-                            font-size: 12px;
-                            margin: auto 0.5rem;
-                            position: relative;
-                            left: -1rem;
-                            
-                            z-index: 2;
-                            opacity: 0;
-                            position: relative;
-                        }
-                    
-                        img {
-                            height: auto;
-                            width: 18%;
-                            max-width: 50px;
-                            min-width: 20px;
-                        }
-                    }
-                }
-
+              .wordart {
+                font-size: 1.5rem;
+              }
             }
+          }
         }
 
-    .side-inner {
-            background-color: $light;
-            width: 100%;
-            height: calc(90% + 0.5rem);
-            position: relative;
-            top: 0;
-    
-            // back-side with explanation
-            .details-container {
-                height: 100%;
-                
-                .flex-container {
-                    display: inline-flex;
-                    width: 100%;
-                    height: 90%;
-                    
-                    .text-container {
-                        width: 60%;
-                        height: 100%;
-                        overflow: hidden;
-                        
-                        .text-inner-container {
-                            position: relative;
-                            margin: 0 auto;
-                            width: 85%;
-                            height: 100%;
-                            
-                            .section-title {
-                                width: 80%;
-                                border-bottom: 1px solid $pale-olive;
-                                h2 {
-                                    margin-top: 0;
-                                    padding-top: 2rem;
-                                    margin-bottom: 0.5rem;
-                                }
-                            }
+        .button-toggle-container {
+          margin-left: 0.5rem;
+          display: inline-flex;
+          width: 100%;
 
-                            .section-text {
-                                height: 85%;
-                                position: relative;
-                                overflow: auto;
-
-                                p {
-                                    font-size: 14px;
-                                    span {
-                                        color: $taz-orange;
-                            
-                                        &.mittleren {
-                                            color: $taz-orange;
-                                        }
-                            
-                                        &.besten,
-                                        &.energy-data-renewables,
-                                        &.mo-km-umweltfreundlich,
-                                        &.ab-data-co,
-                                        &.ab-data-bio,
-                                        &.land-data-unter,
-                                        &.land-data-oeko,
-                                        &.ge-data-erneuerbare {
-                                            color: $mint-green;
-                                        }
-                            
-                                        &.schlechtesten,
-                                        &.gerics-data,
-                                        &.energy-data-fossil,
-                                        &.autos,
-                                        &.land-data-tierzahl,
-                                        &.ge-data-heat {
-                                            color: $red;
-                                        }
-                            
-                                        &.energy-data-geheim {
-                                            color: lighten($default-text, 20%);
-                                        }
-                            
-                                        &.location-name {
-                                            color: $dark-blue;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    .data-container {
-                        width: 40%;
-                        height: 100%;
-                        // background-color: aliceblue;
-                        border-left: 1px solid $default-text;
-
-                        .locator-map {
-                            border-bottom: 1px solid $default-text;
-                            position: relative;
-                            height: 40%;
-                        }
-
-                        .lk-list {
-                            margin: 0px 0px 0px 0px;
-                            width: 100%;
-                            height: 60%;
-                            overflow: hidden;
-                            position: relative;
-
-                            .list-inner-container {
-                                overflow: scroll;
-                                position: relative;
-                                height: 100%;
-                                
-                                .list-similar-container {
-                                        // border-bottom: 1px solid $default-text;
-                                        width: 100%;
-                                        height: 100%;
-                                
-                                        h5 {
-                                            width: calc(100% - 0.5rem);
-                                            margin: 0;
-                                            padding: 0.45rem 0rem 0.45rem 0.5rem;
-                                            border-bottom: 1px solid $default-text;
-                                        }
-                                
-                                        ul {
-                                            margin: 0.0rem 0rem 0rem 0rem;
-                                        }
-                                
-                                        ol {
-                                            padding-top: 0.5rem;
-                                            border-bottom: 1px solid $default-text;
-                                            padding-bottom: 0.5rem;
-                                
-                                            &.ui-true{
-                                                &:hover {
-                                                    background-color: $lighter-orange-full;
-                                                    cursor: pointer;
-                                                }
-                                            }
-                                        }
-                                
-                                        &.mittleren {
-                                            h5 {
-                                                color: white;
-                                                background-color: $taz-orange;
-                                            }
-                                        }
-                                
-                                        &.besten {
-                                            h5 {
-                                                color: white;
-                                                background-color: $mint-green;
-                                            }
-                                        }
-                                
-                                        &.schlechtesten {
-                                            h5 {
-                                                color: white;
-                                                background-color: $red;
-                                            }
-                                        }
-                                    }
-                            }
-                        }
-                    }
-                }
-
-                .footer-container {
-                    height: 10%;
-                    border-top: 1px solid $default-text;
-                    
-                    .footer-inner-container {
-                        display: flex;
-                        height: 100%;
-
-                        .logo-container {
-                            background: url(../img/taz/taz-logo.svg) no-repeat left center;
-                            // background-repeat: no-repeat;
-                            background-size: contain;
-                            width: 20%;
-                            min-height: 1rem;
-                            margin: 0.5rem;
-                        }
-
-                        .info-backside {
-                            margin: 10px 0px 10px 0px;
-                            font-size: 12px;
-                            line-height: 24px;
-                            border: 1px solid $mint-green;
-                            border-radius: 20px;
-                            padding: 0rem 0.5rem;
-                            background: linear-gradient(to left, $mint-green, rgba($mint-green, 0.5));
-                            -webkit-background-clip: text;
-                            background-clip: text;
-                            -webkit-text-fill-color: transparent;
-
-                            p {
-                                margin: 0 auto;
-                            }
-                        }
-                    }
-                }
-            }
-    
-            // CSS Transition classes
-            &.side-transition-enter {
-                opacity: 0;
-            }
-    
-            &.side-transition-enter-active,
-            &.side-transition-enter-done {
-                opacity: 1;
-                transition: opacity 20ms;
-                -webkit-transition: opacity 20ms;
-    
-            }
-    
-            &.side-transition-exit {
-                opacity: 1;
-                transition: opacity 20ms;
-                -webkit-transition: opacity 20ms;
-            }
-    
-            &.side-transition-exit-active {
-                opacity: 0;
-                transition: opacity 20ms;
-                -webkit-transition: opacity 20ms;
-            }
-            
-            // Here edits for the export images
-            .export {
-                width: 90%;
-                height: 90%;
-                position: absolute;
-                right: 50%;
-                top: 50%;
-                // border: 1px solid $pale-olive;
-                transform: translate(50%, -55%);
-                -webkit-transform: translate(50%, -55%);
-                background-color: $light;
-                // box-shadow: 2px 2px 0px rgba($pale-olive, .5);
-
-                .details-container {
-
-                    .flex-container {
-                        height: 100%;
-
-                        .text-container {
-                            .text-inner-container {
-                                .section-title {
-                                    h2 {
-                                        font-size: 1rem;                                    
-                                    }
-                                }   
-
-                                .section-text {
-                                    p {
-                                        font-size: 12px;
-                                        margin: 0.5rem auto;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .footer-container {
-                        display: none;
-                    }
-                }
-
-                .data-container {
-                    .lk-list {
-                        .list-inner-container {                        
-                            .list-similar-container {
-                                h5 {
-                                    border-top:  0.15px solid $default-text;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-               
-        }
-    }
-
-    .social-media-layout {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -10;
-    
-        .side-inner {
-            height: 100%;
-            // background-color: pink;
-        }
-    
-        .logo-container {
-            position: absolute;
-            background-image: url(../img/taz/taz-logo.png);
+          .arrow-pointer {
+            background-image: url('../img/buttons/caret-right.svg');
             background-repeat: no-repeat;
             background-size: contain;
-            width: 100%;
-            height: 1.5rem;
-            min-height: 1rem;
-            bottom: 8px;
-            left: 8px;
+            margin-top: 0.3rem;
+            width: 1rem;
+            height: calc(100% - 0.3rem);
+          }
+
+          svg {
+            margin-left: 0.5rem;
+            .toggle-rect {
+              cursor: pointer;
+              transition: all 0.2s;
+
+              &:hover {
+                transition: all 0.2s;
+                fill: lighten($taz-orange, 20%);
+              }
+            }
+
+            text {
+              font-family: 'Chivo';
+            }
+
+            .mobile-toggle-label {
+              display: none;
+            }
+
+            .controller-bg {
+              cursor: pointer;
+              fill: url(#MyGradient);
+              stroke: $default-text;
+            }
+          }
         }
+
+        .button-download {
+          margin-left: auto;
+          width: 15%;
+
+          .inner-button {
+            width: 100%;
+            display: flex;
+            height: 100%;
+            flex-direction: row;
+            align-items: baseline;
+            &:hover {
+              .download-label {
+                transition: all 0.5s;
+                opacity: 1;
+                left: 0rem;
+              }
+            }
+
+            .download-label {
+              pointer-events: none;
+              transition: all 0.5s;
+              background-color: $light;
+              border: 1px solid $pale-olive;
+
+              padding: 1rem 0.5rem;
+              line-height: 0px;
+              font-size: 12px;
+              margin: auto 0.5rem;
+              position: relative;
+              left: -1rem;
+
+              z-index: 2;
+              opacity: 0;
+              position: relative;
+            }
+
+            img {
+              height: auto;
+              width: 18%;
+              max-width: 50px;
+              min-width: 20px;
+            }
+          }
+        }
+      }
     }
+
+    .side-inner {
+      background-color: $light;
+      width: 100%;
+      height: calc(90% + 0.5rem);
+      position: relative;
+      top: 0;
+
+      // back-side with explanation
+      .details-container {
+        height: 100%;
+
+        .flex-container {
+          display: inline-flex;
+          width: 100%;
+          height: 90%;
+
+          .text-container {
+            width: 60%;
+            height: 100%;
+            overflow: hidden;
+
+            .text-inner-container {
+              position: relative;
+              margin: 0 auto;
+              width: 85%;
+              height: 100%;
+
+              .section-title {
+                width: 80%;
+                border-bottom: 1px solid $pale-olive;
+                h2 {
+                  margin-top: 0;
+                  padding-top: 2rem;
+                  margin-bottom: 0.5rem;
+                }
+              }
+
+              .section-text {
+                height: 85%;
+                position: relative;
+                overflow: auto;
+
+                p {
+                  font-size: 14px;
+                  span {
+                    color: $taz-orange;
+
+                    &.mittleren {
+                      color: $taz-orange;
+                    }
+
+                    &.besten,
+                    &.energy-data-renewables,
+                    &.mo-km-umweltfreundlich,
+                    &.ab-data-co,
+                    &.ab-data-bio,
+                    &.land-data-unter,
+                    &.land-data-oeko,
+                    &.ge-data-erneuerbare {
+                      color: $mint-green;
+                    }
+
+                    &.schlechtesten,
+                    &.gerics-data,
+                    &.energy-data-fossil,
+                    &.autos,
+                    &.land-data-tierzahl,
+                    &.ge-data-heat {
+                      color: $red;
+                    }
+
+                    &.energy-data-geheim {
+                      color: lighten($default-text, 20%);
+                    }
+
+                    &.location-name {
+                      color: $dark-blue;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .data-container {
+            width: 40%;
+            height: 100%;
+            // background-color: aliceblue;
+            border-left: 1px solid $default-text;
+
+            .locator-map {
+              border-bottom: 1px solid $default-text;
+              position: relative;
+              height: 40%;
+            }
+
+            .lk-list {
+              margin: 0px 0px 0px 0px;
+              width: 100%;
+              height: 60%;
+              overflow: hidden;
+              position: relative;
+
+              .list-inner-container {
+                overflow: scroll;
+                position: relative;
+                height: 100%;
+
+                .list-similar-container {
+                  // border-bottom: 1px solid $default-text;
+                  width: 100%;
+                  height: 100%;
+
+                  h5 {
+                    width: calc(100% - 0.5rem);
+                    margin: 0;
+                    padding: 0.45rem 0rem 0.45rem 0.5rem;
+                    border-bottom: 1px solid $default-text;
+                  }
+
+                  ul {
+                    margin: 0rem 0rem 0rem 0rem;
+                  }
+
+                  ol {
+                    padding-top: 0.5rem;
+                    border-bottom: 1px solid $default-text;
+                    padding-bottom: 0.5rem;
+
+                    &.ui-true {
+                      &:hover {
+                        background-color: $lighter-orange-full;
+                        cursor: pointer;
+                      }
+                    }
+                  }
+
+                  &.mittleren {
+                    h5 {
+                      color: white;
+                      background-color: $taz-orange;
+                    }
+                  }
+
+                  &.besten {
+                    h5 {
+                      color: white;
+                      background-color: $mint-green;
+                    }
+                  }
+
+                  &.schlechtesten {
+                    h5 {
+                      color: white;
+                      background-color: $red;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .footer-container {
+          height: 10%;
+          border-top: 1px solid $default-text;
+
+          .footer-inner-container {
+            display: flex;
+            height: 100%;
+
+            .logo-container {
+              background: url(../img/taz/taz-logo.svg) no-repeat left center;
+              // background-repeat: no-repeat;
+              background-size: contain;
+              width: 20%;
+              min-height: 1rem;
+              margin: 0.5rem;
+            }
+
+            .info-backside {
+              margin: 10px 0px 10px 0px;
+              font-size: 12px;
+              line-height: 24px;
+              border: 1px solid $mint-green;
+              border-radius: 20px;
+              padding: 0rem 0.5rem;
+              background: linear-gradient(to left, $mint-green, rgba($mint-green, 0.5));
+              -webkit-background-clip: text;
+              background-clip: text;
+              -webkit-text-fill-color: transparent;
+
+              p {
+                margin: 0 auto;
+              }
+            }
+          }
+        }
+      }
+
+      // CSS Transition classes
+      &.side-transition-enter {
+        opacity: 0;
+      }
+
+      &.side-transition-enter-active,
+      &.side-transition-enter-done {
+        opacity: 1;
+        transition: opacity 20ms;
+        -webkit-transition: opacity 20ms;
+      }
+
+      &.side-transition-exit {
+        opacity: 1;
+        transition: opacity 20ms;
+        -webkit-transition: opacity 20ms;
+      }
+
+      &.side-transition-exit-active {
+        opacity: 0;
+        transition: opacity 20ms;
+        -webkit-transition: opacity 20ms;
+      }
+
+      // Here edits for the export images
+      .export {
+        width: 90%;
+        height: 90%;
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        // border: 1px solid $pale-olive;
+        transform: translate(50%, -55%);
+        -webkit-transform: translate(50%, -55%);
+        background-color: $light;
+        // box-shadow: 2px 2px 0px rgba($pale-olive, .5);
+
+        .details-container {
+          .flex-container {
+            height: 100%;
+
+            .text-container {
+              .text-inner-container {
+                .section-title {
+                  h2 {
+                    font-size: 1rem;
+                  }
+                }
+
+                .section-text {
+                  p {
+                    font-size: 12px;
+                    margin: 0.5rem auto;
+                  }
+                }
+              }
+            }
+          }
+          .footer-container {
+            display: none;
+          }
+        }
+
+        .data-container {
+          .lk-list {
+            .list-inner-container {
+              .list-similar-container {
+                h5 {
+                  border-top: 0.15px solid $default-text;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .social-media-layout {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+
+    .side-inner {
+      height: 100%;
+      // background-color: pink;
+    }
+
+    .logo-container {
+      position: absolute;
+      background-image: url(../img/taz/taz-logo.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 100%;
+      height: 1.5rem;
+      min-height: 1rem;
+      bottom: 8px;
+      left: 8px;
+    }
+  }
 }
