@@ -140,6 +140,8 @@ const Land = ({
       currentArc.x = xScale(uniqueAnimals.indexOf(data.column));
       currentArc.color = colorCategory(colorValue);
       currentArc.pathPrev = arcGenerator(prevScaledValue);
+      currentArc.radius = scaledValue;
+      currentArc.radiusPrev = prevScaledValue;
 
       return currentArc;
     };
@@ -161,18 +163,43 @@ const Land = ({
       {currentData !== undefined && currentData.data !== undefined && (
         <div className="visualization-container" ref={targetRef}>
           <svg className="chart" width="100%" height="100%">
+            <defs>
+              <marker
+                id="arrow"
+                viewBox="0 0 10 10"
+                refX="8"
+                refY="5"
+                markerWidth="5"
+                markerHeight="5"
+                orient="auto-start-reverse"
+              >
+                <path d="M 0 0 L 10 5 L 0 10 z" />
+              </marker>
+            </defs>
             <g
               className="legend"
               transform={`translate(${marginWidth / 2}, ${marginHeight / 1.5})`}
             >
               <g className="label-item wenigerTiere">
                 <circle className="wenigerTiere" cx="0" cy="0" r={legendRadius} />
+                {/* <polyline
+                  points={'0,' + -legendRadius + ', 0,' + legendRadius}
+                  fill="none"
+                  stroke="#484848"
+                  markerEnd="url(#arrow)"
+                /> */}
                 <text x={legendRadius + 10} y={legendRadius / 2 + 2}>
                   weniger Tiere
                 </text>
               </g>
               <g className="label-item mehrTiere">
                 <circle className="mehrTiere" cx="120" cy="0" r={legendRadius} />
+                {/* <polyline
+                  points={'120,' + legendRadius + ', 120,' + -legendRadius}
+                  fill="none"
+                  stroke="#484848"
+                  markerEnd="url(#arrow)"
+                /> */}
                 <text x={legendRadius + 130} y={legendRadius / 2 + 2}>
                   mehr Tiere
                 </text>
@@ -180,7 +207,7 @@ const Land = ({
               <g className="label-item vorherigeZaehlung">
                 <circle className="vorherigeZaehlung" cx="240" cy="0" r={legendRadius} />
                 <text x={legendRadius + 250} y={legendRadius / 2 + 2}>
-                  als im Vergleich zur vorherigen Zählung
+                  Anzahl aus vorheriger Zählung
                 </text>
               </g>
             </g>
@@ -222,6 +249,15 @@ const Land = ({
                         {arc.valueTotal}
                       </text>
                     </g>
+
+                    {arc.radiusPrev !== 0 && Math.abs(arc.radiusPrev - arc.radius) > 5 && (
+                      <polyline
+                        points={'0, ' + -arc.radiusPrev + ', 0,' + -arc.radius}
+                        fill="none"
+                        stroke="#484848"
+                        markerEnd="url(#arrow)"
+                      />
+                    )}
                   </g>
                 );
               })}
@@ -235,6 +271,15 @@ const Land = ({
                         {arc.valueTotal}
                       </text>
                     </g>
+
+                    {arc.radiusPrev !== 0 && Math.abs(arc.radiusPrev - arc.radius) > 5 && (
+                      <polyline
+                        points={'0, ' + -arc.radiusPrev + ', 0,' + -arc.radius}
+                        fill="none"
+                        stroke="#484848"
+                        markerEnd="url(#arrow)"
+                      />
+                    )}
                   </g>
                 );
               })}
@@ -248,6 +293,15 @@ const Land = ({
                         {arc.valueTotal}
                       </text>
                     </g>
+
+                    {arc.radiusPrev !== 0 && Math.abs(arc.radiusPrev - arc.radius) > 5 && (
+                      <polyline
+                        points={'0, ' + -arc.radiusPrev + ', 0,' + -arc.radius}
+                        fill="none"
+                        stroke="#484848"
+                        markerEnd="url(#arrow)"
+                      />
+                    )}
                   </g>
                 );
               })}
