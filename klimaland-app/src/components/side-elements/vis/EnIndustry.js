@@ -1,12 +1,5 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import {
-  stack,
-  stackOffsetSilhouette,
-  stackOffsetNone,
-  stackOrderAscending,
-  curveMonotoneX,
-  area,
-} from 'd3-shape';
+import { stack, stackOffsetNone, stackOrderAscending, curveMonotoneX, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
