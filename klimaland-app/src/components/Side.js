@@ -271,7 +271,10 @@ export default class Side extends Component {
                 )}
               <button className="button-download" onClick={this.onShareButtonClick}>
                 <div className="inner-button">
-                  <p className="download-label">Download</p>
+                  {!this.state.exportActive && <p className="download-label">Download</p>}
+                  {this.state.exportActive && (
+                    <p className="download-label active">Download wird vorbereitet...</p>
+                  )}
                   <img src={share} className="button img" alt="click to download" />
                 </div>
               </button>

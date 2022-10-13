@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import closeCard from '../img/buttons/close.svg';
 import flipCard from '../img/buttons/flip.svg';
 import toggleCard from '../img/buttons/toggle.png';
+import share from '../img/buttons/share.svg';
 
 export default class Info extends Component {
   constructor(props) {
@@ -14,6 +15,9 @@ export default class Info extends Component {
     //render function. Without this bind, the App would just crash in an endless loop
     this.handleHelpFocus = this.updateFocus.bind(this, true);
     this.handleHelpNotFocus = this.updateFocus.bind(this, false);
+
+    this.wrapperRef = React.createRef();
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   /**
@@ -22,6 +26,21 @@ export default class Info extends Component {
    */
   componentDidMount() {
     this.setState({ inFocus: false });
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  /**
+   * Alert if clicked on outside of element
+   */
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+      event.preventDefault();
+      this.updateFocus(false);
+    }
   }
 
   /**
@@ -34,7 +53,7 @@ export default class Info extends Component {
 
   render() {
     return (
-      <div className="info-container">
+      <div className="info-container" ref={this.wrapperRef}>
         <div
           className={`info-container-content ${this.state.inFocus ? 'open' : ''}`}
           onClick={this.state.inFocus ? this.handleHelpNotFocus : this.handleHelpFocus}
@@ -66,6 +85,8 @@ export default class Info extends Component {
               <img src={toggleCard} className="img-toggle" alt="flip-button-img" /> werden. Auf der
               Rückseite <img src={flipCard} className="img-flip" alt="flip-button-img" />
               der Postkarte befindet sich eine kurze Erklärung und ein Klimaausblick der Region.
+              Außerdem kann die Postkarte zum Verschicken oder Teilen heruntergeladen
+              <img src={share} className="img-download" alt="download-button-img" /> werden.
             </p>
             <p className="text">
               Wie gut schlägt sich deine Region in der Bekämpfung der Klimakrise?
