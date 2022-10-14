@@ -50,7 +50,7 @@ export default class Details extends Component {
           </div>
           <div className="data-container">
             <div className="locator-map">
-              <Locator lk={this.props.lk} />
+              <Locator lk={this.props.lk} handleClickOnMap={this.handleClickOnList} />
             </div>
             <div className="lk-list">
               <List

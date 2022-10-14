@@ -3,9 +3,13 @@ import React, { Component } from 'react';
 import { geoPath, geoMercator } from 'd3-geo';
 import LandkreiseOutline from '../../data/kreise-simpler.json';
 import bundeslaenderOutline from '../../data/bundeslaender.json';
-import { setStateAsync } from '../../helpers/helperFunc';
+import { getTotalLKName, setStateAsync } from '../../helpers/helperFunc';
+import { UIContext } from '../UIContext';
+import DropDownControls from '../../data/selector-controls.json';
 
 export default class Locator extends Component {
+  static contextType = UIContext;
+
   constructor(props) {
     super(props);
 
@@ -23,6 +27,8 @@ export default class Locator extends Component {
       geoGenerator: [],
       zoomHeight: 0,
     };
+    this.landkreise = DropDownControls.landkreise;
+    this.handleClickOnMap = this.handleClickOnMap.bind(this);
   }
 
   async changeCurrentMap() {
@@ -145,6 +151,20 @@ export default class Locator extends Component {
     }
   }
 
+  handleClickOnMap(ags) {
+    //return if ui vis = false
+    if (!this.context) {
+      console.log('no ui');
+      return;
+    }
+    //find lk in list of landkreise
+    let chosenLK = this.landkreise.find((d) => d.value === ags);
+    if (chosenLK !== undefined) {
+      const lk = { value: ags, label: getTotalLKName(chosenLK) };
+      this.props.handleClickOnMap(lk);
+    }
+  }
+
   render() {
     return (
       <div className="locator-container">
@@ -166,9 +186,10 @@ export default class Locator extends Component {
                           className={`landkreis ${el.lk} ${el.bl} ${
                             el.visible ? 'visible' : 'hidden'
                           }`}
+                          onClick={this.handleClickOnMap.bind(this, parseInt(el.lk))}
                         />
                       );
-                    })}
+                    }, this)}
                     <circle cx="50%" cy="50%" r="49.5%" stroke="#484848" fill="none"></circle>
                   </g>
                 </svg>
