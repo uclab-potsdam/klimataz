@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import closeCard from '../img/buttons/close.svg';
 import flipCard from '../img/buttons/flip.svg';
 import toggleCard from '../img/buttons/toggle.png';
+import share from '../img/buttons/share.svg';
 
 export default class Info extends Component {
   constructor(props) {
@@ -84,6 +85,8 @@ export default class Info extends Component {
               <img src={toggleCard} className="img-toggle" alt="flip-button-img" /> werden. Auf der
               Rückseite <img src={flipCard} className="img-flip" alt="flip-button-img" />
               der Postkarte befindet sich eine kurze Erklärung und ein Klimaausblick der Region.
+              Außerdem kann die Postkarte zum Verschicken oder Teilen heruntergeladen
+              <img src={share} className="img-download" alt="download-button-img" /> werden.
             </p>
             <p className="text">
               Wie gut schlägt sich deine Region in der Bekämpfung der Klimakrise?
