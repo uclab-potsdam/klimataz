@@ -1,5 +1,5 @@
-import React, { useRef, useLayoutEffect, createRef, useState, useEffect } from 'react';
-import { stack, stackOffsetSilhouette, stackOrderAscending, curveCatmullRom, area } from 'd3-shape';
+import React, { createRef, useState, useEffect } from 'react';
+import { stack, stackOffsetNone, stackOrderAscending, curveCatmullRom, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
@@ -100,14 +100,8 @@ const Energy = ({
     const xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth, dimensions.width - marginWidth]);
-    const domainY = [
-      -max(currentData.data.map((d) => d.value / 2)),
-      max(currentData.data.map((d) => d.value / 2)),
-    ];
-    const yScale = scaleLinear()
-      .domain(domainY)
-      .range([dimensions.height - paddingHeight, marginHeight])
-      .nice();
+    const domainY = [0, max(currentData.data.map((d) => d.value))];
+    const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
 
     // map source to color
     scaleCategory = scaleOrdinal().domain(uniqueEnergySourceFiltered).range(colorArray);
@@ -153,7 +147,7 @@ const Energy = ({
     const stacks = stack()
       .keys(uniqueEnergySourceFiltered)
       .order(stackOrderAscending)
-      .offset(stackOffsetSilhouette);
+      .offset(stackOffsetNone);
     const stackedSeries = stacks(stackData);
 
     // stream graph
