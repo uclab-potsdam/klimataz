@@ -198,6 +198,7 @@ const Buildings = ({
           klassName: cleanKlassString(d.column.toLowerCase()),
           label: `${d.value.toFixed(0)} %`,
           id: d.column,
+          value: d.value.toFixed(0),
         });
       });
 
@@ -279,6 +280,7 @@ const Buildings = ({
                     className={`${line.klassName} ${line.type} line`}
                     onClick={() => changeId(line.id)}
                   >
+                    <path d={line.path} className="hitbox" fill="none" />
                     <path d={line.path} fill="none" />
                   </g>
                 );
@@ -300,13 +302,28 @@ const Buildings = ({
                           className={`year-marker ${en.klassName} ${
                             en.id === currentId ? 'default' : 'optional'
                           }`}
+                          onClick={() => changeId(en.id)}
                         >
                           <circle cx="0" cy="0" r="3" />
-                          {!isThumbnail && (
+                        </g>
+                      );
+                    })}
+                    {!isThumbnail &&
+                      axis.energyMarkers.map((en, e) => {
+                        return (
+                          <g
+                            key={e}
+                            transform={`translate(0, ${en.y})`}
+                            className={`year-marker ${en.klassName} ${
+                              en.id === currentId ? 'default' : 'optional'
+                            }`}
+                            onClick={() => changeId(en.id)}
+                          >
                             <g transform="translate(5, 0)">
                               <foreignObject
-                                x={a === axis.length - 1 ? -40 : -2}
-                                y="-25"
+                                //x={a === axis.length - 1 ? -40 : -2}
+                                x={en.value > 9 ? -21 : -18}
+                                y="-12.5"
                                 width="1"
                                 height="1"
                               >
@@ -320,10 +337,9 @@ const Buildings = ({
                                 </div>
                               </foreignObject>
                             </g>
-                          )}
-                        </g>
-                      );
-                    })}
+                          </g>
+                        );
+                      })}
                   </g>
                 );
               })}
