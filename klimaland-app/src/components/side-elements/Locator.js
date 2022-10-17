@@ -29,6 +29,7 @@ export default class Locator extends Component {
     };
     this.landkreise = DropDownControls.landkreise;
     this.handleClickOnMap = this.handleClickOnMap.bind(this);
+    this.updateDimensions = this.updateDimensions.bind(this);
   }
 
   async changeCurrentMap() {
@@ -112,31 +113,32 @@ export default class Locator extends Component {
     this.setState({ singleShapes: singleShapesTemp, zoomPointerPath: zoomPointerPathTemp });
   }
 
-  async componentDidMount() {
+  async updateDimensions() {
     if (this.targetRef.current) {
-      await setStateAsync(this, {
+      return await setStateAsync(this, {
         dimensions: {
           width: this.targetRef.current.offsetWidth,
           height: this.targetRef.current.offsetHeight,
         },
       });
     }
-    await this.changeCurrentMap().then(() => {
-      this.generateMap();
-    });
+  }
+
+  async componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+    await this.updateDimensions()
+      .then(() => {
+        return this.changeCurrentMap();
+      })
+      .then(() => {
+        this.generateMap();
+      });
   }
 
   async componentDidUpdate(prevProps) {
     if (this.props.lk !== prevProps.lk) {
       //update dimensions
-      if (this.targetRef.current) {
-        await setStateAsync(this, {
-          dimensions: {
-            width: this.targetRef.current.offsetWidth,
-            height: this.targetRef.current.offsetHeight,
-          },
-        });
-      }
+      this.updateDimensions();
       if (this.props.lk < 18 && prevProps.lk < 18) {
         //stay on BL map
         this.generateMap();
@@ -150,6 +152,10 @@ export default class Locator extends Component {
         });
       }
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
   }
 
   handleClickOnMap(ags) {
