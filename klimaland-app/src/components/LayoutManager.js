@@ -81,6 +81,8 @@ export default class LayoutManager extends Component {
       previewLeftCard: '',
       previewRightCard: '',
     };
+
+    this.escFunction = this.escFunction.bind(this);
   }
 
   /**
@@ -444,12 +446,22 @@ export default class LayoutManager extends Component {
       });
   }
 
+  escFunction(event) {
+    if (event.key === 'Escape') {
+      this.closePostcardView();
+    } else if (event.keyCode === 37) {
+      this.handleSwitchBack();
+    } else if (event.keyCode === 39) {
+      this.handleSwitchNext();
+    }
+  }
   /**
    * React Lifecycle Hook
    * on mount: use editors pick (passed from Canvas as prop)
    */
   componentDidMount() {
     this.setEditorsPick();
+    document.addEventListener('keydown', this.escFunction, false);
   }
 
   componentDidUpdate(prevProps) {
@@ -534,7 +546,7 @@ export default class LayoutManager extends Component {
             </div>
           )}
 
-          <Info />
+          <Info postcardView={this.state.postcardView} mode={this.state.mode} />
           <Sources />
         </div>
       </UIContext.Provider>
