@@ -291,6 +291,7 @@ export default class Side extends Component {
                 similarAgs={this.props.similarAgs}
                 activeSide={this.props.activeSide}
                 handleClickOnList={this.handleClickOnList}
+                ranking={this.state.ranking}
               />
             )}
             {this.state.showViz && this.vis()}
@@ -310,6 +311,7 @@ export default class Side extends Component {
                           similarAgs={this.props.similarAgs}
                           activeSide={this.props.activeSide}
                           handleClickOnList={this.handleClickOnList}
+                          ranking={this.state.ranking}
                         />
                       )}
                       {this.state.showViz && this.vis()}

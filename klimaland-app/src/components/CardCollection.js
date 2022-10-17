@@ -211,25 +211,41 @@ export default class CardCollection extends Component {
 
             //if is top card
             if (isTopCard) {
-              // pulling similar lks (within the bl)
-              similarAgs = Object.fromEntries(
-                Object.entries(this.textData).filter(([key, value]) => {
-                  return element.lk.value !== 0
-                    ? value[section]['third'] === localTextData[section]['third'] &&
-                        value.key !== element.lk.value
-                    : value.key !== element.lk.value;
-                })
-              );
+              //if no ranking
+              if (localTextData[section]['third'] == '') {
+                similarAgs = Object.keys(this.textData).map((key) => [
+                  Number(key),
+                  this.textData[key],
+                ]);
+                similarAgs = similarAgs.map(function (d) {
+                  return {
+                    value: d[1].key,
+                    label: d[1].name,
+                  };
+                });
+              }
+              //if has ranking
+              else {
+                // pulling similar lks (within the bl)
+                similarAgs = Object.fromEntries(
+                  Object.entries(this.textData).filter(([key, value]) => {
+                    return element.lk.value !== 0
+                      ? value[section]['third'] === localTextData[section]['third'] &&
+                          value.key !== element.lk.value
+                      : value.key !== element.lk.value;
+                  })
+                );
 
-              //convert to array for ags-name pairs
-              similarAgs = Object.keys(similarAgs).map((key) => [Number(key), similarAgs[key]]);
+                //convert to array for ags-name pairs
+                similarAgs = Object.keys(similarAgs).map((key) => [Number(key), similarAgs[key]]);
 
-              similarAgs = similarAgs.map(function (d) {
-                return {
-                  value: d[1].key,
-                  label: d[1].name,
-                };
-              });
+                similarAgs = similarAgs.map(function (d) {
+                  return {
+                    value: d[1].key,
+                    label: d[1].name,
+                  };
+                });
+              }
 
               // shuffle the array
               const shuffled = similarAgs.sort(() => 0.5 - Math.random());
@@ -244,8 +260,9 @@ export default class CardCollection extends Component {
                 this.props.lastActiveCardLK.value !== element.lk.value &&
                 isInt(this.props.lastActiveCardLK.value) &&
                 //same third
-                this.textData[this.props.lastActiveCardLK.value][section]['third'] ===
-                  localTextData[section]['third']
+                (this.textData[this.props.lastActiveCardLK.value][section]['third'] ===
+                  localTextData[section]['third'] ||
+                  localTextData[section]['third'] == '')
               ) {
                 //add last active LK to the beginning
                 similarAgs.unshift(this.props.lastActiveCardLK);
