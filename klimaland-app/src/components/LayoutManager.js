@@ -534,7 +534,7 @@ export default class LayoutManager extends Component {
             </div>
           )}
 
-          <Info />
+          <Info postcardView={this.state.postcardView} mode={this.state.mode} />
           <Sources />
         </div>
       </UIContext.Provider>
