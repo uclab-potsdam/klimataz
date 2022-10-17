@@ -1,18 +1,10 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { extent, max, min } from 'd3-array';
 import { pie, arc } from 'd3';
 import { formatNumber, useCardSize } from '../../../helpers/helperFunc';
 
-const Waste = ({
-  currentData,
-  currentIndicator,
-  currentSection,
-  locationLabel,
-  isThumbnail,
-  footnote,
-  cardNumber,
-}) => {
+const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }) => {
   const targetRef = useRef();
   //const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [piesAreActive, setPies] = useState(false);

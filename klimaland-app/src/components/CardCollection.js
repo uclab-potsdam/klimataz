@@ -71,7 +71,7 @@ export default class CardCollection extends Component {
     if (
       typeof element !== 'object' ||
       Array.isArray(element) ||
-      element == null ||
+      element === null ||
       element === undefined
     ) {
       throw new Error('Selected Element is not an Object');
@@ -80,7 +80,8 @@ export default class CardCollection extends Component {
     if (element.lk === undefined || element.lk.value === undefined || !isInt(element.lk.value)) {
       throw new Error('Selected Landkreis is not valid');
     }
-    if (typeof element.lk.label !== 'string' || !element.lk.label instanceof String) {
+    if (typeof element.lk.label !== 'string' && !(element.lk.label instanceof String)) {
+      console.log(element.lk.label);
       throw new Error('Selected Landkreis is not valid');
     }
     //check section type
@@ -211,7 +212,7 @@ export default class CardCollection extends Component {
             //if is top card
             if (isTopCard) {
               //if no ranking
-              if (localTextData[section]['third'] == '') {
+              if (localTextData[section]['third'] === '') {
                 similarAgs = Object.keys(this.state.textData).map((key) => [
                   Number(key),
                   this.state.textData[key],
@@ -261,7 +262,7 @@ export default class CardCollection extends Component {
                 //same third
                 (this.state.textData[this.props.lastActiveCardLK.value][section]['third'] ===
                   localTextData[section]['third'] ||
-                  localTextData[section]['third'] == '')
+                  localTextData[section]['third'] === '')
               ) {
                 //add last active LK to the beginning
                 similarAgs.unshift(this.props.lastActiveCardLK);
@@ -420,7 +421,7 @@ export default class CardCollection extends Component {
           <div className="inner-card-collection">
             <div
               className={`card-container stacked ${
-                this.props.cardSelection.length == 2 ? 'twocards' : 'default'
+                this.props.cardSelection.length === 2 ? 'twocards' : 'default'
               }`}
             >
               {this.state.cards}

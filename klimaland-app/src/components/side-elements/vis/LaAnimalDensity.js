@@ -1,17 +1,10 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { max } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { min, uniq } from 'lodash';
 import { formatNumber, useCardSize, mobileCheck } from '../../../helpers/helperFunc';
 
-const LandDenisty = ({
-  currentData,
-  currentIndicator,
-  currentSection,
-  locationLabel,
-  isThumbnail,
-  cardNumber,
-}) => {
+const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
   const dimensions = useCardSize(targetRef, cardNumber);
@@ -77,7 +70,7 @@ const LandDenisty = ({
 
       currentBar.id = data.column;
       currentBar.value = yScale(data.value);
-      currentBar.valueTotal = formatNumber(data.value) == 0 ? 'n. a.' : formatNumber(data.value);
+      currentBar.valueTotal = formatNumber(data.value) === 0 ? 'n. a.' : formatNumber(data.value);
       currentBar.year = +data.year;
       currentBar.x = xScale(uniqueYears.indexOf(parseInt(data.year)));
       currentBar.color = colorValue;
