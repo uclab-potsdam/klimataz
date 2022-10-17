@@ -77,7 +77,7 @@ const LandDenisty = ({
 
       currentBar.id = data.column;
       currentBar.value = yScale(data.value);
-      currentBar.valueTotal = formatNumber(data.value);
+      currentBar.valueTotal = formatNumber(data.value) == 0 ? 'n. a.' : formatNumber(data.value);
       currentBar.year = +data.year;
       currentBar.x = xScale(uniqueYears.indexOf(parseInt(data.year)));
       currentBar.color = colorValue;
@@ -132,7 +132,7 @@ const LandDenisty = ({
         <div className="legend">
           <svg height="200px">
             <text x="0" y="10">
-              Anzahl in GV
+              Anzahl in Großvieheinheit (GV)
             </text>
 
             <g transform="translate(0, 18)">
