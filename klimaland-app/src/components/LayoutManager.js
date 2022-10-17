@@ -503,6 +503,7 @@ export default class LayoutManager extends Component {
             cardSelection={this.state.cardSelection}
             mode={this.state.mode}
             postcardView={this.state.postcardView}
+            landkreise={this.props.landkreiseData}
             activeCard={this.state.activeCard}
             lastActiveCardLK={this.state.lastActiveCardLK}
             dataLevelLK={this.state.dataLevelLK}
