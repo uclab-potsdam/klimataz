@@ -1,18 +1,18 @@
 @import 'node_modules/include-media/dist/_include-media.scss';
 //fonts
 @font-face {
-    font-family: AktivGrotesk_bold;
-    src: url('../fonts/aktiv/AktivGrotesk_Md.ttf');
+  font-family: AktivGrotesk_bold;
+  src: url('../fonts/aktiv/AktivGrotesk_Md.ttf');
 }
 
 @font-face {
-    font-family: AktivGrotesk;
-    src: url('../fonts/aktiv/AktivGrotesk_Rg.ttf');
+  font-family: AktivGrotesk;
+  src: url('../fonts/aktiv/AktivGrotesk_Rg.ttf');
 }
 
 @font-face {
-    font-family: Chivo;
-    src: url('../fonts/chivo/Chivo-Light.otf');
+  font-family: Chivo;
+  src: url('../fonts/chivo/Chivo-Light.otf');
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap');
@@ -20,24 +20,24 @@
 
 // breakpoints for responsive devices
 $breakpoints: (
-    phone: 320px,
-    largephone: 400px, /* iPhone 13 Pro, Galaxy S20, etc.*/
-    minitablet:576px, /* iPad Mini and small tablets on portrait*/
-    tablet: 768px, /* iPad Pro and small tablets on landscape*/
-    desktop: 940px
+  phone: 320px,
+  largephone: 400px,
+  /* iPhone 13 Pro, Galaxy S20, etc.*/ minitablet: 576px,
+  /* iPad Mini and small tablets on portrait*/ tablet: 768px,
+  /* iPad Pro and small tablets on landscape*/ desktop: 940px,
 );
 
 //colors
-$wine-red: #A80D35;
-$taz-pink: #F00048;
-$dark-pink: #E5144B;
-$red: #FF7B7B;
+$wine-red: #a80d35;
+$taz-pink: #f00048;
+$dark-pink: #e5144b;
+$red: #ff7b7b;
 $pink: rgb(255, 192, 192);
-$pale-pink: #FFD5C8;
+$pale-pink: #ffd5c8;
 
-$dark-blue: #2A4D9C;
-$electric-blue: #3762FB;
-$marine-blue: #5DCCD3;
+$dark-blue: #2a4d9c;
+$electric-blue: #3762fb;
+$marine-blue: #5dccd3;
 $dust-blue: rgb(71, 84, 117);
 $blue: rgb(170, 210, 238);
 
@@ -49,251 +49,262 @@ $pale-olive: rgb(211, 186, 153);
 $lighter-orange-full: #fff4e5;
 $light: #fefaf6;
 
-$mint-green: #1A8579;
+$mint-green: #1a8579;
 
 $default-text: #484848;
 
-
 //size variables
 $postcardview-postcardwidth: 80vw;
-$thumbnail-postcardwidth:30vw;
-$portait-postcardwidth:85vw;
-$portrait-minitablet-postcardwidth:65vw;
-$portait-postcardheight:85vh;
+$thumbnail-postcardwidth: 30vw;
+$portait-postcardwidth: 85vw;
+$portrait-minitablet-postcardwidth: 65vw;
+$portait-postcardheight: 85vh;
 
 //effects
 $boxshadow: (
-    default: (3px 3px 0px rgba($pale-olive, 0.2)),
-    hover: (4.5px 4.5px 0px rgba($pale-olive, 0.7))
+  default: (
+    3px 3px 0px rgba($pale-olive, 0.2),
+  ),
+  hover: (
+    4.5px 4.5px 0px rgba($pale-olive, 0.7),
+  ),
 );
 
-h1, h2, h3, h4, h5, h6, p, text {
-    font-family: "Chivo";
-    color: $default-text;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+text {
+  font-family: 'Chivo';
+  color: $default-text;
 }
 
-p, text {
-    font-family: "AktivGrotesk";
-    color: $default-text;
+p,
+text {
+  font-family: 'AktivGrotesk';
+  color: $default-text;
 }
 
 //keyframed animation
 @keyframes bounce {
-    0% {
-        -webkit-transform: translateY(-30px);
-        transform: translateY(-30px);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
+  0% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
 
-    40% {
-        -webkit-transform: translateY(-24px);
-        transform: translateY(-24px);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
+  40% {
+    -webkit-transform: translateY(-24px);
+    transform: translateY(-24px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
 
-    65% {
-        -webkit-transform: translateY(-18px);
-        transform: translateY(-18px);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
+  65% {
+    -webkit-transform: translateY(-18px);
+    transform: translateY(-18px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
 
-    82% {
-        -webkit-transform: translateY(-9px);
-        transform: translateY(-9px);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
+  82% {
+    -webkit-transform: translateY(-9px);
+    transform: translateY(-9px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
 
-    93% {
-        -webkit-transform: translateY(-6px);
-        transform: translateY(-6px);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
+  93% {
+    -webkit-transform: translateY(-6px);
+    transform: translateY(-6px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
 
-    25%,
-    55%,
-    75%,
-    87% {
-        -webkit-transform: translateY(0px);
-        transform: translateY(0px);
-        -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-    }
+  25%,
+  55%,
+  75%,
+  87% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
 
-    100% {
-        -webkit-transform: translateY(0px);
-        transform: translateY(0px);
-        -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-    }
+  100% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
 }
 
 //reusable code
-@mixin title{
-    font-family: "Chivo";
+@mixin title {
+  font-family: 'Chivo';
 }
 
 @mixin wordart-style-setup {
-        pointer-events: none;
-        z-index: 1;
-        .gruss-thumb {
-            font-size: 0.9rem;
-            margin: 0;
-            z-index: 2;
-        }
+  pointer-events: none;
+  z-index: 1;
+  .gruss-thumb {
+    font-size: 0.9rem;
+    margin: 0;
+    z-index: 2;
+  }
 
-        .wordart {
-            font-size: 1.5rem;
-            width: 100%;
-            margin: 0px;    
-        }
+  .wordart {
+    font-size: 1.5rem;
+    width: 100%;
+    margin: 0px;
+  }
 }
 
 @mixin wordart-style-1 {
-    @include wordart-style-setup;
-    transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, 10px);
+  @include wordart-style-setup;
+  transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, 10px);
 
-    .gruss-thumb, .gruss-thumb:after {
-        color: $dark-blue;
-        margin-top: 0.5rem;
-        content: 'Sonnige Grüße aus';
-    }
+  .gruss-thumb,
+  .gruss-thumb:after {
+    color: $dark-blue;
+    margin-top: 0.5rem;
+    content: 'Wie läuft der Klimaschutz in';
+  }
 
-    .wordart {
-        transform: translateY(-10px);
-        display:inline-block;
-        padding-left: 7px;
-        padding-right: 7px;
-        padding-top: 7px;
-        font-family: 'Vampiro One', sans-serif;
-        letter-spacing: -0.25vw;
-        background-image: linear-gradient(0deg, $taz-pink 0%, $blue 80%);
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        -webkit-background-clip: text;
-        clip-path: inset(1px);
-        
-        &:not(.main) {
-            &[class*="additional-"] {
-                display: none;
-            }
-        }
+  .wordart {
+    transform: translateY(-10px);
+    display: inline-block;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 7px;
+    font-family: 'Vampiro One', sans-serif;
+    letter-spacing: -0.25vw;
+    background-image: linear-gradient(0deg, $taz-pink 0%, $blue 80%);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    clip-path: inset(1px);
+
+    &:not(.main) {
+      &[class*='additional-'] {
+        display: none;
+      }
     }
+  }
 }
 
-@mixin button{
-    border: none;
-    background: none;
-    cursor: pointer;
-    margin: 0;
-    padding: 0;
-    right: 0.5rem;
-    bottom: 0.5rem;
+@mixin button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  right: 0.5rem;
+  bottom: 0.5rem;
 
-    &:hover {
-        img, h2, .button, .img {
-            opacity: 70%;
-        }
+  &:hover {
+    img,
+    h2,
+    .button,
+    .img {
+      opacity: 70%;
     }
+  }
 
-    &.img{
-        height: 25px;
-        color:"blue"
-    }
+  &.img {
+    height: 25px;
+    color: 'blue';
+  }
 }
 
 //reusable styles for postcards
 @mixin postcard {
-    z-index: -10;
+  z-index: -10;
+  transition: 0.2s;
+  background-color: $light;
+  border: 1px solid $pale-olive;
+  border-radius: 0px;
+  box-shadow: map-get($map: $boxshadow, $key: default);
+
+  &:hover {
     transition: 0.2s;
-    background-color: $light;
-    border: 1px solid $pale-olive;
-    border-radius: 0px;
-    box-shadow: map-get($map: $boxshadow, $key: default);
-
-    &:hover {
-        transition: 0.2s;
-        box-shadow: map-get($map: $boxshadow, $key: hover);
-    }
-
+    box-shadow: map-get($map: $boxshadow, $key: hover);
+  }
 }
 
 @mixin stacked-postcard {
-    position: absolute;
-    transition: 1000ms;
+  position: absolute;
+  transition: 1000ms;
 }
 
 @mixin portrait-postcard {
-
 }
 
 // reusable layouts for vis
-@mixin vertical-layout{
-    display: inline-flex;
+@mixin vertical-layout {
+  display: inline-flex;
+  .description {
+    width: 35%;
+    height: 100%;
+    margin-left: 0.5rem;
+
+    .title {
+      border-bottom: 1px solid $default-text;
+
+      h4 {
+        padding: 0rem 0.5rem 0rem 1rem;
+      }
+
+      span {
+        color: $dark-blue;
+      }
+    }
+
+    .caption {
+      p {
+        font-size: 12px;
+      }
+    }
+
+    .legend {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .visualization-container {
+    width: 65%;
+  }
+
+  .chart {
+    width: 100%;
+    height: 100%;
+  }
+
+  &.is-thumbnail {
+    display: block;
     .description {
-        width: 35%;
-        height: 100%;
-        margin-left: 0.5rem;
-    
-    
-        .title {
-            border-bottom: 1px solid $default-text;
-    
-            h4 {
-                padding: 0rem 0.5rem 0rem 1rem;
-            }
-
-            span {
-                color: $dark-blue;
-            }
-        }
-
-        .caption {
-            p {
-                font-size: 12px;
-            }
-        }
-        
-        .legend {
-            img {
-                width: 100%;   
-                height: auto;         
-            }
-        }
+      display: none;
     }
 
     .visualization-container {
-        width: 65%;
+      width: 100%;
+      height: 100%;
     }
-
 
     .chart {
-        width: 100%;
-        height: 100%;
+      width: 65%;
+      height: 100%;
+      position: relative;
+      left: 20%;
     }
-
-    &.is-thumbnail {
-        display:block;
-        .description {
-            display: none;
-        }
-
-        .visualization-container {
-            width: 100%;
-            height: 100%;
-        }
-
-        .chart {
-            width: 65%;
-            height: 100%;
-            position: relative;
-            left: 20%;
-        }
-    }
+  }
 }
 
 // @mixin horizontal-top-layout{
@@ -306,13 +317,13 @@ p, text {
 //         .title {
 //             border-bottom: 1px solid $default-text;
 //             margin: 0.5rem 0.5rem 0.5rem 1rem;
-            
+
 //             h4 {
 //                 margin: 0;
 //                 padding-top: 0.5rem;
-//                 padding-bottom: 1rem; 
+//                 padding-bottom: 1rem;
 //             }
-            
+
 //             span {
 //                 color: $dust-blue;
 //             }
@@ -330,47 +341,43 @@ p, text {
 // }
 
 @mixin horizontal-bottom-layout {
+  .description {
+    width: 100%;
+    height: 20%;
 
-    .description {
-        width: 100%;
-        height: 20%;
+    .title {
+      width: 95%;
+      border-top: 1px solid $default-text;
+      margin: 0rem 1rem 0.5rem 1rem;
 
-        .title {
-            width: 95%;
-            border-top: 1px solid $default-text;
-            margin: 0rem 1rem 0.5rem 1rem;
+      h4 {
+        margin: 0;
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+      }
 
-            h4 {
-                margin: 0;
-                padding-top: 0.5rem;
-                padding-bottom: 1rem;
-            }
-
-            span {
-                color: $dark-blue;
-            }
-        }
+      span {
+        color: $dark-blue;
+      }
     }
+  }
 
-    .chart {
-        width: 100%;
-        height: 100%;
-    }
+  .chart {
+    width: 100%;
+    height: 100%;
+  }
 
-    .visualization-container {
-        height: 80%;
-    }
-
+  .visualization-container {
+    height: 80%;
+  }
 }
 
 @mixin responsive-layout {
-    @include media(">phone", "<=tablet") {
-        @include horizontal-bottom-layout
-    }
-    
-    @include media(">tablet") {
-        @include vertical-layout
-    }
+  @include media('>phone', '<=tablet') {
+    @include horizontal-bottom-layout;
+  }
+
+  @include media('>tablet') {
+    @include vertical-layout;
+  }
 }
-
-
