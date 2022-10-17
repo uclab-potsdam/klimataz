@@ -135,7 +135,7 @@ const Waste = ({
       className={`biotonne-weight horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}
     >
       <div className="visualization-container" ref={targetRef}>
-        <svg className="chart" width="100%" height="100%">
+        <svg className="abfall-biotonne chart" width="100%" height="100%">
           <defs>
             <linearGradient id="MyGradient">
               <stop offset="50%" stopColor="#e6c9a2" />
@@ -192,9 +192,8 @@ const Waste = ({
           })}
           <g className="controls-container">
             <g
-              transform={`translate(${width - (marginWidth - tabletThreshold) * 3.5}, ${
-                marginHeight / 2
-              })`}
+              transform={`translate(${width - (marginWidth - tabletThreshold) * 3.5}, ${marginHeight / 2
+                })`}
               onClick={activatePies}
             >
               <g className={`detail-label ${piesAreActive ? 'show-legend' : ''}`}>

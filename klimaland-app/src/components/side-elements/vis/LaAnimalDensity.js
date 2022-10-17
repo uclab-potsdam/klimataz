@@ -172,7 +172,7 @@ const LandDenisty = ({
         </div>
       </div>
       <div className="visualization-container" ref={targetRef}>
-        <svg className="chart" width="100%" height="100%">
+        <svg className="land-animaldensity chart" width="100%" height="100%">
           <defs>
             {/* orange rectangle pattern */}
             <pattern
@@ -281,9 +281,8 @@ const LandDenisty = ({
                     fill="url(#diagonalHatch4)"
                   />
                   <g
-                    transform={`translate(${-barWidth / 2}, ${
-                      -bar.value - max([16, barElements[0][a].value])
-                    })`}
+                    transform={`translate(${-barWidth / 2}, ${-bar.value - max([16, barElements[0][a].value])
+                      })`}
                   >
                     <rect
                       className="labelCount"

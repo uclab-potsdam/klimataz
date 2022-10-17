@@ -124,7 +124,7 @@ export default class Side extends Component {
     if (
       this.props.localData !== undefined &&
       this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components !==
-        undefined &&
+      undefined &&
       //only render top card vis for performance
       (this.props.isTopCard || this.props.isThumbnail)
     ) {
@@ -206,14 +206,13 @@ export default class Side extends Component {
               <div className="postcard-title">
                 <h4 className="section-title">{this.props.sectionName}</h4>
                 <div
-                  className={`section-thumb ${
-                    this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
-                  }`}
+                  className={`section-thumb ${this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
+                    }`}
                 >
                   {(this.props.mode === 'comparison' ||
                     (!this.props.isThumbnail && this.props.isTopCard)) && (
-                    <TitleArt landkreisLabel={this.props.lk.label} />
-                  )}
+                      <TitleArt landkreisLabel={this.props.lk.label} />
+                    )}
                   {this.props.isThumbnail && this.state.ranking !== '' && (
                     <div className={`indicator-ranking ${this.state.ranking}`}>
                       <p>im {this.state.ranking}</p>
@@ -277,7 +276,7 @@ export default class Side extends Component {
                   {this.state.exportActive && (
                     <p className="download-label active">Download wird vorbereitet...</p>
                   )}
-                  <img src={share} className="button img" alt="click to download" />
+                  <img src={share} className="button img download" alt="click to download" />
                 </div>
               </button>
             </div>

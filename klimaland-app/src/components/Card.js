@@ -78,7 +78,7 @@ const Card = ({ classProp, isThumbnail, children, handleSwitchBack, handleSwitch
           }}
         >
           <p className="flip-label">Umdrehen!</p>
-          <img src={flipCard} className="button img" alt="click to flip card" />
+          <img src={flipCard} className="button img flip" alt="click to flip card" />
         </button>
       </div>
     );

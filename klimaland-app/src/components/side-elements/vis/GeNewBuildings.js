@@ -253,7 +253,7 @@ const Buildings = ({
       </div>
       {currentData !== undefined && currentData.data !== undefined && (
         <div className="visualization-container" ref={targetRef}>
-          <svg className="chart">
+          <svg className="building-newbuildings chart">
             <g className="axis">
               <g className="x-axis">
                 {yAxis.map((yaxis, ya) => {
@@ -299,9 +299,8 @@ const Buildings = ({
                         <g
                           key={e}
                           transform={`translate(0, ${en.y})`}
-                          className={`year-marker ${en.klassName} ${
-                            en.id === currentId ? 'default' : 'optional'
-                          }`}
+                          className={`year-marker ${en.klassName} ${en.id === currentId ? 'default' : 'optional'
+                            }`}
                           onClick={() => changeId(en.id)}
                         >
                           <circle cx="0" cy="0" r="3" />
@@ -314,9 +313,8 @@ const Buildings = ({
                           <g
                             key={e}
                             transform={`translate(0, ${en.y})`}
-                            className={`year-marker ${en.klassName} ${
-                              en.id === currentId ? 'default' : 'optional'
-                            }`}
+                            className={`year-marker ${en.klassName} ${en.id === currentId ? 'default' : 'optional'
+                              }`}
                             onClick={() => changeId(en.id)}
                           >
                             <g transform="translate(5, 0)">
@@ -329,9 +327,8 @@ const Buildings = ({
                               >
                                 <div
                                   xmlns="http://www.w3.org/1999/xhtml"
-                                  className={`label ${en.klassName} ${
-                                    en.id === currentId ? 'default' : 'optional'
-                                  } `}
+                                  className={`label ${en.klassName} ${en.id === currentId ? 'default' : 'optional'
+                                    } `}
                                 >
                                   <p>{en.label}</p>
                                 </div>

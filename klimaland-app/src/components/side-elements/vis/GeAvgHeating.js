@@ -112,7 +112,7 @@ const GeAvgHEating = ({
   return (
     <div className={`avg-heating ${isThumbnail ? 'is-thumbnail' : ''}`}>
       <div className="visualization-container" ref={targetRef}>
-        <svg className="chart" transform="translate(0, 20)">
+        <svg className="building-avg chart" transform="translate(0, 20)">
           <clipPath id="backgroundRect">
             <rect
               x={marginWidth}
@@ -169,9 +169,8 @@ const GeAvgHEating = ({
                 return (
                   <g
                     key={b}
-                    className={`single-bar ${
-                      higlightedBar === b || higlightedBar === '' ? 'in-focus' : 'no-focus'
-                    }`}
+                    className={`single-bar ${higlightedBar === b || higlightedBar === '' ? 'in-focus' : 'no-focus'
+                      }`}
                     transform={`translate(${bar.year}, 0)`}
                     onMouseEnter={() => switchHighlightedBar(b)}
                     onMouseLeave={() => switchHighlightedBar('')}
