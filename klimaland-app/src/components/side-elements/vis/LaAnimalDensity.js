@@ -70,7 +70,8 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
 
       currentBar.id = data.column;
       currentBar.value = yScale(data.value);
-      currentBar.valueTotal = formatNumber(data.value) === '0' ? 'n. a.' : formatNumber(data.value);
+      currentBar.valueTotal =
+        formatNumber(data.value) === '0' ? 'unbekannt' : formatNumber(data.value);
       currentBar.year = +data.year;
       currentBar.x = xScale(uniqueYears.indexOf(parseInt(data.year)));
       currentBar.color = colorValue;

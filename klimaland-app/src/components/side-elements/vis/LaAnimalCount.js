@@ -127,7 +127,7 @@ const Land = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
       currentArc.id = data.column;
       currentArc.value = scaledValue;
       currentArc.valueTotal =
-        formatNumber(data.value) === '0' ? 'unbekannt/geheim' : formatNumber(data.value);
+        formatNumber(data.value) === '0' ? 'unbekannt' : formatNumber(data.value);
       console.log(currentArc.valueTotal);
       currentArc.year = +data.year;
       currentArc.path = arcGenerator(scaledValue);
