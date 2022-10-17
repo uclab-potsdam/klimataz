@@ -71,7 +71,7 @@ export default class SelectionButtons extends Component {
     }),
     multiValue: (styles, { data }) => ({
       ...styles,
-      backgroundColor: data.isDefault ? 'rgb(230,230,230)' : '#fff4e5',
+      backgroundColor: data.isDefault && this.props.mode == 'lk' ? 'rgb(230,230,230)' : '#fff4e5',
     }),
     valueContainer: (styles) => ({
       ...styles,
@@ -80,7 +80,7 @@ export default class SelectionButtons extends Component {
     }),
     multiValueRemove: (styles, { data }) => ({
       ...styles,
-      visibility: data.isDefault ? 'hidden' : 'visible',
+      visibility: data.isDefault && this.props.mode == 'lk' ? 'hidden' : 'visible',
     }),
   };
 
