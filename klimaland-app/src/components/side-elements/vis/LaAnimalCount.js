@@ -139,9 +139,10 @@ const Land = ({
       currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
       currentArc.x = xScale(uniqueAnimals.indexOf(data.column));
       currentArc.color = colorCategory(colorValue);
-      currentArc.pathPrev = arcGenerator(prevScaledValue);
+      currentArc.pathPrev =
+        formatNumber(data.value) == 0 ? arcGenerator(0) : arcGenerator(prevScaledValue);
       currentArc.radius = scaledValue;
-      currentArc.radiusPrev = prevScaledValue;
+      currentArc.radiusPrev = formatNumber(data.value) == 0 ? 0 : prevScaledValue;
 
       return currentArc;
     };
