@@ -27,7 +27,6 @@ export default class CardCollection extends Component {
     //load all the data
     this.data = Data;
     this.layoutControls = LayoutControls;
-    this.textData = DynamicTextJson;
 
     //bind functions called by components
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
@@ -205,17 +204,17 @@ export default class CardCollection extends Component {
           let localTextData = [];
           let similarAgs = [];
 
-          if (this.textData !== undefined) {
+          if (this.state.textData !== undefined) {
             //get dynamic text data for current ags
-            localTextData = this.textData[element.lk.value];
+            localTextData = this.state.textData[element.lk.value];
 
             //if is top card
             if (isTopCard) {
               //if no ranking
               if (localTextData[section]['third'] == '') {
-                similarAgs = Object.keys(this.textData).map((key) => [
+                similarAgs = Object.keys(this.state.textData).map((key) => [
                   Number(key),
-                  this.textData[key],
+                  this.state.textData[key],
                 ]);
                 similarAgs = similarAgs.map(function (d) {
                   return {
@@ -228,7 +227,7 @@ export default class CardCollection extends Component {
               else {
                 // pulling similar lks (within the bl)
                 similarAgs = Object.fromEntries(
-                  Object.entries(this.textData).filter(([key, value]) => {
+                  Object.entries(this.state.textData).filter(([key, value]) => {
                     return element.lk.value !== 0
                       ? value[section]['third'] === localTextData[section]['third'] &&
                           value.key !== element.lk.value
@@ -260,7 +259,7 @@ export default class CardCollection extends Component {
                 this.props.lastActiveCardLK.value !== element.lk.value &&
                 isInt(this.props.lastActiveCardLK.value) &&
                 //same third
-                (this.textData[this.props.lastActiveCardLK.value][section]['third'] ===
+                (this.state.textData[this.props.lastActiveCardLK.value][section]['third'] ===
                   localTextData[section]['third'] ||
                   localTextData[section]['third'] == '')
               ) {
@@ -344,7 +343,7 @@ export default class CardCollection extends Component {
           }
           this.checkIndicatorData(element);
 
-          let localTextData = this.textData[element.lk.value];
+          let localTextData = this.state.textData[element.lk.value];
 
           return (
             <Card
@@ -386,6 +385,17 @@ export default class CardCollection extends Component {
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
+
+    //filter text data so it matches the dropdown landkreise (so all current landkreise)
+    const dropdownAGS = this.props.landkreise.map((d) => d.value);
+    const filteredText = Object.keys(DynamicTextJson)
+      .filter((key) => dropdownAGS.includes(parseInt(key)))
+      .reduce((obj, key) => {
+        obj[key] = DynamicTextJson[key];
+        return obj;
+      }, {});
+
+    this.setState({ textData: filteredText });
   }
 
   /**
