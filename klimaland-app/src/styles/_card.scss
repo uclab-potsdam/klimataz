@@ -440,15 +440,16 @@
             justify-content: flex-end;
             &:hover {
               .download-label {
-                transition: all 0.5s;
+                transition: visibility 0s, opacity 0.5s;
                 opacity: 1;
                 left: 0rem;
+                visibility: visible;
               }
             }
 
             .download-label {
               pointer-events: none;
-              transition: all 0.5s;
+              transition: visibility 0s, opacity 0.5s;
               background-color: $light;
               border: 1px solid $pale-olive;
 
@@ -460,6 +461,7 @@
 
               z-index: 2;
               opacity: 0;
+              visibility: hidden;
               text-align: left;
             }
 
