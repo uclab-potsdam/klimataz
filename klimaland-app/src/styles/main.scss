@@ -180,6 +180,7 @@ code {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
+      z-index:2;
 
       .selector {
         width: 30%;
