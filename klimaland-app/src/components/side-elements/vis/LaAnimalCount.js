@@ -1,18 +1,11 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { arc } from 'd3';
 import { max } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { formatNumber, useCardSize, mobileCheck } from '../../../helpers/helperFunc';
 
-const Land = ({
-  currentData,
-  currentIndicator,
-  currentSection,
-  locationLabel,
-  isThumbnail,
-  cardNumber,
-}) => {
+const Land = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
   const colorArray = [
     '#fff2da45', // erstes Jahr
     '#007F87', // Zunahme
@@ -133,16 +126,16 @@ const Land = ({
 
       currentArc.id = data.column;
       currentArc.value = scaledValue;
-      currentArc.valueTotal = formatNumber(data.value) == 0 ? 'n. a.' : formatNumber(data.value);
+      currentArc.valueTotal = formatNumber(data.value) === 0 ? 'n. a.' : formatNumber(data.value);
       currentArc.year = +data.year;
       currentArc.path = arcGenerator(scaledValue);
       currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
       currentArc.x = xScale(uniqueAnimals.indexOf(data.column));
       currentArc.color = colorCategory(colorValue);
       currentArc.pathPrev =
-        formatNumber(data.value) == 0 ? arcGenerator(0) : arcGenerator(prevScaledValue);
+        formatNumber(data.value) === 0 ? arcGenerator(0) : arcGenerator(prevScaledValue);
       currentArc.radius = scaledValue;
-      currentArc.radiusPrev = formatNumber(data.value) == 0 ? 0 : prevScaledValue;
+      currentArc.radiusPrev = formatNumber(data.value) === 0 ? 0 : prevScaledValue;
 
       return currentArc;
     };

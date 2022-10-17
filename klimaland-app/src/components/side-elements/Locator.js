@@ -52,7 +52,7 @@ export default class Locator extends Component {
 
   async generateMap() {
     let currentFeature;
-    let currentPath;
+    //let currentPath;
 
     const height = this.state.dimensions.height;
 
@@ -64,7 +64,7 @@ export default class Locator extends Component {
         f.properties.GF >= 9
       ) {
         currentFeature = f;
-        currentPath = this.state.geoGenerator(f);
+        //currentPath = this.state.geoGenerator(f);
       }
     });
 
