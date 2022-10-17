@@ -126,14 +126,16 @@ const Land = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
 
       currentArc.id = data.column;
       currentArc.value = scaledValue;
-      currentArc.valueTotal = formatNumber(data.value) === 0 ? 'n. a.' : formatNumber(data.value);
+      currentArc.valueTotal =
+        formatNumber(data.value) === '0' ? 'unbekannt/geheim' : formatNumber(data.value);
+      console.log(currentArc.valueTotal);
       currentArc.year = +data.year;
       currentArc.path = arcGenerator(scaledValue);
       currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
       currentArc.x = xScale(uniqueAnimals.indexOf(data.column));
       currentArc.color = colorCategory(colorValue);
       currentArc.pathPrev =
-        formatNumber(data.value) === 0 ? arcGenerator(0) : arcGenerator(prevScaledValue);
+        formatNumber(data.value) === '0' ? arcGenerator(0) : arcGenerator(prevScaledValue);
       currentArc.radius = scaledValue;
       currentArc.radiusPrev = formatNumber(data.value) === 0 ? 0 : prevScaledValue;
 
