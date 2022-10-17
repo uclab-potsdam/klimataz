@@ -60,8 +60,10 @@ function processInitReqestContent($fh, $content) {
   $values = [
     'INIT',
     $content['id'],
-    $content['data']['windowSize']['x'],
-    $content['data']['windowSize']['y']
+    // $content['data']['windowSize']['x'],
+    // $content['data']['windowSize']['y'],
+    $content['data']['deviceBrowser'],
+    $content['data']['deviceOS']
   ];
   $message = implode(', ', $values);
   fwrite($fh, $message . "\n");
@@ -69,10 +71,10 @@ function processInitReqestContent($fh, $content) {
 
 function processStackReqestContent($fh, $content) {
   $eventTypes = [
-    10 => 'MOUSE',
-    20 => 'RESIZE',
-    30 => 'CLICK',
-    40 => 'SCROLL'
+    10 => 'CLICK',
+    20 => 'MOUSE MOVE'
+    // 30 => 'DEVICE OS',
+    // 40 => 'DEVICE BROWSER'
   ];
 
   foreach ($content['data'] as $event) {
@@ -81,13 +83,13 @@ function processStackReqestContent($fh, $content) {
       $eventTypes[$event['type']]
     ];
 
-    if ($event['type'] === 10 || $event['type'] === 20 || $event['type'] === 40) {
-      $values[] = $event['data']['x'];
-      $values[] = $event['data']['y'];
-    } elseif ($event['type'] === 30) {
+    if ($event['type'] === 10) {
       $values[] = $event['data']['x'];
       $values[] = $event['data']['y'];
       $values[] = $event['data']['target'];
+    } elseif ($event['type'] === 20) {
+      $values[] = $event['data']['x'];
+      $values[] = $event['data']['y'];
     }
 
     $message = implode(', ', $values);

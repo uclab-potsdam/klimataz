@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import axios from 'axios';
 
-const data = {
+const initialData = {
     id: 0,
     eventType: {
         Click: 10,
@@ -16,24 +16,24 @@ const data = {
     packageCounter: 0,
     eventStack: [],
     // Edit to localhost if you are debugging
-    hostUrl: 'localhost:3000',
-    instrumentationUrl: '/log.php'
+    hostUrl: 'https://uclab.fh-potsdam.de',
+    instrumentationUrl: '/klimaland/log.php'
 }
 
 // helper functions
-const sendPackage = function (type, passedData) {
+const sendPackage = function (type, data) {
     axios
-        .post(data.instrumentationUrl, {
-            id: data.id,
-            num: data.packageCounter,
+        .post(initialData.instrumentationUrl, {
+            id: initialData.id,
+            num: initialData.packageCounter,
             type,
-            passedData
+            data
         })
         .then(function (response) { })
         .catch(function (error) {
             console.log(error)
         })
-    data.packageCounter++
+    initialData.packageCounter++
 }
 
 const getWindowSize = function () {
@@ -45,34 +45,37 @@ const getWindowSize = function () {
 
 // server communication
 const sendInitialLog = function () {
-    const sizeData = {
+    const data = {
+        deviceOS: getDeviceOS(),
+        deviceBrowser: getDeviceBrowser(),
         windowSize: getWindowSize()
     }
     // console.log(data)
-    sendPackage(data.packageType.init, sizeData)
+    sendPackage(initialData.packageType.init, data)
 }
 
 const sendLog = function () {
-    if (data.eventStack.length > 0) {
-        const currentData = data.eventStack
-        data.eventStack = []
-        sendPackage(data.packageType.stack, currentData)
+    if (initialData.eventStack.length > 0) {
+        const data = initialData.eventStack
+        initialData.eventStack = []
+        sendPackage(initialData.packageType.stack, data)
     }
 }
 
 const initLogging = function () {
-    data.id = Date.now()
+    initialData.id = Date.now()
     sendInitialLog()
     window.setInterval(sendLog, 5000)
 }
 
-const logEvent = function (type) {
+const logEvent = function (type, data) {
     const eventData = {
-        timeOffset: Date.now() - data.id,
+        timeOffset: Date.now() - initialData.id,
         type,
         data
     }
-    data.eventStack.push(eventData)
+    // console.log('logging event', eventD)
+    initialData.eventStack.push(eventData)
 }
 
 // loggers
@@ -105,9 +108,7 @@ const getUserClick = function (event) {
     return {
         x: event.pageX,
         y: event.pageY,
-        target: event.target.classList.length !== 0
-            ? event.target.classList
-            : event.target
+        target: event.target.classList[0]
     }
 }
 
@@ -139,39 +140,39 @@ const getUserMousePos = function (event) {
 
 //event handlers
 const handleMouseMove = function (event) {
-    logEvent(data.eventType.mouseMove, getUserMousePos())
+    logEvent(initialData.eventType.mouseMove, getUserMousePos())
 }
 
 const handleClick = function (event) {
-    logEvent(data.eventType.Click, getUserClick())
+    logEvent(initialData.eventType.Click, getUserClick())
 
     if ('ontouchstart' in window) {
         document.addEventListener('touchstart', (e) => {
-            logEvent(data.eventType.Click, getUserClick())
+            logEvent(initialData.eventType.Click, getUserClick())
         })
     }
 }
 
 const handleDeviceOS = function () {
-    logEvent(data.eventType.deviceOS, getDeviceOS())
+    logEvent(initialData.eventType.deviceOS, getDeviceOS())
 }
 
 const handleDeviceBrowser = function () {
-    logEvent(data.eventType.deviceBrowser, getDeviceBrowser())
+    logEvent(initialData.eventType.deviceBrowser, getDeviceBrowser())
 }
 export default class Logger extends Component {
 
     componentDidMount() {
-        if (window.location.href.includes(data.hostUrl)) {
-            handleDeviceOS()
-            handleDeviceBrowser()
-            document.onclick = handleClick
-            document.onmousemove = handleMouseMove
-            document.ontouchstart = handleClick
-            initLogging()
-        } else {
-            console.log('logging not active')
-        }
+        // if (window.location.href.includes(data.hostUrl)) {
+        handleDeviceOS()
+        handleDeviceBrowser()
+        document.onclick = handleClick
+        document.onmousemove = handleMouseMove
+        document.ontouchstart = handleClick
+        initLogging()
+        // } else {
+        //     console.log('logging not active')
+        // }
     }
 
     render() {
