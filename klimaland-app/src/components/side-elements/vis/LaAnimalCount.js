@@ -128,7 +128,7 @@ const Land = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
       currentArc.value = scaledValue;
       currentArc.valueTotal =
         formatNumber(data.value) === '0' ? 'unbekannt' : formatNumber(data.value);
-      console.log(currentArc.valueTotal);
+
       currentArc.year = +data.year;
       currentArc.path = arcGenerator(scaledValue);
       currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));

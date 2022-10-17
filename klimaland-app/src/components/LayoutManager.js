@@ -478,7 +478,7 @@ export default class LayoutManager extends Component {
       <UIContext.Provider value={this.props.editorspick[0].ui.value}>
         <div className="main-container">
           {this.state.mode === 'lk' && !this.state.postcardView && (
-            <TitleArt landkreisLabel={getTotalLKName(this.state.landkreisSelection[0])} />
+            <TitleArt landkreisLabel={getTotalLKName(this.state.landkreisSelection[0]) + '?'} />
           )}
           <SelectionButtons
             mode={this.state.mode}
