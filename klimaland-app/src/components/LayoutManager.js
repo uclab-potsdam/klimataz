@@ -3,7 +3,7 @@ import { Component } from 'react';
 //our components
 import CardCollection from './CardCollection';
 import SelectionButtons from './SelectionButtons';
-import { getRandomElement, setStateAsync } from '../helpers/helperFunc';
+import { getRandomElement, getTotalLKName, setStateAsync } from '../helpers/helperFunc';
 import Info from './Info.js';
 import TitleArt from './TitleArt.js';
 import Sources from './Sources.js';
@@ -356,26 +356,6 @@ export default class LayoutManager extends Component {
   }
 
   /**
-   * get LK name with name addition from LK Seleciton Element
-   * @param {} element in landkreisSelection
-   * @returns
-   */
-  getTotalLKName(element) {
-    let name = element.label;
-    if (element.nameAddition !== undefined) {
-      //special case: Bremen Stadt
-      if (element.value === 4011) {
-        name = element.label + ' (Stadt)';
-      }
-      //only label landkreise, no kreisfreie städte
-      if (element.nameAddition === '(Landkreis)') {
-        name = 'Landkreis ' + element.label;
-      }
-    }
-    return name;
-  }
-
-  /**
    * update card selection after shuffling or selecting a landkreis
    * always calles "updateMode" first and adds cards to the cardSelection List depending on the mode
    */
@@ -400,7 +380,7 @@ export default class LayoutManager extends Component {
           } else {
             selectedLK = {
               value: this.state.landkreisSelection[0].value,
-              label: this.getTotalLKName(this.state.landkreisSelection[0]),
+              label: getTotalLKName(this.state.landkreisSelection[0]),
             };
           } //set selected value for landkreisSelection
 
@@ -427,7 +407,7 @@ export default class LayoutManager extends Component {
           //add one card per landkreisSelection
           this.state.landkreisSelection.forEach((element) => {
             list.push({
-              lk: { value: element.value, label: this.getTotalLKName(element) },
+              lk: { value: element.value, label: getTotalLKName(element) },
               section: selectedSection,
             });
           });
@@ -438,7 +418,7 @@ export default class LayoutManager extends Component {
           let selectedLK;
           selectedLK = {
             value: this.state.landkreisSelection[0].value,
-            label: this.getTotalLKName(this.state.landkreisSelection[0]),
+            label: getTotalLKName(this.state.landkreisSelection[0]),
           };
 
           let selectedSection;
@@ -486,7 +466,7 @@ export default class LayoutManager extends Component {
       <UIContext.Provider value={this.props.editorspick[0].ui.value}>
         <div className="main-container">
           {this.state.mode === 'lk' && !this.state.postcardView && (
-            <TitleArt landkreisLabel={this.getTotalLKName(this.state.landkreisSelection[0])} />
+            <TitleArt landkreisLabel={getTotalLKName(this.state.landkreisSelection[0])} />
           )}
           <SelectionButtons
             mode={this.state.mode}

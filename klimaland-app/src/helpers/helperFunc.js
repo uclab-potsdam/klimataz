@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
+import DynamicTextJson from '../data/textData.json';
 
 /**
  * modulo helper function
@@ -143,4 +144,35 @@ export function useOutsideAlerter(ref, close) {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [ref]);
+}
+
+/**
+ * get LK name with name addition from LK Seleciton Element
+ * @param {} element with label,value and nameAddition in landkreisSelection
+ * @returns
+ */
+export function getTotalLKName(element) {
+  let name = element.label;
+  if (element.nameAddition !== undefined) {
+    //special case: Bremen Stadt
+    if (element.value === 4011) {
+      name = element.label + ' (Stadt)';
+    }
+    //only label landkreise, no kreisfreie städte
+    if (element.nameAddition === '(Landkreis)') {
+      name = 'Landkreis ' + element.label;
+    }
+  }
+  return name;
+}
+
+export function getRanking(ags, section) {
+  if (
+    DynamicTextJson[ags] !== undefined &&
+    DynamicTextJson[ags][section] !== undefined &&
+    DynamicTextJson[ags][section]['third'] !== undefined
+  ) {
+    return DynamicTextJson[ags][section]['third'];
+  }
+  return '';
 }
