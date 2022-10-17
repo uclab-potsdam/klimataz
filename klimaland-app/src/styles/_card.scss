@@ -437,6 +437,7 @@
             height: 100%;
             flex-direction: row;
             align-items: baseline;
+            justify-content: flex-end;
             &:hover {
               .download-label {
                 transition: all 0.5s;
