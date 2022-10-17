@@ -81,7 +81,9 @@ const Waste = ({
     const minSumValue = min(onlySumData.map((d) => d.value));
     const maxSumValue = max(onlySumData.map((d) => d.value));
 
-    const pieConst = pie().value((d) => d);
+    const pieConst = pie()
+      .value((d) => d)
+      .sort(null);
 
     onlySumData.forEach((d) => {
       if (d.column === 'sum') {

@@ -22,6 +22,7 @@ const Card = ({ classProp, isThumbnail, children, handleSwitchBack, handleSwitch
     onSwipedRight: () => {
       handleSwitchNext();
     },
+    delta: 25,
   });
 
   /**
