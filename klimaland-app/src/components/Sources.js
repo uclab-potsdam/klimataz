@@ -155,7 +155,7 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
               <h4>Weitere Links</h4>
               <p>
                 <a target="_blank" rel="noreferrer" href="https://uclab.fh-potsdam.de/">
-                  Urban Complexity Lab FH Potsdam
+                  UCLAB FH Potsdam
                 </a>
               </p>
               <p>

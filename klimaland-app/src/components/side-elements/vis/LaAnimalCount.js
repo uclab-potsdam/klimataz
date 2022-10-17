@@ -1,20 +1,13 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { arc } from 'd3';
 import { max } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { formatNumber, useCardSize, mobileCheck } from '../../../helpers/helperFunc';
 
-const Land = ({
-  currentData,
-  currentIndicator,
-  currentSection,
-  locationLabel,
-  isThumbnail,
-  cardNumber,
-}) => {
+const Land = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
   const colorArray = [
-    '#FFF2DA', // erstes Jahr
+    '#fff2da45', // erstes Jahr
     '#007F87', // Zunahme
     '#F6A219', // Abnahme
   ];
@@ -133,13 +126,18 @@ const Land = ({
 
       currentArc.id = data.column;
       currentArc.value = scaledValue;
-      currentArc.valueTotal = formatNumber(data.value);
+      currentArc.valueTotal =
+        formatNumber(data.value) === '0' ? 'unbekannt' : formatNumber(data.value);
+
       currentArc.year = +data.year;
       currentArc.path = arcGenerator(scaledValue);
       currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
       currentArc.x = xScale(uniqueAnimals.indexOf(data.column));
       currentArc.color = colorCategory(colorValue);
-      currentArc.pathPrev = arcGenerator(prevScaledValue);
+      currentArc.pathPrev =
+        formatNumber(data.value) === '0' ? arcGenerator(0) : arcGenerator(prevScaledValue);
+      currentArc.radius = scaledValue;
+      currentArc.radiusPrev = formatNumber(data.value) === 0 ? 0 : prevScaledValue;
 
       return currentArc;
     };
@@ -160,19 +158,34 @@ const Land = ({
     <div className={`animal-count horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}>
       {currentData !== undefined && currentData.data !== undefined && (
         <div className="visualization-container" ref={targetRef}>
-          <svg className="land-aniamlcount chart" width="100%" height="100%">
+          <svg className="land-animalcount chart" width="100%" height="100%">
+            <defs>
+              <marker
+                id="arrow"
+                viewBox="0 0 10 10"
+                refX="10"
+                refY="5"
+                markerWidth="5"
+                markerHeight="5"
+                orient="auto-start-reverse"
+              >
+                <polyline points="0,0 10,5 0,10" fill="none" stroke="#484848" strokeWidth="2" />
+              </marker>
+            </defs>
             <g
               className="legend"
               transform={`translate(${marginWidth / 2}, ${marginHeight / 1.5})`}
             >
               <g className="label-item wenigerTiere">
                 <circle className="wenigerTiere" cx="0" cy="0" r={legendRadius} />
+
                 <text x={legendRadius + 10} y={legendRadius / 2 + 2}>
                   weniger Tiere
                 </text>
               </g>
               <g className="label-item mehrTiere">
                 <circle className="mehrTiere" cx="120" cy="0" r={legendRadius} />
+
                 <text x={legendRadius + 130} y={legendRadius / 2 + 2}>
                   mehr Tiere
                 </text>
@@ -180,7 +193,7 @@ const Land = ({
               <g className="label-item vorherigeZaehlung">
                 <circle className="vorherigeZaehlung" cx="240" cy="0" r={legendRadius} />
                 <text x={legendRadius + 250} y={legendRadius / 2 + 2}>
-                  als im Vergleich zur vorherigen Zählung
+                  Anzahl aus vorheriger Zählung
                 </text>
               </g>
             </g>
@@ -222,6 +235,15 @@ const Land = ({
                         {arc.valueTotal}
                       </text>
                     </g>
+
+                    {arc.radiusPrev !== 0 && Math.abs(arc.radiusPrev - arc.radius) > 5 && (
+                      <polyline
+                        points={'0, ' + -arc.radiusPrev + ', 0,' + -arc.radius}
+                        fill="none"
+                        stroke="#484848"
+                        markerEnd="url(#arrow)"
+                      />
+                    )}
                   </g>
                 );
               })}
@@ -235,6 +257,15 @@ const Land = ({
                         {arc.valueTotal}
                       </text>
                     </g>
+
+                    {arc.radiusPrev !== 0 && Math.abs(arc.radiusPrev - arc.radius) > 5 && (
+                      <polyline
+                        points={'0, ' + -arc.radiusPrev + ', 0,' + -arc.radius}
+                        fill="none"
+                        stroke="#484848"
+                        markerEnd="url(#arrow)"
+                      />
+                    )}
                   </g>
                 );
               })}
@@ -248,6 +279,15 @@ const Land = ({
                         {arc.valueTotal}
                       </text>
                     </g>
+
+                    {arc.radiusPrev !== 0 && Math.abs(arc.radiusPrev - arc.radius) > 5 && (
+                      <polyline
+                        points={'0, ' + -arc.radiusPrev + ', 0,' + -arc.radius}
+                        fill="none"
+                        stroke="#484848"
+                        markerEnd="url(#arrow)"
+                      />
+                    )}
                   </g>
                 );
               })}
