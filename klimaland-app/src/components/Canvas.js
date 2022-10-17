@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import LayoutManager from './LayoutManager';
-import Logger from './Logger';
 
 //data
 import DropDownControls from '../data/selector-controls.json';
@@ -276,7 +275,6 @@ const Canvas = () => {
 
   return (
     <div className="indicators-iframe">
-      <Logger />
       {iframeLoaded && (
         <LayoutManager
           editorspick={editorsPick}

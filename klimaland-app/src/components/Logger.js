@@ -16,18 +16,18 @@ const data = {
     packageCounter: 0,
     eventStack: [],
     // Edit to localhost if you are debugging
-    hostUrl: 'http://localhost:3000/',
-    instrumentationUrl: '/side-elements/log/log.php'
+    hostUrl: 'localhost:3000',
+    instrumentationUrl: '/log.php'
 }
 
 // helper functions
-const sendPackage = function (type) {
+const sendPackage = function (type, passedData) {
     axios
         .post(data.instrumentationUrl, {
             id: data.id,
             num: data.packageCounter,
             type,
-            data
+            passedData
         })
         .then(function (response) { })
         .catch(function (error) {
@@ -45,16 +45,25 @@ const getWindowSize = function () {
 
 // server communication
 const sendInitialLog = function () {
-    const data = {
+    const sizeData = {
         windowSize: getWindowSize()
     }
+    // console.log(data)
+    sendPackage(data.packageType.init, sizeData)
+}
 
-    sendPackage(data.packageType.init, data)
+const sendLog = function () {
+    if (data.eventStack.length > 0) {
+        const currentData = data.eventStack
+        data.eventStack = []
+        sendPackage(data.packageType.stack, currentData)
+    }
 }
 
 const initLogging = function () {
     data.id = Date.now()
     sendInitialLog()
+    window.setInterval(sendLog, 5000)
 }
 
 const logEvent = function (type) {
@@ -122,7 +131,6 @@ const getUserMousePos = function (event) {
             ((doc && doc.clientTop) || (body && body.clientTop) || 0)
     }
     // Use event.pageX / event.pageY here
-    console.log('!')
     return {
         x: event.pageX,
         y: event.pageY
@@ -154,11 +162,16 @@ const handleDeviceBrowser = function () {
 export default class Logger extends Component {
 
     componentDidMount() {
-        handleDeviceOS()
-        handleDeviceBrowser()
-        document.onclick = handleClick
-        document.onmousemove = handleMouseMove
-        document.ontouchstart = handleClick
+        if (window.location.href.includes(data.hostUrl)) {
+            handleDeviceOS()
+            handleDeviceBrowser()
+            document.onclick = handleClick
+            document.onmousemove = handleMouseMove
+            document.ontouchstart = handleClick
+            initLogging()
+        } else {
+            console.log('logging not active')
+        }
     }
 
     render() {
