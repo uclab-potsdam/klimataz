@@ -66,11 +66,13 @@ export default class Info extends Component {
           <div className="help">
             <h4 className="desktop-title">Wie bediene ich die Postkarten?</h4>
             <h2 className="mobile-title">?</h2>
-            <p className="text">
-              In der <span className="info-suchleiste"> Suchleiste </span> kann nach einem
-              beliebigen Landkreis oder Bundesland gesucht werden. Hier können auch mehrere Regionen
-              ausgewählt und verglichen werden.{' '}
-            </p>
+            {!this.props.postcardView && (
+              <p className="text">
+                In der <span className="info-suchleiste"> Suchleiste </span> kann nach einem
+                beliebigen Landkreis oder Bundesland gesucht werden. Hier können auch mehrere
+                Regionen ausgewählt und verglichen werden.{' '}
+              </p>
+            )}
             <p className="text">
               Jede Postkarte beschäftigt sich mit einem anderen Bereich.{' '}
               <span className="info-highlight">Energie</span>,{' '}
@@ -79,15 +81,27 @@ export default class Info extends Component {
               <span className="info-highlight">Landwirtschaft</span> oder{' '}
               <span className="info-highlight">Gebäude</span>.
             </p>
-            <p className="text">
-              Mit einem Klick auf die Postkarte wird die vollständige Visualisierung sichtbar. Hier
-              kann auch zu einem zweiten Datenset gewechselt{' '}
-              <img src={toggleCard} className="img-toggle" alt="flip-button-img" /> werden. Auf der
-              Rückseite <img src={flipCard} className="img-flip" alt="flip-button-img" />
-              der Postkarte befindet sich eine kurze Erklärung und ein Klimaausblick der Region.
-              Außerdem kann die Postkarte zum Verschicken oder Teilen heruntergeladen
-              <img src={share} className="img-download" alt="download-button-img" /> werden.
-            </p>
+            {!this.props.postcardView && this.props.mode === 'comparison' && (
+              <p className="text">
+                In der rechten <span className="info-suchleiste"> Leiste </span> kann zwischen den
+                verschiedenen Bereichen gewechselt werden, wenn Regionen verglichen werden.{' '}
+              </p>
+            )}
+            {!this.props.postcardView && (
+              <p className="text">
+                Mit einem Klick auf die Postkarte wird die vollständige Visualisierung sichtbar.
+              </p>
+            )}
+            {this.props.postcardView && (
+              <p>
+                Auf der Vorderseite der Postkarte kann zu einem zweiten Datenset gewechselt{' '}
+                <img src={toggleCard} className="img-toggle" alt="flip-button-img" /> werden.
+                Außerdem kann die Postkarte zum Verschicken oder Teilen heruntergeladen
+                <img src={share} className="img-download" alt="download-button-img" /> werden. Auf
+                der Rückseite <img src={flipCard} className="img-flip" alt="flip-button-img" />
+                der Postkarte befindet sich eine kurze Erklärung und ein Klimaausblick der Region.
+              </p>
+            )}
             <p className="text">
               Wie gut schlägt sich deine Region in der Bekämpfung der Klimakrise?
             </p>{' '}
