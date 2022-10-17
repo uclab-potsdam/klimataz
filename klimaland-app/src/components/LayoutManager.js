@@ -448,14 +448,10 @@ export default class LayoutManager extends Component {
 
   escFunction(event) {
     if (event.key === 'Escape') {
-      console.log('esc');
-
       this.closePostcardView();
     } else if (event.keyCode === 37) {
-      console.log('left');
       this.handleSwitchBack();
     } else if (event.keyCode === 39) {
-      console.log('right');
       this.handleSwitchNext();
     }
   }
