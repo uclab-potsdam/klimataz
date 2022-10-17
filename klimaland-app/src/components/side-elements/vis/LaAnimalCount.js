@@ -14,7 +14,7 @@ const Land = ({
   cardNumber,
 }) => {
   const colorArray = [
-    '#FFF2DA', // erstes Jahr
+    '#fff2da45', // erstes Jahr
     '#007F87', // Zunahme
     '#F6A219', // Abnahme
   ];
@@ -133,7 +133,7 @@ const Land = ({
 
       currentArc.id = data.column;
       currentArc.value = scaledValue;
-      currentArc.valueTotal = formatNumber(data.value);
+      currentArc.valueTotal = formatNumber(data.value) == 0 ? 'n. a.' : formatNumber(data.value);
       currentArc.year = +data.year;
       currentArc.path = arcGenerator(scaledValue);
       currentArc.y = yScale(uniqueYears.indexOf(parseInt(data.year)));
@@ -167,13 +167,13 @@ const Land = ({
               <marker
                 id="arrow"
                 viewBox="0 0 10 10"
-                refX="8"
+                refX="10"
                 refY="5"
                 markerWidth="5"
                 markerHeight="5"
                 orient="auto-start-reverse"
               >
-                <path d="M 0 0 L 10 5 L 0 10 z" />
+                <polyline points="0,0 10,5 0,10" fill="none" stroke="#484848" strokeWidth="2" />
               </marker>
             </defs>
             <g
@@ -182,24 +182,14 @@ const Land = ({
             >
               <g className="label-item wenigerTiere">
                 <circle className="wenigerTiere" cx="0" cy="0" r={legendRadius} />
-                {/* <polyline
-                  points={'0,' + -legendRadius + ', 0,' + legendRadius}
-                  fill="none"
-                  stroke="#484848"
-                  markerEnd="url(#arrow)"
-                /> */}
+
                 <text x={legendRadius + 10} y={legendRadius / 2 + 2}>
                   weniger Tiere
                 </text>
               </g>
               <g className="label-item mehrTiere">
                 <circle className="mehrTiere" cx="120" cy="0" r={legendRadius} />
-                {/* <polyline
-                  points={'120,' + legendRadius + ', 120,' + -legendRadius}
-                  fill="none"
-                  stroke="#484848"
-                  markerEnd="url(#arrow)"
-                /> */}
+
                 <text x={legendRadius + 130} y={legendRadius / 2 + 2}>
                   mehr Tiere
                 </text>
