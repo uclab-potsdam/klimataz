@@ -50,7 +50,11 @@ export default class Details extends Component {
           </div>
           <div className="data-container">
             <div className="locator-map">
-              <Locator lk={this.props.lk} />
+              <Locator
+                lk={this.props.lk}
+                handleClickOnMap={this.handleClickOnList}
+                section={this.props.section}
+              />
             </div>
             <div className="lk-list">
               <List
@@ -59,6 +63,7 @@ export default class Details extends Component {
                 section={this.props.section}
                 similarAgs={this.props.similarAgs}
                 handleClickOnList={this.handleClickOnList}
+                ranking={this.props.ranking}
               />
             </div>
           </div>

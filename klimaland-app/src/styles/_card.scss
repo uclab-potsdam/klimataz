@@ -577,7 +577,7 @@
               position: relative;
 
               .list-inner-container {
-                overflow: scroll;
+                overflow-y: scroll;
                 position: relative;
                 height: 100%;
 
@@ -591,6 +591,8 @@
                     margin: 0;
                     padding: 0.45rem 0rem 0.45rem 0.5rem;
                     border-bottom: 1px solid $default-text;
+                    color:white;
+                    background-color: $dark-blue;
                   }
 
                   ul {

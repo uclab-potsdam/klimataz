@@ -1170,6 +1170,33 @@ $gas: lighten($dark-pink, 5%);
   -webkit-backface-visibility: hidden;
 
   &.visible {
-    fill: $lighter-orange;
+    fill: $dark-blue;
+
+    &.mittleren{
+      fill: $taz-orange;
+    }
+    &.besten{
+      fill: $mint-green;
+    }
+    &.schlechtesten{
+      fill: $red;
+    }
   }
+
+  &.hidden{
+    fill:white;
+
+    &.mittleren{
+      fill: $lighter-orange;
+    }
+
+    &.besten{
+      fill: lighten($mint-green,60%);
+    }
+
+    &.schlechtesten{
+      fill: $pale-pink;
+    }
+  }
+
 }

@@ -3,9 +3,13 @@ import React, { Component } from 'react';
 import { geoPath, geoMercator } from 'd3-geo';
 import LandkreiseOutline from '../../data/kreise-simpler.json';
 import bundeslaenderOutline from '../../data/bundeslaender.json';
-import { setStateAsync } from '../../helpers/helperFunc';
+import { getRanking, getTotalLKName, setStateAsync } from '../../helpers/helperFunc';
+import { UIContext } from '../UIContext';
+import DropDownControls from '../../data/selector-controls.json';
 
 export default class Locator extends Component {
+  static contextType = UIContext;
+
   constructor(props) {
     super(props);
 
@@ -23,6 +27,8 @@ export default class Locator extends Component {
       geoGenerator: [],
       zoomHeight: 0,
     };
+    this.landkreise = DropDownControls.landkreise;
+    this.handleClickOnMap = this.handleClickOnMap.bind(this);
   }
 
   async changeCurrentMap() {
@@ -93,6 +99,7 @@ export default class Locator extends Component {
         translatedPath: geoTranslated(d),
         lk: d.properties.ARS,
         bl: d.properties.SN_L,
+        ranking: getRanking(parseInt(d.properties.ARS), this.props.section),
         visible:
           +this.props.lk.value === +d.properties.ARS ||
           +this.props.lk.value === +d.properties.SN_L ||
@@ -145,6 +152,20 @@ export default class Locator extends Component {
     }
   }
 
+  handleClickOnMap(ags) {
+    //return if ui vis = false
+    if (!this.context) {
+      return;
+    }
+    //find lk in list of landkreise
+    let chosenLK = this.landkreise.find((d) => d.value === ags);
+    if (chosenLK !== undefined) {
+      const lk = { value: ags, label: getTotalLKName(chosenLK) };
+      this.props.handleClickOnMap(lk);
+      getRanking(ags, this.props.section);
+    }
+  }
+
   render() {
     return (
       <div className="locator-container">
@@ -165,10 +186,11 @@ export default class Locator extends Component {
                           id="map"
                           className={`landkreis ${el.lk} ${el.bl} ${
                             el.visible ? 'visible' : 'hidden'
-                          }`}
+                          } ${el.ranking}`}
+                          onClick={this.handleClickOnMap.bind(this, parseInt(el.lk))}
                         />
                       );
-                    })}
+                    }, this)}
                     <circle cx="50%" cy="50%" r="49.5%" stroke="#484848" fill="none"></circle>
                   </g>
                 </svg>
