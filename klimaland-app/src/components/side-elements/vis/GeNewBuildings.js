@@ -221,7 +221,12 @@ const Buildings = ({
   return (
     <div className={`newbuildings-energy ${isThumbnail ? 'is-thumbnail' : ''}`}>
       <div className="description">
-        <div className="title">
+        <div className="title" style={{ display: isMobile ? 'block' : 'none' }}>
+          <h4>
+            Wie wird in Neubauten in <span>{locationLabel}</span> geheizt?
+          </h4>
+        </div>
+        <div className="title" style={{ display: isMobile ? 'none' : 'block' }}>
           <h4>Wie wird in Neubauten geheizt?</h4>
         </div>
         <div className={`${cleanKlassString(currentId).toLowerCase()} caption`}>
