@@ -75,6 +75,7 @@
     @include stacked-postcard;
 
     .side-container {
+      background: transparent;
       .card-front {
         &.side-odd {
           backface-visibility: visible;
@@ -160,7 +161,7 @@
       width: 100%;
       height: 100%;
       position: absolute;
-      z-index:1;
+      z-index: 1;
 
       .overlay-inner {
         width: 95%;
@@ -175,7 +176,7 @@
           }
         }
 
-        &:hover{
+        &:hover {
           .postcard-title {
             h4 {
               -webkit-transition: color 500ms linear;
@@ -664,12 +665,12 @@
         }
 
         .footer-container {
-          height:  calc(10% + 1px);
+          height: calc(10% + 1px);
           // border-top: 1px solid $default-text;
           width: calc(40% + 0.6px);
           position: absolute;
-          right:0;
-          bottom:0;
+          right: 0;
+          bottom: 0;
 
           .footer-inner-container {
             display: flex;
