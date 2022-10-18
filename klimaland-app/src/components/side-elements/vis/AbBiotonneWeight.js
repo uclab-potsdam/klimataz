@@ -178,7 +178,7 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
             );
           })}
 
-          {!isThumbnail && <p>hello</p> && (
+          {!isThumbnail && (
             <g className="controls-container">
               <g
                 transform={`translate(${width - (marginWidth - tabletThreshold) * 3.5}, ${
