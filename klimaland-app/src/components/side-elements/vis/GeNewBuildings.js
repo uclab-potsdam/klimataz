@@ -92,6 +92,7 @@ const Buildings = ({
     if (name == 'Andere erneuerbare Energien' && noSpecificRenewables()) {
       return 'Erneuerbare Energien';
     }
+    if (name == 'Fernwärme/Fernkälte') return 'Fernwärme';
     return name;
   };
 
@@ -105,6 +106,7 @@ const Buildings = ({
       }
     }
     if (name == 'Andere fossile Energien') return 'anderen fossilen Energien';
+    if (name == 'Fernwärme/Fernkälte') return 'Fernwärme';
     return name;
   };
 
@@ -233,10 +235,10 @@ const Buildings = ({
           <p>
             Durchschnittlich werden in <span>{locationLabel}</span> pro Jahr{' '}
             <span>{formatNumber(numberOfBuildings)}</span> neue Wohnungen oder Häuser
-            fertiggestellt. Zu{' '}
-            <span className="energy-number">{formatNumber(selectedEnergy)} %</span> wird davon mit{' '}
+            fertiggestellt. Davon werden{' '}
+            <span className="energy-number">{formatNumber(selectedEnergy)} %</span> mit{' '}
             <span className="energy-number">{getDescriptionName(firstToUppercase(currentId))}</span>{' '}
-            geheizt.
+            beheizt.
           </p>
         </div>
         <div className="legend">
@@ -304,8 +306,9 @@ const Buildings = ({
                         <g
                           key={e}
                           transform={`translate(0, ${en.y})`}
-                          className={`year-marker ${en.klassName} ${en.id === currentId ? 'default' : 'optional'
-                            }`}
+                          className={`year-marker ${en.klassName} ${
+                            en.id === currentId ? 'default' : 'optional'
+                          }`}
                           onClick={() => changeId(en.id)}
                         >
                           <circle cx="0" cy="0" r="3" />
@@ -318,8 +321,9 @@ const Buildings = ({
                           <g
                             key={e}
                             transform={`translate(0, ${en.y})`}
-                            className={`year-marker ${en.klassName} ${en.id === currentId ? 'default' : 'optional'
-                              }`}
+                            className={`year-marker ${en.klassName} ${
+                              en.id === currentId ? 'default' : 'optional'
+                            }`}
                             onClick={() => changeId(en.id)}
                           >
                             <g transform="translate(5, 0)">
@@ -332,8 +336,9 @@ const Buildings = ({
                               >
                                 <div
                                   xmlns="http://www.w3.org/1999/xhtml"
-                                  className={`label ${en.klassName} ${en.id === currentId ? 'default' : 'optional'
-                                    } `}
+                                  className={`label ${en.klassName} ${
+                                    en.id === currentId ? 'default' : 'optional'
+                                  } `}
                                 >
                                   <p>{en.label}</p>
                                 </div>
