@@ -231,7 +231,7 @@ export default class CardCollection extends Component {
                   Object.entries(this.state.textData).filter(([key, value]) => {
                     return element.lk.value !== 0
                       ? value[section]['third'] === localTextData[section]['third'] &&
-                          value.key !== element.lk.value
+                      value.key !== element.lk.value
                       : value.key !== element.lk.value;
                   })
                 );
@@ -420,9 +420,8 @@ export default class CardCollection extends Component {
         {this.props.mode === 'comparison' && !this.props.postcardView && (
           <div className="inner-card-collection">
             <div
-              className={`card-container stacked ${
-                this.props.cardSelection.length === 2 ? 'twocards' : 'default'
-              }`}
+              className={`card-container stacked ${this.props.cardSelection.length === 2 ? 'twocards' : 'default'
+                }`}
             >
               {this.state.cards}
             </div>
@@ -430,7 +429,7 @@ export default class CardCollection extends Component {
         )}
         {this.props.mode === 'lk' && !this.props.postcardView && (
           <div className="inner-card-collection">
-            <div className="card-container messy">{this.state.cards}</div>
+            <div className="card-container">{this.state.cards}</div>
           </div>
         )}
         {this.props.mode === 'shuffle' && !this.props.postcardView && (
