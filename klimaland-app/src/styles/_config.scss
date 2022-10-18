@@ -22,7 +22,7 @@
 $breakpoints: (
   phone: 320px,
   largephone: 400px,
-  /* shortread iframe taz articles */shortread:500px,
+  /* shortread iframe taz articles */ shortread: 500px,
   /* iPhone 13 Pro, Galaxy S20, etc.*/ minitablet: 576px,
   /* theme taz iframe, iPad Mini and small tablets on portrait*/ tablet: 768px,
   /* long read taz iframe, iPad Pro and small tablets on landscape*/ desktop: 940px,
@@ -341,11 +341,11 @@ text {
 }
 
 @mixin responsive-layout {
-  @include media('>phone', '<=tablet') {
+  @include media('>phone', '<=shortread') {
     @include horizontal-bottom-layout;
   }
 
-  @include media('>tablet') {
+  @include media('>shortread') {
     @include vertical-layout;
   }
 }

@@ -490,10 +490,6 @@
         }
       }
     }
-    .side-inner {
-      clip-path: circle(50%);
-      transform: translateY(3rem);
-    }
   }
 
   .chart-container {
@@ -509,13 +505,13 @@
 
       &.Mo-chart {
         .car-density {
-          .legend {
-            background-image: url('../img/legends/MoCarDensity-tablet.svg');
-            background-repeat: no-repeat;
-            position: relative;
-            width: 50%;
-            margin: 1rem;
-          }
+          //   .legend {
+          //     background-image: url('../img/legends/MoCarDensity-tablet.svg');
+          //     background-repeat: no-repeat;
+          //     position: relative;
+          //     width: 50%;
+          //     margin: 1rem;
+          //   }
 
           .visualization-container {
             .active-chart {
@@ -593,6 +589,21 @@
       }
     }
   }
+
+  .card-container {
+    //comparison view
+    &.stacked {
+      &.twocards {
+        .card {
+          &-ordered {
+            //original ratio changed for styling
+            width: calc($thumbnail-postcardwidth + 15vw);
+            height: calc(($thumbnail-postcardwidth + 15vw) / 1.5);
+          }
+        }
+      }
+    }
+  }
 }
 
 // smaller than short read
@@ -654,11 +665,13 @@
       .card-collection {
         width: 100%;
         align-content: flex-start;
+
+        .carousel-container {
+          margin-top: 3.5rem;
+        }
+
         .card-container {
           align-content: flex-start;
-          .carousel-container {
-            margin-top: 3.5rem;
-          }
 
           &.carousel {
             align-content: center;
@@ -699,6 +712,8 @@
         }
         &.open {
           width: 80%;
+          transform: translate(0);
+          -webkit-transform: translate(0);
         }
 
         .sources-text-container {
@@ -1113,6 +1128,10 @@
         height: 100vh;
         margin: 0 auto;
         width: 95%;
+
+        .carousel-container {
+          margin-top: 5rem;
+        }
         .card-container {
           height: 100vh;
           justify-content: left;
