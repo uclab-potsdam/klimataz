@@ -29,7 +29,7 @@ const Sources = () => {
       {showSources && (
         <div className="sources-text-container">
           <button className="button close" onClick={close}>
-            <img src={closeCard} className="button img close" alt="close-button-img" />
+            <img src={closeCard} className="button img img-close" alt="close-button-img" />
           </button>
           <div className="sources-text">
             <h3>Quellen und Methodik</h3>
