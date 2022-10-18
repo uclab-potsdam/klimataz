@@ -4,7 +4,7 @@
 
 // variables method based on github.com/eduardoboucas/include-media
 
-/*Tablet - Desktop*/
+/*smaller than desktop*/
 @include media('<desktop') {
   .main-container {
     background-color: blanchedalmond;
@@ -128,7 +128,7 @@
   }
 }
 
-/*Mini Tablet - Tablet*/
+/*smaller than tablet*/
 @include media('<tablet') {
   .indicators-iframe {
     .main-container {
