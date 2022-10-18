@@ -29,7 +29,7 @@ const Sources = () => {
       {showSources && (
         <div className="sources-text-container">
           <button className="button close" onClick={close}>
-            <img src={closeCard} className="button img" alt="close-button-img" />
+            <img src={closeCard} className="button img close" alt="close-button-img" />
           </button>
           <div className="sources-text">
             <h3>Quellen und Methodik</h3>
@@ -48,7 +48,7 @@ const Sources = () => {
             <div className="sources-linklist">
               <h4>Energie</h4>
               <p>
-                Industrie: 
+                Industrie:
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -59,7 +59,7 @@ const Sources = () => {
                 , 2020.
               </p>
               <p>
-                Primärenergie: 
+                Primärenergie:
                 <a target="_blank" rel="noreferrer" href="https://www.lak-energiebilanzen.de">
                   LAK Energiebilanzen
                 </a>
@@ -76,7 +76,7 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
               </p>
               <h4>Landwirtschaft</h4>
               <p>
-                Tierhaltung: 
+                Tierhaltung:
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -87,7 +87,7 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
                 , 2020.
               </p>
               <p>
-                Tiere pro Fläche: 
+                Tiere pro Fläche:
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -100,7 +100,7 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
               </p>
               <h4>Abfall</h4>
               <p>
-                Organische Abfälle: 
+                Organische Abfälle:
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -112,7 +112,7 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
               </p>
               <h4>Mobilität</h4>
               <p>
-                PkW-Dichte: 
+                PkW-Dichte:
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -123,7 +123,7 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
                 , 2021.
               </p>
               <p>
-                Transportmittel: 
+                Transportmittel:
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -135,7 +135,7 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
               </p>
               <h4>Gebäude</h4>
               <p>
-                Heizenergie: 
+                Heizenergie:
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -146,7 +146,7 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
                 , 2020.
               </p>
               <p>
-                Energieeffizienz: 
+                Energieeffizienz:
                 <a target="_blank" rel="noreferrer" href="https://www.co2online.de/">
                   CO2-online
                 </a>

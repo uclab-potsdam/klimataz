@@ -107,9 +107,8 @@ const MoCarDensity = ({
 
   return (
     <div
-      className={`car-density vertical-layout ${isThumbnail ? 'is-thumbnail' : ''} ${
-        isMobile ? 'is-mobile' : ''
-      }`}
+      className={`car-density vertical-layout ${isThumbnail ? 'is-thumbnail' : ''} ${isMobile ? 'is-mobile' : ''
+        }`}
     >
       <div className="description">
         <div className="title">
@@ -123,7 +122,7 @@ const MoCarDensity = ({
       </div>
       {currentData !== undefined && currentData.data !== undefined && (
         <div className="visualization-container" ref={targetRef}>
-          <svg className={`chart ${isThumbnail ? 'thumbnail-chart' : 'active-chart'}`}>
+          <svg className={`mobility-cars chart ${isThumbnail ? 'thumbnail-chart' : 'active-chart'}`}>
             <g className="cars-container">
               <g className="grid">
                 {carSquares.map(function (sq, s) {
