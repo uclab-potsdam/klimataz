@@ -1,0 +1,113 @@
+// Generic responsive rules for smaller devices
+// For cards with vertical layouts a mixin called `responsive-layout`
+// handles the switch to an horizontal layout
+
+// variables method based on github.com/eduardoboucas/include-media
+
+@include media('<=tablet') {
+  body {
+    background-color: blue;
+  }
+}
+
+@include media('<=shortread') {
+  body {
+    background-color: lightcoral;
+
+    h4 {
+      font-size: 14px;
+    }
+
+    .indicators-iframe {
+      .main-container {
+        .wordart-title {}
+
+        .selection-buttons {}
+
+        .card-collection {
+          .card {
+            .card-front {
+              .side-outer {
+                .overlay-container {
+                  height: calc(15% - 0.5rem);
+                }
+
+                .side-inner {
+                  height: calc(85% + 0.5rem);
+                }
+              }
+            }
+            .Mo-chart {
+              .chart {
+                transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+                -webkit-transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+              }
+            }
+          }
+        }
+
+        .info-container {}
+
+        .sources-container {}
+      }
+    }
+  }
+}
+
+@include media('<=minitablet') {
+  body {
+    background-color: peachpuff;
+  }
+}
+
+@include media('<=schwerpunkt') {
+  body {
+    background-color: aqua;
+
+    h4 {
+      font-size: 12px;
+    }
+
+    .indicators-iframe {
+
+      .main-container {
+        .card-collection {
+          .card {
+            .Mo-chart {
+              .chart {
+                transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+                -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@include media('<=largephone') {
+    body {
+        background-color: violet;
+    
+        .indicators-iframe {
+          .main-container {
+            .wordart-title {}
+    
+            .selection-buttons {}
+  
+    
+            .info-container {}
+    
+            .sources-container {}
+          }
+        }
+      }
+}
+
+
+
+
+
+
