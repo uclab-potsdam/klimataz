@@ -70,7 +70,7 @@ export default class Details extends Component {
         </div>
         <div className="footer-container">
           <div className="footer-inner-container">
-            <div className="logo-container"></div>
+            {/* <div className="logo-container"></div> */}
             {/* <div className="info-backside"><p>Wie werden die Indikatoren berechnet?</p></div> */}
           </div>
         </div>
