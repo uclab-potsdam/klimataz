@@ -155,18 +155,11 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
                 <line x1="0" x2="0" y1="0" y2={height - d.y} />
                 <circle cx="0" cy="0" r={radius} />
                 <g transform="translate(-10, 55)" className="interactive-labels">
-                  <rect
-                    className="marker-label"
-                    x="-20"
-                    y="-30"
-                    width="60"
-                    height="20"
-                    fill="white"
-                    rx="2"
-                  />
-                  <text x="-15" y="-15">
-                    {formatNumber(d.kgValue)} Kg
-                  </text>
+                  <foreignObject x="0" y="0" width="1" height="1">
+                    <div xmlns="http://www.w3.org/1999/xhtml" className="marker-label">
+                      <p>{formatNumber(d.kgValue)} Kg</p>
+                    </div>
+                  </foreignObject>
                 </g>
                 <text
                   className={d.yearClass}
@@ -184,44 +177,57 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
               </g>
             );
           })}
-          <g className="controls-container">
-            <g
-              transform={`translate(${width - (marginWidth - tabletThreshold) * 3.5}, ${marginHeight / 2
+
+          {!isThumbnail && (
+            <g className="controls-container">
+              <g
+                transform={`translate(${width - (marginWidth - tabletThreshold) * 3.5}, ${
+                  marginHeight / 2
                 })`}
-              onClick={activatePies}
-            >
-              <g className={`detail-label ${piesAreActive ? 'show-legend' : ''}`}>
-                <text>Detailansicht</text>
-              </g>
-              <g className={`legend ${piesAreActive ? 'show-legend' : ''}`} onClick={activatePies}>
-                <circle className="biotonne" cx="0" cy="0" r={radius} />
-                <text x={radius + 5} y={radius / 2}>
-                  Biotonne
-                </text>
-                <circle className="gartenPark" cx="100" cy="0" r={radius} />
-
-                <text x={radius + 105} y={radius / 2}>
-                  Gartenabfall
-                </text>
-              </g>
-              <g className="pie-controller" transform="translate(200, -10)" onClick={activatePies}>
-                <g>
-                  <path
-                    d="M18.5955 19.2306L18.95 19.5833L19.3027 19.2288C21.3505 17.1703 22.5 14.385 22.5 11.4812C22.5 5.41539 17.5836 0.499023 11.5178 0.499023V0.999023H11.0178V4.37493V4.87493H11.5178C13.2643 4.87493 14.9402 5.56693 16.1784 6.79878C18.7643 9.37216 18.7738 13.5557 16.2003 16.1418L15.8476 16.4962L16.202 16.8489L18.5955 19.2306Z"
-                    fill={piesAreActive ? '#f6a119' : '#FFF9F1'}
-                    stroke="#484848"
-                  />
-                  <path
-                    d="M3.73475 3.73523C-0.54497 8.0344 -0.527275 14.988 3.7718 19.266C8.07099 23.5457 15.0247 23.528 19.3026 19.2288L19.6553 18.8744L19.3008 18.5217L16.9073 16.14L16.5529 15.7873L16.2002 16.1418C14.9607 17.3876 13.2754 18.0875 11.5178 18.0875C7.86944 18.0875 4.9115 15.1296 4.9115 11.4812C4.9115 7.83287 7.86944 4.87493 11.5178 4.87493H12.0178V4.37493V0.999023V0.499023H11.5178C8.59645 0.499023 5.79516 1.66258 3.73475 3.73523ZM3.73475 3.73523L4.0891 4.08798L3.73449 3.73549C3.73458 3.7354 3.73466 3.73532 3.73475 3.73523Z"
-                    fill={piesAreActive ? '#1A8579' : '#FFF9F1'}
-                    stroke="#424242"
-                  />
-
-                  <circle className="pie-button" cx="11" cy="11" r={radius + 3} />
+                onClick={activatePies}
+              >
+                <g className={`detail-label ${piesAreActive ? 'show-legend' : ''}`}>
+                  <text>Detailansicht</text>
+                </g>
+                <g
+                  className={`legend ${piesAreActive ? 'show-legend' : ''}`}
+                  onClick={activatePies}
+                >
+                  <circle className="biotonne" cx="-50" cy="0" r={radius} />
+                  <text x={radius - 45} y={radius / 2}>
+                    Biotonne
+                  </text>
+                  <circle className="gartenPark" cx="-150" cy="0" r={radius} />
+                  <text x={radius - 145} y={radius / 2}>
+                    Gartenabfall
+                  </text>
+                </g>
+                <g className="pie-controller" transform="translate(25, -10)" onClick={activatePies}>
+                  <g>
+                    <g>
+                      <path
+                        d="M18.5955 19.2306L18.95 19.5833L19.3027 19.2288C21.3505 17.1703 22.5 14.385 22.5 11.4812C22.5 5.41539 17.5836 0.499023 11.5178 0.499023V0.999023H11.0178V4.37493V4.87493H11.5178C13.2643 4.87493 14.9402 5.56693 16.1784 6.79878C18.7643 9.37216 18.7738 13.5557 16.2003 16.1418L15.8476 16.4962L16.202 16.8489L18.5955 19.2306Z"
+                        fill={piesAreActive ? '#f6a119' : '#FFF9F1'}
+                        stroke="#484848"
+                      />
+                      <path
+                        d="M3.73475 3.73523C-0.54497 8.0344 -0.527275 14.988 3.7718 19.266C8.07099 23.5457 15.0247 23.528 19.3026 19.2288L19.6553 18.8744L19.3008 18.5217L16.9073 16.14L16.5529 15.7873L16.2002 16.1418C14.9607 17.3876 13.2754 18.0875 11.5178 18.0875C7.86944 18.0875 4.9115 15.1296 4.9115 11.4812C4.9115 7.83287 7.86944 4.87493 11.5178 4.87493H12.0178V4.37493V0.999023V0.499023H11.5178C8.59645 0.499023 5.79516 1.66258 3.73475 3.73523ZM3.73475 3.73523L4.0891 4.08798L3.73449 3.73549C3.73458 3.7354 3.73466 3.73532 3.73475 3.73523Z"
+                        fill={piesAreActive ? '#1A8579' : '#FFF9F1'}
+                        stroke="#424242"
+                      />
+                      <circle className="pie-button" cx="11" cy="11" r={radius + 3} />
+                    </g>
+                  </g>
+                </g>
+                <g transform="translate(150, 0)">
+                  <circle className="highestValue" cx="0" cy="2" r={radius} />
+                  <text x={radius + 10} y={radius / 2}>
+                    Höchster Wert
+                  </text>
                 </g>
               </g>
             </g>
-          </g>
+          )}
         </svg>
       </div>
       <div className="description">

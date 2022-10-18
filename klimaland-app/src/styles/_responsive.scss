@@ -550,7 +550,6 @@
       .overlay-container {
         .overlay-inner {
           text-align: center;
-          width: 95%;
           position: relative;
           z-index: 1;
 
@@ -566,6 +565,7 @@
             max-width: 50%;
             width: 50%;
             overflow: hidden;
+            
             .section-title {
               text-align: left;
               max-width: 100%;
@@ -574,7 +574,9 @@
               white-space: nowrap;
             }
             .postcard-miniature {
-              display: none;
+              .word-art-title {
+                display: none;
+              }
             }
           }
 
@@ -744,14 +746,14 @@
               }
             }
             .word-art-title {
-              top: 2rem;
-              left: 7px;
+              top: 0.5rem;
+              left: 2px;
               .gruss-thumb {
                 font-size: 0.5rem;
               }
               .wordart {
                 font-size: 0.8rem;
-                line-height: 0.9rem;
+                line-height: 0.7rem;
                 padding-top: 0.9rem;
                 left: -5px;
                 position: relative;

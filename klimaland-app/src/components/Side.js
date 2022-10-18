@@ -204,7 +204,6 @@ export default class Side extends Component {
           <div className="overlay-container">
             <div className="overlay-inner">
               <div className="postcard-title">
-                <h4 className="section-title">{this.props.sectionName}</h4>
                 <div
                   className={`section-thumb ${this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
                     }`}
@@ -218,6 +217,7 @@ export default class Side extends Component {
                       <p>im {this.state.ranking}</p>
                     </div>
                   )}
+                  <h4 className="section-title">{this.props.sectionName}</h4>
                 </div>
               </div>
               {!this.props.isThumbnail &&
