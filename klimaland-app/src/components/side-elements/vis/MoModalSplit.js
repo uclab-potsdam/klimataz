@@ -267,7 +267,7 @@ const MoModalSplit = ({
             transform={`translate(${rightMarginWidth + marginWidth * 2}, 10)`}
           >
             <text x="10" y={marginHeight + 15} textAnchor="middle">
-              % der Trips
+              Anzahl der Trips
             </text>
             {plotPercData.map((trip, t) => {
               return (
