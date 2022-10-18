@@ -22,9 +22,10 @@
 $breakpoints: (
   phone: 320px,
   largephone: 400px,
+  /* shortread iframe taz articles */shortread:500px,
   /* iPhone 13 Pro, Galaxy S20, etc.*/ minitablet: 576px,
-  /* iPad Mini and small tablets on portrait*/ tablet: 768px,
-  /* iPad Pro and small tablets on landscape*/ desktop: 940px,
+  /* theme taz iframe, iPad Mini and small tablets on portrait*/ tablet: 768px,
+  /* long read taz iframe, iPad Pro and small tablets on landscape*/ desktop: 940px,
 );
 
 //colors
