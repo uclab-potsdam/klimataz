@@ -5,3 +5,4 @@ data_analysis/GTFS-analysis/delfi.db
 data_analysis/GTFS-analysis/export/agency_stops.csv
 .DS_Store
 klimaland-app/node_modules
+klimaland-app/build
