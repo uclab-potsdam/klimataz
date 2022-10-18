@@ -160,6 +160,7 @@
       width: 100%;
       height: 100%;
       position: absolute;
+      z-index:1;
 
       .overlay-inner {
         width: 95%;
@@ -167,8 +168,20 @@
         margin: 0 auto;
         .postcard-title {
           h4 {
+            -webkit-transition: color 500ms linear;
+            transition: color 500ms linear;
             color: darken($pale-olive, 20%);
             margin: 0.5rem;
+          }
+        }
+
+        &:hover{
+          .postcard-title {
+            h4 {
+              -webkit-transition: color 500ms linear;
+              transition: color 500ms linear;
+              color: darken($pale-olive, 40%);
+            }
           }
         }
 
@@ -241,6 +254,7 @@
             margin-top: 0.5rem;
 
             .gruss-thumb {
+              filter: drop-shadow(0.5px 0.5px 0px $light);
               font-size: 0.5rem;
             }
 
@@ -253,6 +267,7 @@
               padding-left: 0.2rem;
               letter-spacing: -0.1vw;
               line-height: 1rem;
+              filter: drop-shadow(0.5px 0.5px 0px $light);
               background-image: linear-gradient(0deg, $taz-pink 0%, $blue 100%);
             }
           }
