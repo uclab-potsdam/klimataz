@@ -60,11 +60,11 @@ export default class Info extends Component {
         >
           {this.state.inFocus && (
             <button className="button close" onClick={this.handleHelpNotFocus}>
-              <img src={closeCard} className="button img" alt="close-button-img" />
+              <img src={closeCard} className="button img close" alt="close-button-img" />
             </button>
           )}
           <div className="help">
-            <h4 className="desktop-title">Wie bediene ich die Postkarten?</h4>
+            <h4 className="desktop-title help">Wie bediene ich die Postkarten?</h4>
             <h2 className="mobile-title">?</h2>
             {!this.props.postcardView && (
               <p className="text">

@@ -197,7 +197,7 @@ const MoModalSplit = ({
   return (
     <div className={`modal-split ${isThumbnail ? 'is-thumbnail' : ''}`}>
       <div className="visualization-container" ref={targetRef}>
-        <svg className="chart">
+        <svg className="mobility-modalsplit chart">
           <g className="paths-avg-trip">
             {
               <g className="paths">

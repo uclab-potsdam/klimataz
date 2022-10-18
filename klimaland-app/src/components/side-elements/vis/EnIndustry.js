@@ -209,7 +209,7 @@ const EnIndustry = ({
       className={`energy-industry horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}
     >
       <div className="visualization-container" ref={targetRef}>
-        <svg className="chart" width="100%" height="100%">
+        <svg className="energy-industry chart" width="100%" height="100%">
           <g className="axis">
             {xAxisElements.map((axis, a) => {
               if (a % 2 !== 0) {
@@ -298,9 +298,8 @@ const EnIndustry = ({
                         />
                         {label.value !== 0 && (
                           <g
-                            className={`interactive-labels ${
-                              activeLabel === l ? 'active-label' : ''
-                            }`}
+                            className={`interactive-labels ${activeLabel === l ? 'active-label' : ''
+                              }`}
                             transform={`translate(${label.xValue}, ${label.yValue})`}
                           >
                             <foreignObject

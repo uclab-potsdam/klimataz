@@ -158,7 +158,7 @@ const Land = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
     <div className={`animal-count horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}>
       {currentData !== undefined && currentData.data !== undefined && (
         <div className="visualization-container" ref={targetRef}>
-          <svg className="chart" width="100%" height="100%">
+          <svg className="land-animalcount chart" width="100%" height="100%">
             <defs>
               <marker
                 id="arrow"
