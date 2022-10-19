@@ -22,9 +22,9 @@
 $breakpoints: (
   phone: 320px,
   largephone: 400px,
-  schwerpunkt: 516px,
+  shortread: 516px,
   /* iPhone 13 Pro, Galaxy S20, etc.*/ minitablet: 576px,
-  shortread: 624px,
+  schwerpunkt: 624px,
   /* iPad Mini and small tablets on portrait*/ tablet: 768px,
   /* iPad Pro and small tablets on landscape*/ desktop: 940px,
 );
@@ -58,6 +58,7 @@ $default-text: #484848;
 //size variables
 $postcardview-postcardwidth: 80vw;
 $thumbnail-postcardwidth: 30vw;
+$thumbnail-minitablet-postcardwidth: 40vw;
 $portait-postcardwidth: 85vw;
 $portrait-minitablet-postcardwidth: 65vw;
 $portait-postcardheight: 85vh;
@@ -342,11 +343,11 @@ text {
 }
 
 @mixin responsive-layout {
-  @include media('>phone', '<=largephone') {
+  @include media('>phone', '<=shortread') {
     @include horizontal-bottom-layout;
   }
 
-  @include media('>largephone') {
+  @include media('>shortread') {
     @include vertical-layout;
   }
 }
