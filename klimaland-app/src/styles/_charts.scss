@@ -1168,7 +1168,9 @@ $gas: lighten($dark-pink, 5%);
         float: right;
 
         path {
-          cursor: pointer;
+          &.ui-true {
+            cursor: pointer;
+          }
         }
         .zoom-pointer {
           path {
@@ -1190,7 +1192,9 @@ $gas: lighten($dark-pink, 5%);
         -webkit-transform: translateY(-45%);
 
         path {
-          cursor: pointer;
+          &.ui-true {
+            cursor: pointer;
+          }
         }
       }
     }

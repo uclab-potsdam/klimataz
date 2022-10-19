@@ -192,7 +192,7 @@ export default class Locator extends Component {
                           id="map"
                           className={`landkreis ${el.lk} ${el.bl} ${
                             el.visible ? 'visible' : 'hidden'
-                          } ${el.ranking}`}
+                          } ${el.ranking} ui-${this.context}`}
                           onClick={this.handleClickOnMap.bind(this, parseInt(el.lk))}
                         />
                       );
@@ -228,7 +228,7 @@ export default class Locator extends Component {
                     id={el.lk}
                     className={`landkreis ${el.bl} ${el.visible ? 'visible' : 'hidden'} ${
                       el.ranking
-                    }`}
+                    } ui-${this.context}`}
                     onClick={this.handleClickOnMap.bind(this, parseInt(el.lk))}
                   />
                 );
