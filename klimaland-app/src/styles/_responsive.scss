@@ -4,8 +4,11 @@
 
 // variables method based on github.com/eduardoboucas/include-media
 
-/*Tablet - Desktop*/
-@include media('>tablet', '<desktop') {
+/*smaller than desktop*/
+@include media('<desktop') {
+  .main-container {
+    background-color: blanchedalmond;
+  }
   .card-active {
     .side-outer {
       .overlay-container {
@@ -17,104 +20,6 @@
 
         .details-container {
           height: 100%;
-        }
-      }
-    }
-  }
-
-  .chart-container {
-    .svg-container {
-      &.En-chart {
-        .energy-industry,
-        .primary-energy {
-          .visualization-container {
-            height: 80%;
-          }
-        }
-      }
-
-      &.Mo-chart {
-        .car-density {
-          .legend {
-            background-image: url('../img/legends/MoCarDensity-tablet.svg');
-            background-repeat: no-repeat;
-            position: relative;
-            width: 50%;
-            margin: 1rem;
-          }
-
-          .visualization-container {
-            .active-chart {
-              transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
-              -webkit-transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
-            }
-          }
-        }
-      }
-
-      &.Ge-chart {
-        .description {
-          .caption {
-            p {
-              font-size: 12px;
-            }
-          }
-        }
-      }
-
-      &.Ab-chart {
-        .biotonne-weight {
-          .visualization-container {
-            height: 75%;
-
-            .chart {
-              .controls-container {
-                display: none;
-                .pie-controller {
-                  transform: scale(0.8) translateX(80px);
-                }
-              }
-            }
-          }
-          .description {
-            .title {
-              h3 {
-                font-size: 16px;
-                padding-top: 0.5rem;
-                padding-bottom: 0.5rem;
-              }
-            }
-          }
-        }
-      }
-
-      &.La-chart {
-        .animal-density {
-          .description {
-            .caption {
-              p {
-                font-size: 12px;
-              }
-            }
-            .legend {
-              margin-top: 0rem;
-            }
-          }
-        }
-      }
-
-      &.Ge-chart {
-        .avg-heating {
-          .visualization-container {
-            svg {
-              .non-clipped-elements {
-                text {
-                  transform: translateY(-5px);
-                  font-size: 9.5px;
-                }
-              }
-            }
-          }
         }
       }
     }
@@ -223,8 +128,558 @@
   }
 }
 
-/* Phones - Tablet */
-@include media('>phone', '<=tablet') {
+/*smaller than tablet*/
+@include media('<tablet') {
+  .indicators-iframe {
+    .main-container {
+      background-color: green;
+      .card-collection {
+        .carousel-container {
+          margin-top: 1rem;
+        }
+      }
+
+      .sources-container {
+        &.open {
+          width: 80%;
+          transform: translate(37%, 50%);
+          -webkit-transform: translate(37%, 50%);
+        }
+        .sources-button {
+          right: 1.5rem;
+        }
+
+        .info-text-label {
+          right: 1rem;
+        }
+      }
+    }
+  }
+}
+
+/* smaller than minitablet */
+@include media('<minitablet') {
+  .card {
+    &-ordered {
+      //original ratio changed for styling
+      width: $thumbnail-minitablet-postcardwidth;
+      height: calc($thumbnail-minitablet-postcardwidth/1.5);
+    }
+    &.card-active {
+      .overlay-container {
+        .overlay-inner {
+          text-align: center;
+          position: relative;
+          z-index: 1;
+
+          .section-thumb {
+            .indicator-ranking {
+              p {
+                font-size: 10px;
+              }
+            }
+          }
+
+          .postcard-title {
+            max-width: 50%;
+            width: 50%;
+            overflow: hidden;
+
+            .section-title {
+              text-align: left;
+              max-width: 100%;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+            }
+            .postcard-miniature {
+              .word-art-title {
+                display: none;
+              }
+            }
+          }
+
+          .button-toggle-container {
+            margin-left: 0;
+            svg {
+              margin-left: 0;
+              .toggle {
+                g {
+                  transform: translate(5px, 2px);
+                }
+              }
+
+              text {
+                display: none;
+              }
+
+              .mobile-toggle-label {
+                transform: translate(-100px, 0px);
+                display: block;
+                font-size: 12px;
+                margin-left: 0.5rem;
+              }
+            }
+          }
+
+          .button-download {
+            width: 20%;
+
+            .download-label {
+              display: none;
+            }
+
+            &:hover {
+              .download-label {
+                opacity: 0;
+              }
+            }
+          }
+        }
+      }
+
+      .side-inner {
+        .details-container {
+          height: 100%;
+
+          .flex-container {
+            display: block;
+            position: relative;
+
+            .text-container {
+              width: 100%;
+              overflow: hidden;
+              position: absolute;
+              border: none;
+              z-index: 1;
+
+              .text-inner-container {
+                margin-top: 3rem;
+                height: 80%;
+
+                .section-title {
+                  margin-bottom: 0;
+                }
+
+                .section-text {
+                  margin-top: 0;
+                  height: 80%;
+                  position: relative;
+                  overflow: scroll;
+
+                  p {
+                    margin-top: 0.5rem;
+                  }
+                }
+              }
+            }
+
+            .data-container {
+              background-color: $light;
+              position: absolute;
+              width: 100%;
+              height: 30%;
+              top: 0;
+              border: none;
+
+              .locator-map {
+                border: none;
+                height: 70%;
+                margin-top: 0.5rem;
+
+                .locator-container {
+                  height: 100%;
+                  display: flex;
+                  justify-content: right;
+
+                  .locator-zoom {
+                    margin-left: 0;
+                    text-align: right;
+                    display: flex;
+                    justify-content: right;
+                    width: 25%;
+                  }
+
+                  .locator-background {
+                    width: 25%;
+                  }
+                }
+              }
+
+              .lk-list {
+                display: none;
+              }
+            }
+          }
+
+          .footer-container {
+            height: 10%;
+            .footer-inner-container {
+              height: 100%;
+              display: inline-block;
+              margin: 0rem 0rem 0rem 1rem;
+
+              .logo-container {
+                display: none;
+              }
+
+              .info-backside {
+                line-height: 20px;
+              }
+            }
+          }
+        }
+      }
+
+      .social-media-layout {
+        .logo-container {
+          height: 0.8rem;
+          min-height: 0.5rem;
+          top: 8px;
+          left: 8px;
+        }
+
+        .word-art-title {
+          right: 0rem;
+          bottom: 0rem;
+        }
+      }
+
+      .flip {
+        right: 0rem;
+      }
+    }
+  }
+  .card-preview {
+    .overlay-container {
+      position: relative;
+      z-index: 1;
+      .overlay-inner {
+        .postcard-title {
+          .section-thumb {
+            overflow: visible;
+            .indicator-ranking {
+              p {
+                font-size: 10px;
+                line-height: 10px;
+              }
+            }
+            .word-art-title {
+              top: 0.5rem;
+              left: 2px;
+              .gruss-thumb {
+                font-size: 0.5rem;
+              }
+              .wordart {
+                font-size: 0.8rem;
+                line-height: 0.7rem;
+                padding-top: 0.9rem;
+                left: -5px;
+                position: relative;
+                background-image: linear-gradient(0deg, $taz-pink 0%, $blue 90%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .chart-container {
+    .svg-container {
+      &.En-chart {
+        .energy-industry,
+        .primary-energy {
+          .visualization-container {
+            height: 80%;
+          }
+        }
+      }
+
+      &.Mo-chart {
+        .car-density {
+          //   .legend {
+          //     background-image: url('../img/legends/MoCarDensity-tablet.svg');
+          //     background-repeat: no-repeat;
+          //     position: relative;
+          //     width: 50%;
+          //     margin: 1rem;
+          //   }
+
+          .visualization-container {
+            .active-chart {
+              transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+              -webkit-transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+            }
+          }
+        }
+      }
+
+      &.Ge-chart {
+        .description {
+          .caption {
+            p {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+
+      &.Ab-chart {
+        .biotonne-weight {
+          .visualization-container {
+            height: 75%;
+
+            .chart {
+              .controls-container {
+                display: none;
+                .pie-controller {
+                  transform: scale(0.8) translateX(80px);
+                }
+              }
+            }
+          }
+          .description {
+            .title {
+              h3 {
+                font-size: 16px;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+              }
+            }
+          }
+        }
+      }
+
+      &.La-chart {
+        .animal-density {
+          .description {
+            .caption {
+              p {
+                font-size: 12px;
+              }
+            }
+            .legend {
+              margin-top: 0rem;
+            }
+          }
+        }
+      }
+
+      &.Ge-chart {
+        .avg-heating {
+          .visualization-container {
+            svg {
+              .non-clipped-elements {
+                text {
+                  transform: translateY(-5px);
+                  font-size: 9.5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .card-container {
+    //comparison view
+    &.stacked {
+      &.twocards {
+        .card {
+          &-ordered {
+            //original ratio changed for styling
+            width: calc($thumbnail-postcardwidth + 15vw);
+            height: calc(($thumbnail-postcardwidth + 15vw) / 1.5);
+          }
+        }
+      }
+    }
+  }
+}
+
+// smaller than short read
+@include media('<shortread') {
+  body {
+    h3 {
+      font-size: 16px;
+    }
+
+    h4.section-title {
+      font-size: 14px;
+    }
+  }
+  .indicators-iframe {
+    .main-container {
+      background-color: coral;
+      .word-art-title {
+        width: 100%;
+        bottom: 1rem;
+        right: -1rem;
+        transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
+
+        .wordart {
+          font-size: 2rem;
+          line-height: 1.5rem;
+          overflow: visible;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+      }
+
+      margin-top: 10px;
+
+      .selection-buttons {
+        .selection-container {
+          display: block;
+          margin-bottom: 0.5rem;
+          position: relative;
+          width: 100%;
+
+          .selector {
+            width: 90%;
+            margin: 0.25rem 1rem;
+
+            &.lk {
+              display: none;
+            }
+            &.lk-mobile {
+              display: inline-block;
+            }
+
+            &.section {
+              width: 90%;
+            }
+          }
+        }
+      }
+
+      .card-collection {
+        width: 100%;
+        align-content: flex-start;
+
+        .carousel-container {
+          margin-top: 3.5rem;
+        }
+
+        .card-container {
+          align-content: flex-start;
+
+          &.carousel {
+            align-content: center;
+            justify-content: space-around;
+            padding-left: 0;
+          }
+
+          &.stacked {
+            //comparison view
+            &.twocards,
+            &.default {
+              .card {
+                &-ordered {
+                  margin: 0;
+                  width: calc($portait-postcardwidth/2.3);
+                  height: calc($portait-postcardwidth/1.8);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .sources-container {
+        width: 80%;
+        .sources-button {
+          width: 25px;
+          height: 25px;
+          right: 1rem;
+          bottom: 1rem;
+          .info-i {
+            font-size: 0.75rem;
+          }
+        }
+
+        .info-text-label {
+          display: none;
+        }
+        &.open {
+          width: 80%;
+          transform: translate(0);
+          -webkit-transform: translate(0);
+        }
+
+        .sources-text-container {
+          transform: translate(-16%, -115%);
+          -webkit-transform: translate(-16%, -115%);
+        }
+      }
+
+      .info-container {
+        width: 25%;
+        position: absolute;
+        right: -2.5rem;
+        bottom: 27%;
+        .info-container-content {
+          width: 30px;
+          height: 30px;
+
+          .help {
+            h2.mobile-title {
+              display: block;
+              text-align: center;
+              margin: 0;
+            }
+
+            h4.desktop-title {
+              display: none;
+            }
+          }
+
+          &.open {
+            width: calc($portait-postcardwidth/1.2);
+            height: calc($portait-postcardwidth * 1.2);
+            transform: translate(-100%, -70%) rotate(-2deg);
+            -webkit-transform: translate(-100%, -70%) rotate(-2deg);
+
+            .help {
+              height: calc($portait-postcardwidth * 1.2);
+            }
+
+            h4.desktop-title {
+              display: block;
+            }
+
+            h2.mobile-title {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .button-container {
+        .button-switch-container {
+          display: none;
+        }
+
+        .inner-button {
+          .close {
+            margin-top: 2.5rem;
+            margin-right: 0rem;
+          }
+        }
+      }
+    }
+  }
+  .card {
+    //thumbnail
+    &-ordered {
+      //original ratio changed for styling
+      width: calc($portrait-minitablet-postcardwidth/2.0);
+      height: calc($portrait-minitablet-postcardwidth/1.5);
+    }
+  }
+
   .chart-container {
     .svg-container {
       .description {
@@ -545,557 +1000,33 @@
     }
   }
 
-  .card {
-    &.card-active {
-      .overlay-container {
-        .overlay-inner {
-          text-align: center;
-          position: relative;
-          z-index: 1;
-
-          .section-thumb {
-            .indicator-ranking {
-              p {
-                font-size: 10px;
-              }
-            }
-          }
-
-          .postcard-title {
-            max-width: 50%;
-            width: 50%;
-            overflow: hidden;
-            
-            .section-title {
-              text-align: left;
-              max-width: 100%;
-              text-overflow: ellipsis;
-              overflow: hidden;
-              white-space: nowrap;
-            }
-            .postcard-miniature {
-              .word-art-title {
-                display: none;
-              }
-            }
-          }
-
-          .button-toggle-container {
-            margin-left: 0;
-            svg {
-              margin-left: 0;
-              .toggle {
-                g {
-                  transform: translate(5px, 2px);
-                }
-              }
-
-              text {
-                display: none;
-              }
-
-              .mobile-toggle-label {
-                transform: translate(-100px, 0px);
-                display: block;
-                font-size: 12px;
-                margin-left: 0.5rem;
-              }
-            }
-          }
-
-          .button-download {
-            width: 20%;
-
-            .download-label {
-              display: none;
-            }
-
-            &:hover {
-              .download-label {
-                opacity: 0;
-              }
-            }
-          }
-        }
-      }
-
-      .side-inner {
-        .details-container {
-          height: 100%;
-
-          .flex-container {
-            display: block;
-            position: relative;
-
-            .text-container {
-              width: 100%;
-              overflow: hidden;
-              position: absolute;
-              border: none;
-              z-index: 1;
-
-              .text-inner-container {
-                margin-top: 3rem;
-                height: 80%;
-
-                .section-title {
-                  margin-bottom: 0;
-                }
-
-                .section-text {
-                  margin-top: 0;
-                  height: 80%;
-                  position: relative;
-                  overflow: scroll;
-
-                  p {
-                    margin-top: 0.5rem;
-                  }
-                }
-              }
-            }
-
-            .data-container {
-              background-color: $light;
-              position: absolute;
-              width: 100%;
-              height: 30%;
-              top: 0;
-              border: none;
-
-              .locator-map {
-                border: none;
-                height: 70%;
-                margin-top: 0.5rem;
-
-                .locator-container {
-                  height: 100%;
-                  display: flex;
-                  justify-content: right;
-
-                  .locator-zoom {
-                    margin-left: 0;
-                    text-align: right;
-                    display: flex;
-                    justify-content: right;
-                    width: 25%;
-                  }
-
-                  .locator-background {
-                    width: 25%;
-                  }
-                }
-              }
-
-              .lk-list {
-                display: none;
-              }
-            }
-          }
-
-          .footer-container {
-            height: 10%;
-            .footer-inner-container {
-              height: 100%;
-              display: inline-block;
-              margin: 0rem 0rem 0rem 1rem;
-
-              .logo-container {
-                display: none;
-              }
-
-              .info-backside {
-                line-height: 20px;
-              }
-            }
-          }
-        }
-      }
-
-      .social-media-layout {
-        .logo-container {
-          height: 0.8rem;
-          min-height: 0.5rem;
-          top: 8px;
-          left: 8px;
-        }
-
-        .word-art-title {
-          right: 0rem;
-          bottom: 0rem;
-        }
-      }
-
-      .flip {
-        right: 0rem;
-      }
-    }
-  }
-  .card-preview {
-    .overlay-container {
-      position: relative;
-      z-index: 1;
-      .overlay-inner {
-        .postcard-title {
-          .section-thumb {
-            overflow: visible;
-            .indicator-ranking {
-              p {
-                font-size: 10px;
-                line-height: 10px;
-              }
-            }
-            .word-art-title {
-              top: 0.5rem;
-              left: 2px;
-              .gruss-thumb {
-                font-size: 0.5rem;
-              }
-              .wordart {
-                font-size: 0.8rem;
-                line-height: 0.7rem;
-                padding-top: 0.9rem;
-                left: -5px;
-                position: relative;
-                background-image: linear-gradient(0deg, $taz-pink 0%, $blue 90%);
-              }
-            }
-          }
-        }
-      }
-    }
-    .side-inner {
-      clip-path: circle(50%);
-      transform: translateY(3rem);
-    }
+  //postcardview
+  .side-container {
+    width: calc($portait-postcardheight/1.5);
+    height: calc($portait-postcardheight);
   }
 }
 
-/* Phones - Minitablet */
-@include media('>phone', '<=minitablet') {
-  body {
-    h3 {
-      font-size: 16px;
-    }
-
-    h4.section-title {
-      font-size: 14px;
-    }
-  }
-
+// smaller than phone
+@include media('<largephone') {
   .indicators-iframe {
     //max-width: 375px;
     margin-right: 5.55%;
     margin-left: 5.55%;
 
     .main-container {
-      .word-art-title {
-        width: 100%;
-        bottom: 1rem;
-        right: -1rem;
-        transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
-
-        .wordart {
-          font-size: 2rem;
-          line-height: 1.5rem;
-          overflow: visible;
-          padding-top: 10px;
-          padding-bottom: 10px;
-        }
-      }
-
-      margin-top: 10px;
-
-      .selection-buttons {
-        .selection-container {
-          display: block;
-          margin-bottom: 0.5rem;
-          position: relative;
-          width: 100%;
-
-          .selector {
-            width: 90%;
-            margin: 0.25rem 1rem;
-
-            &.lk {
-              display: none;
-            }
-            &.lk-mobile {
-              display: inline-block;
-            }
-
-            &.section {
-              width: 90%;
-            }
-          }
-        }
-      }
-
-      .card-collection {
-        .card-container {
-          .carousel-container {
-            margin-top: 3.5rem;
-          }
-
-          &.carousel {
-            align-content: center;
-            justify-content: space-around;
-            padding-left: 0;
-          }
-
-          &.stacked {
-            //comparison view
-            &.twocards,
-            &.default {
-              .card {
-                &-ordered {
-                  width: calc($portait-postcardwidth/2.3);
-                  height: calc($portait-postcardwidth/1.8);
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .sources-container {
-        &.open {
-          width: 80%;
-        }
-
-        .sources-text-container {
-          transform: translate(-16%, -115%);
-          -webkit-transform: translate(-16%, -115%);
-        }
-      }
-
-      .info-container {
-        width: 25%;
-        position: absolute;
-        right: -2.5rem;
-        bottom: 27%;
-        .info-container-content {
-          width: 30px;
-          height: 30px;
-
-          .help {
-            h2.mobile-title {
-              display: block;
-              text-align: center;
-              margin: 0;
-            }
-
-            h4.desktop-title {
-              display: none;
-            }
-          }
-
-          &.open {
-            width: calc($portait-postcardwidth/1.2);
-            height: calc($portait-postcardwidth * 1.2);
-            transform: translate(-100%, -70%) rotate(-2deg);
-            -webkit-transform: translate(-100%, -70%) rotate(-2deg);
-
-            .help {
-              height: calc($portait-postcardwidth * 1.2);
-            }
-
-            h4.desktop-title {
-              display: block;
-            }
-
-            h2.mobile-title {
-              display: none;
-            }
-          }
-        }
-      }
-
-      .button-container {
-        .button-switch-container {
-          display: none;
-        }
-
-        .inner-button {
-          .close {
-            margin-top: 2.5rem;
-            margin-right: 0rem;
-          }
-        }
-      }
-
-      .sources-container {
-        width: 80%;
-        .sources-button {
-          width: 25px;
-          height: 25px;
-          right: 1rem;
-          bottom: 1rem;
-          .info-i {
-            font-size: 0.75rem;
-          }
-        }
-
-        .info-text-label {
-          display: none;
-        }
-      }
-    }
-  }
-
-  .card {
-    &-ordered {
-      z-index: 0;
-      //margin: -10px 0.5rem -3px 1rem;
-    }
-  }
-}
-
-/*Mini Tablet - Tablet*/
-@include media('>minitablet', '<=tablet') {
-  .indicators-iframe {
-    .main-container {
-      .card-collection {
-        .carousel-container {
-          margin-top: 1rem;
-        }
-
-        .card-container {
-          &.stacked {
-            //comparison view
-            &.twocards {
-              .card {
-                &-ordered {
-                  width: calc($portait-postcardwidth/2.3);
-                  height: calc($portait-postcardwidth/1.8);
-                }
-              }
-            }
-            &.default {
-              .card {
-                &-ordered {
-                  width: calc($portait-postcardwidth/2.3);
-                  height: calc($portait-postcardwidth/1.8);
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .sources-container {
-        &.open {
-          width: 80%;
-          transform: translate(37%, 50%);
-          -webkit-transform: translate(37%, 50%);
-        }
-        .sources-button {
-          right: 1.5rem;
-        }
-
-        .info-text-label {
-          right: 1rem;
-        }
-      }
-    }
-  }
-  .card {
-    &-ordered {
-      //original ratio changed for styling
-      width: calc($portrait-minitablet-postcardwidth/2.3);
-      height: calc($portrait-minitablet-postcardwidth/1.8);
-    }
-  }
-
-  .side-container {
-    width: calc($portait-postcardheight/1.5);
-    height: calc($portait-postcardheight);
-
-    .side-outer {
-      .overlay-container {
-        .overlay-inner {
-          .postcard-title {
-            max-width: 50%;
-            width: 50%;
-            overflow: hidden;
-            .section-title {
-              text-align: left;
-              max-width: 100%;
-              text-overflow: ellipsis;
-              overflow: hidden;
-              white-space: nowrap;
-            }
-            .postcard-miniature {
-              display: none;
-            }
-          }
-
-          .button-toggle-container {
-            svg {
-              margin-left: 0;
-
-              .toggle {
-                g {
-                  transform: translate(5px, 2px);
-                }
-              }
-
-              text {
-                display: none;
-              }
-
-              .mobile-toggle-label {
-                transform: translate(-100px, 0px);
-                display: block;
-                font-size: 12px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .chart-container {
-    .svg-container {
-      &.Mo-chart {
-        .car-density {
-          .legend {
-            background-image: url('../img/legends/MoCarDensity-mobile.svg');
-            background-repeat: no-repeat;
-            position: relative;
-            width: 50%;
-            margin: 1rem;
-          }
-        }
-      }
-      &.En-chart {
-        .energy-industry {
-          .description {
-            .title {
-              h4 {
-                font-size: 0.9rem;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-/* Phone - Mini Tablet*/
-@include media('>=phone', '<largephone') {
-  .indicators-iframe {
-    .main-container {
+      background-color: pink;
       .card-collection {
         margin-top: -10px;
         height: 100vh;
-        width: 95%;
         margin: 0 auto;
+        width: 95%;
+
+        .carousel-container {
+          margin-top: 5rem;
+        }
         .card-container {
           height: 100vh;
-          align-content: flex-start;
           justify-content: left;
           padding-left: 0.5rem;
         }
@@ -1115,33 +1046,11 @@
     width: $portait-postcardwidth;
     height: calc($portait-postcardwidth * 1.5);
   }
-}
 
-@include media('>=largephone', '<minitablet') {
-  .indicators-iframe {
-    .main-container {
-      .card-collection {
-        .card-container {
-          align-content: flex-start;
-        }
-        .carousel-container {
-          margin-top: 3.5rem;
-        }
-      }
-    }
-  }
-  .card {
-    //thumbnail
-    &-ordered {
-      //original ratio changed for styling
-      width: calc($portrait-minitablet-postcardwidth/2.0);
-      height: calc($portrait-minitablet-postcardwidth/1.5);
-    }
-  }
-
-  //postcardview
-  .side-container {
-    width: calc($portait-postcardheight/1.5);
-    height: calc($portait-postcardheight);
-  }
+  //   .card {
+  //     &-ordered {
+  //       z-index: 0;
+  //       //margin: -10px 0.5rem -3px 1rem;
+  //     }
+  //   }
 }
