@@ -464,9 +464,8 @@
             &:hover {
               .download-label {
                 transition: visibility 0s, opacity 0.5s;
-                opacity: 1;
                 left: 0rem;
-                visibility: visible;
+                display: inline-block;
               }
             }
 
@@ -483,8 +482,7 @@
               left: -1rem;
 
               z-index: 2;
-              opacity: 0;
-              visibility: hidden;
+              display: none;
               text-align: left;
             }
 
