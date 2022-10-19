@@ -10,7 +10,7 @@
   }
 }
 
-@include media('<=shortread') {
+@include media('<=schwerpunkt') {
   body {
     background-color: lightcoral;
 
@@ -20,9 +20,11 @@
 
     .indicators-iframe {
       .main-container {
-        .wordart-title {}
+        .wordart-title {
+        }
 
-        .selection-buttons {}
+        .selection-buttons {
+        }
 
         .card-collection {
           .card {
@@ -46,9 +48,11 @@
           }
         }
 
-        .info-container {}
+        .info-container {
+        }
 
-        .sources-container {}
+        .sources-container {
+        }
       }
     }
   }
@@ -60,7 +64,7 @@
   }
 }
 
-@include media('<=schwerpunkt') {
+@include media('<=shortread') {
   body {
     background-color: aqua;
 
@@ -69,7 +73,6 @@
     }
 
     .indicators-iframe {
-
       .main-container {
         .card-collection {
           .card {
@@ -82,32 +85,28 @@
           }
         }
       }
-
     }
   }
 }
 
 @include media('<=largephone') {
-    body {
-        background-color: violet;
-    
-        .indicators-iframe {
-          .main-container {
-            .wordart-title {}
-    
-            .selection-buttons {}
-  
-    
-            .info-container {}
-    
-            .sources-container {}
-          }
+  body {
+    background-color: violet;
+
+    .indicators-iframe {
+      .main-container {
+        .wordart-title {
+        }
+
+        .selection-buttons {
+        }
+
+        .info-container {
+        }
+
+        .sources-container {
         }
       }
+    }
+  }
 }
-
-
-
-
-
-
