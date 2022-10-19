@@ -15,7 +15,13 @@
     background-color: lightcoral;
 
     h4 {
-      font-size: 14px;
+      font-size: 12px;
+    }
+
+    .chart {
+      text {
+        font-size: 10px;
+      }
     }
 
     .indicators-iframe {
@@ -26,10 +32,33 @@
 
         .card-collection {
           .card {
+
+            .card-preview {              
+                .overlay-inner {
+                  .section-thumb {
+              
+                    .indicator-ranking {
+                      p {
+                        padding: 0.5rem;
+                        font-size: 10px;
+                      }
+                    }
+                  }
+                }
+            }
             .card-front {
               .side-outer {
                 .overlay-container {
                   height: calc(15% - 0.5rem);
+
+                  .overlay-inner {
+                      .section-thumb {
+                  
+                        .word-art-title {
+                          display: none;
+                      }
+                    }
+                  }
                 }
 
                 .side-inner {
@@ -41,6 +70,48 @@
               .chart {
                 transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
                 -webkit-transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+              }
+            }
+
+            .Ab-chart {
+              .visualization-container {
+                height: 75%;
+
+                .controls-container {
+                  .legend {
+                    transform: translateY(1%);
+                    .biotonne {
+                        transform: translateX(10%);
+                    
+                        text {
+                          transform: translateX(12%) translateY(0.5%);
+                        }
+                      }
+                    
+                      .gartenPark {
+                        transform: translateX(16%);
+                    
+                        text {
+                          transform: translateX(18%) translateY(0.5%);
+                        }
+                      }
+                    
+                      .highest-value {
+                        transform: translateX(0%);
+                    
+                        text {
+                          transform: translateX(2%) translateY(0.5%);
+                        }
+                      }
+                  }
+
+                  .pie-controller {
+                    transform: translateX(60%) translateY(-2.5%);
+                    .pie-icon {
+                      transform: scale(0.6);
+                    }
+                  }
+                }
               }
             }
           }
@@ -65,7 +136,7 @@
     background-color: aqua;
 
     h4 {
-      font-size: 12px;
+      font-size: 10px;
     }
 
     .indicators-iframe {
@@ -77,6 +148,41 @@
               .chart {
                 transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
                 -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+              }
+            }
+
+            .Ab-chart {
+              .visualization-container {
+                .controls-container {
+                  .legend {
+                    transform: translateY(1%);
+
+                    .biotonne {
+                      transform: translateX(10%);
+                    }
+                  
+                    .gartenPark {
+                      transform: translateX(17%);
+                      text {
+                        transform: translateX(19%) translateY(0.5%);
+                      }
+                    }
+                  
+                    .highest-value {
+                      transform: translateX(0%);
+                    }
+                  }
+
+                  .pie-controller {
+                    transform: translateX(55%) translateY(-2.5%);
+                    .pie-icon {
+                      transform: scale(0.5);
+                      path {
+                        stroke-width: 2px;
+                      }
+                    }
+                  }
+                }
               }
             }
           }
