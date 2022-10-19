@@ -1,11 +1,11 @@
-import Canvas from "./components/Canvas";
-import Logger from "./components/Logger";
-import "./styles/main.scss";
+import Canvas from './components/Canvas';
+// import Logger from "./components/Logger";
+import './styles/main.scss';
 
 function App() {
   return (
     <div className="App">
-      <Logger />
+      {/* <Logger /> */}
       <Canvas />
     </div>
   );
