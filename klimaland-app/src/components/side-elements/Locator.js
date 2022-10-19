@@ -226,10 +226,13 @@ export default class Locator extends Component {
                     d={el.path}
                     key={e}
                     id={el.lk}
-                    className={`landkreis ${el.bl} ${el.visible ? 'visible' : 'hidden'}`}
+                    className={`landkreis ${el.bl} ${el.visible ? 'visible' : 'hidden'} ${
+                      el.ranking
+                    }`}
+                    onClick={this.handleClickOnMap.bind(this, parseInt(el.lk))}
                   />
                 );
-              })}
+              }, this)}
             </g>
             {+this.props.lk.value !== 0 && (
               <g className="zoom-pointer">
