@@ -390,10 +390,12 @@
           .postcard-miniature {
             display: inline-flex;
             .word-art-title {
+              transform-origin: left;
+              -webkit-transform-origin-x: left;
               transform: scale(0.9, 1.2) rotate(-0.2deg) translate(0px, 0px);
               position: relative;
               margin-top: 0;
-              margin-right: 1rem;
+              margin-right: 0.5rem;
               text-align: left;
               white-space: nowrap;
               // top: 0rem;
