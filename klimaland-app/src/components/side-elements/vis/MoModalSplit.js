@@ -51,8 +51,10 @@ const MoModalSplit = ({
 
   const getLegendName = function (name) {
     if (name === 'Fuß') return 'Zu Fuß';
-    if (name === 'Fahrer') return 'Auto (Fahrer:in)';
-    else if (name === 'Mitfahrer') return 'Auto (Mitfahrer:in)';
+    if (name === 'Fahrrad') return 'Mit dem Rad';
+    if (name === 'ÖPV') return 'Mit dem ÖPNV';
+    if (name === 'Fahrer') return 'Als Mitfahrer*in';
+    else if (name === 'Mitfahrer') return 'Als Mitfahrer*in';
     return name;
   };
 
@@ -211,11 +213,7 @@ const MoModalSplit = ({
                     >
                       <g className="axis">
                         {/* <ModeIcon x={marginWidth} stroke={colors[t]} /> */}
-                        <text
-                          x={marginWidth}
-                          y="-10"
-                          fill={colors[t]}
-                        >
+                        <text x={marginWidth} y="-10" fill={colors[t]}>
                           {getLegendName(trip.mode)}
                         </text>
                         {referenceXTicks.map((tick, t) => {
@@ -244,16 +242,9 @@ const MoModalSplit = ({
                           className="avgkm-marker"
                           transform={`translate(${trip.labelX}, ${trip.labelY})`}
                         >
-                          <foreignObject
-                            x="0"
-                            y="-5"
-                            width="1"
-                            height="1"
-                          >
+                          <foreignObject x="0" y="-5" width="1" height="1">
                             <div xmlns="http://www.w3.org/1999/xhtml">
-                              <p>
-                                {trip.label}
-                              </p>
+                              <p>{trip.label}</p>
                             </div>
                           </foreignObject>
                         </g>
@@ -268,8 +259,8 @@ const MoModalSplit = ({
             className="bar-percentage-trip"
             transform={`translate(${rightMarginWidth + marginWidth}, 10)`}
           >
-            <text x="20" y={marginHeight}>
-              % der Trips
+            <text x="10" y={marginHeight + 15} textAnchor="middle">
+              Anteil der Trips
             </text>
             {plotPercData.map((trip, t) => {
               return (
@@ -292,7 +283,7 @@ const MoModalSplit = ({
           </h4>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

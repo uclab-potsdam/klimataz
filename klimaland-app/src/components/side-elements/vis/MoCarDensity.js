@@ -107,22 +107,25 @@ const MoCarDensity = ({
 
   return (
     <div
-      className={`car-density vertical-layout ${isThumbnail ? 'is-thumbnail' : ''} ${isMobile ? 'is-mobile' : ''
-        }`}
+      className={`car-density vertical-layout ${isThumbnail ? 'is-thumbnail' : ''} ${
+        isMobile ? 'is-mobile' : ''
+      }`}
     >
       <div className="description">
         <div className="title">
           <h4>
-            <span>{locationLabel}</span>: Auf 100 Einwohner*innen kommen{' '}
-            <span className="first-value">{totalCars}</span> Autos. Davon haben{' '}
-            <span className="second-value">{hybridCars}</span> Hybrid- oder Elektroantrieb.
+            In <span>{locationLabel}</span> kommen auf 100 Einwohner*innen{' '}
+            <span className="first-value">{totalCars}</span> Autos. Davon sind{' '}
+            <span className="second-value">{hybridCars}</span> mit Hybrid- oder Elektroantrieb.
           </h4>
         </div>
         <div className="legend"></div>
       </div>
       {currentData !== undefined && currentData.data !== undefined && (
         <div className="visualization-container" ref={targetRef}>
-          <svg className={`mobility-cars chart ${isThumbnail ? 'thumbnail-chart' : 'active-chart'}`}>
+          <svg
+            className={`mobility-cars chart ${isThumbnail ? 'thumbnail-chart' : 'active-chart'}`}
+          >
             <g className="cars-container">
               <g className="grid">
                 {carSquares.map(function (sq, s) {

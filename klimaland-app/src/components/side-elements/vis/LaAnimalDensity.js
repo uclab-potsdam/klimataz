@@ -118,15 +118,15 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
         </div>
         <div className="caption">
           <p>
-            Um die Anzahl verschiedener Tiere vergleichen zu können, gibt es die Großvieheinheit
-            (GV). Sie entspricht 500 kg also in etwa einem Rind, 8 Schweinen, 10 Schafen oder 640
+            Um die Anzahl verschiedener Tiere vergleichen zu können, gibt es die Großvieheinheit.
+            Sie entspricht 500 kg, also in etwa einem Rind, 8 Schweinen, 10 Schafen oder 640
             Legehennen.
           </p>
         </div>
         <div className="legend">
           <svg height="200px">
             <text x="0" y="10">
-              Anzahl in Großvieheinheit (GV)
+              Anzahl in Großvieheinheit
             </text>
 
             <g transform="translate(0, 18)">
@@ -144,7 +144,7 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
                   fill="#484848"
                 />
                 <text x="23" y="13">
-                  über 2 GV pro Hektar
+                  über 2 Großvieheinheiten pro Hektar
                 </text>
               </g>
               <g transform="translate(0, 30)" className="legend-item unter-label">
@@ -158,7 +158,7 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
                   fill="#484848"
                 />
                 <text x="23" y="13">
-                  unter 2 GV pro Hektar
+                  unter 2 Großvieheinheiten pro Hektar
                 </text>
               </g>
             </g>
@@ -275,8 +275,9 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
                     fill="url(#diagonalHatch4)"
                   />
                   <g
-                    transform={`translate(${-barWidth / 2}, ${-bar.value - max([16, barElements[0][a].value])
-                      })`}
+                    transform={`translate(${-barWidth / 2}, ${
+                      -bar.value - max([16, barElements[0][a].value])
+                    })`}
                   >
                     <rect
                       className="labelCount"
