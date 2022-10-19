@@ -29,7 +29,7 @@ export default class LayoutManager extends Component {
         bl: 'Gesamt',
       },
       Mo: {
-        lk: 'PkW-Dichte',
+        lk: 'Autodichte',
         bl: 'Transportmittel',
       },
       Ge: {
