@@ -461,10 +461,13 @@
             flex-direction: row;
             align-items: baseline;
             justify-content: flex-end;
+            position: relative;
+
             &:hover {
               .download-label {
                 transition: visibility 0s, opacity 0.5s;
-                left: 0rem;
+                opacity: 1;
+                visibility: visible;
                 display: inline-block;
               }
             }
@@ -478,12 +481,17 @@
               padding: 0.5rem 0.5rem;
               font-size: 12px;
               margin: auto 0.5rem;
-              position: relative;
-              left: -1rem;
+              position: absolute;
+              //right: 0rem;
+              //width: 15%;
+              right: 25px;
+              width: 80px;
 
               z-index: 2;
-              display: none;
+              opacity: 0;
+              visibility: hidden;
               text-align: left;
+              display: none;
             }
 
             img {
