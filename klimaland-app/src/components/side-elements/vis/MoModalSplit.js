@@ -51,8 +51,10 @@ const MoModalSplit = ({
 
   const getLegendName = function (name) {
     if (name === 'Fuß') return 'Zu Fuß';
-    if (name === 'Fahrer') return 'Auto (Fahrer:in)';
-    else if (name === 'Mitfahrer') return 'Auto (Mitfahrer:in)';
+    if (name === 'Fahrrad') return 'Mit dem Rad';
+    if (name === 'ÖPV') return 'Mit dem ÖPNV';
+    if (name === 'Fahrer') return 'Als Mitfahrer*in';
+    else if (name === 'Mitfahrer') return 'Als Mitfahrer*in';
     return name;
   };
 
@@ -265,7 +267,7 @@ const MoModalSplit = ({
             transform={`translate(${rightMarginWidth + marginWidth * 2}, 10)`}
           >
             <text x="10" y={marginHeight + 15} textAnchor="middle">
-              % der Trips
+              Anteil der Trips
             </text>
             {plotPercData.map((trip, t) => {
               return (

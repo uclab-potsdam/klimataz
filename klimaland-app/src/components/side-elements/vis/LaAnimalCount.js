@@ -298,8 +298,8 @@ const Land = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
       <div className="description">
         <div className="title">
           <h4>
-            Entwicklung der Anzahl an Rindern, Schweinen und Schafen in <span>{locationLabel}</span>{' '}
-            über die Jahre {firstYear} bis {lastYear}.
+            So hat sich die Anzahl an Rindern, Schweinen und Schafen in <span>{locationLabel}</span>{' '}
+            über die Jahre {firstYear} bis {lastYear} entwickelt.
           </h4>
         </div>
       </div>
