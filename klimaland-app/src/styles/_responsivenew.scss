@@ -34,7 +34,6 @@
 
         .card-collection {
           .card {
-
             .card-preview {              
                 .overlay-inner {
                   .section-thumb {
@@ -68,10 +67,13 @@
                 }
               }
             }
+
             .Mo-chart {
-              .chart {
-                transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
-                -webkit-transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+              .car-density {
+                .chart {
+                  transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+                  -webkit-transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+                }
               }
             }
 
@@ -132,22 +134,75 @@
 @include media('<=minitablet') {
   body {
     background-color: peachpuff;
-  }
+
+    .visualization-container {
+        .chart {
+          text {
+            font-size: 10px;
+          }
+        }
+    }
+
 
   .indicators-iframe {
     .main-container {
       .card-collection {
+      
         .card {
           .Mo-chart {
-            .chart {
-              transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
-              -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+            .car-density {
+              background-color: pink;
+              .visualization-container {
+                .chart {
+                  transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+                  -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+                }
+              }
+            }
+          }
+
+          .Ab-chart {
+            .visualization-container {
+              .controls-container {
+                .legend {
+                  transform: translateY(1%);
+
+                  .biotonne {
+                    transform: translateX(11%);
+
+                    text {
+                      transform: translateX(13%) translateY(0.5%);
+                    }
+                  }
+
+                  .gartenPark {
+                    transform: translateX(18%);
+
+                    text {
+                      transform: translateX(20%) translateY(0.5%);
+                    }
+                  }
+                }
+
+                .pie-controller {
+                  transform: translateX(55%) translateY(-2.5%);
+
+                  .pie-icon {
+                    transform: scale(0.5);
+
+                    path {
+                      stroke-width: 2px;
+                    }
+                  }
+                }
+              }
             }
           }
         }
       }
     }
   }
+}
 }
 
 @include media('<shortread') {
@@ -196,41 +251,6 @@
 
               &.section {
                 width: 90%;
-              }
-            }
-
-            .Ab-chart {
-              .visualization-container {
-                .controls-container {
-                  .legend {
-                    transform: translateY(1%);
-
-                    .biotonne {
-                      transform: translateX(10%);
-                    }
-                  
-                    .gartenPark {
-                      transform: translateX(17%);
-                      text {
-                        transform: translateX(19%) translateY(0.5%);
-                      }
-                    }
-                  
-                    .highest-value {
-                      transform: translateX(0%);
-                    }
-                  }
-
-                  .pie-controller {
-                    transform: translateX(55%) translateY(-2.5%);
-                    .pie-icon {
-                      transform: scale(0.5);
-                      path {
-                        stroke-width: 2px;
-                      }
-                    }
-                  }
-                }
               }
             }
           }

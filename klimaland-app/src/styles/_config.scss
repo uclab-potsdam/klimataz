@@ -343,11 +343,11 @@ text {
 }
 
 @mixin responsive-layout {
-  @include media('>phone', '<=shortread') {
+  @include media('>phone', '<shortread') {
     @include horizontal-bottom-layout;
   }
 
-  @include media('>shortread') {
+  @include media('>=shortread') {
     @include vertical-layout;
   }
 }

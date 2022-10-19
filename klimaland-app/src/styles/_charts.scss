@@ -54,6 +54,18 @@ $gas: lighten($dark-pink, 5%);
   text {
     font-size: 12px;
   }
+
+  foreignObject {
+    pointer-events: none;
+    overflow: visible;
+
+    div {
+      min-width: 40px;
+      p {
+        font-size: 10px;
+      }
+    }
+  }
 }
 
 .card-collection {
@@ -179,7 +191,6 @@ $gas: lighten($dark-pink, 5%);
           .chart {
             overflow: visible;
             text {
-              font-size: 12px;
               filter: brightness(0.75);
               stroke: none;
             }
@@ -191,6 +202,18 @@ $gas: lighten($dark-pink, 5%);
             .bar-percentage-trip {
               line {
                 stroke: $default-text;
+              }
+            }
+
+            foreignObject {
+              transform: translateY(-0.5%);
+
+              div {
+                background-color: rgba(255, 255, 255, 0.9);
+                p {
+                  padding-left: 2px;
+                  margin: 0;
+                }
               }
             }
 

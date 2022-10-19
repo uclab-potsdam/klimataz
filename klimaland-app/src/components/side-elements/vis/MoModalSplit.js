@@ -32,7 +32,7 @@ const MoModalSplit = ({
   const referenceXTicks = [...Array.from(Array(11)).keys()];
   const marginWidth = Math.round(width / 20);
   // const maxRangeHeight = Math.round(height / 10);
-  const marginHeight = height - height / 8;
+  const marginHeight = height - height / 10;
   const rightMarginWidth = Math.round(width - width / mobileThreshold);
   const orderOfModes = ['Fuß', 'Fahrrad', 'ÖPV', 'Mitfahrer', 'Fahrer'];
   const colors = ['#3762FB', '#5F88C6', '#2A4D9C', '#FFD0D0', '#FF7B7B'];
@@ -137,9 +137,9 @@ const MoModalSplit = ({
       //solve overlaps with legend title
       const legendWidth =
         marginWidth + getIconWidth(element.mode) + getLegendName(element.mode).length * 5 + 10;
-      if (element.labelX < legendWidth) {
-        element.labelX += legendWidth - element.labelX + 10;
-      }
+      // if (element.labelX < legendWidth) {
+      //   element.labelX += legendWidth - element.labelX;
+      // }
 
       const ticksIterations = [...Array.from(Array(rowIndex + 1)).keys()];
       const ticks = [...Array.from(Array(10)).keys()];
@@ -202,18 +202,18 @@ const MoModalSplit = ({
             {
               <g className="paths">
                 {plotAvgData.map((trip, t) => {
-                  const ModeIcon = icons[trip.mode];
+                  // const ModeIcon = icons[trip.mode];
                   return (
                     <g
-                      transform={`translate(0, ${(t + 0.7) * tabletThreshold})`}
+                      transform={`translate(0, ${(t + 1) * (height / 6)})`}
                       key={t}
                       className={trip.mode}
                     >
                       <g className="axis">
-                        <ModeIcon x={marginWidth} stroke={colors[t]} />
+                        {/* <ModeIcon x={marginWidth} stroke={colors[t]} /> */}
                         <text
-                          x={marginWidth + getIconWidth(trip.mode) + 10}
-                          y="-18"
+                          x={marginWidth}
+                          y="-10"
                           fill={colors[t]}
                         >
                           {getLegendName(trip.mode)}
@@ -227,21 +227,8 @@ const MoModalSplit = ({
                         })}
                       </g>
                       <g className="paths">
-                        <path d={trip.path} stroke={colors[t]} fill="none" strokeWidth="10" />
-                        <g
-                          className="avgkm-marker"
-                          transform={`translate(${trip.labelX}, ${trip.labelY + 5})`}
-                        >
-                          <text x="5" y={-(trip.labelY + 2 * 10)} fill={colors[t]}>
-                            {trip.label}
-                          </text>
-                        </g>
-                        <g
-                          className="avgkm-marker"
-                          transform={`translate(${trip.markerX}, ${trip.labelY + 5})`}
-                        >
-                          <line x1="0" x2="0" y1="0" y2={-(trip.labelY + 2 * 10)} />
-                        </g>
+                        <path d={trip.path} stroke={colors[t]} fill="none" strokeWidth="8" />
+
                         <g className="mapped-axis">
                           {trip.ticks.map((tick, t) => {
                             return (
@@ -253,6 +240,23 @@ const MoModalSplit = ({
                             );
                           })}
                         </g>
+                        <g
+                          className="avgkm-marker"
+                          transform={`translate(${trip.labelX}, ${trip.labelY})`}
+                        >
+                          <foreignObject
+                            x="0"
+                            y="-5"
+                            width="1"
+                            height="1"
+                          >
+                            <div xmlns="http://www.w3.org/1999/xhtml">
+                              <p>
+                                {trip.label}
+                              </p>
+                            </div>
+                          </foreignObject>
+                        </g>
                       </g>
                     </g>
                   );
@@ -262,19 +266,19 @@ const MoModalSplit = ({
           </g>
           <g
             className="bar-percentage-trip"
-            transform={`translate(${rightMarginWidth + marginWidth * 2}, 10)`}
+            transform={`translate(${rightMarginWidth + marginWidth}, 10)`}
           >
-            <text x="10" y={marginHeight + 15} textAnchor="middle">
+            <text x="20" y={marginHeight}>
               % der Trips
             </text>
             {plotPercData.map((trip, t) => {
               return (
                 <g transform={`translate(0, ${trip.y1})`} key={t}>
-                  <text x="35" y="5" fill={trip.fill}>
+                  <text x="25" y="5" fill={trip.fill}>
                     {formatNumber(trip.label)} %
                   </text>
-                  <rect width="10" height={trip.y2 - trip.y1} x="0" y="0" fill={trip.fill} />
-                  <line x1="0" x2="30" y1="0" y2="0" />
+                  <rect width="8" height={trip.y2 - trip.y1} x="0" y="0" fill={trip.fill} />
+                  <line x1="0" x2="20" y1="0" y2="0" />
                 </g>
               );
             })}
@@ -288,7 +292,7 @@ const MoModalSplit = ({
           </h4>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
