@@ -62,9 +62,24 @@
   body {
     background-color: peachpuff;
   }
+
+  .indicators-iframe {
+    .main-container {
+      .card-collection {
+        .card {
+          .Mo-chart {
+            .chart {
+              transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+              -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
-@include media('<=shortread') {
+@include media('<shortread') {
   body {
     background-color: aqua;
 
@@ -74,15 +89,495 @@
 
     .indicators-iframe {
       .main-container {
-        .card-collection {
-          .card {
-            .Mo-chart {
-              .chart {
-                transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
-                -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+        margin-top: 10px;
+        .word-art-title {
+          width: 100%;
+          bottom: 1rem;
+          right: -1rem;
+          transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
+
+          .wordart {
+            font-size: 2rem;
+            line-height: 1.5rem;
+            overflow: visible;
+            padding-top: 10px;
+            padding-bottom: 10px;
+          }
+        }
+
+        .selection-buttons {
+          .selection-container {
+            display: block;
+            margin-bottom: 0.5rem;
+            position: relative;
+            width: 100%;
+
+            .selector {
+              width: 90%;
+              margin: 0.25rem 1rem;
+
+              &.lk {
+                display: none;
+              }
+              &.lk-mobile {
+                display: inline-block;
+              }
+
+              &.section {
+                width: 90%;
               }
             }
           }
+        }
+
+        .card-collection {
+          width: 100%;
+          align-content: flex-start;
+
+          .carousel-container {
+            margin-top: 3.5rem;
+          }
+
+          .card-container {
+            align-content: flex-start;
+
+            &.carousel {
+              align-content: center;
+              justify-content: space-around;
+              padding-left: 0;
+            }
+
+            &.stacked {
+              //comparison view
+              &.twocards,
+              &.default {
+                .card {
+                  &-ordered {
+                    margin: 0;
+                    width: calc($portait-postcardwidth/2.3);
+                    height: calc($portait-postcardwidth/1.8);
+                  }
+                }
+              }
+            }
+          }
+
+          .chart-container {
+            .svg-container {
+              .description {
+                .title {
+                  margin: 0 auto !important;
+
+                  h4 {
+                    padding-bottom: 0.5rem !important;
+                  }
+                }
+              }
+
+              &.En-chart {
+                .primary-energy {
+                  .description {
+                    height: 15%;
+                  }
+                  .visualization-container {
+                    height: 80%;
+                  }
+                }
+
+                .energy-industry {
+                  .description {
+                    height: 15%;
+                    .title {
+                      h4 {
+                        font-size: 0.9rem;
+                      }
+                    }
+                  }
+                  .visualization-container {
+                    height: 80%;
+                  }
+                }
+              }
+
+              &.La-chart {
+                .animal-count {
+                  .description {
+                    height: 25%;
+                  }
+
+                  .visualization-container {
+                    height: 75%;
+                    .label-container {
+                      transform: translateY(28px);
+                      -webkit-transform: translateY(28px);
+                    }
+
+                    .arcs,
+                    .x-axis-container {
+                      transform: translateY(-60px);
+                      -webkit-transform: translateY(-60px);
+
+                      .animal-label {
+                        transform: translateY(20px);
+                        -webkit-transform: translateY(20px);
+                        font-size: 14px;
+                      }
+                    }
+
+                    .axis {
+                      .year-label {
+                        font-size: 12px;
+                        transform: translateX(-20px);
+                        -webkit-transform: translateX(-20px);
+                      }
+                    }
+
+                    .legend {
+                      transform: translateY(90%);
+                      -webkit-transform: translateY(92%);
+                      .label-item {
+                        transform: translate(20px, -5px);
+                        -webkit-transform: translate(20px, -5px);
+
+                        &.vorherigeZaehlung {
+                          transform: translate(-220px, 15px);
+                          -webkit-transform: translate(-220px, 15px);
+                        }
+                      }
+                    }
+                  }
+                }
+
+                .animal-density {
+                  .description {
+                    height: 45%;
+                    position: absolute;
+                    bottom: 0;
+                    .caption {
+                      font-size: 12px;
+                      margin-right: 1rem;
+                      transform: translate(-5px, 35px);
+                      -webkit-transform: translate(-5px, 35px);
+                    }
+
+                    .legend {
+                      transform: translate(-5px, -110px);
+                      -webkit-transform: translate(-5px, -110px);
+
+                      .legend-item {
+                        font-size: 10px;
+                        &.unter-label {
+                          transform: translate(140px, 0px);
+                          -webkit-transform: translate(140px, 0px);
+                        }
+                      }
+                    }
+                  }
+
+                  .visualization-container {
+                    height: 55%;
+                    .chart {
+                      transform: translateY(-30px);
+                      -webkit-transform: translateY(-30px);
+                      .bars {
+                        transform: translateY(10px);
+                        .year-label {
+                          font-size: 14px;
+                        }
+                      }
+
+                      .labelText {
+                        font-size: 10px;
+                      }
+                    }
+                  }
+                }
+              }
+
+              &.Mo-chart {
+                .car-density {
+                  .description {
+                    height: 20%;
+                    position: absolute;
+                    bottom: 1rem;
+
+                    .title {
+                      margin: 0 auto;
+                      h4 {
+                        padding-bottom: 0.5rem;
+                      }
+                    }
+
+                    .legend {
+                      display: none;
+                    }
+                  }
+
+                  .visualization-container {
+                    transform: scale(0.9);
+                    -webkit-transform: scale(0.9);
+
+                    .chart {
+                      &.active-chart {
+                        transform: skew(0deg, 0deg) translate(10px, -15px);
+                        -webkit-transform: skew(0deg, 0deg) translate(10px, -15px);
+                      }
+
+                      &.thumbnail-chart {
+                        transform: skew(0deg, 0deg);
+                        -webkit-transform: skew(0deg, 0deg);
+                        .cars-container {
+                          transform: translate(20px, 0px);
+                          -webkit-transform: translate(20px, 0px);
+                        }
+                      }
+                    }
+                  }
+
+                  &.is-thumbnail {
+                    .description {
+                      display: none;
+                    }
+
+                    .visualization-container {
+                      height: 100%;
+                    }
+                  }
+                }
+                .modal-split {
+                  .description {
+                    height: 20%;
+                  }
+                  .visualization-container {
+                    height: 80%;
+                    .chart {
+                      .bar-percentage-trip {
+                        display: none;
+                      }
+                    }
+                  }
+                }
+              }
+
+              &.Ab-chart {
+                .biotonne-weight {
+                  .description {
+                    height: 15%;
+                  }
+                  .visualization-container {
+                    height: 70%;
+
+                    .chart {
+                      text {
+                        font-size: 10px;
+
+                        &.odd-year {
+                          visibility: hidden;
+                        }
+                      }
+                    }
+
+                    .y-axis {
+                      line {
+                        stroke: rgb(217, 203, 181);
+                      }
+                    }
+
+                    .controls-container {
+                      visibility: hidden;
+                    }
+                  }
+                }
+              }
+
+              &.Ge-chart {
+                .newbuildings-energy {
+                  .description {
+                    .title {
+                      margin: 0 auto;
+                      h4 {
+                        padding-bottom: 0.5rem;
+                      }
+                    }
+
+                    height: 30%;
+                    position: absolute;
+                    bottom: 0;
+
+                    .caption {
+                      display: none;
+                    }
+
+                    .legend {
+                      // position: absolute;
+                      // bottom: 0;
+                      height: 19%;
+                      width: 95%;
+
+                      .legend-inner {
+                        font-size: 12px;
+                        // position: absolute;
+                        width: 100%;
+                        bottom: 1rem;
+
+                        .legend-elements-container {
+                          display: flex;
+                          flex-direction: row;
+                          flex-wrap: wrap;
+
+                          .legend-element {
+                            display: flex;
+                            flex: 0 1 auto;
+                            margin-left: 10px;
+
+                            .element-color {
+                              align-self: center;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .visualization-container {
+                    height: 70%;
+                    .chart {
+                      transform: translate(0, 10px);
+                    }
+                  }
+                  &.is-thumbnail {
+                    .description {
+                      display: none;
+                    }
+                  }
+
+                  .erneuerbare,
+                  div.erneuerbare {
+                    margin-bottom: 0;
+                  }
+                }
+
+                .avg-heating {
+                  .description {
+                    height: 15%;
+                  }
+
+                  .visualization-container {
+                    height: 85%;
+                    transform: translateY(-15px);
+                    -webkit-transform: translateY(-15px);
+
+                    .chart {
+                      .non-clipped-elements {
+                        transform: translate(-28px, 0);
+
+                        .measure-label {
+                          transform: translate(-75%, 0);
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .sources-container {
+          width: 80%;
+          .sources-button {
+            width: 25px;
+            height: 25px;
+            right: 1rem;
+            bottom: 1rem;
+            .info-i {
+              font-size: 0.75rem;
+            }
+          }
+
+          .info-text-label {
+            display: none;
+          }
+          &.open {
+            width: 80%;
+            transform: translate(0);
+            -webkit-transform: translate(0);
+          }
+
+          .sources-text-container {
+            transform: translate(-16%, -115%);
+            -webkit-transform: translate(-16%, -115%);
+          }
+        }
+
+        .info-container {
+          width: 25%;
+          position: absolute;
+          right: -2.5rem;
+          bottom: 27%;
+          .info-container-content {
+            width: 30px;
+            height: 30px;
+
+            .help {
+              h2.mobile-title {
+                display: block;
+                text-align: center;
+                margin: 0;
+              }
+
+              h4.desktop-title {
+                display: none;
+              }
+            }
+
+            &.open {
+              width: calc($portait-postcardwidth/1.2);
+              height: calc($portait-postcardwidth * 1.2);
+              transform: translate(-100%, -70%) rotate(-2deg);
+              -webkit-transform: translate(-100%, -70%) rotate(-2deg);
+
+              .help {
+                height: calc($portait-postcardwidth * 1.2);
+              }
+
+              h4.desktop-title {
+                display: block;
+              }
+
+              h2.mobile-title {
+                display: none;
+              }
+            }
+          }
+        }
+
+        .button-container {
+          .button-switch-container {
+            display: none;
+          }
+
+          .inner-button {
+            .close {
+              margin-top: 2.5rem;
+              margin-right: 0rem;
+            }
+          }
+        }
+
+        .card {
+          //thumbnail
+          &-ordered {
+            //original ratio changed for styling
+            width: calc($portrait-minitablet-postcardwidth/2.0);
+            height: calc($portrait-minitablet-postcardwidth/1.5);
+          }
+        }
+
+        //postcardview
+        .side-container {
+          width: calc($portait-postcardheight/1.5);
+          height: calc($portait-postcardheight);
         }
       }
     }
@@ -94,6 +589,8 @@
     background-color: violet;
 
     .indicators-iframe {
+      margin-right: 5.55%;
+      margin-left: 5.55%;
       .main-container {
         .wordart-title {
         }
@@ -105,6 +602,34 @@
         }
 
         .sources-container {
+        }
+
+        .card-collection {
+          margin-top: -10px;
+          height: 100vh;
+          margin: 0 auto;
+          width: 95%;
+
+          .carousel-container {
+            margin-top: 5rem;
+          }
+          .card-container {
+            height: 100vh;
+            justify-content: left;
+            padding-left: 0.5rem;
+          }
+        }
+        .card {
+          &-ordered {
+            margin: 0.5rem 0.5rem -20px 1rem;
+            //original ratio changed for styling
+            width: calc($portait-postcardwidth/2.3);
+            height: calc($portait-postcardwidth/1.8);
+          }
+        }
+        .side-container {
+          width: $portait-postcardwidth;
+          height: calc($portait-postcardwidth * 1.5);
         }
       }
     }
