@@ -204,7 +204,11 @@ export default class Side extends Component {
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={100} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
-          <div className="overlay-container">
+          <div
+            className={`overlay-container ${
+              !this.state.showViz ? 'overlay-container-back' : 'overlay-container-front'
+            }`}
+          >
             <div className="overlay-inner">
               <div className="postcard-title">
                 <div
@@ -346,7 +350,9 @@ export default class Side extends Component {
               )}
             </div>
           </div>
-          <div className="side-inner">
+          <div
+            className={`side-inner ${!this.state.showViz ? 'side-inner-back' : 'side-inner-front'}`}
+          >
             {!this.state.showViz && this.props.isTopCard && (
               //TEXT
               <Details

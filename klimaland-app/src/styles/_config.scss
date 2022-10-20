@@ -319,12 +319,13 @@ text {
     .title {
       width: 95%;
       border-top: 1px solid $default-text;
-      margin: 0rem 1rem 0.5rem 1rem;
+      margin: 0 auto;
 
       h4 {
         margin: 0;
         padding-top: 0.5rem;
         padding-bottom: 1rem;
+        width: 88%;
       }
 
       span {
