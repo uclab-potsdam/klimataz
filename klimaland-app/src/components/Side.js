@@ -301,7 +301,30 @@ export default class Side extends Component {
                         <text x={this.props.toggleLabels.lk.length * 7 + 50} y="15">
                           {this.props.toggleLabels.bl}
                         </text>
-                        <text className="mobile-toggle-label" x="120" y="15">
+                      </g>
+                      <g className="togglePhone" onClick={this.props.switchDataLevel}>
+                        <g transform={`translate(2, 2)`}>
+                          <rect
+                            className="controller-bg"
+                            x="0"
+                            y="0"
+                            width="36"
+                            height="18"
+                            rx="10"
+                          />
+                          <rect
+                            className="toggle-rect"
+                            x={this.props.isLKData ? 0 : 18}
+                            y="0"
+                            width="18"
+                            height="18"
+                            rx="10"
+                            fill="#FFF9F1"
+                            stroke="#484848"
+                          />
+                        </g>
+
+                        <text x="50" y="15">
                           Daten wechseln
                         </text>
                       </g>

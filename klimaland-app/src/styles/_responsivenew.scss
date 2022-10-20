@@ -109,7 +109,7 @@
                           padding: 0;
                         }
 
-                        .mobile-toggle-label {
+                        .togglePhone {
                           display: none;
                         }
 
@@ -734,7 +734,14 @@
                           padding: 0;
                         }
 
-                        .mobile-toggle-label {
+                        .toggle {
+                          display: none;
+                        }
+                        .toggleResponsive {
+                          display: none;
+                        }
+
+                        .togglePhone {
                           display: block;
                         }
 
