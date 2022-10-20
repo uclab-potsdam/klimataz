@@ -132,9 +132,10 @@
             }
 
             .details-container {
-              background: papayawhip;
               .flex-container {
+                height: 100%;
                 .text-container {
+                  margin-bottom: 1rem;
                   .text-inner-container {
                     .section-title {
                       //display: none;
@@ -146,12 +147,26 @@
                   }
                 }
                 .data-container {
+                  height: 88%;
+                  .lk-list {
+                    height: calc(60% - 1px);
+                    .list-similar-container {
+                      h5 {
+                        position: sticky;
+                        top: 0;
+                      }
+                      ol {
+                        font-size: 14px;
+                      }
+                    }
+                  }
+                  .locator-map {
+                    .locator-container {
+                      height: 110px;
+                      width: 89%;
+                    }
+                  }
                 }
-              }
-            }
-
-            .locator-map {
-              .locator-container {
               }
             }
           }
