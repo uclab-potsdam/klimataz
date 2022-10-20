@@ -29,7 +29,7 @@ export default class LayoutManager extends Component {
         bl: 'Gesamt',
       },
       Mo: {
-        lk: 'PkW-Dichte',
+        lk: 'Autodichte',
         bl: 'Transportmittel',
       },
       Ge: {
@@ -168,7 +168,13 @@ export default class LayoutManager extends Component {
     const rightCard = (this.state.activeCard + 1) % this.state.cardSelection.length;
     let sectionLabel = this.state.cardSelection[rightCard].section.label;
     if (sectionLabel === 'Landwirtschaft') sectionLabel = 'Landw.';
-    const rightCardPreview = sectionLabel + ':\n' + this.state.cardSelection[rightCard].lk.label;
+    let rightCardPreview = '';
+    if (this.state.mode === 'comparison') {
+      rightCardPreview = this.state.cardSelection[rightCard].lk.label;
+    }
+    if (this.state.mode === 'lk') {
+      rightCardPreview = sectionLabel;
+    }
     this.setState({ previewRightCard: rightCardPreview });
     //if going back
 
@@ -177,7 +183,14 @@ export default class LayoutManager extends Component {
     if (leftCard < 0) leftCard = this.state.cardSelection.length - 1;
     sectionLabel = this.state.cardSelection[leftCard].section.label;
     if (sectionLabel === 'Landwirtschaft') sectionLabel = 'Landw.';
-    const leftCardPreview = sectionLabel + '\n' + this.state.cardSelection[leftCard].lk.label;
+    let leftCardPreview = '';
+    if (this.state.mode === 'comparison') {
+      leftCardPreview = this.state.cardSelection[leftCard].lk.label;
+    }
+    if (this.state.mode === 'lk') {
+      leftCardPreview = sectionLabel;
+    }
+
     this.setState({ previewLeftCard: leftCardPreview });
   }
 
@@ -477,8 +490,10 @@ export default class LayoutManager extends Component {
     return (
       <UIContext.Provider value={this.props.editorspick[0].ui.value}>
         <div className="main-container">
-          {this.state.mode === 'lk' && !this.state.postcardView && (
-            <TitleArt landkreisLabel={getTotalLKName(this.state.landkreisSelection[0]) + '?'} />
+          {this.state.mode === 'lk' && (
+            <div className={!this.state.postcardView ? '' : 'titleArtHidden'}>
+              <TitleArt landkreisLabel={getTotalLKName(this.state.landkreisSelection[0]) + '?'} />
+            </div>
           )}
           <SelectionButtons
             mode={this.state.mode}
