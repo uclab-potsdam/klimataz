@@ -46,7 +46,8 @@
                 }
               }
             }
-            .card-front {
+            .card-front,
+            .card-back {
               .side-outer {
                 .overlay-container {
                   height: calc(15% - 0.5rem);
@@ -164,6 +165,14 @@
                     .locator-container {
                       height: 110px;
                       width: 89%;
+
+                      .locator-background {
+                        .map-paths {
+                          path {
+                            stroke-width: 0.2px;
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -241,6 +250,20 @@
 
                       path {
                         stroke-width: 2px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .details-container {
+              .flex-container {
+                .data-container {
+                  .locator-map {
+                    .locator-container {
+                      .locator-background {
+                        width: 60%;
                       }
                     }
                   }
