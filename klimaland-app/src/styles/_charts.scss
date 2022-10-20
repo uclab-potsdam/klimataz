@@ -205,24 +205,24 @@ $gas: lighten($dark-pink, 5%);
               }
             }
 
-            foreignObject {
-              transform: translateY(-0.5%);
+            // foreignObject {
+            //   transform: translateY(-0.5%);
 
-              div {
-                background-color: rgba(255, 255, 255, 0.9);
-                p {
-                  padding-left: 2px;
-                  margin: 0;
-                }
-              }
-            }
+            //   div {
+            //     background-color: rgba(255, 255, 255, 0.9);
+            //     p {
+            //       padding-left: 2px;
+            //       margin: 0;
+            //     }
+            //   }
+            // }
 
-            .axis{
-              svg{
+            .axis {
+              svg {
                 stroke-miterlimit: 10;
-                stroke-width: .3px;
-                fill:none;
-                filter:brightness(0.75);
+                stroke-width: 0.3px;
+                fill: none;
+                filter: brightness(0.75);
               }
             }
           }
@@ -553,22 +553,22 @@ $gas: lighten($dark-pink, 5%);
 
             .interactive-labels {
               foreignObject {
-                  pointer-events: none;
-                  overflow: visible;
-                  transform: translateX(-15px) translateY(-10px);
-                  -webkit-transform: translateX(-15px) translateY(-10px);
+                pointer-events: none;
+                overflow: visible;
+                transform: translateX(-15px) translateY(-10px);
+                -webkit-transform: translateX(-15px) translateY(-10px);
 
-                    div {
-                        min-width: 55px;
-                        text-align: center;
-                        background-color: white;
-                        border: 0.5px solid $pale-olive;
+                div {
+                  min-width: 55px;
+                  text-align: center;
+                  background-color: white;
+                  border: 0.5px solid $pale-olive;
 
-                        p {
-                          font-size: 12px;
-                          margin: 0.2rem;
-                        }
-                      }
+                  p {
+                    font-size: 12px;
+                    margin: 0.2rem;
+                  }
+                }
               }
               opacity: 0;
               rect {
@@ -626,7 +626,7 @@ $gas: lighten($dark-pink, 5%);
                 }
               }
             }
-          
+
             .detail-label {
               cursor: pointer;
               transform: translateX(5%) translateY(5%);
@@ -639,7 +639,6 @@ $gas: lighten($dark-pink, 5%);
 
           .pie,
           .legend {
-
             .biotonne,
             .gartenPark {
               transition: 0.5s;
@@ -650,7 +649,6 @@ $gas: lighten($dark-pink, 5%);
 
             &.show-pies,
             &.show-legend {
-
               .biotonne,
               .gartenPark {
                 opacity: 1;
@@ -756,8 +754,8 @@ $gas: lighten($dark-pink, 5%);
                 display: flex;
                 margin-left: 1rem;
 
-                &:hover{
-                  p{
+                &:hover {
+                  p {
                     font-weight: 600;
                   }
                 }
@@ -893,8 +891,8 @@ $gas: lighten($dark-pink, 5%);
             stroke-width: 3px;
             cursor: pointer;
 
-            &.hitbox{
-              stroke-width:10;
+            &.hitbox {
+              stroke-width: 10;
               stroke-opacity: 0;
             }
           }
@@ -1228,6 +1226,12 @@ $gas: lighten($dark-pink, 5%);
 
       svg {
         float: right;
+
+        path {
+          &.ui-true {
+            cursor: pointer;
+          }
+        }
         .zoom-pointer {
           path {
             fill: none;
@@ -1246,6 +1250,12 @@ $gas: lighten($dark-pink, 5%);
         top: 45%;
         transform: translateY(-45%);
         -webkit-transform: translateY(-45%);
+
+        path {
+          &.ui-true {
+            cursor: pointer;
+          }
+        }
       }
     }
   }
@@ -1261,31 +1271,30 @@ $gas: lighten($dark-pink, 5%);
   &.visible {
     fill: $dark-blue;
 
-    &.mittleren{
+    &.mittleren {
       fill: $taz-orange;
     }
-    &.besten{
+    &.besten {
       fill: $mint-green;
     }
-    &.schlechtesten{
+    &.schlechtesten {
       fill: $red;
     }
   }
 
-  &.hidden{
-    fill:white;
+  &.hidden {
+    fill: white;
 
-    &.mittleren{
+    &.mittleren {
       fill: $lighter-orange;
     }
 
-    &.besten{
-      fill: lighten($mint-green,60%);
+    &.besten {
+      fill: lighten($mint-green, 60%);
     }
 
-    &.schlechtesten{
+    &.schlechtesten {
       fill: $pale-pink;
     }
   }
-
 }
