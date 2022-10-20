@@ -204,7 +204,7 @@ const MoModalSplit = ({
             {
               <g className="paths">
                 {plotAvgData.map((trip, t) => {
-                  // const ModeIcon = icons[trip.mode];
+                  const ModeIcon = icons[trip.mode];
                   return (
                     <g
                       transform={`translate(0, ${(t + 1) * (height / 6)})`}
@@ -212,7 +212,14 @@ const MoModalSplit = ({
                       className={trip.mode}
                     >
                       <g className="axis">
-                        {/* <ModeIcon x={marginWidth} stroke={colors[t]} /> */}
+                        {/* <ModeIcon x={marginWidth} stroke={colors[t]} />
+                        <text
+                          x={marginWidth + getIconWidth(trip.mode) + 10}
+                          y="-18"
+                          fill={colors[t]}
+                        >
+                          {getLegendName(trip.mode)}
+                        </text> */}
                         <text x={marginWidth} y="-10" fill={colors[t]}>
                           {getLegendName(trip.mode)}
                         </text>
