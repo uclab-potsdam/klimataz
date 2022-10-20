@@ -119,6 +119,9 @@ code {
     height: 100%;
     position: relative;
 
+    .titleArtHidden {
+      display: none;
+    }
     .word-art-title {
       @include wordart-style-1;
       pointer-events: none;
@@ -229,6 +232,7 @@ code {
     .button-container {
       position: absolute;
       background-color: transparent;
+      // background-color: bisque;
       width: 100%;
       height: 100%;
       right: 0;
@@ -257,6 +261,7 @@ code {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+
         height: 20%;
 
         .inner-button {
@@ -283,6 +288,7 @@ code {
             right: 0rem;
             bottom: 0;
             text-align: right;
+            width: 100%;
 
             .switch-preview {
               float: right;
@@ -334,11 +340,20 @@ code {
           .button {
             margin-bottom: auto;
           }
+          .switch {
+            img {
+              // width: 30%;
+              width: 25px;
+              height: auto;
+              // margin: 5px 0px 0px 50%;
+              top: 0;
+            }
+          }
         }
       }
 
       .inner-button {
-        // width: 100%;
+        width: 100%;
         height: 50%;
 
         .close {
@@ -349,16 +364,6 @@ code {
 
           img {
             width: 70%;
-          }
-        }
-
-        .switch {
-          img {
-            // width: 30%;
-            width: 25px;
-            height: auto;
-            // margin: 5px 0px 0px 50%;
-            top: 0;
           }
         }
       }
