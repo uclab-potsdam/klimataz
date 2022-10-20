@@ -26,6 +26,9 @@
 
     .indicators-iframe {
       .main-container {
+        .flip {
+          bottom: 0.5rem;
+        }
         .side-container {
           width: $schwerpunkt-postcardview-postcardwidth;
           height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
@@ -259,9 +262,6 @@
             .close {
               margin-top: 25%;
               margin-right: -0.25rem;
-            }
-            button.flip {
-              bottom: 0.5rem;
             }
           }
         }
