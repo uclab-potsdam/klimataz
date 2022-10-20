@@ -390,10 +390,12 @@
           .postcard-miniature {
             display: inline-flex;
             .word-art-title {
+              transform-origin: left;
+              -webkit-transform-origin-x: left;
               transform: scale(0.9, 1.2) rotate(-0.2deg) translate(0px, 0px);
               position: relative;
               margin-top: 0;
-              margin-right: 1rem;
+              margin-right: 0.5rem;
               text-align: left;
               white-space: nowrap;
               // top: 0rem;
@@ -461,12 +463,14 @@
             flex-direction: row;
             align-items: baseline;
             justify-content: flex-end;
+            position: relative;
+
             &:hover {
               .download-label {
                 transition: visibility 0s, opacity 0.5s;
                 opacity: 1;
-                left: 0rem;
                 visibility: visible;
+                display: inline-block;
               }
             }
 
@@ -479,13 +483,17 @@
               padding: 0.5rem 0.5rem;
               font-size: 12px;
               margin: auto 0.5rem;
-              position: relative;
-              left: -1rem;
+              position: absolute;
+              //right: 0rem;
+              //width: 15%;
+              right: 25px;
+              width: 80px;
 
               z-index: 2;
               opacity: 0;
               visibility: hidden;
               text-align: left;
+              display: none;
             }
 
             img {
