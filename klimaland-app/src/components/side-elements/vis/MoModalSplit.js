@@ -266,15 +266,15 @@ const MoModalSplit = ({
           </g>
           <g
             className="bar-percentage-trip"
-            transform={`translate(${rightMarginWidth + marginWidth}, 10)`}
+            transform={`translate(${rightMarginWidth + marginWidth + 10}, 10)`}
           >
-            <text x="20" y={marginHeight}>
+            <text x="15" y={marginHeight}>
               % der Trips
             </text>
             {plotPercData.map((trip, t) => {
               return (
                 <g transform={`translate(0, ${trip.y1})`} key={t}>
-                  <text x="25" y="5" fill={trip.fill}>
+                  <text x="22" y="5" fill={trip.fill}>
                     {formatNumber(trip.label)} %
                   </text>
                   <rect width="8" height={trip.y2 - trip.y1} x="0" y="0" fill={trip.fill} />
