@@ -193,10 +193,12 @@
               .description {
                 width: 43%;
               }
-              .legend-element {
-                p {
-                  &:hover {
-                    font-weight: medium;
+              .legend {
+                .legend-element {
+                  p {
+                    &:hover {
+                      font-weight: medium;
+                    }
                   }
                 }
               }
@@ -346,6 +348,19 @@
                     }
                   }
                 }
+              }
+            }
+
+            .Ge-chart {
+              .newbuildings-energy {
+                .legend {
+                  display: none;
+                }
+                // .caption {
+                //   .energy-number {
+                //     font-weight: 600;
+                //   }
+                // }
               }
             }
 
@@ -689,6 +704,7 @@
               &.Ge-chart {
                 .newbuildings-energy {
                   .description {
+                    width: 100%;
                     .title {
                       margin: 0 auto;
                       h4 {
@@ -709,6 +725,7 @@
                       // bottom: 0;
                       height: 19%;
                       width: 95%;
+                      display: inline-block;
 
                       .legend-inner {
                         font-size: 12px;
