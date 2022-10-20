@@ -180,7 +180,7 @@ code {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
-      z-index:2;
+      z-index: 2;
 
       .selector {
         width: 30%;
@@ -212,14 +212,15 @@ code {
           }
         }
 
-        .css-1s2u09g-control,.css-1pahdxg-control{
+        .css-1s2u09g-control,
+        .css-1pahdxg-control {
           border: 1px solid $pale-olive;
           border-radius: 0px;
           box-shadow: map-get($map: $boxshadow, $key: default);
-      
+
           &:hover {
-              transition: 0.2s;
-              box-shadow: map-get($map: $boxshadow, $key: hover);
+            transition: 0.2s;
+            box-shadow: map-get($map: $boxshadow, $key: hover);
           }
         }
       }
@@ -228,6 +229,7 @@ code {
     .button-container {
       position: absolute;
       background-color: transparent;
+      background-color: bisque;
       width: 100%;
       height: 100%;
       right: 0;
@@ -253,6 +255,7 @@ code {
       }
 
       .button-switch-container {
+        background-color: aqua;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -272,6 +275,7 @@ code {
         }
 
         .button-left {
+          background-color: aquamarine;
           text-align: right;
           margin: 0;
           padding: 0;
@@ -302,6 +306,7 @@ code {
         }
 
         .button-right {
+          background-color: aquamarine;
           text-align: left;
           .switch {
             transition: all 0.5s;
