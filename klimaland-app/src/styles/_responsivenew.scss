@@ -61,6 +61,21 @@
           }
         }
 
+        .social-media-layout {
+          .logo-container {
+            height: 0.8rem;
+            min-height: 0.5rem;
+            top: 8px;
+            left: 8px;
+          }
+
+          .word-art-title {
+            width: 80%;
+            right: 0rem;
+            bottom: 0rem;
+          }
+        }
+
         .flip {
           bottom: 0.5rem;
           right: 0.5rem;
@@ -450,7 +465,6 @@
 
         .word-art-title {
           bottom: 0.5rem;
-          right: -1rem;
           transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
 
           .wordart {
@@ -905,6 +919,100 @@
 
                 .side-inner {
                   height: calc(90% + 1rem);
+
+                  .details-container {
+                    height: 100%;
+
+                    .flex-container {
+                      display: block;
+                      position: relative;
+
+                      .text-container {
+                        width: 100%;
+                        overflow: hidden;
+                        position: absolute;
+                        border: none;
+                        z-index: 1;
+
+                        .text-inner-container {
+                          margin-top: 3rem;
+                          height: 80%;
+
+                          .section-title {
+                            margin-bottom: 0;
+                            padding-top: 2rem;
+                          }
+
+                          .section-text {
+                            margin-top: 0;
+                            height: 80%;
+                            position: relative;
+                            overflow: scroll;
+
+                            p {
+                              margin-top: 0.5rem;
+                            }
+                          }
+                        }
+                      }
+
+                      .data-container {
+                        background-color: $light;
+                        position: absolute;
+                        width: 100%;
+                        height: 30%;
+                        top: 0;
+                        border: none;
+
+                        .locator-map {
+                          border: none;
+                          height: 70%;
+                          margin-top: 0.5rem;
+
+                          .locator-container {
+                            height: 100%;
+                            display: flex;
+                            justify-content: right;
+
+                            .locator-zoom {
+                              margin-left: 0;
+                              text-align: right;
+                              display: flex;
+                              justify-content: right;
+                              width: 25%;
+                            }
+
+                            .locator-background {
+                              width: 25%;
+                            }
+                          }
+                        }
+
+                        .lk-list {
+                          display: none;
+                        }
+                      }
+                    }
+
+                    .footer-container {
+                      height: 10%;
+                      width: 100%;
+                      border-top: 1px solid #484848;
+                      .footer-inner-container {
+                        height: 100%;
+                        display: inline-block;
+                        margin: 0rem 0rem 0rem 1rem;
+
+                        .logo-container {
+                          display: none;
+                        }
+
+                        .info-backside {
+                          line-height: 20px;
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
