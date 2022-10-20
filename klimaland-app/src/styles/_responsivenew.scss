@@ -26,20 +26,26 @@
 
     .indicators-iframe {
       .main-container {
+        .side-container {
+          width: $schwerpunkt-postcardview-postcardwidth;
+          height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
+        }
+
         .titleArtHidden {
           display: block;
         }
 
         .button-container {
-          .button-switch-container {
-            // display: none;
-          }
-
           .inner-button {
+            height: 81%;
             .close {
-              margin-top: 22%;
-              margin-right: 0rem;
+              margin-top: 18%;
+              margin-right: -0.5rem;
             }
+          }
+          .button-switch-container {
+            justify-content: space-around;
+            height: 10%;
           }
         }
 
@@ -160,7 +166,8 @@
         .button-container {
           .inner-button {
             .close {
-              margin-top: 32%;
+              margin-top: 25%;
+              margin-right: -0.25rem;
             }
           }
         }
