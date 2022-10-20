@@ -30,6 +30,19 @@
           display: block;
         }
 
+        .button-container {
+          .button-switch-container {
+            // display: none;
+          }
+
+          .inner-button {
+            .close {
+              margin-top: 22%;
+              margin-right: 0rem;
+            }
+          }
+        }
+
         .selection-buttons {
         }
 
@@ -144,6 +157,13 @@
 
     .indicators-iframe {
       .main-container {
+        .button-container {
+          .inner-button {
+            .close {
+              margin-top: 32%;
+            }
+          }
+        }
         .card-collection {
           .card {
             .Mo-chart {
@@ -213,6 +233,9 @@
     .indicators-iframe {
       .main-container {
         margin-top: 10px;
+        .titleArtHidden {
+          display: none;
+        }
         .word-art-title {
           width: 100%;
           bottom: 1rem;
@@ -258,7 +281,7 @@
           align-content: flex-start;
 
           .carousel-container {
-            margin-top: 3.5rem;
+            // margin-top: 3.5rem;
           }
 
           .card-container {
@@ -682,8 +705,7 @@
 
           .inner-button {
             .close {
-              margin-top: 2.5rem;
-              margin-right: 0rem;
+              margin-top: 1rem;
             }
           }
         }
@@ -734,7 +756,7 @@
           width: 95%;
 
           .carousel-container {
-            margin-top: 5rem;
+            // margin-top: 5rem;
           }
           .card-container {
             height: 100vh;
