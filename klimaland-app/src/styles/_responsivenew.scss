@@ -181,6 +181,25 @@
             }
           }
 
+          .Ge-chart {
+            .newbuildings-energy {
+              h4 {
+                font-size: 14px;
+                font-weight: 'medium';
+              }
+              .description {
+                width: 43%;
+              }
+              .legend-element {
+                p {
+                  &:hover {
+                    font-weight: medium;
+                  }
+                }
+              }
+            }
+          }
+
           .details-container {
             .flex-container {
               height: 100%;
