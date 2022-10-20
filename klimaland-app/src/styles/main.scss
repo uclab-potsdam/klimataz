@@ -119,6 +119,9 @@ code {
     height: 100%;
     position: relative;
 
+    .titleArtHidden {
+      display: none;
+    }
     .word-art-title {
       @include wordart-style-1;
       pointer-events: none;
