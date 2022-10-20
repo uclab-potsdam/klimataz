@@ -427,6 +427,14 @@
           }
 
           svg {
+            .toggle {
+              display: block;
+            }
+
+            .toggleResponsive {
+              display: none;
+            }
+
             margin-left: 0.5rem;
             .toggle-rect {
               cursor: pointer;

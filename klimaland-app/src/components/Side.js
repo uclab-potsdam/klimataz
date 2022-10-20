@@ -244,6 +244,37 @@ export default class Side extends Component {
                           <stop offset="100%" stopColor="#ffe8c9" />
                         </linearGradient>
                       </defs>
+                      <g className="toggleResponsive" onClick={this.props.switchDataLevel}>
+                        <g transform={`translate(${this.props.toggleLabels.lk.length * 7}, 2)`}>
+                          <rect
+                            className="controller-bg"
+                            x="0"
+                            y="0"
+                            width="36"
+                            height="18"
+                            rx="10"
+                          />
+                          <rect
+                            className="toggle-rect"
+                            x={this.props.isLKData ? 0 : 18}
+                            y="0"
+                            width="18"
+                            height="18"
+                            rx="10"
+                            fill="#FFF9F1"
+                            stroke="#484848"
+                          />
+                        </g>
+                        <text x="0" y="15">
+                          {this.props.toggleLabels.lk}
+                        </text>
+                        <text x={this.props.toggleLabels.lk.length * 7 + 50} y="15">
+                          {this.props.toggleLabels.bl}
+                        </text>
+                        <text className="mobile-toggle-label" x="150" y="17">
+                          Daten wechseln
+                        </text>
+                      </g>
                       <g className="toggle" onClick={this.props.switchDataLevel}>
                         <g
                           transform={`translate(${this.props.toggleLabels.lk.length * 8 + 10}, 2)`}
