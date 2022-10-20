@@ -222,10 +222,10 @@
                 .overlay-container {
                   height: calc(14% - 0.5rem);
                 }
-              }
 
-              .side-inner {
-                height: calc(86% + 0.5rem);
+                .side-inner {
+                  height: calc(86% + 0.5rem);
+                }
               }
             }
 
@@ -233,8 +233,8 @@
               .car-density {
                 .visualization-container {
                   .chart {
-                    transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
-                    -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+                    transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
+                    -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
                   }
                 }
               }
@@ -247,24 +247,24 @@
                     transform: translateY(1%);
 
                     .biotonne {
-                      transform: translateX(11%);
+                      transform: translateX(13%);
 
                       text {
-                        transform: translateX(13%) translateY(0.5%);
+                        transform: translateX(15%) translateY(0.5%);
                       }
                     }
 
                     .gartenPark {
-                      transform: translateX(18%);
+                      transform: translateX(20%);
 
                       text {
-                        transform: translateX(20%) translateY(0.5%);
+                        transform: translateX(22%) translateY(0.5%);
                       }
                     }
                   }
 
                   .pie-controller {
-                    transform: translateX(55%) translateY(-2.5%);
+                    transform: translateX(59%) translateY(-2.5%);
 
                     .pie-icon {
                       transform: scale(0.5);
@@ -289,7 +289,7 @@
     background-color: aqua;
 
     h4 {
-      font-size: 10px;
+      font-size: 12px;
     }
 
     .indicators-iframe {
@@ -685,6 +685,71 @@
                       }
                     }
                   }
+                }
+              }
+            }
+          }
+
+          .card {
+            .card-front {
+              .side-outer {
+                .overlay-container {
+                  height: calc(10% - 1rem);
+
+                  .overlay-inner {
+                    .section-thumb {
+                      .word-art-title {
+                        display: none;
+                      }
+                    }
+
+                    .postcard-title {
+                      h4 {
+                        margin: 0;
+                        margin-top: 0.2rem;
+                        transform: translate(0px, 0px) !important;
+                      }
+                    }
+
+                    .button-toggle-container {
+                      transform: translate(0px, 0px) !important;
+
+                      .arrow-pointer {
+                        margin-top: 0.2rem;
+                        height: calc(100% - 0.2rem);
+                      }
+
+                      svg {
+                        .toggle {
+                          display: none;
+                        }
+
+                        .toggleResponsive {
+                          display: block;
+                        }
+
+                        text {
+                          font-size: 12px;
+                          margin: 0;
+                          padding: 0;
+                        }
+
+                        .mobile-toggle-label {
+                          display: block;
+                        }
+
+                        .controller-bg {
+                          cursor: pointer;
+                          fill: url(#MyGradient);
+                          stroke: $default-text;
+                        }
+                      }
+                    }
+                  }
+                }
+
+                .side-inner {
+                  height: calc(90% + 1rem);
                 }
               }
             }
