@@ -548,7 +548,7 @@
               .section-text {
                 height: 85%;
                 position: relative;
-                overflow: auto;
+                overflow-y: auto;
 
                 p {
                   font-size: 14px;
@@ -638,6 +638,7 @@
                     padding-top: 0.5rem;
                     border-bottom: 1px solid $default-text;
                     padding-bottom: 0.5rem;
+                    color: $default-text;
 
                     &.ui-true {
                       &:hover {

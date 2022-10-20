@@ -66,7 +66,8 @@
                 }
               }
             }
-            .card-front {
+            .card-front,
+            .card-back {
               .side-outer {
                 .overlay-container {
                   height: calc(14% - 1rem);
@@ -77,87 +78,149 @@
                         display: none;
                       }
                     }
-
-                    .button-toggle-container {
-                      padding .arrow-pointer {
-                        margin-top: 0.2rem;
-                        height: calc(100% - 0.2rem);
-                      }
-
-                      svg {
-                        // margin-top: -2px;
-
-                        text {
-                          font-size: 12px;
-                          margin: 0;
-                          padding: 0;
-                        }
-
-                        .mobile-toggle-label {
-                          display: none;
-                        }
-
-                        .controller-bg {
-                          cursor: pointer;
-                          fill: url(#MyGradient);
-                          stroke: $default-text;
-                        }
-                      }
-                    }
                   }
-                }
 
-                .side-inner {
-                  height: calc(86% + 1rem);
-                }
-              }
-            }
-
-            .Mo-chart {
-              .car-density {
-                .chart {
-                  transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
-                  -webkit-transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
-                }
-              }
-            }
-
-            .Ab-chart {
-              .visualization-container {
-                height: 75%;
-
-                .controls-container {
-                  .legend {
-                    transform: translateY(1%);
-                    .biotonne {
-                      transform: translateX(10%);
-
-                      text {
-                        transform: translateX(12%) translateY(0.5%);
-                      }
-                    }
-
-                    .gartenPark {
-                      transform: translateX(16%);
-
-                      text {
-                        transform: translateX(18%) translateY(0.5%);
-                      }
-                    }
-
-                    .highest-value {
-                      transform: translateX(0%);
-
-                      text {
-                        transform: translateX(2%) translateY(0.5%);
+                  &.overlay-container-back {
+                    position: absolute;
+                    .overlay-inner {
+                      background-color: transparent;
+                      border: none;
+                      .section-thumb {
+                        display: none;
                       }
                     }
                   }
 
-                  .pie-controller {
-                    transform: translateX(60%) translateY(-2.5%);
-                    .pie-icon {
-                      transform: scale(0.6);
+                  .button-toggle-container {
+                    padding .arrow-pointer {
+                      margin-top: 0.2rem;
+                      height: calc(100% - 0.2rem);
+                    }
+
+                    svg {
+                      // margin-top: -2px;
+
+                      text {
+                        font-size: 12px;
+                        margin: 0;
+                        padding: 0;
+                      }
+
+                      .mobile-toggle-label {
+                        display: none;
+                      }
+
+                      .controller-bg {
+                        cursor: pointer;
+                        fill: url(#MyGradient);
+                        stroke: $default-text;
+                      }
+                    }
+                  }
+                }
+              }
+
+              .side-inner {
+                height: calc(86% + 1rem);
+
+                &.side-inner-back {
+                  height: 100%;
+                }
+              }
+            }
+          }
+
+          .Mo-chart {
+            .car-density {
+              .chart {
+                transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+                -webkit-transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+              }
+            }
+          }
+
+          .Ab-chart {
+            .visualization-container {
+              height: 75%;
+
+              .controls-container {
+                .legend {
+                  transform: translateY(1%);
+                  .biotonne {
+                    transform: translateX(10%);
+
+                    text {
+                      transform: translateX(12%) translateY(0.5%);
+                    }
+                  }
+
+                  .gartenPark {
+                    transform: translateX(16%);
+
+                    text {
+                      transform: translateX(18%) translateY(0.5%);
+                    }
+                  }
+
+                  .highest-value {
+                    transform: translateX(0%);
+
+                    text {
+                      transform: translateX(2%) translateY(0.5%);
+                    }
+                  }
+                }
+
+                .pie-controller {
+                  transform: translateX(60%) translateY(-2.5%);
+                  .pie-icon {
+                    transform: scale(0.6);
+                  }
+                }
+              }
+            }
+          }
+
+          .details-container {
+            .flex-container {
+              height: 100%;
+              .text-container {
+                margin-bottom: 1rem;
+                .text-inner-container {
+                  .section-title {
+                    //display: none;
+                    font-size: 0.9rem;
+                    h2 {
+                      padding-top: 1rem;
+                    }
+                  }
+                }
+              }
+              .data-container {
+                height: 88%;
+                .lk-list {
+                  height: calc(60% - 1px);
+                  .list-similar-container {
+                    h5 {
+                      position: sticky;
+                      top: 0;
+                    }
+                    ol {
+                      font-size: 14px;
+                    }
+                  }
+                }
+                .locator-map {
+                  .locator-container {
+                    height: 110px;
+                    width: 89%;
+
+                    .locator-background {
+                      .map-paths {
+                        path {
+                          stroke-width: 0.2px;
+                        }
+                      }
                     }
                   }
                 }
@@ -165,12 +228,12 @@
             }
           }
         }
+      }
 
-        .info-container {
-        }
+      .info-container {
+      }
 
-        .sources-container {
-        }
+      .sources-container {
       }
     }
   }
@@ -197,32 +260,34 @@
               margin-top: 25%;
               margin-right: -0.25rem;
             }
+            button.flip {
+              bottom: 0.5rem;
+            }
           }
         }
         .card-collection {
           .card {
-            .card-front {
+            .card-front,
+            .card-back {
               .side-outer {
                 .overlay-container {
                   height: calc(14% - 0.5rem);
                 }
               }
 
-  .indicators-iframe {
-    .main-container {
-      button.flip {
-        bottom: 0.5rem;
-      }
-      .card-collection {
-      
-        .card {
-          .Mo-chart {
-            .car-density {
-              background-color: pink;
-              .visualization-container {
-                .chart {
-                  transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
-                  -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+              .side-inner {
+                height: calc(86% + 0.5rem);
+              }
+            }
+
+            .Mo-chart {
+              .car-density {
+                background-color: pink;
+                .visualization-container {
+                  .chart {
+                    transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+                    -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+                  }
                 }
               }
             }
@@ -258,6 +323,23 @@
 
                       path {
                         stroke-width: 2px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .details-container {
+              .flex-container {
+                .data-container {
+                  .locator-map {
+                    .locator-container {
+                      .locator-background {
+                        width: 40%;
+                      }
+                      .locator-zoom {
+                        width: 60px;
                       }
                     }
                   }
