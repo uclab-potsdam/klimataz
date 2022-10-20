@@ -26,7 +26,27 @@
 
     .indicators-iframe {
       .main-container {
-        .wordart-title {
+        .side-container {
+          width: $schwerpunkt-postcardview-postcardwidth;
+          height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
+        }
+
+        .titleArtHidden {
+          display: block;
+        }
+
+        .button-container {
+          .inner-button {
+            height: 82%;
+            .close {
+              margin-top: 18%;
+              margin-right: -0.5rem;
+            }
+          }
+          .button-switch-container {
+            justify-content: space-evenly;
+            height: 10%;
+          }
         }
 
         .selection-buttons {
@@ -50,7 +70,8 @@
             .card-back {
               .side-outer {
                 .overlay-container {
-                  height: calc(15% - 0.5rem);
+                  height: calc(14% - 1rem);
+
                   .overlay-inner {
                     .section-thumb {
                       .word-art-title {
@@ -69,108 +90,135 @@
                       }
                     }
                   }
-                }
 
-                .side-inner {
-                  height: calc(85% + 0.5rem);
-
-                  &.side-inner-back {
-                    height: 100%;
-                  }
-                }
-              }
-            }
-
-            .Mo-chart {
-              .car-density {
-                .chart {
-                  transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
-                  -webkit-transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
-                }
-              }
-            }
-
-            .Ab-chart {
-              .visualization-container {
-                height: 75%;
-
-                .controls-container {
-                  .legend {
-                    transform: translateY(1%);
-                    .biotonne {
-                      transform: translateX(10%);
-
-                      text {
-                        transform: translateX(12%) translateY(0.5%);
-                      }
+                  .button-toggle-container {
+                    padding .arrow-pointer {
+                      margin-top: 0.2rem;
+                      height: calc(100% - 0.2rem);
                     }
 
-                    .gartenPark {
-                      transform: translateX(16%);
+                    svg {
+                      // margin-top: -2px;
 
                       text {
-                        transform: translateX(18%) translateY(0.5%);
+                        font-size: 12px;
+                        margin: 0;
+                        padding: 0;
                       }
-                    }
 
-                    .highest-value {
-                      transform: translateX(0%);
-
-                      text {
-                        transform: translateX(2%) translateY(0.5%);
+                      .mobile-toggle-label {
+                        display: none;
                       }
-                    }
-                  }
 
-                  .pie-controller {
-                    transform: translateX(60%) translateY(-2.5%);
-                    .pie-icon {
-                      transform: scale(0.6);
+                      .controller-bg {
+                        cursor: pointer;
+                        fill: url(#MyGradient);
+                        stroke: $default-text;
+                      }
                     }
                   }
                 }
               }
-            }
 
-            .details-container {
-              .flex-container {
-                height: 100%;
-                .text-container {
-                  margin-bottom: 1rem;
-                  .text-inner-container {
-                    .section-title {
-                      //display: none;
-                      font-size: 0.9rem;
-                      h2 {
-                        padding-top: 1rem;
-                      }
+              .side-inner {
+                height: calc(86% + 1rem);
+
+                &.side-inner-back {
+                  height: 100%;
+                }
+              }
+            }
+          }
+
+          .Mo-chart {
+            .car-density {
+              .chart {
+                transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+                -webkit-transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+              }
+            }
+          }
+
+          .Ab-chart {
+            .visualization-container {
+              height: 75%;
+
+              .controls-container {
+                .legend {
+                  transform: translateY(1%);
+                  .biotonne {
+                    transform: translateX(10%);
+
+                    text {
+                      transform: translateX(12%) translateY(0.5%);
+                    }
+                  }
+
+                  .gartenPark {
+                    transform: translateX(16%);
+
+                    text {
+                      transform: translateX(18%) translateY(0.5%);
+                    }
+                  }
+
+                  .highest-value {
+                    transform: translateX(0%);
+
+                    text {
+                      transform: translateX(2%) translateY(0.5%);
                     }
                   }
                 }
-                .data-container {
-                  height: 88%;
-                  .lk-list {
-                    height: calc(60% - 1px);
-                    .list-similar-container {
-                      h5 {
-                        position: sticky;
-                        top: 0;
-                      }
-                      ol {
-                        font-size: 14px;
-                      }
+
+                .pie-controller {
+                  transform: translateX(60%) translateY(-2.5%);
+                  .pie-icon {
+                    transform: scale(0.6);
+                  }
+                }
+              }
+            }
+          }
+
+          .details-container {
+            .flex-container {
+              height: 100%;
+              .text-container {
+                margin-bottom: 1rem;
+                .text-inner-container {
+                  .section-title {
+                    //display: none;
+                    font-size: 0.9rem;
+                    h2 {
+                      padding-top: 1rem;
                     }
                   }
-                  .locator-map {
-                    .locator-container {
-                      height: 110px;
-                      width: 89%;
+                }
+              }
+              .data-container {
+                height: 88%;
+                .lk-list {
+                  height: calc(60% - 1px);
+                  .list-similar-container {
+                    h5 {
+                      position: sticky;
+                      top: 0;
+                    }
+                    ol {
+                      font-size: 14px;
+                    }
+                  }
+                }
+                .locator-map {
+                  .locator-container {
+                    height: 110px;
+                    width: 89%;
 
-                      .locator-background {
-                        .map-paths {
-                          path {
-                            stroke-width: 0.2px;
-                          }
+                    .locator-background {
+                      .map-paths {
+                        path {
+                          stroke-width: 0.2px;
                         }
                       }
                     }
@@ -180,12 +228,12 @@
             }
           }
         }
+      }
 
-        .info-container {
-        }
+      .info-container {
+      }
 
-        .sources-container {
-        }
+      .sources-container {
       }
     }
   }
@@ -205,8 +253,30 @@
 
     .indicators-iframe {
       .main-container {
+        .button-container {
+          .inner-button {
+            height: 79%;
+            .close {
+              margin-top: 25%;
+              margin-right: -0.25rem;
+            }
+          }
+        }
         .card-collection {
           .card {
+            .card-front,
+            .card-back {
+              .side-outer {
+                .overlay-container {
+                  height: calc(14% - 0.5rem);
+                }
+              }
+
+              .side-inner {
+                height: calc(86% + 0.5rem);
+              }
+            }
+
             .Mo-chart {
               .car-density {
                 background-color: pink;
@@ -263,7 +333,10 @@
                   .locator-map {
                     .locator-container {
                       .locator-background {
-                        width: 60%;
+                        width: 40%;
+                      }
+                      .locator-zoom {
+                        width: 60px;
                       }
                     }
                   }
@@ -288,6 +361,9 @@
     .indicators-iframe {
       .main-container {
         margin-top: 10px;
+        .titleArtHidden {
+          display: none;
+        }
         .word-art-title {
           width: 100%;
           bottom: 1rem;
@@ -333,7 +409,7 @@
           align-content: flex-start;
 
           .carousel-container {
-            margin-top: 3.5rem;
+            // margin-top: 3.5rem;
           }
 
           .card-container {
@@ -757,8 +833,7 @@
 
           .inner-button {
             .close {
-              margin-top: 2.5rem;
-              margin-right: 0rem;
+              margin-top: 1rem;
             }
           }
         }
@@ -809,7 +884,7 @@
           width: 95%;
 
           .carousel-container {
-            margin-top: 5rem;
+            // margin-top: 5rem;
           }
           .card-container {
             height: 100vh;
