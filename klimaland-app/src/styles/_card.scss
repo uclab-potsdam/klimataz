@@ -427,6 +427,18 @@
           }
 
           svg {
+            .toggle {
+              display: block;
+            }
+
+            .toggleResponsive {
+              display: none;
+            }
+
+            .togglePhone {
+              display: none;
+            }
+
             margin-left: 0.5rem;
             .toggle-rect {
               cursor: pointer;
@@ -440,10 +452,6 @@
 
             text {
               font-family: 'Chivo';
-            }
-
-            .mobile-toggle-label {
-              display: none;
             }
 
             .controller-bg {
