@@ -180,7 +180,7 @@ code {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
-      z-index:2;
+      z-index: 2;
 
       .selector {
         width: 30%;
@@ -212,14 +212,15 @@ code {
           }
         }
 
-        .css-1s2u09g-control,.css-1pahdxg-control{
+        .css-1s2u09g-control,
+        .css-1pahdxg-control {
           border: 1px solid $pale-olive;
           border-radius: 0px;
           box-shadow: map-get($map: $boxshadow, $key: default);
-      
+
           &:hover {
-              transition: 0.2s;
-              box-shadow: map-get($map: $boxshadow, $key: hover);
+            transition: 0.2s;
+            box-shadow: map-get($map: $boxshadow, $key: hover);
           }
         }
       }
@@ -264,9 +265,9 @@ code {
             margin-top: 0.5rem;
             opacity: 0;
             transition: all 0.5s;
-            font-size: 10px;
+            font-size: 12px;
             width: 80%;
-            overflow: hidden;
+            overflow: visible;
             text-overflow: ellipsis;
           }
         }
