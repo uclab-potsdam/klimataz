@@ -26,6 +26,18 @@
 
     .indicators-iframe {
       .main-container {
+        .word-art-title {
+          width: 65%;
+
+          .wordart {
+            font-size: 2rem;
+            line-height: 1.75rem;
+            overflow: visible;
+            padding-top: 10px;
+            padding-bottom: 5px;
+          }
+        }
+
         .side-container {
           width: $schwerpunkt-postcardview-postcardwidth;
           height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
@@ -58,7 +70,26 @@
           }
         }
 
-        .selection-buttons {
+        .selection-container {
+          flex-direction: row;
+
+          .selector {
+            &.section {
+              &.mode-comparison {
+                width: 35%;
+              }
+            }
+
+            &.lk {
+              display: inline-block;
+              &.mode-comparison {
+                width: 80%;
+              }
+              &.mode-lk {
+                width: 40%;
+              }
+            }
+          }
         }
 
         .card-collection {
@@ -416,14 +447,13 @@
         .titleArtHidden {
           display: none;
         }
+
         .word-art-title {
-          width: 100%;
-          bottom: 1rem;
+          bottom: 0.5rem;
           right: -1rem;
           transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
 
           .wordart {
-            font-size: 2rem;
             line-height: 1.5rem;
             overflow: visible;
             padding-top: 10px;
@@ -989,10 +1019,14 @@
       margin-right: 5.55%;
       margin-left: 5.55%;
       .main-container {
-        .wordart-title {
+        .word-art-title {
+          bottom: 1rem;
         }
 
         .selection-buttons {
+          .selection-container {
+            margin: 0;
+          }
         }
 
         .info-container {
@@ -1010,12 +1044,15 @@
           .carousel-container {
             // margin-top: 5rem;
           }
+
           .card-container {
             height: 100vh;
             justify-content: left;
             padding-left: 0.5rem;
+            margin-top: -0.6rem;
           }
         }
+
         .card {
           &-ordered {
             margin: 0.5rem 0.5rem -20px 1rem;
@@ -1024,6 +1061,7 @@
             height: calc($portait-postcardwidth/1.8);
           }
         }
+
         .side-container {
           width: $portait-postcardwidth;
           height: calc($portait-postcardwidth * 1.5);
