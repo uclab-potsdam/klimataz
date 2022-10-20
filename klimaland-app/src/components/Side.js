@@ -198,6 +198,9 @@ export default class Side extends Component {
   }
 
   render() {
+    const moveRelativeToLkLength = {
+      transform: `translate(${-this.props.lk.label.length}px, 0px)`,
+    };
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={100} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
@@ -222,8 +225,13 @@ export default class Side extends Component {
                       <p>im {this.state.ranking}</p>
                     </div>
                   )}
-                  {(this.props.isThumbnail || this.props.isTopCard) && (
+                  {this.props.isThumbnail && (
                     <h4 className="section-title">{this.props.sectionName}</h4>
+                  )}
+                  {this.props.isTopCard && (
+                    <h4 className="section-title" style={moveRelativeToLkLength}>
+                      {this.props.sectionName}
+                    </h4>
                   )}
                 </div>
               </div>
@@ -231,7 +239,7 @@ export default class Side extends Component {
                 this.props.isTopCard &&
                 this.props.toggleLabels.lk !== '' &&
                 this.props.activeSide !== 1 && (
-                  <div className="button-toggle-container">
+                  <div className="button-toggle-container" style={moveRelativeToLkLength}>
                     <div className="arrow-pointer" />
                     <svg width="100%" height="100%">
                       <defs>
