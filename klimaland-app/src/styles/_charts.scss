@@ -60,7 +60,7 @@ $gas: lighten($dark-pink, 5%);
     overflow: visible;
 
     div {
-      min-width: 40px;
+      min-width: 20px;
       p {
         font-size: 10px;
       }
@@ -198,24 +198,24 @@ $gas: lighten($dark-pink, 5%);
             .main-x-axis,
             .axis,
             .mapped-axis,
-            .avgkm-marker,
             .bar-percentage-trip {
               line {
                 stroke: $default-text;
               }
             }
 
-            // foreignObject {
-            //   transform: translateY(-0.5%);
+            foreignObject {
+              transform: translateY(-0.5%);
 
-            //   div {
-            //     background-color: rgba(255, 255, 255, 0.9);
-            //     p {
-            //       padding-left: 2px;
-            //       margin: 0;
-            //     }
-            //   }
-            // }
+              div {
+                width: 40px;
+                background-color: rgba(255, 255, 255, 0.9);
+                p {
+                  padding-left: 2px;
+                  margin: 0;
+                }
+              }
+            }
 
             .axis {
               svg {
