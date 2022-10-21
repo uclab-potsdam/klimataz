@@ -26,9 +26,18 @@
 
     .indicators-iframe {
       .main-container {
-        .flip {
-          bottom: 0.5rem;
+        .word-art-title {
+          width: 65%;
+
+          .wordart {
+            font-size: 2rem;
+            line-height: 1.75rem;
+            overflow: visible;
+            padding-top: 10px;
+            padding-bottom: 5px;
+          }
         }
+
         .side-container {
           width: $schwerpunkt-postcardview-postcardwidth;
           height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
@@ -52,7 +61,50 @@
           }
         }
 
-        .selection-buttons {
+        .social-media-layout {
+          .logo-container {
+            height: 0.8rem;
+            min-height: 0.5rem;
+            top: 8px;
+            left: 8px;
+          }
+
+          .word-art-title {
+            width: 80%;
+            right: 0rem;
+            bottom: 0rem;
+          }
+        }
+
+        .flip {
+          bottom: 0.5rem;
+          right: 0.5rem;
+
+          img {
+            max-width: 25px;
+          }
+        }
+
+        .selection-container {
+          flex-direction: row;
+
+          .selector {
+            &.section {
+              &.mode-comparison {
+                width: 35%;
+              }
+            }
+
+            &.lk {
+              display: inline-block;
+              &.mode-comparison {
+                width: 80%;
+              }
+              &.mode-lk {
+                width: 40%;
+              }
+            }
+          }
         }
 
         .card-collection {
@@ -79,6 +131,49 @@
                     .section-thumb {
                       .word-art-title {
                         display: none;
+                      }
+                    }
+
+                    .postcard-title {
+                      h4 {
+                        margin: 0;
+                        margin-top: 0.2rem;
+                        transform: translate(0px, 0px) !important;
+                      }
+                    }
+
+                    .button-toggle-container {
+                      transform: translate(0px, 0px) !important;
+
+                      .arrow-pointer {
+                        margin-top: 0.2rem;
+                        height: calc(100% - 0.2rem);
+                      }
+
+                      svg {
+                        .toggle {
+                          display: none;
+                        }
+
+                        .toggleResponsive {
+                          display: block;
+                        }
+
+                        text {
+                          font-size: 12px;
+                          margin: 0;
+                          padding: 0;
+                        }
+
+                        .togglePhone {
+                          display: none;
+                        }
+
+                        .controller-bg {
+                          cursor: pointer;
+                          fill: url(#MyGradient);
+                          stroke: $default-text;
+                        }
                       }
                     }
                   }
@@ -286,6 +381,7 @@
             }
           }
         }
+
         .card-collection {
           .card {
             .card-front,
@@ -294,20 +390,19 @@
                 .overlay-container {
                   height: calc(14% - 0.5rem);
                 }
-              }
 
-              .side-inner {
-                height: calc(86% + 0.5rem);
+                .side-inner {
+                  height: calc(86% + 0.5rem);
+                }
               }
             }
 
             .Mo-chart {
               .car-density {
-                background-color: pink;
                 .visualization-container {
                   .chart {
-                    transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
-                    -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.8);
+                    transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
+                    -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
                   }
                 }
               }
@@ -320,24 +415,24 @@
                     transform: translateY(1%);
 
                     .biotonne {
-                      transform: translateX(11%);
+                      transform: translateX(13%);
 
                       text {
-                        transform: translateX(13%) translateY(0.5%);
+                        transform: translateX(15%) translateY(0.5%);
                       }
                     }
 
                     .gartenPark {
-                      transform: translateX(18%);
+                      transform: translateX(20%);
 
                       text {
-                        transform: translateX(20%) translateY(0.5%);
+                        transform: translateX(22%) translateY(0.5%);
                       }
                     }
                   }
 
                   .pie-controller {
-                    transform: translateX(55%) translateY(-2.5%);
+                    transform: translateX(59%) translateY(-2.5%);
 
                     .pie-icon {
                       transform: scale(0.5);
@@ -392,7 +487,7 @@
     background-color: aqua;
 
     h4 {
-      font-size: 10px;
+      font-size: 12px;
     }
 
     .indicators-iframe {
@@ -401,14 +496,12 @@
         .titleArtHidden {
           display: none;
         }
+
         .word-art-title {
-          width: 100%;
-          bottom: 1rem;
-          right: -1rem;
+          bottom: 0.5rem;
           transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
 
           .wordart {
-            font-size: 2rem;
             line-height: 1.5rem;
             overflow: visible;
             padding-top: 10px;
@@ -794,6 +887,172 @@
               }
             }
           }
+
+          .card {
+            .card-front {
+              .side-outer {
+                .overlay-container {
+                  height: calc(10% - 1rem);
+
+                  .overlay-inner {
+                    .section-thumb {
+                      .word-art-title {
+                        display: none;
+                      }
+                    }
+
+                    .postcard-title {
+                      h4 {
+                        margin: 0;
+                        margin-top: 0.2rem;
+                        transform: translate(0px, 0px) !important;
+                      }
+                    }
+
+                    .button-toggle-container {
+                      transform: translate(0px, 0px) !important;
+
+                      .arrow-pointer {
+                        margin-top: 0.2rem;
+                        height: calc(100% - 0.2rem);
+                      }
+
+                      svg {
+                        .toggle {
+                          display: none;
+                        }
+
+                        .toggleResponsive {
+                          display: block;
+                        }
+
+                        text {
+                          font-size: 12px;
+                          margin: 0;
+                          padding: 0;
+                        }
+
+                        .toggle {
+                          display: none;
+                        }
+                        .toggleResponsive {
+                          display: none;
+                        }
+
+                        .togglePhone {
+                          display: block;
+                        }
+
+                        .controller-bg {
+                          cursor: pointer;
+                          fill: url(#MyGradient);
+                          stroke: $default-text;
+                        }
+                      }
+                    }
+                  }
+                }
+
+                .side-inner {
+                  height: calc(90% + 1rem);
+
+                  .details-container {
+                    height: 100%;
+
+                    .flex-container {
+                      display: block;
+                      position: relative;
+
+                      .text-container {
+                        width: 100%;
+                        overflow: hidden;
+                        position: absolute;
+                        border: none;
+                        z-index: 1;
+
+                        .text-inner-container {
+                          margin-top: 3rem;
+                          height: 80%;
+
+                          .section-title {
+                            margin-bottom: 0;
+                            padding-top: 2rem;
+                          }
+
+                          .section-text {
+                            margin-top: 0;
+                            height: 80%;
+                            position: relative;
+                            overflow: scroll;
+
+                            p {
+                              margin-top: 0.5rem;
+                            }
+                          }
+                        }
+                      }
+
+                      .data-container {
+                        background-color: $light;
+                        position: absolute;
+                        width: 100%;
+                        height: 30%;
+                        top: 0;
+                        border: none;
+
+                        .locator-map {
+                          border: none;
+                          height: 70%;
+                          margin-top: 0.5rem;
+
+                          .locator-container {
+                            height: 100%;
+                            display: flex;
+                            justify-content: right;
+
+                            .locator-zoom {
+                              margin-left: 0;
+                              text-align: right;
+                              display: flex;
+                              justify-content: right;
+                              width: 25%;
+                            }
+
+                            .locator-background {
+                              width: 25%;
+                            }
+                          }
+                        }
+
+                        .lk-list {
+                          display: none;
+                        }
+                      }
+                    }
+
+                    .footer-container {
+                      height: 10%;
+                      width: 100%;
+                      border-top: 1px solid #484848;
+                      .footer-inner-container {
+                        height: 100%;
+                        display: inline-block;
+                        margin: 0rem 0rem 0rem 1rem;
+
+                        .logo-container {
+                          display: none;
+                        }
+
+                        .info-backside {
+                          line-height: 20px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
 
         .sources-container {
@@ -904,10 +1163,14 @@
       margin-right: 5.55%;
       margin-left: 5.55%;
       .main-container {
-        .wordart-title {
+        .word-art-title {
+          bottom: 1rem;
         }
 
         .selection-buttons {
+          .selection-container {
+            margin: 0;
+          }
         }
 
         .info-container {
@@ -925,12 +1188,15 @@
           .carousel-container {
             // margin-top: 5rem;
           }
+
           .card-container {
             height: 100vh;
             justify-content: left;
             padding-left: 0.5rem;
+            margin-top: -0.6rem;
           }
         }
+
         .card {
           &-ordered {
             margin: 0.5rem 0.5rem -20px 1rem;
@@ -939,6 +1205,7 @@
             height: calc($portait-postcardwidth/1.8);
           }
         }
+
         .side-container {
           width: $portait-postcardwidth;
           height: calc($portait-postcardwidth * 1.5);
