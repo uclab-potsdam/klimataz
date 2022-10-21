@@ -7,6 +7,27 @@
 @include media('<=desktop') {
   body {
     background-color: lightgoldenrodyellow;
+    .indicators-iframe {
+      .main-container {
+        .card-collection {
+          .card {
+            .card-front,
+            .card-back {
+              background-color: blue;
+              .overlay-container {
+                height: 10%;
+              }
+              .side-inner {
+                height: 90%;
+              }
+              .details-container {
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
