@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { arc } from 'd3';
 import { max } from 'd3-array';
-import { scaleLinear, scaleOrdinal } from 'd3-scale';
+import { scaleLinear, scaleOrdinal, scalePow } from 'd3-scale';
 import { uniq } from 'lodash';
 import { formatNumber, useCardSize, mobileCheck } from '../../../helpers/helperFunc';
 
@@ -68,7 +68,8 @@ const Land = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
     const domainY = [uniqueYears.length - 1, 0]; // switch 0 and uniqueYears.length - 1 for vertical swap
     const domainX = [0, uniqueAnimals.length - 1];
 
-    const tierScale = scaleLinear().domain(domainTier).range([0, radiusArc]);
+    // const tierScale = scaleLinear().domain(domainTier).range([0, radiusArc]);
+    const tierScale = scalePow().exponent(0.5).domain(domainTier).range([0, radiusArc]);
     const yScale = scaleLinear()
       .domain(domainY)
       .range([marginHeight * 4, dimensions.height - marginHeight]);
@@ -236,14 +237,16 @@ const Land = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
                       </text>
                     </g>
 
-                    {arc.radiusPrev !== 0 && Math.abs(arc.radiusPrev - arc.radius) > 5 && (
-                      <polyline
-                        points={'0, ' + -arc.radiusPrev + ', 0,' + -arc.radius}
-                        fill="none"
-                        stroke="#484848"
-                        markerEnd="url(#arrow)"
-                      />
-                    )}
+                    {arc.radiusPrev !== 0 &&
+                      arc.radius !== 0 &&
+                      Math.abs(arc.radiusPrev - arc.radius) > 5 && (
+                        <polyline
+                          points={'0, ' + -arc.radiusPrev + ', 0,' + -arc.radius}
+                          fill="none"
+                          stroke="#484848"
+                          markerEnd="url(#arrow)"
+                        />
+                      )}
                   </g>
                 );
               })}
@@ -258,14 +261,16 @@ const Land = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
                       </text>
                     </g>
 
-                    {arc.radiusPrev !== 0 && Math.abs(arc.radiusPrev - arc.radius) > 5 && (
-                      <polyline
-                        points={'0, ' + -arc.radiusPrev + ', 0,' + -arc.radius}
-                        fill="none"
-                        stroke="#484848"
-                        markerEnd="url(#arrow)"
-                      />
-                    )}
+                    {arc.radiusPrev !== 0 &&
+                      arc.radius !== 0 &&
+                      Math.abs(arc.radiusPrev - arc.radius) > 5 && (
+                        <polyline
+                          points={'0, ' + -arc.radiusPrev + ', 0,' + -arc.radius}
+                          fill="none"
+                          stroke="#484848"
+                          markerEnd="url(#arrow)"
+                        />
+                      )}
                   </g>
                 );
               })}
@@ -280,14 +285,16 @@ const Land = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
                       </text>
                     </g>
 
-                    {arc.radiusPrev !== 0 && Math.abs(arc.radiusPrev - arc.radius) > 5 && (
-                      <polyline
-                        points={'0, ' + -arc.radiusPrev + ', 0,' + -arc.radius}
-                        fill="none"
-                        stroke="#484848"
-                        markerEnd="url(#arrow)"
-                      />
-                    )}
+                    {arc.radiusPrev !== 0 &&
+                      arc.radius !== 0 &&
+                      Math.abs(arc.radiusPrev - arc.radius) > 5 && (
+                        <polyline
+                          points={'0, ' + -arc.radiusPrev + ', 0,' + -arc.radius}
+                          fill="none"
+                          stroke="#484848"
+                          markerEnd="url(#arrow)"
+                        />
+                      )}
                   </g>
                 );
               })}
