@@ -55,6 +55,23 @@ $mint-green: #1a8579;
 
 $default-text: #484848;
 
+//new buildings color
+$solarthermie: lighten($electric-blue, 30%);
+$geothermie: $marine-blue;
+$umweltthermie: $mint-green;
+$keine: darken($electric-blue, 20%);
+$erneuerbare: $electric-blue;
+$holz: $blue;
+$biomasse: darken($marine-blue, 10%); //lighten($dust-blue,20%);
+$biomethan: $dust-blue;
+// fossils = ["Gas","Strom","Öl","Fernwärme/Fernkälte","Sonstige Heizenergie"]
+$fernkälte: $taz-orange;
+$fossile: $red;
+$strom: #ffd5c8;
+$oel: $pink;
+$heizenergie: $pale-olive;
+$gas: lighten($dark-pink, 5%);
+
 //size variables
 $postcardview-postcardwidth: 80vw;
 $thumbnail-postcardwidth: 30vw;
@@ -246,6 +263,18 @@ text {
 }
 
 @mixin portrait-postcard {
+}
+
+@mixin newbuildings-label-update($energy, $color) {
+  $class: unquote($energy);
+  .#{$class} {
+    border-color: $color;
+    box-shadow: 2px 2px 0px darken($color, 10%);
+
+    p {
+      color: $color;
+    }
+  }
 }
 
 // reusable layouts for vis
