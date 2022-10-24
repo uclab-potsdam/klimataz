@@ -3,7 +3,7 @@ import LayoutManager from './LayoutManager';
 
 //data
 import DropDownControls from '../data/selector-controls.json';
-import { isInt } from '../helpers/helperFunc';
+import { getTotalLKName, isInt } from '../helpers/helperFunc';
 
 const Canvas = () => {
   //load data from selector json
@@ -243,7 +243,7 @@ const Canvas = () => {
     if (item === undefined || item.label === undefined) {
       throw new Error('IframeError: Selected Landkreis or Section is not Valid');
     }
-    return data.find((x) => x.value === value).label;
+    return getTotalLKName(item);
   };
 
   /**
