@@ -692,11 +692,10 @@ $gas: lighten($dark-pink, 5%);
               .legend-element {
                 cursor: pointer;
                 display: flex;
-                margin-left: 1rem;
 
                 &:hover {
                   p {
-                    font-weight: 600;
+                    font-weight: bold;
                   }
                 }
 
@@ -711,7 +710,7 @@ $gas: lighten($dark-pink, 5%);
                   margin-left: 5px;
 
                   &.selected {
-                    font-weight: 800;
+                    font-weight: bold;
                   }
                 }
               }
@@ -720,7 +719,6 @@ $gas: lighten($dark-pink, 5%);
         }
 
         .caption {
-          margin-left: 1rem;
           span {
             color: $dark-blue;
           }
@@ -1130,7 +1128,6 @@ $gas: lighten($dark-pink, 5%);
         }
 
         .legend {
-          margin-left: 1rem;
           margin-top: 2rem;
           svg {
             font-size: 12px;
@@ -1138,8 +1135,6 @@ $gas: lighten($dark-pink, 5%);
         }
 
         .caption {
-          margin-left: 1rem;
-
           span {
             color: $dark-blue;
           }
