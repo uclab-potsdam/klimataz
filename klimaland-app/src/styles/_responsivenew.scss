@@ -36,6 +36,15 @@
           }
         }
 
+        .flip {
+          bottom: 0.5rem;
+          right: 0.5rem;
+
+          img {
+            max-width: 25px;
+          }
+        }
+
         .card-collection {
           .card {
             .card-front,
@@ -48,6 +57,51 @@
               }
               .details-container {
                 height: 100%;
+              }
+            }
+            .details-container {
+              .flex-container {
+                height: 100%;
+                .text-container {
+                  margin-bottom: 1rem;
+                  .text-inner-container {
+                    .section-title {
+                      display: none;
+                    }
+                    .section-text {
+                      height: 92%;
+                    }
+                  }
+                }
+                .data-container {
+                  height: 92%;
+                  .lk-list {
+                    height: calc(60% - 1px);
+                    .list-similar-container {
+                      h5 {
+                        position: sticky;
+                        top: 0;
+                      }
+                      ol {
+                        font-size: 14px;
+                      }
+                    }
+                  }
+                  .locator-map {
+                    .locator-container {
+                      height: 123px;
+                      width: 95%;
+
+                      .locator-background {
+                        .map-paths {
+                          path {
+                            stroke-width: 0.2px;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -98,7 +152,6 @@
             .button-left,
             .button-right {
               width: 9%;
-
               margin-left: 0.5rem;
               margin-right: 0.5rem;
             }
@@ -141,15 +194,6 @@
 
         .titleArtHidden {
           display: block;
-        }
-
-        .flip {
-          bottom: 0.5rem;
-          right: 0.5rem;
-
-          img {
-            max-width: 25px;
-          }
         }
 
         .social-media-layout {
@@ -289,43 +333,27 @@
               .flex-container {
                 height: 100%;
                 .text-container {
-                  margin-bottom: 1rem;
+                  // margin-bottom: 1rem;
                   .text-inner-container {
                     .section-title {
-                      //display: none;
+                      display: block;
                       font-size: 0.9rem;
                       h2 {
                         padding-top: 1rem;
                       }
                     }
+                    .section-text {
+                      height: 85%;
+                    }
                   }
                 }
                 .data-container {
                   height: 88%;
-                  .lk-list {
-                    height: calc(60% - 1px);
-                    .list-similar-container {
-                      h5 {
-                        position: sticky;
-                        top: 0;
-                      }
-                      ol {
-                        font-size: 14px;
-                      }
-                    }
-                  }
+
                   .locator-map {
                     .locator-container {
                       height: 110px;
                       width: 89%;
-
-                      .locator-background {
-                        .map-paths {
-                          path {
-                            stroke-width: 0.2px;
-                          }
-                        }
-                      }
                     }
                   }
                 }
