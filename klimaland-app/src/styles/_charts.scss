@@ -2,21 +2,6 @@
 
 //colors
 // renewables = ["Solarthermie","Geothermie","Umweltthermie (Luft/Wasser)","Holz","Biogas/Biomethan","Sonstige Biomasse","Keine Energie (einschl. Passivhaus)"]
-$solarthermie: lighten($electric-blue, 30%);
-$geothermie: $marine-blue;
-$umweltthermie: $mint-green;
-$keine: darken($electric-blue, 20%);
-$erneuerbare: $electric-blue;
-$holz: $blue;
-$biomasse: darken($marine-blue, 10%); //lighten($dust-blue,20%);
-$biomethan: $dust-blue;
-// fossils = ["Gas","Strom","Öl","Fernwärme/Fernkälte","Sonstige Heizenergie"]
-$fernkaelte: $taz-orange;
-$fossile: $red;
-$strom: #ffd5c8;
-$öl: $pink;
-$heizenergie: $pale-olive;
-$gas: lighten($dark-pink, 5%);
 
 @mixin energy-buildings($color) {
   background-color: $color;
@@ -753,6 +738,7 @@ $gas: lighten($dark-pink, 5%);
                 cursor: pointer;
                 display: flex;
                 margin-left: 1rem;
+                background-color: transparent;
 
                 &:hover {
                   p {
@@ -792,7 +778,20 @@ $gas: lighten($dark-pink, 5%);
 
           foreignObject {
             overflow: visible;
-
+            @include newbuildings-label-update(fossile, $fossile);
+            @include newbuildings-label-update(gas, $gas);
+            @include newbuildings-label-update(geothermie, $geothermie);
+            @include newbuildings-label-update(erneuerbare, $erneuerbare);
+            @include newbuildings-label-update(umweltthermie, $umweltthermie);
+            @include newbuildings-label-update(fernkälte, $fernkälte);
+            @include newbuildings-label-update(holz, $holz);
+            @include newbuildings-label-update(solarthermie, $solarthermie);
+            @include newbuildings-label-update(biomethan, $biomethan);
+            @include newbuildings-label-update(biomasse, $biomasse);
+            @include newbuildings-label-update(keine, $keine);
+            @include newbuildings-label-update(oel, $oel);
+            @include newbuildings-label-update(heizenergie, $heizenergie);
+            @include newbuildings-label-update(strom, $strom);
             div {
               border-radius: 2px;
               background-color: white;
@@ -811,75 +810,20 @@ $gas: lighten($dark-pink, 5%);
                 font-size: 11px;
                 margin: 0.1rem;
               }
-            }
-
-            .fossile,
-            div.fossile {
-              @include newbuildings-label($fossile);
-            }
-
-            .gas,
-            div.gas {
-              @include newbuildings-label($gas);
-            }
-
-            .geothermie,
-            div.geothermie {
-              @include newbuildings-label($geothermie);
-            }
-
-            .erneuerbare,
-            div.erneuerbare {
-              @include newbuildings-label($erneuerbare);
-              margin-bottom: 1rem;
-            }
-
-            .umweltthermie,
-            div.umweltthermie {
-              @include newbuildings-label($umweltthermie);
-            }
-
-            .fernkälte,
-            div.fernkälte {
-              @include newbuildings-label($fernkaelte);
-            }
-
-            .holz,
-            div.holz {
-              @include newbuildings-label($holz);
-            }
-
-            .solarthermie,
-            div.solarthermie {
-              @include newbuildings-label($solarthermie);
-            }
-
-            .biomethan,
-            div.biomethan {
-              @include newbuildings-label($biomethan);
-            }
-
-            .biomasse,
-            div.biomasse {
-              @include newbuildings-label($biomasse);
-            }
-
-            .keine,
-            div.keine {
-              @include newbuildings-label($keine);
-            }
-            .öl,
-            div.öl {
-              @include newbuildings-label($öl);
-            }
-            .heizenergie,
-            div.heizenergie {
-              @include newbuildings-label($heizenergie);
-            }
-
-            .strom,
-            div.strom {
-              @include newbuildings-label($strom);
+              @include newbuildings-label-update(fossile, $fossile);
+              @include newbuildings-label-update(gas, $gas);
+              @include newbuildings-label-update(geothermie, $geothermie);
+              @include newbuildings-label-update(erneuerbare, $erneuerbare);
+              @include newbuildings-label-update(umweltthermie, $umweltthermie);
+              @include newbuildings-label-update(fernkälte, $fernkälte);
+              @include newbuildings-label-update(holz, $holz);
+              @include newbuildings-label-update(solarthermie, $solarthermie);
+              @include newbuildings-label-update(biomethan, $biomethan);
+              @include newbuildings-label-update(biomasse, $biomasse);
+              @include newbuildings-label-update(keine, $keine);
+              @include newbuildings-label-update(oel, $oel);
+              @include newbuildings-label-update(heizenergie, $heizenergie);
+              @include newbuildings-label-update(strom, $strom);
             }
           }
 
@@ -956,7 +900,7 @@ $gas: lighten($dark-pink, 5%);
 
         .fernkälte,
         div.fernkälte {
-          @include energy-buildings($fernkaelte);
+          @include energy-buildings($fernkälte);
         }
 
         .holz,
@@ -995,7 +939,7 @@ $gas: lighten($dark-pink, 5%);
         }
         .öl,
         div.öl {
-          @include energy-buildings($öl);
+          @include energy-buildings($oel);
         }
         .heizenergie,
         div.heizenergie {
