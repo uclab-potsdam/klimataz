@@ -38,13 +38,30 @@
       font-size: 12px;
     }
 
+    .chart {
+      text {
+        font-size: 10px;
+      }
+    }
+
     .indicators-iframe {
       .main-container {
+        .side-container {
+          width: $minitablet-postcardview-postcardwidth;
+          height: calc($minitablet-postcardview-postcardwidth/1.6);
+        }
+
         .button-container {
           .inner-button {
+            height: 82%;
             .close {
               margin-top: 18%;
+              margin-right: -0.5rem;
             }
+          }
+          .button-switch-container {
+            justify-content: space-evenly;
+            height: 10%;
           }
         }
 
@@ -60,12 +77,69 @@
           }
         }
 
+        .selection-container {
+          flex-direction: row;
+
+          .selector {
+            &.section {
+              &.mode-comparison {
+                width: 35%;
+              }
+            }
+
+            &.lk {
+              display: inline-block;
+              &.mode-comparison {
+                width: 80%;
+              }
+              &.mode-lk {
+                width: 40%;
+              }
+            }
+          }
+        }
+
         .titleArtHidden {
           display: block;
         }
 
+        .flip {
+          bottom: 0.5rem;
+          right: 0.5rem;
+
+          img {
+            max-width: 25px;
+          }
+        }
+
+        .social-media-layout {
+          .logo-container {
+            height: 0.8rem;
+            min-height: 0.5rem;
+            bottom: 8px;
+            left: 8px;
+          }
+
+          .word-art-title {
+            transform: scale(0.6, 0.8) rotate(-3deg) translate(60px, 10px);
+          }
+        }
+
         .card-collection {
           .card {
+            .card-preview {
+              .overlay-inner {
+                .section-thumb {
+                  .indicator-ranking {
+                    p {
+                      padding: 0.5rem;
+                      font-size: 10px;
+                    }
+                  }
+                }
+              }
+            }
+
             .card-front,
             .card-back {
               .side-outer {
@@ -217,112 +291,6 @@
               }
             }
           }
-        }
-      }
-    }
-  }
-}
-
-@include media('<=schwerpunkt') {
-  body {
-    background-color: lightcoral;
-
-    .chart {
-      text {
-        font-size: 10px;
-      }
-    }
-
-    .indicators-iframe {
-      .main-container {
-        .side-container {
-          width: $schwerpunkt-postcardview-postcardwidth;
-          height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
-        }
-
-        .button-container {
-          .inner-button {
-            height: 82%;
-            .close {
-              margin-top: 18%;
-              margin-right: -0.5rem;
-            }
-          }
-          .button-switch-container {
-            justify-content: space-evenly;
-            height: 10%;
-          }
-        }
-
-        .social-media-layout {
-          .logo-container {
-            height: 0.8rem;
-            min-height: 0.5rem;
-            top: 8px;
-            left: 8px;
-          }
-
-          .word-art-title {
-            width: 80%;
-            right: 0rem;
-            bottom: 0rem;
-          }
-        }
-
-        .flip {
-          bottom: 0.5rem;
-          right: 0.5rem;
-
-          img {
-            max-width: 25px;
-          }
-        }
-
-        .selection-container {
-          flex-direction: row;
-
-          .selector {
-            &.section {
-              &.mode-comparison {
-                width: 35%;
-              }
-            }
-
-            &.lk {
-              display: inline-block;
-              &.mode-comparison {
-                width: 80%;
-              }
-              &.mode-lk {
-                width: 40%;
-              }
-            }
-          }
-        }
-
-        .card-collection {
-          .card {
-            .card-preview {
-              .overlay-inner {
-                .section-thumb {
-                  .indicator-ranking {
-                    p {
-                      padding: 0.5rem;
-                      font-size: 10px;
-                    }
-                  }
-                }
-              }
-            }
-            .card-front,
-            .card-back {
-              .side-inner {
-                &.side-inner-back {
-                  height: 100%;
-                }
-              }
-            }
-          }
 
           .Mo-chart {
             .car-density {
@@ -376,11 +344,20 @@
           }
         }
       }
+    }
+  }
+}
 
-      .info-container {
-      }
+@include media('<=schwerpunkt') {
+  body {
+    background-color: lightcoral;
 
-      .sources-container {
+    .indicators-iframe {
+      .main-container {
+        .side-container {
+          width: $schwerpunkt-postcardview-postcardwidth;
+          height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
+        }
       }
     }
   }
