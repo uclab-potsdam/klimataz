@@ -98,7 +98,7 @@ const Buildings = ({
 
   const getDescriptionName = function (name) {
     if (name == 'Umweltthermie (Luft/Wasser)') return 'Umweltthermie (Wärmepumpe)';
-    if (name == 'Andere erneuerbare Energien' && noSpecificRenewables()) {
+    if (name == 'Andere erneuerbare Energien') {
       if (noSpecificRenewables()) {
         return 'erneuerbaren Energien';
       } else {
