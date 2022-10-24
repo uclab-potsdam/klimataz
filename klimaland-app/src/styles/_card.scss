@@ -384,6 +384,7 @@
           // margin-left: 0.5rem;
           display: inline-flex;
           h4 {
+            font-weight: bold;
             margin: 0;
             margin-top: 0.2rem;
           }
@@ -452,6 +453,9 @@
 
             text {
               font-family: 'Chivo';
+              fill: $default-text;
+              font-weight: normal;
+              font-size: 1em;
             }
 
             .controller-bg {

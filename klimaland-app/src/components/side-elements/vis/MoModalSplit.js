@@ -286,7 +286,8 @@ const MoModalSplit = ({
       <div className="description">
         <div className="title">
           <h4>
-            Mit was und wie weit fahren Menschen in <span>{locationLabel}</span> zur Arbeit?
+            Mit was und wie weit fahren Menschen in{' '}
+            <span className="locationLabel">{locationLabel}</span> zur Arbeit?
           </h4>
         </div>
       </div>

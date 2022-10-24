@@ -240,9 +240,9 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
       <div className="description">
         <div className="title">
           <h4>
-            Im Jahr <span>{lastYear}</span> wurden in <span>{locationLabel}</span> pro Kopf{' '}
-            <span>{formatNumber(lastValue)} kg</span> organische Abfälle korrekt in der Biotonne
-            oder als Gartenabfälle entsorgt und damit CO<sub>2</sub>-Emissionen verringert.{' '}
+            Im Jahr {lastYear} wurden in <span className="locationLabel">{locationLabel}</span> pro
+            Kopf <span>{formatNumber(lastValue)} kg</span> organische Abfälle korrekt in der
+            Biotonne oder als Gartenabfälle entsorgt und damit CO<sub>2</sub>-Emissionen verringert.{' '}
             {footnote}
             {footnote !== '' && '.'}
           </h4>

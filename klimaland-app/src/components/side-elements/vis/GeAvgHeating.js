@@ -169,8 +169,9 @@ const GeAvgHEating = ({
                 return (
                   <g
                     key={b}
-                    className={`single-bar ${higlightedBar === b || higlightedBar === '' ? 'in-focus' : 'no-focus'
-                      }`}
+                    className={`single-bar ${
+                      higlightedBar === b || higlightedBar === '' ? 'in-focus' : 'no-focus'
+                    }`}
                     transform={`translate(${bar.year}, 0)`}
                     onMouseEnter={() => switchHighlightedBar(b)}
                     onMouseLeave={() => switchHighlightedBar('')}
@@ -245,7 +246,8 @@ const GeAvgHEating = ({
       <div className="description">
         <div className="title">
           <h4>
-            Wie hoch ist der Energieverbrauch beim Heizen in <span>{locationLabel}</span>?
+            Wie hoch ist der Energieverbrauch beim Heizen in{' '}
+            <span className="locationLabel">{locationLabel}</span>?
           </h4>
         </div>
       </div>

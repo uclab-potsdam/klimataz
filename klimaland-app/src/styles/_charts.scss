@@ -742,7 +742,7 @@
 
                 &:hover {
                   p {
-                    font-weight: 600;
+                    font-weight: bold;
                   }
                 }
 
@@ -757,7 +757,7 @@
                   margin-left: 5px;
 
                   &.selected {
-                    font-weight: 800;
+                    font-weight: bold;
                   }
                 }
               }
@@ -766,7 +766,6 @@
         }
 
         .caption {
-          margin-left: 1rem;
           span {
             color: $dark-blue;
           }
@@ -1134,7 +1133,6 @@
         }
 
         .legend {
-          margin-left: 1rem;
           margin-top: 2rem;
           svg {
             font-size: 12px;
@@ -1142,8 +1140,6 @@
         }
 
         .caption {
-          margin-left: 1rem;
-
           span {
             color: $dark-blue;
           }

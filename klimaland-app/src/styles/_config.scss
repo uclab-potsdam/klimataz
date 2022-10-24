@@ -13,6 +13,16 @@
 @font-face {
   font-family: Chivo;
   src: url('../fonts/chivo/Chivo-Light.otf');
+  font-weight: light;
+}
+@font-face {
+  font-family: Chivo;
+  src: url('../fonts/chivo/chivo_regular.ttf');
+}
+@font-face {
+  font-family: Chivo;
+  src: url('../fonts/chivo/chivo_bold.ttf');
+  font-weight: bold;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap');
@@ -285,27 +295,34 @@ text {
   .description {
     width: 35%;
     height: 100%;
-    margin-left: 0.5rem;
+    margin-left: 1rem;
 
     .title {
       // border-bottom: 1px solid $default-text;
 
       h4 {
-        padding: 0rem 0.5rem 0rem 1rem;
+        padding: 0rem 0.5rem;
       }
 
       span {
         color: $dark-blue;
+
+        &.locationLabel {
+          color: $dust-blue;
+          font-weight: bold;
+        }
       }
     }
 
     .caption {
+      margin-left: 0.5rem;
       p {
         font-size: 12px;
       }
     }
 
     .legend {
+      margin-left: 0.5rem;
       img {
         width: 100%;
         height: auto;
@@ -361,6 +378,10 @@ text {
 
       span {
         color: $dark-blue;
+        &.locationLabel {
+          color: $dust-blue;
+          font-weight: bold;
+        }
       }
     }
   }
