@@ -76,7 +76,7 @@ export default class SelectionButtons extends Component {
     valueContainer: (styles) => ({
       ...styles,
       maxHeight: '7vh',
-      overflow: 'scroll',
+      overflow: 'auto',
     }),
     multiValueRemove: (styles, { data }) => ({
       ...styles,
