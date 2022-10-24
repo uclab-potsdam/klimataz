@@ -311,6 +311,9 @@
 
               .side-inner {
                 height: calc(86% + 1rem);
+                &.side-inner-back {
+                  height: 100%;
+                }
               }
             }
           }
@@ -412,6 +415,9 @@
 
                 .side-inner {
                   height: calc(86% + 0.5rem);
+                  &.side-inner-back {
+                    height: 100%;
+                  }
                 }
               }
             }
