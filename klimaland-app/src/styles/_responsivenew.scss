@@ -4,6 +4,32 @@
 
 // variables method based on github.com/eduardoboucas/include-media
 
+@include media('<=desktop') {
+  body {
+    background-color: lightgoldenrodyellow;
+    .indicators-iframe {
+      .main-container {
+        .card-collection {
+          .card {
+            .card-front,
+            .card-back {
+              .overlay-container {
+                height: 10%;
+              }
+              .side-inner {
+                height: 90%;
+              }
+              .details-container {
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @include media('<=tablet') {
   body {
     background-color: rgb(170, 170, 245);
@@ -343,53 +369,6 @@
                   transform: translateX(60%) translateY(-2.5%);
                   .pie-icon {
                     transform: scale(0.6);
-                  }
-                }
-              }
-            }
-          }
-
-          .details-container {
-            .flex-container {
-              height: 100%;
-              .text-container {
-                margin-bottom: 1rem;
-                .text-inner-container {
-                  .section-title {
-                    //display: none;
-                    font-size: 0.9rem;
-                    h2 {
-                      padding-top: 1rem;
-                    }
-                  }
-                }
-              }
-              .data-container {
-                height: 88%;
-                .lk-list {
-                  height: calc(60% - 1px);
-                  .list-similar-container {
-                    h5 {
-                      position: sticky;
-                      top: 0;
-                    }
-                    ol {
-                      font-size: 14px;
-                    }
-                  }
-                }
-                .locator-map {
-                  .locator-container {
-                    height: 110px;
-                    width: 89%;
-
-                    .locator-background {
-                      .map-paths {
-                        path {
-                          stroke-width: 0.2px;
-                        }
-                      }
-                    }
                   }
                 }
               }
