@@ -6,9 +6,131 @@
 
 // variables method based on github.com/eduardoboucas/include-media
 
+@include media('<=desktop') {
+  body {
+    background-color: lightgoldenrodyellow;
+    .indicators-iframe {
+      .main-container {
+        .card-collection {
+          .card {
+            .card-front,
+            .card-back {
+              .overlay-container {
+                height: 10%;
+              }
+              .side-inner {
+                height: 90%;
+              }
+              .details-container {
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @include media('<=tablet') {
   body {
     background-color: blue;
+    .indicators-iframe {
+      .main-container {
+        .card-collection {
+          .card {
+            .card-front,
+            .card-back {
+              .side-outer {
+                .overlay-container {
+                  &.overlay-container-back {
+                    position: absolute;
+                    .overlay-inner {
+                      background-color: transparent;
+                      border: none;
+                      .section-thumb {
+                        display: none;
+                      }
+                    }
+                  }
+                }
+              }
+              .side-inner {
+                &.side-inner-back {
+                  height: 100%;
+                }
+              }
+            }
+            .Ge-chart {
+              .newbuildings-energy {
+                h4 {
+                  font-size: 14px;
+                  font-weight: 'medium';
+                }
+                .description {
+                  width: 43%;
+                }
+                .legend {
+                  .legend-element {
+                    p {
+                      &:hover {
+                        font-weight: medium;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            .details-container {
+              .flex-container {
+                height: 100%;
+                .text-container {
+                  margin-bottom: 1rem;
+                  .text-inner-container {
+                    .section-title {
+                      //display: none;
+                      font-size: 0.9rem;
+                      h2 {
+                        padding-top: 1rem;
+                      }
+                    }
+                  }
+                }
+                .data-container {
+                  height: 88%;
+                  .lk-list {
+                    height: calc(60% - 1px);
+                    .list-similar-container {
+                      h5 {
+                        position: sticky;
+                        top: 0;
+                      }
+                      ol {
+                        font-size: 14px;
+                      }
+                    }
+                  }
+                  .locator-map {
+                    .locator-container {
+                      height: 110px;
+                      width: 89%;
+
+                      .locator-background {
+                        .map-paths {
+                          path {
+                            stroke-width: 0.2px;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -180,17 +302,6 @@
                     }
                   }
 
-                  &.overlay-container-back {
-                    position: absolute;
-                    .overlay-inner {
-                      background-color: transparent;
-                      border: none;
-                      .section-thumb {
-                        display: none;
-                      }
-                    }
-                  }
-
                   .button-toggle-container {
                     padding .arrow-pointer {
                       margin-top: 0.2rem;
@@ -222,10 +333,6 @@
 
               .side-inner {
                 height: calc(86% + 1rem);
-
-                &.side-inner-back {
-                  height: 100%;
-                }
               }
             }
           }
@@ -275,27 +382,6 @@
                   transform: translateX(60%) translateY(-2.5%);
                   .pie-icon {
                     transform: scale(0.6);
-                  }
-                }
-              }
-            }
-          }
-
-          .Ge-chart {
-            .newbuildings-energy {
-              h4 {
-                font-size: 14px;
-                font-weight: 'medium';
-              }
-              .description {
-                width: 43%;
-              }
-              .legend {
-                .legend-element {
-                  p {
-                    &:hover {
-                      font-weight: medium;
-                    }
                   }
                 }
               }
