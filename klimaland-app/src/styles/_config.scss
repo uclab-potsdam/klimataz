@@ -13,6 +13,16 @@
 @font-face {
   font-family: Chivo;
   src: url('../fonts/chivo/Chivo-Light.otf');
+  font-weight: light;
+}
+@font-face {
+  font-family: Chivo;
+  src: url('../fonts/chivo/chivo_regular.ttf');
+}
+@font-face {
+  font-family: Chivo;
+  src: url('../fonts/chivo/chivo_bold.ttf');
+  font-weight: bold;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap');
