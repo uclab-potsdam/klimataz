@@ -6,26 +6,22 @@
 
 @include media('<=tablet') {
   body {
-    background-color: blue;
-  }
-}
-
-@include media('<=schwerpunkt') {
-  body {
-    background-color: lightcoral;
+    background-color: rgb(170, 170, 245);
 
     h4 {
       font-size: 12px;
     }
 
-    .chart {
-      text {
-        font-size: 10px;
-      }
-    }
-
     .indicators-iframe {
       .main-container {
+        .button-container {
+          .inner-button {
+            .close {
+              margin-top: 18%;
+            }
+          }
+        }
+
         .word-art-title {
           width: 65%;
 
@@ -38,13 +34,180 @@
           }
         }
 
+        .titleArtHidden {
+          display: block;
+        }
+
+        .card-collection {
+          .card {
+            .card-front,
+            .card-back {
+              .side-outer {
+                .overlay-container {
+                  &.overlay-container-back {
+                    position: absolute;
+                    .overlay-inner {
+                      background-color: transparent;
+                      border: none;
+                      .section-thumb {
+                        display: none;
+                      }
+                    }
+                  }
+
+                  .overlay-inner {
+                    .section-thumb {
+                      .word-art-title {
+                        display: none;
+                      }
+                    }
+
+                    .postcard-title {
+                      h4 {
+                        margin: 0;
+                        margin-top: 0.2rem;
+                        transform: translate(0px, 0px) !important;
+                      }
+                    }
+
+                    .button-toggle-container {
+                      transform: translate(0px, 0px) !important;
+
+                      .arrow-pointer {
+                        margin-top: 0.2rem;
+                        height: calc(100% - 0.2rem);
+                      }
+
+                      svg {
+                        .toggle {
+                          display: none;
+                        }
+
+                        .toggleResponsive {
+                          display: block;
+                        }
+
+                        text {
+                          font-size: 12px;
+                          margin: 0;
+                          padding: 0;
+                        }
+
+                        .togglePhone {
+                          display: none;
+                        }
+
+                        .controller-bg {
+                          cursor: pointer;
+                          fill: url(#MyGradient);
+                          stroke: $default-text;
+                        }
+                      }
+                    }
+                  }
+
+                  .button-toggle-container {
+                    padding .arrow-pointer {
+                      margin-top: 0.2rem;
+                      height: calc(100% - 0.2rem);
+                    }
+
+                    svg {
+                      // margin-top: -2px;
+
+                      text {
+                        font-size: 12px;
+                        margin: 0;
+                        padding: 0;
+                      }
+
+                      .mobile-toggle-label {
+                        display: none;
+                      }
+
+                      .controller-bg {
+                        cursor: pointer;
+                        fill: url(#MyGradient);
+                        stroke: $default-text;
+                      }
+                    }
+                  }
+                }
+              }
+              .side-inner {
+                &.side-inner-back {
+                  height: 100%;
+                }
+              }
+            }
+            .details-container {
+              .flex-container {
+                height: 100%;
+                .text-container {
+                  margin-bottom: 1rem;
+                  .text-inner-container {
+                    .section-title {
+                      //display: none;
+                      font-size: 0.9rem;
+                      h2 {
+                        padding-top: 1rem;
+                      }
+                    }
+                  }
+                }
+                .data-container {
+                  height: 88%;
+                  .lk-list {
+                    height: calc(60% - 1px);
+                    .list-similar-container {
+                      h5 {
+                        position: sticky;
+                        top: 0;
+                      }
+                      ol {
+                        font-size: 14px;
+                      }
+                    }
+                  }
+                  .locator-map {
+                    .locator-container {
+                      height: 110px;
+                      width: 89%;
+
+                      .locator-background {
+                        .map-paths {
+                          path {
+                            stroke-width: 0.2px;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media('<=schwerpunkt') {
+  body {
+    background-color: lightcoral;
+
+    .chart {
+      text {
+        font-size: 10px;
+      }
+    }
+
+    .indicators-iframe {
+      .main-container {
         .side-container {
           width: $schwerpunkt-postcardview-postcardwidth;
           height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
-        }
-
-        .titleArtHidden {
-          display: block;
         }
 
         .button-container {
@@ -126,95 +289,6 @@
               .side-outer {
                 .overlay-container {
                   height: calc(14% - 1rem);
-
-                  .overlay-inner {
-                    .section-thumb {
-                      .word-art-title {
-                        display: none;
-                      }
-                    }
-
-                    .postcard-title {
-                      h4 {
-                        margin: 0;
-                        margin-top: 0.2rem;
-                        transform: translate(0px, 0px) !important;
-                      }
-                    }
-
-                    .button-toggle-container {
-                      transform: translate(0px, 0px) !important;
-
-                      .arrow-pointer {
-                        margin-top: 0.2rem;
-                        height: calc(100% - 0.2rem);
-                      }
-
-                      svg {
-                        .toggle {
-                          display: none;
-                        }
-
-                        .toggleResponsive {
-                          display: block;
-                        }
-
-                        text {
-                          font-size: 12px;
-                          margin: 0;
-                          padding: 0;
-                        }
-
-                        .togglePhone {
-                          display: none;
-                        }
-
-                        .controller-bg {
-                          cursor: pointer;
-                          fill: url(#MyGradient);
-                          stroke: $default-text;
-                        }
-                      }
-                    }
-                  }
-
-                  &.overlay-container-back {
-                    position: absolute;
-                    .overlay-inner {
-                      background-color: transparent;
-                      border: none;
-                      .section-thumb {
-                        display: none;
-                      }
-                    }
-                  }
-
-                  .button-toggle-container {
-                    padding .arrow-pointer {
-                      margin-top: 0.2rem;
-                      height: calc(100% - 0.2rem);
-                    }
-
-                    svg {
-                      // margin-top: -2px;
-
-                      text {
-                        font-size: 12px;
-                        margin: 0;
-                        padding: 0;
-                      }
-
-                      .mobile-toggle-label {
-                        display: none;
-                      }
-
-                      .controller-bg {
-                        cursor: pointer;
-                        fill: url(#MyGradient);
-                        stroke: $default-text;
-                      }
-                    }
-                  }
                 }
               }
 
