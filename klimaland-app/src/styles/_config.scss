@@ -271,6 +271,11 @@ text {
 
       span {
         color: $dark-blue;
+
+        &.locationLabel {
+          color: $dust-blue;
+          font-weight: bold;
+        }
       }
     }
 
@@ -337,6 +342,10 @@ text {
 
       span {
         color: $dark-blue;
+        &.locationLabel {
+          color: $dust-blue;
+          font-weight: bold;
+        }
       }
     }
   }
