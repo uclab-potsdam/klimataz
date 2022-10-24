@@ -3,6 +3,7 @@
 // handles the switch to an horizontal layout
 
 // variables method based on github.com/eduardoboucas/include-media
+@import '_config.scss';
 
 @include media('<=desktop') {
   body {
@@ -244,6 +245,7 @@
                 }
               }
             }
+
             .details-container {
               .flex-container {
                 height: 100%;
@@ -337,6 +339,27 @@
                   transform: translateX(60%) translateY(-2.5%);
                   .pie-icon {
                     transform: scale(0.6);
+                  }
+                }
+              }
+            }
+          }
+
+          .Ge-chart {
+            .newbuildings-energy {
+              h4 {
+                font-size: 14px;
+                font-weight: 'medium';
+              }
+              .description {
+                width: 43%;
+              }
+              .legend {
+                .legend-element {
+                  p {
+                    &:hover {
+                      font-weight: medium;
+                    }
                   }
                 }
               }
@@ -451,6 +474,58 @@
                     }
                   }
                 }
+              }
+            }
+
+            .Ge-chart {
+              .newbuildings-energy {
+                .legend {
+                  .legend-elements-container {
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    @include newbuildings-label-update(fossile, $fossile);
+                    @include newbuildings-label-update(gas, $gas);
+                    @include newbuildings-label-update(geothermie, $geothermie);
+                    @include newbuildings-label-update(erneuerbare, $erneuerbare);
+                    @include newbuildings-label-update(umweltthermie, $umweltthermie);
+                    @include newbuildings-label-update(fernkälte, $fernkälte);
+                    @include newbuildings-label-update(holz, $holz);
+                    @include newbuildings-label-update(solarthermie, $solarthermie);
+                    @include newbuildings-label-update(biomethan, $biomethan);
+                    @include newbuildings-label-update(biomasse, $biomasse);
+                    @include newbuildings-label-update(keine, $keine);
+                    @include newbuildings-label-update(oel, $oel);
+                    @include newbuildings-label-update(heizenergie, $heizenergie);
+                    @include newbuildings-label-update(strom, $strom);
+
+                    .legend-element {
+                      display: none;
+                      &.selected {
+                        border-radius: 2px;
+                        background-color: white;
+                        border-width: 1px;
+                        border-style: solid;
+                        //box-shadow: 2px 2px 0px $default-text;
+                        display: inline-flex;
+
+                        .element-color {
+                          display: none;
+                        }
+
+                        p {
+                          font-weight: 400;
+                          font-size: 11px;
+                          margin: 0.1rem;
+                        }
+                      }
+                    }
+                  }
+                }
+                // .caption {
+                //   .energy-number {
+                //     font-weight: 600;
+                //   }
+                // }
               }
             }
 
@@ -792,6 +867,7 @@
               &.Ge-chart {
                 .newbuildings-energy {
                   .description {
+                    width: 100%;
                     .title {
                       margin: 0 auto;
                       h4 {
@@ -812,6 +888,7 @@
                       // bottom: 0;
                       height: 19%;
                       width: 95%;
+                      display: inline-block;
 
                       .legend-inner {
                         font-size: 12px;
@@ -823,14 +900,35 @@
                           display: flex;
                           flex-direction: row;
                           flex-wrap: wrap;
+                          justify-content: flex-start;
 
                           .legend-element {
                             display: flex;
                             flex: 0 1 auto;
                             margin-left: 10px;
+                            color: $default-text;
+                            border: none;
+                            box-shadow: none;
 
                             .element-color {
                               align-self: center;
+                              border: none;
+                              box-shadow: none;
+                            }
+                            p {
+                              color: $default-text;
+                            }
+
+                            &.selected {
+                              .element-color {
+                                display: inline-block;
+                              }
+                              p {
+                                margin: 0;
+                                margin-left: 5px;
+                                font-size: 12px;
+                                font-weight: 800;
+                              }
                             }
                           }
                         }
