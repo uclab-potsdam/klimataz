@@ -246,7 +246,13 @@ const Buildings = ({
             <div className="legend-elements-container">
               {uniqueEnergyTypes.map((type, t) => {
                 return (
-                  <div key={t} onClick={() => changeId(type)} className="legend-element">
+                  <div
+                    key={t}
+                    onClick={() => changeId(type)}
+                    className={`legend-element ${
+                      type === currentId ? 'selected' : ''
+                    } ${cleanKlassString(type.toLowerCase())}`}
+                  >
                     <div className={`element-color ${cleanKlassString(type.toLowerCase())}`} />
                     <p x="15" y="10" className={type === currentId ? 'selected' : ''}>
                       {getLegendName(firstToUppercase(type))}
