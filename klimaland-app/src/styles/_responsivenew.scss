@@ -10,6 +10,32 @@
     background-color: lightgoldenrodyellow;
     .indicators-iframe {
       .main-container {
+        .side-container {
+          width: $tablet-postcardview-postcardwidth;
+          height: calc($tablet-postcardview-postcardwidth/1.6);
+        }
+
+        .button-container {
+          .inner-button {
+            .close {
+              margin-top: 12%;
+              margin-right: -0.5rem;
+            }
+          }
+          .button-switch-container {
+            .inner-button {
+              .switch-preview {
+                font-size: 10px;
+              }
+            }
+
+            .button-left,
+            .button-right {
+              width: 7%;
+            }
+          }
+        }
+
         .card-collection {
           .card {
             .card-front,
@@ -60,9 +86,22 @@
               margin-right: -0.5rem;
             }
           }
+
           .button-switch-container {
-            justify-content: space-evenly;
+            justify-content: center;
             height: 10%;
+
+            .switch-preview {
+              font-size: 12px;
+            }
+
+            .button-left,
+            .button-right {
+              width: 9%;
+
+              margin-left: 0.5rem;
+              margin-right: 0.5rem;
+            }
           }
         }
 
