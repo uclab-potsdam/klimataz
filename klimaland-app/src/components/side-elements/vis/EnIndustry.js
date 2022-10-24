@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import { stack, stackOffsetNone, stackOrderAscending, curveMonotoneX, area } from 'd3-shape';
-import { scaleLinear, scaleOrdinal } from 'd3-scale';
+import { scaleLinear } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
 import { formatNumber, useCardSize } from './../../../helpers/helperFunc';
@@ -14,17 +14,6 @@ const EnIndustry = ({
   footnote,
   cardNumber,
 }) => {
-  const colorArray = [
-    '#FFD5C8', // Erdgas
-    '#007F87', // Erneuerbare Energien
-    '#FF9B7B', // Heizöl
-    '#E14552', // Kohle
-    '#DDA0DD', // Sonstige Energieträger
-    '#2A4D9C', // Strom
-    '#5F88C6', // Wärme
-    '#778899', // Geheim
-  ];
-
   // getting sizes of container for maps
   const targetRef = useRef();
   const dimensions = useCardSize(targetRef, cardNumber);
@@ -94,9 +83,6 @@ const EnIndustry = ({
       .range([marginWidth, dimensions.width - marginWidth]);
     const domainY = [0, max(currentData.data.map((d) => d.value))];
     const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
-
-    // map source to color
-    scaleCategory = scaleOrdinal().domain(uniqueEnergySourceFiltered).range(colorArray);
 
     // get unique years from data
     const uniqueYears = uniq(currentData.data.map((d) => +d.year));
@@ -190,7 +176,6 @@ const EnIndustry = ({
       return {
         klass: stream.key.substring(0, 3) + '-stream',
         id: stream.key,
-        fill: scaleCategory(stream.key),
         path: areaGen(stream),
         xPos: xScale(yearOfMax),
         labels: labelRects,
@@ -249,7 +234,7 @@ const EnIndustry = ({
                   onMouseEnter={() => switchHighlightedStream(stream.id)}
                   onMouseLeave={() => switchHighlightedStream('')}
                 >
-                  <path className={`path ${stream.id}`} d={stream.path} fill={stream.fill} />
+                  <path className={`path ${stream.id}`} d={stream.path} />
                 </g>
               );
             })}
