@@ -70,18 +70,22 @@ button,
 h1 {
   @include title;
   margin-top: 0;
+  font-weight: normal;
 }
 
 h2 {
   @include title;
+  font-weight: normal;
 }
 
 h3 {
   @include title;
+  font-weight: normal;
 }
 
 h4 {
   @include title;
+  font-weight: normal;
 }
 
 ul {
