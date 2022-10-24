@@ -359,7 +359,6 @@
                   .paths {
                     text {
                       font-size: 12px;
-                      fill: blue;
                     }
                   }
                   .icon {
@@ -481,6 +480,10 @@
   body {
     background-color: peachpuff;
 
+    h4 {
+      font-size: 12px;
+    }
+
     .visualization-container {
       .chart {
         text {
@@ -491,6 +494,11 @@
 
     .indicators-iframe {
       .main-container {
+        .overlay-container {
+          .section-title {
+            font-size: 14px;
+          }
+        }
         .button-container {
           .inner-button {
             height: 79%;
@@ -525,6 +533,36 @@
                   .chart {
                     transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
                     -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
+                  }
+                }
+                .description {
+                  .title {
+                    h4 {
+                      padding-right: 0;
+                    }
+                  }
+                }
+              }
+              .modal-split {
+                .visualization-container {
+                  .chart {
+                    .paths {
+                      text {
+                        font-size: 10px;
+                      }
+                    }
+                    text {
+                      &.icon {
+                        display: none;
+                      }
+                    }
+                    .icon {
+                      transform: translateY(9px);
+                      display: inline-block;
+                    }
+                    .no-icon {
+                      display: none;
+                    }
                   }
                 }
               }
@@ -563,6 +601,12 @@
                         stroke-width: 2px;
                       }
                     }
+                  }
+                }
+                .chart {
+                  .highest-value,
+                  .detail-label {
+                    font-size: 12px;
                   }
                 }
               }
@@ -617,6 +661,19 @@
                 //     font-weight: 600;
                 //   }
                 // }
+              }
+            }
+
+            .La-chart {
+              .description {
+                .title {
+                  h4 {
+                    padding-right: 0;
+                  }
+                }
+                .caption {
+                  display: none;
+                }
               }
             }
 
