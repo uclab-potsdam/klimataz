@@ -552,7 +552,7 @@
   }
 }
 
-@include media('<shortread') {
+@include media('<=shortread') {
   body {
     background-color: aqua;
 
