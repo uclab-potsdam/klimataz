@@ -439,6 +439,9 @@
 
             text {
               font-family: 'Chivo';
+              fill: $default-text;
+              font-weight: normal;
+              font-size: 1em;
             }
 
             .mobile-toggle-label {

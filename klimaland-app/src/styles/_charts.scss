@@ -696,7 +696,7 @@ $gas: lighten($dark-pink, 5%);
 
                 &:hover {
                   p {
-                    font-weight: 600;
+                    font-weight: bold;
                   }
                 }
 
@@ -711,7 +711,7 @@ $gas: lighten($dark-pink, 5%);
                   margin-left: 5px;
 
                   &.selected {
-                    font-weight: 800;
+                    font-weight: bold;
                   }
                 }
               }
