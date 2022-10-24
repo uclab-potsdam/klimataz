@@ -2,9 +2,8 @@
 // For cards with vertical layouts a mixin called `responsive-layout`
 // handles the switch to an horizontal layout
 
-@import '_config.scss';
-
 // variables method based on github.com/eduardoboucas/include-media
+@import '_config.scss';
 
 @include media('<=desktop') {
   body {
@@ -34,109 +33,7 @@
 
 @include media('<=tablet') {
   body {
-    background-color: blue;
-    .indicators-iframe {
-      .main-container {
-        .card-collection {
-          .card {
-            .card-front,
-            .card-back {
-              .side-outer {
-                .overlay-container {
-                  &.overlay-container-back {
-                    position: absolute;
-                    .overlay-inner {
-                      background-color: transparent;
-                      border: none;
-                      .section-thumb {
-                        display: none;
-                      }
-                    }
-                  }
-                }
-              }
-              .side-inner {
-                &.side-inner-back {
-                  height: 100%;
-                }
-              }
-            }
-            .Ge-chart {
-              .newbuildings-energy {
-                h4 {
-                  font-size: 14px;
-                  font-weight: 'medium';
-                }
-                .description {
-                  width: 43%;
-                }
-                .legend {
-                  .legend-element {
-                    p {
-                      &:hover {
-                        font-weight: medium;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            .details-container {
-              .flex-container {
-                height: 100%;
-                .text-container {
-                  margin-bottom: 1rem;
-                  .text-inner-container {
-                    .section-title {
-                      //display: none;
-                      font-size: 0.9rem;
-                      h2 {
-                        padding-top: 1rem;
-                      }
-                    }
-                  }
-                }
-                .data-container {
-                  height: 88%;
-                  .lk-list {
-                    height: calc(60% - 1px);
-                    .list-similar-container {
-                      h5 {
-                        position: sticky;
-                        top: 0;
-                      }
-                      ol {
-                        font-size: 14px;
-                      }
-                    }
-                  }
-                  .locator-map {
-                    .locator-container {
-                      height: 110px;
-                      width: 89%;
-
-                      .locator-background {
-                        .map-paths {
-                          path {
-                            stroke-width: 0.2px;
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-@include media('<=schwerpunkt') {
-  body {
-    background-color: lightcoral;
+    background-color: rgb(170, 170, 245);
 
     h4 {
       font-size: 12px;
@@ -150,25 +47,9 @@
 
     .indicators-iframe {
       .main-container {
-        .word-art-title {
-          width: 65%;
-
-          .wordart {
-            font-size: 2rem;
-            line-height: 1.75rem;
-            overflow: visible;
-            padding-top: 10px;
-            padding-bottom: 5px;
-          }
-        }
-
         .side-container {
-          width: $schwerpunkt-postcardview-postcardwidth;
-          height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
-        }
-
-        .titleArtHidden {
-          display: block;
+          width: $minitablet-postcardview-postcardwidth;
+          height: calc($minitablet-postcardview-postcardwidth/1.6);
         }
 
         .button-container {
@@ -185,27 +66,15 @@
           }
         }
 
-        .social-media-layout {
-          .logo-container {
-            height: 0.8rem;
-            min-height: 0.5rem;
-            top: 8px;
-            left: 8px;
-          }
+        .word-art-title {
+          width: 65%;
 
-          .word-art-title {
-            width: 80%;
-            right: 0rem;
-            bottom: 0rem;
-          }
-        }
-
-        .flip {
-          bottom: 0.5rem;
-          right: 0.5rem;
-
-          img {
-            max-width: 25px;
+          .wordart {
+            font-size: 2rem;
+            line-height: 1.75rem;
+            overflow: visible;
+            padding-top: 10px;
+            padding-bottom: 5px;
           }
         }
 
@@ -231,6 +100,32 @@
           }
         }
 
+        .titleArtHidden {
+          display: block;
+        }
+
+        .flip {
+          bottom: 0.5rem;
+          right: 0.5rem;
+
+          img {
+            max-width: 25px;
+          }
+        }
+
+        .social-media-layout {
+          .logo-container {
+            height: 0.8rem;
+            min-height: 0.5rem;
+            bottom: 8px;
+            left: 8px;
+          }
+
+          .word-art-title {
+            transform: scale(0.6, 0.8) rotate(-3deg) translate(60px, 10px);
+          }
+        }
+
         .card-collection {
           .card {
             .card-preview {
@@ -245,11 +140,23 @@
                 }
               }
             }
+
             .card-front,
             .card-back {
               .side-outer {
                 .overlay-container {
                   height: calc(14% - 1rem);
+
+                  &.overlay-container-back {
+                    position: absolute;
+                    .overlay-inner {
+                      background-color: transparent;
+                      border: none;
+                      .section-thumb {
+                        display: none;
+                      }
+                    }
+                  }
 
                   .overlay-inner {
                     .section-thumb {
@@ -330,9 +237,59 @@
                   }
                 }
               }
-
               .side-inner {
                 height: calc(86% + 1rem);
+
+                &.side-inner-back {
+                  height: 100%;
+                }
+              }
+            }
+
+            .details-container {
+              .flex-container {
+                height: 100%;
+                .text-container {
+                  margin-bottom: 1rem;
+                  .text-inner-container {
+                    .section-title {
+                      //display: none;
+                      font-size: 0.9rem;
+                      h2 {
+                        padding-top: 1rem;
+                      }
+                    }
+                  }
+                }
+                .data-container {
+                  height: 88%;
+                  .lk-list {
+                    height: calc(60% - 1px);
+                    .list-similar-container {
+                      h5 {
+                        position: sticky;
+                        top: 0;
+                      }
+                      ol {
+                        font-size: 14px;
+                      }
+                    }
+                  }
+                  .locator-map {
+                    .locator-container {
+                      height: 110px;
+                      width: 89%;
+
+                      .locator-background {
+                        .map-paths {
+                          path {
+                            stroke-width: 0.2px;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -388,46 +345,20 @@
             }
           }
 
-          .details-container {
-            .flex-container {
-              height: 100%;
-              .text-container {
-                margin-bottom: 1rem;
-                .text-inner-container {
-                  .section-title {
-                    //display: none;
-                    font-size: 0.9rem;
-                    h2 {
-                      padding-top: 1rem;
-                    }
-                  }
-                }
+          .Ge-chart {
+            .newbuildings-energy {
+              h4 {
+                font-size: 14px;
+                font-weight: 'medium';
               }
-              .data-container {
-                height: 88%;
-                .lk-list {
-                  height: calc(60% - 1px);
-                  .list-similar-container {
-                    h5 {
-                      position: sticky;
-                      top: 0;
-                    }
-                    ol {
-                      font-size: 14px;
-                    }
-                  }
-                }
-                .locator-map {
-                  .locator-container {
-                    height: 110px;
-                    width: 89%;
-
-                    .locator-background {
-                      .map-paths {
-                        path {
-                          stroke-width: 0.2px;
-                        }
-                      }
+              .description {
+                width: 43%;
+              }
+              .legend {
+                .legend-element {
+                  p {
+                    &:hover {
+                      font-weight: medium;
                     }
                   }
                 }
@@ -436,11 +367,20 @@
           }
         }
       }
+    }
+  }
+}
 
-      .info-container {
-      }
+@include media('<=schwerpunkt') {
+  body {
+    background-color: lightcoral;
 
-      .sources-container {
+    .indicators-iframe {
+      .main-container {
+        .side-container {
+          width: $schwerpunkt-postcardview-postcardwidth;
+          height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
+        }
       }
     }
   }
