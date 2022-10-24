@@ -314,8 +314,9 @@ const Energy = ({
                         />
                         {label.value !== 0 && (
                           <g
-                            className={`interactive-labels ${activeLabel === l ? 'active-label' : ''
-                              }`}
+                            className={`interactive-labels ${
+                              activeLabel === l ? 'active-label' : ''
+                            }`}
                             transform={`translate(${label.xValue}, ${label.yValue})`}
                           >
                             <foreignObject
@@ -343,9 +344,9 @@ const Energy = ({
       <div className="description">
         <div className="title">
           <h4>
-            Der Energieverbrauch in <span>{locationLabel}</span> basiert im Jahr{' '}
-            <span>{lastYear}</span> zu{' '}
-            <span className="second-value"> {formatNumber(percRenewables)}</span> % auf{' '}
+            Der Energieverbrauch in <span className="locationLabel">{locationLabel}</span> basiert
+            im Jahr {lastYear} zu{' '}
+            <span className="second-value"> {formatNumber(percRenewables)} %</span> auf
             <span className="second-value"> erneuerbaren Energien</span>.
           </h4>
         </div>

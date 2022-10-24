@@ -298,8 +298,9 @@ const EnIndustry = ({
                         />
                         {label.value !== 0 && (
                           <g
-                            className={`interactive-labels ${activeLabel === l ? 'active-label' : ''
-                              }`}
+                            className={`interactive-labels ${
+                              activeLabel === l ? 'active-label' : ''
+                            }`}
                             transform={`translate(${label.xValue}, ${label.yValue})`}
                           >
                             <foreignObject
@@ -328,9 +329,11 @@ const EnIndustry = ({
         <div className="title">
           <h4>
             Der Energieverbrauch in der Industrie in{' '}
-            <span>{showBundeslandForLK ? locationLabel[1] : locationLabel[0]}</span> basiert im Jahr{' '}
-            <span>{lastYear}</span> zu{' '}
-            <span className="second-value"> {formatNumber(percRenewables)}</span> % auf{' '}
+            <span className="locationLabel">
+              {showBundeslandForLK ? locationLabel[1] : locationLabel[0]}
+            </span>{' '}
+            basiert im Jahr {lastYear} zu{' '}
+            <span className="second-value"> {formatNumber(percRenewables)} %</span> auf{' '}
             <span className="second-value"> erneuerbaren Energien</span>.{' '}
             {showBundeslandForLK && secretFootnote}
             {footnote}
