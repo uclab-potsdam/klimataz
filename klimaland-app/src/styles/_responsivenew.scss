@@ -44,6 +44,8 @@
             .card-back {
               .side-outer {
                 .overlay-container {
+                  height: calc(14% - 1rem);
+
                   &.overlay-container-back {
                     position: absolute;
                     .overlay-inner {
@@ -135,6 +137,8 @@
                 }
               }
               .side-inner {
+                height: calc(86% + 1rem);
+
                 &.side-inner-back {
                   height: 100%;
                 }
@@ -286,15 +290,7 @@
             }
             .card-front,
             .card-back {
-              .side-outer {
-                .overlay-container {
-                  height: calc(14% - 1rem);
-                }
-              }
-
               .side-inner {
-                height: calc(86% + 1rem);
-
                 &.side-inner-back {
                   height: 100%;
                 }
