@@ -225,7 +225,7 @@ const Buildings = ({
       <div className="description">
         <div className="title" style={{ display: isMobile ? 'block' : 'none' }}>
           <h4>
-            Wie wird in Neubauten in <span>{locationLabel}</span> geheizt?
+            Wie wird in Neubauten in <span className="locationLabel">{locationLabel}</span> geheizt?
           </h4>
         </div>
         <div className="title" style={{ display: isMobile ? 'none' : 'block' }}>
@@ -233,8 +233,8 @@ const Buildings = ({
         </div>
         <div className={`${cleanKlassString(currentId).toLowerCase()} caption`}>
           <p>
-            Durchschnittlich werden in <span>{locationLabel}</span> pro Jahr{' '}
-            <span>{formatNumber(numberOfBuildings)}</span> neue Wohnungen oder Häuser
+            Durchschnittlich werden in <span className="locationLabel">{locationLabel}</span> pro
+            Jahr <span>{formatNumber(numberOfBuildings)}</span> neue Wohnungen oder Häuser
             fertiggestellt. Davon werden{' '}
             <span className="energy-number">{formatNumber(selectedEnergy)} %</span> mit{' '}
             <span className="energy-number">{getDescriptionName(firstToUppercase(currentId))}</span>{' '}

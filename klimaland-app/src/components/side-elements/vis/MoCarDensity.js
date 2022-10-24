@@ -114,7 +114,7 @@ const MoCarDensity = ({
       <div className="description">
         <div className="title">
           <h4>
-            In <span>{locationLabel}</span> kommen auf 100 Einwohner*innen{' '}
+            In <span className="locationLabel">{locationLabel}</span> kommen auf 100 Einwohner*innen{' '}
             <span className="first-value">{totalCars}</span> Autos. Davon sind{' '}
             <span className="second-value">{hybridCars}</span> mit Hybrid- oder Elektroantrieb.
           </h4>

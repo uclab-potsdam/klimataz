@@ -113,7 +113,8 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
       <div className="description">
         <div className="title">
           <h4>
-            Wie viele Tiere pro Fläche leben im Durchschnitt in <span>{locationLabel}</span>?
+            Wie viele Tiere pro Fläche leben im Durchschnitt in{' '}
+            <span className="locationLabel">{locationLabel}</span>?
           </h4>
         </div>
         <div className="caption">
