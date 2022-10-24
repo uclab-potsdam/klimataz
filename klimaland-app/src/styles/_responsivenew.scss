@@ -398,6 +398,9 @@
 
                 .side-inner {
                   height: calc(86% + 0.5rem);
+                  &.side-inner-back {
+                    height: 100%;
+                  }
                 }
               }
             }
