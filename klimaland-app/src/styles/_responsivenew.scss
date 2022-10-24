@@ -154,8 +154,10 @@
             justify-content: center;
             height: 10%;
 
-            .switch-preview {
-              font-size: 12px;
+            .inner-button {
+              .switch-preview {
+                font-size: 12px;
+              }
             }
 
             .button-left,
@@ -606,7 +608,17 @@
                 .chart {
                   .highest-value,
                   .detail-label {
-                    font-size: 12px;
+                    text {
+                      font-size: 12px;
+                    }
+                  }
+                  .max {
+                    line {
+                      stroke: $default-text;
+                    }
+                    text {
+                      fill: $default-text;
+                    }
                   }
                 }
               }
@@ -1007,6 +1019,14 @@
 
                     .controls-container {
                       visibility: hidden;
+                    }
+                    .max {
+                      line {
+                        stroke: $red;
+                      }
+                      text {
+                        fill: $red;
+                      }
                     }
                   }
                 }
