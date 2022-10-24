@@ -69,7 +69,7 @@ button,
 h1 {
   @include title;
   margin-top: 0;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 h2,
@@ -78,7 +78,7 @@ h4,
 h5,
 h6 {
   @include title;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 ul {

@@ -202,6 +202,10 @@
               }
             }
 
+            .no-icon {
+              display: none;
+            }
+
             .axis {
               svg {
                 stroke-miterlimit: 10;
@@ -727,7 +731,7 @@
         .legend {
           position: relative;
           .legend-inner {
-            font-size: 12px;
+            font-size: 14px;
             width: 100%;
 
             .legend-elements-container {
@@ -1134,7 +1138,8 @@
         .legend {
           margin-top: 2rem;
           svg {
-            font-size: 12px;
+            height: 200px;
+            font-size: 14px;
           }
         }
 
