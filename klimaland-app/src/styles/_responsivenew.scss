@@ -1028,24 +1028,32 @@
                     height: 45%;
                     position: absolute;
                     bottom: 0;
+                    margin-left: 1rem;
+                    width: auto;
+
                     .caption {
+                      display: inline-block;
                       font-size: 12px;
                       margin-right: 1rem;
-                      transform: translate(-5px, 35px);
-                      -webkit-transform: translate(-5px, 35px);
+                      transform: translate(0, 60px);
+                      -webkit-transform: translate(0, 60px);
                     }
 
                     .legend {
-                      transform: translate(-5px, -110px);
-                      -webkit-transform: translate(-5px, -110px);
+                      margin-top: 2rem;
+                      transform: translate(0, -110px);
+                      -webkit-transform: translate(0, -110px);
 
                       .legend-item {
-                        font-size: 10px;
+                        font-size: 12px;
                         &.unter-label {
                           transform: translate(140px, 0px);
                           -webkit-transform: translate(140px, 0px);
                         }
                       }
+                    }
+                    .title {
+                      margin: 0 !important;
                     }
                   }
 
@@ -1059,10 +1067,6 @@
                         .year-label {
                           font-size: 14px;
                         }
-                      }
-
-                      .labelText {
-                        font-size: 10px;
                       }
                     }
                   }
@@ -1284,6 +1288,9 @@
                 .avg-heating {
                   .description {
                     height: 15%;
+                    h4 {
+                      font-size: 1rem;
+                    }
                   }
 
                   .visualization-container {
