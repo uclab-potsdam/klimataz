@@ -239,6 +239,7 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
                         y={min([-20, -bar.value])}
                         width={bar.widthLabel}
                         height={bar.heightLabel}
+                        stroke={bar.valueTotal === 'unbekannt' ? '#FFBA4E' : '#484848'}
                       />
                       <text
                         className="labelText"
@@ -286,6 +287,7 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
                       y={min([-5, bar.value - 30])}
                       width={bar.widthLabel}
                       height={bar.heightLabel}
+                      stroke={bar.valueTotal === 'unbekannt' ? '#E14552' : '#484848'}
                     />
                     <text
                       className="labelText"
