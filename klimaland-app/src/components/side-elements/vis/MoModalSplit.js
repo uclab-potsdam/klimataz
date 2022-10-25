@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { line, stack } from 'd3-shape';
 import { formatNumber, useCardSize, mobileCheck } from '../../../helpers/helperFunc';
@@ -32,14 +32,12 @@ const MoModalSplit = ({
   const referenceXTicks = [...Array.from(Array(11)).keys()];
   const marginWidth = Math.round(width / 20);
   // const maxRangeHeight = Math.round(height / 10);
-  const marginHeight = height - height / 10;
-  const rightMarginWidth = Math.round(width - width / mobileThreshold);
+  const marginHeight = height - height / 8;
   const orderOfModes = ['Fuß', 'Fahrrad', 'ÖPV', 'Mitfahrer', 'Fahrer'];
   const colors = ['#3762FB', '#5F88C6', '#2A4D9C', '#FFD0D0', '#FF7B7B'];
   let yScale;
   let xScale;
   let xScaleReverse;
-  let yBarScale;
 
   const icons = {
     Fahrer: Fahrer,
@@ -74,8 +72,12 @@ const MoModalSplit = ({
     // const longestAvgRoute = max(averageKmDistance.map((d) => (d.value !== null ? d.value : null)));
     // maxYValue = Math.floor(longestAvgRoute / 10);
 
-    xScale = scaleLinear().domain([0, 10]).range([marginWidth, rightMarginWidth]);
-    xScaleReverse = scaleLinear().domain([10, 0]).range([marginWidth, rightMarginWidth]);
+    xScale = scaleLinear()
+      .domain([0, 10])
+      .range([marginWidth, width - marginWidth]);
+    xScaleReverse = scaleLinear()
+      .domain([10, 0])
+      .range([marginWidth, width - marginWidth]);
     yScale = scaleLinear()
       .domain([0, 5])
       .range([0, height / 4.5]);
@@ -168,8 +170,6 @@ const MoModalSplit = ({
     const percentageNumOfTrips = currentData.data.filter(
       (d) => d.column.includes('tripcount_percentage') && +d.year === defaultYear
     );
-    // To Do: fix problem with scale for bar
-    yBarScale = scaleLinear().domain([0, 100]).range([10, marginHeight]);
 
     const element = {};
 
@@ -189,8 +189,7 @@ const MoModalSplit = ({
       return {
         mode: bar.key,
         fill: colors[b],
-        y1: yBarScale(data[0]),
-        y2: yBarScale(data[1]),
+        yScale: yScale(b),
         label,
       };
     });
@@ -268,21 +267,13 @@ const MoModalSplit = ({
               </g>
             }
           </g>
-          <g
-            className="bar-percentage-trip"
-            transform={`translate(${rightMarginWidth + marginWidth + 10}, 10)`}
-          >
-            <text x="10" y={marginHeight + 15} textAnchor="middle">
-              Anteil der Trips
-            </text>
+          <g className="bar-percentage-trip" transform={`translate(${width - marginWidth}, -15)`}>
             {plotPercData.map((trip, t) => {
               return (
-                <g transform={`translate(0, ${trip.y1})`} key={t}>
-                  <text x="22" y="5" fill={trip.fill}>
-                    {formatNumber(trip.label)} %
+                <g transform={`translate(0, ${(t + 0.7) * tabletThreshold})`} key={t}>
+                  <text x="0" y="0" fill={trip.fill} textAnchor="end">
+                    {formatNumber(trip.label)} % aller Trips
                   </text>
-                  <rect width="8" height={trip.y2 - trip.y1} x="0" y="0" fill={trip.fill} />
-                  <line x1="0" x2="20" y1="0" y2="0" />
                 </g>
               );
             })}

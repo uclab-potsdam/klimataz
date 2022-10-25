@@ -25,7 +25,6 @@ const MoCarDensity = ({
   let rectWidth;
   let rectHeight;
   const isMobile = dimensions.width <= 350 && mobileCheck(window);
-  const mobileThreshold = isMobile ? 8 : 10;
 
   if (currentData !== undefined) {
     // Data for rendered text
@@ -92,11 +91,11 @@ const MoCarDensity = ({
     });
 
     //scales and margins, using d3 as utility
-    const marginWidth = Math.ceil(dimensions.width / 6);
-    const marginHeight = Math.ceil(dimensions.height / 5);
+    const marginWidth = Math.ceil(dimensions.width / 5);
+    const marginHeight = Math.ceil(dimensions.height / 5.5);
 
     rectWidth = Math.ceil((dimensions.width - marginWidth * 2) / 10);
-    rectHeight = Math.ceil((dimensions.width - marginWidth * 2) / mobileThreshold);
+    rectHeight = Math.ceil((dimensions.width - marginWidth * 1.55) / 10);
     xScale = scaleLinear()
       .domain([0, max(carSquares.map((d) => d.row))])
       .range([marginWidth - 50, dimensions.width - marginWidth - 10]);

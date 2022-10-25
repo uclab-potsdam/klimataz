@@ -25,7 +25,105 @@
     }
   }
 
-  .indicators-iframe {
+  <<<<<<< HEAD ======= .chart-container {
+    .svg-container {
+      &.En-chart {
+        .energy-industry,
+        .primary-energy {
+          .visualization-container {
+            height: 80%;
+          }
+        }
+      }
+
+      &.Mo-chart {
+        .car-density {
+          .legend {
+            background-image: url('../img/legends/MoCarDensity.svg');
+            background-repeat: no-repeat;
+            position: relative;
+            width: 50%;
+            margin: 1rem;
+          }
+
+          .visualization-container {
+            .active-chart {
+              transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+              -webkit-transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+            }
+          }
+        }
+      }
+
+      &.Ge-chart {
+        .description {
+          .caption {
+            p {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+
+      &.Ab-chart {
+        .biotonne-weight {
+          .visualization-container {
+            height: 75%;
+
+            .chart {
+              .controls-container {
+                display: none;
+                .pie-controller {
+                  transform: scale(0.8) translateX(80px);
+                }
+              }
+            }
+          }
+          .description {
+            .title {
+              h3 {
+                font-size: 16px;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+              }
+            }
+          }
+        }
+      }
+
+      &.La-chart {
+        .animal-density {
+          .description {
+            .caption {
+              p {
+                font-size: 12px;
+              }
+            }
+            .legend {
+              margin-top: 0rem;
+            }
+          }
+        }
+      }
+
+      &.Ge-chart {
+        .avg-heating {
+          .visualization-container {
+            svg {
+              .non-clipped-elements {
+                text {
+                  transform: translateY(-5px);
+                  font-size: 9.5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  >>>>>>>origin/main .indicators-iframe {
     .main-container {
       .selection-container {
         .selector {
@@ -165,6 +263,286 @@
       width: $thumbnail-minitablet-postcardwidth;
       height: calc($thumbnail-minitablet-postcardwidth/1.5);
     }
+    &.card-active {
+      .overlay-container {
+        .overlay-inner {
+          text-align: center;
+          position: relative;
+          z-index: 1;
+
+          .section-thumb {
+            .indicator-ranking {
+              p {
+                font-size: 10px;
+              }
+            }
+          }
+
+          .postcard-title {
+            max-width: 50%;
+            width: 50%;
+            overflow: hidden;
+
+            .section-title {
+              text-align: left;
+              max-width: 100%;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+            }
+            .postcard-miniature {
+              .word-art-title {
+                display: none;
+              }
+            }
+          }
+
+          .button-toggle-container {
+            margin-left: 0;
+            svg {
+              margin-left: 0;
+              .toggle {
+                g {
+                  transform: translate(5px, 2px);
+                }
+              }
+
+              text {
+                display: none;
+              }
+
+              .mobile-toggle-label {
+                transform: translate(-100px, 0px);
+                display: block;
+                font-size: 12px;
+                margin-left: 0.5rem;
+              }
+            }
+          }
+
+          .button-download {
+            width: 20%;
+
+            .download-label {
+              display: none;
+            }
+
+            &:hover {
+              .download-label {
+                opacity: 0;
+              }
+            }
+          }
+
+          .visualization-container {
+            height: 55%;
+            .chart {
+              transform: translateY(-30px);
+              -webkit-transform: translateY(-30px);
+              .bars {
+                transform: translateY(10px);
+                .year-label {
+                  font-size: 14px;
+                }
+              }
+
+              .labelText {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+
+      &.Mo-chart {
+        .car-density {
+          .description {
+            height: 20%;
+            position: absolute;
+            bottom: 1rem;
+
+            .title {
+              margin: 0 auto;
+              h4 {
+                padding-bottom: 0.5rem;
+              }
+            }
+
+            .legend {
+              display: none;
+            }
+          }
+
+          .visualization-container {
+            transform: scale(0.9);
+            -webkit-transform: scale(0.9);
+
+            .chart {
+              &.active-chart {
+                transform: skew(0deg, 0deg) translate(10px, -15px);
+                -webkit-transform: skew(0deg, 0deg) translate(10px, -15px);
+              }
+
+              &.thumbnail-chart {
+                transform: skew(0deg, 0deg);
+                -webkit-transform: skew(0deg, 0deg);
+                .cars-container {
+                  transform: translate(20px, 0px);
+                  -webkit-transform: translate(20px, 0px);
+                }
+              }
+            }
+          }
+
+          &.is-thumbnail {
+            .description {
+              display: none;
+            }
+
+            .visualization-container {
+              height: 100%;
+            }
+          }
+        }
+        .modal-split {
+          .description {
+            height: 20%;
+          }
+          .visualization-container {
+            height: 80%;
+            .chart {
+              .bar-percentage-trip {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      &.Ab-chart {
+        .biotonne-weight {
+          .description {
+            height: 15%;
+          }
+          .visualization-container {
+            height: 70%;
+
+            .chart {
+              text {
+                font-size: 10px;
+
+                &.odd-year {
+                  visibility: hidden;
+                }
+              }
+            }
+
+            .y-axis {
+              line {
+                stroke: rgb(217, 203, 181);
+              }
+            }
+
+            .controls-container {
+              visibility: hidden;
+            }
+          }
+        }
+      }
+
+      &.Ge-chart {
+        .newbuildings-energy {
+          .description {
+            .title {
+              margin: 0 auto;
+              h4 {
+                padding-bottom: 0.5rem;
+              }
+            }
+
+            height: 30%;
+            position: absolute;
+            bottom: 0;
+
+            .caption {
+              display: none;
+            }
+
+            .legend {
+              // position: absolute;
+              // bottom: 0;
+              height: 19%;
+              width: 95%;
+
+              .legend-inner {
+                font-size: 12px;
+                // position: absolute;
+                width: 100%;
+                bottom: 1rem;
+
+                .legend-elements-container {
+                  display: flex;
+                  flex-direction: row;
+                  flex-wrap: wrap;
+
+                  .legend-element {
+                    display: flex;
+                    flex: 0 1 auto;
+                    margin-left: 10px;
+
+                    .element-color {
+                      align-self: center;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .visualization-container {
+            height: 70%;
+            .chart {
+              transform: translate(0, 10px);
+            }
+          }
+          &.is-thumbnail {
+            .description {
+              display: none;
+            }
+          }
+
+          .erneuerbare,
+          div.erneuerbare {
+            margin-bottom: 0;
+          }
+        }
+
+        .avg-heating {
+          .description {
+            height: 15%;
+          }
+
+          .visualization-container {
+            height: 85%;
+            transform: translateY(-15px);
+            -webkit-transform: translateY(-15px);
+
+            .chart {
+              .non-clipped-elements {
+                transform: translate(-28px, 0);
+
+                .measure-label {
+                  transform: translate(-75%, 0);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .card {
     &.card-active {
       .overlay-container {
         .overlay-inner {
