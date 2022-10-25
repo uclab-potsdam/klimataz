@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import { mobileCheck } from '../helpers/helperFunc';
 import { UIContext } from './UIContext';
+
 export default class SelectionButtons extends Component {
   static contextType = UIContext;
 
@@ -9,12 +10,15 @@ export default class SelectionButtons extends Component {
     super(props);
 
     this.state = {
-      menuIsOpen: false,
+      open: false,
     };
 
     this.changeLandkreis = this.changeLandkreis.bind(this);
     this.changeSection = this.changeSection.bind(this);
     this.shuffle = this.shuffle.bind(this);
+
+    this.wrapperRef = React.createRef();
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   changeLandkreis(e) {
@@ -76,13 +80,35 @@ export default class SelectionButtons extends Component {
     valueContainer: (styles) => ({
       ...styles,
       maxHeight: '7vh',
-      overflow: 'scroll',
+      overflow: 'auto',
     }),
     multiValueRemove: (styles, { data }) => ({
       ...styles,
       visibility: data.isDefault && this.props.mode == 'lk' ? 'hidden' : 'visible',
     }),
   };
+
+  /**
+   * React Lifecycle Hook
+   * in the beginning, the InfoCard is not Focus
+   */
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  /**
+   * Alert if clicked on outside of element
+   */
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+      event.preventDefault();
+      this.setState({ open: false });
+    }
+  }
 
   render() {
     const orderedLandkreise = this.props.landkreise.sort((a, b) => {
@@ -105,7 +131,7 @@ export default class SelectionButtons extends Component {
     return (
       <div className="selection-buttons">
         {!this.props.postcardView && this.context && (
-          <div className="selection-container">
+          <div className="selection-container" ref={this.wrapperRef}>
             <Select
               className={`selector lk mode-${this.props.mode}`}
               isMulti
@@ -125,6 +151,9 @@ export default class SelectionButtons extends Component {
               }
               isOptionDisabled={() => this.props.landkreisSelection.length >= 5} //max selection number: 5
               noOptionsMessage={() => 'Landkreis wurde nicht gefunden.'}
+              menuIsOpen={this.state.open}
+              onMenuOpen={() => this.setState({ open: true })}
+              onMenuClose={() => this.setState({ open: false })}
             />
             <Select
               className={`selector lk-mobile mode-${this.props.mode}`}
