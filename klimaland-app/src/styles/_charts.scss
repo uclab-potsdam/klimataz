@@ -108,8 +108,8 @@ $gas: lighten($dark-pink, 5%);
 
         .chart {
           cursor: default;
-          transform: skew(-17deg, 0deg);
-          -webkit-transform: skew(-17deg, 0deg);
+          transform: skew(-11deg, 0deg);
+          -webkit-transform: skew(-11deg, 0deg);
 
           rect {
             rx: 4px;
@@ -126,8 +126,8 @@ $gas: lighten($dark-pink, 5%);
           }
 
           &.active-chart {
-            transform: translate(-20px, -10px) skew(-17deg, 0deg);
-            -webkit-transform: translate(-20px, -10px) skew(-17deg, 0deg);
+            transform: translate(-20px, -10px) skew(-11deg, 0deg);
+            -webkit-transform: translate(-20px, -10px) skew(-11deg, 0deg);
             overflow: visible;
           }
 
@@ -244,10 +244,12 @@ $gas: lighten($dark-pink, 5%);
               path {
                 // stroke: $default-text;
                 stroke-width: 0.75;
+                stroke: #484848;
               }
 
               &.Geh-stream {
                 path {
+                  stroke-width: 1;
                   mix-blend-mode: multiply;
                   fill: #b0c6cc;
                   stroke: darken(#b0c6cc, 20%);
@@ -1046,7 +1048,7 @@ $gas: lighten($dark-pink, 5%);
               }
 
               &.wenigerTiere {
-                fill: $mint-green;
+                fill: #5ea5a1;
               }
 
               &.vorherigeZaehlung {
