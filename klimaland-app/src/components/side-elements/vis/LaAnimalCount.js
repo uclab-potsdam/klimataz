@@ -8,7 +8,7 @@ import { formatNumber, useCardSize, mobileCheck } from '../../../helpers/helperF
 const Land = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
   const colorArray = [
     '#fff2da45', // erstes Jahr
-    '#007F87', // Zunahme
+    '#5ea5a1', // Zunahme
     '#F6A219', // Abnahme
   ];
 

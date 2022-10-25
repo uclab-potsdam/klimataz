@@ -127,7 +127,7 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
         <div className="legend">
           <svg height="200px">
             <text x="0" y="10">
-              Anzahl in Großvieheinheit
+              Großvieheinheiten pro Hektar
             </text>
 
             <g transform="translate(0, 18)">
@@ -145,7 +145,7 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
                   fill="#484848"
                 />
                 <text x="23" y="13">
-                  über 2 Großvieheinheiten pro Hektar
+                  über 2
                 </text>
               </g>
               <g transform="translate(0, 30)" className="legend-item unter-label">
@@ -159,7 +159,7 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
                   fill="#484848"
                 />
                 <text x="23" y="13">
-                  unter 2 Großvieheinheiten pro Hektar
+                  unter 2
                 </text>
               </g>
             </g>
@@ -239,6 +239,7 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
                         y={min([-20, -bar.value])}
                         width={bar.widthLabel}
                         height={bar.heightLabel}
+                        stroke={bar.valueTotal === 'unbekannt' ? '#FFBA4E' : '#484848'}
                       />
                       <text
                         className="labelText"
@@ -286,6 +287,7 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
                       y={min([-5, bar.value - 30])}
                       width={bar.widthLabel}
                       height={bar.heightLabel}
+                      stroke={bar.valueTotal === 'unbekannt' ? '#E14552' : '#484848'}
                     />
                     <text
                       className="labelText"
