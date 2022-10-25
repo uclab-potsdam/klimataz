@@ -45,8 +45,8 @@ const Buildings = ({
     'Sonstige Biomasse',
     'Keine Energie (einschl. Passivhaus)',
     'Andere erneuerbare Energien',
-    'Gas',
     'Fernwärme/Fernkälte',
+    'Gas',
     'Öl',
     'Strom',
     'Sonstige Heizenergie',
@@ -311,7 +311,7 @@ const Buildings = ({
                           }`}
                           onClick={() => changeId(en.id)}
                         >
-                          <circle cx="0" cy="0" r="3" />
+                          <circle cx="0" cy="0" r="3.5" />
                         </g>
                       );
                     })}
