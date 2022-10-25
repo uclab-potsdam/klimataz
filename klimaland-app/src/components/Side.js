@@ -201,6 +201,7 @@ export default class Side extends Component {
     const moveRelativeToLkLength = {
       transform: `translate(${-this.props.lk.label.length}px, 0px)`,
     };
+
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={100} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
@@ -267,10 +268,18 @@ export default class Side extends Component {
                             stroke="#484848"
                           />
                         </g>
-                        <text x="0" y="18">
+                        <text
+                          x="0"
+                          y="18"
+                          style={{ fontWeight: this.props.dataLevelLK ? 'bold' : 'normal' }}
+                        >
                           {this.props.toggleLabels.lk}
                         </text>
-                        <text x={this.props.toggleLabels.lk.length * 8 + 60} y="18">
+                        <text
+                          x={this.props.toggleLabels.lk.length * 8 + 60}
+                          y="18"
+                          style={{ fontWeight: this.props.dataLevelLK ? 'normal' : 'bold' }}
+                        >
                           {this.props.toggleLabels.bl}
                         </text>
                         <text className="mobile-toggle-label" x="150" y="17">
