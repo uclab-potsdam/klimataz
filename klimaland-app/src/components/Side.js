@@ -225,8 +225,13 @@ export default class Side extends Component {
                   {this.props.isThumbnail && (
                     <h4 className="section-title">{this.props.sectionName}</h4>
                   )}
-                  {this.props.isTopCard && (
+                  {this.props.isTopCard && this.props.sectionName !== 'Abfall' && (
                     <h4 className="section-title" style={moveRelativeToLkLength}>
+                      {this.props.sectionName}
+                    </h4>
+                  )}
+                  {this.props.isTopCard && this.props.sectionName === 'Abfall' && (
+                    <h4 className="section-title" style={{ transform: `translate(-7px, 0px)` }}>
                       {this.props.sectionName}
                     </h4>
                   )}

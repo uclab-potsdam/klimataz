@@ -1116,13 +1116,13 @@ $gas: lighten($dark-pink, 5%);
 
             .labelCount {
               fill: white;
-              stroke: #484848;
+              // stroke: #484848;
               stroke-width: '0.5';
             }
 
             rect {
-              stroke-width: 1;
-              stroke: #484848;
+              // stroke-width: 0.5;
+              // stroke: #484848;
             }
           }
         }
