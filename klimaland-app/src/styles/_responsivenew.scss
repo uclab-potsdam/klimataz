@@ -277,7 +277,6 @@
                   .indicator-ranking {
                     p {
                       padding: 0.5rem;
-                      font-size: 10px;
                     }
                   }
                 }
@@ -501,6 +500,17 @@
         .side-container {
           width: $schwerpunkt-postcardview-postcardwidth;
           height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
+        }
+        .card-preview {
+          .side-outer {
+            .overlay-container {
+              .section-thumb {
+                .indicator-ranking {
+                  max-width: 80%;
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -1159,6 +1169,12 @@
                 .biotonne-weight {
                   .description {
                     height: 15%;
+
+                    span {
+                      &.footnote {
+                        font-size: 1rem;
+                      }
+                    }
                   }
                   .visualization-container {
                     height: 70%;
