@@ -113,6 +113,55 @@
                 }
               }
             }
+            .horizontal-bottom-layout {
+              .description {
+                h4 {
+                  width: 95%;
+                  //font-size: 14px;
+                }
+              }
+            }
+            .Ab-chart {
+              .visualization-container {
+                height: 75%;
+
+                .controls-container {
+                  .legend {
+                    transform: translateY(1%);
+                    .biotonne {
+                      transform: translateX(10%);
+
+                      text {
+                        transform: translateX(12%) translateY(0.5%);
+                      }
+                    }
+
+                    .gartenPark {
+                      transform: translateX(16%);
+
+                      text {
+                        transform: translateX(18%) translateY(0.5%);
+                      }
+                    }
+
+                    .highest-value {
+                      transform: translateX(0%);
+
+                      text {
+                        transform: translateX(2%) translateY(0.5%);
+                      }
+                    }
+                  }
+
+                  .pie-controller {
+                    transform: translateX(60%) translateY(-2.5%);
+                    .pie-icon {
+                      transform: scale(0.6);
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -374,48 +423,6 @@
             }
           }
 
-          .Ab-chart {
-            .visualization-container {
-              height: 75%;
-
-              .controls-container {
-                .legend {
-                  transform: translateY(1%);
-                  .biotonne {
-                    transform: translateX(10%);
-
-                    text {
-                      transform: translateX(12%) translateY(0.5%);
-                    }
-                  }
-
-                  .gartenPark {
-                    transform: translateX(16%);
-
-                    text {
-                      transform: translateX(18%) translateY(0.5%);
-                    }
-                  }
-
-                  .highest-value {
-                    transform: translateX(0%);
-
-                    text {
-                      transform: translateX(2%) translateY(0.5%);
-                    }
-                  }
-                }
-
-                .pie-controller {
-                  transform: translateX(60%) translateY(-2.5%);
-                  .pie-icon {
-                    transform: scale(0.6);
-                  }
-                }
-              }
-            }
-          }
-
           .Ge-chart {
             .newbuildings-energy {
               h4 {
@@ -533,6 +540,13 @@
           }
         }
 
+        .flip {
+          right: 0;
+          img {
+            max-width: 50px;
+          }
+        }
+
         .card-collection {
           .card {
             .card-front,
@@ -642,6 +656,13 @@
                     text {
                       fill: $default-text;
                     }
+                  }
+                }
+              }
+              .description {
+                span {
+                  &.footnote {
+                    font-size: 10px;
                   }
                 }
               }
@@ -905,6 +926,23 @@
                 }
               }
 
+              .vertical-layout {
+                .description {
+                  h4 {
+                    font-size: 1rem;
+                  }
+                }
+              }
+
+              .horizontal-bottom-layout {
+                .description {
+                  width: 100%;
+                  h4 {
+                    font-size: 1rem;
+                  }
+                }
+              }
+
               &.En-chart {
                 .primary-energy {
                   .description {
@@ -1078,12 +1116,29 @@
                 .modal-split {
                   .description {
                     height: 20%;
+                    h4 {
+                      font-size: 1rem;
+                    }
                   }
                   .visualization-container {
                     height: 80%;
                     .chart {
                       .bar-percentage-trip {
                         display: none;
+                      }
+                      .paths {
+                        text {
+                          font-size: 12px;
+                        }
+                        &.icon {
+                          display: inline-block;
+                        }
+                        .no-icon {
+                          display: none;
+                        }
+                        .icon {
+                          display: inline-block;
+                        }
                       }
                     }
                   }
@@ -1136,6 +1191,7 @@
                     .title {
                       margin: 0 auto;
                       h4 {
+                        font-size: 1rem;
                         padding-bottom: 0.5rem;
                       }
                     }
@@ -1283,7 +1339,7 @@
                         }
 
                         text {
-                          font-size: 12px;
+                          font-size: 14px;
                           margin: 0;
                           padding: 0;
                         }
@@ -1529,6 +1585,16 @@
             justify-content: left;
             padding-left: 0.5rem;
             margin-top: -0.6rem;
+          }
+          .chart-container {
+            .Mo-chart {
+              .icon {
+                display: none;
+              }
+              .no-icon {
+                display: inline-block;
+              }
+            }
           }
         }
 

@@ -129,7 +129,12 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
       className={`biotonne-weight horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}
     >
       <div className="visualization-container" ref={targetRef}>
-        <svg className="abfall-biotonne chart" width="100%" height="100%" preserveAspectRatio="xMaxYMin meet">
+        <svg
+          className="abfall-biotonne chart"
+          width="100%"
+          height="100%"
+          preserveAspectRatio="xMaxYMin meet"
+        >
           <defs>
             <linearGradient id="MyGradient">
               <stop offset="50%" stopColor="#e6c9a2" />
@@ -179,10 +184,7 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
           })}
 
           {!isThumbnail && (
-            <g
-              className="controls-container"
-              transform={`translate(${marginWidth * 2}, 10)`}
-            >
+            <g className="controls-container" transform={`translate(${marginWidth * 2}, 10)`}>
               <g
                 // transform={
                 //   `translate(${width - (marginWidth - tabletThreshold) * 3.5}, ${marginHeight / 2
@@ -243,7 +245,7 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
             Im Jahr {lastYear} wurden in <span className="locationLabel">{locationLabel}</span> pro
             Kopf <span>{formatNumber(lastValue)} kg</span> organische Abfälle korrekt in der
             Biotonne oder als Gartenabfälle entsorgt und damit CO<sub>2</sub>-Emissionen verringert.{' '}
-            {footnote}
+            <span className="footnote">{footnote}</span>
             {footnote !== '' && '.'}
           </h4>
         </div>
