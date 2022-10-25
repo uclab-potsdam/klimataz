@@ -435,20 +435,22 @@ code {
 
           .sources-linklist {
             & p {
-              font-size: 0.75rem;
+              font-size: 1rem;
               margin: 0.25rem 0rem;
-              text-indent: -12px;
-              padding-left: 12px;
+              text-indent: -1rem;
+              padding-left: 1rem;
             }
           }
 
           & h3 {
             margin: 0.5rem 0rem;
+            font-weight: 700;
           }
 
           & h4 {
             margin-top: 2rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
           }
 
           & p {

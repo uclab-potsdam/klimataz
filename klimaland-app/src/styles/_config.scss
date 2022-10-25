@@ -1,13 +1,15 @@
 @import 'node_modules/include-media/dist/_include-media.scss';
 //fonts
 @font-face {
-  font-family: AktivGrotesk_bold;
+  font-family: AktivGrotesk;
   src: url('../fonts/aktiv/AktivGrotesk_Md.ttf');
+  font-weight: 600;
 }
 
 @font-face {
   font-family: AktivGrotesk;
   src: url('../fonts/aktiv/AktivGrotesk_Rg.ttf');
+  font-weight: 400;
 }
 
 @font-face {
@@ -206,7 +208,7 @@ text {
 
 @mixin wordart-style-1 {
   @include wordart-style-setup;
-  transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, 10px);
+  transform: rotate(-2deg) translate(0px, 10px);
 
   .gruss-thumb,
   .gruss-thumb:after {
@@ -216,7 +218,7 @@ text {
   }
 
   .wordart {
-    transform: translateY(-10px);
+    transform: scale(0.9, 1.2) translateY(-10px);
     display: inline-block;
     padding-left: 7px;
     padding-right: 7px;
