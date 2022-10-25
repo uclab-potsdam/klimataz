@@ -244,10 +244,12 @@ $gas: lighten($dark-pink, 5%);
               path {
                 // stroke: $default-text;
                 stroke-width: 0.75;
+                stroke: #484848;
               }
 
               &.Geh-stream {
                 path {
+                  stroke-width: 1;
                   mix-blend-mode: multiply;
                   fill: #b0c6cc;
                   stroke: darken(#b0c6cc, 20%);
