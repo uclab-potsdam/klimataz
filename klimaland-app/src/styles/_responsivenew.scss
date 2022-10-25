@@ -311,7 +311,7 @@
                     .postcard-title {
                       h4 {
                         margin: 0;
-                        margin-top: 0.2rem;
+                        margin-top: 0.1rem;
                         transform: translate(0px, 0px) !important;
                       }
                     }
@@ -549,6 +549,12 @@
 
         .card-collection {
           .card {
+            //thumbnail
+            &-ordered {
+              //original ratio changed for styling
+              width: 40vw;
+              height: calc(40vw / 1.5);
+            }
             .card-front,
             .card-back {
               .side-outer {
@@ -1301,6 +1307,12 @@
           }
 
           .card {
+            //thumbnail
+            &-ordered {
+              //original ratio changed for styling
+              width: calc($portrait-minitablet-postcardwidth/2.0);
+              height: calc($portrait-minitablet-postcardwidth/1.5);
+            }
             .card-front {
               .side-outer {
                 .overlay-container {
@@ -1524,15 +1536,6 @@
             .close {
               margin-top: 1rem;
             }
-          }
-        }
-
-        .card {
-          //thumbnail
-          &-ordered {
-            //original ratio changed for styling
-            width: calc($portrait-minitablet-postcardwidth/2.0);
-            height: calc($portrait-minitablet-postcardwidth/1.5);
           }
         }
 

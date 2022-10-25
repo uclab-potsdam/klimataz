@@ -279,7 +279,9 @@ export default class Side extends Component {
                         </text>
                       </g>
                       <g className="toggleResponsive" onClick={this.props.switchDataLevel}>
-                        <g transform={`translate(${this.props.toggleLabels.lk.length * 7}, 2)`}>
+                        <g
+                          transform={`translate(${this.props.toggleLabels.lk.length * 7 + 10}, 2)`}
+                        >
                           <rect
                             className="controller-bg"
                             x="0"
@@ -302,7 +304,7 @@ export default class Side extends Component {
                         <text x="0" y="15">
                           {this.props.toggleLabels.lk}
                         </text>
-                        <text x={this.props.toggleLabels.lk.length * 7 + 50} y="15">
+                        <text x={this.props.toggleLabels.lk.length * 7 + 36 + 20} y="15">
                           {this.props.toggleLabels.bl}
                         </text>
                       </g>
@@ -328,7 +330,7 @@ export default class Side extends Component {
                           />
                         </g>
 
-                        <text x="50" y="15">
+                        <text x="50" y="17">
                           Daten wechseln
                         </text>
                       </g>
