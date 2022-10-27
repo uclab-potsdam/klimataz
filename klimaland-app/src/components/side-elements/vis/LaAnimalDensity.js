@@ -125,7 +125,7 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
           </p>
         </div>
         <div className="legend">
-          <svg height="200px">
+          <svg>
             <text x="0" y="10">
               Großvieheinheiten pro Hektar
             </text>

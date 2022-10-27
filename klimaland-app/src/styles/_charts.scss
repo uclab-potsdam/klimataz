@@ -203,6 +203,10 @@
               }
             }
 
+            .no-icon {
+              display: none;
+            }
+
             .axis {
               svg {
                 stroke-miterlimit: 10;
@@ -236,6 +240,9 @@
             &.second-value {
               color: $mint-green;
             }
+          }
+          &.footnote {
+            color: $default-text;
           }
         }
 
@@ -524,6 +531,9 @@
             &.second-value {
               color: $taz-orange;
             }
+            &.footnote {
+              color: $default-text;
+            }
           }
         }
 
@@ -730,7 +740,7 @@
         .legend {
           position: relative;
           .legend-inner {
-            font-size: 12px;
+            font-size: 14px;
             width: 100%;
 
             .legend-elements-container {
@@ -1137,7 +1147,8 @@
         .legend {
           margin-top: 2rem;
           svg {
-            font-size: 12px;
+            height: 200px;
+            font-size: 14px;
           }
         }
 

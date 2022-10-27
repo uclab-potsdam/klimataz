@@ -211,15 +211,21 @@ const MoModalSplit = ({
                       className={trip.mode}
                     >
                       <g className="axis">
-                        {/* <ModeIcon x={marginWidth} stroke={colors[t]} />
+                        <ModeIcon x={marginWidth} style={{ stroke: colors[t] }} className="icon" />
                         <text
                           x={marginWidth + getIconWidth(trip.mode) + 10}
                           y="-18"
-                          fill={colors[t]}
+                          style={{ fill: colors[t] }}
+                          className="icon"
                         >
                           {getLegendName(trip.mode)}
-                        </text> */}
-                        <text x={marginWidth} y="-10" fill={colors[t]}>
+                        </text>
+                        <text
+                          x={marginWidth}
+                          y="-10"
+                          style={{ fill: colors[t] }}
+                          className="no-icon"
+                        >
                           {getLegendName(trip.mode)}
                         </text>
                         {referenceXTicks.map((tick, t) => {

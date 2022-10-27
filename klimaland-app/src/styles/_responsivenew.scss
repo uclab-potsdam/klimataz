@@ -104,6 +104,64 @@
                 }
               }
             }
+            .Ge-chart {
+              .legend-inner {
+                font-size: 12px;
+                .erneuerbare,
+                div.erneuerbare {
+                  margin-bottom: 0.5rem;
+                }
+              }
+            }
+            .horizontal-bottom-layout {
+              .description {
+                h4 {
+                  width: 95%;
+                  //font-size: 14px;
+                }
+              }
+            }
+            .Ab-chart {
+              .visualization-container {
+                height: 75%;
+
+                .controls-container {
+                  .legend {
+                    transform: translateY(1%);
+                    .biotonne {
+                      transform: translateX(10%);
+
+                      text {
+                        transform: translateX(12%) translateY(0.5%);
+                      }
+                    }
+
+                    .gartenPark {
+                      transform: translateX(16%);
+
+                      text {
+                        transform: translateX(18%) translateY(0.5%);
+                      }
+                    }
+
+                    .highest-value {
+                      transform: translateX(0%);
+
+                      text {
+                        transform: translateX(2%) translateY(0.5%);
+                      }
+                    }
+                  }
+
+                  .pie-controller {
+                    transform: translateX(60%) translateY(-2.5%);
+                    .pie-icon {
+                      transform: scale(0.6);
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -116,12 +174,12 @@
     background-color: rgb(170, 170, 245);
 
     h4 {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     .chart {
       text {
-        font-size: 10px;
+        font-size: 12px;
       }
     }
 
@@ -145,8 +203,10 @@
             justify-content: center;
             height: 10%;
 
-            .switch-preview {
-              font-size: 12px;
+            .inner-button {
+              .switch-preview {
+                font-size: 12px;
+              }
             }
 
             .button-left,
@@ -217,7 +277,6 @@
                   .indicator-ranking {
                     p {
                       padding: 0.5rem;
-                      font-size: 10px;
                     }
                   }
                 }
@@ -251,7 +310,7 @@
                     .postcard-title {
                       h4 {
                         margin: 0;
-                        margin-top: 0.2rem;
+                        margin-top: 0.1rem;
                         transform: translate(0px, 0px) !important;
                       }
                     }
@@ -259,7 +318,7 @@
                     .button-toggle-container {
                       transform: translate(0px, 0px) !important;
 
-                      .arrow-pointer {
+                      padding .arrow-pointer {
                         margin-top: 0.2rem;
                         height: calc(100% - 0.2rem);
                       }
@@ -272,9 +331,12 @@
                         .toggleResponsive {
                           display: block;
                         }
+                        .mobile-toggle-label {
+                          display: none;
+                        }
 
                         text {
-                          font-size: 12px;
+                          font-size: 14px;
                           margin: 0;
                           padding: 0;
                         }
@@ -288,33 +350,6 @@
                           fill: url(#MyGradient);
                           stroke: $default-text;
                         }
-                      }
-                    }
-                  }
-
-                  .button-toggle-container {
-                    padding .arrow-pointer {
-                      margin-top: 0.2rem;
-                      height: calc(100% - 0.2rem);
-                    }
-
-                    svg {
-                      // margin-top: -2px;
-
-                      text {
-                        font-size: 12px;
-                        margin: 0;
-                        padding: 0;
-                      }
-
-                      .mobile-toggle-label {
-                        display: none;
-                      }
-
-                      .controller-bg {
-                        cursor: pointer;
-                        fill: url(#MyGradient);
-                        stroke: $default-text;
                       }
                     }
                   }
@@ -368,44 +403,19 @@
                 -webkit-transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
               }
             }
-          }
-
-          .Ab-chart {
-            .visualization-container {
-              height: 75%;
-
-              .controls-container {
-                .legend {
-                  transform: translateY(1%);
-                  .biotonne {
-                    transform: translateX(10%);
-
+            .modal-split {
+              .visualization-container {
+                .chart {
+                  .paths {
                     text {
-                      transform: translateX(12%) translateY(0.5%);
+                      font-size: 12px;
                     }
                   }
-
-                  .gartenPark {
-                    transform: translateX(16%);
-
-                    text {
-                      transform: translateX(18%) translateY(0.5%);
-                    }
+                  .icon {
+                    display: none;
                   }
-
-                  .highest-value {
-                    transform: translateX(0%);
-
-                    text {
-                      transform: translateX(2%) translateY(0.5%);
-                    }
-                  }
-                }
-
-                .pie-controller {
-                  transform: translateX(60%) translateY(-2.5%);
-                  .pie-icon {
-                    transform: scale(0.6);
+                  .no-icon {
+                    display: inline-block;
                   }
                 }
               }
@@ -420,14 +430,57 @@
               }
               .description {
                 width: 43%;
-              }
-              .legend {
-                .legend-element {
+                .caption {
                   p {
-                    &:hover {
-                      font-weight: medium;
+                    font-size: 12px;
+                  }
+                }
+                .legend {
+                  .legend-element {
+                    p {
+                      &:hover {
+                        font-weight: 600;
+                      }
                     }
                   }
+                }
+              }
+            }
+          }
+
+          .La-chart {
+            .animal-density {
+              .caption {
+                p {
+                  font-size: 12px;
+                }
+              }
+              .legend {
+                svg {
+                  height: 100px;
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+
+        .sources-container {
+          .sources-text-container {
+            .sources-text {
+              h3 {
+                font-size: 16px;
+              }
+
+              h4 {
+                font-size: 14px;
+              }
+              p {
+                font-size: 14px;
+              }
+              .sources-linklist {
+                p {
+                  font-size: 14px;
                 }
               }
             }
@@ -448,6 +501,17 @@
           width: $schwerpunkt-postcardview-postcardwidth;
           height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
         }
+        .card-preview {
+          .side-outer {
+            .overlay-container {
+              .section-thumb {
+                .indicator-ranking {
+                  max-width: 80%;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -456,6 +520,10 @@
 @include media('<=minitablet') {
   body {
     background-color: peachpuff;
+
+    h4 {
+      font-size: 12px;
+    }
 
     .visualization-container {
       .chart {
@@ -467,6 +535,11 @@
 
     .indicators-iframe {
       .main-container {
+        .overlay-container {
+          .section-title {
+            font-size: 14px;
+          }
+        }
         .button-container {
           .inner-button {
             height: 79%;
@@ -477,8 +550,21 @@
           }
         }
 
+        .flip {
+          right: 0;
+          img {
+            max-width: 50px;
+          }
+        }
+
         .card-collection {
           .card {
+            //thumbnail
+            &-ordered {
+              //original ratio changed for styling
+              width: 40vw;
+              height: calc(40vw / 1.5);
+            }
             .card-front,
             .card-back {
               .side-outer {
@@ -503,11 +589,42 @@
                     -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
                   }
                 }
+                .description {
+                  .title {
+                    h4 {
+                      padding-right: 0;
+                    }
+                  }
+                }
+              }
+              .modal-split {
+                .visualization-container {
+                  .chart {
+                    .paths {
+                      text {
+                        font-size: 10px;
+                      }
+                    }
+                    text {
+                      &.icon {
+                        display: none;
+                      }
+                    }
+                    .icon {
+                      transform: translateY(9px);
+                      display: inline-block;
+                    }
+                    .no-icon {
+                      display: none;
+                    }
+                  }
+                }
               }
             }
 
             .Ab-chart {
               .visualization-container {
+                height: 74%;
                 .controls-container {
                   .legend {
                     transform: translateY(1%);
@@ -539,6 +656,29 @@
                         stroke-width: 2px;
                       }
                     }
+                  }
+                }
+                .chart {
+                  .highest-value,
+                  .detail-label {
+                    text {
+                      font-size: 12px;
+                    }
+                  }
+                  .max {
+                    line {
+                      stroke: $default-text;
+                    }
+                    text {
+                      fill: $default-text;
+                    }
+                  }
+                }
+              }
+              .description {
+                span {
+                  &.footnote {
+                    font-size: 10px;
                   }
                 }
               }
@@ -596,8 +736,36 @@
               }
             }
 
+            .La-chart {
+              .description {
+                .title {
+                  h4 {
+                    padding-right: 0;
+                  }
+                }
+                .caption {
+                  display: none;
+                }
+              }
+            }
+
             .details-container {
               .flex-container {
+                .text-container {
+                  .text-inner-container {
+                    overflow-y: scroll;
+                    .section-title {
+                      //display: none;
+                      h2 {
+                        font-size: 14px;
+                        font-weight: bold;
+                      }
+                    }
+                    .section-text {
+                      overflow-y: visible;
+                    }
+                  }
+                }
                 .data-container {
                   .locator-map {
                     .locator-container {
@@ -610,6 +778,65 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        }
+
+        .info-container {
+          .info-container-content {
+            &.open {
+              height: 65vh;
+              transform: translate(20px, -65vh) rotate(2deg);
+
+              .help {
+                height: 65vh;
+              }
+            }
+          }
+          h4 {
+            font-size: 14px;
+          }
+          p {
+            font-size: 14px;
+          }
+        }
+        .sources-container {
+          width: 80%;
+          .sources-button {
+            width: 25px;
+            height: 25px;
+            right: 1rem;
+            bottom: 1rem;
+            .info-i {
+              font-size: 0.75rem;
+            }
+          }
+          &.open {
+            width: 80%;
+            transform: translate(0);
+            -webkit-transform: translate(0);
+          }
+
+          .info-text-label {
+            width: 10rem;
+          }
+
+          .sources-text-container {
+            height: 80vh;
+            transform: translate(-16%, -100%);
+            -webkit-transform: translate(-16%, -100%);
+
+            .sources-text {
+              height: 80vh;
+            }
+          }
+        }
+        .selection-container {
+          .selector {
+            &.lk {
+              &.mode-lk {
+                width: 50%;
               }
             }
           }
@@ -715,6 +942,23 @@
                 }
               }
 
+              .vertical-layout {
+                .description {
+                  h4 {
+                    font-size: 1rem;
+                  }
+                }
+              }
+
+              .horizontal-bottom-layout {
+                .description {
+                  width: 100%;
+                  h4 {
+                    font-size: 1rem;
+                  }
+                }
+              }
+
               &.En-chart {
                 .primary-energy {
                   .description {
@@ -794,24 +1038,32 @@
                     height: 45%;
                     position: absolute;
                     bottom: 0;
+                    margin-left: 1rem;
+                    width: auto;
+
                     .caption {
+                      display: inline-block;
                       font-size: 12px;
                       margin-right: 1rem;
-                      transform: translate(-5px, 35px);
-                      -webkit-transform: translate(-5px, 35px);
+                      transform: translate(0, 60px);
+                      -webkit-transform: translate(0, 60px);
                     }
 
                     .legend {
-                      transform: translate(-5px, -110px);
-                      -webkit-transform: translate(-5px, -110px);
+                      margin-top: 2rem;
+                      transform: translate(0, -110px);
+                      -webkit-transform: translate(0, -110px);
 
                       .legend-item {
-                        font-size: 10px;
+                        font-size: 12px;
                         &.unter-label {
                           transform: translate(140px, 0px);
                           -webkit-transform: translate(140px, 0px);
                         }
                       }
+                    }
+                    .title {
+                      margin: 0 !important;
                     }
                   }
 
@@ -825,10 +1077,6 @@
                         .year-label {
                           font-size: 14px;
                         }
-                      }
-
-                      .labelText {
-                        font-size: 10px;
                       }
                     }
                   }
@@ -888,12 +1136,29 @@
                 .modal-split {
                   .description {
                     height: 20%;
+                    h4 {
+                      font-size: 1rem;
+                    }
                   }
                   .visualization-container {
                     height: 80%;
                     .chart {
                       .bar-percentage-trip {
                         display: none;
+                      }
+                      .paths {
+                        text {
+                          font-size: 12px;
+                        }
+                        &.icon {
+                          display: inline-block;
+                        }
+                        .no-icon {
+                          display: none;
+                        }
+                        .icon {
+                          display: inline-block;
+                        }
                       }
                     }
                   }
@@ -904,6 +1169,12 @@
                 .biotonne-weight {
                   .description {
                     height: 15%;
+
+                    span {
+                      &.footnote {
+                        font-size: 1rem;
+                      }
+                    }
                   }
                   .visualization-container {
                     height: 70%;
@@ -927,6 +1198,14 @@
                     .controls-container {
                       visibility: hidden;
                     }
+                    .max {
+                      line {
+                        stroke: $red;
+                      }
+                      text {
+                        fill: $red;
+                      }
+                    }
                   }
                 }
               }
@@ -938,6 +1217,7 @@
                     .title {
                       margin: 0 auto;
                       h4 {
+                        font-size: 1rem;
                         padding-bottom: 0.5rem;
                       }
                     }
@@ -1024,6 +1304,9 @@
                 .avg-heating {
                   .description {
                     height: 15%;
+                    h4 {
+                      font-size: 1rem;
+                    }
                   }
 
                   .visualization-container {
@@ -1047,6 +1330,12 @@
           }
 
           .card {
+            //thumbnail
+            &-ordered {
+              //original ratio changed for styling
+              width: calc($portrait-minitablet-postcardwidth/2.0);
+              height: calc($portrait-minitablet-postcardwidth/1.5);
+            }
             .card-front {
               .side-outer {
                 .overlay-container {
@@ -1085,7 +1374,7 @@
                         }
 
                         text {
-                          font-size: 12px;
+                          font-size: 14px;
                           margin: 0;
                           padding: 0;
                         }
@@ -1213,33 +1502,6 @@
           }
         }
 
-        .sources-container {
-          width: 80%;
-          .sources-button {
-            width: 25px;
-            height: 25px;
-            right: 1rem;
-            bottom: 1rem;
-            .info-i {
-              font-size: 0.75rem;
-            }
-          }
-
-          .info-text-label {
-            display: none;
-          }
-          &.open {
-            width: 80%;
-            transform: translate(0);
-            -webkit-transform: translate(0);
-          }
-
-          .sources-text-container {
-            transform: translate(-16%, -115%);
-            -webkit-transform: translate(-16%, -115%);
-          }
-        }
-
         .info-container {
           width: 25%;
           position: absolute;
@@ -1282,6 +1544,12 @@
           }
         }
 
+        .sources-container {
+          .info-text-label {
+            display: none;
+          }
+        }
+
         .button-container {
           .button-switch-container {
             display: none;
@@ -1291,15 +1559,6 @@
             .close {
               margin-top: 1rem;
             }
-          }
-        }
-
-        .card {
-          //thumbnail
-          &-ordered {
-            //original ratio changed for styling
-            width: calc($portrait-minitablet-postcardwidth/2.0);
-            height: calc($portrait-minitablet-postcardwidth/1.5);
           }
         }
 
@@ -1352,6 +1611,16 @@
             justify-content: left;
             padding-left: 0.5rem;
             margin-top: -0.6rem;
+          }
+          .chart-container {
+            .Mo-chart {
+              .icon {
+                display: none;
+              }
+              .no-icon {
+                display: inline-block;
+              }
+            }
           }
         }
 
