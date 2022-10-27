@@ -57,6 +57,7 @@ const Energy = ({
   };
   let lastYear = '?';
   let percRenewables = 0;
+  let lastExport = {};
 
   let switchHighlightedStream = function (id) {
     if (currentData !== undefined && currentData.data !== undefined) {
@@ -95,12 +96,28 @@ const Energy = ({
       );
     });
 
+    //store last stromaustauschsaldo value
+    lastExport.value = currentData.data.filter((d) => {
+      return d.column === 'Stromaustauschsaldo' && d.year === '2020';
+    })[0].value;
+    lastExport.abs = Math.abs(lastExport.value); //absolute value
+
+    //filter out negative stromaustauschsaldo values
+    //copy data
+    const filteredData = JSON.parse(JSON.stringify(currentData.data));
+    //replace negative values with 0
+    filteredData
+      .filter((d) => {
+        return d.column === 'Stromaustauschsaldo' && d.value < 0;
+      })
+      .forEach((d) => (d.value = 0));
+
     // setup domains for scaling
-    const domainX = extent(currentData.data.map((d) => +d.year));
+    const domainX = extent(filteredData.map((d) => +d.year));
     const xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth, dimensions.width - marginWidth]);
-    const domainY = [0, max(currentData.data.map((d) => d.value))];
+    const domainY = [0, max(filteredData.map((d) => d.value))];
     const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
 
     // map source to color
@@ -112,7 +129,7 @@ const Energy = ({
     };
 
     // get unique years from data
-    const uniqueYears = uniq(currentData.data.map((d) => +d.year));
+    const uniqueYears = uniq(filteredData.map((d) => +d.year));
 
     // create elements for horizontal axis, plus labels
     xAxisElements = uniqueYears.map((year, a) => {
@@ -132,7 +149,7 @@ const Energy = ({
     // prepare data for stacking
     const stackData = [];
     uniqueYears.forEach((year, y) => {
-      const currentYearData = currentData.data.filter((d) => +d.year === year);
+      const currentYearData = filteredData.filter((d) => +d.year === year);
 
       const el = {};
       currentYearData.map((d) => {
@@ -283,7 +300,7 @@ const Energy = ({
                       height="1"
                     >
                       <div xmlns="http://www.w3.org/1999/xhtml" className={label.klass}>
-                        <p>{label.id}</p>
+                        <p>{label.id == 'Stromaustauschsaldo' ? 'importierter Strom' : label.id}</p>
                       </div>
                     </foreignObject>
                   </g>
@@ -340,6 +357,14 @@ const Energy = ({
             })}
           </g>
         </svg>
+        {lastExport.value < 0 && (
+          <div className="strom-export-box">
+            <p>
+              In {locationLabel} wurden 2020 zusätzlich {formatNumber(lastExport.abs)} TJ Strom
+              exportiert.
+            </p>
+          </div>
+        )}
       </div>
       <div className="description">
         <div className="title">

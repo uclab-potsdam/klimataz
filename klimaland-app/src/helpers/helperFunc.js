@@ -85,6 +85,7 @@ export function formatNumber(numberValue) {
     : Math.abs(Number(num))
         .toString()
         .replace('.', ',') // replaces . with comma for decimal separator
+        .replace(' ', ' ') // replace whitespace with no linebreak whitespace
         .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'); // adds dot . after 3 digits -> 1.000
 }
 
