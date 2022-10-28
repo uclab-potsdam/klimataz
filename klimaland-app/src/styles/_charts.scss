@@ -280,8 +280,7 @@
 
         .chart {
           overflow: visible;
-          .x-axis,
-          .y-axis {
+          .x-axis {
             line {
               stroke: $pale-olive;
             }
@@ -289,6 +288,18 @@
             text {
               fill: $default-text;
               font-size: 12px;
+            }
+          }
+          .y-axis {
+            line {
+              stroke: $light;
+              stroke-dasharray: 10;
+            }
+
+            text {
+              fill: $light;
+              font-size: 12px;
+              background-color: $pale-olive;
             }
           }
 

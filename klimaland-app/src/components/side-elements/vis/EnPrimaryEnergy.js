@@ -120,7 +120,6 @@ const Energy = ({
       .range([marginWidth, dimensions.width - marginWidth]);
     const maxY = max(filteredData.map((d) => d.value));
     const domainY = [0, maxY];
-    console.log(max(filteredData.map((d) => d.value)));
     const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
 
     // map source to color
@@ -142,14 +141,14 @@ const Energy = ({
       };
     });
 
-    const yAxisValues = yScale.ticks(1);
+    //create elements for y axis
+    const yAxisValues = yScale.ticks(4);
     yAxisElements = yAxisValues.map((d) => {
       return {
         label: `${formatNumber(d)} TJ`,
-        value: d,
+        x: yScale(d),
       };
     });
-    console.log(yAxisElements);
 
     // create area for streams
     const areaGen = area()
@@ -285,7 +284,6 @@ const Energy = ({
               }
             })}
           </g>
-          <g className="y-axis"></g>
           <g className="streams-container">
             {streamEle.map((stream, s) => {
               return (
@@ -296,6 +294,19 @@ const Energy = ({
                   onMouseLeave={() => switchHighlightedStream('')}
                 >
                   <path d={stream.path} fill={stream.fill} />
+                </g>
+              );
+            })}
+          </g>
+          <g className="y-axis">
+            {yAxisElements.map(function (axis, a) {
+              if (a === 0) return;
+              return (
+                <g transform={`translate(0, ${axis.x})`} key={a}>
+                  <line x1="0" x2={dimensions.width} y1="0" y2="0" />
+                  <text x={dimensions.width - 10} y="-5" textAnchor="end">
+                    {axis.label}
+                  </text>
                 </g>
               );
             })}
