@@ -21,7 +21,7 @@ const Energy = ({
     '#007F87', // Gesamt Erneuerbare Energieträger
     '#2A4D9C', // Stromaustauschsaldo
     '#FFBE53', // Kernenergie
-    '#a8a8a8', // Andere Energieträger
+    '#ff7b7b', // Andere Energieträger
   ];
 
   const labelArray = [
