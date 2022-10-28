@@ -48,6 +48,7 @@ const Energy = ({
   const marginHeight = 0;
   const paddingHeight = 15;
   let xAxisElements = [];
+  let yAxisElements = [];
   let streamEle = [];
   let scaleCategory = function () {
     return undefined;
@@ -117,7 +118,9 @@ const Energy = ({
     const xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth, dimensions.width - marginWidth]);
-    const domainY = [0, max(filteredData.map((d) => d.value))];
+    const maxY = max(filteredData.map((d) => d.value));
+    const domainY = [0, maxY];
+    console.log(max(filteredData.map((d) => d.value)));
     const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
 
     // map source to color
@@ -138,6 +141,15 @@ const Energy = ({
         x: xScale(year),
       };
     });
+
+    const yAxisValues = yScale.ticks(1);
+    yAxisElements = yAxisValues.map((d) => {
+      return {
+        label: `${formatNumber(d)} TJ`,
+        value: d,
+      };
+    });
+    console.log(yAxisElements);
 
     // create area for streams
     const areaGen = area()
@@ -243,7 +255,7 @@ const Energy = ({
     <div className={`primary-energy horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}>
       <div className="visualization-container" ref={targetRef}>
         <svg className="energy-primenergy chart" width="100%" height="100%">
-          <g className="axis">
+          <g className="x-axis">
             {xAxisElements.map((axis, a) => {
               if (a % 3 === 2) {
                 return (
@@ -273,6 +285,7 @@ const Energy = ({
               }
             })}
           </g>
+          <g className="y-axis"></g>
           <g className="streams-container">
             {streamEle.map((stream, s) => {
               return (

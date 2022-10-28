@@ -195,7 +195,7 @@ const EnIndustry = ({
     >
       <div className="visualization-container" ref={targetRef}>
         <svg className="energy-industry chart" width="100%" height="100%">
-          <g className="axis">
+          <g className="x-axis">
             {xAxisElements.map((axis, a) => {
               if (a % 2 !== 0) {
                 return (

@@ -259,7 +259,8 @@ $gas: lighten($dark-pink, 5%);
 
         .chart {
           overflow: visible;
-          .axis {
+          .x-axis,
+          .y-axis {
             line {
               stroke: $pale-olive;
             }
@@ -505,7 +506,8 @@ $gas: lighten($dark-pink, 5%);
             height: 100%;
             width: 100%;
 
-            .axis,
+            .x-axis,
+            .y-axis,
             .label,
             .interactive-labels {
               display: none;
