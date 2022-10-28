@@ -2,21 +2,6 @@
 
 //colors
 // renewables = ["Solarthermie","Geothermie","Umweltthermie (Luft/Wasser)","Holz","Biogas/Biomethan","Sonstige Biomasse","Keine Energie (einschl. Passivhaus)"]
-$solarthermie: lighten($electric-blue, 30%);
-$geothermie: $marine-blue;
-$umweltthermie: $mint-green;
-$keine: darken($electric-blue, 20%);
-$erneuerbare: $electric-blue;
-$holz: $blue;
-$biomasse: darken($marine-blue, 10%); //lighten($dust-blue,20%);
-$biomethan: $dust-blue;
-// fossils = ["Gas","Strom","Öl","Fernwärme/Fernkälte","Sonstige Heizenergie"]
-$fernkaelte: $taz-orange;
-$fossile: $red;
-$strom: #ffd5c8;
-$öl: $pink;
-$heizenergie: $pale-olive;
-$gas: lighten($dark-pink, 5%);
 
 @mixin energy-buildings($color) {
   background-color: $color;
@@ -47,6 +32,24 @@ $gas: lighten($dark-pink, 5%);
 
   p {
     color: $color;
+  }
+}
+
+.chart {
+  text {
+    font-size: 12px;
+  }
+
+  foreignObject {
+    pointer-events: none;
+    overflow: visible;
+
+    div {
+      min-width: 20px;
+      p {
+        font-size: 10px;
+      }
+    }
   }
 }
 
@@ -174,7 +177,6 @@ $gas: lighten($dark-pink, 5%);
           .chart {
             overflow: visible;
             text {
-              font-size: 12px;
               filter: brightness(0.75);
               stroke: none;
             }
@@ -182,11 +184,27 @@ $gas: lighten($dark-pink, 5%);
             .main-x-axis,
             .axis,
             .mapped-axis,
-            .avgkm-marker,
             .bar-percentage-trip {
               line {
                 stroke: $default-text;
               }
+            }
+
+            foreignObject {
+              transform: translateY(-0.5%);
+
+              div {
+                width: 40px;
+                background-color: rgba(255, 255, 255, 0.9);
+                p {
+                  padding-left: 2px;
+                  margin: 0;
+                }
+              }
+            }
+
+            .no-icon {
+              display: none;
             }
 
             .axis {
@@ -222,6 +240,9 @@ $gas: lighten($dark-pink, 5%);
             &.second-value {
               color: $mint-green;
             }
+          }
+          &.footnote {
+            color: $default-text;
           }
         }
 
@@ -510,6 +531,9 @@ $gas: lighten($dark-pink, 5%);
             &.second-value {
               color: $taz-orange;
             }
+            &.footnote {
+              color: $default-text;
+            }
           }
         }
 
@@ -570,29 +594,63 @@ $gas: lighten($dark-pink, 5%);
             -webkit-transition: 0.5s;
             transition-timing-function: ease;
           }
-          .pie-controller {
-            cursor: pointer;
-          }
 
-          .detail-label {
-            cursor: pointer;
-            transform: translate(55px, 5px);
-            // opacity: 1;
-            // &.show-legend {
-            //   opacity: 0;
-            // }
+          .controls-container {
+            // transform: translate();
+            .pie-controller {
+              cursor: pointer;
+            }
+
+            .legend {
+              transform: translateY(2.5%);
+              .biotonne {
+                transform: translateX(10%);
+                text {
+                  transform: translateX(12%);
+                }
+              }
+
+              .gartenPark {
+                transform: translateX(16%);
+                text {
+                  transform: translateX(18%);
+                }
+              }
+
+              .highest-value {
+                transform: translateX(0%);
+                text {
+                  transform: translateX(2%);
+                }
+              }
+            }
+
+            .detail-label {
+              cursor: pointer;
+              transform: translateX(5%) translateY(5%);
+            }
+
+            .pie-controller {
+              transform: translateX(60%) translateY(-1.5%);
+            }
           }
 
           .pie,
           .legend {
-            transition: 0.5s;
-            -webkit-transition: 0.5s;
-            transition-timing-function: ease;
-            opacity: 0;
+            .biotonne,
+            .gartenPark {
+              transition: 0.5s;
+              -webkit-transition: 0.5s;
+              transition-timing-function: ease;
+              opacity: 0;
+            }
 
             &.show-pies,
             &.show-legend {
-              opacity: 1;
+              .biotonne,
+              .gartenPark {
+                opacity: 1;
+              }
             }
           }
 
@@ -630,10 +688,6 @@ $gas: lighten($dark-pink, 5%);
             }
           }
 
-          text {
-            font-size: 12px;
-          }
-
           .max {
             circle,
             text {
@@ -647,6 +701,7 @@ $gas: lighten($dark-pink, 5%);
 
           .y-axis {
             line {
+              stroke: $pale-olive;
               stroke-dasharray: none;
               stroke-width: 0.5;
             }
@@ -685,7 +740,7 @@ $gas: lighten($dark-pink, 5%);
         .legend {
           position: relative;
           .legend-inner {
-            font-size: 12px;
+            font-size: 14px;
             width: 100%;
 
             .legend-elements-container {
@@ -695,6 +750,7 @@ $gas: lighten($dark-pink, 5%);
               .legend-element {
                 cursor: pointer;
                 display: flex;
+                background-color: transparent;
 
                 &:hover {
                   p {
@@ -733,7 +789,20 @@ $gas: lighten($dark-pink, 5%);
 
           foreignObject {
             overflow: visible;
-
+            @include newbuildings-label-update(fossile, $fossile);
+            @include newbuildings-label-update(gas, $gas);
+            @include newbuildings-label-update(geothermie, $geothermie);
+            @include newbuildings-label-update(erneuerbare, $erneuerbare);
+            @include newbuildings-label-update(umweltthermie, $umweltthermie);
+            @include newbuildings-label-update(fernkälte, $fernkälte);
+            @include newbuildings-label-update(holz, $holz);
+            @include newbuildings-label-update(solarthermie, $solarthermie);
+            @include newbuildings-label-update(biomethan, $biomethan);
+            @include newbuildings-label-update(biomasse, $biomasse);
+            @include newbuildings-label-update(keine, $keine);
+            @include newbuildings-label-update(oel, $oel);
+            @include newbuildings-label-update(heizenergie, $heizenergie);
+            @include newbuildings-label-update(strom, $strom);
             div {
               border-radius: 2px;
               background-color: white;
@@ -752,75 +821,20 @@ $gas: lighten($dark-pink, 5%);
                 font-size: 11px;
                 margin: 0.1rem;
               }
-            }
-
-            .fossile,
-            div.fossile {
-              @include newbuildings-label($fossile);
-            }
-
-            .gas,
-            div.gas {
-              @include newbuildings-label($gas);
-            }
-
-            .geothermie,
-            div.geothermie {
-              @include newbuildings-label($geothermie);
-            }
-
-            .erneuerbare,
-            div.erneuerbare {
-              @include newbuildings-label($erneuerbare);
-              margin-bottom: 1rem;
-            }
-
-            .umweltthermie,
-            div.umweltthermie {
-              @include newbuildings-label($umweltthermie);
-            }
-
-            .fernkälte,
-            div.fernkälte {
-              @include newbuildings-label($fernkaelte);
-            }
-
-            .holz,
-            div.holz {
-              @include newbuildings-label($holz);
-            }
-
-            .solarthermie,
-            div.solarthermie {
-              @include newbuildings-label($solarthermie);
-            }
-
-            .biomethan,
-            div.biomethan {
-              @include newbuildings-label($biomethan);
-            }
-
-            .biomasse,
-            div.biomasse {
-              @include newbuildings-label($biomasse);
-            }
-
-            .keine,
-            div.keine {
-              @include newbuildings-label($keine);
-            }
-            .öl,
-            div.öl {
-              @include newbuildings-label($öl);
-            }
-            .heizenergie,
-            div.heizenergie {
-              @include newbuildings-label($heizenergie);
-            }
-
-            .strom,
-            div.strom {
-              @include newbuildings-label($strom);
+              @include newbuildings-label-update(fossile, $fossile);
+              @include newbuildings-label-update(gas, $gas);
+              @include newbuildings-label-update(geothermie, $geothermie);
+              @include newbuildings-label-update(erneuerbare, $erneuerbare);
+              @include newbuildings-label-update(umweltthermie, $umweltthermie);
+              @include newbuildings-label-update(fernkälte, $fernkälte);
+              @include newbuildings-label-update(holz, $holz);
+              @include newbuildings-label-update(solarthermie, $solarthermie);
+              @include newbuildings-label-update(biomethan, $biomethan);
+              @include newbuildings-label-update(biomasse, $biomasse);
+              @include newbuildings-label-update(keine, $keine);
+              @include newbuildings-label-update(oel, $oel);
+              @include newbuildings-label-update(heizenergie, $heizenergie);
+              @include newbuildings-label-update(strom, $strom);
             }
           }
 
@@ -897,7 +911,7 @@ $gas: lighten($dark-pink, 5%);
 
         .fernkälte,
         div.fernkälte {
-          @include energy-buildings($fernkaelte);
+          @include energy-buildings($fernkälte);
         }
 
         .holz,
@@ -936,7 +950,7 @@ $gas: lighten($dark-pink, 5%);
         }
         .öl,
         div.öl {
-          @include energy-buildings($öl);
+          @include energy-buildings($oel);
         }
         .heizenergie,
         div.heizenergie {
@@ -1133,7 +1147,8 @@ $gas: lighten($dark-pink, 5%);
         .legend {
           margin-top: 2rem;
           svg {
-            font-size: 12px;
+            height: 200px;
+            font-size: 14px;
           }
         }
 
