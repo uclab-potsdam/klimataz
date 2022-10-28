@@ -254,7 +254,7 @@ const Buildings = ({
                     } ${cleanKlassString(type.toLowerCase())}`}
                   >
                     <div className={`element-color ${cleanKlassString(type.toLowerCase())}`} />
-                    <p x="15" y="10" className={type === currentId ? 'selected' : ''}>
+                    <p className={type === currentId ? 'selected' : ''}>
                       {getLegendName(firstToUppercase(type))}
                     </p>
                   </div>
