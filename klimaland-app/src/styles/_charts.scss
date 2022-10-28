@@ -190,6 +190,12 @@
               }
             }
 
+            .bar-percentage-trip {
+              text {
+                fill: transparent;
+              }
+            }
+
             foreignObject {
               transform: translateY(-0.5%);
 

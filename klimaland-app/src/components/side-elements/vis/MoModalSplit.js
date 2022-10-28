@@ -28,8 +28,6 @@ const MoModalSplit = ({
   const isMobile = width <= 350 && mobileCheck(window);
   const mobileThreshold = isMobile ? 10 : 4;
   const tabletThreshold = width >= 600 && width <= 750 ? 55 : 65;
-  // let maxYValue = null;
-  const referenceXTicks = [...Array.from(Array(11)).keys()];
   const marginWidth = Math.round(width / 20);
   // const maxRangeHeight = Math.round(height / 10);
   const marginHeight = height - height / 8;
@@ -146,7 +144,7 @@ const MoModalSplit = ({
       // }
 
       const ticksIterations = [...Array.from(Array(rowIndex + 1)).keys()];
-      const ticks = [...Array.from(Array(10)).keys()];
+      const ticks = [...Array.from(Array(11)).keys()];
       const allTicks = [];
 
       ticksIterations.forEach((d) => {
@@ -222,23 +220,15 @@ const MoModalSplit = ({
                         </text>
                         <text
                           x={marginWidth}
-                          y="-10"
+                          y="-18"
                           style={{ fill: colors[t] }}
                           className="no-icon"
                         >
                           {getLegendName(trip.mode)}
                         </text>
-                        {referenceXTicks.map((tick, t) => {
-                          return (
-                            <g transform={`translate(${xScale(tick)}, 0)`} key={t}>
-                              <line x1="0" x2="0" y1="0" y2="5" />
-                            </g>
-                          );
-                        })}
                       </g>
                       <g className="paths">
                         <path d={trip.path} stroke={colors[t]} fill="none" strokeWidth="8" />
-
                         <g className="mapped-axis">
                           {trip.ticks.map((tick, t) => {
                             return (
@@ -267,11 +257,17 @@ const MoModalSplit = ({
               </g>
             }
           </g>
-          <g className="bar-percentage-trip" transform={`translate(${width - marginWidth}, -15)`}>
+          <g className="bar-percentage-trip" transform={`translate(${width - marginWidth}, -18)`}>
             {plotPercData.map((trip, t) => {
               return (
-                <g transform={`translate(0, ${(t + 0.7) * tabletThreshold})`} key={t}>
-                  <text x="0" y="0" fill={trip.fill} textAnchor="end">
+                <g transform={`translate(0, ${((t + 1) * height) / 6})`} key={t}>
+                  <text
+                    x="0"
+                    y="0"
+                    style={{ fill: trip.fill }}
+                    textAnchor="end"
+                    className="bar-percentage-trip-text"
+                  >
                     {formatNumber(trip.label)} % aller Trips
                   </text>
                 </g>
