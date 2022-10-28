@@ -868,11 +868,10 @@
           .axis {
             line {
               stroke: $default-text;
-              stroke-dasharray: 2px 2px;
             }
 
             .x-axis line {
-              stroke-dasharray: none;
+              stroke-dasharray: 5;
             }
 
             .year-marker {
