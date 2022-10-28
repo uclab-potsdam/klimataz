@@ -105,11 +105,16 @@
               }
             }
             .Ge-chart {
-              .legend-inner {
-                font-size: 12px;
-                .erneuerbare,
-                div.erneuerbare {
-                  margin-bottom: 0.5rem;
+              .newbuildings-energy {
+                h4 {
+                  margin-bottom: 0rem;
+                }
+                .legend-inner {
+                  font-size: 12px;
+                  .erneuerbare,
+                  div.erneuerbare {
+                    margin-bottom: 0.5rem;
+                  }
                 }
               }
             }
