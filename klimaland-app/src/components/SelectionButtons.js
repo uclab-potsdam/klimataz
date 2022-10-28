@@ -104,6 +104,7 @@ export default class SelectionButtons extends Component {
    * Alert if clicked on outside of element
    */
   handleClickOutside(event) {
+    if (this.props.postcardView) return;
     if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
       event.preventDefault();
       this.setState({ open: false });
