@@ -205,7 +205,11 @@ export default class Side extends Component {
     return (
       <CSSTransition in={Boolean(this.props.flipping)} timeout={100} classNames="side-transition">
         <div className="side-outer" onClick={(e) => this.openUpCard(e)}>
-          <div className="overlay-container">
+          <div
+            className={`overlay-container ${
+              !this.state.showViz ? 'overlay-container-back' : 'overlay-container-front'
+            }`}
+          >
             <div className="overlay-inner">
               <div className="postcard-title">
                 <div
@@ -287,7 +291,60 @@ export default class Side extends Component {
                         >
                           {this.props.toggleLabels.bl}
                         </text>
-                        <text className="mobile-toggle-label" x="150" y="17">
+                      </g>
+                      <g className="toggleResponsive" onClick={this.props.switchDataLevel}>
+                        <g
+                          transform={`translate(${this.props.toggleLabels.lk.length * 7 + 10}, 2)`}
+                        >
+                          <rect
+                            className="controller-bg"
+                            x="0"
+                            y="0"
+                            width="36"
+                            height="18"
+                            rx="10"
+                          />
+                          <rect
+                            className="toggle-rect"
+                            x={this.props.isLKData ? 0 : 18}
+                            y="0"
+                            width="18"
+                            height="18"
+                            rx="10"
+                            fill="#FFF9F1"
+                            stroke="#484848"
+                          />
+                        </g>
+                        <text x="0" y="15">
+                          {this.props.toggleLabels.lk}
+                        </text>
+                        <text x={this.props.toggleLabels.lk.length * 7 + 36 + 20} y="15">
+                          {this.props.toggleLabels.bl}
+                        </text>
+                      </g>
+                      <g className="togglePhone" onClick={this.props.switchDataLevel}>
+                        <g transform={`translate(2, 2)`}>
+                          <rect
+                            className="controller-bg"
+                            x="0"
+                            y="0"
+                            width="36"
+                            height="18"
+                            rx="10"
+                          />
+                          <rect
+                            className="toggle-rect"
+                            x={this.props.isLKData ? 0 : 18}
+                            y="0"
+                            width="18"
+                            height="18"
+                            rx="10"
+                            fill="#FFF9F1"
+                            stroke="#484848"
+                          />
+                        </g>
+
+                        <text x="50" y="17">
                           Daten wechseln
                         </text>
                       </g>
@@ -309,7 +366,9 @@ export default class Side extends Component {
               )}
             </div>
           </div>
-          <div className="side-inner">
+          <div
+            className={`side-inner ${!this.state.showViz ? 'side-inner-back' : 'side-inner-front'}`}
+          >
             {!this.state.showViz && this.props.isTopCard && (
               //TEXT
               <Details

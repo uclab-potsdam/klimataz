@@ -53,7 +53,7 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
     lastYear = lastDataPoint[0]['year'];
     lastValue = `${lastDataPoint[0]['value'].toFixed(1)}`;
 
-    const domainY = [0, max(currentData.data.map((d) => d.value))];
+    const domainY = [0, max(currentData.data.map((d) => d.value)) + 5];
     const domainX = extent(currentData.data.map((d) => +d.year));
     xScale = scaleLinear()
       .domain(domainX)
@@ -96,8 +96,8 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
 
         const pieShape = pieEls.map((d, i) => {
           const pie = arc()
-            .innerRadius(radius + mobileThreshold / 2)
-            .outerRadius(radius + mobileThreshold)
+            .innerRadius(radius + mobileThreshold / 2.5)
+            .outerRadius(radius + mobileThreshold - 10)
             .startAngle(d.startAngle)
             .endAngle(d.endAngle);
 
@@ -129,7 +129,12 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
       className={`biotonne-weight horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}
     >
       <div className="visualization-container" ref={targetRef}>
-        <svg className="abfall-biotonne chart" width="100%" height="100%">
+        <svg
+          className="abfall-biotonne chart"
+          width="100%"
+          height="100%"
+          preserveAspectRatio="xMaxYMin meet"
+        >
           <defs>
             <linearGradient id="MyGradient">
               <stop offset="50%" stopColor="#e6c9a2" />
@@ -179,35 +184,42 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
           })}
 
           {!isThumbnail && (
-            <g className="controls-container">
+            <g className="controls-container" transform={`translate(${marginWidth * 2}, 10)`}>
               <g
-                transform={`translate(${width - (marginWidth - tabletThreshold) * 3.5}, ${
-                  marginHeight / 2
-                })`}
+                // transform={
+                //   `translate(${width - (marginWidth - tabletThreshold) * 3.5}, ${marginHeight / 2
+                //   })`}
                 onClick={activatePies}
               >
-                <g className={`detail-label ${piesAreActive ? 'show-legend' : ''}`}>
-                  <text>Detailansicht</text>
-                </g>
                 <g
                   className={`legend ${piesAreActive ? 'show-legend' : ''}`}
                   onClick={activatePies}
                 >
-                  <circle className="biotonne" cx="-50" cy="0" r={radius} />
-                  <text x={radius - 45} y={radius / 2}>
-                    Biotonne
-                  </text>
-                  <circle className="gartenPark" cx="-150" cy="0" r={radius} />
-                  <text x={radius - 145} y={radius / 2}>
-                    Gartenabfall
-                  </text>
+                  <g className="biotonne">
+                    <circle className="biotonne" cx="0" cy="0" r={radius} />
+                    <text x="0" y={radius / 2}>
+                      Biotonne
+                    </text>
+                  </g>
+                  <g className="gartenPark">
+                    <circle className="gartenPark" cx="0" cy="0" r={radius} />
+                    <text x="0" y={radius / 2}>
+                      Gartenabfall
+                    </text>
+                  </g>
+                  <g className="highest-value">
+                    <circle className="highestValue" cx="0" cy="0" r={radius} />
+                    <text x="0" y={radius / 2}>
+                      Höchster Wert
+                    </text>
+                  </g>
                 </g>
-                <g className="pie-controller" transform="translate(25, -10)" onClick={activatePies}>
+                <g className="pie-controller" onClick={activatePies}>
                   <g>
-                    <g>
+                    <g className="pie-icon">
                       <path
                         d="M18.5955 19.2306L18.95 19.5833L19.3027 19.2288C21.3505 17.1703 22.5 14.385 22.5 11.4812C22.5 5.41539 17.5836 0.499023 11.5178 0.499023V0.999023H11.0178V4.37493V4.87493H11.5178C13.2643 4.87493 14.9402 5.56693 16.1784 6.79878C18.7643 9.37216 18.7738 13.5557 16.2003 16.1418L15.8476 16.4962L16.202 16.8489L18.5955 19.2306Z"
-                        fill={piesAreActive ? '#f6a119' : '#FFF9F1'}
+                        fill={piesAreActive ? '#1A8579' : '#FFF9F1'}
                         stroke="#484848"
                       />
                       <path
@@ -215,7 +227,10 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
                         fill={piesAreActive ? '#5ea5a1' : '#FFF9F1'}
                         stroke="#424242"
                       />
-                      <circle className="pie-button" cx="11" cy="11" r={radius + 3} />
+                      <circle className="pie-button" cx="0" cy="0" r={radius + 3} />
+                    </g>
+                    <g className={`detail-label ${piesAreActive ? 'show-legend' : ''}`}>
+                      <text>Detailansicht</text>
                     </g>
                   </g>
                 </g>
@@ -240,7 +255,7 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
             Im Jahr {lastYear} wurden in <span className="locationLabel">{locationLabel}</span> pro
             Kopf <span>{formatNumber(lastValue)} kg</span> organische Abfälle korrekt in der
             Biotonne oder als Gartenabfälle entsorgt und damit CO<sub>2</sub>-Emissionen verringert.{' '}
-            {footnote}
+            <span className="footnote">{footnote}</span>
             {footnote !== '' && '.'}
           </h4>
         </div>

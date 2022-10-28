@@ -4,8 +4,11 @@
 
 // variables method based on github.com/eduardoboucas/include-media
 
-/*Tablet - Desktop*/
-@include media('>tablet', '<desktop') {
+/*smaller than desktop*/
+@include media('<desktop') {
+  .main-container {
+    background-color: blanchedalmond;
+  }
   .card-active {
     .side-outer {
       .overlay-container {
@@ -22,7 +25,7 @@
     }
   }
 
-  .chart-container {
+  <<<<<<< HEAD ======= .chart-container {
     .svg-container {
       &.En-chart {
         .energy-industry,
@@ -120,7 +123,7 @@
     }
   }
 
-  .indicators-iframe {
+  >>>>>>>origin/main .indicators-iframe {
     .main-container {
       .selection-container {
         .selector {
@@ -223,116 +226,110 @@
   }
 }
 
-/* Phones - Tablet */
-@include media('>phone', '<=tablet') {
-  .chart-container {
-    .svg-container {
-      .description {
-        .title {
-          margin: 0 auto !important;
-
-          h4 {
-            padding-bottom: 0.5rem !important;
-          }
+/*smaller than tablet*/
+@include media('<tablet') {
+  .indicators-iframe {
+    .main-container {
+      background-color: green;
+      .card-collection {
+        .carousel-container {
+          margin-top: 1rem;
         }
       }
 
-      &.En-chart {
-        .primary-energy {
-          .description {
-            height: 15%;
-          }
-          .visualization-container {
-            height: 80%;
-          }
+      .sources-container {
+        &.open {
+          width: 80%;
+          transform: translate(37%, 50%);
+          -webkit-transform: translate(37%, 50%);
+        }
+        .sources-button {
+          right: 1.5rem;
         }
 
-        .energy-industry {
-          .description {
-            height: 15%;
-            .title {
-              h4 {
-                font-size: 0.9rem;
-              }
-            }
-          }
-          .visualization-container {
-            height: 80%;
-          }
+        .info-text-label {
+          right: 1rem;
         }
       }
+    }
+  }
+}
 
-      &.La-chart {
-        .animal-count {
-          .description {
-            height: 25%;
-          }
+/* smaller than minitablet */
+@include media('<minitablet') {
+  .card {
+    &-ordered {
+      //original ratio changed for styling
+      width: $thumbnail-minitablet-postcardwidth;
+      height: calc($thumbnail-minitablet-postcardwidth/1.5);
+    }
+    &.card-active {
+      .overlay-container {
+        .overlay-inner {
+          text-align: center;
+          position: relative;
+          z-index: 1;
 
-          .visualization-container {
-            height: 75%;
-            .label-container {
-              transform: translateY(28px);
-              -webkit-transform: translateY(28px);
-            }
-
-            .arcs,
-            .x-axis-container {
-              transform: translateY(-60px);
-              -webkit-transform: translateY(-60px);
-
-              .animal-label {
-                transform: translateY(20px);
-                -webkit-transform: translateY(20px);
-                font-size: 14px;
-              }
-            }
-
-            .axis {
-              .year-label {
-                font-size: 12px;
-                transform: translateX(-20px);
-                -webkit-transform: translateX(-20px);
-              }
-            }
-
-            .legend {
-              transform: translateY(90%);
-              -webkit-transform: translateY(92%);
-              .label-item {
-                transform: translate(20px, -5px);
-                -webkit-transform: translate(20px, -5px);
-
-                &.vorherigeZaehlung {
-                  transform: translate(-220px, 15px);
-                  -webkit-transform: translate(-220px, 15px);
-                }
-              }
-            }
-          }
-        }
-
-        .animal-density {
-          .description {
-            height: 45%;
-            position: absolute;
-            bottom: 0;
-            .caption {
-              font-size: 12px;
-              margin-right: 1rem;
-              transform: translate(-5px, 35px);
-              -webkit-transform: translate(-5px, 35px);
-            }
-
-            .legend {
-              transform: translate(-5px, -110px);
-              -webkit-transform: translate(-5px, -110px);
-
-              .legend-item {
+          .section-thumb {
+            .indicator-ranking {
+              p {
                 font-size: 10px;
-                &.unter-label {
-                  transform: translate(140px, 0px);
-                  -webkit-transform: translate(140px, 0px);
+              }
+            }
+          }
+
+          .postcard-title {
+            max-width: 50%;
+            width: 50%;
+            overflow: hidden;
+
+            .section-title {
+              text-align: left;
+              max-width: 100%;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+            }
+            .postcard-miniature {
+              .word-art-title {
+                display: none;
+              }
+            }
+          }
+
+          .button-toggle-container {
+            margin-left: 0;
+            svg {
+              margin-left: 0;
+              .toggle {
+                g {
+                  transform: translate(5px, 2px);
                 }
+              }
+
+              text {
+                display: none;
+              }
+
+              .mobile-toggle-label {
+                transform: translate(-100px, 0px);
+                display: block;
+                font-size: 12px;
+                margin-left: 0.5rem;
+              }
+            }
+          }
+
+          .button-download {
+            width: 20%;
+
+            .download-label {
+              display: none;
+            }
+
+            &:hover {
+              .download-label {
+                opacity: 0;
               }
             }
           }
@@ -764,15 +761,124 @@
         }
       }
     }
-    .side-inner {
-      clip-path: circle(50%);
-      transform: translateY(3rem);
+  }
+
+  .chart-container {
+    .svg-container {
+      &.En-chart {
+        .energy-industry,
+        .primary-energy {
+          .visualization-container {
+            height: 80%;
+          }
+        }
+      }
+
+      &.Mo-chart {
+        .car-density {
+          //   .legend {
+          //     background-image: url('../img/legends/MoCarDensity-tablet.svg');
+          //     background-repeat: no-repeat;
+          //     position: relative;
+          //     width: 50%;
+          //     margin: 1rem;
+          //   }
+
+          .visualization-container {
+            .active-chart {
+              transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+              -webkit-transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
+            }
+          }
+        }
+      }
+
+      &.Ge-chart {
+        .description {
+          .caption {
+            p {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+
+      &.Ab-chart {
+        .biotonne-weight {
+          .visualization-container {
+            height: 75%;
+
+            .chart {
+              .controls-container {
+                display: none;
+                .pie-controller {
+                  transform: scale(0.8) translateX(80px);
+                }
+              }
+            }
+          }
+          .description {
+            .title {
+              h3 {
+                font-size: 16px;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+              }
+            }
+          }
+        }
+      }
+
+      &.La-chart {
+        .animal-density {
+          .description {
+            .caption {
+              p {
+                font-size: 12px;
+              }
+            }
+            .legend {
+              margin-top: 0rem;
+            }
+          }
+        }
+      }
+
+      &.Ge-chart {
+        .avg-heating {
+          .visualization-container {
+            svg {
+              .non-clipped-elements {
+                text {
+                  transform: translateY(-5px);
+                  font-size: 9.5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .card-container {
+    //comparison view
+    &.stacked {
+      &.twocards {
+        .card {
+          &-ordered {
+            //original ratio changed for styling
+            width: calc($thumbnail-postcardwidth + 15vw);
+            height: calc(($thumbnail-postcardwidth + 15vw) / 1.5);
+          }
+        }
+      }
     }
   }
 }
 
-/* Phones - Minitablet */
-@include media('>phone', '<=minitablet') {
+// smaller than short read
+@include media('<shortread') {
   body {
     h3 {
       font-size: 16px;
@@ -782,13 +888,9 @@
       font-size: 14px;
     }
   }
-
   .indicators-iframe {
-    //max-width: 375px;
-    margin-right: 5.55%;
-    margin-left: 5.55%;
-
     .main-container {
+      background-color: coral;
       .word-art-title {
         width: 100%;
         bottom: 1rem;
@@ -832,10 +934,15 @@
       }
 
       .card-collection {
+        width: 100%;
+        align-content: flex-start;
+
+        .carousel-container {
+          margin-top: 3.5rem;
+        }
+
         .card-container {
-          .carousel-container {
-            margin-top: 3.5rem;
-          }
+          align-content: flex-start;
 
           &.carousel {
             align-content: center;
@@ -849,6 +956,7 @@
             &.default {
               .card {
                 &-ordered {
+                  margin: 0;
                   width: calc($portait-postcardwidth/2.3);
                   height: calc($portait-postcardwidth/1.8);
                 }
@@ -859,8 +967,24 @@
       }
 
       .sources-container {
+        width: 80%;
+        .sources-button {
+          width: 25px;
+          height: 25px;
+          right: 1rem;
+          bottom: 1rem;
+          .info-i {
+            font-size: 0.75rem;
+          }
+        }
+
+        .info-text-label {
+          display: none;
+        }
         &.open {
           width: 80%;
+          transform: translate(0);
+          -webkit-transform: translate(0);
         }
 
         .sources-text-container {
@@ -923,190 +1047,364 @@
           }
         }
       }
-
-      .sources-container {
-        width: 80%;
-        .sources-button {
-          width: 25px;
-          height: 25px;
-          right: 1rem;
-          bottom: 1rem;
-          .info-i {
-            font-size: 0.75rem;
-          }
-        }
-
-        .info-text-label {
-          display: none;
-        }
-      }
-    }
-  }
-
-  .card {
-    &-ordered {
-      z-index: 0;
-      //margin: -10px 0.5rem -3px 1rem;
-    }
-  }
-}
-
-/*Mini Tablet - Tablet*/
-@include media('>minitablet', '<=tablet') {
-  .indicators-iframe {
-    .main-container {
-      .card-collection {
-        .carousel-container {
-          margin-top: 1rem;
-        }
-
-        .card-container {
-          &.stacked {
-            //comparison view
-            &.twocards {
-              .card {
-                &-ordered {
-                  width: calc($portait-postcardwidth/2.3);
-                  height: calc($portait-postcardwidth/1.8);
-                }
-              }
-            }
-            &.default {
-              .card {
-                &-ordered {
-                  width: calc($portait-postcardwidth/2.3);
-                  height: calc($portait-postcardwidth/1.8);
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .sources-container {
-        &.open {
-          width: 80%;
-          transform: translate(37%, 50%);
-          -webkit-transform: translate(37%, 50%);
-        }
-        .sources-button {
-          right: 1.5rem;
-        }
-
-        .info-text-label {
-          right: 1rem;
-        }
-      }
     }
   }
   .card {
+    //thumbnail
     &-ordered {
       //original ratio changed for styling
-      width: calc($portrait-minitablet-postcardwidth/2.3);
-      height: calc($portrait-minitablet-postcardwidth/1.8);
-    }
-  }
-
-  .side-container {
-    width: calc($portait-postcardheight/1.5);
-    height: calc($portait-postcardheight);
-
-    .side-outer {
-      .overlay-container {
-        .overlay-inner {
-          .postcard-title {
-            max-width: 50%;
-            width: 50%;
-            overflow: hidden;
-            .section-title {
-              text-align: left;
-              max-width: 100%;
-              text-overflow: ellipsis;
-              overflow: hidden;
-              white-space: nowrap;
-            }
-            .postcard-miniature {
-              display: none;
-            }
-          }
-
-          .button-toggle-container {
-            svg {
-              margin-left: 0;
-
-              .toggle {
-                g {
-                  transform: translate(5px, 2px);
-                }
-              }
-
-              text {
-                display: none;
-              }
-
-              .mobile-toggle-label {
-                transform: translate(-100px, 0px);
-                display: block;
-                font-size: 12px;
-              }
-            }
-          }
-        }
-      }
+      width: calc($portrait-minitablet-postcardwidth/2.0);
+      height: calc($portrait-minitablet-postcardwidth/1.5);
     }
   }
 
   .chart-container {
     .svg-container {
-      &.Mo-chart {
-        .car-density {
-          .legend {
-            background-image: url('../img/legends/MoCarDensity-mobile.svg');
-            background-repeat: no-repeat;
-            position: relative;
-            width: 50%;
-            margin: 1rem;
-          }
+      .description {
+        .title {
+          margin: 0 auto !important;
 
-          // .visualization-container {
-          //     .active-chart {
-          //             transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
-          //             -webkit-transform: translate(-20px, -10px) skew(-17deg, 0deg) scale(0.9);
-          //         }
-          // }
+          h4 {
+            padding-bottom: 0.5rem !important;
+          }
         }
       }
+
       &.En-chart {
+        .primary-energy {
+          .description {
+            height: 15%;
+          }
+          .visualization-container {
+            height: 80%;
+          }
+        }
+
         .energy-industry {
           .description {
+            height: 15%;
             .title {
               h4 {
                 font-size: 0.9rem;
               }
             }
           }
+          .visualization-container {
+            height: 80%;
+          }
+        }
+      }
+
+      &.La-chart {
+        .animal-count {
+          .description {
+            height: 25%;
+          }
+
+          .visualization-container {
+            height: 75%;
+            .label-container {
+              transform: translateY(28px);
+              -webkit-transform: translateY(28px);
+            }
+
+            .arcs,
+            .x-axis-container {
+              transform: translateY(-60px);
+              -webkit-transform: translateY(-60px);
+
+              .animal-label {
+                transform: translateY(20px);
+                -webkit-transform: translateY(20px);
+                font-size: 14px;
+              }
+            }
+
+            .axis {
+              .year-label {
+                font-size: 12px;
+                transform: translateX(-20px);
+                -webkit-transform: translateX(-20px);
+              }
+            }
+
+            .legend {
+              transform: translateY(90%);
+              -webkit-transform: translateY(92%);
+              .label-item {
+                transform: translate(20px, -5px);
+                -webkit-transform: translate(20px, -5px);
+
+                &.vorherigeZaehlung {
+                  transform: translate(-220px, 15px);
+                  -webkit-transform: translate(-220px, 15px);
+                }
+              }
+            }
+          }
+        }
+
+        .animal-density {
+          .description {
+            height: 45%;
+            position: absolute;
+            bottom: 0;
+            .caption {
+              font-size: 12px;
+              margin-right: 1rem;
+              transform: translate(-5px, 35px);
+              -webkit-transform: translate(-5px, 35px);
+            }
+
+            .legend {
+              transform: translate(-5px, -110px);
+              -webkit-transform: translate(-5px, -110px);
+
+              .legend-item {
+                font-size: 10px;
+                &.unter-label {
+                  transform: translate(140px, 0px);
+                  -webkit-transform: translate(140px, 0px);
+                }
+              }
+            }
+          }
+
+          .visualization-container {
+            height: 55%;
+            .chart {
+              transform: translateY(-30px);
+              -webkit-transform: translateY(-30px);
+              .bars {
+                transform: translateY(10px);
+                .year-label {
+                  font-size: 14px;
+                }
+              }
+
+              .labelText {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+
+      &.Mo-chart {
+        .car-density {
+          .description {
+            height: 20%;
+            position: absolute;
+            bottom: 1rem;
+
+            .title {
+              margin: 0 auto;
+              h4 {
+                padding-bottom: 0.5rem;
+              }
+            }
+
+            .legend {
+              display: none;
+            }
+          }
+
+          .visualization-container {
+            transform: scale(0.9);
+            -webkit-transform: scale(0.9);
+
+            .chart {
+              &.active-chart {
+                transform: skew(0deg, 0deg) translate(10px, -15px);
+                -webkit-transform: skew(0deg, 0deg) translate(10px, -15px);
+              }
+
+              &.thumbnail-chart {
+                transform: skew(0deg, 0deg);
+                -webkit-transform: skew(0deg, 0deg);
+                .cars-container {
+                  transform: translate(20px, 0px);
+                  -webkit-transform: translate(20px, 0px);
+                }
+              }
+            }
+          }
+
+          &.is-thumbnail {
+            .description {
+              display: none;
+            }
+
+            .visualization-container {
+              height: 100%;
+            }
+          }
+        }
+        .modal-split {
+          .description {
+            height: 20%;
+          }
+          .visualization-container {
+            height: 80%;
+            .chart {
+              .bar-percentage-trip {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      &.Ab-chart {
+        .biotonne-weight {
+          .description {
+            height: 15%;
+          }
+          .visualization-container {
+            height: 70%;
+
+            .chart {
+              text {
+                font-size: 10px;
+
+                &.odd-year {
+                  visibility: hidden;
+                }
+              }
+            }
+
+            .y-axis {
+              line {
+                stroke: rgb(217, 203, 181);
+              }
+            }
+
+            .controls-container {
+              visibility: hidden;
+            }
+          }
+        }
+      }
+
+      &.Ge-chart {
+        .newbuildings-energy {
+          .description {
+            .title {
+              margin: 0 auto;
+              h4 {
+                padding-bottom: 0.5rem;
+              }
+            }
+
+            height: 30%;
+            position: absolute;
+            bottom: 0;
+
+            .caption {
+              display: none;
+            }
+
+            .legend {
+              // position: absolute;
+              // bottom: 0;
+              height: 19%;
+              width: 95%;
+
+              .legend-inner {
+                font-size: 12px;
+                // position: absolute;
+                width: 100%;
+                bottom: 1rem;
+
+                .legend-elements-container {
+                  display: flex;
+                  flex-direction: row;
+                  flex-wrap: wrap;
+
+                  .legend-element {
+                    display: flex;
+                    flex: 0 1 auto;
+                    margin-left: 10px;
+
+                    .element-color {
+                      align-self: center;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .visualization-container {
+            height: 70%;
+            .chart {
+              transform: translate(0, 10px);
+            }
+          }
+          &.is-thumbnail {
+            .description {
+              display: none;
+            }
+          }
+
+          .erneuerbare,
+          div.erneuerbare {
+            margin-bottom: 0;
+          }
+        }
+
+        .avg-heating {
+          .description {
+            height: 15%;
+          }
+
+          .visualization-container {
+            height: 85%;
+            transform: translateY(-15px);
+            -webkit-transform: translateY(-15px);
+
+            .chart {
+              .non-clipped-elements {
+                transform: translate(-28px, 0);
+
+                .measure-label {
+                  transform: translate(-75%, 0);
+                }
+              }
+            }
+          }
         }
       }
     }
   }
+
+  //postcardview
+  .side-container {
+    width: calc($portait-postcardheight/1.5);
+    height: calc($portait-postcardheight);
+  }
 }
 
-/* Phone - Mini Tablet*/
-@include media('>=phone', '<largephone') {
-  // body {
-  //     background-color: pink;
-  // }
-
+// smaller than phone
+@include media('<largephone') {
   .indicators-iframe {
+    //max-width: 375px;
+    margin-right: 5.55%;
+    margin-left: 5.55%;
+
     .main-container {
+      background-color: pink;
       .card-collection {
         margin-top: -10px;
         height: 100vh;
-        width: 95%;
         margin: 0 auto;
+        width: 95%;
+
+        .carousel-container {
+          margin-top: 5rem;
+        }
         .card-container {
           height: 100vh;
-          align-content: flex-start;
           justify-content: left;
           padding-left: 0.5rem;
         }
@@ -1126,33 +1424,11 @@
     width: $portait-postcardwidth;
     height: calc($portait-postcardwidth * 1.5);
   }
-}
 
-@include media('>=largephone', '<minitablet') {
-  .indicators-iframe {
-    .main-container {
-      .card-collection {
-        .card-container {
-          align-content: flex-start;
-        }
-        .carousel-container {
-          margin-top: 3.5rem;
-        }
-      }
-    }
-  }
-  .card {
-    //thumbnail
-    &-ordered {
-      //original ratio changed for styling
-      width: calc($portrait-minitablet-postcardwidth/2.0);
-      height: calc($portrait-minitablet-postcardwidth/1.5);
-    }
-  }
-
-  //postcardview
-  .side-container {
-    width: calc($portait-postcardheight/1.5);
-    height: calc($portait-postcardheight);
-  }
+  //   .card {
+  //     &-ordered {
+  //       z-index: 0;
+  //       //margin: -10px 0.5rem -3px 1rem;
+  //     }
+  //   }
 }

@@ -1,13 +1,15 @@
 @import 'node_modules/include-media/dist/_include-media.scss';
 //fonts
 @font-face {
-  font-family: AktivGrotesk_bold;
+  font-family: AktivGrotesk;
   src: url('../fonts/aktiv/AktivGrotesk_Md.ttf');
+  font-weight: 600;
 }
 
 @font-face {
   font-family: AktivGrotesk;
   src: url('../fonts/aktiv/AktivGrotesk_Rg.ttf');
+  font-weight: 400;
 }
 
 @font-face {
@@ -18,11 +20,18 @@
 @font-face {
   font-family: Chivo;
   src: url('../fonts/chivo/chivo_regular.ttf');
+  font-weight: 400;
 }
 @font-face {
   font-family: Chivo;
   src: url('../fonts/chivo/chivo_bold.ttf');
-  font-weight: bold;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Chivo;
+  src: url('../fonts/chivo/Chivo-Medium.ttf');
+  font-weight: 600;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap');
@@ -32,7 +41,9 @@
 $breakpoints: (
   phone: 320px,
   largephone: 400px,
+  shortread: 516px,
   /* iPhone 13 Pro, Galaxy S20, etc.*/ minitablet: 576px,
+  schwerpunkt: 624px,
   /* iPad Mini and small tablets on portrait*/ tablet: 768px,
   /* iPad Pro and small tablets on landscape*/ desktop: 940px,
 );
@@ -63,9 +74,30 @@ $mint-green: #1a8579;
 
 $default-text: #484848;
 
+//new buildings color
+$solarthermie: lighten($electric-blue, 30%);
+$geothermie: $marine-blue;
+$umweltthermie: $mint-green;
+$keine: darken($electric-blue, 20%);
+$erneuerbare: $electric-blue;
+$holz: $blue;
+$biomasse: darken($marine-blue, 10%); //lighten($dust-blue,20%);
+$biomethan: $dust-blue;
+// fossils = ["Gas","Strom","Öl","Fernwärme/Fernkälte","Sonstige Heizenergie"]
+$fernkälte: $taz-orange;
+$fossile: $red;
+$strom: #ffd5c8;
+$oel: $pink;
+$heizenergie: $pale-olive;
+$gas: lighten($dark-pink, 5%);
+
 //size variables
 $postcardview-postcardwidth: 80vw;
 $thumbnail-postcardwidth: 30vw;
+$tablet-postcardview-postcardwidth: 83vw;
+$minitablet-postcardview-postcardwidth: 87vw;
+$thumbnail-minitablet-postcardwidth: 40vw;
+$schwerpunkt-postcardview-postcardwidth: 90vw;
 $portait-postcardwidth: 85vw;
 $portrait-minitablet-postcardwidth: 65vw;
 $portait-postcardheight: 85vh;
@@ -254,6 +286,18 @@ text {
 @mixin portrait-postcard {
 }
 
+@mixin newbuildings-label-update($energy, $color) {
+  $class: unquote($energy);
+  .#{$class} {
+    border-color: $color;
+    box-shadow: 2px 2px 0px darken($color, 10%);
+
+    p {
+      color: $color;
+    }
+  }
+}
+
 // reusable layouts for vis
 @mixin vertical-layout {
   display: inline-flex;
@@ -263,7 +307,7 @@ text {
     margin-left: 1rem;
 
     .title {
-      border-bottom: 1px solid $default-text;
+      // border-bottom: 1px solid $default-text;
 
       h4 {
         padding: 0rem 0.5rem;
@@ -282,7 +326,7 @@ text {
     .caption {
       margin-left: 0.5rem;
       p {
-        font-size: 12px;
+        font-size: 14px;
       }
     }
 
@@ -330,14 +374,15 @@ text {
     height: 20%;
 
     .title {
-      width: 95%;
+      width: 98%;
       border-top: 1px solid $default-text;
-      margin: 0rem 1rem 0.5rem 1rem;
+      margin: 0 auto;
 
       h4 {
         margin: 0;
         padding-top: 0.5rem;
         padding-bottom: 1rem;
+        width: 88%;
       }
 
       span {
@@ -361,11 +406,11 @@ text {
 }
 
 @mixin responsive-layout {
-  @include media('>phone', '<=tablet') {
+  @include media('>phone', '<shortread') {
     @include horizontal-bottom-layout;
   }
 
-  @include media('>tablet') {
+  @include media('>=shortread') {
     @include vertical-layout;
   }
 }

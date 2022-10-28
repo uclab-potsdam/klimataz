@@ -17,14 +17,13 @@ button {
     position: absolute;
     transform: translate3d(0, 0, 0);
     -webkit-transform: translate3d(0, 0, 0);
-    right: 0rem;
+    right: -0.5rem;
+    bottom: 0.5rem;
     z-index: 4;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     margin-left: auto;
-    // background-color: pink;
-    //height: 10%;
 
     &:hover {
       .flip-label {
@@ -70,7 +69,7 @@ button,
 h1 {
   @include title;
   margin-top: 0;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 h2,
@@ -79,7 +78,7 @@ h4,
 h5,
 h6 {
   @include title;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 ul {
@@ -87,6 +86,10 @@ ul {
   ol {
     padding-left: 0.5rem;
   }
+}
+
+text {
+  fill: $default-text;
 }
 
 code {
@@ -117,6 +120,9 @@ code {
     height: 100%;
     position: relative;
 
+    .titleArtHidden {
+      display: none;
+    }
     .word-art-title {
       @include wordart-style-1;
       pointer-events: none;
@@ -181,12 +187,12 @@ code {
       z-index: 2;
 
       .selector {
-        width: 30%;
+        width: 50%;
         margin: 1rem;
 
         &.section {
           &.mode-comparison {
-            width: 20%;
+            width: 25%;
           }
         }
 
@@ -232,29 +238,11 @@ code {
       right: 0;
       top: 0;
 
-      .button-toggle-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        .toggle {
-          rect {
-            transition: 0.5s;
-            -webkit-transition: 0.5s;
-            transition-timing-function: ease;
-          }
-
-          .controller-bg {
-            fill: url(#MyGradient);
-            stroke: #484848;
-          }
-        }
-      }
-
       .button-switch-container {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+
         height: 20%;
 
         .inner-button {
@@ -281,6 +269,7 @@ code {
             right: 0rem;
             bottom: 0;
             text-align: right;
+            width: 100%;
 
             .switch-preview {
               float: right;
@@ -332,11 +321,20 @@ code {
           .button {
             margin-bottom: auto;
           }
+          .switch {
+            img {
+              // width: 30%;
+              width: 25px;
+              height: auto;
+              // margin: 5px 0px 0px 50%;
+              top: 0;
+            }
+          }
         }
       }
 
       .inner-button {
-        // width: 100%;
+        width: 100%;
         height: 50%;
 
         .close {
@@ -347,16 +345,6 @@ code {
 
           img {
             width: 70%;
-          }
-        }
-
-        .switch {
-          img {
-            // width: 30%;
-            width: 25px;
-            height: auto;
-            // margin: 5px 0px 0px 50%;
-            top: 0;
           }
         }
       }
@@ -487,20 +475,22 @@ code {
 
           .sources-linklist {
             & p {
-              font-size: 0.75rem;
+              font-size: 1rem;
               margin: 0.25rem 0rem;
-              text-indent: -12px;
-              padding-left: 12px;
+              text-indent: -1rem;
+              padding-left: 1rem;
             }
           }
 
           & h3 {
             margin: 0.5rem 0rem;
+            font-weight: 700;
           }
 
           & h4 {
             margin-top: 2rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
           }
 
           & p {
@@ -630,4 +620,5 @@ code {
   }
 }
 
-@import '_responsive.scss';
+// @import '_responsive.scss';
+@import '_responsivenew.scss';
