@@ -74,7 +74,7 @@ const GeAvgHEating = ({
     stacks.forEach((bar, b) => {
       const data = bar[0];
       const label = data.data[bar.key];
-      const y1 = b !== 0 ? yScale(data.data[prevClass]) : 25;
+      const y1 = b !== 0 ? yScale(data.data[prevClass]) : yScale(0);
       const y2 = yScale(data.data[bar.key]);
       classesData.push({
         klass: bar.key,
