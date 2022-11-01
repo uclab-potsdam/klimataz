@@ -28,7 +28,7 @@ const GeAvgHEating = ({
   const barsSize = isMobile ? width / 50 : width / 40;
   const mobileThreshold = isMobile ? 25 : 0;
   const marginWidth = Math.round(width / 25);
-  const marginHeight = Math.round(height / 10);
+  const marginHeight = Math.round(height / 15);
   const energyClasses = { 'A+': 25, A: 50, B: 100, C: 125, D: 150, E: 200, F: 225, G: 250 };
   const classesKeys = Object.keys(energyClasses);
   const classesColors = [
@@ -61,7 +61,9 @@ const GeAvgHEating = ({
         return +d.year;
       })
     );
-    yScale = scaleLinear().domain([250, 0]).range([height, marginHeight]);
+    yScale = scaleLinear()
+      .domain([250, 0])
+      .range([height - marginHeight, marginHeight]);
     xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth + mobileThreshold, width - (marginWidth * 4.5 + mobileThreshold / 2)]);
@@ -78,7 +80,8 @@ const GeAvgHEating = ({
         klass: bar.key,
         y1,
         y2,
-        yMid: b !== 0 ? height - (y1 + y2) / 2 + 5 : height - y2 + y2 / 3,
+        yMid:
+          b !== 0 ? height - marginHeight - (y1 + y2) / 2 + 5 : height - marginHeight - y2 + y2 / 3,
         fill: colorScale(bar.key),
         label,
         keyColor: bar.key === 'A' || bar.key === 'A+' || bar.key === 'B' ? 'white' : '#484848',
@@ -118,7 +121,7 @@ const GeAvgHEating = ({
               x={marginWidth}
               y="0%"
               width={width - marginWidth * 2}
-              height={height - marginHeight}
+              height={height - marginHeight - marginHeight}
               stroke="black"
               rx="10"
             />
@@ -131,7 +134,7 @@ const GeAvgHEating = ({
                     <g key={k}>
                       <rect
                         x={marginWidth}
-                        y={height - klass.y2}
+                        y={height - marginHeight - klass.y2}
                         width="30"
                         height={klass.y2 - klass.y1}
                         fill={klass.fill}
@@ -146,7 +149,7 @@ const GeAvgHEating = ({
                       </text>
                       <text
                         x={width - marginWidth - 5}
-                        y={height - klass.y2 + 15}
+                        y={height - marginHeight - klass.y2 + 15}
                         textAnchor="end"
                         fill="#484848"
                       >
@@ -158,7 +161,12 @@ const GeAvgHEating = ({
               </g>
               {classesKeys.map((klass, k) => {
                 return (
-                  <g key={k} transform={`translate(0, ${height - yScale(energyClasses[klass])})`}>
+                  <g
+                    key={k}
+                    transform={`translate(0, ${
+                      height - marginHeight - yScale(energyClasses[klass])
+                    })`}
+                  >
                     <line x1="0" x2={width} y1="0" y2="0" stroke="#484848" />
                   </g>
                 );
@@ -178,7 +186,7 @@ const GeAvgHEating = ({
                   >
                     <rect
                       x="0.5"
-                      y={height - bar.kwh}
+                      y={height - marginHeight - bar.kwh}
                       height={bar.kwh - marginHeight}
                       width={barsSize - 1}
                       fill={bar.fill}
@@ -187,14 +195,14 @@ const GeAvgHEating = ({
                     />
                     <rect
                       x="0"
-                      y={height - bar.kwh - 5}
+                      y={height - marginHeight - bar.kwh - 5}
                       width={barsSize}
                       height="10"
                       fill={bar.fill}
                       rx="5"
                     />
                     <g
-                      transform={`translate(-25, ${height - bar.kwh - 30})`}
+                      transform={`translate(-25, ${height - marginHeight - bar.kwh - 30})`}
                       className="interactive-labels"
                     >
                       <rect x="-1" y="-11" width="70" height="15" rx="1" stroke={bar.fill} />
@@ -210,7 +218,7 @@ const GeAvgHEating = ({
               x={marginWidth + 0.5}
               y="0.5"
               width={width - marginWidth * 2 - 1}
-              height={height - marginHeight - 1}
+              height={height - marginHeight - marginHeight - 1}
               stroke="#484848"
               fill="none"
               rx="10"
@@ -222,9 +230,11 @@ const GeAvgHEating = ({
                 <g key={l} transform={`translate(${label.year + 50}, 0)`}>
                   <text
                     x="0"
-                    y={height - marginHeight + 15}
+                    y={height - marginHeight - marginHeight + 15}
                     textAnchor="middle"
-                    transform={isMobile ? `rotate(90, 0, ${height - marginHeight + 15})` : ''}
+                    transform={
+                      isMobile ? `rotate(90, 0, ${height - marginHeight - marginHeight})` : ''
+                    }
                   >
                     {label.yearLabel}
                   </text>
@@ -235,7 +245,7 @@ const GeAvgHEating = ({
             <text
               className="measure-label"
               x={width - marginWidth + 10}
-              y={height - marginHeight + 15}
+              y={height - marginHeight - marginHeight + 15}
               textAnchor="end"
             >
               kWh/m²
