@@ -613,7 +613,8 @@
           .year-el {
             transition: fill opacity stroke-dasharray 0.5s;
             circle {
-              fill: $lighter-orange-full;
+              //fill: $lighter-orange-full;
+              fill: $pale-pink;
             }
 
             .interactive-labels {
@@ -714,6 +715,9 @@
 
             &.show-pies,
             &.show-legend {
+              path {
+                stroke: none;
+              }
               .biotonne,
               .gartenPark {
                 opacity: 1;
@@ -804,8 +808,16 @@
         height: 100%;
         @include responsive-layout;
 
+        .description {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+
         .legend {
           position: relative;
+          margin-top: auto;
+          margin-bottom: 20%;
           .legend-inner {
             font-size: 14px;
             width: 100%;
@@ -818,6 +830,7 @@
                 cursor: pointer;
                 display: flex;
                 background-color: transparent;
+                align-items: first baseline;
 
                 &:hover {
                   p {
@@ -922,11 +935,10 @@
           .axis {
             line {
               stroke: $default-text;
-              stroke-dasharray: 2px 2px;
             }
 
             .x-axis line {
-              stroke-dasharray: none;
+              stroke-dasharray: 5;
             }
 
             .year-marker {
