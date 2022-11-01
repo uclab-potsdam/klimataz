@@ -21,7 +21,7 @@ const Energy = ({
     '#007F87', // Gesamt Erneuerbare Energieträger
     '#2A4D9C', // Stromaustauschsaldo
     '#FFBE53', // Kernenergie
-    '#a8a8a8', // Andere Energieträger
+    '#ff7b7b', // Andere Energieträger
   ];
 
   const labelArray = [
@@ -48,6 +48,7 @@ const Energy = ({
   const marginHeight = 0;
   const paddingHeight = 15;
   let xAxisElements = [];
+  let yAxisElements = [];
   let streamEle = [];
   let scaleCategory = function () {
     return undefined;
@@ -57,6 +58,7 @@ const Energy = ({
   };
   let lastYear = '?';
   let percRenewables = 0;
+  let lastExport = {};
 
   let switchHighlightedStream = function (id) {
     if (currentData !== undefined && currentData.data !== undefined) {
@@ -95,12 +97,29 @@ const Energy = ({
       );
     });
 
+    //store last stromaustauschsaldo value
+    lastExport.value = currentData.data.filter((d) => {
+      return d.column === 'Stromaustauschsaldo' && d.year === '2020';
+    })[0].value;
+    lastExport.abs = Math.abs(lastExport.value); //absolute value
+
+    //filter out negative stromaustauschsaldo values
+    //copy data
+    const filteredData = JSON.parse(JSON.stringify(currentData.data));
+    //replace negative values with 0
+    filteredData
+      .filter((d) => {
+        return d.column === 'Stromaustauschsaldo' && d.value < 0;
+      })
+      .forEach((d) => (d.value = 0));
+
     // setup domains for scaling
-    const domainX = extent(currentData.data.map((d) => +d.year));
+    const domainX = extent(filteredData.map((d) => +d.year));
     const xScale = scaleLinear()
       .domain(domainX)
       .range([marginWidth, dimensions.width - marginWidth]);
-    const domainY = [0, max(currentData.data.map((d) => d.value))];
+    const maxY = max(filteredData.map((d) => d.value));
+    const domainY = [0, maxY];
     const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
 
     // map source to color
@@ -112,13 +131,22 @@ const Energy = ({
     };
 
     // get unique years from data
-    const uniqueYears = uniq(currentData.data.map((d) => +d.year));
+    const uniqueYears = uniq(filteredData.map((d) => +d.year));
 
     // create elements for horizontal axis, plus labels
     xAxisElements = uniqueYears.map((year, a) => {
       return {
         label: year,
         x: xScale(year),
+      };
+    });
+
+    //create elements for y axis
+    const yAxisValues = yScale.ticks(4);
+    yAxisElements = yAxisValues.map((d) => {
+      return {
+        label: `${formatNumber(d)} TJ`,
+        x: yScale(d),
       };
     });
 
@@ -132,7 +160,7 @@ const Energy = ({
     // prepare data for stacking
     const stackData = [];
     uniqueYears.forEach((year, y) => {
-      const currentYearData = currentData.data.filter((d) => +d.year === year);
+      const currentYearData = filteredData.filter((d) => +d.year === year);
 
       const el = {};
       currentYearData.map((d) => {
@@ -226,7 +254,7 @@ const Energy = ({
     <div className={`primary-energy horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}>
       <div className="visualization-container" ref={targetRef}>
         <svg className="energy-primenergy chart" width="100%" height="100%">
-          <g className="axis">
+          <g className="x-axis">
             {xAxisElements.map((axis, a) => {
               if (a % 3 === 2) {
                 return (
@@ -270,6 +298,19 @@ const Energy = ({
               );
             })}
           </g>
+          <g className="y-axis">
+            {yAxisElements.map(function (axis, a) {
+              if (a === 0) return;
+              return (
+                <g transform={`translate(0, ${axis.x})`} key={a}>
+                  <line x1="0" x2={dimensions.width} y1="0" y2="0" />
+                  <text x={dimensions.width - 10} y="-5" textAnchor="end">
+                    {axis.label}
+                  </text>
+                </g>
+              );
+            })}
+          </g>
           <g className="streams-labels-container">
             {streamEle.map((label, l) => {
               return (
@@ -283,7 +324,7 @@ const Energy = ({
                       height="1"
                     >
                       <div xmlns="http://www.w3.org/1999/xhtml" className={label.klass}>
-                        <p>{label.id}</p>
+                        <p>{label.id == 'Stromaustauschsaldo' ? 'importierter Strom' : label.id}</p>
                       </div>
                     </foreignObject>
                   </g>
@@ -340,6 +381,14 @@ const Energy = ({
             })}
           </g>
         </svg>
+        {lastExport.value < 0 && (
+          <div className="strom-export-box">
+            <p>
+              In {locationLabel} wurden 2020 zusätzlich {formatNumber(lastExport.abs)} TJ Strom
+              exportiert.
+            </p>
+          </div>
+        )}
       </div>
       <div className="description">
         <div className="title">

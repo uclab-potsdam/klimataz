@@ -28,6 +28,7 @@ const EnIndustry = ({
   const marginHeight = 0;
   // const paddingHeight = 15;
   let xAxisElements = [];
+  let yAxisElements = [];
   let streamEle = [];
   let scaleCategory = function () {
     return undefined;
@@ -92,6 +93,15 @@ const EnIndustry = ({
       return {
         label: year,
         x: xScale(year),
+      };
+    });
+
+    //create elements for y axis
+    const yAxisValues = yScale.ticks(3);
+    yAxisElements = yAxisValues.map((d) => {
+      return {
+        label: `${formatNumber(d)}`,
+        x: yScale(d),
       };
     });
 
@@ -195,7 +205,7 @@ const EnIndustry = ({
     >
       <div className="visualization-container" ref={targetRef}>
         <svg className="energy-industry chart" width="100%" height="100%">
-          <g className="axis">
+          <g className="x-axis">
             {xAxisElements.map((axis, a) => {
               if (a % 2 !== 0) {
                 return (
@@ -235,6 +245,19 @@ const EnIndustry = ({
                   onMouseLeave={() => switchHighlightedStream('')}
                 >
                   <path className={`path ${stream.id}`} d={stream.path} />
+                </g>
+              );
+            })}
+          </g>
+          <g className="y-axis">
+            {yAxisElements.map(function (axis, a) {
+              if (a === 0) return;
+              return (
+                <g transform={`translate(0, ${axis.x})`} key={a}>
+                  <line x1="0" x2={dimensions.width} y1="0" y2="0" />
+                  <text x={dimensions.width - marginWidth} y="-5" textAnchor="end">
+                    {axis.label}
+                  </text>
                 </g>
               );
             })}
