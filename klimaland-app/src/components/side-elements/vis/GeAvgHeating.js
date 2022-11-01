@@ -246,8 +246,9 @@ const GeAvgHEating = ({
       <div className="description">
         <div className="title">
           <h4>
-            Wie hoch ist der Energieverbrauch beim Heizen in{' '}
-            <span className="locationLabel">{locationLabel}</span>?
+            Wie hoch ist der durchschnittliche Verbrauch an Energie fürs Heizen bei einem
+            Privathaushalt in
+            <span className="locationLabel"> {locationLabel}</span>?
           </h4>
         </div>
       </div>
