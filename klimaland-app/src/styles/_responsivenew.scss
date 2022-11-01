@@ -164,6 +164,22 @@
             }
           }
         }
+
+        .info-container {
+          .info-container-content {
+            &.open {
+              max-height: 80vh;
+              height: auto;
+              transform: translate(20px, -80vh * 0.95) rotate(2deg);
+              -webkit-transform: translate(20px, -80vh * 0.95) rotate(2deg);
+
+              .help {
+                max-height: 80vh;
+                height: auto;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -486,6 +502,14 @@
             }
           }
         }
+
+        .info-container {
+          .info-container-content {
+            &.open {
+              width: 80vh * 0.65;
+            }
+          }
+        }
       }
     }
   }
@@ -786,12 +810,12 @@
         .info-container {
           .info-container-content {
             &.open {
-              height: 65vh;
+              //   height: 65vh;
               transform: translate(20px, -65vh) rotate(2deg);
 
-              .help {
-                height: 65vh;
-              }
+              //   .help {
+              //     height: 65vh;
+              //   }
             }
           }
           h4 {

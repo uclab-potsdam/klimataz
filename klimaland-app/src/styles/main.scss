@@ -558,17 +558,17 @@ code {
 
         &.open {
           width: calc($thumbnail-postcardwidth/0.65);
-          height: $thumbnail-postcardwidth/0.95;
+          height: $thumbnail-postcardwidth/0.6;
 
-          transform: translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
-          -webkit-transform: translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
+          transform: translate(20px, -$thumbnail-postcardwidth / 0.6) rotate(2deg);
+          -webkit-transform: translate(20px, -$thumbnail-postcardwidth / 0.6) rotate(2deg);
           transition: 0.2s;
           -webkit-transition: 0.2s;
 
           .help {
             overflow-y: scroll;
             overflow-x: hidden;
-            height: $thumbnail-postcardwidth/0.95;
+            height: $thumbnail-postcardwidth/0.6;
 
             .text {
               opacity: 1;
