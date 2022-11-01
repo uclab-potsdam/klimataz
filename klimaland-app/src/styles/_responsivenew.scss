@@ -610,6 +610,11 @@
                         display: none;
                       }
                     }
+                    .bar-percentage-trip {
+                      text {
+                        transform: translateY(9px);
+                      }
+                    }
                     .icon {
                       transform: translateY(9px);
                       display: inline-block;
