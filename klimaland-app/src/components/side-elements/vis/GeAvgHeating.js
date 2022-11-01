@@ -131,8 +131,9 @@ const GeAvgHEating = ({
               <g className="bar-axis">
                 {classesData.map((klass, k) => {
                   return (
-                    <g key={k}>
+                    <g key={k} className="energy-class">
                       <rect
+                        className="energy-class-rect"
                         x={marginWidth}
                         y={height - marginHeight - klass.y2}
                         width="30"

@@ -781,6 +781,30 @@
                 //   }
                 // }
               }
+              .avg-heating {
+                .visualization-container {
+                  transform: translatey(-10px);
+                  svg {
+                    .clipped-container {
+                      .chart-axis {
+                        .bar-axis {
+                          .energy-class-rect {
+                            width: 20px;
+                          }
+                          text {
+                            transform: translateX(-5px);
+                          }
+                        }
+                      }
+                    }
+                    .non-clipped-elements {
+                      text {
+                        transform: translate(-10px, 0);
+                      }
+                    }
+                  }
+                }
+              }
             }
 
             .La-chart {
