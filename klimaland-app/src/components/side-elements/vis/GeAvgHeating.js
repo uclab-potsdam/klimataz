@@ -141,6 +141,7 @@ const GeAvgHEating = ({
                         fill={klass.fill}
                       />
                       <text
+                        className="energy-class-name"
                         x={marginWidth + 15}
                         y={klass.yMid}
                         textAnchor="middle"
@@ -149,6 +150,7 @@ const GeAvgHEating = ({
                         {klass.klass}
                       </text>
                       <text
+                        className="energy-class-value"
                         x={width - marginWidth - 5}
                         y={height - marginHeight - klass.y2 + 15}
                         textAnchor="end"
@@ -230,6 +232,7 @@ const GeAvgHEating = ({
               return (
                 <g key={l} transform={`translate(${label.year + 50}, 0)`}>
                   <text
+                    className={`${l % 2 === 0 ? 'year-even' : 'year-odd'}`}
                     x="0"
                     y={height - marginHeight - marginHeight + 15}
                     textAnchor="middle"

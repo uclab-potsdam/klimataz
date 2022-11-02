@@ -802,12 +802,21 @@
                           text {
                             transform: translateX(-5px);
                           }
+                          .energy-class-value {
+                            transform: translateX(0px);
+                          }
                         }
                       }
                     }
                     .non-clipped-elements {
                       text {
-                        transform: translate(-10px, 0);
+                        transform: translate(-15px, 0);
+                        &.year-odd {
+                          display: none;
+                        }
+                        &.measure-label {
+                          transform: translate(9px, 0);
+                        }
                       }
                     }
                   }
