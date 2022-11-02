@@ -235,16 +235,6 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
                   </g>
                 </g>
               </g>
-              <g
-                transform={`translate(${width - (marginWidth - tabletThreshold) * 3.5 + 150}, ${
-                  marginHeight / 2
-                })`}
-              >
-                <circle className="highestValue" cx="0" cy="2" r={radius} />
-                <text x={radius + 10} y={radius / 2}>
-                  Höchster Wert
-                </text>
-              </g>
             </g>
           )}
         </svg>
