@@ -186,15 +186,11 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
           {!isThumbnail && (
             <g className="controls-container" transform={`translate(${marginWidth * 2}, 10)`}>
               <g
-                // transform={
-                //   `translate(${width - (marginWidth - tabletThreshold) * 3.5}, ${marginHeight / 2
-                //   })`}
-                onClick={activatePies}
+              // transform={
+              //   `translate(${width - (marginWidth - tabletThreshold) * 3.5}, ${marginHeight / 2
+              //   })`}
               >
-                <g
-                  className={`legend ${piesAreActive ? 'show-legend' : ''}`}
-                  onClick={activatePies}
-                >
+                <g className={`legend ${piesAreActive ? 'show-legend' : ''}`}>
                   <g className="biotonne">
                     <circle className="biotonne" cx="0" cy="0" r={radius} />
                     <text x="0" y={radius / 2}>
