@@ -73,14 +73,16 @@ export default class Info extends Component {
                 Regionen ausgewählt und verglichen werden.{' '}
               </p>
             )}
-            <p className="text">
-              Jede Postkarte beschäftigt sich mit einem anderen Bereich.{' '}
-              <span className="info-highlight">Energie</span>,{' '}
-              <span className="info-highlight">Mobilität</span>,{' '}
-              <span className="info-highlight">Abfall</span>,{' '}
-              <span className="info-highlight">Landwirtschaft</span> oder{' '}
-              <span className="info-highlight">Gebäude</span>.
-            </p>
+            {this.props.mode !== 'singlePCview' && (
+              <p className="text">
+                Jede Postkarte beschäftigt sich mit einem anderen Bereich.{' '}
+                <span className="info-highlight">Energie</span>,{' '}
+                <span className="info-highlight">Mobilität</span>,{' '}
+                <span className="info-highlight">Abfall</span>,{' '}
+                <span className="info-highlight">Landwirtschaft</span> oder{' '}
+                <span className="info-highlight">Gebäude</span>.
+              </p>
+            )}
             {!this.props.postcardView && this.props.mode === 'comparison' && (
               <p className="text">
                 In der rechten <span className="info-suchleiste"> Leiste </span> kann zwischen den
@@ -102,9 +104,11 @@ export default class Info extends Component {
                 der Postkarte befindet sich eine kurze Erklärung und ein Klimaausblick der Region.
               </p>
             )}
-            <p className="text">
-              Wie gut schlägt sich deine Region in der Bekämpfung der Klimakrise?
-            </p>{' '}
+            {this.props.mode !== 'singlePCview' && (
+              <p className="text">
+                Wie gut schlägt sich deine Region in der Bekämpfung der Klimakrise?
+              </p>
+            )}
           </div>
         </div>
       </div>
