@@ -66,11 +66,10 @@ export default class Info extends Component {
           <div className="help">
             <h4 className="desktop-title help-title">Wie bediene ich die Postkarten?</h4>
             <h2 className="mobile-title">?</h2>
-            {!this.props.postcardView && (
+            {this.props.mode !== 'singlePCview' && (
               <p className="text">
-                In der <span className="info-suchleiste"> Suchleiste </span> kann nach einem
-                beliebigen Landkreis oder Bundesland gesucht werden. Hier können auch mehrere
-                Regionen ausgewählt und verglichen werden.{' '}
+                Dieses Datenprojekt zeigt, wie jeder einzelne deutsche Landkreis beim Klimaschutz
+                dasteht - in den sechs wichtigsten Bereichen.
               </p>
             )}
             {this.props.mode !== 'singlePCview' && (
@@ -83,10 +82,23 @@ export default class Info extends Component {
                 <span className="info-highlight">Gebäude</span>.
               </p>
             )}
+            {!this.props.postcardView && (
+              <p className="text">
+                In der <span className="info-suchleiste"> Suchleiste </span> kann nach einem
+                beliebigen Landkreis oder Bundesland gesucht werden. Hier können auch mehrere
+                Regionen ausgewählt und verglichen werden.{' '}
+              </p>
+            )}
             {!this.props.postcardView && this.props.mode === 'comparison' && (
               <p className="text">
                 In der rechten <span className="info-suchleiste"> Leiste </span> kann zwischen den
                 verschiedenen Bereichen gewechselt werden, wenn Regionen verglichen werden.{' '}
+              </p>
+            )}
+            {!this.props.postcardView && (
+              <p className="text">
+                Mit einem Stempel zeigt jede Postkarte, ob der Landkreis in diesem Bereich im
+                schlechtesten, mittleren oder besten Drittel aller Kreise liegt.
               </p>
             )}
             {!this.props.postcardView && (
