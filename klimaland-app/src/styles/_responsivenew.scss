@@ -117,6 +117,17 @@
                   }
                 }
               }
+              .avg-heating {
+                .visualization-container {
+                  svg {
+                    .non-clipped-elements {
+                      text {
+                        transform: translate(-5px, 0);
+                      }
+                    }
+                  }
+                }
+              }
             }
             .horizontal-bottom-layout {
               .description {
@@ -165,6 +176,22 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        }
+
+        .info-container {
+          .info-container-content {
+            &.open {
+              max-height: 80vh;
+              height: auto;
+              transform: translate(20px, -80vh * 0.95) rotate(2deg);
+              -webkit-transform: translate(20px, -80vh * 0.95) rotate(2deg);
+
+              .help {
+                max-height: 80vh;
+                height: auto;
               }
             }
           }
@@ -399,71 +426,81 @@
                 }
               }
             }
-          }
-
-          .Mo-chart {
-            .car-density {
-              .chart {
-                transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
-                -webkit-transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+            .Mo-chart {
+              .car-density {
+                .chart {
+                  transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+                  -webkit-transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+                }
+              }
+              .modal-split {
+                .visualization-container {
+                  .chart {
+                    .paths {
+                      text {
+                        font-size: 12px;
+                      }
+                    }
+                    .icon {
+                      display: none;
+                    }
+                    .no-icon {
+                      display: inline-block;
+                    }
+                  }
+                }
               }
             }
-            .modal-split {
-              .visualization-container {
-                .chart {
-                  .paths {
-                    text {
+
+            .Ge-chart {
+              .newbuildings-energy {
+                h4 {
+                  font-size: 14px;
+                  font-weight: 'medium';
+                }
+                .description {
+                  width: 43%;
+                  .caption {
+                    p {
                       font-size: 12px;
                     }
                   }
-                  .icon {
-                    display: none;
-                  }
-                  .no-icon {
-                    display: inline-block;
+                  .legend {
+                    .legend-element {
+                      p {
+                        &:hover {
+                          font-weight: 600;
+                        }
+                      }
+                    }
                   }
                 }
               }
-            }
-          }
-
-          .Ge-chart {
-            .newbuildings-energy {
-              h4 {
-                font-size: 14px;
-                font-weight: 'medium';
-              }
-              .description {
-                width: 43%;
-                .caption {
-                  p {
-                    font-size: 12px;
-                  }
-                }
-                .legend {
-                  .legend-element {
-                    p {
-                      &:hover {
-                        font-weight: 600;
+              .avg-heating {
+                .visualization-container {
+                  svg {
+                    .non-clipped-elements {
+                      text {
+                        transform: translate(-10px, 0);
                       }
                     }
                   }
                 }
               }
             }
-          }
 
-          .La-chart {
-            .animal-density {
-              .caption {
-                p {
-                  font-size: 12px;
+            .La-chart {
+              .animal-density {
+                .caption {
+                  p {
+                    font-size: 12px;
+                  }
                 }
-              }
-              .legend {
-                svg {
-                  height: 100px;
-                  font-size: 12px;
+                .legend {
+                  svg {
+                    height: 100px;
+                    font-size: 12px;
+                  }
                 }
               }
             }
@@ -488,6 +525,14 @@
                   font-size: 14px;
                 }
               }
+            }
+          }
+        }
+
+        .info-container {
+          .info-container-content {
+            &.open {
+              width: 80vh * 0.65;
             }
           }
         }
@@ -744,6 +789,39 @@
                 //   }
                 // }
               }
+              .avg-heating {
+                .visualization-container {
+                  transform: translatey(-10px);
+                  svg {
+                    .clipped-container {
+                      .chart-axis {
+                        .bar-axis {
+                          .energy-class-rect {
+                            width: 20px;
+                          }
+                          text {
+                            transform: translateX(-5px);
+                          }
+                          .energy-class-value {
+                            transform: translateX(0px);
+                          }
+                        }
+                      }
+                    }
+                    .non-clipped-elements {
+                      text {
+                        transform: translate(-15px, 0);
+                        &.year-odd {
+                          display: none;
+                        }
+                        &.measure-label {
+                          transform: translate(9px, 0);
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
 
             .La-chart {
@@ -809,12 +887,12 @@
         .info-container {
           .info-container-content {
             &.open {
-              height: 65vh;
+              //   height: 65vh;
               transform: translate(20px, -65vh) rotate(2deg);
 
-              .help {
-                height: 65vh;
-              }
+              //   .help {
+              //     height: 65vh;
+              //   }
             }
           }
           h4 {

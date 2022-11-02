@@ -34,9 +34,22 @@ const Sources = () => {
           <div className="sources-text">
             <h3>Quellen und Methodik</h3>
             <p>
+              Wo stehen wir beim Klimaschutz in Deutschland? Mit welchen Werten lässt er sich auf
+              lokaler Ebene messen, wo es schon Fortschritte gibt – und wo noch zu wenig? Dieses
+              Projekt sendet Postkarten aus einem Land im Wandel. Sie zeigen Daten dazu, wie jeder
+              einzelne deutsche Landkreis beim Klimaschutz in den sechs wichtigsten Bereichen
+              dasteht.
+            </p>
+            <p>
               Die Daten für dieses Projekt stammen zum größten Teil aus öffentlich verfügbaren
               Quellen, außer Daten aus der Umfrage "Mobilität in Deutschland" 2017, sowie die GERICS
               Klimaausblicke.{' '}
+            </p>
+            <p>
+              Jede Postkarte zeigt mit einem Stempel, ob der Landkreis in diesem Bereich im
+              schlechtesten, mittleren oder besten Drittel aller Kreise liegt. Die Einordnung
+              vergleicht dabei nur die Landkreise untereinander - auch ein Landkreis im besten
+              Drittel muss also möglicherweise noch mehr fürs Klima tun.
             </p>
             <p>
               In folgendem Artikel beschreiben wir genauer unsere Herangehensweise zur Recherche und
