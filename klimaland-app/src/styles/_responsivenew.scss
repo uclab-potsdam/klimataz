@@ -1070,6 +1070,13 @@
                         font-size: 12px;
                       }
                     }
+                    .y-axis {
+                      .last-line {
+                        text {
+                          display: none;
+                        }
+                      }
+                    }
                     .description {
                       height: 15%;
                     }
