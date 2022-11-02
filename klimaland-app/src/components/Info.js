@@ -66,22 +66,18 @@ export default class Info extends Component {
           <div className="help">
             <h4 className="desktop-title help-title">Wie bediene ich die Postkarten?</h4>
             <h2 className="mobile-title">?</h2>
-            {this.props.mode !== 'singlePCview' && (
-              <p className="text">
-                Dieses Datenprojekt zeigt, wie jeder einzelne deutsche Landkreis beim Klimaschutz
-                dasteht - in den sechs wichtigsten Bereichen.
-              </p>
-            )}
-            {this.props.mode !== 'singlePCview' && (
-              <p className="text">
-                Jede Postkarte beschäftigt sich mit einem anderen Bereich.{' '}
-                <span className="info-highlight">Energie</span>,{' '}
-                <span className="info-highlight">Mobilität</span>,{' '}
-                <span className="info-highlight">Abfall</span>,{' '}
-                <span className="info-highlight">Landwirtschaft</span> oder{' '}
-                <span className="info-highlight">Gebäude</span>.
-              </p>
-            )}
+            <p className="text">
+              Dieses Datenprojekt zeigt, wie jeder einzelne deutsche Landkreis beim Klimaschutz
+              dasteht - in den sechs wichtigsten Bereichen.
+            </p>
+            <p className="text">
+              Jede Postkarte beschäftigt sich mit einem anderen Bereich.{' '}
+              <span className="info-highlight">Energie</span>,{' '}
+              <span className="info-highlight">Mobilität</span>,{' '}
+              <span className="info-highlight">Abfall</span>,{' '}
+              <span className="info-highlight">Landwirtschaft</span> oder{' '}
+              <span className="info-highlight">Gebäude</span>.
+            </p>
             {!this.props.postcardView && (
               <p className="text">
                 In der <span className="info-suchleiste"> Suchleiste </span> kann nach einem
@@ -116,11 +112,9 @@ export default class Info extends Component {
                 der Postkarte befindet sich eine kurze Erklärung und ein Klimaausblick der Region.
               </p>
             )}
-            {this.props.mode !== 'singlePCview' && (
-              <p className="text">
-                Wie gut schlägt sich deine Region in der Bekämpfung der Klimakrise?
-              </p>
-            )}
+            <p className="text">
+              Wie gut schlägt sich deine Region in der Bekämpfung der Klimakrise?
+            </p>{' '}
           </div>
         </div>
       </div>
