@@ -35,8 +35,8 @@ export default class Locator extends Component {
   async changeCurrentMap() {
     const currentMap = +this.props.lk.value < 20 ? bundeslaenderOutline : LandkreiseOutline;
 
-    const width = this.state.dimensions.width - 5;
-    const height = this.state.dimensions.height - 5;
+    const width = this.state.dimensions.width;
+    const height = this.state.dimensions.height;
     // const zoomWidth = width / 2
     const zoomHeight = width / 2;
 
@@ -54,7 +54,7 @@ export default class Locator extends Component {
   async generateMap() {
     let currentFeature;
     //let currentPath;
-
+    const width = this.state.dimensions.width;
     const height = this.state.dimensions.height;
 
     this.state.currentMap.features.forEach((f) => {
@@ -82,7 +82,7 @@ export default class Locator extends Component {
         (b[1][0] - b[0][0]) / this.state.zoomHeight,
         (b[1][1] - b[0][1]) / this.state.zoomHeight
       );
-    const t = [(height - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+    const t = [(width - s * (b[1][0] + b[0][0])) / 2, (width - s * (b[1][1] + b[0][1])) / 2];
     translatedProj.translate(t).scale(s);
 
     // create arrow for pointer
@@ -103,8 +103,8 @@ export default class Locator extends Component {
         ranking: getRanking(parseInt(d.properties.ARS), this.props.section),
         visible:
           +this.props.lk.value === +d.properties.ARS ||
-          +this.props.lk.value === +d.properties.SN_L ||
-          +this.props.lk.value === 0
+            +this.props.lk.value === +d.properties.SN_L ||
+            +this.props.lk.value === 0
             ? true
             : false,
       };
@@ -190,9 +190,8 @@ export default class Locator extends Component {
                           d={el.translatedPath}
                           key={e}
                           id="map"
-                          className={`landkreis ${el.lk} ${el.bl} ${
-                            el.visible ? 'visible' : 'hidden'
-                          } ${el.ranking} ui-${this.context}`}
+                          className={`landkreis ${el.lk} ${el.bl} ${el.visible ? 'visible' : 'hidden'
+                            } ${el.ranking} ui-${this.context}`}
                           onClick={this.handleClickOnMap.bind(this, parseInt(el.lk))}
                         />
                       );
@@ -226,9 +225,8 @@ export default class Locator extends Component {
                     d={el.path}
                     key={e}
                     id={el.lk}
-                    className={`landkreis ${el.bl} ${el.visible ? 'visible' : 'hidden'} ${
-                      el.ranking
-                    } ui-${this.context}`}
+                    className={`landkreis ${el.bl} ${el.visible ? 'visible' : 'hidden'} ${el.ranking
+                      } ui-${this.context}`}
                     onClick={this.handleClickOnMap.bind(this, parseInt(el.lk))}
                   />
                 );

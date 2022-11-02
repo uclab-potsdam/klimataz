@@ -1246,13 +1246,12 @@
     width: 100%;
     height: 150px;
     display: flex;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
     position: absolute;
     float: right;
 
     .locator-background {
       width: 50%;
+      margin-top: 5px;
       margin-right: 0.5rem;
       margin-left: 0.5rem;
 
@@ -1276,12 +1275,20 @@
     .locator-zoom {
       width: 50%;
       margin-left: 0.5rem;
+      position: relative;
 
       .locator-zoom-inner {
+        width: 100%;
+        height: 100%;
         position: absolute;
-        top: 45%;
-        transform: translateY(-45%);
-        -webkit-transform: translateY(-45%);
+
+        svg {
+          position: absolute;
+          top: 45%;
+          right: 0;
+          transform: translateY(-45%);
+          -webkit-transform: translateY(-45%);
+        }
 
         path {
           &.ui-true {

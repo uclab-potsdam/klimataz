@@ -420,7 +420,7 @@
                   .locator-map {
                     .locator-container {
                       height: 110px;
-                      width: 89%;
+                      // width: 89%;
                     }
                   }
                 }
@@ -868,13 +868,13 @@
                   }
                 }
                 .data-container {
+                  
                   .locator-map {
                     .locator-container {
-                      .locator-background {
-                        width: 40%;
-                      }
+                      height: 100%;
+
                       .locator-zoom {
-                        width: 60px;
+                        width: 100%;
                       }
                     }
                   }
