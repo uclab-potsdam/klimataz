@@ -122,6 +122,7 @@
                   svg {
                     .non-clipped-elements {
                       text {
+                        -webkit-transform: translate(-5px, 0);
                         transform: translate(-5px, 0);
                       }
                     }
@@ -143,35 +144,44 @@
 
                 .controls-container {
                   .legend {
+                    -webkit-transform: translateY(1%);
                     transform: translateY(1%);
                     .biotonne {
+                      -webkit-transform: translateX(10%);
                       transform: translateX(10%);
 
                       text {
+                        -webkit-transform: translateX(12%) translateY(0.5%);
                         transform: translateX(12%) translateY(0.5%);
                       }
                     }
 
                     .gartenPark {
+                      -webkit-transform: translateX(16%);
                       transform: translateX(16%);
 
                       text {
+                        -webkit-transform: translateX(18%) translateY(0.5%);
                         transform: translateX(18%) translateY(0.5%);
                       }
                     }
 
                     .highest-value {
+                      -webkit-transform: translateX(0%);
                       transform: translateX(0%);
 
                       text {
+                        -webkit-transform: translateX(2%) translateY(0.5%);
                         transform: translateX(2%) translateY(0.5%);
                       }
                     }
                   }
 
                   .pie-controller {
+                    -webkit-transform:translateX(60%) translateY(-2.5%);
                     transform: translateX(60%) translateY(-2.5%);
                     .pie-icon {
+                      -webkit-transform: scale(0.6);
                       transform: scale(0.6);
                     }
                   }
@@ -297,6 +307,7 @@
           }
 
           .word-art-title {
+            -webkit-transform: scale(0.6, 0.8) rotate(-3deg) translate(60px, 10px);
             transform: scale(0.6, 0.8) rotate(-3deg) translate(60px, 10px);
           }
         }
@@ -343,11 +354,13 @@
                       h4 {
                         margin: 0;
                         margin-top: 0.1rem;
+                        -webkit-transform: translate(0px, 0px) !important;
                         transform: translate(0px, 0px) !important;
                       }
                     }
 
                     .button-toggle-container {
+                      -webkit-transform: translate(0px, 0px) !important;
                       transform: translate(0px, 0px) !important;
 
                       padding .arrow-pointer {
@@ -481,6 +494,7 @@
                   svg {
                     .non-clipped-elements {
                       text {
+                        -webkit-transform: translate(-10px, 0);
                         transform: translate(-10px, 0);
                       }
                     }
@@ -662,10 +676,12 @@
                     }
                     .bar-percentage-trip {
                       text {
+                        -webkit-transform: translateY(9px);
                         transform: translateY(9px);
                       }
                     }
                     .icon {
+                      -webkit-transform: translateY(9px);
                       transform: translateY(9px);
                       display: inline-block;
                     }
@@ -682,29 +698,36 @@
                 height: 74%;
                 .controls-container {
                   .legend {
+                    -webkit-transform: translateY(1%);
                     transform: translateY(1%);
 
                     .biotonne {
+                      -webkit-transform: translateX(13%);
                       transform: translateX(13%);
 
                       text {
+                        -webkit-transform: translateX(15%) translateY(0.5%);
                         transform: translateX(15%) translateY(0.5%);
                       }
                     }
 
                     .gartenPark {
+                      -webkit-transform:translateX(20%);
                       transform: translateX(20%);
 
                       text {
+                        -webkit-transform:translateX(22%) translateY(0.5%);
                         transform: translateX(22%) translateY(0.5%);
                       }
                     }
                   }
 
                   .pie-controller {
+                    -webkit-transform: translateX(59%) translateY(-2.5%);
                     transform: translateX(59%) translateY(-2.5%);
 
                     .pie-icon {
+                      -webkit-transform:scale(0.5);
                       transform: scale(0.5);
 
                       path {
@@ -791,6 +814,7 @@
               }
               .avg-heating {
                 .visualization-container {
+                  -webkit-transform: translatey(-10px);
                   transform: translatey(-10px);
                   svg {
                     .clipped-container {
@@ -800,9 +824,11 @@
                             width: 20px;
                           }
                           text {
+                            -webkit-transform: translateX(-5px);
                             transform: translateX(-5px);
                           }
                           .energy-class-value {
+                            -webkit-transform: translateX(0px);
                             transform: translateX(0px);
                           }
                         }
@@ -810,11 +836,13 @@
                     }
                     .non-clipped-elements {
                       text {
+                        -webkit-transform: translate(-15px, 0);
                         transform: translate(-15px, 0);
                         &.year-odd {
                           display: none;
                         }
                         &.measure-label {
+                          -webkit-transform: translate(9px, 0);
                           transform: translate(9px, 0);
                         }
                       }
@@ -900,7 +928,7 @@
               }
             }
             &.open {
-              //   height: 65vh;
+              -webkit-transform: translate(20px, -65vh) rotate(2deg);
               transform: translate(20px, -65vh) rotate(2deg);
 
               .help {
@@ -983,6 +1011,7 @@
 
         .word-art-title {
           bottom: 0.5rem;
+          -webkit-transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
           transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
 
           .wordart {
@@ -1202,6 +1231,7 @@
                       transform: translateY(-30px);
                       -webkit-transform: translateY(-30px);
                       .bars {
+                        -webkit-transform: translateY(10px);
                         transform: translateY(10px);
                         .year-label {
                           font-size: 14px;
@@ -1415,6 +1445,7 @@
                   .visualization-container {
                     height: 70%;
                     .chart {
+                      -webkit-transform: translate(0, 10px);
                       transform: translate(0, 10px);
                     }
                   }
@@ -1445,9 +1476,11 @@
 
                     .chart {
                       .non-clipped-elements {
+                        -webkit-transform: translate(-28px, 0);
                         transform: translate(-28px, 0);
 
                         .measure-label {
+                          -webkit-transform: translate(-75%, 0);
                           transform: translate(-75%, 0);
                         }
                       }
@@ -1481,11 +1514,13 @@
                       h4 {
                         margin: 0;
                         margin-top: 0.2rem;
+                        -webkit-transform: translate(0px, 0px) !important;
                         transform: translate(0px, 0px) !important;
                       }
                     }
 
                     .button-toggle-container {
+                      -webkit-transform: translate(0px, 0px) !important;
                       transform: translate(0px, 0px) !important;
 
                       .arrow-pointer {

@@ -1,22 +1,5 @@
 @import '_config.scss';
 
-// @media not all and (min-resolution:.001dpcm) {
-//     @supports (-webkit-appearance:none) {
-//         .card-active {
-//             .side-container {
-//                 .card-front {&.side-odd {
-//                     backface-visibility: visible;
-//                     -webkit-backface-visibility: visible;
-//                     transform: rotateY(0deg);
-//                     -webkit-transform: rotateY(-180deg);
-//                     // -moz-transform: rotateY(0deg);
-//                 }}
-//             }
-
-//         }
-//     }
-// }
-
 .carousel-container {
   width: 100%;
   height: 100%;
@@ -208,6 +191,7 @@
             font-family: 'Chivo';
           }
 
+          -webkit-transform: rotate(5deg);
           transform: rotate(5deg);
 
           &.mittleren {
@@ -248,6 +232,7 @@
         &.comparison {
           .word-art-title {
             @include wordart-style-1;
+            -webkit-transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, -15px);
             transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, -15px);
             width: 100%;
             height: 50px;
@@ -285,6 +270,7 @@
     // -webkit-transform:translateX(40%);
     background: linear-gradient(rgba($light, 0.2), $lighter-orange);
     clip-path: circle(55% at 90% 50%);
+    -webkit-transition: clip-path 1000ms;
     transition: clip-path 1000ms;
   }
 
@@ -298,6 +284,7 @@
 
   &:active {
     scale: 1.25;
+    -webkit-transition: scale ease 500ms;
     transition: scale ease 500ms;
   }
 }
@@ -395,6 +382,7 @@
               transform-origin: left;
               -webkit-transform-origin-x: left;
               transform: translate(-10px, -5px);
+              -webkit-transform: translate(-10px, -5px);
               position: relative;
               margin-top: 0;
               margin-right: 0.5rem;
@@ -443,9 +431,11 @@
             margin-left: 0.5rem;
             .toggle-rect {
               cursor: pointer;
+              -webkit-transition: all 0.2s;
               transition: all 0.2s;
 
               &:hover {
+                -webkit-transition: all 0.2s;
                 transition: all 0.2s;
                 fill: lighten($taz-orange, 20%);
               }
@@ -480,6 +470,7 @@
 
             &:hover {
               .download-label {
+                -webkit-transition: visibility 0s, opacity 0.5s;
                 transition: visibility 0s, opacity 0.5s;
                 opacity: 1;
                 visibility: visible;
@@ -489,6 +480,7 @@
 
             .download-label {
               pointer-events: none;
+              -webkit-transition: visibility 0s, opacity 0.5s;
               transition: visibility 0s, opacity 0.5s;
               background-color: $light;
               border: 1px solid $pale-olive;
@@ -647,6 +639,7 @@
                   }
 
                   ol {
+                    -webkit-transition: 0.5s;
                     transition: 0.5s;
                     padding-top: 0.5rem;
                     border-bottom: 1px solid $default-text;
@@ -661,6 +654,7 @@
                   }
 
                   ol:hover {
+                    -webkit-transition: 0.5s;
                     transition: 0.5s;
                     padding-left: 1rem;
                   }

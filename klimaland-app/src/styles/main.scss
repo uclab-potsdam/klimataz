@@ -27,6 +27,7 @@ button {
 
     &:hover {
       .flip-label {
+        -webkit-transition: all 0.5s;
         transition: all 0.5s;
         opacity: 1;
         left: 0rem;
@@ -35,6 +36,7 @@ button {
 
     .flip-label {
       pointer-events: none;
+      -webkit-transition: all 0.5s;
       transition: all 0.5s;
       background-color: $light;
       border: 1px solid $pale-olive;
@@ -141,6 +143,7 @@ code {
       .word-art-title {
         // background-color: blue;
         @include wordart-style-1;
+        -webkit-transform: rotate(-0.5deg) translate(0px, 0px);
         transform: rotate(-0.5deg) translate(0px, 0px);
         // width: 40%;
         height: 50px;
@@ -161,6 +164,7 @@ code {
         }
 
         .wordart {
+          -webkit-transform: scale(0.9, 1.2);
           transform: scale(0.9, 1.2);
           width: 100%;
           height: 100%;
@@ -224,6 +228,7 @@ code {
           box-shadow: map-get($map: $boxshadow, $key: default);
 
           &:hover {
+            -webkit-transition: 0.2s;
             transition: 0.2s;
             box-shadow: map-get($map: $boxshadow, $key: hover);
           }
@@ -251,6 +256,7 @@ code {
             white-space: pre-wrap;
             margin-top: 0.5rem;
             opacity: 0;
+            -webkit-transition: all 0.5s;
             transition: all 0.5s;
             font-size: 12px;
             width: 80%;
@@ -265,6 +271,7 @@ code {
           padding: 0;
 
           .switch {
+            -webkit-transition: all 0.5s;
             transition: all 0.5s;
             position: relative;
             right: 0rem;
@@ -279,11 +286,13 @@ code {
 
           &:hover {
             .switch {
+              -webkit-transition: all 0.5s;
               transition: all 0.5s;
               right: 0.5rem;
             }
 
             .switch-preview {
+              -webkit-transition: all 0.5s;
               transition: all 0.5s;
               opacity: 1;
             }
@@ -293,6 +302,7 @@ code {
         .button-right {
           text-align: left;
           .switch {
+            -webkit-transition: all 0.5s;
             transition: all 0.5s;
             position: relative;
             bottom: 0;
@@ -302,11 +312,13 @@ code {
 
           &:hover {
             .switch {
+              -webkit-transition: all 0.5s;
               transition: all 0.5s;
               left: 0.5rem;
             }
 
             .switch-preview {
+              -webkit-transition: all 0.5s;
               transition: all 0.5s;
               opacity: 1;
             }

@@ -197,6 +197,7 @@
             }
 
             foreignObject {
+              -webkit-transform: translateY(-0.5%);
               transform: translateY(-0.5%);
 
               div {
@@ -246,6 +247,7 @@
             border: 1px solid darken($dark-blue, 10%);
             border-radius: 1px;
             background-color: rgba($light, 0.8);
+            -webkit-transition: background-color 500ms ease;
             transition: background-color 500ms ease;
             display: inline-flex;
             margin-top: 2rem;
@@ -254,6 +256,7 @@
             &:hover {
               background-color: $light;
               box-shadow: 2px 2px 0px darken($dark-blue, 10%);
+              -webkit-transition: all 500ms ease;
               transition: all 500ms ease;
             }
 
@@ -611,6 +614,7 @@
           }
 
           .year-el {
+            -webkit-transition: fill opacity stroke-dasharray 0.5s;
             transition: fill opacity stroke-dasharray 0.5s;
             circle {
               //fill: $lighter-orange-full;
@@ -644,6 +648,7 @@
           }
 
           .year-el:hover {
+            -webkit-transition: fill opacity stroke-dasharray 0.5s;
             transition: fill opacity stroke-dasharray 0.5s;
 
             line {
@@ -660,6 +665,7 @@
           rect {
             transition: 0.5s;
             -webkit-transition: 0.5s;
+            -webkit-transition-timing-function: ease;
             transition-timing-function: ease;
           }
 
@@ -670,24 +676,31 @@
             }
 
             .legend {
+              -webkit-transform: translateY(2.5%);
               transform: translateY(2.5%);
               .biotonne {
+                -webkit-transform: translateX(10%);
                 transform: translateX(10%);
                 text {
+                  -webkit-transform: translateX(12%);
                   transform: translateX(12%);
                 }
               }
 
               .gartenPark {
+                -webkit-transform: translateX(16%);
                 transform: translateX(16%);
                 text {
+                  -webkit-transform: translateX(18%);
                   transform: translateX(18%);
                 }
               }
 
               .highest-value {
+                -webkit-transform: translateX(0%);
                 transform: translateX(0%);
                 text {
+                  -webkit-transform: translateX(2%);
                   transform: translateX(2%);
                 }
               }
@@ -695,10 +708,12 @@
 
             .detail-label {
               cursor: pointer;
+              -webkit-transform: translateX(5%) translateY(5%);
               transform: translateX(5%) translateY(5%);
             }
 
             .pie-controller {
+              -webkit-transform: translateX(60%) translateY(-1.5%);
               transform: translateX(60%) translateY(-1.5%);
             }
           }
@@ -710,6 +725,7 @@
               transition: 0.5s;
               -webkit-transition: 0.5s;
               transition-timing-function: ease;
+              -webkit-transition-timing-function: ease;
               opacity: 0;
             }
 
@@ -1088,6 +1104,7 @@
 
             .clipped-container {
               .single-bar {
+                -webkit-transition: opacity 0.5s;
                 transition: opacity 0.5s;
                 .interactive-labels {
                   opacity: 0;
@@ -1107,6 +1124,7 @@
               }
 
               .single-bar:hover {
+                -webkit-transition: opacity 0.5s;
                 transition: opacity 0.5s;
                 .interactive-labels {
                   opacity: 1;
