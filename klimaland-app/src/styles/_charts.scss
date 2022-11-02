@@ -239,13 +239,13 @@
           .strom-export-box {
             position: absolute;
             top: 0;
-            right: -20px;
+            right: 0;
             padding: 0.5rem;
-            width: 30%;
+            width: 25%;
             font-size: 14px;
             border: 1px solid darken($dark-blue, 10%);
             border-radius: 1px;
-            background-color: rgba($light, 0.8);
+            background-color: rgba($light, 0.5);
             transition: background-color 500ms ease;
             display: inline-flex;
             margin-top: 2rem;
