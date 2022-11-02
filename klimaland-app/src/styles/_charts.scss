@@ -190,6 +190,12 @@
               }
             }
 
+            .bar-percentage-trip {
+              text {
+                fill: transparent;
+              }
+            }
+
             foreignObject {
               transform: translateY(-0.5%);
 
@@ -229,16 +235,48 @@
         .visualization-container {
           height: 85%;
           cursor: crosshair;
+
+          .strom-export-box {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0.5rem;
+            width: 25%;
+            font-size: 14px;
+            border: 1px solid darken($dark-blue, 10%);
+            border-radius: 1px;
+            background-color: rgba($light, 0.5);
+            transition: background-color 500ms ease;
+            display: inline-flex;
+            margin-top: 2rem;
+            margin-right: 2rem;
+
+            &:hover {
+              background-color: $light;
+              box-shadow: 2px 2px 0px darken($dark-blue, 10%);
+              transition: all 500ms ease;
+            }
+
+            p {
+              color: darken($dark-blue, 10%);
+              font-size: 12px;
+              margin: 0.2rem;
+              margin-bottom: 0;
+              text-align: left;
+              display: inline-table;
+            }
+          }
         }
 
         .description {
           height: 15%;
-        }
 
-        .title {
-          span {
-            &.second-value {
-              color: $mint-green;
+          .title {
+            border-color: transparent;
+            span {
+              &.second-value {
+                color: $mint-green;
+              }
             }
           }
           &.footnote {
@@ -248,13 +286,27 @@
 
         .chart {
           overflow: visible;
-          .axis {
+          .x-axis {
             line {
-              stroke: $pale-olive;
+              stroke: $default-text;
+              stroke-width: 0.75px;
+              stroke-dasharray: 5;
             }
 
             text {
               fill: $default-text;
+              font-size: 12px;
+            }
+          }
+          .y-axis {
+            line {
+              stroke: $light;
+              stroke-dasharray: 5;
+              stroke-width: 0.75px;
+            }
+
+            text {
+              fill: $light;
               font-size: 12px;
             }
           }
@@ -314,6 +366,12 @@
                   fill: #5f88c6;
                 }
               }
+
+              &.Koh-stream {
+                path {
+                  fill: #e14552;
+                }
+              }
             }
           }
 
@@ -342,6 +400,14 @@
                 box-shadow: 2px 2px 0px darken($dark-blue, 10%);
                 p {
                   color: darken($dark-blue, 10%);
+                }
+              }
+
+              .Geh-stream {
+                border: 1px solid darken(#b0c6cc, 20%);
+                box-shadow: 2px 2px 0px darken(#b0c6cc, 20%);
+                p {
+                  color: darken(#b0c6cc, 40%);
                 }
               }
 
@@ -494,7 +560,8 @@
             height: 100%;
             width: 100%;
 
-            .axis,
+            .x-axis,
+            .y-axis,
             .label,
             .interactive-labels {
               display: none;
@@ -546,7 +613,8 @@
           .year-el {
             transition: fill opacity stroke-dasharray 0.5s;
             circle {
-              fill: $lighter-orange-full;
+              //fill: $lighter-orange-full;
+              fill: $pale-pink;
             }
 
             .interactive-labels {
@@ -647,6 +715,9 @@
 
             &.show-pies,
             &.show-legend {
+              path {
+                stroke: none;
+              }
               .biotonne,
               .gartenPark {
                 opacity: 1;
@@ -737,8 +808,16 @@
         height: 100%;
         @include responsive-layout;
 
+        .description {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+
         .legend {
           position: relative;
+          margin-top: auto;
+          margin-bottom: 20%;
           .legend-inner {
             font-size: 14px;
             width: 100%;
@@ -751,6 +830,7 @@
                 cursor: pointer;
                 display: flex;
                 background-color: transparent;
+                align-items: first baseline;
 
                 &:hover {
                   p {
@@ -855,11 +935,10 @@
           .axis {
             line {
               stroke: $default-text;
-              stroke-dasharray: 2px 2px;
             }
 
             .x-axis line {
-              stroke-dasharray: none;
+              stroke-dasharray: 5;
             }
 
             .year-marker {

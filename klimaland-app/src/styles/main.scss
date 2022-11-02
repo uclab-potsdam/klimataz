@@ -141,7 +141,7 @@ code {
       .word-art-title {
         // background-color: blue;
         @include wordart-style-1;
-        transform: scale(0.9, 1.2) rotate(-0.5deg) translate(0px, 0px);
+        transform: rotate(-0.5deg) translate(0px, 0px);
         // width: 40%;
         height: 50px;
         z-index: 2;
@@ -161,6 +161,7 @@ code {
         }
 
         .wordart {
+          transform: scale(0.9, 1.2);
           width: 100%;
           height: 100%;
           font-size: 1.2rem;

@@ -106,6 +106,9 @@
             }
             .Ge-chart {
               .newbuildings-energy {
+                h4 {
+                  margin-bottom: 0rem;
+                }
                 .legend-inner {
                   font-size: 12px;
                   .erneuerbare,
@@ -657,6 +660,11 @@
                         display: none;
                       }
                     }
+                    .bar-percentage-trip {
+                      text {
+                        transform: translateY(9px);
+                      }
+                    }
                     .icon {
                       transform: translateY(9px);
                       display: inline-block;
@@ -816,6 +824,19 @@
                 }
                 .caption {
                   display: none;
+                }
+              }
+            }
+
+            .En-chart {
+              .visualization-container {
+                .chart {
+                  .y-axis,
+                  .x-axis {
+                    text {
+                      font-size: 10px;
+                    }
+                  }
                 }
               }
             }
@@ -1031,26 +1052,28 @@
               }
 
               &.En-chart {
-                .primary-energy {
-                  .description {
-                    height: 15%;
-                  }
-                  .visualization-container {
-                    height: 80%;
+                .visualization-container {
+                  height: 80%;
+                  .chart {
+                    .y-axis,
+                    .x-axis {
+                      text {
+                        font-size: 12px;
+                      }
+                    }
+                    .description {
+                      height: 15%;
+                    }
                   }
                 }
 
                 .energy-industry {
                   .description {
-                    height: 15%;
                     .title {
                       h4 {
                         font-size: 0.9rem;
                       }
                     }
-                  }
-                  .visualization-container {
-                    height: 80%;
                   }
                 }
               }
