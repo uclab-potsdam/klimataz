@@ -420,7 +420,7 @@
                   .locator-map {
                     .locator-container {
                       height: 110px;
-                      width: 89%;
+                      // width: 89%;
                     }
                   }
                 }
@@ -868,13 +868,13 @@
                   }
                 }
                 .data-container {
+                  
                   .locator-map {
                     .locator-container {
-                      .locator-background {
-                        width: 40%;
-                      }
+                      height: 100%;
+
                       .locator-zoom {
-                        width: 60px;
+                        width: 100%;
                       }
                     }
                   }
@@ -886,32 +886,13 @@
 
         .info-container {
           .info-container-content {
-            width: 30px;
-            height: 30px;
-            .help {
-              h2.mobile-title {
-                display: block;
-                text-align: center;
-                margin: 0;
-              }
-
-              h4.desktop-title {
-                display: none;
-              }
-            }
             &.open {
               //   height: 65vh;
               transform: translate(20px, -65vh) rotate(2deg);
 
-              .help {
-                h4.desktop-title {
-                  display: block;
-                }
-
-                h2.mobile-title {
-                  display: none;
-                }
-              }
+              //   .help {
+              //     height: 65vh;
+              //   }
             }
           }
           h4 {
@@ -1087,13 +1068,6 @@
                     .x-axis {
                       text {
                         font-size: 12px;
-                      }
-                    }
-                    .y-axis {
-                      .last-line {
-                        text {
-                          display: none;
-                        }
                       }
                     }
                     .description {
@@ -1637,6 +1611,21 @@
           right: -2.5rem;
           bottom: 27%;
           .info-container-content {
+            width: 30px;
+            height: 30px;
+
+            .help {
+              h2.mobile-title {
+                display: block;
+                text-align: center;
+                margin: 0;
+              }
+
+              h4.desktop-title {
+                display: none;
+              }
+            }
+
             &.open {
               width: calc($portait-postcardwidth/1.2);
               height: calc($portait-postcardwidth * 1.2);
@@ -1645,6 +1634,14 @@
 
               .help {
                 height: calc($portait-postcardwidth * 1.2);
+              }
+
+              h4.desktop-title {
+                display: block;
+              }
+
+              h2.mobile-title {
+                display: none;
               }
             }
           }

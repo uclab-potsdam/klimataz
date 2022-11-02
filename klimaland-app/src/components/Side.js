@@ -315,18 +315,10 @@ export default class Side extends Component {
                             stroke="#484848"
                           />
                         </g>
-                        <text
-                          x="0"
-                          y="15"
-                          style={{ fontWeight: this.props.dataLevelLK ? 'bold' : 'normal' }}
-                        >
+                        <text x="0" y="15">
                           {this.props.toggleLabels.lk}
                         </text>
-                        <text
-                          x={this.props.toggleLabels.lk.length * 7 + 36 + 20}
-                          y="15"
-                          style={{ fontWeight: this.props.dataLevelLK ? 'normal' : 'bold' }}
-                        >
+                        <text x={this.props.toggleLabels.lk.length * 7 + 36 + 20} y="15">
                           {this.props.toggleLabels.bl}
                         </text>
                       </g>
