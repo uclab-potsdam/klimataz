@@ -7,7 +7,7 @@
 
 @include media('<=desktop') {
   body {
-    background-color: lightgoldenrodyellow;
+    // background-color: lightgoldenrodyellow;
     .indicators-iframe {
       .main-container {
         .side-container {
@@ -269,7 +269,7 @@
 
 @include media('<=tablet') {
   body {
-    background-color: rgb(170, 170, 245);
+    // background-color: rgb(170, 170, 245);
 
     h4 {
       font-size: 14px;
@@ -582,7 +582,7 @@
 
 @include media('<=schwerpunkt') {
   body {
-    background-color: lightcoral;
+    // background-color: lightcoral;
 
     .indicators-iframe {
       .main-container {
@@ -666,7 +666,7 @@
 
 @include media('<=minitablet') {
   body {
-    background-color: peachpuff;
+    // background-color: peachpuff;
 
     h4 {
       font-size: 12px;
@@ -1074,7 +1074,7 @@
 
 @include media('<shortread') {
   body {
-    background-color: aqua;
+    // background-color: aqua;
 
     h4 {
       font-size: 12px;
@@ -1718,7 +1718,7 @@
                           .section-title {
                             margin-bottom: 0;
                             padding-top: 2rem;
-                            
+
                             h2 {
                               display: flex;
                             }
@@ -1867,7 +1867,7 @@
 
 @include media('<=largephone') {
   body {
-    background-color: violet;
+    // background-color: violet;
 
     .indicators-iframe {
       margin-right: 5.55%;
