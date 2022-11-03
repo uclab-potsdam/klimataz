@@ -115,7 +115,7 @@ const GeAvgHEating = ({
   return (
     <div className={`avg-heating ${isThumbnail ? 'is-thumbnail' : ''}`}>
       <div className="visualization-container" ref={targetRef}>
-        <svg className="building-avg chart" transform="translate(0, 20)">
+        <svg className="building-avg chart">
           <clipPath id="backgroundRect">
             <rect
               x={marginWidth}
@@ -126,7 +126,11 @@ const GeAvgHEating = ({
               rx="10"
             />
           </clipPath>
-          <g className="clipped-container" clipPath="url(#backgroundRect)">
+          <g
+            className="clipped-container"
+            clipPath="url(#backgroundRect)"
+            transform="translate(0, 20)"
+          >
             <g className="chart-axis">
               <g className="bar-axis">
                 {classesData.map((klass, k) => {
@@ -140,24 +144,26 @@ const GeAvgHEating = ({
                         height={klass.y2 - klass.y1}
                         fill={klass.fill}
                       />
-                      <text
-                        className="energy-class-name"
-                        x={marginWidth + 15}
-                        y={klass.yMid}
-                        textAnchor="middle"
-                        fill={klass.keyColor}
-                      >
-                        {klass.klass}
-                      </text>
-                      <text
-                        className="energy-class-value"
-                        x={width - marginWidth - 5}
-                        y={height - marginHeight - klass.y2 + 15}
-                        textAnchor="end"
-                        fill="#484848"
-                      >
-                        {klass.label}
-                      </text>
+                      <g className="energy-class-name">
+                        <text
+                          x={marginWidth + 15}
+                          y={klass.yMid}
+                          textAnchor="middle"
+                          fill={klass.keyColor}
+                        >
+                          {klass.klass}
+                        </text>
+                      </g>
+                      <g className="energy-class-value">
+                        <text
+                          x={width - marginWidth - 5}
+                          y={height - marginHeight - klass.y2 + 15}
+                          textAnchor="end"
+                          fill="#484848"
+                        >
+                          {klass.label}
+                        </text>
+                      </g>
                     </g>
                   );
                 })}
@@ -227,33 +233,34 @@ const GeAvgHEating = ({
               rx="10"
             />
           </g>
-          <g className="non-clipped-elements">
+          <g className="non-clipped-elements" transform="translate(0, 20)">
             {barChartData.map((label, l) => {
               return (
                 <g key={l} transform={`translate(${label.year + 50}, 0)`}>
-                  <text
-                    className={`${l % 2 === 0 ? 'year-even' : 'year-odd'}`}
-                    x="0"
-                    y={height - marginHeight - marginHeight + 15}
-                    textAnchor="middle"
-                    transform={
-                      isMobile ? `rotate(90, 0, ${height - marginHeight - marginHeight})` : ''
-                    }
-                  >
-                    {label.yearLabel}
-                  </text>
+                  <g className={`year-label ${l % 2 === 0 ? 'year-even' : 'year-odd'}`}>
+                    <text
+                      x="0"
+                      y={height - marginHeight - marginHeight + 15}
+                      textAnchor="middle"
+                      transform={
+                        isMobile ? `rotate(90, 0, ${height - marginHeight - marginHeight})` : ''
+                      }
+                    >
+                      {label.yearLabel}
+                    </text>
+                  </g>
                 </g>
               );
             })}
-
-            <text
-              className="measure-label"
-              x={width - marginWidth + 10}
-              y={height - marginHeight - marginHeight + 15}
-              textAnchor="end"
-            >
-              kWh/m²
-            </text>
+            <g className="measure-label">
+              <text
+                x={width - marginWidth + 10}
+                y={height - marginHeight - marginHeight + 15}
+                textAnchor="end"
+              >
+                kWh/m²
+              </text>
+            </g>
           </g>
         </svg>
       </div>
