@@ -349,15 +349,12 @@
 
         .social-media-layout {
           .logo-container {
-            height: 0.8rem;
-            min-height: 0.5rem;
-            bottom: 8px;
-            left: 8px;
+            height: 1.3rem;
           }
 
           .word-art-title {
-            -webkit-transform: scale(0.6, 0.8) rotate(-3deg) translate(60px, 10px);
-            transform: scale(0.6, 0.8) rotate(-3deg) translate(60px, 10px);
+            -webkit-transform: scale(0.9, 0.9) translate(0px, 0px);
+            transform: scale(0.9, 0.9) translate(0px, 0px);
           }
         }
 
@@ -1047,6 +1044,13 @@
                 width: 50%;
               }
             }
+          }
+        }
+
+        .social-media-layout {
+          .word-art-title {
+            -webkit-transform: scale(0.8) translate(30px, 10px);
+            transform: scale(0.8) translate(30px, 10px);
           }
         }
       }
@@ -1828,6 +1832,13 @@
           width: calc($portait-postcardheight/1.5);
           height: calc($portait-postcardheight);
         }
+
+        .social-media-layout {
+          .word-art-title {
+            -webkit-transform: scale(0.8) translate(15px, 10px);
+            transform: scale(0.8) translate(15px, 10px);
+          }
+        }
       }
     }
   }
@@ -1900,6 +1911,13 @@
         .side-container {
           width: $portait-postcardwidth;
           height: calc($portait-postcardwidth * 1.5);
+        }
+
+        .social-media-layout {
+          .word-art-title {
+            -webkit-transform: scale(0.8) translate(-5px, -8px);
+            transform: scale(0.8) translate(-5px, -8px);
+          }
         }
       }
     }

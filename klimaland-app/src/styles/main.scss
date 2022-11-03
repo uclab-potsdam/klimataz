@@ -142,8 +142,8 @@ code {
       .word-art-title {
         // background-color: blue;
         @include wordart-style-1;
-        -webkit-transform: rotate(-0.5deg) translate(0px, 0px);
-        transform: rotate(-0.5deg) translate(0px, 0px);
+        -webkit-transform: rotate(-0.5deg) translate(-10px, 0px);
+        transform: rotate(-0.5deg) translate(-10px, 0px);
         // width: 40%;
         height: 50px;
         z-index: 2;
