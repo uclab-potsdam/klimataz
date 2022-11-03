@@ -674,11 +674,9 @@
                         display: none;
                       }
                     }
-                    .bar-percentage-trip {
-                      text {
-                        -webkit-transform: translateY(9px);
-                        transform: translateY(9px);
-                      }
+                    .bar-percentage-trip-text {
+                      -webkit-transform: translateY(9px);
+                      transform: translateY(9px);
                     }
                     .icon {
                       -webkit-transform: translateY(9px);

@@ -209,23 +209,23 @@ const MoModalSplit = ({
                       className={trip.mode}
                     >
                       <g className="axis">
-                        <ModeIcon x={marginWidth} style={{ stroke: colors[t] }} className="icon" />
-                        <text
-                          x={marginWidth + getIconWidth(trip.mode) + 10}
-                          y="-18"
-                          style={{ fill: colors[t] }}
-                          className="icon"
-                        >
-                          {getLegendName(trip.mode)}
-                        </text>
-                        <text
-                          x={marginWidth}
-                          y="-18"
-                          style={{ fill: colors[t] }}
-                          className="no-icon"
-                        >
-                          {getLegendName(trip.mode)}
-                        </text>
+                        <g className="icon">
+                          <ModeIcon x={marginWidth} style={{ stroke: colors[t] }} />
+                        </g>
+                        <g className="icon">
+                          <text
+                            x={marginWidth + getIconWidth(trip.mode) + 10}
+                            y="-18"
+                            style={{ fill: colors[t] }}
+                          >
+                            {getLegendName(trip.mode)}
+                          </text>
+                        </g>
+                        <g className="no-icon">
+                          <text x={marginWidth} y="-18" style={{ fill: colors[t] }}>
+                            {getLegendName(trip.mode)}
+                          </text>
+                        </g>
                       </g>
                       <g className="paths">
                         <path d={trip.path} stroke={colors[t]} fill="none" strokeWidth="8" />
@@ -261,15 +261,11 @@ const MoModalSplit = ({
             {plotPercData.map((trip, t) => {
               return (
                 <g transform={`translate(0, ${((t + 1) * height) / 6})`} key={t}>
-                  <text
-                    x="0"
-                    y="0"
-                    style={{ fill: trip.fill }}
-                    textAnchor="end"
-                    className="bar-percentage-trip-text"
-                  >
-                    {formatNumber(trip.label)} % aller Trips
-                  </text>
+                  <g className="bar-percentage-trip-text">
+                    <text x="0" y="0" style={{ fill: trip.fill }} textAnchor="end">
+                      {formatNumber(trip.label)} % aller Trips
+                    </text>
+                  </g>
                 </g>
               );
             })}
