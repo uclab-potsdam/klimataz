@@ -577,7 +577,9 @@
             .overlay-container {
               .section-thumb {
                 .indicator-ranking {
-                  max-width: 80%;
+                  p {
+                    font-size: 10px;
+                  }
                 }
               }
             }
@@ -1024,15 +1026,16 @@
 
         .word-art-title {
           bottom: 0.5rem;
-          -webkit-transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
-          transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
+          right: 1.5rem;
+          -webkit-transform: rotate(-4deg) translate(-20px, -10px);
+          transform: rotate(-4deg) translate(-20px, -10px);
 
-          .wordart {
-            line-height: 1.5rem;
-            overflow: visible;
-            padding-top: 10px;
-            padding-bottom: 10px;
-          }
+          // .wordart {
+          //   line-height: 1.5rem;
+          //   overflow: visible;
+          //   padding-top: 10px;
+          //   padding-bottom: 10px;
+          // }
         }
 
         .selection-buttons {
@@ -1253,8 +1256,8 @@
                 .is-thumbnail {
                   .visualization-container {
                     .chart {
-                      transform: translateY(1.5rem);
-                      -webkit-transform: translateY(1.5rem);
+                      transform: translateY(2rem);
+                      -webkit-transform: translateY(2rem);
                     }
                   }
                 }
@@ -1280,8 +1283,6 @@
                   }
 
                   .visualization-container {
-                    transform: scale(0.9);
-                    -webkit-transform: scale(0.9);
 
                     .chart {
                       &.active-chart {
@@ -1295,6 +1296,21 @@
                         .cars-container {
                           transform: translate(20px, 0px);
                           -webkit-transform: translate(20px, 0px);
+                        }
+                      }
+                    }
+                  }
+
+                  &.is-thumbnail {
+                    .visualization-container {
+                      .thumbnail-chart {
+                        .cars-container {
+                          g {
+                            rect {
+                              rx: 1px;
+                              ry: 1px;
+                            }
+                          }
                         }
                       }
                     }
@@ -1736,7 +1752,18 @@
       margin-left: 5.55%;
       .main-container {
         .word-art-title {
-          bottom: 1rem;
+          bottom: 2rem;
+          right:-1rem;
+
+          .gruss-thumb{
+            font-size: 0.7rem;
+            margin-right: 0;
+          }
+
+          .wordart {
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+          }
         }
 
         .selection-buttons {
@@ -1745,21 +1772,11 @@
           }
         }
 
-        .info-container {
-        }
-
-        .sources-container {
-        }
-
         .card-collection {
           margin-top: -10px;
           height: 100vh;
           margin: 0 auto;
           width: 95%;
-
-          .carousel-container {
-            // margin-top: 5rem;
-          }
 
           .card-container {
             height: 100vh;
@@ -1769,22 +1786,24 @@
           }
           .chart-container {
             .Mo-chart {
+
               .icon {
                 display: none;
               }
+
               .no-icon {
                 display: inline-block;
               }
             }
           }
-        }
 
-        .card {
-          &-ordered {
-            margin: 0.5rem 0.5rem -20px 1rem;
-            //original ratio changed for styling
-            width: calc($portait-postcardwidth/2.3);
-            height: calc($portait-postcardwidth/1.8);
+          .card {
+            &-ordered {
+              margin: 0.5rem 1.5rem -40px 1rem;
+              //original ratio changed for styling
+              width: calc($portait-postcardwidth/2.4);
+              height: calc($portait-postcardwidth/1.7);
+            }
           }
         }
 

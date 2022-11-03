@@ -179,13 +179,14 @@
         height: 100%;
 
         .indicator-ranking {
+          display: inline-block;
           position: absolute;
           bottom: 1rem;
           z-index: 5;
           border: 2px solid gray;
           border-radius: 5px;
           background-color: $light;
-          max-width: 77%;
+          max-width: 90%;
 
           p {
             font-family: 'Chivo';
