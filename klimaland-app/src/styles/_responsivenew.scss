@@ -121,7 +121,8 @@
                 .visualization-container {
                   svg {
                     .non-clipped-elements {
-                      text {
+                      .year-label,
+                      .measure-label {
                         -webkit-transform: translate(-5px, 0);
                         transform: translate(-5px, 0);
                       }
@@ -188,7 +189,6 @@
                 }
               }
             }
-
 
             .is-thumbnail {
               .visualization-container {
@@ -500,7 +500,8 @@
                 .visualization-container {
                   svg {
                     .non-clipped-elements {
-                      text {
+                      .year-label,
+                      .measure-label {
                         -webkit-transform: translate(-10px, 0);
                         transform: translate(-10px, 0);
                       }
@@ -578,6 +579,50 @@
               .section-thumb {
                 .indicator-ranking {
                   max-width: 80%;
+                }
+              }
+            }
+          }
+        }
+        .card-collection {
+          .card {
+            .Ge-chart {
+              .avg-heating {
+                .visualization-container {
+                  -webkit-transform: translatey(-10px);
+                  transform: translatey(-10px);
+                  svg {
+                    .clipped-container {
+                      .chart-axis {
+                        .bar-axis {
+                          .energy-class-rect {
+                            width: 20px;
+                          }
+                          .energy-class-name {
+                            -webkit-transform: translateX(-5px);
+                            transform: translateX(-5px);
+                          }
+                          .energy-class-value {
+                            -webkit-transform: translateX(0px);
+                            transform: translateX(0px);
+                          }
+                        }
+                      }
+                    }
+                    .non-clipped-elements {
+                      .year-label {
+                        -webkit-transform: translate(-15px, 0);
+                        transform: translate(-15px, 0);
+                        &.year-odd {
+                          display: none;
+                        }
+                      }
+                      .measure-label {
+                        -webkit-transform: translate(9px, 0);
+                        transform: translate(9px, 0);
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -817,44 +862,6 @@
                 //   }
                 // }
               }
-              .avg-heating {
-                .visualization-container {
-                  -webkit-transform: translatey(-10px);
-                  transform: translatey(-10px);
-                  svg {
-                    .clipped-container {
-                      .chart-axis {
-                        .bar-axis {
-                          .energy-class-rect {
-                            width: 20px;
-                          }
-                          text {
-                            -webkit-transform: translateX(-5px);
-                            transform: translateX(-5px);
-                          }
-                          .energy-class-value {
-                            -webkit-transform: translateX(0px);
-                            transform: translateX(0px);
-                          }
-                        }
-                      }
-                    }
-                    .non-clipped-elements {
-                      text {
-                        -webkit-transform: translate(-15px, 0);
-                        transform: translate(-15px, 0);
-                        &.year-odd {
-                          display: none;
-                        }
-                        &.measure-label {
-                          -webkit-transform: translate(9px, 0);
-                          transform: translate(9px, 0);
-                        }
-                      }
-                    }
-                  }
-                }
-              }
             }
 
             .La-chart {
@@ -882,7 +889,6 @@
                 }
               }
             }
-
 
             .is-thumbnail {
               .visualization-container {
@@ -1473,12 +1479,16 @@
 
                     .chart {
                       .non-clipped-elements {
-                        -webkit-transform: translate(-28px, 0);
-                        transform: translate(-28px, 0);
+                        -webkit-transform: translate(-28px, 20px);
+                        transform: translate(-28px, 20px);
 
                         .measure-label {
                           -webkit-transform: translate(-75%, 0);
                           transform: translate(-75%, 0);
+                        }
+                        .year-label {
+                          -webkit-transform: translate(0, 0);
+                          transform: translate(5px, 0);
                         }
                       }
                     }
