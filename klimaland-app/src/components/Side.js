@@ -360,7 +360,11 @@ export default class Side extends Component {
                   </div>
                 )}
               {!this.props.isThumbnail && this.props.isTopCard && (
-                <button className="button-download" onClick={this.onShareButtonClick}>
+                <button
+                  className="button-download"
+                  onClick={this.onShareButtonClick}
+                  style={{ visibility: this.props.activeSide === 1 ? 'hidden' : 'visible' }}
+                >
                   <div className="inner-button">
                     {!this.state.exportActive && (
                       <p className="download-label">Download der Postkarte</p>
