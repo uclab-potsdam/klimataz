@@ -489,11 +489,6 @@
                 }
               }
 
-              .Ges-stream {
-                transform: translateX(-100px);
-                -webkit-transform: translateX(-100px);
-              }
-
               .Wär-stream {
                 border: 1px solid darken($dust-blue, 10%);
                 box-shadow: 2px 2px 0px rgba(darken($dust-blue, 10%), 0.7);
@@ -534,11 +529,6 @@
           .years-labels-container {
             foreignObject {
               white-space: nowrap;
-
-              .Ges-stream {
-                transform: translateX(0px);
-                -webkit-transform: translateX(0px);
-              }
             }
             div {
               min-width: 40px;
@@ -685,7 +675,7 @@
               .biotonne {
                 -webkit-transform: translateX(10%);
                 transform: translateX(10%);
-                text {
+                .biotonne-text {
                   -webkit-transform: translateX(12%);
                   transform: translateX(12%);
                 }
@@ -694,7 +684,7 @@
               .gartenPark {
                 -webkit-transform: translateX(16%);
                 transform: translateX(16%);
-                text {
+                .gartenPark-text {
                   -webkit-transform: translateX(18%);
                   transform: translateX(18%);
                 }
@@ -703,7 +693,7 @@
               .highest-value {
                 -webkit-transform: translateX(0%);
                 transform: translateX(0%);
-                text {
+                .highest-value-text {
                   -webkit-transform: translateX(2%);
                   transform: translateX(2%);
                 }
