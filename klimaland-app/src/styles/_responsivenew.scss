@@ -438,12 +438,12 @@
                       }
                     }
                     .section-text {
-                      height: 85%;
+                      height: 100%;
                     }
                   }
                 }
                 .data-container {
-                  height: 88%;
+                  height: 90%;
 
                   .locator-map {
                     .locator-container {
@@ -475,6 +475,15 @@
                     .no-icon {
                       display: inline-block;
                     }
+                  }
+                }
+              }
+
+              .is-thumbnail {
+                .visualization-container {
+                  .chart {
+                    transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
+                    -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
                   }
                 }
               }
@@ -755,6 +764,7 @@
               }
               .modal-split {
                 .visualization-container {
+                  transform: translateY(-5px);
                   .chart {
                     .paths {
                       text {
@@ -964,6 +974,10 @@
                     }
                   }
                 }
+              }
+
+              .footer-container {
+                height: calc(12% + 2px);
               }
             }
           }
@@ -1364,8 +1378,8 @@
                   .visualization-container {
                     .chart {
                       &.active-chart {
-                        transform: skew(0deg, 0deg) translate(10px, -15px);
-                        -webkit-transform: skew(0deg, 0deg) translate(10px, -15px);
+                        transform: translate(10px, -11px) scale(0.95);
+                        -webkit-transform: translate(10px, -11px) scale(0.95);
                       }
 
                       &.thumbnail-chart {
@@ -1394,6 +1408,7 @@
                     }
                   }
                 }
+
                 .modal-split {
                   .description {
                     height: 20%;
@@ -1401,9 +1416,12 @@
                       font-size: 1rem;
                     }
                   }
+
                   .visualization-container {
                     height: 80%;
                     .chart {
+                      transform: translateY(-15px);
+                      -webkit-transform: translateY(-15px);
                       .bar-percentage-trip {
                         display: none;
                       }
@@ -1702,6 +1720,10 @@
                           .section-title {
                             margin-bottom: 0;
                             padding-top: 2rem;
+                            
+                            h2 {
+                              display: flex;
+                            }
                           }
 
                           .section-text {
@@ -1756,7 +1778,8 @@
                     }
 
                     .footer-container {
-                      height: 10%;
+                      border-left: none;
+                      height: 8%;
                       width: 100%;
                       border-top: 1px solid #484848;
                       .footer-inner-container {
