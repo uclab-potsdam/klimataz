@@ -1224,6 +1224,15 @@
                     }
                   }
                 }
+
+                .is-thumbnail {
+                  .visualization-container {
+                    .chart {
+                      transform: translateY(1.5rem);
+                      -webkit-transform: translateY(1.5rem);
+                    }
+                  }
+                }
               }
 
               &.Mo-chart {
@@ -1477,7 +1486,7 @@
             //thumbnail
             &-ordered {
               //original ratio changed for styling
-              width: calc($portrait-minitablet-postcardwidth/2.0);
+              width: calc($portrait-minitablet-postcardwidth/2.1);
               height: calc($portrait-minitablet-postcardwidth/1.5);
             }
             .card-front {
@@ -1651,8 +1660,6 @@
         .info-container {
           width: 25%;
           position: absolute;
-          right: -2.5rem;
-          bottom: 27%;
           .info-container-content {
             width: 30px;
             height: 30px;
