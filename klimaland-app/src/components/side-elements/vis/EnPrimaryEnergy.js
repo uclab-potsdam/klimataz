@@ -109,7 +109,9 @@ const Energy = ({
     //replace negative values with 0
     filteredData
       .filter((d) => {
-        return d.column === 'Stromaustauschsaldo' && d.value < 0;
+        return (
+          d.column === 'Stromaustauschsaldo' || (d.column === 'Andere Energieträger' && d.value < 0)
+        );
       })
       .forEach((d) => (d.value = 0));
 
