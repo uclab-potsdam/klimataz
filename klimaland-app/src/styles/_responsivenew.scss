@@ -441,12 +441,12 @@
                       }
                     }
                     .section-text {
-                      height: 85%;
+                      height: 100%;
                     }
                   }
                 }
                 .data-container {
-                  height: 88%;
+                  height: 90%;
 
                   .locator-map {
                     .locator-container {
@@ -481,6 +481,7 @@
                   }
                 }
               }
+
               .is-thumbnail {
                 .visualization-container {
                   .chart {
@@ -976,6 +977,10 @@
                     }
                   }
                 }
+              }
+
+              .footer-container {
+                height: calc(12% + 2px);
               }
             }
           }
@@ -1711,6 +1716,10 @@
                           .section-title {
                             margin-bottom: 0;
                             padding-top: 2rem;
+                            
+                            h2 {
+                              display: flex;
+                            }
                           }
 
                           .section-text {
@@ -1765,7 +1774,8 @@
                     }
 
                     .footer-container {
-                      height: 10%;
+                      border-left: none;
+                      height: 8%;
                       width: 100%;
                       border-top: 1px solid #484848;
                       .footer-inner-container {
