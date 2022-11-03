@@ -178,7 +178,7 @@
                   }
 
                   .pie-controller {
-                    -webkit-transform:translateX(60%) translateY(-2.5%);
+                    -webkit-transform: translateX(60%) translateY(-2.5%);
                     transform: translateX(60%) translateY(-2.5%);
                     .pie-icon {
                       -webkit-transform: scale(0.6);
@@ -719,11 +719,11 @@
                     }
 
                     .gartenPark {
-                      -webkit-transform:translateX(20%);
+                      -webkit-transform: translateX(20%);
                       transform: translateX(20%);
 
                       text {
-                        -webkit-transform:translateX(22%) translateY(0.5%);
+                        -webkit-transform: translateX(22%) translateY(0.5%);
                         transform: translateX(22%) translateY(0.5%);
                       }
                     }
@@ -734,7 +734,7 @@
                     transform: translateX(59%) translateY(-2.5%);
 
                     .pie-icon {
-                      -webkit-transform:scale(0.5);
+                      -webkit-transform: scale(0.5);
                       transform: scale(0.5);
 
                       path {
@@ -910,7 +910,6 @@
                   }
                 }
                 .data-container {
-                  
                   .locator-map {
                     .locator-container {
                       height: 100%;
@@ -928,13 +927,32 @@
 
         .info-container {
           .info-container-content {
+            width: 30px;
+            height: 30px;
+            .help {
+              h2.mobile-title {
+                display: block;
+                text-align: center;
+                margin: 0;
+              }
+
+              h4.desktop-title {
+                display: none;
+              }
+            }
             &.open {
               -webkit-transform: translate(20px, -65vh) rotate(2deg);
               transform: translate(20px, -65vh) rotate(2deg);
 
-              //   .help {
-              //     height: 65vh;
-              //   }
+              .help {
+                h4.desktop-title {
+                  display: block;
+                }
+
+                h2.mobile-title {
+                  display: none;
+                }
+              }
             }
           }
           h4 {
@@ -1107,6 +1125,13 @@
                     .x-axis {
                       text {
                         font-size: 12px;
+                      }
+                    }
+                    .y-axis {
+                      .last-line {
+                        text {
+                          display: none;
+                        }
                       }
                     }
                     .description {
@@ -1661,21 +1686,6 @@
           width: 25%;
           position: absolute;
           .info-container-content {
-            width: 30px;
-            height: 30px;
-
-            .help {
-              h2.mobile-title {
-                display: block;
-                text-align: center;
-                margin: 0;
-              }
-
-              h4.desktop-title {
-                display: none;
-              }
-            }
-
             &.open {
               width: calc($portait-postcardwidth/1.2);
               height: calc($portait-postcardwidth * 1.2);
@@ -1684,14 +1694,6 @@
 
               .help {
                 height: calc($portait-postcardwidth * 1.2);
-              }
-
-              h4.desktop-title {
-                display: block;
-              }
-
-              h2.mobile-title {
-                display: none;
               }
             }
           }
