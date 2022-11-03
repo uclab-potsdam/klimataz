@@ -272,7 +272,7 @@ const Energy = ({
                       y={marginHeight + 15}
                       textAnchor="middle"
                       transform={
-                        dimensions.width <= 350 ? `rotate(-90, -10, ${marginHeight + 10})` : ''
+                        dimensions.width <= 515 ? `rotate(-90, -10, ${marginHeight + 10})` : ''
                       }
                     >
                       {axis.label}
@@ -302,7 +302,11 @@ const Energy = ({
             {yAxisElements.map(function (axis, a) {
               if (a === 0) return;
               return (
-                <g transform={`translate(0, ${axis.x})`} key={a}>
+                <g
+                  transform={`translate(0, ${axis.x})`}
+                  key={a}
+                  className={`${yAxisElements.length - 1 === a ? 'last-line' : ''}`}
+                >
                   <line x1="0" x2={dimensions.width} y1="0" y2="0" />
                   <text x={dimensions.width - 10} y="-5" textAnchor="end">
                     {axis.label}
