@@ -13,6 +13,7 @@ import { UIContext } from './UIContext.js';
 import switchCardLeft from '../img/buttons/caret-left.svg';
 import switchCardRight from '../img/buttons/caret-right.svg';
 import closeCard from '../img/buttons/close.svg';
+import umfrage from '../img/taz/umfrage.svg';
 
 export default class LayoutManager extends Component {
   constructor(props) {
@@ -534,43 +535,58 @@ export default class LayoutManager extends Component {
         buttons component and switch between the selection and shuffle or zoomed
         view buttons*/}
           {this.state.postcardView && (
-            <div className="button-container">
-              {this.props.editorspick[0].view.value !== 3 && (
-                <>
-                  <div className="inner-button">
-                    <button className="button close" onClick={this.closePostcardView}>
-                      <img
-                        src={closeCard}
-                        className="button img img-close"
-                        alt="close-button-img"
-                      />
-                    </button>
-                  </div>
-                  <div className="button-switch-container">
-                    <button className="inner-button button-left" onClick={this.handleSwitchBack}>
-                      <div className="button switch">
+            <>
+              <div className="button-container">
+                {this.props.editorspick[0].view.value !== 3 && (
+                  <>
+                    <div className="inner-button">
+                      <button className="button close" onClick={this.closePostcardView}>
                         <img
-                          src={switchCardLeft}
-                          className="button img nav-left"
-                          alt="switch-button-img"
+                          src={closeCard}
+                          className="button img img-close"
+                          alt="close-button-img"
                         />
-                        <h6 className="switch-preview">{this.state.previewLeftCard}</h6>
-                      </div>
-                    </button>
-                    <button className="inner-button button-right">
-                      <div className="button switch" onClick={this.handleSwitchNext}>
-                        <img
-                          src={switchCardRight}
-                          className="button img nav-right"
-                          alt="switch-button-img"
-                        />
-                        <h6 className="switch-preview">{this.state.previewRightCard}</h6>
-                      </div>
-                    </button>
-                  </div>
-                </>
-              )}
-            </div>
+                      </button>
+                    </div>
+                    <div className="button-switch-container">
+                      <button className="inner-button button-left" onClick={this.handleSwitchBack}>
+                        <div className="button switch">
+                          <img
+                            src={switchCardLeft}
+                            className="button img nav-left"
+                            alt="switch-button-img"
+                          />
+                          <h6 className="switch-preview">{this.state.previewLeftCard}</h6>
+                        </div>
+                      </button>
+                      <button className="inner-button button-right">
+                        <div className="button switch" onClick={this.handleSwitchNext}>
+                          <img
+                            src={switchCardRight}
+                            className="button img nav-right"
+                            alt="switch-button-img"
+                          />
+                          <h6 className="switch-preview">{this.state.previewRightCard}</h6>
+                        </div>
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              <div className="umfrage-container">
+                <a target="_blank" rel="noreferrer" href="https://forms.gle/B6dguRvQvC3y6AGi8">
+                  <img
+                    src={umfrage}
+                    className="container-umfrage img umfrage-img"
+                    alt="umfrage-img"
+                  />
+                </a>
+                <p className="umfrage-label">
+                  Nimm an unserer Umfrage teil, um einen taz Hoody zu gewinnen!
+                </p>
+              </div>
+            </>
           )}
 
           <Info postcardView={this.state.postcardView} mode={this.state.mode} />

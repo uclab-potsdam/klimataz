@@ -1730,6 +1730,18 @@
           }
         }
 
+        .umfrage-container {
+          width: 80%;
+          left: 0.5rem;
+          top: 0rem;
+
+          .umfrage-label {
+            left: 2.5rem;
+            top: 0rem;
+            width: 60%;
+          }
+        }
+
         //postcardview
         .side-container {
           width: calc($portait-postcardheight/1.5);
