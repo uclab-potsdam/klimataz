@@ -1,5 +1,5 @@
-import React, { createRef, useState, useEffect } from 'react';
-import { stack, stackOffsetNone, stackOrderAscending, curveCatmullRom, area } from 'd3-shape';
+import React, { createRef, useState } from 'react';
+import { stack, stackOffsetNone, stackOrderAscending, curveMonotoneX, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
@@ -157,7 +157,7 @@ const Energy = ({
       .x((d) => xScale(d.data.year))
       .y0((d) => yScale(d[0]))
       .y1((d) => yScale(d[1]))
-      .curve(curveCatmullRom.alpha(0.5));
+      .curve(curveMonotoneX);
 
     // prepare data for stacking
     const stackData = [];
@@ -274,7 +274,7 @@ const Energy = ({
                       y={marginHeight + 15}
                       textAnchor="middle"
                       transform={
-                        dimensions.width <= 350 ? `rotate(-90, -10, ${marginHeight + 10})` : ''
+                        dimensions.width <= 515 ? `rotate(-90, -10, ${marginHeight + 10})` : ''
                       }
                     >
                       {axis.label}
@@ -304,7 +304,11 @@ const Energy = ({
             {yAxisElements.map(function (axis, a) {
               if (a === 0) return;
               return (
-                <g transform={`translate(0, ${axis.x})`} key={a}>
+                <g
+                  transform={`translate(0, ${axis.x})`}
+                  key={a}
+                  className={`${yAxisElements.length - 1 === a ? 'last-line' : ''}`}
+                >
                   <line x1="0" x2={dimensions.width} y1="0" y2="0" />
                   <text x={dimensions.width - 10} y="-5" textAnchor="end">
                     {axis.label}
@@ -357,9 +361,8 @@ const Energy = ({
                         />
                         {label.value !== 0 && (
                           <g
-                            className={`interactive-labels ${
-                              activeLabel === l ? 'active-label' : ''
-                            }`}
+                            className={`interactive-labels ${activeLabel === l ? 'active-label' : ''
+                              }`}
                             transform={`translate(${label.xValue}, ${label.yValue})`}
                           >
                             <foreignObject
