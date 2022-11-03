@@ -7,7 +7,7 @@
 
 @include media('<=desktop') {
   body {
-    background-color: lightgoldenrodyellow;
+    // background-color: lightgoldenrodyellow;
     .indicators-iframe {
       .main-container {
         .side-container {
@@ -269,7 +269,7 @@
 
 @include media('<=tablet') {
   body {
-    background-color: rgb(170, 170, 245);
+    // background-color: rgb(170, 170, 245);
 
     h4 {
       font-size: 14px;
@@ -582,7 +582,7 @@
 
 @include media('<=schwerpunkt') {
   body {
-    background-color: lightcoral;
+    // background-color: lightcoral;
 
     .indicators-iframe {
       .main-container {
@@ -666,7 +666,7 @@
 
 @include media('<=minitablet') {
   body {
-    background-color: peachpuff;
+    // background-color: peachpuff;
 
     h4 {
       font-size: 12px;
@@ -1074,7 +1074,7 @@
 
 @include media('<shortread') {
   body {
-    background-color: aqua;
+    // background-color: aqua;
 
     h4 {
       font-size: 12px;
@@ -1206,7 +1206,6 @@
 
               .horizontal-bottom-layout {
                 .description {
-                  width: 100%;
                   h4 {
                     font-size: 1rem;
                   }
@@ -1215,7 +1214,7 @@
 
               &.En-chart {
                 .visualization-container {
-                  height: 80%;
+                  height: 75%;
                   .chart {
                     .y-axis,
                     .x-axis {
@@ -1231,7 +1230,7 @@
                       }
                     }
                     .description {
-                      height: 15%;
+                      height: 25%;
                     }
                   }
                 }
@@ -1447,7 +1446,7 @@
               &.Ab-chart {
                 .biotonne-weight {
                   .description {
-                    height: 15%;
+                    height: 35%;
 
                     span {
                       &.footnote {
@@ -1456,7 +1455,7 @@
                     }
                   }
                   .visualization-container {
-                    height: 70%;
+                    height: 65%;
 
                     .chart {
                       text {
@@ -1492,7 +1491,7 @@
               &.Ge-chart {
                 .newbuildings-energy {
                   .description {
-                    width: 100%;
+                    width: calc(100% - 2rem);
                     .title {
                       margin: 0 auto;
                       h4 {
@@ -1510,8 +1509,7 @@
                     }
 
                     .legend {
-                      // position: absolute;
-                      // bottom: 0;
+                      margin-top: 0;
                       height: 19%;
                       width: 95%;
                       display: inline-block;
@@ -1583,16 +1581,16 @@
 
                 .avg-heating {
                   .description {
-                    height: 15%;
+                    height: 25%;
                     h4 {
                       font-size: 1rem;
                     }
                   }
 
                   .visualization-container {
-                    height: 85%;
-                    transform: translateY(-15px);
-                    -webkit-transform: translateY(-15px);
+                    height: 75%;
+                    transform: translateY(-10px);
+                    -webkit-transform: translateY(-10px);
 
                     .chart {
                       .non-clipped-elements {
@@ -1720,7 +1718,7 @@
                           .section-title {
                             margin-bottom: 0;
                             padding-top: 2rem;
-                            
+
                             h2 {
                               display: flex;
                             }
@@ -1869,7 +1867,7 @@
 
 @include media('<=largephone') {
   body {
-    background-color: violet;
+    // background-color: violet;
 
     .indicators-iframe {
       margin-right: 5.55%;
