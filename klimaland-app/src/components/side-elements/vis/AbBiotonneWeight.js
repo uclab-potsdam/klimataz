@@ -193,21 +193,27 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
                 <g className={`legend ${piesAreActive ? 'show-legend' : ''}`}>
                   <g className="biotonne">
                     <circle className="biotonne" cx="0" cy="0" r={radius} />
-                    <text x="0" y={radius / 2}>
-                      Biotonne
-                    </text>
+                    <g className="biotonne-text">
+                      <text x="0" y={radius / 2}>
+                        Biotonne
+                      </text>
+                    </g>
                   </g>
                   <g className="gartenPark">
                     <circle className="gartenPark" cx="0" cy="0" r={radius} />
-                    <text x="0" y={radius / 2}>
-                      Gartenabfall
-                    </text>
+                    <g className="gartenPark-text">
+                      <text x="0" y={radius / 2}>
+                        Gartenabfall
+                      </text>
+                    </g>
                   </g>
                   <g className="highest-value">
                     <circle className="highestValue" cx="0" cy="0" r={radius} />
-                    <text x="0" y={radius / 2}>
-                      Höchster Wert
-                    </text>
+                    <g className="highest-value-text">
+                      <text x="0" y={radius / 2}>
+                        Höchster Wert
+                      </text>
+                    </g>
                   </g>
                 </g>
                 <g className="pie-controller" onClick={activatePies}>
