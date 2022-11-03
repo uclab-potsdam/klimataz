@@ -20,7 +20,7 @@
         }
 
         .word-art-title {
-          width: 65%;
+          // width: 65%;
 
           .wordart {
             font-size: 2rem;
@@ -316,6 +316,15 @@
           }
         }
 
+        .word-art-title {
+          // width: 65%;
+
+          .wordart {
+            line-height: 1.75rem;
+            padding-bottom: 5px;
+          }
+        }
+
         .selection-container {
           flex-direction: row;
 
@@ -580,7 +589,9 @@
             .overlay-container {
               .section-thumb {
                 .indicator-ranking {
-                  max-width: 80%;
+                  p {
+                    font-size: 10px;
+                  }
                 }
               }
             }
@@ -665,11 +676,29 @@
 
     .indicators-iframe {
       .main-container {
+        .word-art-title {
+          padding-top: 1rem;
+        }
         .overlay-container {
           .section-title {
             font-size: 14px;
           }
+
+          .section-thumb {
+            &.comparison {
+              .word-art-title {
+                margin-top: 1.5rem;
+                .wordart {
+                  padding-left: 2px;
+                  padding-right: 0;
+                  font-size: 1rem;
+                  line-height: 1rem;
+                }
+              }
+            }
+          }
         }
+
         .button-container {
           .inner-button {
             height: 79%;
@@ -1036,21 +1065,52 @@
     .indicators-iframe {
       .main-container {
         margin-top: 10px;
+
         .titleArtHidden {
           display: none;
         }
 
-        .word-art-title {
-          bottom: 0.5rem;
-          -webkit-transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
-          transform: scale(0.9, 1.2) rotate(-4deg) translate(-20px, -10px);
-
-          .wordart {
-            line-height: 1.5rem;
-            overflow: visible;
-            padding-top: 10px;
-            padding-bottom: 10px;
+        .section-thumb {
+          .indicator-ranking {
+            // position: relative;
+            top: 2.5rem;
+            bottom: auto !important;
           }
+        }
+        .word-art-title {
+          bottom: 2rem;
+          right: 2rem;
+
+          .gruss-thumb {
+            margin-bottom: 0.5rem;
+          }
+
+          .word-art {
+            line-height: 1.75;
+          }
+        }
+
+        .comparison {
+          .word-art-title {
+            width: 100%;
+            bottom: 0rem;
+            right: 0rem;
+            -webkit-transform: rotate(-4deg) translate(-20px, -10px);
+            transform: rotate(-4deg) translate(-20px, -10px);
+            text-align: left;
+
+            .wordart {
+              padding-right: 0;
+            }
+          }
+
+          // .wordart {
+          //   line-height: 1.5rem;
+          //   overflow: visible;
+          //   padding-top: 10px;
+          //   padding-bottom: 10px;
+
+          // }
         }
 
         .selection-buttons {
@@ -1091,19 +1151,19 @@
               padding-left: 0;
             }
 
-            &.stacked {
-              //comparison view
-              &.twocards,
-              &.default {
-                .card {
-                  &-ordered {
-                    margin: 0;
-                    width: calc($portait-postcardwidth/2.3);
-                    height: calc($portait-postcardwidth/1.8);
-                  }
-                }
-              }
-            }
+            // &.stacked {
+            //   //comparison view
+            //   &.twocards,
+            //   &.default {
+            //     .card {
+            //       &-ordered {
+            //         margin: 0;
+            //         width: calc($portait-postcardwidth/2.3);
+            //         height: calc($portait-postcardwidth/1.8);
+            //       }
+            //     }
+            //   }
+            // }
           }
 
           .chart-container {
@@ -1267,6 +1327,15 @@
                     }
                   }
                 }
+
+                .is-thumbnail {
+                  .visualization-container {
+                    .chart {
+                      transform: translateY(2rem);
+                      -webkit-transform: translateY(2rem);
+                    }
+                  }
+                }
               }
 
               &.Mo-chart {
@@ -1289,9 +1358,6 @@
                   }
 
                   .visualization-container {
-                    transform: scale(0.9);
-                    -webkit-transform: scale(0.9);
-
                     .chart {
                       &.active-chart {
                         transform: skew(0deg, 0deg) translate(10px, -15px);
@@ -1304,6 +1370,21 @@
                         .cars-container {
                           transform: translate(20px, 0px);
                           -webkit-transform: translate(20px, 0px);
+                        }
+                      }
+                    }
+                  }
+
+                  &.is-thumbnail {
+                    .visualization-container {
+                      .thumbnail-chart {
+                        .cars-container {
+                          g {
+                            rect {
+                              rx: 1px;
+                              ry: 1px;
+                            }
+                          }
                         }
                       }
                     }
@@ -1524,7 +1605,7 @@
             //thumbnail
             &-ordered {
               //original ratio changed for styling
-              width: calc($portrait-minitablet-postcardwidth/2.0);
+              width: calc($portrait-minitablet-postcardwidth/2.1);
               height: calc($portrait-minitablet-postcardwidth/1.5);
             }
             .card-front {
@@ -1698,8 +1779,6 @@
         .info-container {
           width: 25%;
           position: absolute;
-          right: -2.5rem;
-          bottom: 27%;
           .info-container-content {
             &.open {
               width: calc($portait-postcardwidth/1.2);
@@ -1763,7 +1842,19 @@
       margin-left: 5.55%;
       .main-container {
         .word-art-title {
-          bottom: 1rem;
+          bottom: 3.5rem;
+          right: 1rem;
+          width: 50%;
+
+          .gruss-thumb {
+            font-size: 0.7rem;
+            margin-right: 0;
+          }
+
+          .wordart {
+            font-size: 1.5rem;
+            line-height: 1.2rem;
+          }
         }
 
         .selection-buttons {
@@ -1772,21 +1863,11 @@
           }
         }
 
-        .info-container {
-        }
-
-        .sources-container {
-        }
-
         .card-collection {
           margin-top: -10px;
           height: 100vh;
           margin: 0 auto;
           width: 95%;
-
-          .carousel-container {
-            // margin-top: 5rem;
-          }
 
           .card-container {
             height: 100vh;
@@ -1799,19 +1880,20 @@
               .icon {
                 display: none;
               }
+
               .no-icon {
                 display: inline-block;
               }
             }
           }
-        }
 
-        .card {
-          &-ordered {
-            margin: 0.5rem 0.5rem -20px 1rem;
-            //original ratio changed for styling
-            width: calc($portait-postcardwidth/2.3);
-            height: calc($portait-postcardwidth/1.8);
+          .card {
+            &-ordered {
+              margin: 0.5rem 1.5rem -40px 1rem;
+              //original ratio changed for styling
+              width: calc($portait-postcardwidth/2.4);
+              height: calc($portait-postcardwidth/1.7);
+            }
           }
         }
 
