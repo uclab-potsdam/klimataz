@@ -78,8 +78,12 @@
     }
 
     .is-thumbnail {
+      .description {
+        display: none;
+      }
       .visualization-container {
         cursor: pointer;
+        height: 100%;
       }
     }
     // Specific styling for sections' charts

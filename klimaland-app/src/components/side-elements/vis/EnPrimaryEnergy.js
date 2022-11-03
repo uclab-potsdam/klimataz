@@ -1,5 +1,5 @@
-import React, { createRef, useState, useEffect } from 'react';
-import { stack, stackOffsetNone, stackOrderAscending, curveCatmullRom, area } from 'd3-shape';
+import React, { createRef, useState } from 'react';
+import { stack, stackOffsetNone, stackOrderAscending, curveMonotoneX, area } from 'd3-shape';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
@@ -155,7 +155,7 @@ const Energy = ({
       .x((d) => xScale(d.data.year))
       .y0((d) => yScale(d[0]))
       .y1((d) => yScale(d[1]))
-      .curve(curveCatmullRom.alpha(0.5));
+      .curve(curveMonotoneX);
 
     // prepare data for stacking
     const stackData = [];
@@ -359,9 +359,8 @@ const Energy = ({
                         />
                         {label.value !== 0 && (
                           <g
-                            className={`interactive-labels ${
-                              activeLabel === l ? 'active-label' : ''
-                            }`}
+                            className={`interactive-labels ${activeLabel === l ? 'active-label' : ''
+                              }`}
                             transform={`translate(${label.xValue}, ${label.yValue})`}
                           >
                             <foreignObject
