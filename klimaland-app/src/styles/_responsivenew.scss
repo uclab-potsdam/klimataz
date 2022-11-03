@@ -1808,8 +1808,8 @@
             &.open {
               width: calc($portait-postcardwidth/1.2);
               height: calc($portait-postcardwidth * 1.2);
-              transform: translate(-100%, -70%) rotate(-2deg);
-              -webkit-transform: translate(-100%, -70%) rotate(-2deg);
+              transform: translate(10%, -100%) rotate(-2deg);
+              -webkit-transform: translate(10%, -100%) rotate(-2deg);
 
               .help {
                 height: calc($portait-postcardwidth * 1.2);
