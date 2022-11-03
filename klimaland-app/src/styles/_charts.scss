@@ -206,9 +206,57 @@
 
               div {
                 width: 40px;
-                background-color: rgba(255, 255, 255, 0.9);
+                background-color: rgba(255, 255, 255);
+                border: 1px solid black;
+                text-align: center;
+
+                &.Fuß {
+                  background-color: lighten(#2a4d9c, 50);
+                  border-color: #2a4d9c;
+                  p {
+                    color: #2a4d9c;
+                  }
+                }
+
+                &.Fahrrad {
+                  background-color: lighten(#5F88C6, 50);
+                  border-color: #5F88C6;
+
+                  p {
+                    color: #5F88C6;
+                  }
+                }
+
+                &.ÖPV {
+                  background-color: lighten(#2A4D9C, 50);
+                  border-color: #2A4D9C;
+
+                  p {
+                    color: #2A4D9C;
+                  }
+                }
+                
+                &.Mitfahrer {
+                  background-color: lighten(#FFD0D0, 50);
+                  border-color: darken(#FFD0D0, 10);
+
+                  p {
+                    color: darken(#FFD0D0, 10);
+                  }
+                }
+
+                &.Fahrer {
+                  background-color: lighten(#FF7B7B, 25);
+                  border-color: #FF7B7B;
+                
+                  p {
+                    color: #FF7B7B;
+                  }
+                }
+                                
+                
                 p {
-                  padding-left: 2px;
+                  padding-top: 1px;
                   margin: 0;
                 }
               }

@@ -481,6 +481,14 @@
                   }
                 }
               }
+              .is-thumbnail {
+                .visualization-container {
+                  .chart {
+                    transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
+                    -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
+                  }
+                }
+              }
             }
 
             .Ge-chart {
@@ -758,6 +766,7 @@
               }
               .modal-split {
                 .visualization-container {
+                  transform: translateY(-5px);
                   .chart {
                     .paths {
                       text {
@@ -1360,8 +1369,8 @@
                   .visualization-container {
                     .chart {
                       &.active-chart {
-                        transform: skew(0deg, 0deg) translate(10px, -15px);
-                        -webkit-transform: skew(0deg, 0deg) translate(10px, -15px);
+                        transform: translate(10px, -11px) scale(0.95);
+                        -webkit-transform: translate(10px, -11px) scale(0.95);
                       }
 
                       &.thumbnail-chart {
@@ -1390,6 +1399,7 @@
                     }
                   }
                 }
+
                 .modal-split {
                   .description {
                     height: 20%;
@@ -1397,9 +1407,12 @@
                       font-size: 1rem;
                     }
                   }
+
                   .visualization-container {
                     height: 80%;
                     .chart {
+                      transform: translateY(-15px);
+                      -webkit-transform: translateY(-15px);
                       .bar-percentage-trip {
                         display: none;
                       }

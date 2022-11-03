@@ -25,12 +25,8 @@ const MoModalSplit = ({
   let defaultYear = 2017;
   const width = dimensions.width;
   const height = dimensions.height;
-  const isMobile = width <= 350 && mobileCheck(window);
-  const mobileThreshold = isMobile ? 10 : 4;
-  const tabletThreshold = width >= 600 && width <= 750 ? 55 : 65;
-  const marginWidth = Math.round(width / 20);
-  // const maxRangeHeight = Math.round(height / 10);
-  const marginHeight = height - height / 8;
+  const isMobile = width <= 400;
+  const marginWidth = isMobile ? Math.round(width / 10) : Math.round(width / 20);
   const orderOfModes = ['Fuß', 'Fahrrad', 'ÖPV', 'Mitfahrer', 'Fahrer'];
   const colors = ['#3762FB', '#5F88C6', '#2A4D9C', '#FFD0D0', '#FF7B7B'];
   let yScale;
@@ -132,7 +128,7 @@ const MoModalSplit = ({
       // const isReverse = lastCoor[0] !== 0 && lastCoor[0] < 5 && rowIndex > 0
       element.labelX = checkDataPosition(lastCoor[0])
         ? xScaleReverse(lastCoor[0])
-        : xScale(lastCoor[0]);
+        : xScale(lastCoor[0]) - 40;
       element.markerX = element.labelX;
       element.labelY = yScale(lastCoor[1]);
 
@@ -245,7 +241,7 @@ const MoModalSplit = ({
                           transform={`translate(${trip.labelX}, ${trip.labelY})`}
                         >
                           <foreignObject x="0" y="-5" width="1" height="1">
-                            <div xmlns="http://www.w3.org/1999/xhtml">
+                            <div className={trip.mode} xmlns="http://www.w3.org/1999/xhtml">
                               <p>{trip.label}</p>
                             </div>
                           </foreignObject>
