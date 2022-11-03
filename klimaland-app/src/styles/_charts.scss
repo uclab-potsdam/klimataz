@@ -685,7 +685,7 @@
               .biotonne {
                 -webkit-transform: translateX(10%);
                 transform: translateX(10%);
-                text {
+                .biotonne-text {
                   -webkit-transform: translateX(12%);
                   transform: translateX(12%);
                 }
@@ -694,7 +694,7 @@
               .gartenPark {
                 -webkit-transform: translateX(16%);
                 transform: translateX(16%);
-                text {
+                .gartenPark-text {
                   -webkit-transform: translateX(18%);
                   transform: translateX(18%);
                 }
@@ -703,7 +703,7 @@
               .highest-value {
                 -webkit-transform: translateX(0%);
                 transform: translateX(0%);
-                text {
+                .highest-value-text {
                   -webkit-transform: translateX(2%);
                   transform: translateX(2%);
                 }
