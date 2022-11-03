@@ -188,6 +188,13 @@
                 }
               }
             }
+
+
+            .is-thumbnail {
+              .visualization-container {
+                height: 100%;
+              }
+            }
           }
         }
 
@@ -878,6 +885,13 @@
               }
             }
 
+
+            .is-thumbnail {
+              .visualization-container {
+                height: 100%;
+              }
+            }
+
             .details-container {
               .flex-container {
                 .text-container {
@@ -1031,10 +1045,6 @@
         .card-collection {
           width: 100%;
           align-content: flex-start;
-
-          .carousel-container {
-            // margin-top: 3.5rem;
-          }
 
           .card-container {
             align-content: flex-start;
@@ -1255,16 +1265,6 @@
                       }
                     }
                   }
-
-                  &.is-thumbnail {
-                    .description {
-                      display: none;
-                    }
-
-                    .visualization-container {
-                      height: 100%;
-                    }
-                  }
                 }
                 .modal-split {
                   .description {
@@ -1459,6 +1459,14 @@
                         }
                       }
                     }
+                  }
+                }
+              }
+
+              .is-thumbnail {
+                &.horizontal-bottom-layout {
+                  .visualization-container {
+                    height: 100%;
                   }
                 }
               }
