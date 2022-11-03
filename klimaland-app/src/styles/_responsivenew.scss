@@ -349,15 +349,12 @@
 
         .social-media-layout {
           .logo-container {
-            height: 0.8rem;
-            min-height: 0.5rem;
-            bottom: 8px;
-            left: 8px;
+            height: 1.3rem;
           }
 
           .word-art-title {
-            -webkit-transform: scale(0.6, 0.8) rotate(-3deg) translate(60px, 10px);
-            transform: scale(0.6, 0.8) rotate(-3deg) translate(60px, 10px);
+            -webkit-transform: scale(0.9, 0.9) translate(0px, 0px);
+            transform: scale(0.9, 0.9) translate(0px, 0px);
           }
         }
 
@@ -441,12 +438,12 @@
                       }
                     }
                     .section-text {
-                      height: 85%;
+                      height: 100%;
                     }
                   }
                 }
                 .data-container {
-                  height: 88%;
+                  height: 90%;
 
                   .locator-map {
                     .locator-container {
@@ -478,6 +475,15 @@
                     .no-icon {
                       display: inline-block;
                     }
+                  }
+                }
+              }
+
+              .is-thumbnail {
+                .visualization-container {
+                  .chart {
+                    transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
+                    -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.85);
                   }
                 }
               }
@@ -758,6 +764,7 @@
               }
               .modal-split {
                 .visualization-container {
+                  transform: translateY(-5px);
                   .chart {
                     .paths {
                       text {
@@ -968,6 +975,10 @@
                   }
                 }
               }
+
+              .footer-container {
+                height: calc(12% + 2px);
+              }
             }
           }
         }
@@ -1047,6 +1058,13 @@
                 width: 50%;
               }
             }
+          }
+        }
+
+        .social-media-layout {
+          .word-art-title {
+            -webkit-transform: scale(0.8) translate(30px, 10px);
+            transform: scale(0.8) translate(30px, 10px);
           }
         }
       }
@@ -1359,8 +1377,8 @@
                   .visualization-container {
                     .chart {
                       &.active-chart {
-                        transform: skew(0deg, 0deg) translate(10px, -15px);
-                        -webkit-transform: skew(0deg, 0deg) translate(10px, -15px);
+                        transform: translate(10px, -11px) scale(0.95);
+                        -webkit-transform: translate(10px, -11px) scale(0.95);
                       }
 
                       &.thumbnail-chart {
@@ -1389,6 +1407,7 @@
                     }
                   }
                 }
+
                 .modal-split {
                   .description {
                     height: 20%;
@@ -1396,9 +1415,12 @@
                       font-size: 1rem;
                     }
                   }
+
                   .visualization-container {
                     height: 80%;
                     .chart {
+                      transform: translateY(-15px);
+                      -webkit-transform: translateY(-15px);
                       .bar-percentage-trip {
                         display: none;
                       }
@@ -1696,6 +1718,10 @@
                           .section-title {
                             margin-bottom: 0;
                             padding-top: 2rem;
+                            
+                            h2 {
+                              display: flex;
+                            }
                           }
 
                           .section-text {
@@ -1750,7 +1776,8 @@
                     }
 
                     .footer-container {
-                      height: 10%;
+                      border-left: none;
+                      height: 8%;
                       width: 100%;
                       border-top: 1px solid #484848;
                       .footer-inner-container {
@@ -1826,6 +1853,13 @@
           width: calc($portait-postcardheight/1.5);
           height: calc($portait-postcardheight);
         }
+
+        .social-media-layout {
+          .word-art-title {
+            -webkit-transform: scale(0.8) translate(15px, 10px);
+            transform: scale(0.8) translate(15px, 10px);
+          }
+        }
       }
     }
   }
@@ -1898,6 +1932,13 @@
         .side-container {
           width: $portait-postcardwidth;
           height: calc($portait-postcardwidth * 1.5);
+        }
+
+        .social-media-layout {
+          .word-art-title {
+            -webkit-transform: scale(0.8) translate(-5px, -8px);
+            transform: scale(0.8) translate(-5px, -8px);
+          }
         }
       }
     }

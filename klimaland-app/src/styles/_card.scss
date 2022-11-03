@@ -536,7 +536,7 @@
 
           .text-container {
             width: 60%;
-            height: 95%;
+            height: 100%;
             overflow: hidden;
 
             .text-inner-container {
@@ -549,6 +549,7 @@
                 width: 80%;
                 border-bottom: 1px solid $pale-olive;
                 h2 {
+                  display: none;
                   margin-top: 0;
                   padding-top: 2rem;
                   margin-bottom: 0.5rem;
@@ -556,7 +557,7 @@
               }
 
               .section-text {
-                height: 85%;
+                height: 100%;
                 position: relative;
                 overflow-y: auto;
 
@@ -692,12 +693,14 @@
         }
 
         .footer-container {
-          height: calc(10% + 1px);
-          // border-top: 1px solid $default-text;
-          width: calc(40% + 0.6px);
+          height: calc(10% + 2px);
+          width: calc(40% - 0.5px);
+          background-color: $light;
           position: absolute;
           right: 0;
           bottom: 0;
+          border-left: 1px solid #484848;
+          border-top: 1px solid #484848;
 
           .footer-inner-container {
             display: flex;
@@ -776,8 +779,10 @@
             .text-container {
               .text-inner-container {
                 .section-title {
+          
                   h2 {
                     font-size: 1rem;
+                    
                   }
                 }
 
