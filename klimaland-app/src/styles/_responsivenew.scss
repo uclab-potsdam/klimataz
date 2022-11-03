@@ -189,7 +189,6 @@
               }
             }
 
-
             .is-thumbnail {
               .visualization-container {
                 height: 100%;
@@ -884,7 +883,6 @@
                 }
               }
             }
-
 
             .is-thumbnail {
               .visualization-container {
@@ -1707,6 +1705,18 @@
             .close {
               margin-top: 1rem;
             }
+          }
+        }
+
+        .umfrage-container {
+          width: 80%;
+          left: 0.5rem;
+          top: 0rem;
+
+          .umfrage-label {
+            left: 2.5rem;
+            top: 0rem;
+            width: 60%;
           }
         }
 
