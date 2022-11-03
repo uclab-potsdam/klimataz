@@ -378,13 +378,14 @@ text {
 
 @mixin horizontal-bottom-layout {
   .description {
-    width: 100%;
+    width: calc(100% - 2rem);
     height: 20%;
+    margin: 0 1rem;
 
     .title {
-      width: 98%;
+      width: 100%;
       border-top: 1px solid $default-text;
-      margin: 0 auto;
+      margin: 0 1rem 0 1rem 0;
 
       h4 {
         margin: 0;
