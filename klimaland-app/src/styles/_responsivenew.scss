@@ -269,7 +269,7 @@
 
 @include media('<=tablet') {
   body {
-    // background-color: rgb(170, 170, 245);
+    background-color: rgb(170, 170, 245);
 
     h4 {
       font-size: 14px;
@@ -422,6 +422,29 @@
                   height: 100%;
                 }
               }
+              .En-chart {
+                .primary-energy,
+                .energy-industry {
+                  .visualization-container {
+                    height: 80%;
+                    .chart {
+                      .streams-labels-container {
+                        foreignObject {
+                          div {
+                            p {
+                              font-size: 10px;
+                              padding: 0;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  .description {
+                    height: 20%;
+                  }
+                }
+              }
             }
 
             .details-container {
@@ -543,23 +566,6 @@
                 }
               }
             }
-            .En-chart {
-              .primary-energy,
-              .energy-industry {
-                .chart {
-                  .streams-labels-container {
-                    foreignObject {
-                      div {
-                        p {
-                          font-size: 10px;
-                          padding: 0;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
           }
         }
 
@@ -599,7 +605,7 @@
 
 @include media('<=schwerpunkt') {
   body {
-    // background-color: lightcoral;
+    background-color: lightcoral;
 
     .indicators-iframe {
       .main-container {
@@ -694,7 +700,7 @@
 
 @include media('<=minitablet') {
   body {
-    // background-color: peachpuff;
+    background-color: peachpuff;
 
     h4 {
       font-size: 12px;
@@ -1102,7 +1108,7 @@
 
 @include media('<shortread') {
   body {
-    // background-color: aqua;
+    background-color: aqua;
 
     h4 {
       font-size: 12px;
