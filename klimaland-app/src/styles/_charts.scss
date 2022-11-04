@@ -47,7 +47,7 @@
     div {
       min-width: 20px;
       p {
-        font-size: 10px;
+        font-size: 12px;
       }
     }
   }
@@ -219,42 +219,41 @@
                 }
 
                 &.Fahrrad {
-                  background-color: lighten(#5F88C6, 50);
-                  border-color: #5F88C6;
+                  background-color: lighten(#5f88c6, 50);
+                  border-color: #5f88c6;
 
                   p {
-                    color: #5F88C6;
+                    color: #5f88c6;
                   }
                 }
 
                 &.ÖPV {
-                  background-color: lighten(#2A4D9C, 50);
-                  border-color: #2A4D9C;
+                  background-color: lighten(#2a4d9c, 50);
+                  border-color: #2a4d9c;
 
                   p {
-                    color: #2A4D9C;
+                    color: #2a4d9c;
                   }
                 }
-                
+
                 &.Mitfahrer {
-                  background-color: lighten(#FFD0D0, 50);
-                  border-color: darken(#FFD0D0, 10);
+                  background-color: lighten(#ffd0d0, 50);
+                  border-color: darken(#ffd0d0, 10);
 
                   p {
-                    color: darken(#FFD0D0, 10);
+                    color: darken(#ffd0d0, 10);
                   }
                 }
 
                 &.Fahrer {
-                  background-color: lighten(#FF7B7B, 25);
-                  border-color: #FF7B7B;
-                
+                  background-color: lighten(#ff7b7b, 25);
+                  border-color: #ff7b7b;
+
                   p {
-                    color: #FF7B7B;
+                    color: #ff7b7b;
                   }
                 }
-                                
-                
+
                 p {
                   padding-top: 1px;
                   margin: 0;
@@ -564,7 +563,8 @@
                 display: inline-flex;
 
                 p {
-                  font-size: 10px;
+                  font-size: 12px;
+                  padding: 0.1rem;
                   margin: 0.2rem;
                   margin-bottom: 0;
                   text-align: left;
@@ -589,7 +589,8 @@
               div {
                 p {
                   margin: 0.2rem;
-                  line-height: 10px;
+                  line-height: 12px;
+                  font-size: 10px;
                 }
               }
 

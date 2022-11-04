@@ -543,6 +543,23 @@
                 }
               }
             }
+            .En-chart {
+              .primary-energy,
+              .energy-industry {
+                .chart {
+                  .streams-labels-container {
+                    foreignObject {
+                      div {
+                        p {
+                          font-size: 10px;
+                          padding: 0;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
 
@@ -653,6 +670,17 @@
                       -webkit-transform: scale(0.6);
                       transform: scale(0.6);
                     }
+                  }
+                }
+              }
+            }
+            .En-chart {
+              .visualization-container {
+                .strom-export-box {
+                  padding: 0.1rem;
+                  p {
+                    font-size: 10px;
+                    padding: 0.1rem;
                   }
                 }
               }
