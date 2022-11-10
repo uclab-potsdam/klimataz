@@ -656,14 +656,11 @@
                       &:hover {
                         background-color: $lighter-orange-full;
                         cursor: pointer;
+                        -webkit-transition: 0.5s;
+                        transition: 0.5s;
+                        padding-left: 1rem;
                       }
                     }
-                  }
-
-                  ol:hover {
-                    -webkit-transition: 0.5s;
-                    transition: 0.5s;
-                    padding-left: 1rem;
                   }
 
                   &.mittleren {
