@@ -225,7 +225,7 @@ const EnIndustry = ({
     >
       <div
         className={`visualization-container ${
-          footnote !== '' || showBundeslandForLK ? 'with_footnote' : ''
+          (footnote !== undefined && footnote !== '') || showBundeslandForLK ? 'with-footnote' : ''
         }`}
         ref={targetRef}
       >
@@ -299,7 +299,12 @@ const EnIndustry = ({
                     <foreignObject
                       className={label.threshold ? 'visible' : 'invisible'}
                       x={label.xPos - label.width * 2 > 0 ? label.xPos - label.width * 2 : 0}
-                      y={label.yPos - 8}
+                      y={
+                        label.yPos + 8 < dimensions.height && //if lower than height
+                        (label.klass === 'Ern-stream' || label.klass === 'Son-stream') // if long name
+                          ? label.yPos - 8
+                          : label.yPos - 20
+                      }
                       width="1"
                       height="1"
                     >
@@ -362,7 +367,11 @@ const EnIndustry = ({
           </g>
         </svg>
       </div>
-      <div className="description">
+      <div
+        className={`description ${
+          (footnote !== undefined && footnote !== '') || showBundeslandForLK ? 'with-footnote' : ''
+        }`}
+      >
         <div className="title">
           <h4>
             Der Energieverbrauch in der Industrie in{' '}

@@ -239,6 +239,29 @@
               }
             }
 
+            .En-chart {
+              .energy-industry {
+                .visualization-container {
+                  &.with-footnote {
+                    height: 78%;
+                  }
+                }
+                .description {
+                  &.with-footnote {
+                    height: 22%;
+                  }
+                }
+                &.is-thumbnail {
+                  .visualization-container,
+                  .description {
+                    &.with-footnote {
+                      height: 100%;
+                    }
+                  }
+                }
+              }
+            }
+
             .is-thumbnail {
               .visualization-container {
                 height: 100%;
@@ -269,7 +292,7 @@
 
 @include media('<=tablet') {
   body {
-    background-color: rgb(170, 170, 245);
+    //background-color: rgb(170, 170, 245);
 
     h4 {
       font-size: 14px;
@@ -426,7 +449,6 @@
                 .primary-energy,
                 .energy-industry {
                   .visualization-container {
-                    height: 80%;
                     .chart {
                       .streams-labels-container {
                         foreignObject {
@@ -439,9 +461,6 @@
                         }
                       }
                     }
-                  }
-                  .description {
-                    height: 20%;
                   }
                 }
               }
@@ -605,7 +624,7 @@
 
 @include media('<=schwerpunkt') {
   body {
-    background-color: lightcoral;
+    //background-color: lightcoral;
 
     .indicators-iframe {
       .main-container {
@@ -700,7 +719,7 @@
 
 @include media('<=minitablet') {
   body {
-    background-color: peachpuff;
+    //background-color: peachpuff;
 
     h4 {
       font-size: 12px;
@@ -1108,7 +1127,7 @@
 
 @include media('<shortread') {
   body {
-    background-color: aqua;
+    //background-color: aqua;
 
     h4 {
       font-size: 12px;
@@ -1247,24 +1266,34 @@
               }
 
               &.En-chart {
-                .visualization-container {
-                  height: 75%;
-                  .chart {
-                    .y-axis,
-                    .x-axis {
-                      text {
-                        font-size: 12px;
-                      }
+                .energy-industry,
+                .primary-energy {
+                  .visualization-container {
+                    height: 75%;
+
+                    &.with-footnote {
+                      height: 75%;
                     }
-                    .y-axis {
-                      .last-line {
+                    .chart {
+                      .y-axis,
+                      .x-axis {
                         text {
-                          display: none;
+                          font-size: 12px;
                         }
                       }
-                    }
-                    .description {
-                      height: 25%;
+                      .y-axis {
+                        .last-line {
+                          text {
+                            display: none;
+                          }
+                        }
+                      }
+                      .description {
+                        height: 25%;
+                        &.with-footnote {
+                          height: 25%;
+                        }
+                      }
                     }
                   }
                 }
