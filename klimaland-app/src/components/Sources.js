@@ -34,7 +34,7 @@ const Sources = () => {
           <div className="sources-text">
             <h3>Quellen und Methodik</h3>
             <p>
-              Wo stehen wir beim Klimaschutz in Deutschland? Mit welchen Werten lässt er sich auf
+              Wo stehen wir beim Klimaschutz in Deutschland? Mit welchen Werten lässt sich auf
               lokaler Ebene messen, wo es schon Fortschritte gibt – und wo noch zu wenig? Dieses
               Projekt sendet Postkarten aus einem Land im Wandel. Sie zeigen Daten dazu, wie jeder
               einzelne deutsche Landkreis beim Klimaschutz in den fünf wichtigsten Bereichen
