@@ -1594,12 +1594,12 @@
 
                     .chart {
                       .non-clipped-elements {
-                        -webkit-transform: translate(-28px, 40px);
-                        transform: translate(-28px, 40px);
+                        -webkit-transform: translate(-15px, 35px);
+                        transform: translate(-15px, 35px);
 
                         .measure-label {
-                          -webkit-transform: translate(-75%, 0);
-                          transform: translate(-75%, 0);
+                          -webkit-transform: translate(-75%, 10px);
+                          transform: translate(-75%, 10px);
                         }
                         .year-label {
                           -webkit-transform: translate(5px, 0);
@@ -1901,6 +1901,24 @@
           margin: 0 auto;
           width: 95%;
 
+          .card {
+            .card-front {
+              .side-outer {
+                .overlay-container {
+                  .overlay-inner {
+                    .button-toggle-container {
+                      svg {
+                        text {
+                          font-size: 12px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
           .card-container {
             height: 100vh;
             justify-content: left;
@@ -1908,13 +1926,85 @@
             margin-top: -0.6rem;
           }
           .chart-container {
-            .Mo-chart {
-              .icon {
-                display: none;
+            .svg-container {
+              &.Mo-chart {
+                .modal-split {
+                  .icon {
+                    display: none;
+                  }
+
+                  .no-icon {
+                    display: inline-block;
+                  }
+                  .description {
+                    h4 {
+                      font-size: 14px;
+                    }
+                  }
+                }
               }
 
-              .no-icon {
-                display: inline-block;
+              &.Ge-chart {
+                .avg-heating {
+                  .visualization-container {
+                    transform: translateY(-10px);
+                    -webkit-transform: translateY(-10px);
+
+                    .chart {
+                      .non-clipped-elements {
+                        -webkit-transform: translate(-15px, 32px);
+                        transform: translate(-15px, 32px);
+
+                        .measure-label {
+                          -webkit-transform: translate(-75%, 6px);
+                          transform: translate(-75%, 6px);
+                        }
+                      }
+                    }
+                  }
+                  .description {
+                    h4 {
+                      font-size: 14px;
+                    }
+                  }
+                }
+              }
+
+              &.La-chart {
+                .animal-density {
+                  .visualization-container {
+                    height: 50%;
+                  }
+                  .description {
+                    height: 50%;
+                    .legend {
+                      transform: translate(0, -120px);
+                      -webkit-transform: translate(0, -120px);
+                      svg {
+                        height: 50px;
+                      }
+                    }
+                    .caption {
+                      transform: translate(0, 50px);
+                      -webkit-transform: translate(0, 50px);
+                    }
+                  }
+                }
+              }
+              .vertical-layout {
+                .description {
+                  h4 {
+                    font-size: 14px;
+                  }
+                }
+              }
+
+              .horizontal-bottom-layout {
+                .description {
+                  h4 {
+                    font-size: 14px;
+                  }
+                }
               }
             }
           }
