@@ -491,9 +491,17 @@ export default class LayoutManager extends Component {
     return (
       <UIContext.Provider value={this.props.editorspick[0].ui.value}>
         <div className="main-container">
-          {(this.state.mode === 'lk' || this.state.mode === 'singlePCview') && (
+          {(this.state.mode === 'lk' ||
+            this.state.mode === 'singlePCview' ||
+            (this.state.mode === 'comparison' && this.state.postcardView)) && (
             <div className={!this.state.postcardView ? '' : 'titleArtHidden'}>
-              <TitleArt landkreisLabel={getTotalLKName(this.state.landkreisSelection[0]) + '?'} />
+              <TitleArt
+                landkreisLabel={
+                  this.state.cardSelection[this.state.activeCard]
+                    ? getTotalLKName(this.state.cardSelection[this.state.activeCard].lk) + '?'
+                    : getTotalLKName(this.state.landkreisSelection[0]) + '?'
+                }
+              />
             </div>
           )}
           <SelectionButtons
