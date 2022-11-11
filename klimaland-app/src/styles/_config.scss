@@ -316,6 +316,21 @@ text {
   animation: $animation $duration $method $times;
 }
 
+@mixin fade-in {
+  @include keyframes(fade) {
+    0% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @include animate(fade, 1s, ease-in, forwards);
+}
+
 // reusable layouts for vis
 @mixin vertical-layout {
   display: inline-flex;

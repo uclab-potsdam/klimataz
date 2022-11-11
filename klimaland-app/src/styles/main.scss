@@ -125,18 +125,7 @@ code {
       display: none;
 
       &.animating {
-        @include keyframes(fade) {
-          0% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.5;
-          }
-          100% {
-            opacity: 0;
-          }
-        }
-        @include animate(fade, 1s, linear, 1);
+        @include fade-in;
       }
     }
     .word-art-title {

@@ -302,6 +302,7 @@ export default class CardCollection extends Component {
                 toggleLabels={this.props.toggleLabels}
                 isLKData={this.props.dataLevelLK}
                 switchDataLevel={this.props.switchDataLevel}
+                animatingCardSwitch={this.props.animatingCardSwitch}
               />
             </Card>
           );
@@ -409,7 +410,8 @@ export default class CardCollection extends Component {
       this.props.cardSelection !== prevProps.cardSelection ||
       this.props.postcardView !== prevProps.postcardView ||
       this.props.activeCard !== prevProps.activeCard ||
-      this.props.dataLevelLK !== prevProps.dataLevelLK
+      this.props.dataLevelLK !== prevProps.dataLevelLK ||
+      this.props.animatingCardSwitch !== prevProps.animatingCardSwitch
     ) {
       this.generateCards();
     }

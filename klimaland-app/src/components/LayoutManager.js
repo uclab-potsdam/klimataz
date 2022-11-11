@@ -144,12 +144,15 @@ export default class LayoutManager extends Component {
    */
   switchCardSelection(lk) {
     const lastActiveLK = this.state.cardSelection[this.state.activeCard].lk;
-    this.setState({ animatingCardSwitch: true });
-    setStateAsync(this, {
-      landkreisSelection: [lk],
-      showEditorsPick: false,
-      lastActiveCardLK: { value: lastActiveLK.value, label: lastActiveLK.label },
-    })
+    let timer = null;
+    setStateAsync(this, { animatingCardSwitch: true })
+      .then(() => {
+        return setStateAsync(this, {
+          landkreisSelection: [lk],
+          showEditorsPick: false,
+          lastActiveCardLK: { value: lastActiveLK.value, label: lastActiveLK.label },
+        });
+      })
       .then(() => {
         return this.updateCardSelection();
       })
@@ -157,7 +160,10 @@ export default class LayoutManager extends Component {
         //animate word art
         //update toggle labels
         this.updateArrowLabels();
-        // this.setState({ animatingCardSwitch: false });
+        setTimeout(() => {
+          console.log('set to false');
+          this.setState({ animatingCardSwitch: false });
+        }, 500);
       });
   }
 

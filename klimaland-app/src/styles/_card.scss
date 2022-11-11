@@ -391,6 +391,10 @@
             margin-top: 0.2rem;
           }
 
+          &.animating {
+            @include fade-in;
+          }
+
           .postcard-miniature {
             display: inline-flex;
             .word-art-title {
@@ -537,6 +541,10 @@
       // back-side with explanation
       .details-container {
         height: 100%;
+
+        &.animating {
+          @include fade-in;
+        }
 
         .flex-container {
           display: inline-flex;
