@@ -70,6 +70,11 @@
         }
       }
     }
+
+    &.animating {
+      transform: translateY(1px);
+      -webkit-transform: translateY(1px);
+    }
   }
 
   &-left {
@@ -97,6 +102,10 @@
     .card-front,
     .card-back {
       opacity: 0;
+    }
+    &.animating {
+      transform: rotate(-4deg) scale(1);
+      -webkit-transform: rotate(-4deg) scale(1);
     }
   }
 
@@ -779,10 +788,8 @@
             .text-container {
               .text-inner-container {
                 .section-title {
-          
                   h2 {
                     font-size: 1rem;
-                    
                   }
                 }
 

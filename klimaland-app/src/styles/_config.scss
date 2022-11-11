@@ -35,7 +35,7 @@
 }
 
 @font-face {
-  font-family: "Vampiro One";
+  font-family: 'Vampiro One';
   src: url('../fonts/vampiro/VampiroOne-Regular.ttf');
   font-weight: 400;
 }
@@ -304,6 +304,16 @@ text {
       color: $color;
     }
   }
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animate($animation, $duration, $method, $times) {
+  animation: $animation $duration $method $times;
 }
 
 // reusable layouts for vis

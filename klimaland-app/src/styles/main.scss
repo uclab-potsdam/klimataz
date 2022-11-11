@@ -123,6 +123,21 @@ code {
 
     .titleArtHidden {
       display: none;
+
+      &.animating {
+        @include keyframes(fade) {
+          0% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+        @include animate(fade, 1s, linear, 1);
+      }
     }
     .word-art-title {
       @include wordart-style-1;

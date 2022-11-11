@@ -197,6 +197,7 @@ export default class CardCollection extends Component {
           } else {
             classProp = 'card card-back';
           }
+          classProp += this.props.animatingCardSwitch ? ' animating' : '';
 
           const footnote = this.data[element.lk.value].footnote;
 
