@@ -31,7 +31,7 @@ export default class CardCollection extends Component {
     //bind functions called by components
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-    this.addCardToSelection = this.addCardToSelection.bind(this);
+    this.switchCardSelection = this.switchCardSelection.bind(this);
   }
 
   /**
@@ -58,8 +58,8 @@ export default class CardCollection extends Component {
    * when someone clicked on a list item, pass this to parent
    * @param {} lk AGS and name of location clicked on in the list as value-label pair
    */
-  addCardToSelection(lk) {
-    this.props.addCardToSelection(lk);
+  switchCardSelection(lk) {
+    this.props.switchCardSelection(lk);
   }
 
   /**
@@ -231,7 +231,7 @@ export default class CardCollection extends Component {
                   Object.entries(this.state.textData).filter(([key, value]) => {
                     return element.lk.value !== 0
                       ? value[section]['third'] === localTextData[section]['third'] &&
-                      value.key !== element.lk.value
+                          value.key !== element.lk.value
                       : value.key !== element.lk.value;
                   })
                 );
@@ -296,7 +296,7 @@ export default class CardCollection extends Component {
                 textData={localTextData}
                 similarAgs={similarAgs}
                 layoutControls={this.layoutControls[section]}
-                handleClickOnList={this.addCardToSelection}
+                handleClickOnList={this.switchCardSelection}
                 footnote={footnote}
                 toggleLabels={this.props.toggleLabels}
                 isLKData={this.props.dataLevelLK}
@@ -420,8 +420,9 @@ export default class CardCollection extends Component {
         {this.props.mode === 'comparison' && !this.props.postcardView && (
           <div className="inner-card-collection">
             <div
-              className={`card-container stacked ${this.props.cardSelection.length === 2 ? 'twocards' : 'default'
-                }`}
+              className={`card-container stacked ${
+                this.props.cardSelection.length === 2 ? 'twocards' : 'default'
+              }`}
             >
               {this.state.cards}
             </div>

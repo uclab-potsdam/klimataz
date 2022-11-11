@@ -45,7 +45,7 @@ export default class LayoutManager extends Component {
 
     //methods called by cardcollection
     this.switchToPostcardView = this.switchToPostcardView.bind(this);
-    this.addCardToSelection = this.addCardToSelection.bind(this);
+    this.switchCardSelection = this.switchCardSelection.bind(this);
 
     //methods called by selectionbuttons
     this.updateShuffleSelection = this.updateShuffleSelection.bind(this);
@@ -140,7 +140,7 @@ export default class LayoutManager extends Component {
    * since we are already in postcard view here, we just stay on the same postcard and the same side automatically.
    * @param {} lk AGS and name of location clicked on in the list as value-label pair
    */
-  addCardToSelection(lk) {
+  switchCardSelection(lk) {
     const lastActiveLK = this.state.cardSelection[this.state.activeCard].lk;
     setStateAsync(this, {
       landkreisSelection: [lk],
@@ -534,7 +534,7 @@ export default class LayoutManager extends Component {
             handleSwitchNext={this.handleSwitchNext}
             handleSwitchBack={this.handleSwitchBack}
             switchToPostcardView={this.switchToPostcardView}
-            addCardToSelection={this.addCardToSelection}
+            switchCardSelection={this.switchCardSelection}
             toggleLabels={currentToggleLabels}
             isLKData={this.state.dataLevelLK}
             switchDataLevel={this.switchDataLevel}
