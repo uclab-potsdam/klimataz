@@ -161,9 +161,8 @@ export default class LayoutManager extends Component {
         //update toggle labels
         this.updateArrowLabels();
         setTimeout(() => {
-          console.log('set to false');
           this.setState({ animatingCardSwitch: false });
-        }, 500);
+        }, 700);
       });
   }
 
