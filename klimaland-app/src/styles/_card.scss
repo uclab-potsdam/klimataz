@@ -70,10 +70,19 @@
         }
       }
     }
-
     &.animating {
-      transform: translateY(1px);
-      -webkit-transform: translateY(1px);
+      @include keyframes(wiggle4) {
+        0% {
+          transform: translateY(0px);
+        }
+        70% {
+          transform: translateY(-3px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+      @include animate(wiggle4, 0.6s, ease-in, forwards);
     }
   }
 
@@ -88,6 +97,20 @@
     .card-front,
     .card-back {
       opacity: 0;
+    }
+    &.animating {
+      @include keyframes(wiggle1) {
+        0% {
+          transform: rotate(-4deg);
+        }
+        50% {
+          transform: rotate(-1deg);
+        }
+        100% {
+          transform: rotate(-2deg) translate(-2px, -5px);
+        }
+      }
+      @include animate(wiggle1, 0.6s, ease-in, forwards);
     }
   }
 
@@ -104,8 +127,18 @@
       opacity: 0;
     }
     &.animating {
-      transform: rotate(-4deg) scale(1);
-      -webkit-transform: rotate(-4deg) scale(1);
+      @include keyframes(wiggle2) {
+        0% {
+          transform: rotate(4deg);
+        }
+        70% {
+          transform: rotate(-5deg);
+        }
+        100% {
+          transform: rotate(-4deg);
+        }
+      }
+      @include animate(wiggle2, 0.6s, ease-in, forwards);
     }
   }
 
@@ -120,6 +153,17 @@
     .card-front,
     .card-back {
       opacity: 0;
+    }
+    &.animating {
+      @include keyframes(wiggle3) {
+        0% {
+          transform: rotate(-2deg) translate(-2px, -5px);
+        }
+        100% {
+          transform: rotate(4deg);
+        }
+      }
+      @include animate(wiggle3, 0.6s, ease-in, forwards);
     }
   }
 
