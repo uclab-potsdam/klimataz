@@ -35,7 +35,7 @@
 }
 
 @font-face {
-  font-family: "Vampiro One";
+  font-family: 'Vampiro One';
   src: url('../fonts/vampiro/VampiroOne-Regular.ttf');
   font-weight: 400;
 }
@@ -304,6 +304,28 @@ text {
       color: $color;
     }
   }
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animate($animation, $duration, $method, $times) {
+  animation: $animation $duration $method $times;
+}
+
+@mixin fade-in {
+  @include keyframes(fade) {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @include animate(fade, 0.3s, ease-in, forwards);
 }
 
 // reusable layouts for vis

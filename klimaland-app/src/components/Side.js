@@ -10,6 +10,7 @@ import TitleArt from './TitleArt.js';
 
 import { toPng } from 'html-to-image';
 import share from '../img/buttons/share.svg';
+import { timeHours } from 'd3';
 
 export default class Side extends Component {
   constructor(props) {
@@ -175,7 +176,8 @@ export default class Side extends Component {
       this.props.windowSize !== prevProps.windowSize ||
       this.props.dataLevelLK !== prevProps.dataLevelLK ||
       this.props.textData !== prevProps.textData ||
-      this.props.section !== prevProps.section
+      this.props.section !== prevProps.section ||
+      this.props.animatingCardSwitch !== prevProps.animatingCardSwitch
     ) {
       //update layout for top card
       await this.updateLayout();
@@ -211,7 +213,9 @@ export default class Side extends Component {
             }`}
           >
             <div className="overlay-inner">
-              <div className="postcard-title">
+              <div
+                className={`postcard-title ${this.props.animatingCardSwitch ? 'animating' : ''}`}
+              >
                 <div
                   className={`section-thumb ${
                     this.props.mode === undefined ? 'postcard-miniature' : this.props.mode
@@ -392,6 +396,7 @@ export default class Side extends Component {
                 activeSide={this.props.activeSide}
                 handleClickOnList={this.handleClickOnList}
                 ranking={this.state.ranking}
+                animatingCardSwitch={this.props.animatingCardSwitch}
               />
             )}
             {this.state.showViz && this.vis()}

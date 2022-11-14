@@ -1,8 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { UIContext } from '../UIContext';
 
 const List = ({ lk, data, similarAgs, section, handleClickOnList, ranking }) => {
   const agsRanking = data[section]['third'].substring(0, data[section]['third'].indexOf(' '));
+  const [active, setActive] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setActive(true), 500);
+    return () => clearTimeout(timer);
+  }, similarAgs);
 
   const uiVis = useContext(UIContext);
 
@@ -11,6 +17,10 @@ const List = ({ lk, data, similarAgs, section, handleClickOnList, ranking }) => 
    * @param {} ags AGS of name in the list
    */
   function clickOnList(ags, name) {
+    if (!active) {
+      return;
+    }
+    setActive(false);
     lk = { value: parseInt(ags), label: name };
     handleClickOnList(lk);
   }
@@ -26,8 +36,9 @@ const List = ({ lk, data, similarAgs, section, handleClickOnList, ranking }) => 
               <ol
                 className={`ui-${uiVis}`}
                 key={a}
-                onClick={() => {
-                  if (!uiVis) return;
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (!uiVis || !active) return;
                   clickOnList(ags.value, ags.label);
                 }}
               >

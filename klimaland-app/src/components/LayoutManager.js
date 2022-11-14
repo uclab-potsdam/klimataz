@@ -45,7 +45,7 @@ export default class LayoutManager extends Component {
 
     //methods called by cardcollection
     this.switchToPostcardView = this.switchToPostcardView.bind(this);
-    this.addCardToSelection = this.addCardToSelection.bind(this);
+    this.switchCardSelection = this.switchCardSelection.bind(this);
 
     //methods called by selectionbuttons
     this.updateShuffleSelection = this.updateShuffleSelection.bind(this);
@@ -81,6 +81,8 @@ export default class LayoutManager extends Component {
       dataLevelLK: true,
       previewLeftCard: '',
       previewRightCard: '',
+      // when clicking on list of similar LK, this gets true
+      animatingCardSwitch: false,
     };
 
     this.escFunction = this.escFunction.bind(this);
@@ -108,7 +110,7 @@ export default class LayoutManager extends Component {
     //set active card to this card id
     await setStateAsync(this, { activeCard: chosenCard }).then(() => {
       //update preview for left and right card
-      this.setNextCardPreviews();
+      this.updateArrowLabels();
     });
   }
 
@@ -140,18 +142,27 @@ export default class LayoutManager extends Component {
    * since we are already in postcard view here, we just stay on the same postcard and the same side automatically.
    * @param {} lk AGS and name of location clicked on in the list as value-label pair
    */
-  addCardToSelection(lk) {
+  switchCardSelection(lk) {
     const lastActiveLK = this.state.cardSelection[this.state.activeCard].lk;
-    setStateAsync(this, {
-      landkreisSelection: [lk],
-      showEditorsPick: false,
-      lastActiveCardLK: { value: lastActiveLK.value, label: lastActiveLK.label },
-    })
+    let timer = null;
+    setStateAsync(this, { animatingCardSwitch: true })
+      .then(() => {
+        return setStateAsync(this, {
+          landkreisSelection: [lk],
+          showEditorsPick: false,
+          lastActiveCardLK: { value: lastActiveLK.value, label: lastActiveLK.label },
+        });
+      })
       .then(() => {
         return this.updateCardSelection();
       })
       .then(() => {
-        this.setNextCardPreviews();
+        //animate word art
+        //update toggle labels
+        this.updateArrowLabels();
+        setTimeout(() => {
+          this.setState({ animatingCardSwitch: false });
+        }, 700);
       });
   }
 
@@ -160,7 +171,7 @@ export default class LayoutManager extends Component {
    * called by methods switchToPostcardView and nextCard
    * set state "previewLeftCard" and "previewRightCard"
    */
-  setNextCardPreviews() {
+  updateArrowLabels() {
     //switch to next card in postcard view
     if (!this.state.postcardView) return; //only in postcard view
     if (this.props.editorspick[0].view.value === 3) return; //not in single postcard view
@@ -220,7 +231,7 @@ export default class LayoutManager extends Component {
 
     await setStateAsync(this, { activeCard: newActiveCard }).then(() => {
       //update preview for left and right card
-      this.setNextCardPreviews();
+      this.updateArrowLabels();
     });
   }
 
@@ -494,7 +505,11 @@ export default class LayoutManager extends Component {
           {(this.state.mode === 'lk' ||
             this.state.mode === 'singlePCview' ||
             (this.state.mode === 'comparison' && this.state.postcardView)) && (
-            <div className={!this.state.postcardView ? '' : 'titleArtHidden'}>
+            <div
+              className={`${!this.state.postcardView ? '' : 'titleArtHidden'} ${
+                this.state.animatingCardSwitch ? 'animating' : ''
+              }`}
+            >
               <TitleArt
                 landkreisLabel={
                   this.state.cardSelection[this.state.activeCard]
@@ -534,10 +549,11 @@ export default class LayoutManager extends Component {
             handleSwitchNext={this.handleSwitchNext}
             handleSwitchBack={this.handleSwitchBack}
             switchToPostcardView={this.switchToPostcardView}
-            addCardToSelection={this.addCardToSelection}
+            switchCardSelection={this.switchCardSelection}
             toggleLabels={currentToggleLabels}
             isLKData={this.state.dataLevelLK}
             switchDataLevel={this.switchDataLevel}
+            animatingCardSwitch={this.state.animatingCardSwitch}
           />
           {/* we could also put the code below into "SelectionButtons.js" or a more general
         buttons component and switch between the selection and shuffle or zoomed

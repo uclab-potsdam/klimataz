@@ -39,7 +39,7 @@ export default class Details extends Component {
 
   render() {
     return (
-      <div className="details-container">
+      <div className={`details-container ${this.props.animatingCardSwitch ? 'animating' : ''}`}>
         <div className="flex-container">
           <div className="text-container">
             <Text
