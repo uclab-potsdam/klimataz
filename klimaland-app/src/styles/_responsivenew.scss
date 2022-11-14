@@ -282,13 +282,16 @@
         .info-container {
           .info-container-content {
             &.open {
-              max-height: 80vh;
+              max-height: 70vh;
               height: auto;
-              transform: translate(20px, -80vh * 0.95) rotate(2deg);
-              -webkit-transform: translate(20px, -80vh * 0.95) rotate(2deg);
+              // transform: translate(20px, -80vh * 0.95) rotate(2deg);
+              // -webkit-transform: translate(20px, -80vh * 0.5) rotate(2deg);
+
+              -webkit-transform: translate(20px, -90%) rotate(2deg);
+              transform: translate(20px, -90%) rotate(2deg);
 
               .help {
-                max-height: 80vh;
+                max-height: 70vh;
                 height: auto;
               }
             }
@@ -1058,9 +1061,6 @@
               }
             }
             &.open {
-              -webkit-transform: translate(20px, -65vh) rotate(2deg);
-              transform: translate(20px, -65vh) rotate(2deg);
-
               .help {
                 h4.desktop-title {
                   display: block;
@@ -1882,14 +1882,8 @@
           position: absolute;
           .info-container-content {
             &.open {
-              width: calc($portait-postcardwidth/1.2);
-              height: calc($portait-postcardwidth * 1.2);
-              transform: translate(10%, -100%) rotate(-2deg);
-              -webkit-transform: translate(10%, -100%) rotate(-2deg);
-
-              .help {
-                height: calc($portait-postcardwidth * 1.2);
-              }
+              transform: translate(7.5%, -100%) rotate(-2deg);
+              -webkit-transform: translate(7.5%, -100%) rotate(-2deg);
             }
           }
         }

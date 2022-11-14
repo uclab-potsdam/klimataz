@@ -55,7 +55,9 @@ export default class Info extends Component {
     return (
       <div className="info-container" ref={this.wrapperRef}>
         <div
-          className={`info-container-content ${this.state.inFocus ? 'open' : ''}`}
+          className={`info-container-content ${this.state.inFocus ? 'open' : ''} ${
+            this.props.mode === 'singlePCview' ? ' small' : ''
+          }`}
           onClick={this.state.inFocus ? this.handleHelpNotFocus : this.handleHelpFocus}
         >
           {this.state.inFocus && (
