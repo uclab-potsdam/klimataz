@@ -125,7 +125,9 @@ code {
       display: none;
 
       &.animating {
-        @include fade-in;
+        .wordart {
+          @include fade-in;
+        }
       }
     }
     .word-art-title {

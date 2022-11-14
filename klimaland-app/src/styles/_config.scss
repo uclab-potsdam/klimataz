@@ -321,14 +321,11 @@ text {
     0% {
       opacity: 0;
     }
-    75% {
-      opacity: 0.5;
-    }
     100% {
       opacity: 1;
     }
   }
-  @include animate(fade, 1s, ease-in, forwards);
+  @include animate(fade, 0.3s, ease-in, forwards);
 }
 
 // reusable layouts for vis
