@@ -137,6 +137,7 @@ const MoCarDensity = ({
                       <rect
                         width={rectWidth}
                         height={rectHeight}
+                        rx="3"
                         x={!sq.ownsCar ? '10' : '0'}
                         y={!sq.ownsCar ? '10' : '0'}
                       />
@@ -152,8 +153,16 @@ const MoCarDensity = ({
                         key={`${s}-hybrid`}
                         className="hybrid-cars"
                         transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
+                        rx="5px"
                       >
-                        <rect width={rectWidth} height={rectHeight} fill="#F6A219" x="-3" y="-3" />
+                        <rect
+                          width={rectWidth}
+                          height={rectHeight}
+                          fill="#F6A219"
+                          rx="3"
+                          x="-3"
+                          y="-3"
+                        />
                       </g>
                     );
                   }
@@ -164,7 +173,14 @@ const MoCarDensity = ({
                         className="owns-car"
                         transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
                       >
-                        <rect width={rectWidth} height={rectHeight} fill="#FF7B7B" x="-3" y="-3" />
+                        <rect
+                          width={rectWidth}
+                          height={rectHeight}
+                          fill="#FF7B7B"
+                          rx="3"
+                          x="-3"
+                          y="-3"
+                        />
                       </g>
                     );
                   } else {
@@ -181,7 +197,14 @@ const MoCarDensity = ({
                         className="is-excess owns-car"
                         transform={`translate(${xScale(sq.row)}, ${yScale(sq.column)})`}
                       >
-                        <rect width={rectWidth} height={rectHeight} fill="#FF7B7B" x="-6" y="-6" />
+                        <rect
+                          width={rectWidth}
+                          height={rectHeight}
+                          rx="3"
+                          fill="#FF7B7B"
+                          x="-6"
+                          y="-6"
+                        />
                       </g>
                     );
                   } else {
