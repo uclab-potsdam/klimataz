@@ -485,6 +485,7 @@
                   // margin-bottom: 1rem;
                   .text-inner-container {
                     .section-title {
+                      border-bottom: none;
                       display: block;
                       font-size: 0.9rem;
                       h2 {
@@ -492,7 +493,7 @@
                       }
                     }
                     .section-text {
-                      height: 100%;
+                      height: 95%;
                     }
                   }
                 }
@@ -706,6 +707,12 @@
                     .pie-icon {
                       -webkit-transform: scale(0.6);
                       transform: scale(0.6);
+                    }
+                  }
+                  .legend {
+                    .gartenPark {
+                      -webkit-transform: translateX(16.5%);
+                      transform: translateX(16.5%);
                     }
                   }
                 }
@@ -1021,7 +1028,8 @@
                       }
                     }
                     .section-text {
-                      overflow-y: visible;
+                      // overflow-y: visible;
+                      height: 92%;
                     }
                   }
                 }
@@ -1804,7 +1812,7 @@
 
                           .section-text {
                             margin-top: 0;
-                            height: 80%;
+                            height: 100%;
                             position: relative;
                             overflow: scroll;
 
@@ -1987,6 +1995,18 @@
                     }
                   }
                 }
+
+                // .side-inner {
+                //   .details-container {
+                //     .flex-container {
+                //       .text-inner-container {
+                //         .section-text {
+                //           height: 100%;
+                //         }
+                //       }
+                //     }
+                //   }
+                // }
               }
             }
           }
