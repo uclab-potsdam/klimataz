@@ -731,7 +731,7 @@
 
 @include media('<=minitablet') {
   body {
-    // background-color: peachpuff;
+    background-color: peachpuff;
 
     h4 {
       font-size: 12px;
@@ -1028,10 +1028,27 @@
                 .data-container {
                   .locator-map {
                     .locator-container {
+                      width: 100%;
                       height: 100%;
 
+
                       .locator-zoom {
-                        width: 100%;
+                        width: 65%;
+                        .locator-zoom-inner {
+                          width: 80%;
+                        }
+                      }
+
+                      .locator-background {
+                        width: 35%;
+                        transform: scale(0.90);
+                        margin-right: 0.5rem;
+                        // margin-left: 0.5rem;
+                        margin-bottom: 0.5rem;
+
+                        svg {
+                          margin-right: 0.5rem;
+                        }
                       }
                     }
                   }
@@ -1234,20 +1251,6 @@
               justify-content: space-around;
               padding-left: 0;
             }
-
-            // &.stacked {
-            //   //comparison view
-            //   &.twocards,
-            //   &.default {
-            //     .card {
-            //       &-ordered {
-            //         margin: 0;
-            //         width: calc($portait-postcardwidth/2.3);
-            //         height: calc($portait-postcardwidth/1.8);
-            //       }
-            //     }
-            //   }
-            // }
           }
 
           .chart-container {
@@ -1836,7 +1839,7 @@
                               text-align: right;
                               display: flex;
                               justify-content: right;
-                              width: 25%;
+                              width: 35%;
                             }
 
                             .locator-background {
