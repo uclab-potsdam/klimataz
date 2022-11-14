@@ -262,6 +262,15 @@
               }
             }
 
+            .Mo-chart {
+              .car-density {
+                .chart {
+                  transform: translate(-10px, -5px) skew(-17deg, 0deg) scale(0.95);
+                  -webkit-transform: translate(-10px, -5px) skew(-17deg, 0deg) scale(0.95);
+                }
+              }
+            }
+
             .is-thumbnail {
               .visualization-container {
                 height: 100%;
@@ -499,8 +508,8 @@
             .Mo-chart {
               .car-density {
                 .chart {
-                  transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
-                  -webkit-transform: translate(-10px, -10px) skew(-17deg, 0deg) scale(0.85);
+                  transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.9);
+                  -webkit-transform: translate(-10px, 0px) skew(-17deg, 0deg) scale(0.9);
                 }
               }
               .modal-split {
