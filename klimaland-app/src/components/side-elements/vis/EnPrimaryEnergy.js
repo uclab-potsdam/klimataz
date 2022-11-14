@@ -122,7 +122,10 @@ const Energy = ({
       .range([marginWidth, dimensions.width - marginWidth]);
     const maxY = max(filteredData.map((d) => d.value));
     const domainY = [0, maxY];
-    const yScale = scaleLinear().domain(domainY).range([dimensions.height, marginHeight]).nice();
+    const yScale = scaleLinear()
+      .domain(domainY)
+      .range([dimensions.height, 15 + marginHeight])
+      .nice();
 
     // map source to color
     scaleCategory = scaleOrdinal().domain(uniqueEnergySourceFiltered).range(colorArray);
@@ -235,12 +238,24 @@ const Energy = ({
         labelRects.push(labelEl);
       }
 
+      let labelPos = xScale(yearOfMax);
+      const labelLength = labelID.length * 2;
+      if (labelPos - labelLength > 0) {
+        labelPos = labelPos - labelLength;
+      } else {
+        labelPos = 0;
+      }
+
+      if (labelPos + labelLength > dimensions.width - labelLength) {
+        labelPos -= 45;
+      }
+
       return {
         klass: stream.key.substring(0, 3) + '-stream',
         id: labelID,
         fill: scaleCategory(stream.key),
         path: areaGen(stream),
-        xPos: xScale(yearOfMax),
+        xPos: labelPos,
         labels: labelRects,
         yPos: yScale(stream[indexOfMax][0] - (stream[indexOfMax][0] - stream[indexOfMax][1]) / 2),
         height: yScale(stream[indexOfMax][0] - stream[indexOfMax][1]),
@@ -324,7 +339,7 @@ const Energy = ({
                   <g className="label">
                     <foreignObject
                       className={label.threshold ? 'visible' : 'invisible'}
-                      x={label.xPos - label.width * 2 > 0 ? label.xPos - label.width * 2 : 0}
+                      x={label.xPos}
                       y={
                         label.yPos + 8 < dimensions.height && //if lower than height
                         (label.klass === 'Ern-stream' || label.klass === 'And-stream') // if long name
