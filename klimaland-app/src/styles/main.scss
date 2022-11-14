@@ -438,16 +438,29 @@ code {
 
       .taz-logo-container {
         position: absolute;
-        background-image: url(../img/taz/taz-logo-paw.svg);
+        background-image: url(../img/taz/taz-klimahub-logo.png);
         background-repeat: no-repeat;
         background-size: contain;
         width: 100%;
-        height: 1.5rem;
+        height: 1.4rem;
         min-height: 1rem;
         // bottom: 8px;
         // left: 8px;
         display: block;
         margin-top: 0.5rem;
+      }
+
+      .fhp-logo-container {
+        position: absolute;
+        background-image: url(../img/taz/fhp-logo.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 100%;
+        left: 5rem;
+        height: 1.5rem;
+        min-height: 1rem;
+        display: block;
+        margin-top: 0.6rem;
       }
 
       .klimaland-logo-container {
@@ -458,7 +471,6 @@ code {
         width: 100%;
         height: 1.5rem;
         min-height: 1rem;
-        left: 4rem;
         display: block;
         margin-top: 0.5rem;
       }
@@ -472,7 +484,7 @@ code {
         height: 1.5rem;
         min-height: 1rem;
         display: block;
-        left: 10rem;
+        left: 6rem;
         margin-top: 0.5rem;
       }
 

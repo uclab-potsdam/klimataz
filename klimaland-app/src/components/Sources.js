@@ -58,9 +58,6 @@ const Sources = () => {
                 taz.de
               </a>
             </p>
-            <a target="_blank" rel="noreferrer" href="https://www.taz.de/">
-              <div className="taz-logo-container"></div>
-            </a>
             <a
               target="_blank"
               rel="noreferrer"
@@ -198,21 +195,13 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
                 , 2022.
               </p>
               <h4>Weitere Links</h4>
-              <p>
-                <a target="_blank" rel="noreferrer" href="https://uclab.fh-potsdam.de/">
-                  UCLAB Fachhochschule Potsdam
-                </a>
-              </p>
-              <p>
-                <a target="_blank" rel="noreferrer" href="https://taz.de/klima">
-                  Klima taz
-                </a>
-              </p>
-              <p>
-                <a target="_blank" rel="noreferrer" href="https://forms.gle/B6dguRvQvC3y6AGi8">
-                  Umfrage zu diesem Projekt
-                </a>
-              </p>
+
+              <a target="_blank" rel="noreferrer" href="https://www.taz.de/">
+                <div className="taz-logo-container"></div>
+              </a>
+              <a target="_blank" rel="noreferrer" href="https://uclab.fh-potsdam.de/">
+                <div className="fhp-logo-container"></div>
+              </a>
             </div>
           </div>
         </div>
