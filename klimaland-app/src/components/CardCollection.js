@@ -256,7 +256,6 @@ export default class CardCollection extends Component {
                 const randomSample = shuffled.slice(0, 10);
 
                 similarAgs = randomSample;
-                console.log('update similar ags', classProp);
 
                 if (
                   this.props.lastActiveCardLK !== undefined &&
