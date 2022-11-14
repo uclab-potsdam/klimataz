@@ -176,8 +176,8 @@ export default class Locator extends Component {
     return (
       <div className="locator-container">
         {!this.state.loading && (
-          <div className="locator-zoom" ref={this.targetRef}>
-            <div className="locator-zoom-inner">
+          <div className="locator-zoom" >
+            <div className="locator-zoom-inner" ref={this.targetRef}>
               {+this.props.lk.value !== 0 && (
                 <svg width={this.state.dimensions.width} height={this.state.dimensions.width}>
                   <clipPath id="myClip">
