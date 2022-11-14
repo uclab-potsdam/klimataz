@@ -22,6 +22,7 @@ export default class CardCollection extends Component {
         width: 0,
         height: 0,
       },
+      similarLandkreise: [],
     };
 
     //load all the data
@@ -31,7 +32,7 @@ export default class CardCollection extends Component {
     //bind functions called by components
     this.handleClickOnCard = this.handleClickOnCard.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-    this.addCardToSelection = this.addCardToSelection.bind(this);
+    this.switchCardSelection = this.switchCardSelection.bind(this);
   }
 
   /**
@@ -51,15 +52,15 @@ export default class CardCollection extends Component {
     this.setState({
       windowSize: { width: window.innerWidth, height: window.innerHeight },
     });
-    this.generateCards();
+    this.generateCards(true);
   }
 
   /**
    * when someone clicked on a list item, pass this to parent
    * @param {} lk AGS and name of location clicked on in the list as value-label pair
    */
-  addCardToSelection(lk) {
-    this.props.addCardToSelection(lk);
+  switchCardSelection(lk) {
+    this.props.switchCardSelection(lk);
   }
 
   /**
@@ -166,7 +167,7 @@ export default class CardCollection extends Component {
    * pulls Local Data for the Landkreis of each card and passes it as prop to Side.js
    * called by componentDidUpdate
    */
-  generateCards() {
+  generateCards(updateSimilarAgs) {
     let list;
     let classProp;
 
@@ -197,6 +198,7 @@ export default class CardCollection extends Component {
           } else {
             classProp = 'card card-back';
           }
+          classProp += this.props.animatingCardSwitch ? ' animating' : '';
 
           const footnote = this.data[element.lk.value].footnote;
 
@@ -211,67 +213,72 @@ export default class CardCollection extends Component {
 
             //if is top card
             if (isTopCard) {
-              //if no ranking
-              if (localTextData[section]['third'] === '') {
-                similarAgs = Object.keys(this.state.textData).map((key) => [
-                  Number(key),
-                  this.state.textData[key],
-                ]);
-                similarAgs = similarAgs.map(function (d) {
-                  return {
-                    value: d[1].key,
-                    label: d[1].name,
-                  };
-                });
-              }
-              //if has ranking
-              else {
-                // pulling similar lks (within the bl)
-                similarAgs = Object.fromEntries(
-                  Object.entries(this.state.textData).filter(([key, value]) => {
-                    return element.lk.value !== 0
-                      ? value[section]['third'] === localTextData[section]['third'] &&
-                      value.key !== element.lk.value
-                      : value.key !== element.lk.value;
-                  })
-                );
+              if (updateSimilarAgs) {
+                //if no ranking
+                if (localTextData[section]['third'] === '') {
+                  similarAgs = Object.keys(this.state.textData).map((key) => [
+                    Number(key),
+                    this.state.textData[key],
+                  ]);
+                  similarAgs = similarAgs.map(function (d) {
+                    return {
+                      value: d[1].key,
+                      label: d[1].name,
+                    };
+                  });
+                }
+                //if has ranking
+                else {
+                  // pulling similar lks (within the bl)
+                  similarAgs = Object.fromEntries(
+                    Object.entries(this.state.textData).filter(([key, value]) => {
+                      return element.lk.value !== 0
+                        ? value[section]['third'] === localTextData[section]['third'] &&
+                            value.key !== element.lk.value
+                        : value.key !== element.lk.value;
+                    })
+                  );
 
-                //convert to array for ags-name pairs
-                similarAgs = Object.keys(similarAgs).map((key) => [Number(key), similarAgs[key]]);
+                  //convert to array for ags-name pairs
+                  similarAgs = Object.keys(similarAgs).map((key) => [Number(key), similarAgs[key]]);
 
-                similarAgs = similarAgs.map(function (d) {
-                  return {
-                    value: d[1].key,
-                    label: d[1].name,
-                  };
-                });
-              }
+                  similarAgs = similarAgs.map(function (d) {
+                    return {
+                      value: d[1].key,
+                      label: d[1].name,
+                    };
+                  });
+                }
 
-              // shuffle the array
-              const shuffled = similarAgs.sort(() => 0.5 - Math.random());
-              // get 10 random location
-              const randomSample = shuffled.slice(0, 10);
+                // shuffle the array
+                const shuffled = similarAgs.sort(() => 0.5 - Math.random());
+                // get 10 random location
+                const randomSample = shuffled.slice(0, 10);
 
-              similarAgs = randomSample;
+                similarAgs = randomSample;
 
-              if (
-                this.props.lastActiveCardLK !== undefined &&
-                this.props.lastActiveCardLK.value !== undefined &&
-                this.props.lastActiveCardLK.value !== element.lk.value &&
-                isInt(this.props.lastActiveCardLK.value) &&
-                //same third
-                (this.state.textData[this.props.lastActiveCardLK.value][section]['third'] ===
-                  localTextData[section]['third'] ||
-                  localTextData[section]['third'] === '')
-              ) {
-                //add last active LK to the beginning
-                similarAgs.unshift(this.props.lastActiveCardLK);
-                //remove duplicates
-                similarAgs = similarAgs.filter(
-                  (value, index, self) => index === self.findIndex((t) => t.value === value.value)
-                );
-                //if length more than 10, remove last item
-                if (similarAgs.length > 10) similarAgs.splice(-1);
+                if (
+                  this.props.lastActiveCardLK !== undefined &&
+                  this.props.lastActiveCardLK.value !== undefined &&
+                  this.props.lastActiveCardLK.value !== element.lk.value &&
+                  isInt(this.props.lastActiveCardLK.value) &&
+                  //same third
+                  (this.state.textData[this.props.lastActiveCardLK.value][section]['third'] ===
+                    localTextData[section]['third'] ||
+                    localTextData[section]['third'] === '')
+                ) {
+                  //add last active LK to the beginning
+                  similarAgs.unshift(this.props.lastActiveCardLK);
+                  //remove duplicates
+                  similarAgs = similarAgs.filter(
+                    (value, index, self) => index === self.findIndex((t) => t.value === value.value)
+                  );
+                  //if length more than 10, remove last item
+                  if (similarAgs.length > 10) similarAgs.splice(-1);
+                }
+                this.setState({ similarLandkreise: similarAgs });
+              } else {
+                similarAgs = this.state.similarLandkreise;
               }
             }
           }
@@ -296,11 +303,12 @@ export default class CardCollection extends Component {
                 textData={localTextData}
                 similarAgs={similarAgs}
                 layoutControls={this.layoutControls[section]}
-                handleClickOnList={this.addCardToSelection}
+                handleClickOnList={this.switchCardSelection}
                 footnote={footnote}
                 toggleLabels={this.props.toggleLabels}
                 isLKData={this.props.dataLevelLK}
                 switchDataLevel={this.props.switchDataLevel}
+                animatingCardSwitch={this.props.animatingCardSwitch}
               />
             </Card>
           );
@@ -410,7 +418,10 @@ export default class CardCollection extends Component {
       this.props.activeCard !== prevProps.activeCard ||
       this.props.dataLevelLK !== prevProps.dataLevelLK
     ) {
-      this.generateCards();
+      this.generateCards(true);
+    }
+    if (this.props.animatingCardSwitch !== prevProps.animatingCardSwitch) {
+      this.generateCards(false); // do not update list of similar ags
     }
   }
 
@@ -420,8 +431,9 @@ export default class CardCollection extends Component {
         {this.props.mode === 'comparison' && !this.props.postcardView && (
           <div className="inner-card-collection">
             <div
-              className={`card-container stacked ${this.props.cardSelection.length === 2 ? 'twocards' : 'default'
-                }`}
+              className={`card-container stacked ${
+                this.props.cardSelection.length === 2 ? 'twocards' : 'default'
+              }`}
             >
               {this.state.cards}
             </div>

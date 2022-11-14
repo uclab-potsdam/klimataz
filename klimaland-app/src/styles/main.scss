@@ -123,6 +123,12 @@ code {
 
     .titleArtHidden {
       display: none;
+
+      &.animating {
+        .wordart {
+          @include fade-in;
+        }
+      }
     }
     .word-art-title {
       @include wordart-style-1;
