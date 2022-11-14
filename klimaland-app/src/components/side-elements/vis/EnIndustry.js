@@ -303,7 +303,7 @@ const EnIndustry = ({
                         label.yPos + 8 < dimensions.height && //if lower than height
                         (label.klass === 'Ern-stream' || label.klass === 'Son-stream') // if long name
                           ? label.yPos - 8
-                          : label.yPos - 20
+                          : label.yPos - 28
                       }
                       width="1"
                       height="1"
