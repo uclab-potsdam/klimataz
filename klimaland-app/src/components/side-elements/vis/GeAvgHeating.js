@@ -66,7 +66,8 @@ const GeAvgHEating = ({
       .range([height - marginHeight, marginHeight]);
     xScale = scaleLinear()
       .domain(domainX)
-      .range([marginWidth + mobileThreshold, width - (marginWidth * 4.5 + mobileThreshold / 2)]);
+      .range([marginWidth, width - (marginWidth * 4.5 + mobileThreshold / 2)]);
+
     const colorScale = scaleOrdinal().domain(classesKeys).range(classesColors);
 
     const stacks = stack().keys(classesKeys)([energyClasses]);
@@ -172,8 +173,9 @@ const GeAvgHEating = ({
                 return (
                   <g
                     key={k}
-                    transform={`translate(0, ${height - marginHeight - yScale(energyClasses[klass])
-                      })`}
+                    transform={`translate(0, ${
+                      height - marginHeight - yScale(energyClasses[klass])
+                    })`}
                   >
                     <line x1="0" x2={width} y1="0" y2="0" stroke="#484848" />
                   </g>
@@ -185,8 +187,9 @@ const GeAvgHEating = ({
                 return (
                   <g
                     key={b}
-                    className={`single-bar ${higlightedBar === b || higlightedBar === '' ? 'in-focus' : 'no-focus'
-                      }`}
+                    className={`single-bar ${
+                      higlightedBar === b || higlightedBar === '' ? 'in-focus' : 'no-focus'
+                    }`}
                     transform={`translate(${bar.year}, 0)`}
                     onMouseEnter={() => switchHighlightedBar(b)}
                     onMouseLeave={() => switchHighlightedBar('')}
