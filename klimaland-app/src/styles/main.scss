@@ -615,7 +615,7 @@ code {
         border-width: 1px;
         background-color: #fff;
         width: 270px;
-        height: $thumbnail-postcardwidth;
+        height: 30vw;
         padding: 0.75rem;
         transform: translate(-3px, 11px) rotate(-3deg);
         -webkit-transform: translate(-3px, 23px) rotate(-3deg);
@@ -640,19 +640,24 @@ code {
           box-shadow: 6px 6px 0px rgba($red, 0.44);
         }
 
+        &.small {
+          height: auto;
+          max-height: 20vw;
+        }
+
         &.open {
           width: calc($thumbnail-postcardwidth/0.65);
-          height: $thumbnail-postcardwidth/0.6;
 
           transform: translate(20px, -$thumbnail-postcardwidth / 0.6) rotate(2deg);
-          -webkit-transform: translate(20px, -$thumbnail-postcardwidth / 0.6) rotate(2deg);
+          -webkit-transform: translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
           transition: 0.2s;
           -webkit-transition: 0.2s;
+
+          overflow-y: scroll;
 
           .help {
             overflow-y: scroll;
             overflow-x: hidden;
-            height: $thumbnail-postcardwidth/0.6;
 
             .text {
               opacity: 1;
