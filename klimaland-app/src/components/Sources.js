@@ -34,10 +34,10 @@ const Sources = () => {
           <div className="sources-text">
             <h3>Quellen und Methodik</h3>
             <p>
-              Wo stehen wir beim Klimaschutz in Deutschland? Mit welchen Werten lässt er sich auf
+              Wo stehen wir beim Klimaschutz in Deutschland? Mit welchen Werten lässt sich auf
               lokaler Ebene messen, wo es schon Fortschritte gibt – und wo noch zu wenig? Dieses
               Projekt sendet Postkarten aus einem Land im Wandel. Sie zeigen Daten dazu, wie jeder
-              einzelne deutsche Landkreis beim Klimaschutz in den sechs wichtigsten Bereichen
+              einzelne deutsche Landkreis beim Klimaschutz in den fünf wichtigsten Bereichen
               dasteht.
             </p>
             <p>
@@ -75,19 +75,26 @@ const Sources = () => {
             <div className="sources-linklist">
               <h4>Energie</h4>
               <p>
-                Industrie: 
+                Energieverbrauch in der Industrie:
+                <br />
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://www.regionalstatistik.de/genesis/online"
+                  href="https://www.regionalstatistik.de/genesis/online?operation=find&suchanweisung_language=de&query=43531-01-02-4"
                 >
-                  Statistische Ämter des Bundes und der Länder - 43531-01-02-4
+                  Statistische Ämter des Bundes und der Länder
                 </a>
-                , 2020.
+                <br />
+                Code: 43531-01-02-4, 2020.
               </p>
               <p>
-                Primärenergie: 
-                <a target="_blank" rel="noreferrer" href="https://www.lak-energiebilanzen.de">
+                Primärenergieverbrauch:
+                <br />
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="http://www.lak-energiebilanzen.de/energiebilanzen/"
+                >
                   LAK Energiebilanzen
                 </a>
                 , 2019 und{' '}
@@ -103,22 +110,25 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
               </p>
               <h4>Landwirtschaft</h4>
               <p>
-                Tierhaltung: 
+                Tierhaltung und Zahl der Tiere:
+                <br />
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://www.regionalstatistik.de/genesis/online"
+                  href="https://www.regionalstatistik.de/genesis/online?operation=find&suchanweisung_language=de&query=41141-03-01-4-B"
                 >
                   Statistische Ämter des Bundes und der Länder
                 </a>
-                , 2020.
+                <br />
+                Code: 41141-03-01-4-B, 2020.
               </p>
               <p>
-                Tiere pro Fläche:  
+                Tiere pro Fläche:
+                <br />
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://www.regionalstatistik.de/genesis/online"
+                  href="https://www.statistischebibliothek.de/mir/receive/DESerie_mods_00000027"
                 >
                   Statistische Ämter des Bundes und der Länder
                 </a>
@@ -127,30 +137,35 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
               </p>
               <h4>Abfall</h4>
               <p>
-                Organische Abfälle: 
+                Organische Abfälle:
+                <br />
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://www.regionalstatistik.de/genesis/online"
+                  href="https://www.regionalstatistik.de/genesis//online?operation=table&code=32121-01-02-4-B&bypass=true&levelindex=0&levelid=1658850132846"
                 >
                   Statistische Ämter des Bundes und der Länder
                 </a>
-                , 2020.
+                <br />
+                Code: 32121-01-02-4-B, 2020.
               </p>
               <h4>Mobilität</h4>
               <p>
-                PkW-Dichte:  
+                PkW-Dichte:
+                <br />
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://www.regionalstatistik.de/genesis/online"
+                  href="https://www.regionalstatistik.de/genesis/online?operation=find&suchanweisung_language=de&query=46251"
                 >
-                  Statistische Ämter des Bundes und der Länder - 46251-02-01 - KBA
+                  Statistische Ämter des Bundes und der Länder
                 </a>
-                , 2021.
+                <br />
+                Code: 46251-02-01-4 und 46251-01-02-4, 2021.
               </p>
               <p>
-                Transportmittel: 
+                Transportmittel:
+                <br />
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -162,18 +177,21 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
               </p>
               <h4>Gebäude</h4>
               <p>
-                Heizenergie:  
+                Heizenergie:
+                <br />
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://www.regionalstatistik.de/genesis/online"
+                  href="https://www.regionalstatistik.de/genesis//online?operation=table&code=31121-06-01-4&bypass=true&levelindex=0&levelid=1668093295978"
                 >
-                  Statistische Ämter des Bundes und der Länder - 31121-06-01-4
+                  Statistische Ämter des Bundes und der Länder
                 </a>
-                , 2020.
+                <br />
+                Code: 31121-06-01-4, 2020.
               </p>
               <p>
-                Energieeffizienz: 
+                Energieeffizienz:
+                <br />
                 <a target="_blank" rel="noreferrer" href="https://www.co2online.de/">
                   CO2-online
                 </a>
@@ -192,7 +210,7 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
               </p>
               <p>
                 <a target="_blank" rel="noreferrer" href="https://forms.gle/B6dguRvQvC3y6AGi8">
-                  Zur Umfrage zu dem Projekt
+                  Umfrage zu diesem Projekt
                 </a>
               </p>
             </div>
