@@ -8,7 +8,7 @@ const List = ({ lk, data, similarAgs, section, handleClickOnList, ranking }) => 
   useEffect(() => {
     const timer = setTimeout(() => setActive(true), 500);
     return () => clearTimeout(timer);
-  }, similarAgs);
+  }, [similarAgs]);
 
   const uiVis = useContext(UIContext);
 
@@ -29,7 +29,7 @@ const List = ({ lk, data, similarAgs, section, handleClickOnList, ranking }) => 
     <div className="list-inner-container">
       <div className={`list-similar-container ${agsRanking}`}>
         {lk.value !== 0 && ranking !== '' && <h5>auch im {data[section]['third']}:</h5>}
-        {(lk.value === 0 || ranking == '') && <h5>Schaue dir auch an:</h5>}
+        {(lk.value === 0 || ranking === '') && <h5>Schaue dir auch an:</h5>}
         <ul>
           {similarAgs.map((ags, a) => {
             return (

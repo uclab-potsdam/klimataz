@@ -3,16 +3,6 @@ import parse from 'html-react-parser';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 
 const Text = ({ sectionName, data, section }) => {
-  // const activeCardText = data.map((text, t) => {
-  //     let textKey = thirdKey.slice(0, -5);
-  //     textKey += 'postcard';
-  //     return {
-  //         gerics: text.gerics_text,
-  //         ranking: text[thirdKey],
-  //         text: text[textKey],
-  //     };
-  // });
-
   return (
     <div className="text-inner-container">
       <div className="section-title">

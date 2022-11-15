@@ -144,7 +144,6 @@ export default class LayoutManager extends Component {
    */
   switchCardSelection(lk) {
     const lastActiveLK = this.state.cardSelection[this.state.activeCard].lk;
-    let timer = null;
     setStateAsync(this, { animatingCardSwitch: true })
       .then(() => {
         return setStateAsync(this, {

@@ -1,16 +1,9 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { max } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { useCardSize, mobileCheck } from '../../../helpers/helperFunc';
 
-const MoCarDensity = ({
-  currentData,
-  currentIndicator,
-  currentSection,
-  locationLabel,
-  isThumbnail,
-  cardNumber,
-}) => {
+const MoCarDensity = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
 

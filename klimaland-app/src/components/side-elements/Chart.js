@@ -3,22 +3,6 @@ import VisIndex from './VisIndex';
 import selectorControls from '../../data/selector-controls.json';
 
 export default class Chart extends Component {
-  constructor(props) {
-    super(props);
-
-    // this.state = {
-    //   chartComponentName:
-    //     this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components
-    //       .component,
-    //   currentIndicator:
-    //     this.props.layoutControls.params[this.props.activeSide][this.props.activeSide].components
-    //       .indicator,
-    // };
-    //TODO: store range or max Val in data as well
-    //TODO: reusable code snippets like scales or axis
-  }
-
-  //TODO: smarter way of drawing viz (from layout-controls!)
   render() {
     //import component
     const RenderChart = VisIndex[this.props.component];
