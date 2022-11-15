@@ -8,6 +8,25 @@ body {
   font-family: 'AktivGrotesk';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+  /* Firefox */
+}
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
 }
 
 button {
