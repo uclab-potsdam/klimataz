@@ -59,11 +59,11 @@ export default class SelectionButtons extends Component {
     }),
     multiValue: (styles, { data }) => ({
       ...styles,
-      backgroundColor: data.isDefault && this.props.mode == 'lk' ? 'rgb(230,230,230)' : '#fff4e5',
+      backgroundColor: data.isDefault && this.props.mode === 'lk' ? 'rgb(230,230,230)' : '#fff4e5',
     }),
     multiValueRemove: (styles, { data }) => ({
       ...styles,
-      visibility: data.isDefault && this.props.mode == 'lk' ? 'hidden' : 'visible',
+      visibility: data.isDefault && this.props.mode === 'lk' ? 'hidden' : 'visible',
     }),
   };
 
@@ -75,7 +75,7 @@ export default class SelectionButtons extends Component {
     }),
     multiValue: (styles, { data }) => ({
       ...styles,
-      backgroundColor: data.isDefault && this.props.mode == 'lk' ? 'rgb(230,230,230)' : '#fff4e5',
+      backgroundColor: data.isDefault && this.props.mode === 'lk' ? 'rgb(230,230,230)' : '#fff4e5',
     }),
     valueContainer: (styles) => ({
       ...styles,
@@ -84,7 +84,7 @@ export default class SelectionButtons extends Component {
     }),
     multiValueRemove: (styles, { data }) => ({
       ...styles,
-      visibility: data.isDefault && this.props.mode == 'lk' ? 'hidden' : 'visible',
+      visibility: data.isDefault && this.props.mode === 'lk' ? 'hidden' : 'visible',
     }),
   };
 
@@ -119,6 +119,7 @@ export default class SelectionButtons extends Component {
       if (a.label < b.label) {
         return -1;
       }
+      return 1;
     });
     // .map((d) => {
     //   return this.getOptionWithCheckedDefault(d);

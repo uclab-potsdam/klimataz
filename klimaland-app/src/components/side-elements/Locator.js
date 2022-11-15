@@ -103,8 +103,8 @@ export default class Locator extends Component {
         ranking: getRanking(parseInt(d.properties.ARS), this.props.section),
         visible:
           +this.props.lk.value === +d.properties.ARS ||
-            +this.props.lk.value === +d.properties.SN_L ||
-            +this.props.lk.value === 0
+          +this.props.lk.value === +d.properties.SN_L ||
+          +this.props.lk.value === 0
             ? true
             : false,
       };
@@ -176,7 +176,7 @@ export default class Locator extends Component {
     return (
       <div className="locator-container">
         {!this.state.loading && (
-          <div className="locator-zoom" >
+          <div className="locator-zoom">
             <div className="locator-zoom-inner" ref={this.targetRef}>
               {+this.props.lk.value !== 0 && (
                 <svg width={this.state.dimensions.width} height={this.state.dimensions.width}>
@@ -190,8 +190,9 @@ export default class Locator extends Component {
                           d={el.translatedPath}
                           key={e}
                           id="map"
-                          className={`landkreis ${el.lk} ${el.bl} ${el.visible ? 'visible' : 'hidden'
-                            } ${el.ranking} ui-${this.context}`}
+                          className={`landkreis ${el.lk} ${el.bl} ${
+                            el.visible ? 'visible' : 'hidden'
+                          } ${el.ranking} ui-${this.context}`}
                           onClick={this.handleClickOnMap.bind(this, parseInt(el.lk))}
                         />
                       );
@@ -225,8 +226,9 @@ export default class Locator extends Component {
                     d={el.path}
                     key={e}
                     id={el.lk}
-                    className={`landkreis ${el.bl} ${el.visible ? 'visible' : 'hidden'} ${el.ranking
-                      } ui-${this.context}`}
+                    className={`landkreis ${el.bl} ${el.visible ? 'visible' : 'hidden'} ${
+                      el.ranking
+                    } ui-${this.context}`}
                     onClick={this.handleClickOnMap.bind(this, parseInt(el.lk))}
                   />
                 );

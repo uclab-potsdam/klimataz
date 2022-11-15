@@ -6,19 +6,9 @@ import { formatNumber, useCardSize } from '../../../helpers/helperFunc';
 
 const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }) => {
   const targetRef = useRef();
-  //const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [piesAreActive, setPies] = useState(false);
 
   const dimensions = useCardSize(targetRef, cardNumber);
-
-  // useLayoutEffect(() => {
-  //   if (targetRef.current) {
-  //     setDimensions({
-  //       width: targetRef.current.offsetWidth,
-  //       height: targetRef.current.offsetHeight,
-  //     });
-  //   }
-  // }, []);
 
   //handle click events on controller to show pie
   let activatePies = function (e) {
@@ -43,7 +33,6 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
   const width = dimensions.width;
   const height = dimensions.height;
   let mobileThreshold = width <= 350 ? 8 : 10;
-  let tabletThreshold = width >= 600 && width <= 750 ? 50 : 0;
   const marginWidth = Math.round(dimensions.width / 10);
   const marginHeight = Math.round(dimensions.height / 10);
   const radius = isThumbnail ? Math.ceil(width / 50) : Math.ceil(width / (mobileThreshold * 10));

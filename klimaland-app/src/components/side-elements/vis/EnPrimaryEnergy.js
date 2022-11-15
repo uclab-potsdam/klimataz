@@ -46,7 +46,6 @@ const Energy = ({
   // inital variables
   const marginWidth = 0;
   const marginHeight = 0;
-  const paddingHeight = 15;
   let xAxisElements = [];
   let yAxisElements = [];
   let streamEle = [];
@@ -350,7 +349,9 @@ const Energy = ({
                       height="1"
                     >
                       <div xmlns="http://www.w3.org/1999/xhtml" className={label.klass}>
-                        <p>{label.id == 'Stromaustauschsaldo' ? 'importierter Strom' : label.id}</p>
+                        <p>
+                          {label.id === 'Stromaustauschsaldo' ? 'importierter Strom' : label.id}
+                        </p>
                       </div>
                     </foreignObject>
                   </g>

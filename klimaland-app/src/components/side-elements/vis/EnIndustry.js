@@ -1,27 +1,17 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { stack, stackOffsetNone, stackOrderAscending, curveMonotoneX, area } from 'd3-shape';
 import { scaleLinear } from 'd3-scale';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
 import { formatNumber, useCardSize } from './../../../helpers/helperFunc';
 
-const EnIndustry = ({
-  currentData,
-  currentIndicator,
-  currentSection,
-  locationLabel,
-  isThumbnail,
-  footnote,
-  cardNumber,
-}) => {
+const EnIndustry = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
   const dimensions = useCardSize(targetRef, cardNumber);
 
   const [highlighedStream, setHighlightedStream] = useState('');
   const [activeLabel, setactiveLabel] = useState('');
-
-  //   const [currentId, setCurrentId] = useState('');
 
   // inital variables
   const marginWidth = 0;
@@ -30,9 +20,6 @@ const EnIndustry = ({
   let xAxisElements = [];
   let yAxisElements = [];
   let streamEle = [];
-  let scaleCategory = function () {
-    return undefined;
-  };
   let lastYear = '?';
   let percRenewables = 0;
   let secretFootnote = 'In ' + locationLabel[0] + ' ist dieser Vebrauch geheim. ';
