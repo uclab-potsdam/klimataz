@@ -58,13 +58,6 @@ const Sources = () => {
                 taz.de
               </a>
             </p>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://taz.de/Schwerpunkt-klimaland/!t5861844/"
-            >
-              <div className="klimaland-logo-container"></div>{' '}
-            </a>
             <a target="_blank" rel="noreferrer" href="https://forms.gle/B6dguRvQvC3y6AGi8">
               <div className="umfrage-logo-container"></div>{' '}
             </a>

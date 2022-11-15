@@ -181,7 +181,7 @@ code {
           background-image: none;
           background-clip: none;
           -webkit-background-clip: none;
-          -webkit-text-fill-color: $red;
+          -webkit-text-fill-color: #f26852;
         }
       }
     }
@@ -438,7 +438,7 @@ code {
 
       .taz-logo-container {
         position: absolute;
-        background-image: url(../img/taz/taz-klimahub-logo.png);
+        background-image: url(../img/taz/taz-klimaland-logo-bigger.jpg);
         background-repeat: no-repeat;
         background-size: contain;
         width: 100%;
@@ -484,7 +484,7 @@ code {
         height: 1.5rem;
         min-height: 1rem;
         display: block;
-        left: 6rem;
+        left: 0rem;
         margin-top: 0.5rem;
       }
 

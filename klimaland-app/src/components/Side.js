@@ -8,7 +8,7 @@ import Chart from './side-elements/Chart.js';
 import Details from './side-elements/Details.js';
 import TitleArt from './TitleArt.js';
 
-import { toPng } from 'html-to-image';
+import { toPng, toJpeg } from 'html-to-image';
 import share from '../img/buttons/share.svg';
 import { timeHours } from 'd3';
 
@@ -405,23 +405,23 @@ export default class Side extends Component {
             <>
               <div className="social-media-layout" ref={this.myRef}>
                 <div className="side-inner">
-                  {this.state.exportActive && (
-                    <div className="side-inner export">
-                      {!this.state.showViz && ( //TEXT
-                        <Details
-                          lk={this.props.lk}
-                          section={this.props.section}
-                          sectionName={this.props.sectionName}
-                          textData={this.props.textData}
-                          similarAgs={this.props.similarAgs}
-                          activeSide={this.props.activeSide}
-                          handleClickOnList={this.handleClickOnList}
-                          ranking={this.state.ranking}
-                        />
-                      )}
-                      {this.state.showViz && this.vis()}
-                    </div>
-                  )}
+                  {/* {this.state.exportActive && ( */}
+                  <div className="side-inner export">
+                    {!this.state.showViz && ( //TEXT
+                      <Details
+                        lk={this.props.lk}
+                        section={this.props.section}
+                        sectionName={this.props.sectionName}
+                        textData={this.props.textData}
+                        similarAgs={this.props.similarAgs}
+                        activeSide={this.props.activeSide}
+                        handleClickOnList={this.handleClickOnList}
+                        ranking={this.state.ranking}
+                      />
+                    )}
+                    {this.state.showViz && this.vis()}
+                  </div>
+                  {/* )} */}
                 </div>
                 <TitleArt landkreisLabel={this.props.lk.label} />
                 <div className="logo-container"></div>
