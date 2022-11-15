@@ -286,11 +286,11 @@
         &.comparison {
           .word-art-title {
             @include wordart-style-1;
-            -webkit-transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, -15px);
-            transform: scale(0.9, 1.2) rotate(-2deg) translate(0px, -15px);
+            -webkit-transform: scale(0.9) rotate(-2deg) translate(0px, -15px);
+            transform: scale(0.9) rotate(-2deg) translate(0px, -15px);
             z-index: 2;
             // text-align: left;
-            margin-top: 2rem;
+            margin-top: 1rem;
 
             .gruss-thumb {
               display: none;

@@ -755,8 +755,9 @@
     .indicators-iframe {
       .main-container {
         .word-art-title {
-          padding-top: 1rem;
+          padding-top: 0rem;
         }
+        
         .overlay-container {
           .section-title {
             font-size: 14px;
@@ -765,10 +766,10 @@
           .section-thumb {
             &.comparison {
               .word-art-title {
-                margin-top: 1.5rem;
+                margin-top: 0.5rem;
                 .wordart {
                   padding-left: 2px;
-                  padding-right: 0;
+                  padding-right: 5px;
                   font-size: 1rem;
                   line-height: 1rem;
                 }
