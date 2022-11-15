@@ -31,6 +31,52 @@
             padding-bottom: 5px;
           }
         }
+
+        .social-media-layout {
+          .side-inner {
+            .La-chart {
+              .animal-count {
+                .visualization-container {
+                  height: 87%;
+                }
+              }
+            }
+
+            .Ge-chart {
+              .avg-heating {
+                .visualization-container {
+                  height: 93%;
+                }
+              }
+            }
+
+            .Ab-chart {
+              .biotonne-weight {
+                .visualization-container {
+                  height: 81%;
+                }
+              }
+            }
+
+            .En-chart {
+              .energy-industry,
+              .primary-energy {
+                .visualization-container {
+                  height: 92%;
+                }
+              }
+            }
+
+            .Mo-chart {
+              .modal-split {
+                .visualization-container {
+                  height: 90%;
+                }
+              }
+            }
+          }
+        }
+
         .button-container {
           .button-switch-container {
             .inner-button {
@@ -170,11 +216,17 @@
                         -webkit-transform: translate(-5px, 0);
                         transform: translate(-5px, 0);
                       }
+                      .year-label {
+                        &.year-odd {
+                          display: none;
+                        }
+                      }
                     }
                   }
                 }
               }
             }
+
             .horizontal-bottom-layout {
               .description {
                 h4 {
@@ -379,10 +431,6 @@
         }
 
         .social-media-layout {
-          .logo-container {
-            height: 1.3rem;
-          }
-
           .word-art-title {
             -webkit-transform: scale(0.9, 0.9) translate(0px, 0px);
             transform: scale(0.9, 0.9) translate(0px, 0px);
@@ -803,6 +851,22 @@
           right: 0;
         }
 
+        .social-media-layout {
+          .side-inner {
+            .Mo-chart {
+              .modal-split {
+                .visualization-container {
+                  .chart {
+                    .bar-percentage-trip {
+                      display: none;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
         .card-collection {
           .card {
             //thumbnail
@@ -1201,6 +1265,56 @@
 
           .word-art {
             line-height: 1.75;
+          }
+        }
+
+        .social-media-layout {
+          .word-art-title {
+            -webkit-transform: scale(0.8) translate(15px, 10px);
+            transform: scale(0.8) translate(15px, 10px);
+          }
+
+          .side-inner {
+            .La-chart {
+              .animal-count {
+                .visualization-container {
+                  height: 80% !important;
+                }
+              }
+            }
+
+            .Ge-chart {
+              .avg-heating {
+                .visualization-container {
+                  height: 80% !important;
+                }
+              }
+            }
+
+            .Ab-chart {
+              .biotonne-weight {
+                .visualization-container {
+                  height: 75% !important;
+                }
+              }
+            }
+
+            .En-chart {
+              .energy-industry,
+              .primary-energy {
+                .visualization-container {
+                  height: 82% !important;
+                }
+              }
+            }
+
+            .Mo-chart {
+              .modal-split {
+                .visualization-container {
+                  height: 82% !important;
+                }
+              }
+            }
           }
         }
 
@@ -1944,13 +2058,6 @@
         .side-container {
           width: calc($portait-postcardheight/1.5);
           height: calc($portait-postcardheight);
-        }
-
-        .social-media-layout {
-          .word-art-title {
-            -webkit-transform: scale(0.8) translate(15px, 10px);
-            transform: scale(0.8) translate(15px, 10px);
-          }
         }
       }
     }
