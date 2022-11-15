@@ -124,6 +124,7 @@ code {
 
 .App {
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,7 +137,6 @@ code {
 
 // In here all elements contained in main-container
 .indicators-iframe {
-  max-width: 948px;
   height: 100vh;
   width: 100%;
   overflow: hidden;
