@@ -7,7 +7,7 @@
 
 @include media('<=desktop') {
   body {
-    // background-color: lightgoldenrodyellow;
+    background-color: lightgoldenrodyellow;
     .indicators-iframe {
       .main-container {
         .side-container {
@@ -32,12 +32,6 @@
           }
         }
         .button-container {
-          .inner-button {
-            .close {
-              margin-top: 12%;
-              margin-right: -0.5rem;
-            }
-          }
           .button-switch-container {
             .inner-button {
               .switch-preview {
@@ -305,7 +299,7 @@
 
 @include media('<=tablet') {
   body {
-    // background-color: rgb(170, 170, 245);
+    background-color: rgb(170, 170, 245);
 
     h4 {
       font-size: 14px;
@@ -639,7 +633,7 @@
 
 @include media('<=schwerpunkt') {
   body {
-    // background-color: lightcoral;
+    background-color: lightcoral;
 
     .indicators-iframe {
       .main-container {
