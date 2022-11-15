@@ -8,9 +8,8 @@ import Chart from './side-elements/Chart.js';
 import Details from './side-elements/Details.js';
 import TitleArt from './TitleArt.js';
 
-import { toPng, toJpeg } from 'html-to-image';
+import { toJpeg } from 'html-to-image';
 import share from '../img/buttons/share.svg';
-import { timeHours } from 'd3';
 
 export default class Side extends Component {
   constructor(props) {

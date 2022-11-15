@@ -1,21 +1,14 @@
 import React, { useRef } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { line, stack } from 'd3-shape';
-import { formatNumber, useCardSize, mobileCheck } from '../../../helpers/helperFunc';
+import { formatNumber, useCardSize } from '../../../helpers/helperFunc';
 import { ReactComponent as Fahrer } from '../../../img/legends/modalsplit/fahrer.svg';
 import { ReactComponent as Mitfahrer } from '../../../img/legends/modalsplit/mitfahrer.svg';
 import { ReactComponent as Fuß } from '../../../img/legends/modalsplit/fuss.svg';
 import { ReactComponent as Fahrrad } from '../../../img/legends/modalsplit/fahrrad.svg';
 import { ReactComponent as ÖPV } from '../../../img/legends/modalsplit/oepv.svg';
 
-const MoModalSplit = ({
-  currentData,
-  currentIndicator,
-  currentSection,
-  locationLabel,
-  isThumbnail,
-  cardNumber,
-}) => {
+const MoModalSplit = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
   const targetRef = useRef();
   const dimensions = useCardSize(targetRef, cardNumber);
 
@@ -131,13 +124,6 @@ const MoModalSplit = ({
         : xScale(lastCoor[0]) - 40;
       element.markerX = element.labelX;
       element.labelY = yScale(lastCoor[1]);
-
-      //solve overlaps with legend title
-      const legendWidth =
-        marginWidth + getIconWidth(element.mode) + getLegendName(element.mode).length * 5 + 10;
-      // if (element.labelX < legendWidth) {
-      //   element.labelX += legendWidth - element.labelX;
-      // }
 
       const ticksIterations = [...Array.from(Array(rowIndex + 1)).keys()];
       const ticks = [...Array.from(Array(11)).keys()];
