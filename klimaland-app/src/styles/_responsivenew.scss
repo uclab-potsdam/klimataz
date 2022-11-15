@@ -21,12 +21,13 @@
 
         .word-art-title {
           // width: 65%;
+          margin-top: 0;
 
           .wordart {
             font-size: 2rem;
             line-height: 1.75rem;
             overflow: visible;
-            padding-top: 10px;
+            padding-top: 5px;
             padding-bottom: 5px;
           }
         }
@@ -355,9 +356,9 @@
         .word-art-title {
           // width: 65%;
 
+          margin-top: 1rem;
           .wordart {
-            line-height: 1.75rem;
-            padding-bottom: 5px;
+            padding-top: 10px;
           }
         }
 
