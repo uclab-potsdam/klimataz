@@ -229,7 +229,7 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
                         fill={piesAreActive ? '#5ea5a1' : '#FFF9F1'}
                         stroke="#424242"
                       />
-                      <circle className="pie-button" cx="0" cy="0" r={radius + 3} />
+                      <circle className="pie-button" cx="10" cy="10" r={radius + 3} fill="white" />
                     </g>
                     <g className={`detail-label ${piesAreActive ? 'show-legend' : ''}`}>
                       <text>Detailansicht</text>

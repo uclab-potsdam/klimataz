@@ -8,6 +8,25 @@ body {
   font-family: 'AktivGrotesk';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+  /* Firefox */
+}
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
 }
 
 button {
@@ -620,8 +639,9 @@ code {
         padding: 0.75rem;
         transform: translate(-3px, 11px) rotate(-3deg);
         -webkit-transform: translate(-3px, 23px) rotate(-3deg);
-        transition: 0.2s;
-        -webkit-transition: 0.2s;
+        transition: transform 0.2s;
+        will-change: transform;
+        -webkit-transition: transform 0.2s;
         box-shadow: 4px 4px 0px rgba($red, 0.44);
 
         .close {
@@ -651,8 +671,9 @@ code {
 
           transform: translate(20px, -$thumbnail-postcardwidth / 0.6) rotate(2deg);
           -webkit-transform: translate(20px, -$thumbnail-postcardwidth) rotate(2deg);
-          transition: 0.2s;
-          -webkit-transition: 0.2s;
+          will-change: transform;
+          transition: transform 0.2s;
+          -webkit-transition: transform 0.2s;
 
           overflow-y: scroll;
 
