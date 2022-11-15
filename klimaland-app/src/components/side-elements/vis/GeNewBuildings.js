@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { uniq } from 'lodash';
 import { max, extent } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
@@ -10,14 +10,7 @@ import {
   mobileCheck,
 } from './../../../helpers/helperFunc';
 
-const Buildings = ({
-  currentData,
-  currentIndicator,
-  currentSection,
-  locationLabel,
-  isThumbnail,
-  cardNumber,
-}) => {
+const Buildings = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
   const dimensions = useCardSize(targetRef, cardNumber);
@@ -88,25 +81,25 @@ const Buildings = ({
   };
 
   const getLegendName = function (name) {
-    if (name == 'Umweltthermie (Luft/Wasser)') return 'Umweltthermie (Wärmepumpe)';
-    if (name == 'Andere erneuerbare Energien' && noSpecificRenewables()) {
+    if (name === 'Umweltthermie (Luft/Wasser)') return 'Umweltthermie (Wärmepumpe)';
+    if (name === 'Andere erneuerbare Energien' && noSpecificRenewables()) {
       return 'Erneuerbare Energien';
     }
-    if (name == 'Fernwärme/Fernkälte') return 'Fernwärme';
+    if (name === 'Fernwärme/Fernkälte') return 'Fernwärme';
     return name;
   };
 
   const getDescriptionName = function (name) {
-    if (name == 'Umweltthermie (Luft/Wasser)') return 'Umweltthermie (Wärmepumpe)';
-    if (name == 'Andere erneuerbare Energien') {
+    if (name === 'Umweltthermie (Luft/Wasser)') return 'Umweltthermie (Wärmepumpe)';
+    if (name === 'Andere erneuerbare Energien') {
       if (noSpecificRenewables()) {
         return 'erneuerbaren Energien';
       } else {
         return 'anderen erneuerbaren Energien';
       }
     }
-    if (name == 'Andere fossile Energien') return 'anderen fossilen Energien';
-    if (name == 'Fernwärme/Fernkälte') return 'Fernwärme';
+    if (name === 'Andere fossile Energien') return 'anderen fossilen Energien';
+    if (name === 'Fernwärme/Fernkälte') return 'Fernwärme';
     return name;
   };
 

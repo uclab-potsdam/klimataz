@@ -19,14 +19,20 @@ body {
 html {
   overflow: scroll;
   overflow-x: hidden;
-
 }
 
 ::-webkit-scrollbar {
-  width: 0;
-  /* Remove scrollbar space */
-  background: transparent;
-  /* Optional: just make scrollbar invisible */
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff1db;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #faebd6;
+  border-radius: 10px;
 }
 
 button {
@@ -200,7 +206,7 @@ code {
           background-image: none;
           background-clip: none;
           -webkit-background-clip: none;
-          -webkit-text-fill-color: $red;
+          -webkit-text-fill-color: #f26852;
         }
       }
     }
@@ -457,7 +463,7 @@ code {
 
       .taz-logo-container {
         position: absolute;
-        background-image: url(../img/taz/taz-klimahub-logo.png);
+        background-image: url(../img/taz/taz-klimaland-logo-bigger.jpg);
         background-repeat: no-repeat;
         background-size: contain;
         width: 100%;
@@ -503,7 +509,7 @@ code {
         height: 1.5rem;
         min-height: 1rem;
         display: block;
-        left: 6rem;
+        left: 0rem;
         margin-top: 0.5rem;
       }
 
@@ -678,7 +684,7 @@ code {
           overflow-y: scroll;
 
           .help {
-            overflow-y: scroll;
+            overflow-y: hidden;
             overflow-x: hidden;
 
             .text {

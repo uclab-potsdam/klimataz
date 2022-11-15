@@ -1,17 +1,10 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { extent } from 'd3-array';
 import { stack } from 'd3-shape';
-import { useCardSize, mobileCheck } from '../../../helpers/helperFunc';
+import { useCardSize } from '../../../helpers/helperFunc';
 
-const GeAvgHEating = ({
-  currentData,
-  currentIndicator,
-  currentSection,
-  locationLabel,
-  isThumbnail,
-  cardNumber,
-}) => {
+const GeAvgHEating = ({ currentData, locationLabel, isThumbnail, cardNumber }) => {
   // getting sizes of container for maps
   const targetRef = useRef();
   const dimensions = useCardSize(targetRef, cardNumber);

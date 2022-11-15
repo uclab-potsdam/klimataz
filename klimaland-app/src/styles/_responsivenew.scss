@@ -21,22 +21,63 @@
 
         .word-art-title {
           // width: 65%;
+          margin-top: 0;
 
           .wordart {
             font-size: 2rem;
             line-height: 1.75rem;
             overflow: visible;
-            padding-top: 10px;
+            padding-top: 5px;
             padding-bottom: 5px;
           }
         }
-        .button-container {
-          .inner-button {
-            .close {
-              margin-top: 12%;
-              margin-right: -0.5rem;
+
+        .social-media-layout {
+          .side-inner {
+            .La-chart {
+              .animal-count {
+                .visualization-container {
+                  height: 87%;
+                }
+              }
+            }
+
+            .Ge-chart {
+              .avg-heating {
+                .visualization-container {
+                  height: 93%;
+                }
+              }
+            }
+
+            .Ab-chart {
+              .biotonne-weight {
+                .visualization-container {
+                  height: 81%;
+                }
+              }
+            }
+
+            .En-chart {
+              .energy-industry,
+              .primary-energy {
+                .visualization-container {
+                  height: 92%;
+                }
+              }
+            }
+
+            .Mo-chart {
+              .modal-split {
+                .visualization-container {
+                  height: 90%;
+                }
+              }
             }
           }
+        }
+
+        .button-container {
           .button-switch-container {
             .inner-button {
               .switch-preview {
@@ -175,11 +216,17 @@
                         -webkit-transform: translate(-5px, 0);
                         transform: translate(-5px, 0);
                       }
+                      .year-label {
+                        &.year-odd {
+                          display: none;
+                        }
+                      }
                     }
                   }
                 }
               }
             }
+
             .horizontal-bottom-layout {
               .description {
                 h4 {
@@ -325,9 +372,9 @@
 
         .button-container {
           .inner-button {
-            height: 82%;
+            height: 84%;
             .close {
-              margin-top: 18%;
+              margin-top: 14%;
               margin-right: -0.5rem;
             }
           }
@@ -338,6 +385,7 @@
 
             .inner-button {
               .switch-preview {
+                margin-top: 0.1rem;
                 font-size: 12px;
               }
             }
@@ -354,9 +402,9 @@
         .word-art-title {
           // width: 65%;
 
+          margin-top: 1rem;
           .wordart {
-            line-height: 1.75rem;
-            padding-bottom: 5px;
+            padding-top: 10px;
           }
         }
 
@@ -383,10 +431,6 @@
         }
 
         .social-media-layout {
-          .logo-container {
-            height: 1.3rem;
-          }
-
           .word-art-title {
             -webkit-transform: scale(0.9, 0.9) translate(0px, 0px);
             transform: scale(0.9, 0.9) translate(0px, 0px);
@@ -645,6 +689,22 @@
           width: $schwerpunkt-postcardview-postcardwidth;
           height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
         }
+        .button-container {
+          .inner-button {
+            height: 82%;
+            .close {
+              margin-top: 18%;
+              margin-right: -0.5rem;
+            }
+          }
+          .button-switch-container {
+            .inner-button {
+              .switch-preview {
+                margin-top: 0.5rem;
+              }
+            }
+          }
+        }
         .card-preview {
           .side-outer {
             .overlay-container {
@@ -790,6 +850,22 @@
 
         .flip {
           right: 0;
+        }
+
+        .social-media-layout {
+          .side-inner {
+            .Mo-chart {
+              .modal-split {
+                .visualization-container {
+                  .chart {
+                    .bar-percentage-trip {
+                      display: none;
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
 
         .card-collection {
@@ -1193,6 +1269,56 @@
           }
         }
 
+        .social-media-layout {
+          .word-art-title {
+            -webkit-transform: scale(0.8) translate(15px, 10px);
+            transform: scale(0.8) translate(15px, 10px);
+          }
+
+          .side-inner {
+            .La-chart {
+              .animal-count {
+                .visualization-container {
+                  height: 80% !important;
+                }
+              }
+            }
+
+            .Ge-chart {
+              .avg-heating {
+                .visualization-container {
+                  height: 80% !important;
+                }
+              }
+            }
+
+            .Ab-chart {
+              .biotonne-weight {
+                .visualization-container {
+                  height: 75% !important;
+                }
+              }
+            }
+
+            .En-chart {
+              .energy-industry,
+              .primary-energy {
+                .visualization-container {
+                  height: 82% !important;
+                }
+              }
+            }
+
+            .Mo-chart {
+              .modal-split {
+                .visualization-container {
+                  height: 82% !important;
+                }
+              }
+            }
+          }
+        }
+
         .flip {
           img {
             max-width: 37px;
@@ -1317,16 +1443,6 @@
                         &.with-footnote {
                           height: 25%;
                         }
-                      }
-                    }
-                  }
-                }
-
-                .energy-industry {
-                  .description {
-                    .title {
-                      h4 {
-                        font-size: 0.9rem;
                       }
                     }
                   }
@@ -1934,13 +2050,6 @@
           width: calc($portait-postcardheight/1.5);
           height: calc($portait-postcardheight);
         }
-
-        .social-media-layout {
-          .word-art-title {
-            -webkit-transform: scale(0.8) translate(15px, 10px);
-            transform: scale(0.8) translate(15px, 10px);
-          }
-        }
       }
     }
   }
@@ -2029,11 +2138,6 @@
                   .no-icon {
                     display: inline-block;
                   }
-                  .description {
-                    h4 {
-                      font-size: 14px;
-                    }
-                  }
                 }
               }
 
@@ -2055,11 +2159,6 @@
                       }
                     }
                   }
-                  .description {
-                    h4 {
-                      font-size: 14px;
-                    }
-                  }
                 }
               }
 
@@ -2079,21 +2178,6 @@
                       transform: translate(0, 50px);
                       -webkit-transform: translate(0, 50px);
                     }
-                  }
-                }
-              }
-              .vertical-layout {
-                .description {
-                  h4 {
-                    font-size: 14px;
-                  }
-                }
-              }
-
-              .horizontal-bottom-layout {
-                .description {
-                  h4 {
-                    font-size: 14px;
                   }
                 }
               }
