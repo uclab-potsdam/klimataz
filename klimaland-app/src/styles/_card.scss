@@ -171,6 +171,8 @@
     //original ratio changed for styling
     width: $thumbnail-postcardwidth;
     height: calc($thumbnail-postcardwidth/1.5);
+    max-width: 316px;
+    max-height: 223px;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     position: relative;
