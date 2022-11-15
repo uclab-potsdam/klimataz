@@ -325,9 +325,9 @@
 
         .button-container {
           .inner-button {
-            height: 82%;
+            height: 84%;
             .close {
-              margin-top: 18%;
+              margin-top: 14%;
               margin-right: -0.5rem;
             }
           }
@@ -338,6 +338,7 @@
 
             .inner-button {
               .switch-preview {
+                margin-top: 0.1rem;
                 font-size: 12px;
               }
             }
@@ -644,6 +645,22 @@
         .side-container {
           width: $schwerpunkt-postcardview-postcardwidth;
           height: calc($schwerpunkt-postcardview-postcardwidth/1.6);
+        }
+        .button-container {
+          .inner-button {
+            height: 82%;
+            .close {
+              margin-top: 18%;
+              margin-right: -0.5rem;
+            }
+          }
+          .button-switch-container {
+            .inner-button {
+              .switch-preview {
+                margin-top: 0.5rem;
+              }
+            }
+          }
         }
         .card-preview {
           .side-outer {
