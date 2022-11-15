@@ -57,25 +57,32 @@ export default class Side extends Component {
     // adding timeout before resolve to make sure everything is loaded
     await new Promise((resolve) => setTimeout(resolve, 1000))
       .then(() => {
-        return toPng(this.myRef.current, {
+        // return toPng(this.myRef.current, {
+        //   cacheBust: true,
+        //   backgroundColor: '#fefaf6',
+        // });
+
+        return toJpeg(this.myRef.current, {
+          quality: 1,
           cacheBust: true,
           backgroundColor: '#fefaf6',
         });
       })
       .then((dataUrl) => {
-        // const link = document.createElement('a');
-        // link.download = 'klimaland_taz.png';
-        // link.href = dataUrl;
-        // link.click();
-
         // Returning it twice to prevent safari to export a blank canvas
-        toPng(this.myRef.current).then(function (dataURL2) {
+        // toPng(this.myRef.current).then(function (dataURL2) {
+        //   const link = document.createElement('a');
+        //   link.download = `klimaland_taz.png`;
+        //   link.href = dataURL2;
+        //   link.click();
+        //   // resolve(dataURL2);
+        // });
+
+        toJpeg(this.myRef.current).then(function (dataURL2) {
           const link = document.createElement('a');
-          link.download = `klimaland_taz.png`;
+          link.download = `klimaland_taz.jpg`;
           link.href = dataURL2;
           link.click();
-
-          // resolve(dataURL2);
         });
       })
       .then(() => {
@@ -405,23 +412,23 @@ export default class Side extends Component {
             <>
               <div className="social-media-layout" ref={this.myRef}>
                 <div className="side-inner">
-                  {/* {this.state.exportActive && ( */}
-                  <div className="side-inner export">
-                    {!this.state.showViz && ( //TEXT
-                      <Details
-                        lk={this.props.lk}
-                        section={this.props.section}
-                        sectionName={this.props.sectionName}
-                        textData={this.props.textData}
-                        similarAgs={this.props.similarAgs}
-                        activeSide={this.props.activeSide}
-                        handleClickOnList={this.handleClickOnList}
-                        ranking={this.state.ranking}
-                      />
-                    )}
-                    {this.state.showViz && this.vis()}
-                  </div>
-                  {/* )} */}
+                  {this.state.exportActive && (
+                    <div className="side-inner export">
+                      {!this.state.showViz && ( //TEXT
+                        <Details
+                          lk={this.props.lk}
+                          section={this.props.section}
+                          sectionName={this.props.sectionName}
+                          textData={this.props.textData}
+                          similarAgs={this.props.similarAgs}
+                          activeSide={this.props.activeSide}
+                          handleClickOnList={this.handleClickOnList}
+                          ranking={this.state.ranking}
+                        />
+                      )}
+                      {this.state.showViz && this.vis()}
+                    </div>
+                  )}
                 </div>
                 <TitleArt landkreisLabel={this.props.lk.label} />
                 <div className="logo-container"></div>
