@@ -192,7 +192,7 @@ https://ag-energiebilanzen.de/daten-und-fakten/auswertungstabellen/"
               <a target="_blank" rel="noreferrer" href="https://www.taz.de/">
                 <div className="taz-logo-container"></div>
               </a>
-              <a target="_blank" rel="noreferrer" href="https://uclab.fh-potsdam.de/">
+              <a target="_blank" rel="noreferrer" href="http://fh-potsdam.de/">
                 <div className="fhp-logo-container"></div>
               </a>
             </div>

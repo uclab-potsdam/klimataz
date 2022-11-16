@@ -6,3 +6,5 @@ data_analysis/GTFS-analysis/export/agency_stops.csv
 .DS_Store
 klimaland-app/node_modules
 klimaland-app/build
+klimaland-app/src/fonts/aktiv/AktivGrotesk_Md.ttf
+klimaland-app/src/fonts/aktiv/AktivGrotesk_Rg.ttf
