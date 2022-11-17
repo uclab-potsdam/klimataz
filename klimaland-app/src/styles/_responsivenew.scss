@@ -2237,6 +2237,18 @@
                   }
                 }
               }
+
+              &.Ab-chart {
+                .biotonne-weight {
+                  .description {
+                    span {
+                      &.footnote {
+                        font-size: 14px;
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
 
@@ -2259,6 +2271,14 @@
           .word-art-title {
             -webkit-transform: scale(0.8) translate(-5px, -8px);
             transform: scale(0.8) translate(-5px, -8px);
+          }
+        }
+
+        .info-container {
+          .info-container-content {
+            &.open {
+              width: 80vw;
+            }
           }
         }
       }
