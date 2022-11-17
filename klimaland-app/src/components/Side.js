@@ -429,8 +429,9 @@ export default class Side extends Component {
                     </div>
                   )}
                 </div>
-                <TitleArt landkreisLabel={this.props.lk.label} />
-                <div className="logo-container"></div>
+                {this.state.exportActive && <TitleArt landkreisLabel={this.props.lk.label} /> && (
+                  <div className="logo-container"></div>
+                )}
               </div>
             </>
           )}

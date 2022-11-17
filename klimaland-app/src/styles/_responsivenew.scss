@@ -2088,13 +2088,15 @@
           margin-top: -10px;
           height: 100vh;
           margin: 0 auto;
-          width: 95%;
+          width: 100%;
 
           .card {
             .card-front {
               .side-outer {
                 .overlay-container {
                   .overlay-inner {
+                    margin-top: 0.25rem;
+                    padding-bottom: 0.25rem;
                     .button-toggle-container {
                       svg {
                         text {
@@ -2105,17 +2107,17 @@
                   }
                 }
 
-                // .side-inner {
-                //   .details-container {
-                //     .flex-container {
-                //       .text-inner-container {
-                //         .section-text {
-                //           height: 100%;
-                //         }
-                //       }
-                //     }
-                //   }
-                // }
+                .side-inner {
+                  .details-container {
+                    .flex-container {
+                      .text-container {
+                        .text-inner-container {
+                          height: 76%;
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -2128,14 +2130,45 @@
           }
           .chart-container {
             .svg-container {
+              .vertical-layout {
+                .description {
+                  h4 {
+                    font-size: 14px;
+                  }
+                }
+              }
+              .horizontal-bottom-layout {
+                .description {
+                  h4 {
+                    font-size: 14px;
+                  }
+                }
+              }
               &.Mo-chart {
                 .modal-split {
-                  .icon {
-                    display: none;
-                  }
+                  .chart {
+                    .icon {
+                      display: none;
+                    }
 
-                  .no-icon {
-                    display: inline-block;
+                    .no-icon {
+                      display: inline-block;
+                    }
+                  }
+                  .description {
+                    h4 {
+                      font-size: 14px;
+                    }
+                  }
+                }
+                .car-density {
+                  .visualization-container {
+                    .chart {
+                      &.active-chart {
+                        transform: translate(10px, -11px) scale(0.9);
+                        -webkit-transform: translate(10px, -11px) scale(0.9);
+                      }
+                    }
                   }
                 }
               }
@@ -2158,24 +2191,60 @@
                       }
                     }
                   }
+                  .description {
+                    h4 {
+                      font-size: 14px;
+                    }
+                  }
+                }
+                .newbuildings-energy {
+                  .description {
+                    .title {
+                      h4 {
+                        font-size: 14px;
+                      }
+                    }
+                    .legend {
+                      width: 100%;
+                    }
+                  }
                 }
               }
 
               &.La-chart {
                 .animal-density {
                   .visualization-container {
-                    height: 50%;
+                    height: 60%;
+                    .chart {
+                      transform: translateY(-20px);
+                      -webkit-transform: translateY(-20px);
+                    }
                   }
                   .description {
-                    height: 50%;
+                    height: 40%;
                     .legend {
+                      transform: translate(0, -40px);
+                      -webkit-transform: translate(0, -40px);
                       svg {
                         height: 50px;
                       }
                     }
                     .caption {
-                      transform: translate(0, 50px);
-                      -webkit-transform: translate(0, 50px);
+                      p {
+                        display: none;
+                      }
+                    }
+                  }
+                }
+              }
+
+              &.Ab-chart {
+                .biotonne-weight {
+                  .description {
+                    span {
+                      &.footnote {
+                        font-size: 14px;
+                      }
                     }
                   }
                 }
@@ -2202,6 +2271,14 @@
           .word-art-title {
             -webkit-transform: scale(0.8) translate(-5px, -8px);
             transform: scale(0.8) translate(-5px, -8px);
+          }
+        }
+
+        .info-container {
+          .info-container-content {
+            &.open {
+              width: 80vw;
+            }
           }
         }
       }
