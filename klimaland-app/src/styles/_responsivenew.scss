@@ -2128,6 +2128,20 @@
           }
           .chart-container {
             .svg-container {
+              .vertical-layout {
+                .description {
+                  h4 {
+                    font-size: 14px;
+                  }
+                }
+              }
+              .horizontal-bottom-layout {
+                .description {
+                  h4 {
+                    font-size: 14px;
+                  }
+                }
+              }
               &.Mo-chart {
                 .modal-split {
                   .icon {
@@ -2136,6 +2150,11 @@
 
                   .no-icon {
                     display: inline-block;
+                  }
+                  .description {
+                    h4 {
+                      font-size: 14px;
+                    }
                   }
                 }
               }
@@ -2158,6 +2177,23 @@
                       }
                     }
                   }
+                  .description {
+                    h4 {
+                      font-size: 14px;
+                    }
+                  }
+                }
+                .newbuildings-energy {
+                  .description {
+                    .title {
+                      h4 {
+                        font-size: 14px;
+                      }
+                    }
+                    .legend {
+                      width: 100%;
+                    }
+                  }
                 }
               }
 
@@ -2165,10 +2201,16 @@
                 .animal-density {
                   .visualization-container {
                     height: 50%;
+                    .chart {
+                      transform: translateY(-20px);
+                      -webkit-transform: translateY(-20px);
+                    }
                   }
                   .description {
                     height: 50%;
                     .legend {
+                      transform: translate(0, -130px);
+                      -webkit-transform: translate(0, -130px);
                       svg {
                         height: 50px;
                       }
