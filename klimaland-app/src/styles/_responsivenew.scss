@@ -817,7 +817,7 @@
         .word-art-title {
           padding-top: 0rem;
         }
-        
+
         .overlay-container {
           .section-title {
             font-size: 14px;
@@ -1052,11 +1052,6 @@
                     }
                   }
                 }
-                // .caption {
-                //   .energy-number {
-                //     font-weight: 600;
-                //   }
-                // }
               }
             }
 
@@ -1097,6 +1092,10 @@
                 .text-container {
                   .text-inner-container {
                     overflow-y: scroll;
+                    height: 90%;
+                    margin-top: 1rem;
+
+                    // overflow: hidden;
                     .section-title {
                       //display: none;
                       h2 {
@@ -1105,13 +1104,14 @@
                       }
                     }
                     .section-text {
-                      // overflow-y: visible;
+                      overflow-y: visible;
                       height: 92%;
                     }
                   }
                 }
                 .data-container {
                   .locator-map {
+                    z-index: 10;
                     .locator-container {
                       width: 100%;
                       height: 100%;
@@ -1140,7 +1140,7 @@
               }
 
               .footer-container {
-                height: calc(12% + 2px);
+                // height: calc(12% + 2px);
               }
             }
           }
@@ -1915,12 +1915,12 @@
                         z-index: 1;
 
                         .text-inner-container {
-                          margin-top: 3rem;
-                          height: 80%;
+                          margin-top: 4rem;
+                          height: 79%;
 
                           .section-title {
                             margin-bottom: 0;
-                            padding-top: 2rem;
+                            // padding-top: 2rem;
 
                             h2 {
                               display: flex;
@@ -1931,7 +1931,6 @@
                             margin-top: 0;
                             height: 100%;
                             position: relative;
-                            overflow: scroll;
 
                             p {
                               margin-top: 0.5rem;
