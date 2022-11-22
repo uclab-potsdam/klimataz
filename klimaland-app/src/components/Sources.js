@@ -54,8 +54,8 @@ const Sources = () => {
             <p>
               In folgendem Artikel beschreiben wir genauer unsere Herangehensweise zur Recherche und
               Auswahl der passenden Daten:{' '}
-              <a target="_blank" rel="noreferrer" href="https://www.taz.de/klima">
-                taz.de
+              <a target="_blank" rel="noreferrer" href="https://taz.de/klimakarten">
+                taz.de/klimakarten
               </a>
             </p>
             <a target="_blank" rel="noreferrer" href="https://forms.gle/B6dguRvQvC3y6AGi8">
