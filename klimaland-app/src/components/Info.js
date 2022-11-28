@@ -110,7 +110,8 @@ export default class Info extends Component {
             )}
             {this.props.postcardView && (
               <p>
-                Auf der Vorderseite der Postkarte kann zu einem zweiten Datenset gewechselt{' '}
+                Auf der Vorderseite der Postkarte kann zu einem zweiten Datenset auf
+                Bundesland-Ebene gewechselt{' '}
                 <img src={toggleCard} className="img-toggle" alt="flip-button-img" /> werden.
                 Außerdem kann die Postkarte zum Verschicken oder Teilen heruntergeladen
                 <img src={share} className="img-download" alt="download-button-img" /> werden. Auf

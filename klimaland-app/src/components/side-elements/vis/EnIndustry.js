@@ -361,7 +361,7 @@ const EnIndustry = ({ currentData, locationLabel, isThumbnail, footnote, cardNum
       >
         <div className="title">
           <h4>
-            Der Energieverbrauch in der Industrie in{' '}
+            Der Energieverbrauch in der <span className="locationLabel">Industrie</span> in{' '}
             <span className="locationLabel">
               {showBundeslandForLK ? locationLabel[1] : locationLabel[0]}
             </span>{' '}
