@@ -17,11 +17,16 @@ const MoCarDensity = ({ currentData, locationLabel, isThumbnail, cardNumber }) =
   let yScale;
   let rectWidth;
   let rectHeight;
+  let lastYear = '';
   const isMobile = dimensions.width <= 350 && mobileCheck(window);
 
   if (currentData !== undefined) {
     // Data for rendered text
-    const lastYear = max(currentData.data.map((d) => +d.year));
+    //const lastYear = max(currentData.data.map((d) => +d.year));
+    lastYear = 2021;
+    if (locationLabel === 'Deutschland') {
+      lastYear = 2022; //different data for deutschland
+    }
     const lastDataPoint = currentData.data.find(
       (d) => d.column === 'Gesamt' && +d.year === lastYear
     );
@@ -106,8 +111,8 @@ const MoCarDensity = ({ currentData, locationLabel, isThumbnail, cardNumber }) =
       <div className="description">
         <div className="title">
           <h4>
-            In <span className="locationLabel">{locationLabel}</span> kommen auf 100 Einwohner*innen{' '}
-            <span className="first-value">{totalCars}</span> Autos. Davon sind{' '}
+            In <span className="locationLabel">{locationLabel}</span> kommen {lastYear} auf 100
+            Einwohner*innen <span className="first-value">{totalCars}</span> Autos. Davon sind{' '}
             <span className="second-value">{hybridCars}</span> mit Hybrid- oder Elektroantrieb.
           </h4>
         </div>
