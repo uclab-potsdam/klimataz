@@ -120,7 +120,7 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
         <div className="caption">
           <p>
             Um die Anzahl verschiedener Tiere vergleichen zu können, gibt es die Großvieheinheit.
-            Sie entspricht 500 kg, also in etwa einem Rind, 8 Schweinen, 10 Schafen oder 640
+            Sie entspricht 500 kg, also in etwa einem Rind, 8 Schweinen, 10 Schafen oder 320
             Legehennen.
           </p>
         </div>
@@ -277,9 +277,8 @@ const LandDenisty = ({ currentData, locationLabel, cardNumber }) => {
                     fill="url(#diagonalHatch4)"
                   />
                   <g
-                    transform={`translate(${-barWidth / 2}, ${
-                      -bar.value - max([16, barElements[0][a].value])
-                    })`}
+                    transform={`translate(${-barWidth / 2}, ${-bar.value - max([16, barElements[0][a].value])
+                      })`}
                   >
                     <rect
                       className="labelCount"
