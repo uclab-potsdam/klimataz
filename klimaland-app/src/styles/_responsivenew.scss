@@ -776,6 +776,22 @@
                     }
                   }
                 }
+                &.with-footnote {
+                  height: 70%;
+                }
+              }
+              .description {
+                &.with-footnote {
+                  height: 30%;
+                }
+              }
+              .is-thumbnail {
+                .visualization-container,
+                .description {
+                  &.with-footnote {
+                    height: 100%;
+                  }
+                }
               }
             }
             .En-chart {
@@ -996,13 +1012,6 @@
                     text {
                       fill: $default-text;
                     }
-                  }
-                }
-              }
-              .description {
-                span {
-                  &.footnote {
-                    font-size: 10px;
                   }
                 }
               }

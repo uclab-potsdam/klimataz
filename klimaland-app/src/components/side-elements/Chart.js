@@ -26,7 +26,10 @@ export default class Chart extends Component {
     if (currentSnippet !== undefined) {
       locationLabel = currentSnippet.regional ? locationLabels['lk'] : locationLabels['bundesland'];
 
-      if (this.props.indicator === '_industry_consumption_') {
+      if (
+        this.props.indicator === '_industry_consumption_' ||
+        this.props.indicator === '_organicwaste_kg_per_person_'
+      ) {
         locationLabel = [locationLabels['lk'], locationLabels['bundesland']];
       }
     }
