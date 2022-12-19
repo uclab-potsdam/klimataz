@@ -36,11 +36,15 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
   const marginWidth = Math.round(dimensions.width / 10);
   const marginHeight = Math.round(dimensions.height / 10);
   const radius = isThumbnail ? Math.ceil(width / 50) : Math.ceil(width / (mobileThreshold * 10));
+  let secretFootnote = 'In ' + locationLabel[0] + ' ist dieser Vebrauch unbekannt. ';
+  let showBundeslandForLK = false;
 
   if (currentData !== undefined) {
     const lastDataPoint = currentData.data.slice(-1);
     lastYear = lastDataPoint[0]['year'];
     lastValue = `${lastDataPoint[0]['value'].toFixed(1)}`;
+
+    showBundeslandForLK = !currentData.regional && locationLabel[0] !== locationLabel[1];
 
     const domainY = [0, max(currentData.data.map((d) => d.value)) + 5];
     const domainX = extent(currentData.data.map((d) => +d.year));
@@ -117,7 +121,12 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
     <div
       className={`biotonne-weight horizontal-bottom-layout ${isThumbnail ? 'is-thumbnail' : ''}`}
     >
-      <div className="visualization-container" ref={targetRef}>
+      <div
+        className={`visualization-container ${
+          (footnote !== undefined && footnote !== '') || showBundeslandForLK ? 'with-footnote' : ''
+        }`}
+        ref={targetRef}
+      >
         <svg
           className="abfall-biotonne chart"
           width="100%"
@@ -230,13 +239,22 @@ const Waste = ({ currentData, locationLabel, isThumbnail, footnote, cardNumber }
           )}
         </svg>
       </div>
-      <div className="description">
+      <div
+        className={`description ${
+          (footnote !== undefined && footnote !== '') || showBundeslandForLK ? 'with-footnote' : ''
+        }`}
+      >
         <div className="title">
           <h4>
-            Im Jahr {lastYear} wurden in <span className="locationLabel">{locationLabel}</span> pro
-            Kopf <span>{formatNumber(lastValue)} kg</span> organische Abfälle korrekt in der
+            Im Jahr {lastYear} wurden in{' '}
+            <span className="locationLabel">
+              {showBundeslandForLK ? locationLabel[1] : locationLabel[0]}
+            </span>{' '}
+            pro Kopf <span>{formatNumber(lastValue)} kg</span> organische Abfälle korrekt in der
             Biotonne oder als Gartenabfälle entsorgt und damit CO<sub>2</sub>-Emissionen verringert.{' '}
-            <span className="footnote">{footnote}</span>
+            <span className="footnote">
+              {footnote} {showBundeslandForLK && secretFootnote}
+            </span>
             {footnote !== '' && '.'}
           </h4>
         </div>
