@@ -340,7 +340,7 @@ const EnIndustry = ({ currentData, locationLabel, isThumbnail, footnote, cardNum
                               height="1"
                             >
                               <div xmlns="http://www.w3.org/1999/xhtml" className={stream.klass}>
-                                <p>{formatNumber(label.value)} TJ</p>
+                                <p>{formatNumber(label.value)} GJ</p>
                               </div>
                             </foreignObject>
                           </g>
