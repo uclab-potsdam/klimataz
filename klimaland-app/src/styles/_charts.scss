@@ -942,6 +942,7 @@
             @include newbuildings-label-update(oel, $oel);
             @include newbuildings-label-update(heizenergie, $heizenergie);
             @include newbuildings-label-update(strom, $strom);
+
             div {
               border-radius: 2px;
               background-color: white;
@@ -958,7 +959,8 @@
 
               p {
                 font-size: 11px;
-                margin: 0.1rem;
+                line-height: 11px;
+                margin: 0.2rem 0.1rem 0.1rem 0.1rem;
               }
               @include newbuildings-label-update(fossile, $fossile);
               @include newbuildings-label-update(gas, $gas);
