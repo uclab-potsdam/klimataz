@@ -58,10 +58,6 @@ const Sources = () => {
                 taz.de/klimakarten
               </a>
             </p>
-            <a target="_blank" rel="noreferrer" href="https://forms.gle/B6dguRvQvC3y6AGi8">
-              <div className="umfrage-logo-container"></div>{' '}
-            </a>
-            <br />
             <div className="sources-linklist">
               <h4>Energie</h4>
               <p>
