@@ -99,7 +99,7 @@ const Canvas = () => {
 
     // -------- SINGLE POSTCARD VIEW -------
     if (ags.length === 1 && sections.length === 1) {
-      console.log('SINGLE POSTCARD VIEW');
+      // console.log('SINGLE POSTCARD VIEW');
       //TODO: keep UI param
       uiVis = false;
 
@@ -139,7 +139,7 @@ const Canvas = () => {
 
     // -------- LK VIEW --------
     if (ags.length === 1 && sections.length !== 1) {
-      console.log('LK VIEW');
+      // console.log('LK VIEW');
       //TODO: keep UI param
       sections = defaultSections;
       let ort = ags[0];
@@ -168,7 +168,7 @@ const Canvas = () => {
 
     // -------- COMPARISON VIEW --------
     if (ags.length > 1) {
-      console.log('COMPARISON VIEW');
+      // console.log('COMPARISON VIEW');
       //TODO: keep UI param
 
       //if more than 3 landkreise, only keep the first three
