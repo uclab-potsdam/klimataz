@@ -1,11 +1,9 @@
-# klimataz
+# klimakarten
 
-On this main page, you can find links to the observable notebooks, where we visualized the data.
+In collaboration with the newspaper taz, we (the Urban Complexity Lab at FH Potsdam) designed and produced both physical and digital postcards containing visualizations covering various aspects of climate protection and mitigation in Germany. For each of the 401 districts and 16 states in Germany, the reader can explore climate protection postcards in the five sectors: energy, mobility, buildings, agriculture, and waste. The goal of our research is to study readers’ engagement with data visualizations on the topic of climate protection — across multiple media channels. A central ambition here is that the communication of climate change should not cause readers to feel anxious, numb, or even enter a state of shock, but develop an interest and engage locally with climate change and its ramifications.
 
 **The final result is published here: https://taz.de/taz-Datenprojekt-zum-Klimaschutz/!5898240/**
 The code for the webpage can be found in the folder /klimaland-app.
-
-In collaboration with the newspaper taz, we (the Urban Complexity Lab at FH Potsdam) designed and produced both physical and digital postcards containing visualizations covering various aspects of climate protection and mitigation in Germany. For each of the 401 districts and 16 states in Germany, the reader can explore climate protection postcards in the five sectors: energy, mobility, buildings, agriculture, and waste. The goal of our research is to study readers’ engagement with data visualizations on the topic of climate protection — across multiple media channels. A central ambition here is that the communication of climate change should not cause readers to feel anxious, numb, or even enter a state of shock, but develop an interest and engage locally with climate change and its ramifications.
 
 The complete project documentation can be found here: https://uclab.fh-potsdam.de/projects/klimakarten/
 
